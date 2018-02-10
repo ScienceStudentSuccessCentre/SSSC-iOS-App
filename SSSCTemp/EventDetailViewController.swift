@@ -23,10 +23,12 @@ class EventDetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        eventTitleLabel.text = event.getName()
-        eventDescriptionTextView.text = event.getDescription()
-        eventDateTimeLabel.text = event.getMonth() + " " + event.getDayString() + "\n" + event.getTime()
-        eventLocationLabel.text = event.getLocation()
+        eventTitleLabel.text = event.name
+        eventDescriptionTextView.text = event.description
+        eventDateTimeLabel.text = event.month + " " + event.getDayString() + "\n" + event.time
+        eventLocationLabel.text = event.location
+        
+        print("\(event.name), \(event.year), \(event.month), \(event.day)")
         
     }
 

@@ -25,20 +25,24 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
     //MARK: Private Methods
     
     private func loadEvents() {
-        EventParser.getInstance().loadEvents()
+        DispatchQueue(label: "Dispatch Queue", attributes: [], target: nil).async {
+            EventParser.getInstance().loadEvents()
+        }
     }
     
     private func loadSampleEvents() {
-        let sampleEvent1 = Event(name: "Carleton Coding Challenge", description: sampleEvent1Description, month: "JAN", day: 31, time: "4pm", location: "SSSC (3431 Herzberg)", url: "")
-        let sampleEvent2 = Event(name: "Multiple Mini Interview Practice", description: sampleEvent2Description, month: "FEB", day: 6, time: "6:00pm", location: "SSSC (3431 Herzberg)", url: "")
-        let sampleEvent3 = Event(name: "Ski Trip: Camp Fortune", description: sampleEvent3Description, month: "FEB", day: 9, time: "4:00pm departure", location: "Camp Fortune", url: "")
+        let sampleEvent1 = Event(name: "Carleton Coding Challenge", description: sampleEvent1Description, year: 2018, month: "JAN", day: 31, time: "4pm", location: "SSSC (3431 Herzberg)", url: "")
+        let sampleEvent2 = Event(name: "Multiple Mini Interview Practice", description: sampleEvent2Description, year: 2018, month: "FEB", day: 6, time: "6:00pm", location: "SSSC (3431 Herzberg)", url: "")
+        let sampleEvent3 = Event(name: "Ski Trip: Camp Fortune", description: sampleEvent3Description, year: 2018, month: "FEB", day: 9, time: "4:00pm departure", location: "Camp Fortune", url: "")
         
         events += [sampleEvent1, sampleEvent2, sampleEvent3]
     }
     
     func update() {
         events = EventParser.getInstance().getEvents()
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     
@@ -50,9 +54,9 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableViewCell", for: indexPath) as? EventTableViewCell  else {
                         fatalError("The dequeued cell is not an instance of EventTableViewCell.")
         }
-        cell.monthLabel.text = events[indexPath.row].getMonth()
+        cell.monthLabel.text = events[indexPath.row].month
         cell.dateLabel.text = events[indexPath.row].getDayString()
-        cell.eventLabel.text = events[indexPath.row].getName()
+        cell.eventLabel.text = events[indexPath.row].name
         return cell
     }
     
