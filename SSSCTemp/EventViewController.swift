@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class EventViewController: UIViewController, Observer, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: Properties
     
@@ -25,15 +25,20 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     //MARK: Private Methods
     
     private func loadEvents() {
-        
+        EventParser.getInstance().loadEvents()
     }
     
     private func loadSampleEvents() {
-        let sampleEvent1 = Event(name: "Carleton Coding Challenge", description: sampleEvent1Description, month: "Jan", year: 2018, date: 31, time: "4pm", location: "SSSC (3431 Herzberg)")
-        let sampleEvent2 = Event(name: "Multiple Mini Interview Practice", description: sampleEvent2Description, month: "Feb", year: 2018, date: 06, time: "6:00pm", location: "SSSC (3431 Herzberg)")
-        let sampleEvent3 = Event(name: "Ski Trip: Camp Fortune", description: sampleEvent3Description, month: "Feb", year: 2018, date: 09, time: "4:00pm departure", location: "Camp Fortune")
+        let sampleEvent1 = Event(name: "Carleton Coding Challenge", description: sampleEvent1Description, month: "JAN", day: 31, time: "4pm", location: "SSSC (3431 Herzberg)", url: "")
+        let sampleEvent2 = Event(name: "Multiple Mini Interview Practice", description: sampleEvent2Description, month: "FEB", day: 6, time: "6:00pm", location: "SSSC (3431 Herzberg)", url: "")
+        let sampleEvent3 = Event(name: "Ski Trip: Camp Fortune", description: sampleEvent3Description, month: "FEB", day: 9, time: "4:00pm departure", location: "Camp Fortune", url: "")
         
         events += [sampleEvent1, sampleEvent2, sampleEvent3]
+    }
+    
+    func update() {
+        events = EventParser.getInstance().getEvents()
+        self.tableView.reloadData()
     }
     
     
@@ -45,9 +50,9 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableViewCell", for: indexPath) as? EventTableViewCell  else {
                         fatalError("The dequeued cell is not an instance of EventTableViewCell.")
         }
-        cell.monthLabel.text = events[indexPath.row].month
-        cell.dateLabel.text = String(events[indexPath.row].date)
-        cell.eventLabel.text = events[indexPath.row].name
+        cell.monthLabel.text = events[indexPath.row].getMonth()
+        cell.dateLabel.text = events[indexPath.row].getDayString()
+        cell.eventLabel.text = events[indexPath.row].getName()
         return cell
     }
     
@@ -59,7 +64,9 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         
-        loadSampleEvents()
+//        loadSampleEvents()
+        EventParser.getInstance().attachObserver(observer: self)
+        loadEvents()
         
     }
     

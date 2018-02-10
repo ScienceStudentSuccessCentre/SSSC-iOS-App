@@ -16,19 +16,18 @@ class EventDetailViewController: UIViewController {
     
     @IBOutlet var eventTitleLabel: UILabel!
     @IBOutlet var eventDescriptionTextView: UITextView!
-    @IBOutlet var eventDateLabel: UILabel!
-    @IBOutlet var eventTimeLabel: UILabel!
+    @IBOutlet var eventDateTimeLabel: UILabel!
     @IBOutlet var eventLocationLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        eventTitleLabel.text = event.name
-        eventDescriptionTextView.text = event.description
-        eventDateLabel.text = event.month + " " + String(event.date) + ", " + String(event.year)
-        eventTimeLabel.text = event.time
-        eventLocationLabel.text = event.location
+        eventTitleLabel.text = event.getName()
+        eventDescriptionTextView.text = event.getDescription()
+        eventDateTimeLabel.text = event.getMonth() + " " + event.getDayString() + "\n" + event.getTime()
+        eventLocationLabel.text = event.getLocation()
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -10,53 +10,58 @@ import Foundation
 
 class Event {
     
-    var name: String
-    var description: String
-    var month: String
-    var monthInt: Int
-    var year: Int
-    var date: Int
-    var time: String
-//    var timeInt: Int
-    var location: String
+    private var name: String
+    private var description: String
+    private var month: String
+    private var day: Int
+    private var time: String
+    private var location: String
+    private var url: String
     
-    init(name: String, description: String, month: String, year: Int, date: Int, time: String, location: String) {
+    init() {
+        self.name = ""
+        self.description = ""
+        self.month = ""
+        self.day = 1
+        self.time = ""
+        self.location = ""
+        self.url = ""
+    }
+    
+    init(name: String, description: String, month: String, day: Int, time: String, location: String, url: String) {
         self.name = name
         self.description = description
         self.month = month
-        switch month.lowercased() {
-        case "feb":
-            monthInt = 2
-        case "mar":
-            monthInt = 3
-        case "apr":
-            monthInt = 4
-        case "may":
-            monthInt = 5
-        case "jun", "june":
-            monthInt = 6
-        case "jul", "july":
-            monthInt = 7
-        case "aug":
-            monthInt = 8
-        case "sep", "sept":
-            monthInt = 9
-        case "oct":
-            monthInt = 10
-        case "nov":
-            monthInt = 11
-        case "dec":
-            monthInt = 12
-        default:
-            monthInt = 1
-        }
-        self.year = year
-        self.date = date
+        self.day = day
         self.time = time
         self.location = location
+        self.url = url
     }
     
-    func toString() -> String {
-        return name + "\n\t" + month + " " + String(date) + ", " + String(year)
+    public func getName() -> String {
+        return name
+    }
+    
+    public func getDescription() -> String {
+        return description
+    }
+    
+    public func getMonth() -> String {
+        return month
+    }
+    
+    public func getDayString() -> String {
+        if (day < 10) {
+            return "0" + String(day)
+        }
+        return String(day)
+    }
+    
+    public func getTime() -> String {
+        return time
+    }
+    
+    public func getLocation() -> String {
+        return location
     }
 }

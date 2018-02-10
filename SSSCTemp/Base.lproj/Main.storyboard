@@ -132,9 +132,9 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EB6-eU-FZM">
                                 <rect key="frame" x="16" y="118" width="343" height="424"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">If you are interested in programming, join our Coding Challenge! You’ll have the opportunity to work with other students on a small programming project which contains different sections to help guide you along the way. At the end, you will have the chance to present your project with your team and it will be judged based on functionality, creativity and more. There will also be a raffle where everyone has a chance to win, but the winners of the challenge will gain extra raffle tickets.
+                                <string key="text">If you are interested in programming, join our Coding Challenge! You’ll have the opportunity to work with other students on a small programming project which contains different sections to help guide you along the way. At the end, you will have the chance to present your project with your team and it will be judged based on functionality, creativity and more. There will also be a raffle where everyone has a chance to win, but the winners of the challenge will gain extra raffle tickets.
 
-Judges include: Dr. Michel Barbeau and Dr. Tony White</mutableString>
+Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -148,16 +148,10 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</mutableString>
                                 <rect key="frame" x="0.0" y="550" width="375" height="68"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTV-Kn-bRe">
-                                        <rect key="frame" x="0.0" y="0.0" width="136" height="68"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="68"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan 31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhT-xE-uL1">
-                                                <rect key="frame" x="8" y="8" width="120" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4pm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GMX-va-wn1">
-                                                <rect key="frame" x="8" y="39.5" width="120" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan 31" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GMX-va-wn1">
+                                                <rect key="frame" x="8" y="8" width="134" height="52"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -165,22 +159,20 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</mutableString>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="jhT-xE-uL1" firstAttribute="top" secondItem="PTV-Kn-bRe" secondAttribute="top" constant="8" id="KQ7-2o-mmB"/>
-                                            <constraint firstItem="GMX-va-wn1" firstAttribute="height" secondItem="jhT-xE-uL1" secondAttribute="height" id="X8m-Wk-4iJ"/>
+                                            <constraint firstItem="GMX-va-wn1" firstAttribute="leading" secondItem="PTV-Kn-bRe" secondAttribute="leading" constant="8" id="Sc5-bR-q5U"/>
                                             <constraint firstItem="GMX-va-wn1" firstAttribute="leading" secondItem="PTV-Kn-bRe" secondAttribute="leading" constant="8" id="cfE-gW-8r9"/>
                                             <constraint firstAttribute="trailing" secondItem="GMX-va-wn1" secondAttribute="trailing" constant="8" id="frg-1g-aHV"/>
-                                            <constraint firstAttribute="width" constant="136" id="qxm-4K-2C6"/>
+                                            <constraint firstItem="GMX-va-wn1" firstAttribute="top" secondItem="PTV-Kn-bRe" secondAttribute="top" constant="8" id="kCa-SO-rip"/>
+                                            <constraint firstAttribute="width" constant="150" id="qxm-4K-2C6"/>
                                             <constraint firstAttribute="height" constant="68" id="r3F-QK-w5X"/>
-                                            <constraint firstItem="jhT-xE-uL1" firstAttribute="leading" secondItem="PTV-Kn-bRe" secondAttribute="leading" constant="8" id="tja-Gj-jd5"/>
                                             <constraint firstAttribute="bottom" secondItem="GMX-va-wn1" secondAttribute="bottom" constant="8" id="uAm-n3-YQK"/>
-                                            <constraint firstAttribute="trailing" secondItem="jhT-xE-uL1" secondAttribute="trailing" constant="8" id="wfC-Da-4SN"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39y-qr-enf">
-                                        <rect key="frame" x="136" y="0.0" width="239" height="68"/>
+                                        <rect key="frame" x="150" y="0.0" width="225" height="68"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SSSC (3431 Herzberg)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UZI-oG-Ba3">
-                                                <rect key="frame" x="32" y="24" width="175" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SSSC (3431 Herzberg)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZI-oG-Ba3">
+                                                <rect key="frame" x="8" y="24" width="209" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -189,6 +181,8 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</mutableString>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="UZI-oG-Ba3" firstAttribute="centerY" secondItem="39y-qr-enf" secondAttribute="centerY" id="4Dp-oo-m2f"/>
+                                            <constraint firstItem="UZI-oG-Ba3" firstAttribute="leading" secondItem="39y-qr-enf" secondAttribute="leading" constant="8" id="LmN-zm-mLM"/>
+                                            <constraint firstAttribute="trailing" secondItem="UZI-oG-Ba3" secondAttribute="trailing" constant="8" id="T5w-WR-ZN3"/>
                                             <constraint firstItem="UZI-oG-Ba3" firstAttribute="centerX" secondItem="39y-qr-enf" secondAttribute="centerX" id="h4S-Ql-802"/>
                                         </constraints>
                                     </view>
@@ -221,10 +215,9 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</mutableString>
                         <viewLayoutGuide key="safeArea" id="z7U-0h-3Ak"/>
                     </view>
                     <connections>
-                        <outlet property="eventDateLabel" destination="jhT-xE-uL1" id="4DK-Az-gq7"/>
+                        <outlet property="eventDateTimeLabel" destination="GMX-va-wn1" id="VzN-oD-L1r"/>
                         <outlet property="eventDescriptionTextView" destination="EB6-eU-FZM" id="s3b-58-nRW"/>
                         <outlet property="eventLocationLabel" destination="UZI-oG-Ba3" id="9Jx-Hy-iYN"/>
-                        <outlet property="eventTimeLabel" destination="GMX-va-wn1" id="tWm-zv-Nxt"/>
                         <outlet property="eventTitleLabel" destination="JOQ-gI-Rbo" id="jMb-9S-o1f"/>
                     </connections>
                 </viewController>

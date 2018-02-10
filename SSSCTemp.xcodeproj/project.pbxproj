@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4816256975FDE3D478E1CA9E /* Pods_SSSCTemp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F3251A252483CFA511FE42 /* Pods_SSSCTemp.framework */; };
+		FF19EE4E202EA6DA00475B63 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19EE4D202EA6DA00475B63 /* Observer.swift */; };
 		FF327FC920128C3E00B06E19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FC820128C3E00B06E19 /* AppDelegate.swift */; };
 		FF327FCB20128C3E00B06E19 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FCA20128C3E00B06E19 /* EventViewController.swift */; };
 		FF327FCD20128C3E00B06E19 /* MentoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FCC20128C3E00B06E19 /* MentoringViewController.swift */; };
@@ -18,6 +20,7 @@
 		FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3C2287202427660098B868 /* EventDetailViewController.swift */; };
 		FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6835B52023C540001A35B2 /* EventTableViewCell.swift */; };
 		FFA4B1D320229C8400BAC08F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B1D220229C8400BAC08F /* Event.swift */; };
+		FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC18A2B202502A8001AB5BA /* EventParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E2DE8B4F43A6E35F71CAFE6 /* Pods-SSSCTemp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSSCTemp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SSSCTemp/Pods-SSSCTemp.release.xcconfig"; sourceTree = "<group>"; };
+		48F3251A252483CFA511FE42 /* Pods_SSSCTemp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSSCTemp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		986CB9BBFA9EA99F00E51248 /* Pods-SSSCTemp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSSCTemp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SSSCTemp/Pods-SSSCTemp.debug.xcconfig"; sourceTree = "<group>"; };
+		FF19EE4D202EA6DA00475B63 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		FF327FC520128C3E00B06E19 /* SSSCTemp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSSCTemp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF327FC820128C3E00B06E19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF327FCA20128C3E00B06E19 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +63,7 @@
 		FF3C228A2024317A0098B868 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		FF6835B52023C540001A35B2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		FFA4B1D220229C8400BAC08F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		FFC18A2B202502A8001AB5BA /* EventParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4816256975FDE3D478E1CA9E /* Pods_SSSCTemp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56BDA12DD69E8EAFA8AD222D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				986CB9BBFA9EA99F00E51248 /* Pods-SSSCTemp.debug.xcconfig */,
+				1E2DE8B4F43A6E35F71CAFE6 /* Pods-SSSCTemp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FF327FBC20128C3E00B06E19 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +109,7 @@
 				FF327FE920128C3E00B06E19 /* SSSCTempUITests */,
 				FF327FC620128C3E00B06E19 /* Products */,
 				FF3C22892024317A0098B868 /* Frameworks */,
+				56BDA12DD69E8EAFA8AD222D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,10 +128,12 @@
 			children = (
 				FF327FC820128C3E00B06E19 /* AppDelegate.swift */,
 				FF327FCA20128C3E00B06E19 /* EventViewController.swift */,
+				FFC18A2B202502A8001AB5BA /* EventParser.swift */,
 				FF3C2287202427660098B868 /* EventDetailViewController.swift */,
 				FF327FCC20128C3E00B06E19 /* MentoringViewController.swift */,
 				FFA4B1D220229C8400BAC08F /* Event.swift */,
 				FF6835B52023C540001A35B2 /* EventTableViewCell.swift */,
+				FF19EE4D202EA6DA00475B63 /* Observer.swift */,
 				FF327FCE20128C3E00B06E19 /* Main.storyboard */,
 				FF327FD120128C3E00B06E19 /* Assets.xcassets */,
 				FF327FD320128C3E00B06E19 /* LaunchScreen.storyboard */,
@@ -143,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				FF3C228A2024317A0098B868 /* EventKit.framework */,
+				48F3251A252483CFA511FE42 /* Pods_SSSCTemp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -154,9 +176,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF327FEF20128C3E00B06E19 /* Build configuration list for PBXNativeTarget "SSSCTemp" */;
 			buildPhases = (
+				1224100D3EA14F90E4BE3098 /* [CP] Check Pods Manifest.lock */,
 				FF327FC120128C3E00B06E19 /* Sources */,
 				FF327FC220128C3E00B06E19 /* Frameworks */,
 				FF327FC320128C3E00B06E19 /* Resources */,
+				527E1A1FE7FA84634CF592D7 /* [CP] Embed Pods Frameworks */,
+				BF335E09969CD84E68637600 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -276,11 +301,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1224100D3EA14F90E4BE3098 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SSSCTemp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		527E1A1FE7FA84634CF592D7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SSSCTemp/Pods-SSSCTemp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SSSCTemp/Pods-SSSCTemp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF335E09969CD84E68637600 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SSSCTemp/Pods-SSSCTemp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FF327FC120128C3E00B06E19 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */,
+				FF19EE4E202EA6DA00475B63 /* Observer.swift in Sources */,
 				FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */,
 				FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */,
 				FF327FCD20128C3E00B06E19 /* MentoringViewController.swift in Sources */,
@@ -450,6 +533,7 @@
 		};
 		FF327FF020128C3E00B06E19 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 986CB9BBFA9EA99F00E51248 /* Pods-SSSCTemp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -465,6 +549,7 @@
 		};
 		FF327FF120128C3E00B06E19 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E2DE8B4F43A6E35F71CAFE6 /* Pods-SSSCTemp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
