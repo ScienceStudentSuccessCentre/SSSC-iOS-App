@@ -28,8 +28,6 @@ class EventDetailViewController: UIViewController {
         eventDateTimeLabel.text = event.month + " " + event.getDayString() + "\n" + event.time
         eventLocationLabel.text = event.location
         
-        print("\(event.name), \(event.year), \(event.month), \(event.day)")
-        
     }
 
     override func didReceiveMemoryWarning() {

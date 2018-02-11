@@ -14,6 +14,7 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
     
     var events = [Event]()
     var eventToPass: Event!
+    var activityIndicatorView: UIActivityIndicatorView!
     
     @IBOutlet var tableView: UITableView!
     
@@ -41,6 +42,8 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
     func update() {
         events = EventParser.getInstance().getEvents()
         DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
             self.tableView.reloadData()
         }
     }
@@ -67,6 +70,11 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
                                                                         NSAttributedStringKey.foregroundColor: UIColor.white]
         tableView.delegate = self
         tableView.dataSource = self
+        
+        activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.backgroundView = activityIndicatorView
+        activityIndicatorView.startAnimating()
         
 //        loadSampleEvents()
         EventParser.getInstance().attachObserver(observer: self)

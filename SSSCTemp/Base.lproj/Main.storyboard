@@ -98,25 +98,6 @@
                         <outlet property="tableView" destination="4It-Nx-t0t" id="XNq-di-DLP"/>
                     </connections>
                 </viewController>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2g-Rg-JvK">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Upcoming Events" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZB-XQ-QVU">
-                            <rect key="frame" x="31" y="44" width="359" height="36"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="100" id="6Cl-79-Jsc"/>
-                        <constraint firstItem="cZB-XQ-QVU" firstAttribute="centerX" secondItem="N2g-Rg-JvK" secondAttribute="centerX" id="SuQ-AY-nLr"/>
-                        <constraint firstAttribute="bottom" secondItem="cZB-XQ-QVU" secondAttribute="bottom" constant="8" id="gHf-SP-Qfz"/>
-                        <constraint firstItem="cZB-XQ-QVU" firstAttribute="leading" secondItem="N2g-Rg-JvK" secondAttribute="leading" constant="8" id="xVO-En-bVJ"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="ec7-66-zab"/>
-                </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1775.2" y="-374.66266866566718"/>
@@ -183,7 +164,6 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
                                             <constraint firstItem="UZI-oG-Ba3" firstAttribute="centerY" secondItem="39y-qr-enf" secondAttribute="centerY" id="4Dp-oo-m2f"/>
                                             <constraint firstItem="UZI-oG-Ba3" firstAttribute="leading" secondItem="39y-qr-enf" secondAttribute="leading" constant="8" id="LmN-zm-mLM"/>
                                             <constraint firstAttribute="trailing" secondItem="UZI-oG-Ba3" secondAttribute="trailing" constant="8" id="T5w-WR-ZN3"/>
-                                            <constraint firstItem="UZI-oG-Ba3" firstAttribute="centerX" secondItem="39y-qr-enf" secondAttribute="centerX" id="h4S-Ql-802"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -233,15 +213,22 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="86.5" y="312" width="202" height="43"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="GuD-zJ-NoQ">
+                                <rect key="frame" x="67" y="213.5" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="8Tu-bw-84J"/>
+                                    <constraint firstAttribute="width" constant="240" id="Kam-KC-H5O"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Mentoring" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
+                                <rect key="frame" x="108" y="45" width="158" height="43"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="79.5" y="363" width="215" height="17"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming Soon!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
+                                <rect key="frame" x="141" y="96" width="91" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -250,17 +237,19 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
+                            <constraint firstItem="GuD-zJ-NoQ" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="JYh-JU-VDD"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
-                            <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
-                            <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
+                            <constraint firstItem="zEq-FU-wV5" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="25" id="bXt-3x-v9R"/>
+                            <constraint firstItem="zEq-FU-wV5" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="i2e-Q7-kQo"/>
+                            <constraint firstItem="GuD-zJ-NoQ" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="nRw-uG-vuQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Mentoring" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Mentoring" image="mentoringIcon" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1662" y="427"/>
+            <point key="canvasLocation" x="1661.5999999999999" y="426.83658170914543"/>
         </scene>
         <!--Grades-->
         <scene sceneID="WdY-sT-wjc">
@@ -269,10 +258,40 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
                     <view key="view" contentMode="scaleToFill" id="wfy-RL-PN0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Grades" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="la5-sU-aJG">
+                                <rect key="frame" x="131.5" y="45" width="112" height="43"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming Soon!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBL-d7-5AU">
+                                <rect key="frame" x="142" y="96" width="91" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="kZq-Sf-nd2">
+                                <rect key="frame" x="67" y="213" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="6BS-17-xRC"/>
+                                    <constraint firstAttribute="width" constant="240" id="DoI-Uo-R4C"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kZq-Sf-nd2" firstAttribute="centerY" secondItem="wfy-RL-PN0" secondAttribute="centerY" id="0mn-1D-GiO"/>
+                            <constraint firstItem="hBL-d7-5AU" firstAttribute="centerX" secondItem="wfy-RL-PN0" secondAttribute="centerX" id="3Xl-Zs-CwX"/>
+                            <constraint firstItem="kZq-Sf-nd2" firstAttribute="centerX" secondItem="wfy-RL-PN0" secondAttribute="centerX" id="WeH-11-dvW"/>
+                            <constraint firstItem="la5-sU-aJG" firstAttribute="centerX" secondItem="wfy-RL-PN0" secondAttribute="centerX" id="bm5-AL-iCU"/>
+                            <constraint firstItem="la5-sU-aJG" firstAttribute="top" secondItem="d8B-IS-7mf" secondAttribute="top" constant="25" id="bwu-KM-wcP"/>
+                            <constraint firstItem="hBL-d7-5AU" firstAttribute="top" secondItem="la5-sU-aJG" secondAttribute="bottom" constant="8" symbolic="YES" id="doV-OT-jme"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="d8B-IS-7mf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Grades" image="first" id="Mqw-wn-A9l"/>
+                    <tabBarItem key="tabBarItem" title="Grades" image="gradesIcon" id="Mqw-wn-A9l"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ksw-gf-1FF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -301,7 +320,7 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
         <scene sceneID="g3i-wO-lt2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EuL-kd-Bue" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="eventIcon" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iEx-jx-cxL">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -320,7 +339,9 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="LaunchLogo" width="400" height="400"/>
+        <image name="eventIcon" width="25" height="25"/>
+        <image name="gradesIcon" width="25" height="25"/>
+        <image name="mentoringIcon" width="25" height="25"/>
     </resources>
 </document>
