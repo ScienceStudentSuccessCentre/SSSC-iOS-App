@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="JSA-9k-v2l">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoFull" translatesAutoresizingMaskIntoConstraints="NO" id="JSA-9k-v2l">
                                 <rect key="frame" x="67" y="213" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="PVl-Ym-cos"/>
@@ -40,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchLogo" width="400" height="400"/>
+        <image name="logoFull" width="400" height="400"/>
     </resources>
 </document>

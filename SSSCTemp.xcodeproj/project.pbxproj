@@ -19,8 +19,8 @@
 		FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3C2287202427660098B868 /* EventDetailViewController.swift */; };
 		FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6835B52023C540001A35B2 /* EventTableViewCell.swift */; };
 		FFA4B1D320229C8400BAC08F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B1D220229C8400BAC08F /* Event.swift */; };
+		FFB76C962030B5A200EC3F97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB76C952030B5A200EC3F97 /* Assets.xcassets */; };
 		FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC18A2B202502A8001AB5BA /* EventParser.swift */; };
-		FFF806E0203011C6005E7544 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF806DF203011C6005E7544 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,8 +62,8 @@
 		FF3C228A2024317A0098B868 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		FF6835B52023C540001A35B2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		FFA4B1D220229C8400BAC08F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		FFB76C952030B5A200EC3F97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFC18A2B202502A8001AB5BA /* EventParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventParser.swift; sourceTree = "<group>"; };
-		FFF806DF203011C6005E7544 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,8 +135,8 @@
 				FF6835B52023C540001A35B2 /* EventTableViewCell.swift */,
 				FF19EE4D202EA6DA00475B63 /* Observer.swift */,
 				FF327FCE20128C3E00B06E19 /* Main.storyboard */,
-				FFF806DF203011C6005E7544 /* Assets.xcassets */,
 				FF327FD320128C3E00B06E19 /* LaunchScreen.storyboard */,
+				FFB76C952030B5A200EC3F97 /* Assets.xcassets */,
 				FF327FD620128C3E00B06E19 /* Info.plist */,
 			);
 			path = SSSCTemp;
@@ -279,8 +279,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFB76C962030B5A200EC3F97 /* Assets.xcassets in Resources */,
 				FF327FD520128C3E00B06E19 /* LaunchScreen.storyboard in Resources */,
-				FFF806E0203011C6005E7544 /* Assets.xcassets in Resources */,
 				FF327FD020128C3E00B06E19 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

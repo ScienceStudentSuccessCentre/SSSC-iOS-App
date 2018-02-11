@@ -213,7 +213,7 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="GuD-zJ-NoQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoFull" translatesAutoresizingMaskIntoConstraints="NO" id="GuD-zJ-NoQ">
                                 <rect key="frame" x="67" y="213.5" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="8Tu-bw-84J"/>
@@ -272,7 +272,7 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="kZq-Sf-nd2">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoFull" translatesAutoresizingMaskIntoConstraints="NO" id="kZq-Sf-nd2">
                                 <rect key="frame" x="67" y="213" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="6BS-17-xRC"/>
@@ -320,7 +320,7 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
         <scene sceneID="g3i-wO-lt2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EuL-kd-Bue" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" image="eventIcon" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="eventsIcon" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iEx-jx-cxL">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -339,9 +339,9 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchLogo" width="400" height="400"/>
-        <image name="eventIcon" width="25" height="25"/>
+        <image name="eventsIcon" width="25" height="25"/>
         <image name="gradesIcon" width="25" height="25"/>
+        <image name="logoFull" width="400" height="400"/>
         <image name="mentoringIcon" width="25" height="25"/>
     </resources>
 </document>
