@@ -48,6 +48,10 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
         }
     }
     
+    func presentAlert(alert: UIAlertController) {
+        self.present(alert, animated: true)
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count

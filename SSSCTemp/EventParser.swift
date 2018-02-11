@@ -21,15 +21,22 @@ class EventParser {
     
     public func loadEvents() {
         Alamofire.request(baseURL + eventsURL).responseData { (resData) -> Void in
-            let data: String! = String(data : resData.result.value!, encoding : String.Encoding.utf8)
             do {
+                if resData.result.value == nil {
+                    throw Exception.Error(type: ExceptionType.MalformedURLException, Message: "HTTP load failed for URL \(self.baseURL + self.eventsURL)")
+                }
+                let data: String! = String(data : resData.result.value!, encoding : String.Encoding.utf8)
                 let doc: Document = try SwiftSoup.parse(data)
                 let eventsList = try doc.getElementsByClass("event-listing--list-item")
                 try self.processEvents(eventsList: eventsList)
             } catch Exception.Error(let type, let message) {
-                print("\(type), \(message)")
+                print("\(type): \(message)")
+                self.notify()
+                self.alertUser()
             } catch {
                 print("Error")
+                self.notify()
+                self.alertUser()
             }
         }
     }
@@ -48,8 +55,11 @@ class EventParser {
                     let eventFullDate = try event.select(".event-details--date").first()!.text().split(separator: " ")
                     newEvent.year = Int(eventFullDate[eventFullDate.count - 1])!
                     Alamofire.request(self.baseURL + newEvent.url).responseData { (resData) -> Void  in
-                        let data: String! = String(data : resData.result.value!, encoding : String.Encoding.utf8)
                         do {
+                            if resData.result.value == nil {
+                                throw Exception.Error(type: ExceptionType.MalformedURLException, Message: "HTTP load failed for URL \(self.baseURL + newEvent.url)")
+                            }
+                            let data: String! = String(data : resData.result.value!, encoding : String.Encoding.utf8)
                             let doc: Document = try SwiftSoup.parse(data)
                             newEvent.description = try doc.getElementsByClass("event--description").text()
                             
@@ -75,13 +85,17 @@ class EventParser {
                             }
                             
                         } catch Exception.Error(let type, let message) {
-                            print("\(type), \(message)")
+                            print("\(type): \(message)")
+                            self.notify()
+                            self.alertUser()
                         } catch {
                             print("Error")
+                            self.notify()
+                            self.alertUser()
                         }
                     }
                 } catch Exception.Error(let type, let message) {
-                    print("\(type), \(message)")
+                    print("\(type): \(message)")
                 } catch {
                     print("Error")
                 }
@@ -117,6 +131,15 @@ class EventParser {
         }
         if !appended {
             events.append(newEvent)
+        }
+    }
+    
+    private func alertUser() {
+        let alert = UIAlertController(title: "Something went wrong!", message: "Something went wrong when loading the SSSC's upcoming events! Please try again later. If the issue persists, contact the SSSC so we can fix the problem as soon as possible.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+        for observer in observers {
+            observer.presentAlert(alert: alert)
         }
     }
     

@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
 protocol Observer {
     func update()
+    func presentAlert(alert: UIAlertController)
 }
