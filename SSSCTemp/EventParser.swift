@@ -48,12 +48,7 @@ class EventParser {
                 var newEvent = Event()
                 eventGroup.enter()
                 do {
-                    newEvent.name = try event.select(".event-details--title").first()!.text()
-                    newEvent.url = try event.select("a").first()!.attr("href")
-                    newEvent.month = try event.select(".event-cal-ico--month").first()!.text()
-                    newEvent.day = (try Int(event.select(".event-cal-ico--day").first()!.text()))!
-                    let eventFullDate = try event.select(".event-details--date").first()!.text().split(separator: " ")
-                    newEvent.year = Int(eventFullDate[eventFullDate.count - 1])!
+                    newEvent = try self.processBasics(event: newEvent, element: event)
                     Alamofire.request(self.baseURL + newEvent.url).responseData { (resData) -> Void  in
                         do {
                             if resData.result.value == nil {
@@ -61,24 +56,11 @@ class EventParser {
                             }
                             let data: String! = String(data : resData.result.value!, encoding : String.Encoding.utf8)
                             let doc: Document = try SwiftSoup.parse(data)
-                            newEvent.description = try doc.getElementsByClass("event--description").text()
                             
+                            newEvent.description = try doc.getElementsByClass("event--description").text()
                             let eventDetails = try doc.select(".event--details").first()!
-                            let eventDetailsModules = try eventDetails.select(".row")
-                            for eventDetailsModule in eventDetailsModules {
-                                if try eventDetailsModule.getElementsByClass("fa-clock-o").size() != 0 {
-                                    newEvent.time = try eventDetailsModule.select(".event-detail--content").first()!.text()
-                                }
-                                else if try eventDetailsModule.getElementsByClass("fa-reply").size() != 0 {
-                                    // parse reply info
-                                }
-                                else if try eventDetailsModule.getElementsByClass("fa-map-marker").size() != 0 {
-                                    newEvent.location = try eventDetailsModule.select(".event-detail--content").first()!.text()
-                                }
-                                else if try eventDetailsModule.getElementsByClass("fa-calendar").size() != 0 {
-                                    // already have calendar info
-                                }
-                            }
+                            newEvent = try self.processDetails(event: newEvent, element: eventDetails)
+                            
                             self.insertEvent(newEvent: newEvent)
                             defer {
                                 eventGroup.leave()
@@ -96,15 +78,48 @@ class EventParser {
                     }
                 } catch Exception.Error(let type, let message) {
                     print("\(type): \(message)")
+                    self.notify()
+                    self.alertUser()
                 } catch {
                     print("Error")
+                    self.notify()
+                    self.alertUser()
                 }
             }
         }
         
-        eventGroup.notify(queue: DispatchQueue.main) { // 2
+        eventGroup.notify(queue: DispatchQueue.main) {
             self.notify()
         }
+    }
+    
+    private func processBasics(event: Event, element: Element) throws -> Event {
+        event.name = try element.select(".event-details--title").first()!.text()
+        event.url = try element.select("a").first()!.attr("href")
+        event.month = try element.select(".event-cal-ico--month").first()!.text()
+        event.day = (try Int(element.select(".event-cal-ico--day").first()!.text()))!
+        let eventFullDate = try element.select(".event-details--date").first()!.text().split(separator: " ")
+        event.year = Int(eventFullDate[eventFullDate.count - 1])!
+        return event
+    }
+    
+    private func processDetails(event: Event, element: Element) throws -> Event {
+        let detailModules = try element.select(".row")
+        for module in detailModules {
+            if try module.getElementsByClass("fa-clock-o").size() != 0 {
+                event.time = try module.select(".event-detail--content").first()!.text()
+            }
+            else if try module.getElementsByClass("fa-reply").size() != 0 {
+                // parse reply info
+            }
+            else if try module.getElementsByClass("fa-map-marker").size() != 0 {
+                event.location = try module.select(".event-detail--content").first()!.text()
+            }
+            else if try module.getElementsByClass("fa-calendar").size() != 0 {
+                // already have calendar info
+            }
+        }
+        return event
     }
     
     private func insertEvent(newEvent: Event) {
