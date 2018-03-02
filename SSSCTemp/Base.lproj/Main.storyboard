@@ -110,16 +110,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EB6-eU-FZM">
-                                <rect key="frame" x="16" y="118" width="343" height="424"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">If you are interested in programming, join our Coding Challenge! You’ll have the opportunity to work with other students on a small programming project which contains different sections to help guide you along the way. At the end, you will have the chance to present your project with your team and it will be judged based on functionality, creativity and more. There will also be a raffle where everyone has a chance to win, but the winners of the challenge will gain extra raffle tickets.
-
-Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carleton Coding Challenge" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOQ-gI-Rbo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carleton Coding Challenge" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JOQ-gI-Rbo">
                                 <rect key="frame" x="16" y="80" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
@@ -153,7 +144,7 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
                                         <rect key="frame" x="150" y="0.0" width="225" height="68"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SSSC (3431 Herzberg)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZI-oG-Ba3">
-                                                <rect key="frame" x="8" y="24" width="209" height="21"/>
+                                                <rect key="frame" x="8" y="24.5" width="209" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -178,25 +169,42 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
                                     <constraint firstItem="PTV-Kn-bRe" firstAttribute="leading" secondItem="OrX-ag-Cla" secondAttribute="leading" id="pqj-xJ-IOk"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vBC-pF-xMl">
+                                <rect key="frame" x="16" y="118" width="343" height="416"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EB6-eU-FZM">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="416"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">If you are interested in programming, join our Coding Challenge! You’ll have the opportunity to work with other students on a small programming project which contains different sections to help guide you along the way. At the end, you will have the chance to present your project with your team and it will be judged based on functionality, creativity and more. There will also be a raffle where everyone has a chance to win, but the winners of the challenge will gain extra raffle tickets.
+
+Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoFull" translatesAutoresizingMaskIntoConstraints="NO" id="Ci6-md-fKZ">
+                                        <rect key="frame" x="0.0" y="416" width="343" height="0.0"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="OrX-ag-Cla" firstAttribute="top" secondItem="EB6-eU-FZM" secondAttribute="bottom" constant="8" id="0Cb-S3-YJ6"/>
-                            <constraint firstItem="z7U-0h-3Ak" firstAttribute="trailing" secondItem="EB6-eU-FZM" secondAttribute="trailing" constant="16" id="Fe8-gx-UvU"/>
+                            <constraint firstItem="vBC-pF-xMl" firstAttribute="top" secondItem="JOQ-gI-Rbo" secondAttribute="bottom" constant="8" id="4OY-II-OVl"/>
                             <constraint firstItem="JOQ-gI-Rbo" firstAttribute="top" secondItem="z7U-0h-3Ak" secondAttribute="top" constant="16" id="JyD-3W-Qmh"/>
-                            <constraint firstItem="EB6-eU-FZM" firstAttribute="top" secondItem="JOQ-gI-Rbo" secondAttribute="bottom" constant="8" id="L7v-Ls-FWX"/>
                             <constraint firstItem="OrX-ag-Cla" firstAttribute="leading" secondItem="z7U-0h-3Ak" secondAttribute="leading" id="YQS-tF-bFk"/>
+                            <constraint firstItem="OrX-ag-Cla" firstAttribute="top" secondItem="vBC-pF-xMl" secondAttribute="bottom" constant="16" id="cOr-so-1Ou"/>
                             <constraint firstItem="JOQ-gI-Rbo" firstAttribute="leading" secondItem="z7U-0h-3Ak" secondAttribute="leading" constant="16" id="cjq-tV-vRO"/>
+                            <constraint firstItem="vBC-pF-xMl" firstAttribute="leading" secondItem="z7U-0h-3Ak" secondAttribute="leading" constant="16" id="iU2-is-Uaj"/>
                             <constraint firstItem="OrX-ag-Cla" firstAttribute="bottom" secondItem="z7U-0h-3Ak" secondAttribute="bottom" id="izr-uA-8Xa"/>
-                            <constraint firstItem="EB6-eU-FZM" firstAttribute="leading" secondItem="z7U-0h-3Ak" secondAttribute="leading" constant="16" id="lUF-3y-ysI"/>
                             <constraint firstItem="OrX-ag-Cla" firstAttribute="trailing" secondItem="z7U-0h-3Ak" secondAttribute="trailing" id="u2U-bv-rxY"/>
+                            <constraint firstItem="z7U-0h-3Ak" firstAttribute="trailing" secondItem="vBC-pF-xMl" secondAttribute="trailing" constant="16" id="vtg-8Q-dcx"/>
                             <constraint firstItem="z7U-0h-3Ak" firstAttribute="trailing" secondItem="JOQ-gI-Rbo" secondAttribute="trailing" constant="16" id="wpJ-jR-ffv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="z7U-0h-3Ak"/>
                     </view>
                     <connections>
                         <outlet property="eventDateTimeLabel" destination="GMX-va-wn1" id="VzN-oD-L1r"/>
-                        <outlet property="eventDescriptionTextView" destination="EB6-eU-FZM" id="s3b-58-nRW"/>
+                        <outlet property="eventDescriptionTextView" destination="EB6-eU-FZM" id="y9T-SH-wml"/>
                         <outlet property="eventLocationLabel" destination="UZI-oG-Ba3" id="9Jx-Hy-iYN"/>
                         <outlet property="eventTitleLabel" destination="JOQ-gI-Rbo" id="jMb-9S-o1f"/>
                     </connections>
