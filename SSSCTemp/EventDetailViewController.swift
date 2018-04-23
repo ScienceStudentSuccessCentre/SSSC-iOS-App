@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class EventDetailViewController: UIViewController {
     
@@ -32,7 +33,6 @@ class EventDetailViewController: UIViewController {
         
         var frame = self.eventDescriptionTextView.frame
         frame.size.height = self.eventDescriptionTextView.contentSize.height
-        print(frame.size.height)
         self.eventDescriptionTextView.frame = frame
         
         eventDescriptionTextView.translatesAutoresizingMaskIntoConstraints = true
@@ -41,6 +41,8 @@ class EventDetailViewController: UIViewController {
         
         if (event.imageUrl == "") {
             eventImageView.isHidden = true;
+        } else {
+            eventImageView.sd_setImage(with: URL(string: event.imageUrl), placeholderImage: UIImage(named: "logoFull.png"))
         }
         
     }

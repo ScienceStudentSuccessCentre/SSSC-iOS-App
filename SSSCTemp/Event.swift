@@ -44,7 +44,7 @@ class Event {
         if ((eventData["imageUrl"]) != nil) {
             self.imageUrl = eventData["imageUrl"] as! String
         } else {
-            self.imageUrl = "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=350"
+            self.imageUrl = ""
         }
     }
     

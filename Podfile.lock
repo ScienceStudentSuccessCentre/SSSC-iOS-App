@@ -1,15 +1,20 @@
 PODS:
   - Alamofire (4.6.0)
+  - SDWebImage (4.3.0):
+    - SDWebImage/Core (= 4.3.0)
+  - SDWebImage/Core (4.3.0)
   - SwiftSoup (1.6.0)
 
 DEPENDENCIES:
   - Alamofire
+  - SDWebImage (~> 4.0)
   - SwiftSoup
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  SDWebImage: 6da6c8bca115addc4de8613362e1b15f66333825
   SwiftSoup: db0634b1571304cfef38eb0ee6505eb7d06765f1
 
-PODFILE CHECKSUM: 520600378c47a6c8691c7e5afc31975ef3a34a85
+PODFILE CHECKSUM: 253b32a8204fce9041696162be60a00bc15dbd8f
 
 COCOAPODS: 1.4.0

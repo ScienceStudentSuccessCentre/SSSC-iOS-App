@@ -45,17 +45,17 @@
 		48F3251A252483CFA511FE42 /* Pods_SSSCTemp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSSCTemp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		986CB9BBFA9EA99F00E51248 /* Pods-SSSCTemp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSSCTemp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SSSCTemp/Pods-SSSCTemp.debug.xcconfig"; sourceTree = "<group>"; };
 		FF19EE4D202EA6DA00475B63 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
-		FF327FC520128C3E00B06E19 /* SSSCTemp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSSCApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF327FC520128C3E00B06E19 /* SSSCApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSSCApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF327FC820128C3E00B06E19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF327FCA20128C3E00B06E19 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		FF327FCC20128C3E00B06E19 /* MentoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentoringViewController.swift; sourceTree = "<group>"; };
 		FF327FCF20128C3E00B06E19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF327FD420128C3E00B06E19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF327FD620128C3E00B06E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF327FDB20128C3E00B06E19 /* SSSCTempTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSSCAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF327FDB20128C3E00B06E19 /* SSSCAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSSCAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF327FDF20128C3E00B06E19 /* SSSCTempTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSSCTempTests.swift; sourceTree = "<group>"; };
 		FF327FE120128C3E00B06E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF327FE620128C3E00B06E19 /* SSSCTempUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSSCAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF327FE620128C3E00B06E19 /* SSSCAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSSCAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF327FEA20128C3E00B06E19 /* SSSCTempUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSSCTempUITests.swift; sourceTree = "<group>"; };
 		FF327FEC20128C3E00B06E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF3C2287202427660098B868 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
@@ -116,9 +116,9 @@
 		FF327FC620128C3E00B06E19 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FF327FC520128C3E00B06E19 /* SSSCTemp.app */,
-				FF327FDB20128C3E00B06E19 /* SSSCTempTests.xctest */,
-				FF327FE620128C3E00B06E19 /* SSSCTempUITests.xctest */,
+				FF327FC520128C3E00B06E19 /* SSSCApp.app */,
+				FF327FDB20128C3E00B06E19 /* SSSCAppTests.xctest */,
+				FF327FE620128C3E00B06E19 /* SSSCAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -189,7 +189,7 @@
 			);
 			name = SSSCTemp;
 			productName = SSSCTemp;
-			productReference = FF327FC520128C3E00B06E19 /* SSSCTemp.app */;
+			productReference = FF327FC520128C3E00B06E19 /* SSSCApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		FF327FDA20128C3E00B06E19 /* SSSCTempTests */ = {
@@ -207,7 +207,7 @@
 			);
 			name = SSSCTempTests;
 			productName = SSSCTempTests;
-			productReference = FF327FDB20128C3E00B06E19 /* SSSCTempTests.xctest */;
+			productReference = FF327FDB20128C3E00B06E19 /* SSSCAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		FF327FE520128C3E00B06E19 /* SSSCTempUITests */ = {
@@ -225,7 +225,7 @@
 			);
 			name = SSSCTempUITests;
 			productName = SSSCTempUITests;
-			productReference = FF327FE620128C3E00B06E19 /* SSSCTempUITests.xctest */;
+			productReference = FF327FE620128C3E00B06E19 /* SSSCAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -328,11 +328,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SSSCTemp/Pods-SSSCTemp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
