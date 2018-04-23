@@ -32,19 +32,30 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
     }
     
     private func loadSampleEvents() {
-        let sampleEvent1 = Event(name: "Carleton Coding Challenge", description: sampleEvent1Description, year: 2018, month: "JAN", day: 31, time: "4pm", location: "SSSC (3431 Herzberg)", url: "")
-        let sampleEvent2 = Event(name: "Multiple Mini Interview Practice", description: sampleEvent2Description, year: 2018, month: "FEB", day: 6, time: "6:00pm", location: "SSSC (3431 Herzberg)", url: "")
-        let sampleEvent3 = Event(name: "Ski Trip: Camp Fortune", description: sampleEvent3Description, year: 2018, month: "FEB", day: 9, time: "4:00pm departure", location: "Camp Fortune", url: "")
+        let sampleEvent1 = Event(name: "Carleton Coding Challenge", description: sampleEvent1Description, year: 2018, month: "JAN", day: 31, time: "4pm", location: "SSSC (3431 Herzberg)", url: "", imageUrl: "")
+        let sampleEvent2 = Event(name: "Multiple Mini Interview Practice", description: sampleEvent2Description, year: 2018, month: "FEB", day: 6, time: "6:00pm", location: "SSSC (3431 Herzberg)", url: "", imageUrl: "")
+        let sampleEvent3 = Event(name: "Ski Trip: Camp Fortune", description: sampleEvent3Description, year: 2018, month: "FEB", day: 9, time: "4:00pm departure", location: "Camp Fortune", url: "", imageUrl: "")
         
         events += [sampleEvent1, sampleEvent2, sampleEvent3]
-    }
-    
-    func update() {
-        events = EventParser.getInstance().getEvents()
         DispatchQueue.main.async {
             self.activityIndicatorView.stopAnimating()
             self.tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
             self.tableView.reloadData()
+            print("Data reloaded")
+        }
+    }
+    
+    func update() {
+        events = EventParser.getInstance().getEvents()
+//        for var event in events {
+//            print(event.name)
+//        }
+        print("Received events")
+        DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+            self.tableView.reloadData()
+            print("Data reloaded")
         }
     }
     
@@ -80,8 +91,9 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
         tableView.backgroundView = activityIndicatorView
         activityIndicatorView.startAnimating()
         
-//        loadSampleEvents()
         EventParser.getInstance().attachObserver(observer: self)
+        
+//        loadSampleEvents()
         loadEvents()
         
     }

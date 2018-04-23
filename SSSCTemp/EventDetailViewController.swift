@@ -18,6 +18,8 @@ class EventDetailViewController: UIViewController {
     @IBOutlet var eventDescriptionTextView: UITextView!
     @IBOutlet var eventDateTimeLabel: UILabel!
     @IBOutlet var eventLocationLabel: UILabel!
+    @IBOutlet var eventImageView: UIImageView!
+    @IBOutlet var eventStackView: UIStackView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,22 +30,23 @@ class EventDetailViewController: UIViewController {
         eventDateTimeLabel.text = event.month + " " + event.getDayString() + "\n" + event.time
         eventLocationLabel.text = event.location
         
+        var frame = self.eventDescriptionTextView.frame
+        frame.size.height = self.eventDescriptionTextView.contentSize.height
+        print(frame.size.height)
+        self.eventDescriptionTextView.frame = frame
+        
+        eventDescriptionTextView.translatesAutoresizingMaskIntoConstraints = true
+        
+        view.sendSubview(toBack: eventStackView)
+        
+        if (event.imageUrl == "") {
+            eventImageView.isHidden = true;
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

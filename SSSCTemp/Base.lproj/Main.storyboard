@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -169,49 +169,63 @@
                                     <constraint firstItem="PTV-Kn-bRe" firstAttribute="leading" secondItem="OrX-ag-Cla" secondAttribute="leading" id="pqj-xJ-IOk"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vBC-pF-xMl">
-                                <rect key="frame" x="16" y="118" width="343" height="416"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IiS-GC-HdF">
+                                <rect key="frame" x="8" y="118" width="359" height="432"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EB6-eU-FZM">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="416"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <string key="text">If you are interested in programming, join our Coding Challenge! You’ll have the opportunity to work with other students on a small programming project which contains different sections to help guide you along the way. At the end, you will have the chance to present your project with your team and it will be judged based on functionality, creativity and more. There will also be a raffle where everyone has a chance to win, but the winners of the challenge will gain extra raffle tickets.
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="BCK-P7-dEF">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="528"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fVK-2J-9va">
+                                                <rect key="frame" x="0.0" y="0.0" width="359" height="128"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <mutableString key="text">If you are interested in programming, join our Coding Challenge! You’ll have the opportunity to work with other students on a small programming project which contains different sections to help guide you along the way. At the end, you will have the chance to present your project with your team and it will be judged based on functionality, creativity and more. There will also be a raffle where everyone has a chance to win, but the winners of the challenge will gain extra raffle tickets.
 
-Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoFull" translatesAutoresizingMaskIntoConstraints="NO" id="Ci6-md-fKZ">
-                                        <rect key="frame" x="0.0" y="416" width="343" height="0.0"/>
-                                    </imageView>
+Judges include: Dr. Michel Barbeau and Dr. Tony White</mutableString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoFull" translatesAutoresizingMaskIntoConstraints="NO" id="Mg8-gJ-uV5">
+                                                <rect key="frame" x="0.0" y="128" width="359" height="400"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstItem="BCK-P7-dEF" firstAttribute="width" secondItem="IiS-GC-HdF" secondAttribute="width" id="Vt7-Bt-enE"/>
+                                    <constraint firstAttribute="trailing" secondItem="BCK-P7-dEF" secondAttribute="trailing" id="XPm-Gx-YM9"/>
+                                    <constraint firstItem="BCK-P7-dEF" firstAttribute="top" secondItem="IiS-GC-HdF" secondAttribute="top" id="iQH-zH-XRV"/>
+                                    <constraint firstAttribute="bottom" secondItem="BCK-P7-dEF" secondAttribute="bottom" id="vgH-9v-fvs"/>
+                                    <constraint firstItem="BCK-P7-dEF" firstAttribute="leading" secondItem="IiS-GC-HdF" secondAttribute="leading" id="xpN-CW-pPl"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vBC-pF-xMl" firstAttribute="top" secondItem="JOQ-gI-Rbo" secondAttribute="bottom" constant="8" id="4OY-II-OVl"/>
                             <constraint firstItem="JOQ-gI-Rbo" firstAttribute="top" secondItem="z7U-0h-3Ak" secondAttribute="top" constant="16" id="JyD-3W-Qmh"/>
+                            <constraint firstItem="IiS-GC-HdF" firstAttribute="trailing" secondItem="z7U-0h-3Ak" secondAttribute="trailing" constant="-8" id="Usc-xa-iC8"/>
+                            <constraint firstItem="OrX-ag-Cla" firstAttribute="top" secondItem="IiS-GC-HdF" secondAttribute="bottom" id="WXC-eA-c3g"/>
+                            <constraint firstItem="IiS-GC-HdF" firstAttribute="leading" secondItem="z7U-0h-3Ak" secondAttribute="leading" constant="8" id="XKD-Ph-ugc"/>
                             <constraint firstItem="OrX-ag-Cla" firstAttribute="leading" secondItem="z7U-0h-3Ak" secondAttribute="leading" id="YQS-tF-bFk"/>
-                            <constraint firstItem="OrX-ag-Cla" firstAttribute="top" secondItem="vBC-pF-xMl" secondAttribute="bottom" constant="16" id="cOr-so-1Ou"/>
                             <constraint firstItem="JOQ-gI-Rbo" firstAttribute="leading" secondItem="z7U-0h-3Ak" secondAttribute="leading" constant="16" id="cjq-tV-vRO"/>
-                            <constraint firstItem="vBC-pF-xMl" firstAttribute="leading" secondItem="z7U-0h-3Ak" secondAttribute="leading" constant="16" id="iU2-is-Uaj"/>
                             <constraint firstItem="OrX-ag-Cla" firstAttribute="bottom" secondItem="z7U-0h-3Ak" secondAttribute="bottom" id="izr-uA-8Xa"/>
                             <constraint firstItem="OrX-ag-Cla" firstAttribute="trailing" secondItem="z7U-0h-3Ak" secondAttribute="trailing" id="u2U-bv-rxY"/>
-                            <constraint firstItem="z7U-0h-3Ak" firstAttribute="trailing" secondItem="vBC-pF-xMl" secondAttribute="trailing" constant="16" id="vtg-8Q-dcx"/>
                             <constraint firstItem="z7U-0h-3Ak" firstAttribute="trailing" secondItem="JOQ-gI-Rbo" secondAttribute="trailing" constant="16" id="wpJ-jR-ffv"/>
+                            <constraint firstItem="IiS-GC-HdF" firstAttribute="top" secondItem="JOQ-gI-Rbo" secondAttribute="bottom" constant="8" id="yOh-v9-wL3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="z7U-0h-3Ak"/>
                     </view>
                     <connections>
                         <outlet property="eventDateTimeLabel" destination="GMX-va-wn1" id="VzN-oD-L1r"/>
-                        <outlet property="eventDescriptionTextView" destination="EB6-eU-FZM" id="y9T-SH-wml"/>
+                        <outlet property="eventDescriptionTextView" destination="fVK-2J-9va" id="nbV-z0-7lu"/>
+                        <outlet property="eventImageView" destination="Mg8-gJ-uV5" id="mqn-mt-5U0"/>
                         <outlet property="eventLocationLabel" destination="UZI-oG-Ba3" id="9Jx-Hy-iYN"/>
-                        <outlet property="eventTitleLabel" destination="JOQ-gI-Rbo" id="jMb-9S-o1f"/>
+                        <outlet property="eventStackView" destination="BCK-P7-dEF" id="brG-mg-SC0"/>
+                        <outlet property="eventTitleLabel" destination="JOQ-gI-Rbo" id="oR0-oa-YjX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t79-fy-RpP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2858.4000000000001" y="-377.36131934032989"/>
+            <point key="canvasLocation" x="2857.5" y="-377.5"/>
         </scene>
         <!--Mentoring-->
         <scene sceneID="wg7-f3-ORb">

@@ -18,6 +18,7 @@ class Event {
     var time: String
     var location: String
     var url: String
+    var imageUrl: String
     
     init() {
         self.name = ""
@@ -28,9 +29,26 @@ class Event {
         self.time = ""
         self.location = ""
         self.url = ""
+        self.imageUrl = "";
     }
     
-    init(name: String, description: String, year: Int, month: String, day: Int, time: String, location: String, url: String) {
+    init(eventData: NSDictionary) {
+        self.name = eventData["name"] as! String
+        self.description = eventData["description"] as! String
+        self.year = Int((eventData["year"]) as! String)!
+        self.month = eventData["month"] as! String
+        self.day = Int((eventData["day"]) as! String)!
+        self.time = eventData["time"] as! String
+        self.location = eventData["location"] as! String
+        self.url = eventData["url"] as! String
+        if ((eventData["imageUrl"]) != nil) {
+            self.imageUrl = eventData["imageUrl"] as! String
+        } else {
+            self.imageUrl = "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=350"
+        }
+    }
+    
+    init(name: String, description: String, year: Int, month: String, day: Int, time: String, location: String, url: String, imageUrl: String) {
         self.name = name
         self.description = description
         self.year = year
@@ -39,6 +57,7 @@ class Event {
         self.time = time
         self.location = location
         self.url = url
+        self.imageUrl = imageUrl
     }
     
     public func getMonthInt() -> Int {
