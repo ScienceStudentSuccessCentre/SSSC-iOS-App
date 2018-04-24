@@ -35,9 +35,9 @@ class Event {
     init(eventData: NSDictionary) {
         self.name = eventData["name"] as! String
         self.description = eventData["description"] as! String
-        self.year = Int((eventData["year"]) as! String)!
+        self.year = (eventData["year"]) as! Int
         self.month = eventData["month"] as! String
-        self.day = Int((eventData["day"]) as! String)!
+        self.day = (eventData["day"]) as! Int
         self.time = eventData["time"] as! String
         self.location = eventData["location"] as! String
         self.url = eventData["url"] as! String
