@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 class EventDetailViewController: UIViewController {
     
@@ -42,7 +41,18 @@ class EventDetailViewController: UIViewController {
         if (event.imageUrl == "") {
             eventImageView.isHidden = true;
         } else {
-            eventImageView.sd_setImage(with: URL(string: event.imageUrl), placeholderImage: UIImage(named: "logoFull.png"))
+            let url = URL(string: event.imageUrl)
+            
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url!)
+                DispatchQueue.main.async {
+                    let image = UIImage(data: data!)
+                    
+                    if (image != nil) {
+                        self.eventImageView.image = image
+                    }
+                }
+            }
         }
         
     }

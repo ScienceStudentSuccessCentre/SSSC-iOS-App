@@ -31,7 +31,7 @@ class EventParser {
                 
                 let json = try? JSONSerialization.jsonObject(with: data, options: [])
                 print("Received data:")
-                print(json)
+                print(json as Any)
                 for eventData in json as! NSArray {
                     print(eventData)
                     let event = Event(eventData: eventData as! NSDictionary)

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -110,19 +109,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carleton Coding Challenge" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JOQ-gI-Rbo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carleton Coding Challenge" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JOQ-gI-Rbo">
                                 <rect key="frame" x="16" y="80" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dFM-bk-TKl">
+                                <rect key="frame" x="8" y="118" width="359" height="432"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="yIA-Vy-Ot7">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="328"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5Z-m7-uJu">
+                                                <rect key="frame" x="0.0" y="0.0" width="359" height="200"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                            </textView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8PL-Dy-fIn">
+                                                <rect key="frame" x="0.0" y="200" width="359" height="128"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J4h-Na-QPy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="120"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="J4h-Na-QPy" secondAttribute="bottom" constant="8" id="02K-GR-F2s"/>
+                                                    <constraint firstAttribute="trailing" secondItem="J4h-Na-QPy" secondAttribute="trailing" id="89k-9h-bti"/>
+                                                    <constraint firstItem="J4h-Na-QPy" firstAttribute="top" secondItem="8PL-Dy-fIn" secondAttribute="top" id="Xr2-0z-zMw"/>
+                                                    <constraint firstItem="J4h-Na-QPy" firstAttribute="leading" secondItem="8PL-Dy-fIn" secondAttribute="leading" id="eLe-Nn-NST"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="yIA-Vy-Ot7" secondAttribute="trailing" id="77d-lE-k9T"/>
+                                    <constraint firstItem="yIA-Vy-Ot7" firstAttribute="width" secondItem="dFM-bk-TKl" secondAttribute="width" id="DDz-Dx-NPE"/>
+                                    <constraint firstItem="yIA-Vy-Ot7" firstAttribute="leading" secondItem="dFM-bk-TKl" secondAttribute="leading" id="KBE-VV-jbb"/>
+                                    <constraint firstItem="yIA-Vy-Ot7" firstAttribute="top" secondItem="dFM-bk-TKl" secondAttribute="top" id="Vlv-0F-hIO"/>
+                                    <constraint firstAttribute="bottom" secondItem="yIA-Vy-Ot7" secondAttribute="bottom" id="rkq-Az-rEZ"/>
+                                </constraints>
+                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OrX-ag-Cla">
                                 <rect key="frame" x="0.0" y="550" width="375" height="68"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTV-Kn-bRe">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="68"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan 31" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GMX-va-wn1">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan 31" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GMX-va-wn1">
                                                 <rect key="frame" x="8" y="8" width="134" height="52"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -143,8 +182,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39y-qr-enf">
                                         <rect key="frame" x="150" y="0.0" width="225" height="68"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SSSC (3431 Herzberg)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZI-oG-Ba3">
-                                                <rect key="frame" x="8" y="24.5" width="209" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SSSC (3431 Herzberg)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZI-oG-Ba3">
+                                                <rect key="frame" x="8" y="24" width="209" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -169,68 +208,34 @@
                                     <constraint firstItem="PTV-Kn-bRe" firstAttribute="leading" secondItem="OrX-ag-Cla" secondAttribute="leading" id="pqj-xJ-IOk"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IiS-GC-HdF">
-                                <rect key="frame" x="8" y="118" width="359" height="432"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="BCK-P7-dEF">
-                                        <rect key="frame" x="0.0" y="0.0" width="359" height="528"/>
-                                        <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fVK-2J-9va">
-                                                <rect key="frame" x="0.0" y="0.0" width="359" height="128"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <string key="text">If you are interested in programming, join our Coding Challenge! You’ll have the opportunity to work with other students on a small programming project which contains different sections to help guide you along the way. At the end, you will have the chance to present your project with your team and it will be judged based on functionality, creativity and more. There will also be a raffle where everyone has a chance to win, but the winners of the challenge will gain extra raffle tickets.
-
-Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoFull" translatesAutoresizingMaskIntoConstraints="NO" id="Mg8-gJ-uV5">
-                                                <rect key="frame" x="0.0" y="128" width="359" height="400"/>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Mg8-gJ-uV5" secondAttribute="trailing" id="AYC-Vy-5B6"/>
-                                            <constraint firstItem="Mg8-gJ-uV5" firstAttribute="top" secondItem="fVK-2J-9va" secondAttribute="bottom" id="TrM-Og-kwV"/>
-                                            <constraint firstItem="Mg8-gJ-uV5" firstAttribute="leading" secondItem="BCK-P7-dEF" secondAttribute="leading" id="xZg-ZM-gqg"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="BCK-P7-dEF" firstAttribute="width" secondItem="IiS-GC-HdF" secondAttribute="width" id="Vt7-Bt-enE"/>
-                                    <constraint firstAttribute="trailing" secondItem="BCK-P7-dEF" secondAttribute="trailing" id="XPm-Gx-YM9"/>
-                                    <constraint firstItem="BCK-P7-dEF" firstAttribute="top" secondItem="IiS-GC-HdF" secondAttribute="top" id="iQH-zH-XRV"/>
-                                    <constraint firstAttribute="bottom" secondItem="BCK-P7-dEF" secondAttribute="bottom" id="vgH-9v-fvs"/>
-                                    <constraint firstItem="BCK-P7-dEF" firstAttribute="leading" secondItem="IiS-GC-HdF" secondAttribute="leading" id="xpN-CW-pPl"/>
-                                </constraints>
-                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="dFM-bk-TKl" firstAttribute="leading" secondItem="z7U-0h-3Ak" secondAttribute="leading" constant="8" id="203-uC-fGK"/>
+                            <constraint firstItem="dFM-bk-TKl" firstAttribute="trailing" secondItem="z7U-0h-3Ak" secondAttribute="trailing" constant="-8" id="6e9-qX-mbu"/>
+                            <constraint firstItem="OrX-ag-Cla" firstAttribute="top" secondItem="dFM-bk-TKl" secondAttribute="bottom" id="Bkk-Pq-RjU"/>
                             <constraint firstItem="JOQ-gI-Rbo" firstAttribute="top" secondItem="z7U-0h-3Ak" secondAttribute="top" constant="16" id="JyD-3W-Qmh"/>
-                            <constraint firstItem="IiS-GC-HdF" firstAttribute="trailing" secondItem="z7U-0h-3Ak" secondAttribute="trailing" constant="-8" id="Usc-xa-iC8"/>
-                            <constraint firstItem="OrX-ag-Cla" firstAttribute="top" secondItem="IiS-GC-HdF" secondAttribute="bottom" id="WXC-eA-c3g"/>
-                            <constraint firstItem="IiS-GC-HdF" firstAttribute="leading" secondItem="z7U-0h-3Ak" secondAttribute="leading" constant="8" id="XKD-Ph-ugc"/>
                             <constraint firstItem="OrX-ag-Cla" firstAttribute="leading" secondItem="z7U-0h-3Ak" secondAttribute="leading" id="YQS-tF-bFk"/>
                             <constraint firstItem="JOQ-gI-Rbo" firstAttribute="leading" secondItem="z7U-0h-3Ak" secondAttribute="leading" constant="16" id="cjq-tV-vRO"/>
                             <constraint firstItem="OrX-ag-Cla" firstAttribute="bottom" secondItem="z7U-0h-3Ak" secondAttribute="bottom" id="izr-uA-8Xa"/>
                             <constraint firstItem="OrX-ag-Cla" firstAttribute="trailing" secondItem="z7U-0h-3Ak" secondAttribute="trailing" id="u2U-bv-rxY"/>
+                            <constraint firstItem="dFM-bk-TKl" firstAttribute="top" secondItem="JOQ-gI-Rbo" secondAttribute="bottom" constant="8" id="v4X-BF-gND"/>
                             <constraint firstItem="z7U-0h-3Ak" firstAttribute="trailing" secondItem="JOQ-gI-Rbo" secondAttribute="trailing" constant="16" id="wpJ-jR-ffv"/>
-                            <constraint firstItem="IiS-GC-HdF" firstAttribute="top" secondItem="JOQ-gI-Rbo" secondAttribute="bottom" constant="8" id="yOh-v9-wL3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="z7U-0h-3Ak"/>
                     </view>
                     <connections>
                         <outlet property="eventDateTimeLabel" destination="GMX-va-wn1" id="VzN-oD-L1r"/>
-                        <outlet property="eventDescriptionTextView" destination="fVK-2J-9va" id="nbV-z0-7lu"/>
-                        <outlet property="eventImageView" destination="Mg8-gJ-uV5" id="mqn-mt-5U0"/>
+                        <outlet property="eventDescriptionTextView" destination="R5Z-m7-uJu" id="PYg-RB-Efg"/>
+                        <outlet property="eventImageView" destination="J4h-Na-QPy" id="yGT-jp-YtD"/>
                         <outlet property="eventLocationLabel" destination="UZI-oG-Ba3" id="9Jx-Hy-iYN"/>
-                        <outlet property="eventStackView" destination="BCK-P7-dEF" id="brG-mg-SC0"/>
+                        <outlet property="eventStackView" destination="yIA-Vy-Ot7" id="V0b-Ip-Aby"/>
                         <outlet property="eventTitleLabel" destination="JOQ-gI-Rbo" id="oR0-oa-YjX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t79-fy-RpP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2857.5" y="-377.5"/>
+            <point key="canvasLocation" x="2856.8000000000002" y="-378.26086956521743"/>
         </scene>
         <!--Mentoring-->
         <scene sceneID="wg7-f3-ORb">
@@ -241,21 +246,21 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoFull" translatesAutoresizingMaskIntoConstraints="NO" id="GuD-zJ-NoQ">
-                                <rect key="frame" x="67" y="213.5" width="240" height="240"/>
+                                <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="8Tu-bw-84J"/>
                                     <constraint firstAttribute="width" constant="240" id="Kam-KC-H5O"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Mentoring" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="108" y="45" width="158" height="43"/>
+                                <rect key="frame" x="108.5" y="45" width="158" height="43"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming Soon!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="141" y="96" width="91" height="17"/>
+                                <rect key="frame" x="142" y="96" width="91" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -300,7 +305,7 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoFull" translatesAutoresizingMaskIntoConstraints="NO" id="kZq-Sf-nd2">
-                                <rect key="frame" x="67" y="213" width="240" height="240"/>
+                                <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="6BS-17-xRC"/>
                                     <constraint firstAttribute="width" constant="240" id="DoI-Uo-R4C"/>
@@ -366,9 +371,9 @@ Judges include: Dr. Michel Barbeau and Dr. Tony White</string>
         </scene>
     </scenes>
     <resources>
-        <image name="eventsIcon" width="25" height="25"/>
-        <image name="gradesIcon" width="25" height="25"/>
+        <image name="eventsIcon" width="37.5" height="37.5"/>
+        <image name="gradesIcon" width="37.5" height="37.5"/>
         <image name="logoFull" width="400" height="400"/>
-        <image name="mentoringIcon" width="25" height="25"/>
+        <image name="mentoringIcon" width="37.5" height="37.5"/>
     </resources>
 </document>
