@@ -58,7 +58,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carleton Coding Challenge" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0R-cY-jsg">
-                                                    <rect key="frame" x="91" y="11" width="269" height="68"/>
+                                                    <rect key="frame" x="91" y="11" width="662" height="68"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -119,7 +119,7 @@
                                 <rect key="frame" x="8" y="118" width="359" height="432"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="yIA-Vy-Ot7">
-                                        <rect key="frame" x="0.0" y="0.0" width="359" height="328"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="433"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5Z-m7-uJu">
                                                 <rect key="frame" x="0.0" y="0.0" width="359" height="200"/>
@@ -129,21 +129,9 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             </textView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8PL-Dy-fIn">
-                                                <rect key="frame" x="0.0" y="200" width="359" height="128"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J4h-Na-QPy">
-                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="120"/>
-                                                    </imageView>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="J4h-Na-QPy" secondAttribute="bottom" constant="8" id="02K-GR-F2s"/>
-                                                    <constraint firstAttribute="trailing" secondItem="J4h-Na-QPy" secondAttribute="trailing" id="89k-9h-bti"/>
-                                                    <constraint firstItem="J4h-Na-QPy" firstAttribute="top" secondItem="8PL-Dy-fIn" secondAttribute="top" id="Xr2-0z-zMw"/>
-                                                    <constraint firstItem="J4h-Na-QPy" firstAttribute="leading" secondItem="8PL-Dy-fIn" secondAttribute="leading" id="eLe-Nn-NST"/>
-                                                </constraints>
-                                            </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J4h-Na-QPy">
+                                                <rect key="frame" x="0.0" y="200" width="359" height="233"/>
+                                            </imageView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
