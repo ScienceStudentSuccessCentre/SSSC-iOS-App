@@ -18,6 +18,7 @@
 		FF327FEB20128C3E00B06E19 /* SSSCTempUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FEA20128C3E00B06E19 /* SSSCTempUITests.swift */; };
 		FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3C2287202427660098B868 /* EventDetailViewController.swift */; };
 		FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6835B52023C540001A35B2 /* EventTableViewCell.swift */; };
+		FF7FD89021485E8100DAC88C /* HtmlString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7FD88F21485E8100DAC88C /* HtmlString.swift */; };
 		FFA4B1D320229C8400BAC08F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B1D220229C8400BAC08F /* Event.swift */; };
 		FFB76C962030B5A200EC3F97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB76C952030B5A200EC3F97 /* Assets.xcassets */; };
 		FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC18A2B202502A8001AB5BA /* EventParser.swift */; };
@@ -45,22 +46,23 @@
 		9E0D6250C99C69305AB6E625 /* Pods_SSSCTemp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSSCTemp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E86330BB04874D98ED7DCD /* Pods-SSSCTemp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSSCTemp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SSSCTemp/Pods-SSSCTemp.release.xcconfig"; sourceTree = "<group>"; };
 		FF19EE4D202EA6DA00475B63 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
-		FF327FC520128C3E00B06E19 /* SSSCApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSSCApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF327FC520128C3E00B06E19 /* SSSCApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SSSCApp.app; path = SSSCTemp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF327FC820128C3E00B06E19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF327FCA20128C3E00B06E19 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		FF327FCC20128C3E00B06E19 /* MentoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentoringViewController.swift; sourceTree = "<group>"; };
 		FF327FCF20128C3E00B06E19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF327FD420128C3E00B06E19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF327FD620128C3E00B06E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF327FDB20128C3E00B06E19 /* SSSCAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSSCAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF327FDB20128C3E00B06E19 /* SSSCAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SSSCAppTests.xctest; path = SSSCTempTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF327FDF20128C3E00B06E19 /* SSSCTempTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSSCTempTests.swift; sourceTree = "<group>"; };
 		FF327FE120128C3E00B06E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF327FE620128C3E00B06E19 /* SSSCAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSSCAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF327FE620128C3E00B06E19 /* SSSCAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SSSCAppUITests.xctest; path = SSSCTempUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF327FEA20128C3E00B06E19 /* SSSCTempUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSSCTempUITests.swift; sourceTree = "<group>"; };
 		FF327FEC20128C3E00B06E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF3C2287202427660098B868 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		FF3C228A2024317A0098B868 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		FF6835B52023C540001A35B2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		FF7FD88F21485E8100DAC88C /* HtmlString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlString.swift; sourceTree = "<group>"; };
 		FFA4B1D220229C8400BAC08F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		FFB76C952030B5A200EC3F97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFC18A2B202502A8001AB5BA /* EventParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventParser.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				FF327FCA20128C3E00B06E19 /* EventViewController.swift */,
 				FFC18A2B202502A8001AB5BA /* EventParser.swift */,
 				FF3C2287202427660098B868 /* EventDetailViewController.swift */,
+				FF7FD88F21485E8100DAC88C /* HtmlString.swift */,
 				FF327FCC20128C3E00B06E19 /* MentoringViewController.swift */,
 				FFA4B1D220229C8400BAC08F /* Event.swift */,
 				FF6835B52023C540001A35B2 /* EventTableViewCell.swift */,
@@ -366,6 +369,7 @@
 				FF19EE4E202EA6DA00475B63 /* Observer.swift in Sources */,
 				FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */,
 				FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */,
+				FF7FD89021485E8100DAC88C /* HtmlString.swift in Sources */,
 				FF327FCD20128C3E00B06E19 /* MentoringViewController.swift in Sources */,
 				FF327FC920128C3E00B06E19 /* AppDelegate.swift in Sources */,
 				FF327FCB20128C3E00B06E19 /* EventViewController.swift in Sources */,

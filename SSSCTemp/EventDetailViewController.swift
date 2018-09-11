@@ -26,7 +26,9 @@ class EventDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         eventTitleLabel.text = event.name
-        eventDescriptionTextView.text = event.description
+        eventDescriptionTextView.attributedText = event.description.htmlToAttributedString
+        print(eventDescriptionTextView.attributedText)
+        eventDescriptionTextView.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
         eventDateTimeLabel.text = event.month + " " + event.getDayString() + "\n" + event.time
         eventLocationLabel.text = event.location
         
