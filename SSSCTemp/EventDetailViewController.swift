@@ -50,6 +50,11 @@ class EventDetailViewController: UIViewController {
                     
                     if (image != nil) {
                         self.eventImageView.image = image
+                        
+                        let ratio = image!.size.height / image!.size.width
+                        let newHeight = self.eventImageView.frame.size.width * ratio
+                        
+                        self.eventImageView.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
                     }
                 }
             }
