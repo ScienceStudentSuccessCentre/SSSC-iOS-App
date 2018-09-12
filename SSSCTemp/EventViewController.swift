@@ -16,6 +16,8 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
     var eventToPass: Event!
     var activityIndicatorView: UIActivityIndicatorView!
     
+    private let refreshControl = UIRefreshControl()
+    
     @IBOutlet var tableView: UITableView!
     
     let sampleEvent1Description = "If you are interested in programming, join our Coding Challenge! You’ll have the opportunity to work with other students on a small programming project which contains different sections to help guide you along the way. At the end, you will have the chance to present your project with your team and it will be judged based on functionality, creativity and more. There will also be a raffle where everyone has a chance to win, but the winners of the challenge will gain extra raffle tickets.\n\nJudges include: Dr. Michel Barbeau and Dr. Tony White"
@@ -47,11 +49,9 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
     
     func update() {
         events = EventParser.getInstance().getEvents()
-//        for var event in events {
-//            print(event.name)
-//        }
         print("Received events")
         DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
             self.activityIndicatorView.stopAnimating()
             self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
             self.tableView.reloadData()
@@ -78,6 +78,11 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
         return cell
     }
     
+    @objc func refreshEventData(_ sender: Any) {
+        loadEvents()
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -92,6 +97,14 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
         activityIndicatorView.startAnimating()
         
         EventParser.getInstance().attachObserver(observer: self)
+        
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(refreshEventData(_:)), for: .valueChanged)
         
 //        loadSampleEvents()
         loadEvents()
