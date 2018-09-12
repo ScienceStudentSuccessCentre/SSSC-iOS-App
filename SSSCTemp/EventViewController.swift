@@ -39,7 +39,7 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
         events += [sampleEvent1, sampleEvent2, sampleEvent3]
         DispatchQueue.main.async {
             self.activityIndicatorView.stopAnimating()
-            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+            self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
             self.tableView.reloadData()
             print("Data reloaded")
         }
@@ -53,7 +53,7 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
         print("Received events")
         DispatchQueue.main.async {
             self.activityIndicatorView.stopAnimating()
-            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+            self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
             self.tableView.reloadData()
             print("Data reloaded")
         }
@@ -81,13 +81,13 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 25),
-                                                                        NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25),
+                                                                        NSAttributedString.Key.foregroundColor: UIColor.white]
         tableView.delegate = self
         tableView.dataSource = self
         
-        activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        activityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.backgroundView = activityIndicatorView
         activityIndicatorView.startAnimating()
         

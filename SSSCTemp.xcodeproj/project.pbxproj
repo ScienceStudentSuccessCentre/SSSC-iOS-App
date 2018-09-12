@@ -11,7 +11,6 @@
 		FF19EE4E202EA6DA00475B63 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19EE4D202EA6DA00475B63 /* Observer.swift */; };
 		FF327FC920128C3E00B06E19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FC820128C3E00B06E19 /* AppDelegate.swift */; };
 		FF327FCB20128C3E00B06E19 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FCA20128C3E00B06E19 /* EventViewController.swift */; };
-		FF327FCD20128C3E00B06E19 /* MentoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FCC20128C3E00B06E19 /* MentoringViewController.swift */; };
 		FF327FD020128C3E00B06E19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF327FCE20128C3E00B06E19 /* Main.storyboard */; };
 		FF327FD520128C3E00B06E19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF327FD320128C3E00B06E19 /* LaunchScreen.storyboard */; };
 		FF327FE020128C3E00B06E19 /* SSSCTempTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FDF20128C3E00B06E19 /* SSSCTempTests.swift */; };
@@ -46,17 +45,16 @@
 		9E0D6250C99C69305AB6E625 /* Pods_SSSCTemp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSSCTemp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E86330BB04874D98ED7DCD /* Pods-SSSCTemp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSSCTemp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SSSCTemp/Pods-SSSCTemp.release.xcconfig"; sourceTree = "<group>"; };
 		FF19EE4D202EA6DA00475B63 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
-		FF327FC520128C3E00B06E19 /* SSSCApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SSSCApp.app; path = SSSCTemp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF327FC520128C3E00B06E19 /* SSSCTemp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSSCTemp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF327FC820128C3E00B06E19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF327FCA20128C3E00B06E19 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
-		FF327FCC20128C3E00B06E19 /* MentoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentoringViewController.swift; sourceTree = "<group>"; };
 		FF327FCF20128C3E00B06E19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF327FD420128C3E00B06E19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF327FD620128C3E00B06E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF327FDB20128C3E00B06E19 /* SSSCAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SSSCAppTests.xctest; path = SSSCTempTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF327FDB20128C3E00B06E19 /* SSSCTempTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSSCTempTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF327FDF20128C3E00B06E19 /* SSSCTempTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSSCTempTests.swift; sourceTree = "<group>"; };
 		FF327FE120128C3E00B06E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF327FE620128C3E00B06E19 /* SSSCAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SSSCAppUITests.xctest; path = SSSCTempUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF327FE620128C3E00B06E19 /* SSSCTempUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSSCTempUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF327FEA20128C3E00B06E19 /* SSSCTempUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSSCTempUITests.swift; sourceTree = "<group>"; };
 		FF327FEC20128C3E00B06E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF3C2287202427660098B868 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
@@ -118,9 +116,9 @@
 		FF327FC620128C3E00B06E19 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FF327FC520128C3E00B06E19 /* SSSCApp.app */,
-				FF327FDB20128C3E00B06E19 /* SSSCAppTests.xctest */,
-				FF327FE620128C3E00B06E19 /* SSSCAppUITests.xctest */,
+				FF327FC520128C3E00B06E19 /* SSSCTemp.app */,
+				FF327FDB20128C3E00B06E19 /* SSSCTempTests.xctest */,
+				FF327FE620128C3E00B06E19 /* SSSCTempUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,7 +131,6 @@
 				FFC18A2B202502A8001AB5BA /* EventParser.swift */,
 				FF3C2287202427660098B868 /* EventDetailViewController.swift */,
 				FF7FD88F21485E8100DAC88C /* HtmlString.swift */,
-				FF327FCC20128C3E00B06E19 /* MentoringViewController.swift */,
 				FFA4B1D220229C8400BAC08F /* Event.swift */,
 				FF6835B52023C540001A35B2 /* EventTableViewCell.swift */,
 				FF19EE4D202EA6DA00475B63 /* Observer.swift */,
@@ -192,7 +189,7 @@
 			);
 			name = SSSCTemp;
 			productName = SSSCTemp;
-			productReference = FF327FC520128C3E00B06E19 /* SSSCApp.app */;
+			productReference = FF327FC520128C3E00B06E19 /* SSSCTemp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		FF327FDA20128C3E00B06E19 /* SSSCTempTests */ = {
@@ -210,7 +207,7 @@
 			);
 			name = SSSCTempTests;
 			productName = SSSCTempTests;
-			productReference = FF327FDB20128C3E00B06E19 /* SSSCAppTests.xctest */;
+			productReference = FF327FDB20128C3E00B06E19 /* SSSCTempTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		FF327FE520128C3E00B06E19 /* SSSCTempUITests */ = {
@@ -228,7 +225,7 @@
 			);
 			name = SSSCTempUITests;
 			productName = SSSCTempUITests;
-			productReference = FF327FE620128C3E00B06E19 /* SSSCAppUITests.xctest */;
+			productReference = FF327FE620128C3E00B06E19 /* SSSCTempUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -243,15 +240,18 @@
 				TargetAttributes = {
 					FF327FC420128C3E00B06E19 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					FF327FDA20128C3E00B06E19 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = FF327FC420128C3E00B06E19;
 					};
 					FF327FE520128C3E00B06E19 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = FF327FC420128C3E00B06E19;
 					};
@@ -370,7 +370,6 @@
 				FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */,
 				FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */,
 				FF7FD89021485E8100DAC88C /* HtmlString.swift in Sources */,
-				FF327FCD20128C3E00B06E19 /* MentoringViewController.swift in Sources */,
 				FF327FC920128C3E00B06E19 /* AppDelegate.swift in Sources */,
 				FF327FCB20128C3E00B06E19 /* EventViewController.swift in Sources */,
 				FFA4B1D320229C8400BAC08F /* Event.swift in Sources */,
@@ -552,7 +551,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.averyvine.SSSCTemp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -570,7 +569,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.averyvine.SSSCTemp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -586,9 +585,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.averyvine.SSSCTempTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SSSCTemp.app/SSSCApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SSSCTemp.app/SSSCTemp";
 			};
 			name = Debug;
 		};
@@ -603,9 +602,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.averyvine.SSSCTempTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SSSCTemp.app/SSSCApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SSSCTemp.app/SSSCTemp";
 			};
 			name = Release;
 		};
@@ -619,7 +618,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.averyvine.SSSCTempUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = SSSCTemp;
 			};
@@ -635,7 +634,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.averyvine.SSSCTempUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = SSSCTemp;
 			};

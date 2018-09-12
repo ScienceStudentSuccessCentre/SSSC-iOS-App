@@ -10,8 +10,6 @@ import UIKit
 
 class EventDetailViewController: UIViewController {
     
-    //MARK: Properties
-    
     var event: Event!
     
     @IBOutlet var eventTitleLabel: UILabel!
@@ -24,21 +22,14 @@ class EventDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         eventTitleLabel.text = event.name
-        eventDescriptionTextView.attributedText = event.description.htmlToAttributedString
-        print(eventDescriptionTextView.attributedText)
-        eventDescriptionTextView.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
         eventDateTimeLabel.text = event.month + " " + event.getDayString() + "\n" + event.time
         eventLocationLabel.text = event.location
         
-        var frame = self.eventDescriptionTextView.frame
-        frame.size.height = self.eventDescriptionTextView.contentSize.height
-        self.eventDescriptionTextView.frame = frame
+        eventDescriptionTextView.attributedText = event.description.htmlToAttributedString
+        eventDescriptionTextView.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
         
-        eventDescriptionTextView.translatesAutoresizingMaskIntoConstraints = true
-        
-        view.sendSubview(toBack: eventStackView)
+        view.sendSubviewToBack(eventStackView)
         
         if (event.imageUrl == "") {
             eventImageView.isHidden = true;
