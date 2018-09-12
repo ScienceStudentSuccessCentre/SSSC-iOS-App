@@ -21,6 +21,7 @@ class EventParser {
     static var instance: EventParser! = nil
     
     public func loadEvents() {
+        events.removeAll()
         Alamofire.request(serverURL).responseData { (resData) -> Void in
             do {
                 if resData.result.value == nil {
@@ -32,12 +33,19 @@ class EventParser {
                 let json = try? JSONSerialization.jsonObject(with: data, options: [])
                 print("Received data:")
                 print(json as Any)
-                for eventData in json as! NSArray {
-                    print(eventData)
-                    let event = Event(eventData: eventData as! NSDictionary)
-                    self.insertEvent(newEvent: event)
+                let jsonArray = json as? NSArray
+                if (jsonArray != nil) {
+                    for eventData in jsonArray! {
+                        print(eventData)
+                        let event = Event(eventData: eventData as! NSDictionary)
+                        self.insertEvent(newEvent: event)
+                    }
+                    self.notify()
+                } else {
+                    print("Received improper JSON data")
+                    self.notify()
+                    self.alertUser()
                 }
-                self.notify()
             } catch Exception.Error(let type, let message) {
                 print("\(type): \(message)")
                 self.notify()
