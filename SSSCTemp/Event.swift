@@ -61,36 +61,8 @@ class Event {
     }
     
     public func getMonthInt() -> Int {
-        var monthInt = 1
-        switch month.lowercased() {
-        case "jan":
-            monthInt = 1
-        case "feb":
-            monthInt = 2
-        case "mar":
-            monthInt = 3
-        case "apr":
-            monthInt = 4
-        case "may":
-            monthInt = 5
-        case "jun":
-            monthInt = 6
-        case "jul":
-            monthInt = 7
-        case "aug":
-            monthInt = 8
-        case "sep":
-            monthInt = 9
-        case "oct":
-            monthInt = 10
-        case "nov":
-            monthInt = 11
-        case "dec":
-            monthInt = 12
-        default:
-            monthInt = 1
-        }
-        return monthInt
+        let months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
+        return (months.firstIndex(of: month.lowercased()) ?? 0) + 1
     }
     
     public func getDayString() -> String {

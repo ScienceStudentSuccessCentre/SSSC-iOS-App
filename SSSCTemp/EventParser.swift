@@ -12,13 +12,13 @@ import Alamofire
 
 class EventParser {
     
+    private static var instance: EventParser! = nil
+    
     private let baseURL = "http://sssc.carleton.ca"
     private let serverURL = "http://sssc-carleton-app-server.herokuapp.com/events";
     private let eventsURL = "/events"
     private var events = [Event]()
     private var observers = [Observer]()
-    
-    static var instance: EventParser! = nil
     
     public func loadEvents() {
         events.removeAll()
