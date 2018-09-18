@@ -34,9 +34,9 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
     }
     
     private func loadSampleEvents() {
-        let sampleEvent1 = Event(name: "Carleton Coding Challenge", description: sampleEvent1Description, year: 2018, month: "JAN", day: 31, time: "4pm", location: "SSSC (3431 Herzberg)", url: "", imageUrl: "")
-        let sampleEvent2 = Event(name: "Multiple Mini Interview Practice", description: sampleEvent2Description, year: 2018, month: "FEB", day: 6, time: "6:00pm", location: "SSSC (3431 Herzberg)", url: "", imageUrl: "")
-        let sampleEvent3 = Event(name: "Ski Trip: Camp Fortune", description: sampleEvent3Description, year: 2018, month: "FEB", day: 9, time: "4:00pm departure", location: "Camp Fortune", url: "", imageUrl: "")
+        let sampleEvent1 = Event(name: "Carleton Coding Challenge", description: sampleEvent1Description, year: 2018, month: "JAN", day: 31, time: "4pm", location: "SSSC (3431 Herzberg)", url: "", imageUrl: "", actionUrl: "")
+        let sampleEvent2 = Event(name: "Multiple Mini Interview Practice", description: sampleEvent2Description, year: 2018, month: "FEB", day: 6, time: "6:00pm", location: "SSSC (3431 Herzberg)", url: "", imageUrl: "", actionUrl: "")
+        let sampleEvent3 = Event(name: "Ski Trip: Camp Fortune", description: sampleEvent3Description, year: 2018, month: "FEB", day: 9, time: "4:00pm departure", location: "Camp Fortune", url: "", imageUrl: "", actionUrl: "")
         
         events += [sampleEvent1, sampleEvent2, sampleEvent3]
         DispatchQueue.main.async {

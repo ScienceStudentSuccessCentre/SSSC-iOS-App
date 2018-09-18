@@ -27,7 +27,8 @@ class EventDetailViewController: UIViewController {
         eventLocationLabel.text = event.location
         
         eventDescriptionTextView.attributedText = event.description.htmlToAttributedString
-        eventDescriptionTextView.font = UIFont.systemFont(ofSize: 16)
+//        eventDescriptionTextView.font = UIFont.systemFont(ofSize: 16)
+        eventDescriptionTextView.font = .preferredFont(forTextStyle: .body)
         
         view.sendSubviewToBack(eventStackView)
         
