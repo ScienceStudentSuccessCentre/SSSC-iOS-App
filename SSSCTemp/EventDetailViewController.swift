@@ -11,6 +11,7 @@ import UIKit
 class EventDetailViewController: UIViewController {
     
     var event: Event!
+    let notifyButtonDimension = CGFloat(integerLiteral: 30)
     
     @IBOutlet var eventTitleLabel: UILabel!
     @IBOutlet var eventDescriptionTextView: UITextView!
@@ -27,33 +28,53 @@ class EventDetailViewController: UIViewController {
         eventLocationLabel.text = event.location
         
         eventDescriptionTextView.attributedText = event.description.htmlToAttributedString
-//        eventDescriptionTextView.font = UIFont.systemFont(ofSize: 16)
         eventDescriptionTextView.font = .preferredFont(forTextStyle: .body)
-        
-        view.sendSubviewToBack(eventStackView)
         
         if (event.imageUrl == "") {
             eventImageView.isHidden = true;
         } else {
-            let url = URL(string: event.imageUrl)
-            
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: url!)
-                DispatchQueue.main.async {
-                    let image = UIImage(data: data!)
+            loadImage()
+        }
+        
+        prepareNotifyMeButton()
+        
+        view.sendSubviewToBack(eventStackView)
+    }
+    
+    @objc private func notifyMeTapped() {
+        print("Notified!")
+    }
+    
+    private func prepareNotifyMeButton() {
+        let notifyMeButton = UIButton(type: .custom)
+        notifyMeButton.setImage(UIImage(named: "notifyOff"), for: .normal)
+        notifyMeButton.addTarget(self, action: #selector(notifyMeTapped), for: .touchUpInside)
+        notifyMeButton.frame = CGRect(x: 0, y: 0, width: notifyButtonDimension, height: notifyButtonDimension)
+        notifyMeButton.widthAnchor.constraint(equalToConstant: notifyButtonDimension).isActive = true
+        notifyMeButton.heightAnchor.constraint(equalToConstant: notifyButtonDimension).isActive = true
+        notifyMeButton.translatesAutoresizingMaskIntoConstraints = false
+    
+        navigationItem.setRightBarButton(UIBarButtonItem(customView: notifyMeButton), animated: true)
+    }
+    
+    private func loadImage() {
+        let url = URL(string: event.imageUrl)
+        
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!)
+            DispatchQueue.main.async {
+                let image = UIImage(data: data!)
+                
+                if (image != nil) {
+                    self.eventImageView.image = image
                     
-                    if (image != nil) {
-                        self.eventImageView.image = image
-                        
-                        let ratio = image!.size.height / image!.size.width
-                        let newHeight = self.eventImageView.frame.size.width * ratio
-                        
-                        self.eventImageView.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
-                    }
+                    let ratio = image!.size.height / image!.size.width
+                    let newHeight = self.eventImageView.frame.size.width * ratio
+                    
+                    self.eventImageView.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
                 }
             }
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
