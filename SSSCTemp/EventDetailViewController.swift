@@ -11,7 +11,7 @@ import UserNotifications
 
 class EventDetailViewController: UIViewController {
     
-    let DEBUG_NOTIFICATION_TRIGGER = true
+    let DEBUG_NOTIFICATION_TRIGGER = false
     
     var event: Event!
     let notifyMeDimension = CGFloat(integerLiteral: 30)
@@ -47,6 +47,10 @@ class EventDetailViewController: UIViewController {
         view.sendSubviewToBack(eventStackView)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        updateNotifyMeImage()
+    }
+    
     private func prepareNotifyMeButton() {
         notifyMeButton.addTarget(self, action: #selector(notifyMeTapped), for: .touchUpInside)
         notifyMeButton.frame = CGRect(x: 0, y: 0, width: notifyMeDimension, height: notifyMeDimension)
@@ -54,27 +58,34 @@ class EventDetailViewController: UIViewController {
         notifyMeButton.heightAnchor.constraint(equalToConstant: notifyMeDimension).isActive = true
         notifyMeButton.translatesAutoresizingMaskIntoConstraints = false
         
-        updateNotifyMeImage()
-        
         navigationItem.setRightBarButton(UIBarButtonItem(customView: notifyMeButton), animated: true)
     }
     
     private func updateNotifyMeImage() {
-        let notifyMe = UserDefaults.standard.bool(forKey: event.id)
-        if (notifyMe) {
-            notifyMeImage = UIImage(named: "notifyOnColoured")
-        } else {
-            notifyMeImage = UIImage(named: "notifyOff")
-        }
-        notifyMeButton.setImage(notifyMeImage, for: .normal)
+        notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
+            var notifyMe = false
+            for request in requests {
+                if request.identifier == self.event.id {
+                    notifyMe = true
+                    break
+                }
+            }
+            if notifyMe {
+                self.notifyMeImage = UIImage(named: "notifyOnColoured")
+            } else {
+                self.notifyMeImage = UIImage(named: "notifyOff")
+            }
+            
+            DispatchQueue.main.async {
+                self.notifyMeButton.setImage(self.notifyMeImage, for: .normal)
+            }
+        })
     }
     
     @objc private func notifyMeTapped() {
-        
         notificationCenter.getNotificationSettings { (settings) in
             guard settings.authorizationStatus == .authorized else {
                 let alert = UIAlertController(title: "Notification permissions required", message: "In order to be notified of events, we need you to grant notification permissions to this app in Settings.", preferredStyle: .alert)
-                
                 alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
                 alert.addAction(UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
                     guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
@@ -91,55 +102,67 @@ class EventDetailViewController: UIViewController {
                 return
             }
             
-            let notifyMe = !UserDefaults.standard.bool(forKey: self.event.id)
-            UserDefaults.standard.set(notifyMe, forKey: self.event.id)
-            
-            DispatchQueue.main.async {
-                self.updateNotifyMeImage()
-            }
-            
-            if (notifyMe) {
-                let alert = UIAlertController(title: "Notification enabled!", message: "You'll be sent a notification on the day of this event.", preferredStyle: .alert)
-                
-                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-                self.present(alert, animated: true)
-            }
-            
-            print("Toggled notify for event \"\(self.event.name)\" to \(notifyMe)")
-            
-            let content = UNMutableNotificationContent()
-            content.title = self.event.name
-            content.body = "Today at " + self.event.time
-            content.sound = UNNotificationSound.default
-            
-            if (self.DEBUG_NOTIFICATION_TRIGGER) {
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-                
-                let request = UNNotificationRequest(identifier: self.event.id, content: content, trigger: trigger)
-                self.notificationCenter.add(request, withCompletionHandler: { (error) in
-                    if let error = error {
-                        print(error)
-                        self.presentGenericErrorAlert()
+            self.notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
+                var notifyMeEnabled = false
+                for request in requests {
+                    if request.identifier == self.event.id {
+                        notifyMeEnabled = true
+                        break
                     }
-                })
-            } else {
-                let date = self.event.getDate()
-                if (date != nil) {
-                    let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second,], from: date!)
-                    let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-                    
-                    let request = UNNotificationRequest(identifier: self.event.id, content: content, trigger: trigger)
-                    self.notificationCenter.add(request, withCompletionHandler: { (error) in
-                        if let error = error {
-                            print(error)
-                            self.presentGenericErrorAlert()
-                        }
-                    })
-                } else {
-                    self.presentGenericErrorAlert()
                 }
+                if !notifyMeEnabled {
+                    self.prepareDeviceNotification()
+                } else {
+                    self.removeDeviceNotification()
+                }
+            })
+        }
+    }
+    
+    private func prepareDeviceNotification() {
+        let request = generateUNNotificationRequest()
+        if (request != nil) {
+            self.notificationCenter.add(request!, withCompletionHandler: { (error) in
+                if let error = error {
+                    print(error)
+                    self.presentGenericErrorAlert()
+                } else {
+                    self.updateNotifyMeImage()
+                    
+                    let alert = UIAlertController(title: "Notification enabled!", message: "You'll be sent a notification on the day of this event.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+            })
+        }
+    }
+    
+    private func removeDeviceNotification() {
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: [self.event.id])
+        self.updateNotifyMeImage()
+    }
+    
+    private func generateUNNotificationRequest() -> UNNotificationRequest? {
+        let request: UNNotificationRequest?
+        let content = UNMutableNotificationContent()
+        content.title = self.event.name
+        content.body = "Today at " + self.event.time
+        content.sound = UNNotificationSound.default
+        
+        if (self.DEBUG_NOTIFICATION_TRIGGER) {
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+            request = UNNotificationRequest(identifier: self.event.id, content: content, trigger: trigger)
+        } else {
+            let date = self.event.getDate()
+            if (date != nil) {
+                let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second,], from: date!)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+                request = UNNotificationRequest(identifier: self.event.id, content: content, trigger: trigger)
+            } else {
+                request = nil
             }
         }
+        return request
     }
     
     private func presentGenericErrorAlert() {

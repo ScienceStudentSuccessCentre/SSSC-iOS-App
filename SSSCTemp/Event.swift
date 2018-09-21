@@ -89,8 +89,8 @@ class Event {
         dateComponents.year = year
         dateComponents.month = getMonthInt()
         dateComponents.day = day
-        dateComponents.hour = 8
-        dateComponents.minute = 30
+        dateComponents.hour = 12
+        dateComponents.minute = 00
         
         let userCalendar = Calendar.current
         return userCalendar.date(from: dateComponents)
