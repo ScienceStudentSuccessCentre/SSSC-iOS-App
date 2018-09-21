@@ -10,6 +10,7 @@ import Foundation
 
 class Event {
     
+    var id: String
     var name: String
     var description: String
     var year: Int
@@ -22,6 +23,7 @@ class Event {
     var actionUrl: String
     
     init() {
+        self.id = ""
         self.name = ""
         self.description = ""
         self.year = 2018
@@ -35,6 +37,7 @@ class Event {
     }
     
     init(eventData: NSDictionary) {
+        self.id = eventData["id"] as! String
         self.name = eventData["name"] as! String
         self.description = eventData["description"] as! String
         self.year = (eventData["year"]) as! Int
@@ -55,7 +58,8 @@ class Event {
         }
     }
     
-    init(name: String, description: String, year: Int, month: String, day: Int, time: String, location: String, url: String, imageUrl: String, actionUrl: String) {
+    init(id: String, name: String, description: String, year: Int, month: String, day: Int, time: String, location: String, url: String, imageUrl: String, actionUrl: String) {
+        self.id = id
         self.name = name
         self.description = description
         self.year = year
@@ -78,5 +82,17 @@ class Event {
             return "0" + String(day)
         }
         return String(day)
+    }
+    
+    public func getDate() -> Date? {
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = getMonthInt()
+        dateComponents.day = day
+        dateComponents.hour = 12
+        dateComponents.minute = 00
+        
+        let userCalendar = Calendar.current
+        return userCalendar.date(from: dateComponents)
     }
 }
