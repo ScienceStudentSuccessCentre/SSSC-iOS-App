@@ -62,17 +62,17 @@ class EventParser {
         var appended = false
         for i in 0 ..< events.count {
             let event = events[i]
-            if newEvent.year < event.year {
+            if newEvent.getYear() < event.getYear() {
                 events.insert(newEvent, at: i)
                 appended = true
                 break
-            } else if newEvent.year == event.year {
-                if newEvent.getMonthInt() < event.getMonthInt() {
+            } else if newEvent.getYear() == event.getYear() {
+                if newEvent.getMonth() < event.getMonth() {
                     events.insert(newEvent, at: i)
                     appended = true
                     break
-                } else if newEvent.getMonthInt() == event.getMonthInt() {
-                    if newEvent.day < event.day {
+                } else if newEvent.getMonth() == event.getMonth() {
+                    if newEvent.getDay() < event.getDay() {
                         events.insert(newEvent, at: i)
                         appended = true
                         break

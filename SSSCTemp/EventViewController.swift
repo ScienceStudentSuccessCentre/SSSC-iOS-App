@@ -34,9 +34,9 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
     }
     
     private func loadSampleEvents() {
-        let sampleEvent1 = Event(id: "1", name: "Carleton Coding Challenge", description: sampleEvent1Description, year: 2018, month: "JAN", day: 31, time: "4pm", location: "SSSC (3431 Herzberg)", url: "", imageUrl: "", actionUrl: "")
-        let sampleEvent2 = Event(id: "2", name: "Multiple Mini Interview Practice", description: sampleEvent2Description, year: 2018, month: "FEB", day: 6, time: "6:00pm", location: "SSSC (3431 Herzberg)", url: "", imageUrl: "", actionUrl: "")
-        let sampleEvent3 = Event(id: "3", name: "Ski Trip: Camp Fortune", description: sampleEvent3Description, year: 2018, month: "FEB", day: 9, time: "4:00pm departure", location: "Camp Fortune", url: "", imageUrl: "", actionUrl: "")
+        let sampleEvent1 = Event(id: "1", name: "Carleton Coding Challenge", description: sampleEvent1Description, dateTime: Date(), rawTime: "4pm", location: "SSSC (3431 Herzberg)", url: nil, imageUrl: nil, actionUrl: "")
+        let sampleEvent2 = Event(id: "2", name: "Multiple Mini Interview Practice", description: sampleEvent2Description, dateTime: Date(), rawTime: "6:00pm", location: "SSSC (3431 Herzberg)", url: nil, imageUrl: nil, actionUrl: "")
+        let sampleEvent3 = Event(id: "3", name: "Ski Trip: Camp Fortune", description: sampleEvent3Description, dateTime: Date(), rawTime: "4:00pm departure", location: "Camp Fortune", url: nil, imageUrl: nil, actionUrl: "")
         
         events += [sampleEvent1, sampleEvent2, sampleEvent3]
         DispatchQueue.main.async {
@@ -72,9 +72,9 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableViewCell", for: indexPath) as? EventTableViewCell  else {
                         fatalError("The dequeued cell is not an instance of EventTableViewCell.")
         }
-        cell.monthLabel.text = events[indexPath.row].month
-        cell.dateLabel.text = events[indexPath.row].getDayString()
-        cell.eventLabel.text = events[indexPath.row].name
+        cell.monthLabel.text = events[indexPath.row].getMonthName()
+        cell.dateLabel.text = events[indexPath.row].getDayLeadingZero()
+        cell.eventLabel.text = events[indexPath.row].getName()
         return cell
     }
     

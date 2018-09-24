@@ -11,8 +11,6 @@ import UserNotifications
 
 class EventDetailViewController: UIViewController {
     
-    let DEBUG_NOTIFICATION_TRIGGER = false
-    
     var event: Event!
     let notifyMeDimension = CGFloat(integerLiteral: 30)
     let notifyMeButton = UIButton(type: .custom)
@@ -29,14 +27,14 @@ class EventDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        eventTitleLabel.text = event.name
-        eventDateTimeLabel.text = event.month + " " + event.getDayString() + "\n" + event.time
-        eventLocationLabel.text = event.location
+        eventTitleLabel.text = event.getName()
+        eventDateTimeLabel.text = event.getMonthName() + " " + event.getDayLeadingZero() + "\n" + event.getRawTime()
+        eventLocationLabel.text = event.getLocation()
         
-        eventDescriptionTextView.attributedText = event.description.htmlToAttributedString
+        eventDescriptionTextView.attributedText = event.getDescription().htmlToAttributedString
         eventDescriptionTextView.font = .preferredFont(forTextStyle: .body)
         
-        if (event.imageUrl == "") {
+        if (event.getImageUrl() == nil) {
             eventImageView.isHidden = true;
         } else {
             loadImage()
@@ -52,20 +50,22 @@ class EventDetailViewController: UIViewController {
     }
     
     private func prepareNotifyMeButton() {
-        notifyMeButton.addTarget(self, action: #selector(notifyMeTapped), for: .touchUpInside)
-        notifyMeButton.frame = CGRect(x: 0, y: 0, width: notifyMeDimension, height: notifyMeDimension)
-        notifyMeButton.widthAnchor.constraint(equalToConstant: notifyMeDimension).isActive = true
-        notifyMeButton.heightAnchor.constraint(equalToConstant: notifyMeDimension).isActive = true
-        notifyMeButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        navigationItem.setRightBarButton(UIBarButtonItem(customView: notifyMeButton), animated: true)
+        if event.getNotificationDateTime()!.compare(Date()) != ComparisonResult.orderedAscending {
+            notifyMeButton.addTarget(self, action: #selector(notifyMeTapped), for: .touchUpInside)
+            notifyMeButton.frame = CGRect(x: 0, y: 0, width: notifyMeDimension, height: notifyMeDimension)
+            notifyMeButton.widthAnchor.constraint(equalToConstant: notifyMeDimension).isActive = true
+            notifyMeButton.heightAnchor.constraint(equalToConstant: notifyMeDimension).isActive = true
+            notifyMeButton.translatesAutoresizingMaskIntoConstraints = false
+            
+            navigationItem.setRightBarButton(UIBarButtonItem(customView: notifyMeButton), animated: true)
+        }
     }
     
     private func updateNotifyMeImage() {
         notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
             var notifyMe = false
             for request in requests {
-                if request.identifier == self.event.id {
+                if request.identifier == self.event.getId() {
                     notifyMe = true
                     break
                 }
@@ -105,7 +105,7 @@ class EventDetailViewController: UIViewController {
             self.notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
                 var notifyMeEnabled = false
                 for request in requests {
-                    if request.identifier == self.event.id {
+                    if request.identifier == self.event.getId() {
                         notifyMeEnabled = true
                         break
                     }
@@ -129,7 +129,7 @@ class EventDetailViewController: UIViewController {
                 } else {
                     self.updateNotifyMeImage()
                     
-                    let alert = UIAlertController(title: "Notification enabled!", message: "You'll be sent a notification on the day of this event.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Notification enabled!", message: "You'll be sent a notification an hour before this event starts.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
                     self.present(alert, animated: true)
                 }
@@ -138,28 +138,26 @@ class EventDetailViewController: UIViewController {
     }
     
     private func removeDeviceNotification() {
-        notificationCenter.removePendingNotificationRequests(withIdentifiers: [self.event.id])
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: [self.event.getId()])
         self.updateNotifyMeImage()
     }
     
     private func generateUNNotificationRequest() -> UNNotificationRequest? {
-        let request: UNNotificationRequest?
+        var request: UNNotificationRequest? = nil
         let content = UNMutableNotificationContent()
-        content.title = self.event.name
-        content.body = "Today at " + self.event.time
+        content.title = self.event.getName()
+        content.subtitle = "Today at " + self.event.getRawTime()
+        content.body = self.event.getLocation()
         content.sound = UNNotificationSound.default
         
-        if (self.DEBUG_NOTIFICATION_TRIGGER) {
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-            request = UNNotificationRequest(identifier: self.event.id, content: content, trigger: trigger)
-        } else {
-            let date = self.event.getDate()
-            if (date != nil) {
-                let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second,], from: date!)
+        let notificationDateTime = self.event.getNotificationDateTime()
+        if (notificationDateTime != nil) {
+            if notificationDateTime!.compare(Date()) != ComparisonResult.orderedAscending {
+                let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second,], from: notificationDateTime!)
                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-                request = UNNotificationRequest(identifier: self.event.id, content: content, trigger: trigger)
+                request = UNNotificationRequest(identifier: self.event.getId(), content: content, trigger: trigger)
             } else {
-                request = nil
+                print("Not setting notification due to time")
             }
         }
         return request
@@ -173,7 +171,7 @@ class EventDetailViewController: UIViewController {
     }
     
     private func loadImage() {
-        let url = URL(string: event.imageUrl)
+        let url = event.getImageUrl()
         
         DispatchQueue.global().async {
             let data = try? Data(contentsOf: url!)
