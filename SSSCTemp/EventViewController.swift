@@ -74,7 +74,7 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
         }
         cell.monthLabel.text = events[indexPath.row].month
         cell.dateLabel.text = events[indexPath.row].getDayString()
-        cell.eventLabel.text = events[indexPath.row].name
+        cell.eventLabel.text = events[indexPath.row].getName()
         return cell
     }
     
