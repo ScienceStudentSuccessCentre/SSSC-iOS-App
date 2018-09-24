@@ -143,7 +143,7 @@ class EventDetailViewController: UIViewController {
     }
     
     private func generateUNNotificationRequest() -> UNNotificationRequest? {
-        let request: UNNotificationRequest?
+        var request: UNNotificationRequest? = nil
         let content = UNMutableNotificationContent()
         content.title = self.event.name
         content.body = "Today at " + self.event.time
@@ -155,11 +155,13 @@ class EventDetailViewController: UIViewController {
         } else {
             let date = self.event.getDate()
             if (date != nil) {
-                let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second,], from: date!)
-                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-                request = UNNotificationRequest(identifier: self.event.id, content: content, trigger: trigger)
-            } else {
-                request = nil
+                if date!.compare(Date()) != ComparisonResult.orderedAscending {
+                    let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second,], from: date!)
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+                    request = UNNotificationRequest(identifier: self.event.id, content: content, trigger: trigger)
+                } else {
+                    print("Not setting notification due to time")
+                }
             }
         }
         return request
