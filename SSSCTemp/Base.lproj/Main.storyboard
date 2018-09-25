@@ -314,10 +314,10 @@
             </objects>
             <point key="canvasLocation" x="996" y="294"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="TabBarViewController" customModule="SSSCTemp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -335,7 +335,7 @@
         <!--Events-->
         <scene sceneID="g3i-wO-lt2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EuL-kd-Bue" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EuL-kd-Bue" customClass="EventNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Events" image="eventsIcon" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iEx-jx-cxL">

@@ -16,6 +16,8 @@
 		FF327FE020128C3E00B06E19 /* SSSCTempTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FDF20128C3E00B06E19 /* SSSCTempTests.swift */; };
 		FF327FEB20128C3E00B06E19 /* SSSCTempUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FEA20128C3E00B06E19 /* SSSCTempUITests.swift */; };
 		FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3C2287202427660098B868 /* EventDetailViewController.swift */; };
+		FF3D05DC215AC9AC0073D0E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */; };
+		FF3D05DE215ACAB80073D0E7 /* EventNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D05DD215ACAB80073D0E7 /* EventNavigationController.swift */; };
 		FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6835B52023C540001A35B2 /* EventTableViewCell.swift */; };
 		FF7A0905215967F600A98504 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7A0904215967F600A98504 /* Formatter.swift */; };
 		FF7FD89021485E8100DAC88C /* HtmlString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7FD88F21485E8100DAC88C /* HtmlString.swift */; };
@@ -60,6 +62,8 @@
 		FF327FEC20128C3E00B06E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF3C2287202427660098B868 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		FF3C228A2024317A0098B868 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		FF3D05DD215ACAB80073D0E7 /* EventNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNavigationController.swift; sourceTree = "<group>"; };
 		FF6835B52023C540001A35B2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		FF7A0904215967F600A98504 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		FF7FD88F21485E8100DAC88C /* HtmlString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlString.swift; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 				FF327FD320128C3E00B06E19 /* LaunchScreen.storyboard */,
 				FFB76C952030B5A200EC3F97 /* Assets.xcassets */,
 				FF327FD620128C3E00B06E19 /* Info.plist */,
+				FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */,
+				FF3D05DD215ACAB80073D0E7 /* EventNavigationController.swift */,
 			);
 			path = SSSCTemp;
 			sourceTree = "<group>";
@@ -376,6 +382,8 @@
 				FF7FD89021485E8100DAC88C /* HtmlString.swift in Sources */,
 				FF327FC920128C3E00B06E19 /* AppDelegate.swift in Sources */,
 				FF327FCB20128C3E00B06E19 /* EventViewController.swift in Sources */,
+				FF3D05DC215AC9AC0073D0E7 /* TabBarViewController.swift in Sources */,
+				FF3D05DE215ACAB80073D0E7 /* EventNavigationController.swift in Sources */,
 				FFA4B1D320229C8400BAC08F /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
