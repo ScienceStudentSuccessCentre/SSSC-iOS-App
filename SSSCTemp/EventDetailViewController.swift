@@ -47,6 +47,7 @@ class EventDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         updateNotifyMeImage()
+        print(event.getFormattedTime())
     }
     
     private func prepareNotifyMeButton() {
@@ -146,7 +147,7 @@ class EventDetailViewController: UIViewController {
         var request: UNNotificationRequest? = nil
         let content = UNMutableNotificationContent()
         content.title = self.event.getName()
-        content.subtitle = "Today at " + self.event.getRawTime()
+        content.subtitle = "Today at " + self.event.getFormattedTime()
         content.body = self.event.getLocation()
         content.sound = UNNotificationSound.default
         

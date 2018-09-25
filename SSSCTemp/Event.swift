@@ -21,7 +21,7 @@ class Event {
     private var location: String
     private var url: URL?
     private var imageUrl: URL?
-    private var actionUrl: String
+    private var actionUrl: String?
     
     private let calendar = Calendar.current
     
@@ -34,17 +34,14 @@ class Event {
         self.location = ""
         self.url = nil
         self.imageUrl = nil
-        self.actionUrl = ""
+        self.actionUrl = nil
     }
     
     init(eventData: NSDictionary) {
         self.id = eventData["id"] as! String
         self.name = eventData["name"] as! String
         self.description = eventData["description"] as! String
-        let tempDate = Formatter.iso8601.date(from: eventData["dateAndTime"] as! String)
-        if (tempDate != nil) {
-            self.dateTime = tempDate
-        }
+        self.dateTime = Formatter.iso8601.date(from: eventData["dateTime"] as! String)
         self.rawTime = eventData["rawTime"] as! String
         self.location = eventData["location"] as! String
         
@@ -60,11 +57,7 @@ class Event {
             self.imageUrl = nil
         }
         
-        if ((eventData["actionUrl"]) != nil) {
-            self.actionUrl = eventData["actionUrl"] as! String
-        } else {
-            self.actionUrl = ""
-        }
+        self.actionUrl = eventData["actionUrl"] as? String
     }
     
     init(id: String, name: String, description: String, dateTime: Date, rawTime: String, location: String, url: URL?, imageUrl: URL?, actionUrl: String) {
@@ -130,6 +123,17 @@ class Event {
     
     public func getRawTime() -> String {
         return rawTime
+    }
+    
+    public func getFormattedTime() -> String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .medium
+        formatter.amSymbol = "am"
+        formatter.pmSymbol = "pm"
+        formatter.dateFormat = "HH:mm"
+        let formattedTime = formatter.date(from: formatter.string(from: dateTime!))
+        formatter.dateFormat = "h:mma"
+        return formatter.string(from: formattedTime!)
     }
     
     public func getLocation() -> String {
