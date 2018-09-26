@@ -335,7 +335,7 @@
         <!--Events-->
         <scene sceneID="g3i-wO-lt2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EuL-kd-Bue" customClass="EventNavigationController" customModule="SSSCTemp" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EuL-kd-Bue" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Events" image="eventsIcon" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iEx-jx-cxL">

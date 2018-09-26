@@ -21,10 +21,11 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if previousController == viewController || previousController == nil {
-            if let navigationController = viewController as? UINavigationController, let eventViewController = navigationController.viewControllers.first as? EventViewController {
-                
-                if eventViewController.isViewLoaded && eventViewController.view.window != nil {
-                    eventViewController.scrollToTop()
+            if let navigationController = viewController as? UINavigationController {
+                if let eventViewController = navigationController.viewControllers.first as? EventViewController {
+                    if eventViewController.isViewLoaded && eventViewController.view.window != nil {
+                        eventViewController.scrollToTop()
+                    }
                 }
             }
         }
