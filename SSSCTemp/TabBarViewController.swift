@@ -11,20 +11,24 @@ import UIKit
 
 class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
+    var previousController: UIViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // tell our UITabBarController subclass to handle its own delegate methods
         self.delegate = self
     }
     
-    // called whenever a tab button is tapped
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        
-        if viewController is EventNavigationController {
-            print("Event tab")
-        } else {
-            print("Not event tab")
+        if previousController == viewController || previousController == nil {
+            if let navigationController = viewController as? UINavigationController, let eventViewController = navigationController.viewControllers.first as? EventViewController {
+                
+                if eventViewController.isViewLoaded && eventViewController.view.window != nil {
+                    eventViewController.scrollToTop()
+                }
+            }
         }
+        previousController = viewController
     }
+    
 }

@@ -81,7 +81,10 @@ class EventViewController: UIViewController, Observer, UITableViewDelegate, UITa
     @objc func refreshEventData(_ sender: Any) {
         loadEvents()
     }
-
+    
+    func scrollToTop() {
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
