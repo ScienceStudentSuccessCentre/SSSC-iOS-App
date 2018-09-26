@@ -47,7 +47,6 @@ class EventDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         updateNotifyMeImage()
-        print(event.getFormattedTime())
     }
     
     private func prepareNotifyMeButton() {
