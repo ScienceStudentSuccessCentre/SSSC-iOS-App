@@ -22,7 +22,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if previousController == viewController || previousController == nil {
             if let navigationController = viewController as? UINavigationController {
-                if let eventViewController = navigationController.viewControllers.first as? EventViewController {
+                if let eventViewController = navigationController.viewControllers.first as? EventsViewController {
                     if eventViewController.isViewLoaded && eventViewController.view.window != nil {
                         eventViewController.scrollToTop()
                     }
