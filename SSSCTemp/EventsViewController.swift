@@ -136,6 +136,5 @@ class EventsViewController: UIViewController, Observer, UITableViewDelegate, UIT
         }
     }
 
-
 }
 

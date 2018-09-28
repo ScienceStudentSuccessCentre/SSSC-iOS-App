@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SafariServices
 import UserNotifications
 
-class EventDetailViewController: UIViewController {
+class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     var event: Event!
     let notifyMeDimension = CGFloat(integerLiteral: 30)
@@ -26,6 +27,8 @@ class EventDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        eventDescriptionTextView.delegate = self
 
         eventTitleLabel.text = event.getName()
         eventDateTimeLabel.text = event.getMonthName() + " " + event.getDayLeadingZero() + "\n" + event.getRawTime()
@@ -188,6 +191,12 @@ class EventDetailViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        let safariVC = SFSafariViewController(url: URL)
+        present(safariVC, animated: true, completion: nil)
+        return false
     }
 
     override func didReceiveMemoryWarning() {
