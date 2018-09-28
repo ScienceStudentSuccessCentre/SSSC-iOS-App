@@ -52,8 +52,8 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func toggleTableViewButtonsInNavigationBar(show: Bool) {
         if show {
-            navigationController?.navigationBar.topItem?.setRightBarButton(addTermButton, animated: true)
-            navigationController?.navigationBar.topItem?.setLeftBarButton(editTermsButton, animated: true)
+            navigationController?.navigationBar.topItem?.setRightBarButton(addTermButton, animated: false)
+            navigationController?.navigationBar.topItem?.setLeftBarButton(editTermsButton, animated: false)
         } else {
             navigationController?.navigationBar.topItem?.setRightBarButton(nil, animated: true)
             navigationController?.navigationBar.topItem?.setLeftBarButton(nil, animated: true)
