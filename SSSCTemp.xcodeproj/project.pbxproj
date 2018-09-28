@@ -23,6 +23,10 @@
 		FF7A0905215967F600A98504 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7A0904215967F600A98504 /* Formatter.swift */; };
 		FF7FD89021485E8100DAC88C /* HtmlString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7FD88F21485E8100DAC88C /* HtmlString.swift */; };
 		FFA4B1D320229C8400BAC08F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B1D220229C8400BAC08F /* Event.swift */; };
+		FFA7CBAB215DD4CB00A050B1 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAA215DD4CB00A050B1 /* TermsViewController.swift */; };
+		FFA7CBAD215DD53300A050B1 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */; };
+		FFA7CBAF215DD54C00A050B1 /* PlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAE215DD54C00A050B1 /* PlannerViewController.swift */; };
+		FFA7CBB1215DD59B00A050B1 /* TermTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBB0215DD59B00A050B1 /* TermTableViewCell.swift */; };
 		FFB76C962030B5A200EC3F97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB76C952030B5A200EC3F97 /* Assets.xcassets */; };
 		FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC18A2B202502A8001AB5BA /* EventParser.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +74,10 @@
 		FF7A0904215967F600A98504 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		FF7FD88F21485E8100DAC88C /* HtmlString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlString.swift; sourceTree = "<group>"; };
 		FFA4B1D220229C8400BAC08F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		FFA7CBAA215DD4CB00A050B1 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
+		FFA7CBAE215DD54C00A050B1 /* PlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerViewController.swift; sourceTree = "<group>"; };
+		FFA7CBB0215DD59B00A050B1 /* TermTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermTableViewCell.swift; sourceTree = "<group>"; };
 		FFB76C952030B5A200EC3F97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFC18A2B202502A8001AB5BA /* EventParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,13 +145,17 @@
 				FF327FC820128C3E00B06E19 /* AppDelegate.swift */,
 				FF1D7D24215D6DDD00A88467 /* Database.swift */,
 				FF327FCA20128C3E00B06E19 /* EventsViewController.swift */,
+				FF6835B52023C540001A35B2 /* EventTableViewCell.swift */,
 				FFC18A2B202502A8001AB5BA /* EventParser.swift */,
 				FF3C2287202427660098B868 /* EventDetailViewController.swift */,
 				FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */,
+				FFA7CBAA215DD4CB00A050B1 /* TermsViewController.swift */,
+				FFA7CBB0215DD59B00A050B1 /* TermTableViewCell.swift */,
+				FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */,
+				FFA7CBAE215DD54C00A050B1 /* PlannerViewController.swift */,
 				FF7A0904215967F600A98504 /* Formatter.swift */,
 				FF7FD88F21485E8100DAC88C /* HtmlString.swift */,
 				FFA4B1D220229C8400BAC08F /* Event.swift */,
-				FF6835B52023C540001A35B2 /* EventTableViewCell.swift */,
 				FF19EE4D202EA6DA00475B63 /* Observer.swift */,
 				FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */,
 				FF327FCE20128C3E00B06E19 /* Main.storyboard */,
@@ -382,6 +394,7 @@
 				FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */,
 				FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */,
 				FF19EE4E202EA6DA00475B63 /* Observer.swift in Sources */,
+				FFA7CBAB215DD4CB00A050B1 /* TermsViewController.swift in Sources */,
 				FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */,
 				FF7A0905215967F600A98504 /* Formatter.swift in Sources */,
 				FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */,
@@ -390,6 +403,9 @@
 				FF327FC920128C3E00B06E19 /* AppDelegate.swift in Sources */,
 				FF327FCB20128C3E00B06E19 /* EventsViewController.swift in Sources */,
 				FF3D05DC215AC9AC0073D0E7 /* TabBarViewController.swift in Sources */,
+				FFA7CBAF215DD54C00A050B1 /* PlannerViewController.swift in Sources */,
+				FFA7CBB1215DD59B00A050B1 /* TermTableViewCell.swift in Sources */,
+				FFA7CBAD215DD53300A050B1 /* CalculatorViewController.swift in Sources */,
 				FFA4B1D320229C8400BAC08F /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
