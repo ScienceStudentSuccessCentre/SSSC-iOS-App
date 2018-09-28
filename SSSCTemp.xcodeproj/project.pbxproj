@@ -27,6 +27,7 @@
 		FFA7CBAD215DD53300A050B1 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */; };
 		FFA7CBAF215DD54C00A050B1 /* PlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAE215DD54C00A050B1 /* PlannerViewController.swift */; };
 		FFA7CBB1215DD59B00A050B1 /* TermTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBB0215DD59B00A050B1 /* TermTableViewCell.swift */; };
+		FFAC093C215EBBD5007C4264 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC093B215EBBD5007C4264 /* CoursesViewController.swift */; };
 		FFB76C962030B5A200EC3F97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB76C952030B5A200EC3F97 /* Assets.xcassets */; };
 		FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC18A2B202502A8001AB5BA /* EventParser.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		FFA7CBAE215DD54C00A050B1 /* PlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerViewController.swift; sourceTree = "<group>"; };
 		FFA7CBB0215DD59B00A050B1 /* TermTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermTableViewCell.swift; sourceTree = "<group>"; };
+		FFAC093B215EBBD5007C4264 /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
 		FFB76C952030B5A200EC3F97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFC18A2B202502A8001AB5BA /* EventParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +153,7 @@
 				FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */,
 				FFA7CBAA215DD4CB00A050B1 /* TermsViewController.swift */,
 				FFA7CBB0215DD59B00A050B1 /* TermTableViewCell.swift */,
+				FFAC093B215EBBD5007C4264 /* CoursesViewController.swift */,
 				FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */,
 				FFA7CBAE215DD54C00A050B1 /* PlannerViewController.swift */,
 				FF7A0904215967F600A98504 /* Formatter.swift */,
@@ -395,6 +398,7 @@
 				FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */,
 				FF19EE4E202EA6DA00475B63 /* Observer.swift in Sources */,
 				FFA7CBAB215DD4CB00A050B1 /* TermsViewController.swift in Sources */,
+				FFAC093C215EBBD5007C4264 /* CoursesViewController.swift in Sources */,
 				FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */,
 				FF7A0905215967F600A98504 /* Formatter.swift in Sources */,
 				FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */,

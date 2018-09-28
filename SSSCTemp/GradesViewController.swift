@@ -7,49 +7,55 @@
 
 import UIKit
 
+protocol GradesViewControllerDelegate: class {
+    func toggleTableViewButtonsInNavigationBar(show: Bool)
+}
+
 class GradesViewController: UIViewController {
     
     @IBOutlet var segmentControl: UISegmentedControl!
     @IBOutlet var termsView: UIView!
     @IBOutlet var calculatorView: UIView!
     @IBOutlet var plannerView: UIView!
+    
+    weak var delegate: GradesViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25),NSAttributedString.Key.foregroundColor: UIColor.white]
         
-        calculatorView.isHidden = true
-        plannerView.isHidden = true
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25),NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        if let ctrl = children.first(where: { $0 is GradesViewControllerDelegate }) {
+            delegate = ctrl as? GradesViewControllerDelegate
+        }
+        
+        switchToView(segmentIndex: 0)
     }
     
     @IBAction func segmentSelectedAction(sender: AnyObject) {
-        switch sender.selectedSegmentIndex {
+        switchToView(segmentIndex: sender.selectedSegmentIndex)
+    }
+    
+    private func switchToView(segmentIndex: Int) {
+        switch segmentIndex {
         case 0:
             termsView.isHidden = false
             calculatorView.isHidden = true
             plannerView.isHidden = true
+            navigationItem.title = "Terms"
         case 1:
             termsView.isHidden = true
             calculatorView.isHidden = false
             plannerView.isHidden = true
+            navigationItem.title = "GPA Calculator"
         case 2:
             termsView.isHidden = true
             calculatorView.isHidden = true
             plannerView.isHidden = false
+            navigationItem.title = "GPA Planner"
         default:
             break
         }
+        delegate?.toggleTableViewButtonsInNavigationBar(show: segmentIndex == 0)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

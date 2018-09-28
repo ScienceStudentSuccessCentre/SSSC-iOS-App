@@ -478,8 +478,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="dateLabel" destination="FAO-hC-zgu" id="Yp8-YQ-XRG"/>
-                                            <outlet property="eventLabel" destination="ocs-vd-Sl9" id="YBE-RZ-EAK"/>
+                                            <segue destination="qyO-ye-sR5" kind="show" identifier="termDetail" id="aL2-Kv-euu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -492,6 +491,7 @@
                             <constraint firstItem="OjJ-F7-Qp4" firstAttribute="top" secondItem="7pI-Gv-qme" secondAttribute="top" id="Uh2-c0-Coy"/>
                             <constraint firstAttribute="trailing" secondItem="OjJ-F7-Qp4" secondAttribute="trailing" id="r1S-0z-D31"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="yS0-LM-5Ub"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="OjJ-F7-Qp4" id="oGb-Ba-xX8"/>
@@ -521,11 +521,12 @@
                             <constraint firstItem="VOU-E5-hon" firstAttribute="centerY" secondItem="8W7-d2-zpr" secondAttribute="centerY" id="8qj-1m-VQe"/>
                             <constraint firstItem="VOU-E5-hon" firstAttribute="centerX" secondItem="8W7-d2-zpr" secondAttribute="centerX" id="Wlh-xd-07R"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="xiu-5m-JEt"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u5j-hZ-tlH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2581.5999999999999" y="839.28035982008998"/>
+            <point key="canvasLocation" x="2582" y="852"/>
         </scene>
         <!--PlannerViewController-->
         <scene sceneID="xzX-c9-24w">
@@ -547,11 +548,27 @@
                             <constraint firstItem="zgK-Sn-Fvh" firstAttribute="centerY" secondItem="Npz-Wz-8m6" secondAttribute="centerY" id="0EP-ek-Aku"/>
                             <constraint firstItem="zgK-Sn-Fvh" firstAttribute="centerX" secondItem="Npz-Wz-8m6" secondAttribute="centerX" id="o3V-yn-UZM"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="UaA-Zj-EpC"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8D-uv-eCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2581.5999999999999" y="1376.311844077961"/>
+            <point key="canvasLocation" x="2582" y="1396"/>
+        </scene>
+        <!--Courses View Controller-->
+        <scene sceneID="A53-5b-i31">
+            <objects>
+                <viewController id="qyO-ye-sR5" customClass="CoursesViewController" customModule="SSSCTemp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W3d-iR-tcE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="TnR-Nd-XuS"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xF0-lb-MJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3378" y="309"/>
         </scene>
     </scenes>
     <resources>
