@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol Observer {
+protocol EventObserver {
     func update()
     func presentAlert(alert: UIAlertController)
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventsViewController: UIViewController, Observer, UITableViewDelegate, UITableViewDataSource {
+class EventsViewController: UIViewController, EventObserver, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: Properties
     
