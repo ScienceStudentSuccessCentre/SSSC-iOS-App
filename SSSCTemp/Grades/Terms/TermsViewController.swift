@@ -14,12 +14,14 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     private var addTermButton: UIBarButtonItem!
     private var editTermsButton: UIBarButtonItem!
+    private var doneEditingTermsButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         addTermButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTermPressed))
         editTermsButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTermPressed))
+        doneEditingTermsButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editTermPressed))
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -55,17 +57,29 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @objc func editTermPressed() {
         tableView.setEditing(!tableView.isEditing, animated: true)
-        navigationItem.leftBarButtonItem?.title = tableView.isEditing ? "Done" : "Edit"
+        if tableView.isEditing {
+            getNavigationItem()?.setLeftBarButton(doneEditingTermsButton, animated: true)
+        } else {
+            getNavigationItem()?.setLeftBarButton(editTermsButton, animated: true)
+        }
     }
     
     func toggleTableViewButtonsInNavigationBar(show: Bool) {
         if show {
-            navigationController?.navigationBar.topItem?.setRightBarButton(addTermButton, animated: false)
-            navigationController?.navigationBar.topItem?.setLeftBarButton(editTermsButton, animated: false)
+            getNavigationItem()?.setRightBarButton(addTermButton, animated: false)
+            if tableView.isEditing {
+                getNavigationItem()?.setLeftBarButton(doneEditingTermsButton, animated: false)
+            } else {
+                getNavigationItem()?.setLeftBarButton(editTermsButton, animated: false)
+            }
         } else {
-            navigationController?.navigationBar.topItem?.setRightBarButton(nil, animated: true)
-            navigationController?.navigationBar.topItem?.setLeftBarButton(nil, animated: true)
+            getNavigationItem()?.setRightBarButton(nil, animated: true)
+            getNavigationItem()?.setLeftBarButton(nil, animated: true)
         }
+    }
+    
+    private func getNavigationItem() -> UINavigationItem? {
+        return navigationController?.navigationBar.topItem
     }
     
 }
