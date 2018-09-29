@@ -9,6 +9,7 @@ import UIKit
 
 protocol GradesViewControllerDelegate: class {
     func toggleTableViewButtonsInNavigationBar(show: Bool)
+    func toggleOffTableViewEditMode()
 }
 
 class GradesViewController: UIViewController {
@@ -48,14 +49,17 @@ class GradesViewController: UIViewController {
             calculatorView.isHidden = false
             plannerView.isHidden = true
             navigationItem.title = "GPA Calculator"
+            delegate?.toggleOffTableViewEditMode()
         case 2:
             termsView.isHidden = true
             calculatorView.isHidden = true
             plannerView.isHidden = false
             navigationItem.title = "GPA Planner"
+            delegate?.toggleOffTableViewEditMode()
         default:
             break
         }
+        
         delegate?.toggleTableViewButtonsInNavigationBar(show: segmentIndex == 0)
     }
 }

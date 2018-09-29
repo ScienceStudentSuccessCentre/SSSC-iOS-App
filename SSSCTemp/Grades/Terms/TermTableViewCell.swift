@@ -9,6 +9,8 @@
 import UIKit
 
 class TermTableViewCell: UITableViewCell {
+    
+    @IBOutlet var termName: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

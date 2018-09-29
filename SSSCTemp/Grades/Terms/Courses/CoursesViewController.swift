@@ -9,6 +9,8 @@
 import UIKit
 
 class CoursesViewController: UIViewController {
+    
+    var term: Term!
 
     override func viewDidLoad() {
         super.viewDidLoad()

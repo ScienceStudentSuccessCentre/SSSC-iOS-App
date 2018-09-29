@@ -18,7 +18,7 @@ class EventParser {
     private let serverURL = "http://sssc-carleton-app-server.herokuapp.com/events";
     private let eventsURL = "/events"
     private var events = [Event]()
-    private var observers = [Observer]()
+    private var observers = [EventObserver]()
     
     public func loadEvents() {
         events.removeAll()
@@ -100,7 +100,7 @@ class EventParser {
         }
     }
     
-    public func attachObserver(observer: Observer) {
+    public func attachObserver(observer: EventObserver) {
         observers.append(observer)
     }
     
