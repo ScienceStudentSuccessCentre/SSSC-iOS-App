@@ -13,7 +13,6 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
     //MARK: Properties
     
     var events = [Event]()
-    var eventToPass: Event!
     var activityIndicatorView: UIActivityIndicatorView!
     
     private let refreshControl = UIRefreshControl()
@@ -124,15 +123,13 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "eventDetail" {
             let controller = segue.destination as! EventDetailViewController
             let indexPath = tableView.indexPathForSelectedRow!
-            eventToPass = events[indexPath.row]
-            controller.event = eventToPass
+            controller.event = events[indexPath.row]
         }
     }
 
