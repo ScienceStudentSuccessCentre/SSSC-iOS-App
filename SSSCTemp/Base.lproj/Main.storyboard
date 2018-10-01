@@ -487,7 +487,6 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="OjJ-F7-Qp4" id="oGb-Ba-xX8"/>
-                        <segue destination="X4w-0N-RKx" kind="showDetail" identifier="createTerm" id="hJa-al-pKx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X6i-TX-3QQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -574,38 +573,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xF0-lb-MJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3378" y="309"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="cCX-wt-dQL">
-            <objects>
-                <navigationController id="X4w-0N-RKx" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9r4-GQ-epm">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="65e-NZ-PbU" kind="relationship" relationship="rootViewController" id="Z6c-R9-O2C"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ykz-56-ISI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3377" y="882"/>
-        </scene>
-        <!--Create Term-->
-        <scene sceneID="xSJ-05-FU6">
-            <objects>
-                <viewController id="65e-NZ-PbU" customClass="CreateTermViewController" customModule="SSSCTemp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="MZX-Sa-zba">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="8Aj-6Z-tEi"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Create Term" id="Cbu-XS-ooH"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mNk-s8-iAE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4150" y="882"/>
         </scene>
     </scenes>
     <resources>

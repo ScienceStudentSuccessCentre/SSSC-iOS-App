@@ -1,20 +1,23 @@
 PODS:
-  - Alamofire (4.6.0)
+  - Alamofire (4.7.3)
+  - Eureka (4.3.0)
   - SQLite.swift (0.11.5):
     - SQLite.swift/standard (= 0.11.5)
   - SQLite.swift/standard (0.11.5)
-  - SwiftSoup (1.6.0)
+  - SwiftSoup (1.7.4)
 
 DEPENDENCIES:
   - Alamofire
+  - Eureka
   - SQLite.swift (~> 0.11.5)
   - SwiftSoup
 
 SPEC CHECKSUMS:
-  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Eureka: 6d711cb30ca333b4bc893110285a722ae3840114
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
-  SwiftSoup: db0634b1571304cfef38eb0ee6505eb7d06765f1
+  SwiftSoup: 92f5b348c131aed8af04f4326db1579ab19fa08c
 
-PODFILE CHECKSUM: 6ea8567cfb8dedaaa09e021d8c86abc393729ba6
+PODFILE CHECKSUM: a1f7519017257b801799e68812fb1ea19fc944d9
 
 COCOAPODS: 1.4.0

@@ -68,7 +68,29 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @objc func addTermPressed() {
-        performSegue(withIdentifier: "createTerm", sender: nil)
+        let alert = UIAlertController(title: "Create Term", message: "Enter a name for this term.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let termName = alert!.textFields![0].text!
+            if Database.instance.addTerm(name: termName) {
+                self.loadTerms()
+            } else {
+                print("Failed to add term")
+                //TODO: do something to alert the user?
+            }
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addTextField { (textField) in
+            textField.autocapitalizationType = .words
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using:
+                {_ in
+                    let textCount = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
+                    okAction.isEnabled = textCount > 0
+            })
+        }
+        okAction.isEnabled = false
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func editTermPressed() {

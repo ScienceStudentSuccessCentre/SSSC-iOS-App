@@ -23,7 +23,7 @@ import Foundation
  */
 open class Attributes: NSCopying {
 
-    open static var dataPrefix: String = "data-"
+    public static var dataPrefix: String = "data-"
 
     var attributes: OrderedDictionary<String, Attribute>  = OrderedDictionary<String, Attribute>()
     // linked hash map to preserve insertion order.
@@ -38,7 +38,7 @@ open class Attributes: NSCopying {
      @see #hasKey(String)
      */
     open func  get(key: String) -> String {
-        let attr: Attribute? = attributes.get(key:key)
+        let attr: Attribute? = attributes.get(key: key)
 		return attr != nil ? attr!.getValue() : ""
     }
 
@@ -86,7 +86,7 @@ open class Attributes: NSCopying {
      @param attribute attribute
      */
     open func put(attribute: Attribute) {
-        attributes.put(value: attribute, forKey:attribute.getKey())
+        attributes.put(value: attribute, forKey: attribute.getKey())
     }
 
     /**
@@ -254,7 +254,7 @@ open class Attributes: NSCopying {
 
 }
 
-extension Attributes : Sequence {
+extension Attributes: Sequence {
 	public func makeIterator() -> AnyIterator<Attribute> {
 		var list = attributes.orderedValues
 		return AnyIterator {
