@@ -8,8 +8,8 @@
 import UIKit
 
 protocol GradesViewControllerDelegate: class {
-    func toggleTableViewButtonsInNavigationBar(show: Bool)
     func toggleOffTableViewEditMode()
+    func updateTableViewButtons(show: Bool)
 }
 
 class GradesViewController: UIViewController {
@@ -38,28 +38,28 @@ class GradesViewController: UIViewController {
     }
     
     private func switchToView(segmentIndex: Int) {
+        delegate?.toggleOffTableViewEditMode()
         switch segmentIndex {
         case 0:
             termsView.isHidden = false
             calculatorView.isHidden = true
             plannerView.isHidden = true
             navigationItem.title = "Terms"
+            delegate?.updateTableViewButtons(show: true)
         case 1:
             termsView.isHidden = true
             calculatorView.isHidden = false
             plannerView.isHidden = true
             navigationItem.title = "GPA Calculator"
-            delegate?.toggleOffTableViewEditMode()
+            delegate?.updateTableViewButtons(show: false)
         case 2:
             termsView.isHidden = true
             calculatorView.isHidden = true
             plannerView.isHidden = false
             navigationItem.title = "GPA Planner"
-            delegate?.toggleOffTableViewEditMode()
+            delegate?.updateTableViewButtons(show: false)
         default:
             break
         }
-        
-        delegate?.toggleTableViewButtonsInNavigationBar(show: segmentIndex == 0)
     }
 }

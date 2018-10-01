@@ -10,6 +10,7 @@
 		5FF75134FB980B9B43D9E9A3 /* Pods_SSSCTemp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0D6250C99C69305AB6E625 /* Pods_SSSCTemp.framework */; };
 		FF19EE4E202EA6DA00475B63 /* EventObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19EE4D202EA6DA00475B63 /* EventObserver.swift */; };
 		FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1D7D24215D6DDD00A88467 /* Database.swift */; };
+		FF30AFB82162A6E200C1F22C /* CreateTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30AFB72162A6E200C1F22C /* CreateTermViewController.swift */; };
 		FF327FC920128C3E00B06E19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FC820128C3E00B06E19 /* AppDelegate.swift */; };
 		FF327FCB20128C3E00B06E19 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FCA20128C3E00B06E19 /* EventsViewController.swift */; };
 		FF327FD020128C3E00B06E19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF327FCE20128C3E00B06E19 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		E9E86330BB04874D98ED7DCD /* Pods-SSSCTemp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSSCTemp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SSSCTemp/Pods-SSSCTemp.release.xcconfig"; sourceTree = "<group>"; };
 		FF19EE4D202EA6DA00475B63 /* EventObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventObserver.swift; sourceTree = "<group>"; };
 		FF1D7D24215D6DDD00A88467 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		FF30AFB72162A6E200C1F22C /* CreateTermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTermViewController.swift; sourceTree = "<group>"; };
 		FF327FC520128C3E00B06E19 /* SSSCTemp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSSCTemp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF327FC820128C3E00B06E19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF327FCA20128C3E00B06E19 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				FFA7CBAA215DD4CB00A050B1 /* TermsViewController.swift */,
 				FFA7CBB0215DD59B00A050B1 /* TermTableViewCell.swift */,
 				FFE84077215F1CAC00A5E33B /* Term.swift */,
+				FF30AFB72162A6E200C1F22C /* CreateTermViewController.swift */,
 				FFE84074215F195900A5E33B /* Courses */,
 			);
 			path = Terms;
@@ -465,6 +468,7 @@
 				FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */,
 				FF4C4A9C215D7C550091BF2A /* GradesViewController.swift in Sources */,
 				FF7FD89021485E8100DAC88C /* HtmlString.swift in Sources */,
+				FF30AFB82162A6E200C1F22C /* CreateTermViewController.swift in Sources */,
 				FF327FC920128C3E00B06E19 /* AppDelegate.swift in Sources */,
 				FFE84078215F1CAC00A5E33B /* Term.swift in Sources */,
 				FF327FCB20128C3E00B06E19 /* EventsViewController.swift in Sources */,

@@ -11,11 +11,15 @@ import Foundation
 class Term {
     
     var id: Int
+    var term: String
+    var year: String
     var name: String
     
-    init(id: Int64, name: String) {
+    init(id: Int64, term: String, year: String) {
         self.id = Int(id)
-        self.name = name
+        self.term = term
+        self.year = year
+        self.name = term + " " + year
     }
     
 }

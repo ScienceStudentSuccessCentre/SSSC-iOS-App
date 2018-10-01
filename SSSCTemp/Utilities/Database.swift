@@ -18,8 +18,9 @@ class Database {
         ).first!
     
     private let t_terms = Table("terms")
-    private let termId = Expression<Int64>("termId")
-    private let termName = Expression<String>("termName")
+    private let t_terms_id = Expression<Int64>("termId")
+    private let t_terms_term = Expression<String>("term")
+    private let t_terms_year = Expression<String>("year")
     
     private var db: Connection?
     
@@ -27,6 +28,8 @@ class Database {
         db = try? Connection("\(Database.path)/\(Database.name)")
         if db != nil {
             print("Connected to database \(Database.name)")
+            
+            preCreationScripts()
             
             createTermsTable()
             
@@ -37,22 +40,23 @@ class Database {
     private func createTermsTable() {
         do {
             try db?.run(t_terms.create(ifNotExists: true) { t in
-                t.column(termId, primaryKey: .autoincrement)
-                t.column(termName)
+                t.column(t_terms_id, primaryKey: .autoincrement)
+                t.column(t_terms_term)
+                t.column(t_terms_year)
             })
         } catch {
             print("Did not create terms table")
         }
     }
     
-    public func addTerm(name: String) -> Bool {
-        print("Adding term \(name) into \(t_terms)")
+    public func addTerm(term: String, year: String) -> Bool {
+        print("Adding term \(term) \(year) into \(t_terms)")
         do {
-            let rowid = try db?.run(t_terms.insert(or: .replace, termName <- name))
+            let rowid = try db?.run(t_terms.insert(or: .replace, t_terms_term <- term, t_terms_year <- year))
             print("Inserted rowid \(rowid!)")
             return true
-        } catch let Result.error(message, code, statement) where code == SQLITE_CONSTRAINT {
-            print("Constraint failed: \(message), in \(statement!)")
+        } catch let Result.error(message, code, _) where code == SQLITE_CONSTRAINT {
+            print("Constraint failed: \(message)")
         } catch let error {
             print("Insertion failed: \(error)")
         }
@@ -61,7 +65,7 @@ class Database {
     
     public func deleteTerm(id: Int) -> Bool {
         print("Deleting term \(id) from \(t_terms)")
-        let term = t_terms.filter(termId == Int64(id))
+        let term = t_terms.filter(t_terms_id == Int64(id))
         do {
             try db?.run(term.delete())
             print("Deleted term \(id)")
@@ -76,10 +80,11 @@ class Database {
         print("Getting terms from \(t_terms)")
         var terms = [Term]()
         do {
-            for term in try (db?.prepare(t_terms))! {
-                let tId = try term.get(termId)
-                let tName = try term.get(termName)
-                terms.append(Term(id: tId, name: tName))
+            for row in try (db?.prepare(t_terms))! {
+                let id = try row.get(t_terms_id)
+                let term = try row.get(t_terms_term)
+                let year = try row.get(t_terms_year)
+                terms.append(Term(id: id, term: term, year: year))
             }
         } catch let error {
             print("Select failed: \(error)")
@@ -88,8 +93,12 @@ class Database {
         return terms
     }
     
+    private func preCreationScripts() {
+        // any custom scripts that should be run while developing/testing/debugging BEFORE creating tables
+    }
+    
     private func postCreationScripts() {
-        // any custom scripts that should be run while developing/testing/debugging
+        // any custom scripts that should be run while developing/testing/debugging AFTER creating tables
     }
     
 }

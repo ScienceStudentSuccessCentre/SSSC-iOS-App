@@ -71,9 +71,10 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableViewCell", for: indexPath) as? EventTableViewCell  else {
                         fatalError("The dequeued cell is not an instance of EventTableViewCell.")
         }
-        cell.monthLabel.text = events[indexPath.row].getMonthName()
-        cell.dateLabel.text = events[indexPath.row].getDayLeadingZero()
-        cell.eventLabel.text = events[indexPath.row].getName()
+        let event = events[indexPath.row]
+        cell.monthLabel.text = event.getMonthName()
+        cell.dateLabel.text = event.getDayLeadingZero()
+        cell.eventLabel.text = event.getName()
         return cell
     }
     

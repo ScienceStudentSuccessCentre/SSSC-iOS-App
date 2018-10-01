@@ -39,10 +39,12 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } else {
             self.tableView.reloadData()
         }
+        updateTableViewButtons(show: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         toggleOffTableViewEditMode()
+        updateTableViewButtons(show: false)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,7 +55,9 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TermTableViewCell", for: indexPath) as? TermTableViewCell  else {
             fatalError("The dequeued cell is not an instance of TermTableViewCell.")
         }
-        cell.termName.text = terms[indexPath.row].name
+        let term = terms[indexPath.row]
+        cell.termName.text = term.name
+        cell.termAbbr.text = String(term.term.prefix(1)) + String(term.year.suffix(2))
         return cell
     }
     
@@ -68,69 +72,53 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @objc func addTermPressed() {
-        let alert = UIAlertController(title: "Create Term", message: "Enter a name for this term.", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-            let termName = alert!.textFields![0].text!
-            if Database.instance.addTerm(name: termName) {
-                self.loadTerms()
-            } else {
-                print("Failed to add term")
-                //TODO: do something to alert the user?
-            }
-        })
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addTextField { (textField) in
-            textField.autocapitalizationType = .words
-            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using:
-                {_ in
-                    let textCount = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
-                    okAction.isEnabled = textCount > 0
-            })
-        }
-        okAction.isEnabled = false
-        alert.addAction(okAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
+        performSegue(withIdentifier: "createTerm", sender: self)
     }
     
     @objc func editTermPressed() {
-        toggleEditMode()
+        toggleTableViewEditMode()
+        updateTableViewButtons(show: true)
     }
     
     func toggleOffTableViewEditMode() {
         if tableView.isEditing {
-            toggleEditMode()
+            toggleTableViewEditMode()
         }
     }
     
-    private func toggleEditMode() {
+    func toggleTableViewEditMode() {
         tableView.setEditing(!tableView.isEditing, animated: true)
-        if tableView.isEditing {
-            getNavigationItem()?.setLeftBarButton(doneEditingTermsButton, animated: true)
-        } else {
-            getNavigationItem()?.setLeftBarButton(editTermsButton, animated: true)
-        }
     }
     
-    private func loadTerms() {
-        terms.removeAll()
-        terms = Database.instance.getTerms()
-        self.tableView.reloadData()
-    }
-    
-    func toggleTableViewButtonsInNavigationBar(show: Bool) {
+    func updateTableViewButtons(show: Bool) {
         if show {
             if tableView.isEditing {
-                getNavigationItem()?.setLeftBarButton(doneEditingTermsButton, animated: false)
+                getNavigationItem()?.setLeftBarButton(doneEditingTermsButton, animated: true)
             } else {
-                getNavigationItem()?.setLeftBarButton(editTermsButton, animated: false)
+                getNavigationItem()?.setLeftBarButton(editTermsButton, animated: true)
             }
             getNavigationItem()?.setRightBarButton(addTermButton, animated: false)
         } else {
             getNavigationItem()?.setLeftBarButton(nil, animated: true)
             getNavigationItem()?.setRightBarButton(nil, animated: true)
         }
-        //TODO: fix bug where Edit button appears after switching segments in GradesViewController
+    }
+    
+    private func loadTerms() {
+        terms.removeAll()
+        terms = Database.instance.getTerms()
+        terms = terms.sorted {
+            if $0.year != $1.year {
+                return $0.year > $1.year
+            }
+            else {
+                if $0.term == "Fall" || ($0.term == "Summer" && $1.term == "Winter") {
+                    return true
+                }
+                return false
+            }
+        }
+        self.tableView.reloadData()
     }
     
     private func getNavigationItem() -> UINavigationItem? {

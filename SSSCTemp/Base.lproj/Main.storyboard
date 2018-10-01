@@ -428,8 +428,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHZ-eQ-Rjv">
                                                     <rect key="frame" x="15" y="11" width="68" height="68"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="T" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAO-hC-zgu">
-                                                            <rect key="frame" x="26.5" y="19" width="15" height="30"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F18" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAO-hC-zgu">
+                                                            <rect key="frame" x="13.5" y="19" width="41" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -469,6 +469,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="termAbbr" destination="FAO-hC-zgu" id="mI7-hy-Buf"/>
                                             <outlet property="termName" destination="ocs-vd-Sl9" id="KBh-b6-GLw"/>
                                             <segue destination="qyO-ye-sR5" kind="show" identifier="termDetail" id="aL2-Kv-euu"/>
                                         </connections>
@@ -487,6 +488,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="OjJ-F7-Qp4" id="oGb-Ba-xX8"/>
+                        <segue destination="vuU-UQ-j4z" kind="showDetail" identifier="createTerm" id="Zaf-ii-Kkd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X6i-TX-3QQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -573,6 +575,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xF0-lb-MJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3378" y="309"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9a4-Z6-YaC">
+            <objects>
+                <navigationController id="vuU-UQ-j4z" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sJh-UN-Fku">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="OGy-JY-Mpe" kind="relationship" relationship="rootViewController" id="MgJ-eq-Ps5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LPV-Zw-7Vc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3377" y="880"/>
+        </scene>
+        <!--Create Term View Controller-->
+        <scene sceneID="wXx-pF-z6u">
+            <objects>
+                <viewController id="OGy-JY-Mpe" customClass="CreateTermViewController" customModule="SSSCTemp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kXB-xc-A03">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="U0v-97-RFt"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="JPi-qV-Zxp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k7u-I2-8pi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4170" y="874"/>
         </scene>
     </scenes>
     <resources>
