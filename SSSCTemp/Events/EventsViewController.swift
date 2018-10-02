@@ -119,7 +119,7 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {

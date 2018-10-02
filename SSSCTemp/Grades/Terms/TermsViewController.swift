@@ -18,6 +18,7 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     private var terms = [Term]()
     private var creatingTerm = false
+    private var isCurrentView = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,18 +34,28 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("View will appear")
         if creatingTerm {
             creatingTerm = false
             loadTerms()
         } else {
-            self.tableView.reloadData()
+            tableView.reloadData()
         }
-        updateTableViewButtons(show: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("View did appear")
+        isCurrentView = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        print("View will disappear")
         toggleOffTableViewEditMode()
-        updateTableViewButtons(show: false)
+        updateTableViewButtons(show: true)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        isCurrentView = false
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,7 +88,7 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @objc func editTermPressed() {
         toggleTableViewEditMode()
-        updateTableViewButtons(show: true)
+        toggleTableViewButtons()
     }
     
     func toggleOffTableViewEditMode() {
@@ -91,17 +102,21 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func updateTableViewButtons(show: Bool) {
-        if show {
-            if tableView.isEditing {
-                getNavigationItem()?.setLeftBarButton(doneEditingTermsButton, animated: true)
-            } else {
-                getNavigationItem()?.setLeftBarButton(editTermsButton, animated: true)
-            }
-            getNavigationItem()?.setRightBarButton(addTermButton, animated: false)
+        if show && isCurrentView {
+            toggleTableViewButtons()
         } else {
             getNavigationItem()?.setLeftBarButton(nil, animated: true)
             getNavigationItem()?.setRightBarButton(nil, animated: true)
         }
+    }
+    
+    func toggleTableViewButtons() {
+        if tableView.isEditing {
+            getNavigationItem()?.setLeftBarButton(doneEditingTermsButton, animated: true)
+        } else {
+            getNavigationItem()?.setLeftBarButton(editTermsButton, animated: false)
+        }
+        getNavigationItem()?.setRightBarButton(addTermButton, animated: true)
     }
     
     private func loadTerms() {
