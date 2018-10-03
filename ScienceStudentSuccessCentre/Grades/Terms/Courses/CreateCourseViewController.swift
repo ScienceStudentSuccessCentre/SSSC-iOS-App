@@ -31,6 +31,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                 row.tag = "name"
                 row.title = "Name"
                 row.placeholder = "Operating Systems"
+                row.cell.textField.autocapitalizationType = .words
             }.onChange { _ in
                     self.validateForm()
             }
@@ -38,6 +39,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                 row.tag = "code"
                 row.title = "Code"
                 row.placeholder = "COMP 3000"
+                row.cell.textField.autocapitalizationType = .allCharacters
             }.onChange { _ in
                 self.validateForm()
             }
