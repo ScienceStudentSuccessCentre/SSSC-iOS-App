@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5FF75134FB980B9B43D9E9A3 /* Pods_SSSCTemp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0D6250C99C69305AB6E625 /* Pods_SSSCTemp.framework */; };
+		FF13F7D421646AC1005733B0 /* CreateCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */; };
+		FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */; };
 		FF19EE4E202EA6DA00475B63 /* EventObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19EE4D202EA6DA00475B63 /* EventObserver.swift */; };
 		FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1D7D24215D6DDD00A88467 /* Database.swift */; };
 		FF30AFB82162A6E200C1F22C /* CreateTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30AFB72162A6E200C1F22C /* CreateTermViewController.swift */; };
@@ -57,6 +59,8 @@
 		522655EDC2CD2AB192C981B3 /* Pods-SSSCTemp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSSCTemp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SSSCTemp/Pods-SSSCTemp.debug.xcconfig"; sourceTree = "<group>"; };
 		9E0D6250C99C69305AB6E625 /* Pods_SSSCTemp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSSCTemp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E86330BB04874D98ED7DCD /* Pods-SSSCTemp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSSCTemp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SSSCTemp/Pods-SSSCTemp.release.xcconfig"; sourceTree = "<group>"; };
+		FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCourseViewController.swift; sourceTree = "<group>"; };
+		FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurekaFormProtocol.swift; sourceTree = "<group>"; };
 		FF19EE4D202EA6DA00475B63 /* EventObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventObserver.swift; sourceTree = "<group>"; };
 		FF1D7D24215D6DDD00A88467 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		FF30AFB72162A6E200C1F22C /* CreateTermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTermViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 				FF1D7D24215D6DDD00A88467 /* Database.swift */,
 				FF7FD88F21485E8100DAC88C /* HtmlString.swift */,
 				FF7A0904215967F600A98504 /* Formatter.swift */,
+				FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 				FFAC093B215EBBD5007C4264 /* CoursesViewController.swift */,
 				FFFC6BC82162D70D001585CE /* CourseTableViewCell.swift */,
 				FFFC6BC62162D6D6001585CE /* Course.swift */,
+				FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */,
 			);
 			path = Courses;
 			sourceTree = "<group>";
@@ -467,6 +473,7 @@
 				FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */,
 				FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */,
 				FF19EE4E202EA6DA00475B63 /* EventObserver.swift in Sources */,
+				FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */,
 				FFA7CBAB215DD4CB00A050B1 /* TermsViewController.swift in Sources */,
 				FFAC093C215EBBD5007C4264 /* CoursesViewController.swift in Sources */,
 				FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */,
@@ -476,6 +483,7 @@
 				FF7FD89021485E8100DAC88C /* HtmlString.swift in Sources */,
 				FF30AFB82162A6E200C1F22C /* CreateTermViewController.swift in Sources */,
 				FF327FC920128C3E00B06E19 /* AppDelegate.swift in Sources */,
+				FF13F7D421646AC1005733B0 /* CreateCourseViewController.swift in Sources */,
 				FFFC6BC72162D6D6001585CE /* Course.swift in Sources */,
 				FFE84078215F1CAC00A5E33B /* Term.swift in Sources */,
 				FF327FCB20128C3E00B06E19 /* EventsViewController.swift in Sources */,

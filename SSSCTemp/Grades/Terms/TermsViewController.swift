@@ -34,7 +34,6 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("View will appear")
         if creatingTerm {
             creatingTerm = false
             loadTerms()
@@ -44,12 +43,10 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("View did appear")
         isCurrentView = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print("View will disappear")
         toggleOffTableViewEditMode()
         updateTableViewButtons(show: true)
     }
