@@ -1,6 +1,0 @@
-framework module Pods_SSSCTemp {
-  umbrella header "Pods-SSSCTemp-umbrella.h"
-
-  export *
-  module * { export * }
-}

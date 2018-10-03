@@ -1,6 +1,6 @@
 platform :ios, '9.0'
 
-target 'SSSCTemp' do
+target 'ScienceStudentSuccessCentre' do
   use_frameworks!
 pod "SwiftSoup"
 pod "Alamofire"
