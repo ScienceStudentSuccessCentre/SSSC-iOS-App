@@ -18,16 +18,17 @@ class Database {
         ).first!
     
     private let t_terms = Table("terms")
-    private let t_terms_id = Expression<Int64>("termId")
+    private let t_terms_id = Expression<Int>("termId")
     private let t_terms_term = Expression<String>("term")
     private let t_terms_year = Expression<String>("year")
     
     private let t_courses = Table("courses")
-    private let t_courses_id = Expression<Int64>("courseId")
+    private let t_courses_id = Expression<Int>("courseId")
     private let t_courses_name = Expression<String>("name")
     private let t_courses_code = Expression<String>("code")
+    private let t_courses_credits = Expression<Double>("credits")
     private let t_courses_isCGPACourse = Expression<Bool>("isCGPACourse")
-    private let t_courses_termId = Expression<Int64>("termId")
+    private let t_courses_termId = Expression<Int>("termId")
     
     private var db: Connection?
     
@@ -35,6 +36,12 @@ class Database {
         db = try? Connection("\(Database.path)/\(Database.name)")
         if db != nil {
             print("Connected to database \(Database.name)")
+            
+            do {
+                try db?.execute("PRAGMA foreign_keys = ON;")
+            } catch let error {
+                print("PRAGMA foreign_keys failed: \(error)")
+            }
             
             preCreationScripts()
             
@@ -63,9 +70,10 @@ class Database {
                 t.column(t_courses_id, primaryKey: .autoincrement)
                 t.column(t_courses_name)
                 t.column(t_courses_code)
+                t.column(t_courses_credits)
                 t.column(t_courses_isCGPACourse)
                 t.column(t_courses_termId)
-                t.foreignKey(t_courses_termId, references: t_terms, t_terms_id, delete: .setNull)
+                t.foreignKey(t_courses_termId, references: t_terms, t_terms_id, delete: .cascade)
             })
         } catch {
             print("Did not create courses table")
@@ -88,14 +96,15 @@ class Database {
         return false
     }
     
-    public func addCourse(name: String, code: String, isCGPACourse: Bool, termId: Int) -> Bool {
+    public func addCourse(name: String, code: String, credits: Double, isCGPACourse: Bool, termId: Int) -> Bool {
         print("Adding course \(name) (\(code)) into \(t_courses)")
         do {
             let rowid = try db?.run(t_courses.insert(or: .replace,
                                                      t_courses_name <- name,
                                                      t_courses_code <- code,
+                                                     t_courses_credits <- credits,
                                                      t_courses_isCGPACourse <- isCGPACourse,
-                                                     t_courses_termId <- Int64(termId)))
+                                                     t_courses_termId <- termId))
             print("Inserted rowid \(rowid!)")
             return true
         } catch let Result.error(message, code, _) where code == SQLITE_CONSTRAINT {
@@ -108,7 +117,7 @@ class Database {
     
     public func deleteTerm(id: Int) -> Bool {
         print("Deleting term \(id) from \(t_terms)")
-        let term = t_terms.filter(t_terms_id == Int64(id))
+        let term = t_terms.filter(t_terms_id == id)
         do {
             try db?.run(term.delete())
             print("Deleted term \(id)")
@@ -121,7 +130,7 @@ class Database {
     
     public func deleteCourse(id: Int) -> Bool {
         print("Deleting course \(id) from \(t_courses)")
-        let course = t_courses.filter(t_courses_id == Int64(id))
+        let course = t_courses.filter(t_courses_id == id)
         do {
             try db?.run(course.delete())
             print("Deleted course \(id)")
@@ -137,10 +146,10 @@ class Database {
         var terms = [Term]()
         do {
             for row in try (db?.prepare(t_terms))! {
-                let id = try row.get(t_terms_id)
+                let termId = try row.get(t_terms_id)
                 let term = try row.get(t_terms_term)
                 let year = try row.get(t_terms_year)
-                terms.append(Term(id: id, term: term, year: year))
+                terms.append(Term(id: termId, term: term, year: year))
             }
         } catch let error {
             print("Select failed: \(error)")
@@ -149,23 +158,36 @@ class Database {
         return terms
     }
     
-    public func getCourses() -> [Course] {
-        print("Getting courses from \(t_courses)")
+    public func getCoursesByTermId(id: Int) -> [Course] {
+        print("Getting courses from \(t_courses) by termId \(id)")
         var courses = [Course]()
         do {
-            for row in try (db?.prepare(t_courses))! {
-                let id = try row.get(t_courses_id)
+            for row in try (db?.prepare(t_courses.where(t_courses_termId == id)))! {
+                let courseId = try row.get(t_courses_id)
                 let name = try row.get(t_courses_name)
                 let code = try row.get(t_courses_code)
+                let credits = try row.get(t_courses_credits)
                 let isCGPACourse = try row.get(t_courses_isCGPACourse)
                 let termId = try row.get(t_courses_termId)
-                courses.append(Course(id: id, name: name, code: code, isCGPACourse: isCGPACourse))
+                courses.append(Course(id: courseId, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId: termId))
             }
         } catch let error {
             print("Select failed: \(error)")
         }
         print("Found \(courses.count) courses")
         return courses
+    }
+    
+    public func countCourses() {
+        var courseCount = 0
+        do {
+            for _ in try (db?.prepare(t_courses))! {
+                courseCount += 1
+            }
+        } catch {
+            
+        }
+        print("Course count: \(courseCount)")
     }
     
     private func preCreationScripts() {

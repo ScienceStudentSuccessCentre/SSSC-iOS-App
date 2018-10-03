@@ -20,8 +20,6 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var term: Term!
     var courses = [Course]()
-    
-    private var creatingCourse = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,17 +33,12 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        loadCourses()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if creatingCourse {
-            creatingCourse = false
-            loadCourses()
-        } else {
-            tableView.reloadData()
-        }
+        Database.instance.countCourses()
+        loadCourses()
+        updateTermDetails()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -75,7 +68,13 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
             let course = courses[indexPath.row]
             if Database.instance.deleteCourse(id: course.id) {
                 self.courses.remove(at: indexPath.row)
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                DispatchQueue.main.async {
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                    if self.courses.count == 0 {
+                        self.toggleOffTableViewEditMode()
+                    }
+                }
+                updateTermDetails()
             }
         }
     }
@@ -105,15 +104,22 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private func loadCourses() {
         courses.removeAll()
-        courses = Database.instance.getCourses()
+        courses = Database.instance.getCoursesByTermId(id: term.id)
         self.tableView.reloadData()
+    }
+    
+    private func updateTermDetails() {
+        var totalCredits: Double = 0
+        for course in courses {
+            totalCredits += course.credits
+        }
+        credits.text = "Total Credits: \(totalCredits)"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "createCourse" {
             let controller = segue.destination.children.first as! CreateCourseViewController
             controller.term = term
-            creatingCourse = true
         }
     }
 

@@ -15,8 +15,8 @@ class Term {
     var year: String
     var name: String
     
-    init(id: Int64, term: String, year: String) {
-        self.id = Int(id)
+    init(id: Int, term: String, year: String) {
+        self.id = id
         self.term = term
         self.year = year
         self.name = term + " " + year

@@ -13,13 +13,17 @@ class Course {
     var id: Int
     var name: String
     var code: String
+    var credits: Double
     var isCGPACourse: Bool
+    var termId: Int
     
-    init(id: Int64, name: String, code: String, isCGPACourse: Bool) {
-        self.id = Int(id)
+    init(id: Int, name: String, code: String, credits: Double, isCGPACourse: Bool, termId: Int) {
+        self.id = id
         self.name = name
         self.code = code
+        self.credits = credits
         self.isCGPACourse = isCGPACourse
+        self.termId = termId
     }
     
 }

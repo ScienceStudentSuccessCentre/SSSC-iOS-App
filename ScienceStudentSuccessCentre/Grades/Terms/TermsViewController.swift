@@ -17,7 +17,6 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     private var doneEditingTermsButton: UIBarButtonItem!
     
     private var terms = [Term]()
-    private var creatingTerm = false
     private var isCurrentView = true
 
     override func viewDidLoad() {
@@ -29,17 +28,10 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        loadTerms()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if creatingTerm {
-            creatingTerm = false
-            loadTerms()
-        } else {
-            tableView.reloadData()
-        }
+        loadTerms()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -74,7 +66,13 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let term = terms[indexPath.row]
             if Database.instance.deleteTerm(id: term.id) {
                 self.terms.remove(at: indexPath.row)
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                DispatchQueue.main.async {
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                    if self.terms.count == 0 {
+                        self.toggleOffTableViewEditMode()
+                        self.toggleTableViewButtons()
+                    }
+                }
             }
         }
     }
@@ -142,8 +140,6 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let controller = segue.destination as! CoursesViewController
             let indexPath = tableView.indexPathForSelectedRow!
             controller.term = terms[indexPath.row]
-        } else if segue.identifier == "createTerm" {
-            creatingTerm = true
         }
     }
     

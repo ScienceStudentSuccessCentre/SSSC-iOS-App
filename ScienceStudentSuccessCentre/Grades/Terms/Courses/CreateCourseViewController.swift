@@ -12,9 +12,14 @@ import Eureka
 class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     
     var term: Term!
+    let creditFormatter = NumberFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        creditFormatter.numberStyle = NumberFormatter.Style.decimal
+        creditFormatter.maximumFractionDigits = 1
+        creditFormatter.minimumFractionDigits = 1
 
         navigationItem.title = "New Course"
         navigationItem.setLeftBarButton(UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed)), animated: true)
@@ -43,6 +48,14 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             }.onChange { _ in
                 self.validateForm()
             }
+            <<< DecimalRow() { row in
+                row.tag = "credits"
+                row.title = "Credits"
+                row.placeholder = "0.5"
+                row.formatter = creditFormatter
+            }.onChange { _ in
+                self.validateForm()
+            }
             <<< SwitchRow() { row in
                 row.tag = "isCGPACourse"
                 row.title = "Counts Towards Major GPA"
@@ -53,7 +66,8 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         let values = form.values()
         let name = values["name"] as? String ?? ""
         let code = values["code"] as? String ?? ""
-        if !name.isEmpty && !code.isEmpty {
+        let credits = values["credits"] as? Double ?? 0
+        if !name.isEmpty && !code.isEmpty && credits > 0 {
             navigationItem.rightBarButtonItem?.isEnabled = true
         } else {
             navigationItem.rightBarButtonItem?.isEnabled = false
@@ -64,8 +78,9 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         let values = form.values()
         let name = values["name"] as? String ?? ""
         let code = values["code"] as? String ?? ""
+        let credits = values["credits"] as? Double ?? 0
         let isCGPACourse = values["isCGPACourse"] as? Bool ?? false
-        if !Database.instance.addCourse(name: name, code: code, isCGPACourse: isCGPACourse, termId: term.id) {
+        if !Database.instance.addCourse(name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId: term.id) {
             print("Failed to create course")
             //TODO: let the user know somehow
         }
