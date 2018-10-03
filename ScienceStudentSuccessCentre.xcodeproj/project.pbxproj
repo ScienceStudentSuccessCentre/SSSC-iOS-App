@@ -17,8 +17,8 @@
 		FF327FCB20128C3E00B06E19 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FCA20128C3E00B06E19 /* EventsViewController.swift */; };
 		FF327FD020128C3E00B06E19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF327FCE20128C3E00B06E19 /* Main.storyboard */; };
 		FF327FD520128C3E00B06E19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF327FD320128C3E00B06E19 /* LaunchScreen.storyboard */; };
-		FF327FE020128C3E00B06E19 /* SSSCTempTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FDF20128C3E00B06E19 /* SSSCTempTests.swift */; };
-		FF327FEB20128C3E00B06E19 /* SSSCTempUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FEA20128C3E00B06E19 /* SSSCTempUITests.swift */; };
+		FF327FE020128C3E00B06E19 /* ScienceStudentSuccessCentreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FDF20128C3E00B06E19 /* ScienceStudentSuccessCentreTests.swift */; };
+		FF327FEB20128C3E00B06E19 /* ScienceStudentSuccessCentreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FEA20128C3E00B06E19 /* ScienceStudentSuccessCentreUITests.swift */; };
 		FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3C2287202427660098B868 /* EventDetailViewController.swift */; };
 		FF3D05DC215AC9AC0073D0E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */; };
 		FF4C4A9C215D7C550091BF2A /* GradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */; };
@@ -71,10 +71,10 @@
 		FF327FD420128C3E00B06E19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF327FD620128C3E00B06E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF327FDB20128C3E00B06E19 /* ScienceStudentSuccessCentreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScienceStudentSuccessCentreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF327FDF20128C3E00B06E19 /* SSSCTempTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSSCTempTests.swift; sourceTree = "<group>"; };
+		FF327FDF20128C3E00B06E19 /* ScienceStudentSuccessCentreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScienceStudentSuccessCentreTests.swift; sourceTree = "<group>"; };
 		FF327FE120128C3E00B06E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF327FE620128C3E00B06E19 /* ScienceStudentSuccessCentreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScienceStudentSuccessCentreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF327FEA20128C3E00B06E19 /* SSSCTempUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSSCTempUITests.swift; sourceTree = "<group>"; };
+		FF327FEA20128C3E00B06E19 /* ScienceStudentSuccessCentreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScienceStudentSuccessCentreUITests.swift; sourceTree = "<group>"; };
 		FF327FEC20128C3E00B06E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF3C2287202427660098B868 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		FF3C228A2024317A0098B868 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
@@ -172,7 +172,7 @@
 		FF327FDE20128C3E00B06E19 /* ScienceStudentSuccessCentreTests */ = {
 			isa = PBXGroup;
 			children = (
-				FF327FDF20128C3E00B06E19 /* SSSCTempTests.swift */,
+				FF327FDF20128C3E00B06E19 /* ScienceStudentSuccessCentreTests.swift */,
 				FF327FE120128C3E00B06E19 /* Info.plist */,
 			);
 			path = ScienceStudentSuccessCentreTests;
@@ -181,7 +181,7 @@
 		FF327FE920128C3E00B06E19 /* ScienceStudentSuccessCentreUITests */ = {
 			isa = PBXGroup;
 			children = (
-				FF327FEA20128C3E00B06E19 /* SSSCTempUITests.swift */,
+				FF327FEA20128C3E00B06E19 /* ScienceStudentSuccessCentreUITests.swift */,
 				FF327FEC20128C3E00B06E19 /* Info.plist */,
 			);
 			path = ScienceStudentSuccessCentreUITests;
@@ -500,7 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF327FE020128C3E00B06E19 /* SSSCTempTests.swift in Sources */,
+				FF327FE020128C3E00B06E19 /* ScienceStudentSuccessCentreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,7 +508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF327FEB20128C3E00B06E19 /* SSSCTempUITests.swift in Sources */,
+				FF327FEB20128C3E00B06E19 /* ScienceStudentSuccessCentreUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

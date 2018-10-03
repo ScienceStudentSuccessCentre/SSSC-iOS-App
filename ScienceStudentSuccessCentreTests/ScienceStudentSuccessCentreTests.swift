@@ -7,9 +7,9 @@
 //
 
 import XCTest
-@testable import SSSCTemp
+@testable import ScienceStudentSuccessCentre
 
-class SSSCTempTests: XCTestCase {
+class ScienceStudentSuccessCentreTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
