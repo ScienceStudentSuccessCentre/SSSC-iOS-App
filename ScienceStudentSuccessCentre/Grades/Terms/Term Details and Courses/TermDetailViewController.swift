@@ -68,8 +68,8 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             let course = courses[indexPath.row]
             if Database.instance.deleteCourse(id: course.id) {
                 self.courses.remove(at: indexPath.row)
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
                 DispatchQueue.main.async {
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
                     if self.courses.count == 0 {
                         self.toggleOffTableViewEditMode()
                     }

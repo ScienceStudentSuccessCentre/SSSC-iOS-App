@@ -66,8 +66,8 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let term = terms[indexPath.row]
             if Database.instance.deleteTerm(id: term.id) {
                 self.terms.remove(at: indexPath.row)
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                DispatchQueue.main.sync {
+                DispatchQueue.main.async {
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
                     if self.terms.count == 0 {
                         self.toggleOffTableViewEditMode()
                         self.toggleTableViewButtons()
