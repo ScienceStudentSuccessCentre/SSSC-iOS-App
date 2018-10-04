@@ -29,6 +29,7 @@ class Database {
     private let t_courses_credits = Expression<Double>("credits")
     private let t_courses_isCGPACourse = Expression<Bool>("isCGPACourse")
     private let t_courses_termId = Expression<Int>("termId")
+    private let t_courses_hexColour = Expression<String>("hexColour")
     
     private var db: Connection?
     
@@ -73,6 +74,7 @@ class Database {
                 t.column(t_courses_credits)
                 t.column(t_courses_isCGPACourse)
                 t.column(t_courses_termId)
+                t.column(t_courses_hexColour)
                 t.foreignKey(t_courses_termId, references: t_terms, t_terms_id, delete: .cascade)
             })
         } catch {
@@ -96,15 +98,16 @@ class Database {
         return false
     }
     
-    public func addCourse(name: String, code: String, credits: Double, isCGPACourse: Bool, termId: Int) -> Bool {
-        print("Adding course \(name) (\(code)) into \(t_courses)")
+    public func addCourse(course: Course) -> Bool {
+        print("Adding course \(course.name) (\(course.code)) into \(t_courses)")
         do {
             let rowid = try db?.run(t_courses.insert(or: .replace,
-                                                     t_courses_name <- name,
-                                                     t_courses_code <- code,
-                                                     t_courses_credits <- credits,
-                                                     t_courses_isCGPACourse <- isCGPACourse,
-                                                     t_courses_termId <- termId))
+                                                     t_courses_name <- course.name,
+                                                     t_courses_code <- course.code,
+                                                     t_courses_credits <- course.credits,
+                                                     t_courses_isCGPACourse <- course.isCGPACourse,
+                                                     t_courses_termId <- course.termId,
+                                                     t_courses_hexColour <- course.hexColour))
             print("Inserted rowid \(rowid!)")
             return true
         } catch let Result.error(message, code, _) where code == SQLITE_CONSTRAINT {
@@ -169,25 +172,14 @@ class Database {
                 let credits = try row.get(t_courses_credits)
                 let isCGPACourse = try row.get(t_courses_isCGPACourse)
                 let termId = try row.get(t_courses_termId)
-                courses.append(Course(id: courseId, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId: termId))
+                let hexColour = try row.get(t_courses_hexColour)
+                courses.append(Course(id: courseId, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId: termId, hexColour: hexColour))
             }
         } catch let error {
             print("Select failed: \(error)")
         }
         print("Found \(courses.count) courses")
         return courses
-    }
-    
-    public func countCourses() {
-        var courseCount = 0
-        do {
-            for _ in try (db?.prepare(t_courses))! {
-                courseCount += 1
-            }
-        } catch {
-            
-        }
-        print("Course count: \(courseCount)")
     }
     
     private func preCreationScripts() {

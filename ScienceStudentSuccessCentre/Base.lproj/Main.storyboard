@@ -13,7 +13,7 @@
         <!--Upcoming Events-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="EventsViewController" customModule="SSSCTemp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="EventsViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventTableViewCell" rowHeight="90" id="Ryj-pH-6Hj" customClass="EventTableViewCell" customModule="SSSCTemp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventTableViewCell" rowHeight="90" id="Ryj-pH-6Hj" customClass="EventTableViewCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ryj-pH-6Hj" id="tds-tQ-HSf">
@@ -103,7 +103,7 @@
         <!--Event Detail View Controller-->
         <scene sceneID="zuD-9Z-7jj">
             <objects>
-                <viewController id="z8g-LX-bC6" customClass="EventDetailViewController" customModule="SSSCTemp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="z8g-LX-bC6" customClass="EventDetailViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gEV-1D-kQN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -270,7 +270,7 @@
         <!--Grades-->
         <scene sceneID="FPj-AY-z1Q">
             <objects>
-                <viewController id="wsO-6Z-Lpi" customClass="GradesViewController" customModule="SSSCTemp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wsO-6Z-Lpi" customClass="GradesViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z1o-QX-ROK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -340,7 +340,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" customClass="TabBarViewController" customModule="SSSCTemp" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="TabBarViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -400,7 +400,7 @@
         <!--Terms View Controller-->
         <scene sceneID="SJe-Ar-C8Y">
             <objects>
-                <viewController id="bYq-yI-Ggz" customClass="TermsViewController" customModule="SSSCTemp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bYq-yI-Ggz" customClass="TermsViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7pI-Gv-qme">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -409,7 +409,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TermTableViewCell" rowHeight="90" id="68x-aq-tec" customClass="TermTableViewCell" customModule="SSSCTemp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TermTableViewCell" rowHeight="90" id="68x-aq-tec" customClass="TermTableViewCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="68x-aq-tec" id="MWK-aV-bKp">
@@ -479,7 +479,7 @@
         <!--Calculator View Controller-->
         <scene sceneID="HHp-u0-K4J">
             <objects>
-                <viewController id="1WP-EV-xxx" customClass="CalculatorViewController" customModule="SSSCTemp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1WP-EV-xxx" customClass="CalculatorViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8W7-d2-zpr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -506,7 +506,7 @@
         <!--Planner View Controller-->
         <scene sceneID="xzX-c9-24w">
             <objects>
-                <viewController id="m8p-9n-6hC" customClass="PlannerViewController" customModule="SSSCTemp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="m8p-9n-6hC" customClass="PlannerViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Npz-Wz-8m6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -530,10 +530,10 @@
             </objects>
             <point key="canvasLocation" x="2582" y="1952"/>
         </scene>
-        <!--Courses View Controller-->
+        <!--Term Detail View Controller-->
         <scene sceneID="A53-5b-i31">
             <objects>
-                <viewController id="qyO-ye-sR5" customClass="CoursesViewController" customModule="SSSCTemp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qyO-ye-sR5" customClass="TermDetailViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W3d-iR-tcE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -548,7 +548,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="414"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CourseTableViewCell" rowHeight="90" id="r9o-1c-cGt" customClass="CourseTableViewCell" customModule="SSSCTemp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CourseTableViewCell" rowHeight="90" id="r9o-1c-cGt" customClass="CourseTableViewCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r9o-1c-cGt" id="194-o2-bvm">
@@ -603,6 +603,7 @@
                                             <outlet property="courseCode" destination="hbJ-kL-1eC" id="uPL-jv-WyS"/>
                                             <outlet property="courseName" destination="FGf-FB-RNz" id="zgF-kC-jsr"/>
                                             <outlet property="grade" destination="K2u-Sp-sbH" id="2q5-kh-1sV"/>
+                                            <outlet property="gradeView" destination="AGz-7g-cCa" id="KQB-Qn-YT0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -687,10 +688,10 @@
             </objects>
             <point key="canvasLocation" x="4168.8000000000002" y="307.64617691154427"/>
         </scene>
-        <!--View Controller-->
+        <!--Course Detail View Controller-->
         <scene sceneID="Ejg-L8-pr3">
             <objects>
-                <viewController id="atS-1p-BMg" sceneMemberID="viewController">
+                <viewController id="atS-1p-BMg" customClass="CourseDetailViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hdr-uN-Pz9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -700,7 +701,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOO-qd-8VI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4956" y="309"/>
+            <point key="canvasLocation" x="5721" y="308"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vmd-x5-nOD">
@@ -737,7 +738,7 @@
         <!--Create Term View Controller-->
         <scene sceneID="wXx-pF-z6u">
             <objects>
-                <viewController id="OGy-JY-Mpe" customClass="CreateTermViewController" customModule="SSSCTemp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OGy-JY-Mpe" customClass="CreateTermViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kXB-xc-A03">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -753,7 +754,7 @@
         <!--Create Course View Controller-->
         <scene sceneID="M53-8h-Rd5">
             <objects>
-                <viewController id="YWv-Rb-ujh" customClass="CreateCourseViewController" customModule="SSSCTemp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YWv-Rb-ujh" customClass="CreateCourseViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ruj-I2-DN0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

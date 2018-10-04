@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Course {
     
@@ -16,14 +17,20 @@ class Course {
     var credits: Double
     var isCGPACourse: Bool
     var termId: Int
+    var hexColour: String
     
-    init(id: Int, name: String, code: String, credits: Double, isCGPACourse: Bool, termId: Int) {
+    init(id: Int, name: String, code: String, credits: Double, isCGPACourse: Bool, termId: Int, hexColour: String) {
         self.id = id
         self.name = name
         self.code = code
         self.credits = credits
         self.isCGPACourse = isCGPACourse
         self.termId = termId
+        self.hexColour = hexColour
+    }
+    
+    func getColour() -> UIColor {
+        return UIColor.Material.fromHexString(hex: hexColour)
     }
     
 }

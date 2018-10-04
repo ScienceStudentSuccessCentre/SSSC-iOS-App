@@ -22,6 +22,7 @@
 		FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3C2287202427660098B868 /* EventDetailViewController.swift */; };
 		FF3D05DC215AC9AC0073D0E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */; };
 		FF4C4A9C215D7C550091BF2A /* GradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */; };
+		FF57A96521658509004AA50B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF57A96421658509004AA50B /* UIColor.swift */; };
 		FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6835B52023C540001A35B2 /* EventTableViewCell.swift */; };
 		FF7A0905215967F600A98504 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7A0904215967F600A98504 /* Formatter.swift */; };
 		FF7FD89021485E8100DAC88C /* HtmlString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7FD88F21485E8100DAC88C /* HtmlString.swift */; };
@@ -30,9 +31,11 @@
 		FFA7CBAD215DD53300A050B1 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */; };
 		FFA7CBAF215DD54C00A050B1 /* PlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAE215DD54C00A050B1 /* PlannerViewController.swift */; };
 		FFA7CBB1215DD59B00A050B1 /* TermTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBB0215DD59B00A050B1 /* TermTableViewCell.swift */; };
-		FFAC093C215EBBD5007C4264 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC093B215EBBD5007C4264 /* CoursesViewController.swift */; };
+		FFAC093C215EBBD5007C4264 /* TermDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC093B215EBBD5007C4264 /* TermDetailViewController.swift */; };
 		FFB76C962030B5A200EC3F97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB76C952030B5A200EC3F97 /* Assets.xcassets */; };
 		FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC18A2B202502A8001AB5BA /* EventParser.swift */; };
+		FFC6CF1621657C6D00657C34 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */; };
+		FFC6CF1821657CAE00657C34 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6CF1721657CAE00657C34 /* Assignment.swift */; };
 		FFE84078215F1CAC00A5E33B /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE84077215F1CAC00A5E33B /* Term.swift */; };
 		FFFC6BC72162D6D6001585CE /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6BC62162D6D6001585CE /* Course.swift */; };
 		FFFC6BC92162D70D001585CE /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6BC82162D70D001585CE /* CourseTableViewCell.swift */; };
@@ -80,6 +83,7 @@
 		FF3C228A2024317A0098B868 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesViewController.swift; sourceTree = "<group>"; };
+		FF57A96421658509004AA50B /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		FF6835B52023C540001A35B2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		FF7A0904215967F600A98504 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		FF7FD88F21485E8100DAC88C /* HtmlString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlString.swift; sourceTree = "<group>"; };
@@ -88,9 +92,11 @@
 		FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		FFA7CBAE215DD54C00A050B1 /* PlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerViewController.swift; sourceTree = "<group>"; };
 		FFA7CBB0215DD59B00A050B1 /* TermTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermTableViewCell.swift; sourceTree = "<group>"; };
-		FFAC093B215EBBD5007C4264 /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
+		FFAC093B215EBBD5007C4264 /* TermDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermDetailViewController.swift; sourceTree = "<group>"; };
 		FFB76C952030B5A200EC3F97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFC18A2B202502A8001AB5BA /* EventParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventParser.swift; sourceTree = "<group>"; };
+		FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
+		FFC6CF1721657CAE00657C34 /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
 		FFE84077215F1CAC00A5E33B /* Term.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
 		FFFC6BC62162D6D6001585CE /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		FFFC6BC82162D70D001585CE /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
@@ -158,7 +164,7 @@
 			children = (
 				FFE84070215F17D200A5E33B /* Events */,
 				FFE84071215F190A00A5E33B /* Grades */,
-				FFE84073215F192E00A5E33B /* Utilities */,
+				FFE84073215F192E00A5E33B /* Utilities and Extensions */,
 				FF327FC820128C3E00B06E19 /* AppDelegate.swift */,
 				FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */,
 				FF327FCE20128C3E00B06E19 /* Main.storyboard */,
@@ -196,6 +202,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FFC6CF1421657BCC00657C34 /* Course Details and Assignments */ = {
+			isa = PBXGroup;
+			children = (
+				FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */,
+				FFC6CF1721657CAE00657C34 /* Assignment.swift */,
+			);
+			path = "Course Details and Assignments";
+			sourceTree = "<group>";
+		};
 		FFE84070215F17D200A5E33B /* Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,31 +242,33 @@
 				FFA7CBB0215DD59B00A050B1 /* TermTableViewCell.swift */,
 				FFE84077215F1CAC00A5E33B /* Term.swift */,
 				FF30AFB72162A6E200C1F22C /* CreateTermViewController.swift */,
-				FFE84074215F195900A5E33B /* Courses */,
+				FFE84074215F195900A5E33B /* Term Details and Courses */,
 			);
 			path = Terms;
 			sourceTree = "<group>";
 		};
-		FFE84073215F192E00A5E33B /* Utilities */ = {
+		FFE84073215F192E00A5E33B /* Utilities and Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				FF1D7D24215D6DDD00A88467 /* Database.swift */,
 				FF7FD88F21485E8100DAC88C /* HtmlString.swift */,
 				FF7A0904215967F600A98504 /* Formatter.swift */,
 				FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */,
+				FF57A96421658509004AA50B /* UIColor.swift */,
 			);
-			path = Utilities;
+			path = "Utilities and Extensions";
 			sourceTree = "<group>";
 		};
-		FFE84074215F195900A5E33B /* Courses */ = {
+		FFE84074215F195900A5E33B /* Term Details and Courses */ = {
 			isa = PBXGroup;
 			children = (
-				FFAC093B215EBBD5007C4264 /* CoursesViewController.swift */,
+				FFAC093B215EBBD5007C4264 /* TermDetailViewController.swift */,
 				FFFC6BC82162D70D001585CE /* CourseTableViewCell.swift */,
 				FFFC6BC62162D6D6001585CE /* Course.swift */,
 				FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */,
+				FFC6CF1421657BCC00657C34 /* Course Details and Assignments */,
 			);
-			path = Courses;
+			path = "Term Details and Courses";
 			sourceTree = "<group>";
 		};
 		FFE84075215F196700A5E33B /* Calculator */ = {
@@ -447,16 +464,20 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ColorPickerRow/ColorPickerRow.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
+				"${BUILT_PRODUCTS_DIR}/UIColor_Hex_Swift/UIColor_Hex_Swift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ColorPickerRow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIColor_Hex_Swift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -474,8 +495,9 @@
 				FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */,
 				FF19EE4E202EA6DA00475B63 /* EventObserver.swift in Sources */,
 				FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */,
+				FFC6CF1621657C6D00657C34 /* CourseDetailViewController.swift in Sources */,
 				FFA7CBAB215DD4CB00A050B1 /* TermsViewController.swift in Sources */,
-				FFAC093C215EBBD5007C4264 /* CoursesViewController.swift in Sources */,
+				FFAC093C215EBBD5007C4264 /* TermDetailViewController.swift in Sources */,
 				FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */,
 				FF7A0905215967F600A98504 /* Formatter.swift in Sources */,
 				FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */,
@@ -490,8 +512,10 @@
 				FF3D05DC215AC9AC0073D0E7 /* TabBarViewController.swift in Sources */,
 				FFA7CBAF215DD54C00A050B1 /* PlannerViewController.swift in Sources */,
 				FFA7CBB1215DD59B00A050B1 /* TermTableViewCell.swift in Sources */,
+				FF57A96521658509004AA50B /* UIColor.swift in Sources */,
 				FFA7CBAD215DD53300A050B1 /* CalculatorViewController.swift in Sources */,
 				FFA4B1D320229C8400BAC08F /* Event.swift in Sources */,
+				FFC6CF1821657CAE00657C34 /* Assignment.swift in Sources */,
 				FFFC6BC92162D70D001585CE /* CourseTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

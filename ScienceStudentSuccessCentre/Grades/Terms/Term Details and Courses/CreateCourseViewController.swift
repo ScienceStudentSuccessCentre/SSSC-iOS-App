@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import ColorPickerRow
 
 class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     
@@ -60,6 +61,17 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                 row.tag = "isCGPACourse"
                 row.title = "Counts Towards Major GPA"
             }
+        +++ Section("Course Colour")
+            <<< InlineColorPickerRow() { (row) in
+                row.tag = "colour"
+                row.title = "Select a Colour"
+                row.isCircular = false
+                row.showsPaletteNames = false
+                row.value = UIColor.Material.red
+            }.cellSetup { (cell, row) in
+                let palette = ColorPalette(name: "Material", palette: UIColor.Material.getColourPalette())
+                row.palettes = [palette]
+            }
     }
     
     func validateForm() {
@@ -80,7 +92,10 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         let code = values["code"] as? String ?? ""
         let credits = values["credits"] as? Double ?? 0
         let isCGPACourse = values["isCGPACourse"] as? Bool ?? false
-        if !Database.instance.addCourse(name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId: term.id) {
+        var colour = (values["colour"] as? UIColor ?? UIColor.Material.red).hexString()
+        colour.removeLast(2)
+        let course = Course(id: 0, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId:    term.id, hexColour: colour)
+        if !Database.instance.addCourse(course: course) {
             print("Failed to create course")
             //TODO: let the user know somehow
         }

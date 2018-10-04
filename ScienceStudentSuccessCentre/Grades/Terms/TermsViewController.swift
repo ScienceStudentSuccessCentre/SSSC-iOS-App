@@ -66,8 +66,8 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let term = terms[indexPath.row]
             if Database.instance.deleteTerm(id: term.id) {
                 self.terms.remove(at: indexPath.row)
-                DispatchQueue.main.async {
-                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                DispatchQueue.main.sync {
                     if self.terms.count == 0 {
                         self.toggleOffTableViewEditMode()
                         self.toggleTableViewButtons()
@@ -137,7 +137,7 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "termDetail" {
-            let controller = segue.destination as! CoursesViewController
+            let controller = segue.destination as! TermDetailViewController
             let indexPath = tableView.indexPathForSelectedRow!
             controller.term = terms[indexPath.row]
         }

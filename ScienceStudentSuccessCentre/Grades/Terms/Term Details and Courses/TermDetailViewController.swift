@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TermDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var gpa: UILabel!
     @IBOutlet var credits: UILabel!
@@ -36,7 +36,6 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        Database.instance.countCourses()
         loadCourses()
         updateTermDetails()
     }
@@ -56,6 +55,7 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
         let course = courses[indexPath.row]
         cell.courseName.text = course.name
         cell.courseCode.text = course.code
+        cell.gradeView.backgroundColor = course.getColour()
         return cell
     }
     
@@ -68,8 +68,8 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
             let course = courses[indexPath.row]
             if Database.instance.deleteCourse(id: course.id) {
                 self.courses.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
                 DispatchQueue.main.async {
-                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
                     if self.courses.count == 0 {
                         self.toggleOffTableViewEditMode()
                     }
@@ -117,6 +117,11 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "courseDetail" {
+            let controller = segue.destination as! CourseDetailViewController
+            let indexPath = tableView.indexPathForSelectedRow!
+            controller.course = courses[indexPath.row]
+        }
         if segue.identifier == "createCourse" {
             let controller = segue.destination.children.first as! CreateCourseViewController
             controller.term = term

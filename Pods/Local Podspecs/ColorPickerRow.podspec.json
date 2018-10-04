@@ -1,0 +1,26 @@
+{
+  "name": "ColorPickerRow",
+  "version": "1.2.1",
+  "license": "MIT",
+  "summary": "A color picker row for use with the Eureka form library",
+  "homepage": "https://github.com/EurekaCommunity/ColorPickerRow",
+  "source": {
+    "git": "https://github.com/EurekaCommunity/ColorPickerRow.git"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "ios": {
+    "frameworks": [
+      "UIKit",
+      "Foundation"
+    ]
+  },
+  "source_files": "ColorPicker/**/*.swift",
+  "requires_arc": true,
+  "authors": "Mark Alldritt",
+  "dependencies": {
+    "Eureka": ">= 3.0.0",
+    "UIColor_Hex_Swift": ">= 3.0.0"
+  }
+}
