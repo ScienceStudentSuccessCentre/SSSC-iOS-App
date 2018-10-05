@@ -67,7 +67,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                 row.title = "Select a Colour"
                 row.isCircular = false
                 row.showsPaletteNames = false
-                row.value = UIColor.Material.red
+                row.value = UIColor(.red)
             }.cellSetup { (cell, row) in
                 let palette = ColorPalette(name: "Material", palette: UIColor.Material.getColourPalette())
                 row.palettes = [palette]
@@ -92,9 +92,8 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         let code = values["code"] as? String ?? ""
         let credits = values["credits"] as? Double ?? 0
         let isCGPACourse = values["isCGPACourse"] as? Bool ?? false
-        var colour = (values["colour"] as? UIColor ?? UIColor.Material.red).hexString()
-        colour.removeLast(2)
-        let course = Course(id: 0, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId:    term.id, hexColour: colour)
+        let colour = UIColor.Material.fromUIColor(color: values["colour"] as? UIColor ?? nil)
+        let course = Course(id: 0, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId:    term.id, colour: colour)
         if !Database.instance.addCourse(course: course) {
             print("Failed to create course")
             //TODO: let the user know somehow

@@ -8,6 +8,7 @@
 
 import Foundation
 import SQLite
+import UIKit
 
 class Database {
     
@@ -29,7 +30,7 @@ class Database {
     private let t_courses_credits = Expression<Double>("credits")
     private let t_courses_isCGPACourse = Expression<Bool>("isCGPACourse")
     private let t_courses_termId = Expression<Int>("termId")
-    private let t_courses_hexColour = Expression<String>("hexColour")
+    private let t_courses_colour = Expression<String>("colour")
     
     private var db: Connection?
     
@@ -74,7 +75,7 @@ class Database {
                 t.column(t_courses_credits)
                 t.column(t_courses_isCGPACourse)
                 t.column(t_courses_termId)
-                t.column(t_courses_hexColour)
+                t.column(t_courses_colour)
                 t.foreignKey(t_courses_termId, references: t_terms, t_terms_id, delete: .cascade)
             })
         } catch {
@@ -107,7 +108,7 @@ class Database {
                                                      t_courses_credits <- course.credits,
                                                      t_courses_isCGPACourse <- course.isCGPACourse,
                                                      t_courses_termId <- course.termId,
-                                                     t_courses_hexColour <- course.hexColour))
+                                                     t_courses_colour <- String(describing: course.colour)))
             print("Inserted rowid \(rowid!)")
             return true
         } catch let Result.error(message, code, _) where code == SQLITE_CONSTRAINT {
@@ -172,8 +173,8 @@ class Database {
                 let credits = try row.get(t_courses_credits)
                 let isCGPACourse = try row.get(t_courses_isCGPACourse)
                 let termId = try row.get(t_courses_termId)
-                let hexColour = try row.get(t_courses_hexColour)
-                courses.append(Course(id: courseId, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId: termId, hexColour: hexColour))
+                let colour = UIColor.Material(rawValue: try row.get(t_courses_colour))
+                courses.append(Course(id: courseId, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId: termId, colour: colour))
             }
         } catch let error {
             print("Select failed: \(error)")

@@ -17,20 +17,16 @@ class Course {
     var credits: Double
     var isCGPACourse: Bool
     var termId: Int
-    var hexColour: String
+    var colour: UIColor.Material
     
-    init(id: Int, name: String, code: String, credits: Double, isCGPACourse: Bool, termId: Int, hexColour: String) {
+    init(id: Int, name: String, code: String, credits: Double, isCGPACourse: Bool, termId: Int, colour: UIColor.Material?) {
         self.id = id
         self.name = name
         self.code = code
         self.credits = credits
         self.isCGPACourse = isCGPACourse
         self.termId = termId
-        self.hexColour = hexColour
-    }
-    
-    func getColour() -> UIColor {
-        return UIColor.Material.fromHexString(hex: hexColour)
+        self.colour = colour ?? UIColor.Material.red
     }
     
 }

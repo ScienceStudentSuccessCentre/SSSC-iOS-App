@@ -15,6 +15,8 @@ class CourseDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = course.name
     }
 
 }
