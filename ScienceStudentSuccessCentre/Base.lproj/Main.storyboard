@@ -698,6 +698,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="b52-R7-gxJ"/>
                     </view>
+                    <connections>
+                        <segue destination="lC3-cb-RGX" kind="showDetail" identifier="editCourse" id="8vw-Sl-0KH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOO-qd-8VI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -772,4 +775,7 @@
         <image name="eventsIcon" width="37.5" height="37.5"/>
         <image name="gradesIcon" width="37.5" height="37.5"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="8vw-Sl-0KH"/>
+    </inferredMetricsTieBreakers>
 </document>

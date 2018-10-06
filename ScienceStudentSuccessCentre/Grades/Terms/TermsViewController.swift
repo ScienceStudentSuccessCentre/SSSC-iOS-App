@@ -64,7 +64,7 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let term = terms[indexPath.row]
-            if Database.instance.deleteTerm(id: term.id) {
+            if Database.instance.delete(termId: term.id) {
                 self.terms.remove(at: indexPath.row)
                 DispatchQueue.main.async {
                     self.tableView.deleteRows(at: [indexPath], with: .automatic)

@@ -13,6 +13,7 @@ import ColorPickerRow
 class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     
     var term: Term!
+    var course: Course!
     let creditFormatter = NumberFormatter()
 
     override func viewDidLoad() {
@@ -21,11 +22,17 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         creditFormatter.numberStyle = NumberFormatter.Style.decimal
         creditFormatter.maximumFractionDigits = 1
         creditFormatter.minimumFractionDigits = 1
-
-        navigationItem.title = "New Course"
+        
         navigationItem.setLeftBarButton(UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed)), animated: true)
-        navigationItem.setRightBarButton(UIBarButtonItem(title: "Create", style: .done, target: self, action: #selector(createButtonPressed)), animated: true)
-        navigationItem.rightBarButtonItem?.isEnabled = false
+        
+        if (course == nil) {
+            navigationItem.title = "New Course"
+            navigationItem.setRightBarButton(UIBarButtonItem(title: "Create", style: .done, target: self, action: #selector(createButtonPressed)), animated: true)
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        } else {
+            navigationItem.title = "Edit Course"
+            navigationItem.setRightBarButton(UIBarButtonItem(title: "Update", style: .done, target: self, action: #selector(createButtonPressed)), animated: true)
+        }
         
         createForm()
     }
@@ -39,7 +46,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                 row.placeholder = "Operating Systems"
                 row.cell.textField.autocapitalizationType = .words
             }.onChange { _ in
-                    self.validateForm()
+                self.validateForm()
             }
             <<< TextRow() { row in
                 row.tag = "code"
@@ -72,6 +79,14 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                 let palette = ColorPalette(name: "Material", palette: UIColor.Material.getColourPalette())
                 row.palettes = [palette]
             }
+        
+        if (course != nil) {
+            form.rowBy(tag: "name")?.baseValue = course.name
+            form.rowBy(tag: "code")?.baseValue = course.code
+            form.rowBy(tag: "credits")?.baseValue = course.credits
+            form.rowBy(tag: "isCGPACourse")?.baseValue = course.isCGPACourse
+            form.rowBy(tag: "colour")?.baseValue = UIColor(course.colour)
+        }
     }
     
     func validateForm() {
@@ -93,8 +108,8 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         let credits = values["credits"] as? Double ?? 0
         let isCGPACourse = values["isCGPACourse"] as? Bool ?? false
         let colour = UIColor.Material.fromUIColor(color: values["colour"] as? UIColor ?? nil)
-        let course = Course(id: 0, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId:    term.id, colour: colour)
-        if !Database.instance.addCourse(course: course) {
+        let course = Course(id: self.course != nil ? self.course.id : -1, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId: self.term != nil ? term.id : self.course.termId, colour: colour)
+        if !Database.instance.insertOrUpdate(course: course) {
             print("Failed to create course")
             //TODO: let the user know somehow
         }
