@@ -35,7 +35,7 @@ extension UIColor {
         case .pink:
             self.init(hex: "#E91E63")
         case .purple:
-            self.init(hex: "#9C27B0")
+            self.init(hex: "#A952b3")
         case .deeppurple:
             self.init(hex: "#673AB7")
         case .indigo:
