@@ -45,11 +45,10 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         }
         
         prepareNotifyMeButton()
+        
         actionUrlButton =  UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.reply, target: self, action: #selector(actionUrlTapped))
         
         var barButtonItems: [UIBarButtonItem] = []
-        // ! (not) != (not equal)
-       
         if event.getNotificationDateTime()!.compare(Date()) != ComparisonResult.orderedAscending {
             barButtonItems.append(UIBarButtonItem(customView: notifyMeButton))
         }
@@ -58,12 +57,6 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         }
     
         navigationItem.setRightBarButtonItems(barButtonItems, animated: true)
-        // for Gina: instead of doing "if" and "else" statements, since there are so many different possibilities (see below), a "list" is better
-//        if event.getNotificationDateTime()!.compare(Date()) != ComparisonResult.orderedAscending {
-//            navigationItem.setRightBarButtonItems([UIBarButtonItem(customView: notifyMeButton), actionUrlButton], animated: true)
-//        } else {
-//            navigationItem.setRightBarButton(actionUrlButton, animated: true)
-//        }
         
         view.sendSubviewToBack(eventStackView)
     }
@@ -75,7 +68,6 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     private func prepareNotifyMeButton() {
         if event.getNotificationDateTime()!.compare(Date()) != ComparisonResult.orderedAscending {
             notifyMeButton.addTarget(self, action: #selector(notifyMeTapped), for: .touchUpInside)
-                   // "touchUp" "touchDown"
             notifyMeButton.frame = CGRect(x: 0, y: 0, width: notifyMeDimension, height: notifyMeDimension)
             notifyMeButton.widthAnchor.constraint(equalToConstant: notifyMeDimension).isActive = true
             notifyMeButton.heightAnchor.constraint(equalToConstant: notifyMeDimension).isActive = true
@@ -141,7 +133,6 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    // private func (has to do with "classes" which I will learn later
     @objc private func actionUrlTapped() {
         let safariVC = SFSafariViewController(url: URL(string: event.getActionUrl()!)!)
         present (safariVC, animated: true, completion:nil)
