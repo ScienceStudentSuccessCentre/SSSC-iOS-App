@@ -143,4 +143,8 @@ class Event {
     public func getImageUrl() -> URL? {
         return imageUrl
     }
+    
+    public func getActionUrl() -> String? {
+        return actionUrl
+    }
 }
