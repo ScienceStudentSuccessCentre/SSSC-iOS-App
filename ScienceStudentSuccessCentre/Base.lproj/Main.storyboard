@@ -118,7 +118,7 @@
                                 <rect key="frame" x="8" y="119.5" width="359" height="430.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="yIA-Vy-Ot7">
-                                        <rect key="frame" x="0.0" y="0.0" width="359" height="488"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="430"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5Z-m7-uJu">
                                                 <rect key="frame" x="0.0" y="0.0" width="359" height="302"/>
@@ -128,39 +128,8 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             </textView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWe-Ue-20M">
-                                                <rect key="frame" x="0.0" y="302" width="359" height="58"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bEL-y0-mwg" userLabel="Inner View">
-                                                        <rect key="frame" x="20" y="0.0" width="319" height="50"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carleton Central" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoU-Uk-sGl">
-                                                                <rect key="frame" x="8" y="8" width="303" height="34"/>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" red="0.95686274509803915" green="0.2627450980392157" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="aoU-Uk-sGl" secondAttribute="bottom" constant="8" id="Kr3-Ep-88e"/>
-                                                            <constraint firstAttribute="height" constant="50" id="O4x-u0-0fq"/>
-                                                            <constraint firstAttribute="trailing" secondItem="aoU-Uk-sGl" secondAttribute="trailing" constant="8" id="kaE-aC-JWA"/>
-                                                            <constraint firstItem="aoU-Uk-sGl" firstAttribute="top" secondItem="bEL-y0-mwg" secondAttribute="top" constant="8" id="qQV-WY-Eih"/>
-                                                            <constraint firstItem="aoU-Uk-sGl" firstAttribute="leading" secondItem="bEL-y0-mwg" secondAttribute="leading" constant="8" id="r5b-yx-Vtr"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="bEL-y0-mwg" firstAttribute="leading" secondItem="NWe-Ue-20M" secondAttribute="leading" constant="20" id="7RU-Gm-BhW"/>
-                                                    <constraint firstItem="bEL-y0-mwg" firstAttribute="top" secondItem="NWe-Ue-20M" secondAttribute="top" id="A6e-QV-jfO"/>
-                                                    <constraint firstAttribute="bottom" secondItem="bEL-y0-mwg" secondAttribute="bottom" constant="8" id="Ntn-Wx-kCx"/>
-                                                    <constraint firstAttribute="trailing" secondItem="bEL-y0-mwg" secondAttribute="trailing" constant="20" id="irT-uJ-OAh"/>
-                                                </constraints>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfm-Rh-U4T">
-                                                <rect key="frame" x="0.0" y="360" width="359" height="128"/>
+                                                <rect key="frame" x="0.0" y="302" width="359" height="128"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J4h-Na-QPy">
                                                         <rect key="frame" x="0.0" y="0.0" width="359" height="120"/>
@@ -769,7 +738,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="eventsIcon" width="37.5" height="37.5"/>
-        <image name="gradesIcon" width="37.5" height="37.5"/>
+        <image name="eventsIcon" width="25" height="25"/>
+        <image name="gradesIcon" width="25" height="25"/>
     </resources>
 </document>
