@@ -28,49 +28,79 @@ extension UIColor {
         self.init(red: CGFloat(r) / 0xff, green: CGFloat(g) / 0xff, blue: CGFloat(b) / 0xff, alpha: 1)
     }
     
-    struct Material {
-        static var red: UIColor  { return UIColor(hex: "#F44336") }
-        static var pink: UIColor  { return UIColor(hex: "#E91E63") }
-        static var purple: UIColor  { return UIColor(hex: "#9C27B0") }
-        static var deepPurple: UIColor  { return UIColor(hex: "#673AB7") }
-        static var indigo: UIColor  { return UIColor(hex: "#3F51B5") }
-        static var blue: UIColor  { return UIColor(hex: "#2196F3") }
-        static var lightBlue: UIColor  { return UIColor(hex: "#03A9F4") }
-        static var cyan: UIColor  { return UIColor(hex: "#00BCD4") }
-        static var teal: UIColor  { return UIColor(hex: "#009688") }
-        static var green: UIColor  { return UIColor(hex: "#4CAF50") }
-        static var lightGreen: UIColor  { return UIColor(hex: "#8BC34A") }
-        static var lime: UIColor  { return UIColor(hex: "#CDDC39") }
-        static var amber: UIColor  { return UIColor(hex: "#FFC107") }
-        static var orange: UIColor  { return UIColor(hex: "#FF9800") }
-        static var deepOrange: UIColor  { return UIColor(hex: "#FF5722") }
-        static var brown: UIColor  { return UIColor(hex: "#795548") }
-        static var grey: UIColor  { return UIColor(hex: "#9E9E9E") }
-        static var blueGrey: UIColor  { return UIColor(hex: "#607D8B") }
-        
-        static func getColourPalette() -> [ColorSpec] {
-            return [ColorSpec(hex:  red.hexString(), name: "red"),
-                    ColorSpec(hex:  pink.hexString(), name: "pink"),
-                    ColorSpec(hex:  purple.hexString(), name: "purple"),
-                    ColorSpec(hex:  deepPurple.hexString(), name: "deep purple"),
-                    ColorSpec(hex:  indigo.hexString(), name: "indigo"),
-                    ColorSpec(hex:  blue.hexString(), name: "blue"),
-                    ColorSpec(hex:  lightBlue.hexString(), name: "light blue"),
-                    ColorSpec(hex:  cyan.hexString(), name: "cyan"),
-                    ColorSpec(hex:  teal.hexString(), name: "teal"),
-                    ColorSpec(hex:  green.hexString(), name: "green"),
-                    ColorSpec(hex:  lightGreen.hexString(), name: "lightGreen"),
-                    ColorSpec(hex:  lime.hexString(), name: "lime"),
-                    ColorSpec(hex:  amber.hexString(), name: "amber"),
-                    ColorSpec(hex:  orange.hexString(), name: "orange"),
-                    ColorSpec(hex:  deepOrange.hexString(), name: "deepOrange"),
-                    ColorSpec(hex:  brown.hexString(), name: "brown"),
-                    ColorSpec(hex:  grey.hexString(), name: "grey"),
-                    ColorSpec(hex:  blueGrey.hexString(), name: "blue grey")]
-        }
-        
-        static func fromHexString(hex:  String) -> UIColor {
-            return UIColor(hex: hex)
+    convenience init(_ colorString: Material) {
+        switch colorString {
+        case .red:
+            self.init(hex: "#F44336")
+        case .pink:
+            self.init(hex: "#E91E63")
+        case .purple:
+            self.init(hex: "#A952b3")
+        case .deeppurple:
+            self.init(hex: "#673AB7")
+        case .indigo:
+            self.init(hex: "#3F51B5")
+        case .blue:
+            self.init(hex: "#2196F3")
+        case .lightblue:
+            self.init(hex: "#03A9F4")
+        case .cyan:
+            self.init(hex: "#00BCD4")
+        case .teal:
+            self.init(hex: "#009688")
+        case .green:
+            self.init(hex: "#4CAF50")
+        case .lightgreen:
+            self.init(hex: "#8BC34A")
+        case .lime:
+            self.init(hex: "#CDDC39")
+        case .amber:
+            self.init(hex: "#FFC107")
+        case .orange:
+            self.init(hex: "#FF9800")
+        case .deeporange:
+            self.init(hex: "#FF5722")
+        case .brown:
+            self.init(hex: "#795548")
+        case .grey:
+            self.init(hex: "#9E9E9E")
+        case .bluegrey:
+            self.init(hex: "#607D8B")
         }
     }
+    
+    enum Material: String, CaseIterable  {
+        case red
+        case pink
+        case purple
+        case deeppurple
+        case indigo
+        case blue
+        case lightblue
+        case cyan
+        case teal
+        case green
+        case lightgreen
+        case lime
+        case amber
+        case orange
+        case deeporange
+        case brown
+        case grey
+        case bluegrey
+        
+        static func fromUIColor(color: UIColor?) -> Material {
+            let materialColour = self.allCases.first{ UIColor($0) == color }
+            return materialColour ?? Material.red
+        }
+        
+        static func getColourPalette() -> [ColorSpec] {
+            var colourPalette = [ColorSpec]()
+            for colour in Material.allCases {
+                colourPalette.append(ColorSpec(hex: UIColor(colour).hexString(), name: colour.rawValue))
+            }
+            return colourPalette
+        }
+    }
+    
 }

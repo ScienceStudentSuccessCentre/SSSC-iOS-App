@@ -8,6 +8,7 @@
 
 import Foundation
 import SQLite
+import UIKit
 
 class Database {
     
@@ -29,7 +30,7 @@ class Database {
     private let t_courses_credits = Expression<Double>("credits")
     private let t_courses_isCGPACourse = Expression<Bool>("isCGPACourse")
     private let t_courses_termId = Expression<Int>("termId")
-    private let t_courses_hexColour = Expression<String>("hexColour")
+    private let t_courses_colour = Expression<String>("colour")
     
     private var db: Connection?
     
@@ -74,7 +75,7 @@ class Database {
                 t.column(t_courses_credits)
                 t.column(t_courses_isCGPACourse)
                 t.column(t_courses_termId)
-                t.column(t_courses_hexColour)
+                t.column(t_courses_colour)
                 t.foreignKey(t_courses_termId, references: t_terms, t_terms_id, delete: .cascade)
             })
         } catch {
@@ -82,7 +83,7 @@ class Database {
         }
     }
     
-    public func addTerm(term: String, year: String) -> Bool {
+    public func insert(term: String, year: String) -> Bool {
         print("Adding term \(term) \(year) into \(t_terms)")
         do {
             let rowid = try db?.run(t_terms.insert(or: .replace,
@@ -98,18 +99,28 @@ class Database {
         return false
     }
     
-    public func addCourse(course: Course) -> Bool {
-        print("Adding course \(course.name) (\(course.code)) into \(t_courses)")
+    public func insertOrUpdate(course: Course) -> Bool {
         do {
-            let rowid = try db?.run(t_courses.insert(or: .replace,
-                                                     t_courses_name <- course.name,
-                                                     t_courses_code <- course.code,
-                                                     t_courses_credits <- course.credits,
-                                                     t_courses_isCGPACourse <- course.isCGPACourse,
-                                                     t_courses_termId <- course.termId,
-                                                     t_courses_hexColour <- course.hexColour))
-            print("Inserted rowid \(rowid!)")
-            return true
+            if course.id == -1 {
+                print("Adding course \(course.name) (\(course.code)) into \(t_courses)")
+                let insert = t_courses.insert(t_courses_name <- course.name,
+                                              t_courses_code <- course.code,
+                                              t_courses_credits <- course.credits,
+                                              t_courses_isCGPACourse <- course.isCGPACourse,
+                                              t_courses_termId <- course.termId,
+                                              t_courses_colour <- String(describing: course.colour))
+                try db?.run(insert)
+            } else {
+                print("Updating course \(course.name) (\(course.code)) with id \(course.id) in \(t_courses)")
+                let existingCourse = t_courses.filter(t_courses_id == course.id)
+                let update = existingCourse.update(t_courses_name <- course.name,
+                                                   t_courses_code <- course.code,
+                                                   t_courses_credits <- course.credits,
+                                                   t_courses_isCGPACourse <- course.isCGPACourse,
+                                                   t_courses_termId <- course.termId,
+                                                   t_courses_colour <- String(describing: course.colour))
+                try db?.run(update)
+            }
         } catch let Result.error(message, code, _) where code == SQLITE_CONSTRAINT {
             print("Constraint failed: \(message)")
         } catch let error {
@@ -118,12 +129,12 @@ class Database {
         return false
     }
     
-    public func deleteTerm(id: Int) -> Bool {
-        print("Deleting term \(id) from \(t_terms)")
-        let term = t_terms.filter(t_terms_id == id)
+    public func delete(termId: Int) -> Bool {
+        print("Deleting term \(termId) from \(t_terms)")
+        let term = t_terms.filter(t_terms_id == termId)
         do {
             try db?.run(term.delete())
-            print("Deleted term \(id)")
+            print("Deleted term \(termId)")
             return true
         } catch let error {
             print("Delete failed: \(error)")
@@ -131,12 +142,12 @@ class Database {
         return false
     }
     
-    public func deleteCourse(id: Int) -> Bool {
-        print("Deleting course \(id) from \(t_courses)")
-        let course = t_courses.filter(t_courses_id == id)
+    public func delete(courseId: Int) -> Bool {
+        print("Deleting course \(courseId) from \(t_courses)")
+        let course = t_courses.filter(t_courses_id == courseId)
         do {
             try db?.run(course.delete())
-            print("Deleted course \(id)")
+            print("Deleted course \(courseId)")
             return true
         } catch let error {
             print("Delete failed: \(error)")
@@ -161,19 +172,40 @@ class Database {
         return terms
     }
     
+    public func getCourseById(id: Int) -> Course? {
+        print("Getting course from \(t_courses) with id \(id)")
+        do {
+            let row = try db?.pluck(t_courses.filter(t_courses_id == id))
+            if (row != nil) {
+                let courseId = try row!.get(t_courses_id)
+                let name = try row!.get(t_courses_name)
+                let code = try row!.get(t_courses_code)
+                let credits = try row!.get(t_courses_credits)
+                let isCGPACourse = try row!.get(t_courses_isCGPACourse)
+                let termId = try row!.get(t_courses_termId)
+                let colour = UIColor.Material(rawValue: try row!.get(t_courses_colour))
+                return Course(id: courseId, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId: termId, colour: colour)
+            }
+        } catch let error {
+            print("Select failed: \(error)")
+        }
+        print("Unable to get course")
+        return nil
+    }
+    
     public func getCoursesByTermId(id: Int) -> [Course] {
         print("Getting courses from \(t_courses) by termId \(id)")
         var courses = [Course]()
         do {
-            for row in try (db?.prepare(t_courses.where(t_courses_termId == id)))! {
+            for row in try (db?.prepare(t_courses.filter(t_courses_termId == id)))! {
                 let courseId = try row.get(t_courses_id)
                 let name = try row.get(t_courses_name)
                 let code = try row.get(t_courses_code)
                 let credits = try row.get(t_courses_credits)
                 let isCGPACourse = try row.get(t_courses_isCGPACourse)
                 let termId = try row.get(t_courses_termId)
-                let hexColour = try row.get(t_courses_hexColour)
-                courses.append(Course(id: courseId, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId: termId, hexColour: hexColour))
+                let colour = UIColor.Material(rawValue: try row.get(t_courses_colour))
+                courses.append(Course(id: courseId, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId: termId, colour: colour))
             }
         } catch let error {
             print("Select failed: \(error)")

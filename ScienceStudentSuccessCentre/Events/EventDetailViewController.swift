@@ -25,9 +25,11 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var eventLocationLabel: UILabel!
     @IBOutlet var eventImageView: UIImageView!
     @IBOutlet var eventStackView: UIStackView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.largeTitleDisplayMode = .never
         
         eventDescriptionTextView.delegate = self
 
