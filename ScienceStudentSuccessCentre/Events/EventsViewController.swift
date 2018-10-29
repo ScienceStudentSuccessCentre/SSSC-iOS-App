@@ -34,7 +34,7 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
     
     private func loadSampleEvents() {
         let sampleEvent1 = Event(id: "1", name: "Carleton Coding Challenge", description: sampleEvent1Description, dateTime: Date(), rawTime: "4pm", location: "SSSC (3431 Herzberg)", url: nil, imageUrl: nil, actionUrl: "")
-        let sampleEvent2 = Event(id: "2", name: "Multiple Mini Interview Practice", description: sampleEvent2Description, dateTime: Date(), rawTime: "6:00pm", location: "SSSC (3431 Herzberg)", url: nil, imageUrl: nil, actionUrl: "")
+        let sampleEvent2 = Event(id: "2", name: "Multiple Mini Interview Practice", description: sampleEvent2Description, dateTime: Date(), rawTime: "6:00pm", location: "SSSC (3431 Herzberg)", url: nil, imageUrl: nil, actionUrl: "https://culearn.carleton.ca")
         let sampleEvent3 = Event(id: "3", name: "Ski Trip: Camp Fortune", description: sampleEvent3Description, dateTime: Date(), rawTime: "4:00pm departure", location: "Camp Fortune", url: nil, imageUrl: nil, actionUrl: "")
         
         events += [sampleEvent1, sampleEvent2, sampleEvent3]
@@ -89,8 +89,6 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25),NSAttributedString.Key.foregroundColor: UIColor.white]
-        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -112,10 +110,6 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
 //        loadSampleEvents()
         loadEvents()
         
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
     }
     
     override func viewWillAppear(_ animated: Bool) {

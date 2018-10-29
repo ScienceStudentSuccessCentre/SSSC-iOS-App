@@ -10,16 +10,27 @@ import UIKit
 
 class CourseDetailViewController: UIViewController {
     
+    @IBOutlet var courseTitle: UILabel!
+    @IBOutlet var tableView: UITableView!
+    
     var course: Course!
     var assignments = [Assignment]()
     
-    private var editCourseButton: UIBarButtonItem!
+    private var courseInfoButton: UIBarButtonItem!
+    private var editAssignmentsButton: UIBarButtonItem!
+    private var addAssignmentButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        editCourseButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editCoursePressed))
-        navigationItem.setRightBarButton(editCourseButton, animated: true)
+        let editCourseButton = UIButton(type: .infoLight)
+        editCourseButton.addTarget(self, action: #selector(editCoursePressed), for: .touchUpInside)
+        
+        courseInfoButton = UIBarButtonItem(customView: editCourseButton)
+        editAssignmentsButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editAssignmentsPressed))
+        addAssignmentButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAssignmentPressed))
+        
+        navigationItem.setRightBarButtonItems([courseInfoButton, addAssignmentButton, editAssignmentsButton], animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,7 +39,7 @@ class CourseDetailViewController: UIViewController {
             course = dbCourse
         }
         navigationController?.navigationBar.barTintColor = UIColor(course.colour)
-        navigationItem.titleView = getTitleView(title: course.name)
+        courseTitle.text = course.name
     }
     
     override func willMove(toParent parent: UIViewController?) {
@@ -37,25 +48,16 @@ class CourseDetailViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = .darkGray
     }
     
-    private func getTitleView (title:String) -> UIView {
-        let offset: CGFloat = CGFloat(150)
-        let frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width - offset, height: 30)
-        let titleView = UIView(frame:frame)
-        let titleLabel = UILabel(frame: titleView.bounds)
-        
-        titleLabel.textColor = .white
-        titleLabel.text = title
-        titleLabel.numberOfLines = 1
-        titleLabel.textAlignment = .center
-        titleLabel.layer.masksToBounds = true
-        titleLabel.layer.cornerRadius = 5
-        
-        titleView.addSubview(titleLabel)
-        return titleView
-    }
-    
     @objc private func editCoursePressed() {
         performSegue(withIdentifier: "editCourse", sender: self)
+    }
+    
+    @objc private func editAssignmentsPressed() {
+        
+    }
+    
+    @objc private func addAssignmentPressed() {
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
