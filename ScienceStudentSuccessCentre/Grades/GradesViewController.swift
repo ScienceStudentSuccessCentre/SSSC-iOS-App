@@ -27,8 +27,12 @@ class GradesViewController: UIViewController {
         if let ctrl = children.first(where: { $0 is GradesViewControllerDelegate }) {
             delegate = ctrl as? GradesViewControllerDelegate
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        switchToView(segmentIndex: 0)
+        switchToView(segmentIndex: segmentControl.selectedSegmentIndex)
     }
     
     @IBAction func segmentSelectedAction(sender: AnyObject) {
