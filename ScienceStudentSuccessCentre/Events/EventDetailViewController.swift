@@ -20,6 +20,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     var actionUrlButton: UIBarButtonItem!
     
     @IBOutlet var eventTitleLabel: UILabel!
+    @IBOutlet var eventTitleView: UIView!
     @IBOutlet var eventDescriptionTextView: UITextView!
     @IBOutlet var eventDateTimeLabel: UILabel!
     @IBOutlet var eventLocationLabel: UILabel!
@@ -30,6 +31,8 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .never
+        
+        eventTitleView.addBorders(edges: [.bottom], color: UIColor(.bluegrey), width: 1)
         
         eventDescriptionTextView.delegate = self
 
