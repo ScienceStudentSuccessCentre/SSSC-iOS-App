@@ -39,7 +39,6 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillDisappear(_ animated: Bool) {
         toggleOffTableViewEditMode()
-        updateTableViewButtons(show: false)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
