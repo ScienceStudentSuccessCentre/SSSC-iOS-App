@@ -15,6 +15,7 @@ protocol GradesViewControllerDelegate: class {
 class GradesViewController: UIViewController {
     
     @IBOutlet var segmentControl: UISegmentedControl!
+    @IBOutlet var segmentControlView: UIView!
     @IBOutlet var termsView: UIView!
     @IBOutlet var calculatorView: UIView!
     @IBOutlet var plannerView: UIView!
@@ -23,6 +24,8 @@ class GradesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        segmentControlView.addBorders(edges: [.bottom], color: UIColor(.bluegrey), width: 0.5)
         
         if let ctrl = children.first(where: { $0 is GradesViewControllerDelegate }) {
             delegate = ctrl as? GradesViewControllerDelegate
@@ -75,11 +78,11 @@ class GradesViewController: UIViewController {
 extension GradesViewController: SegmentControlDelegate {
     
     func updateSegmentControlPosition(delta: CGFloat) {
-        let prevX = segmentControl.frame.origin.x
-        let prevY = segmentControl.frame.origin.y
-        let prevWidth = segmentControl.frame.size.width
-        let prevHeight = segmentControl.frame.size.height
-        segmentControl.frame = CGRect(x: prevX, y: prevY + delta, width: prevWidth, height: prevHeight)
+        let prevX = segmentControlView.frame.origin.x
+        let prevY = segmentControlView.frame.origin.y
+        let prevWidth = segmentControlView.frame.size.width
+        let prevHeight = segmentControlView.frame.size.height
+        segmentControlView.frame = CGRect(x: prevX, y: prevY + delta, width: prevWidth, height: prevHeight)
     }
     
 }

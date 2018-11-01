@@ -11,6 +11,7 @@ import UIKit
 class CourseDetailViewController: UIViewController {
     
     @IBOutlet var courseTitle: UILabel!
+    @IBOutlet var courseTitleView: UIView!
     @IBOutlet var tableView: UITableView!
     
     var course: Course!
@@ -22,6 +23,8 @@ class CourseDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        courseTitleView.addBorders(edges: [.bottom], color: UIColor(.bluegrey), width: 1)
         
         let editCourseButton = UIButton(type: .infoLight)
         editCourseButton.addTarget(self, action: #selector(editCoursePressed), for: .touchUpInside)
@@ -45,7 +48,7 @@ class CourseDetailViewController: UIViewController {
     override func willMove(toParent parent: UIViewController?) {
         super.willMove(toParent: parent)
         
-        navigationController?.navigationBar.barTintColor = .darkGray
+        navigationController?.navigationBar.barTintColor = UIColor(.bluegrey)
     }
     
     @objc private func editCoursePressed() {

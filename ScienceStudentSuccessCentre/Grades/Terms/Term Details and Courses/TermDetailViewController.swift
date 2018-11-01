@@ -12,6 +12,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet var gpa: UILabel!
     @IBOutlet var credits: UILabel!
+    @IBOutlet var termDetailsView: UIView!
     @IBOutlet var tableView: UITableView!
     
     private var addCourseButton: UIBarButtonItem!
@@ -25,6 +26,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .never
+        termDetailsView.addBorders(edges: [.top], color: UIColor(.bluegrey), width: 0.4)
         
         addCourseButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCoursePressed))
         editCoursesButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editCoursesPressed))
