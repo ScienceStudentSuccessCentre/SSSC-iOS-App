@@ -31,41 +31,41 @@ extension UIColor {
     convenience init(_ colorString: Material) {
         switch colorString {
         case .red:
-            self.init(hex: "#F44336")
+            self.init(hex: "#FF574A")
         case .pink:
-            self.init(hex: "#E91E63")
+            self.init(hex: "#FD3277")
         case .purple:
-            self.init(hex: "#A952b3")
+            self.init(hex: "#BD66C7")
         case .deeppurple:
-            self.init(hex: "#673AB7")
+            self.init(hex: "#7B4ECB")
         case .indigo:
-            self.init(hex: "#3F51B5")
+            self.init(hex: "#5365C9")
         case .blue:
-            self.init(hex: "#2196F3")
+            self.init(hex: "#35AAFF")
         case .lightblue:
-            self.init(hex: "#03A9F4")
+            self.init(hex: "#17BDFF")
         case .cyan:
-            self.init(hex: "#00BCD4")
+            self.init(hex: "#14D0E8")
         case .teal:
-            self.init(hex: "#009688")
+            self.init(hex: "#14AA9C")
         case .green:
-            self.init(hex: "#4CAF50")
+            self.init(hex: "#60C364")
         case .lightgreen:
-            self.init(hex: "#8BC34A")
+            self.init(hex: "#9FD75E")
         case .lime:
-            self.init(hex: "#CDDC39")
+            self.init(hex: "#E1F04D")
         case .amber:
-            self.init(hex: "#FFC107")
+            self.init(hex: "#FFD51B")
         case .orange:
-            self.init(hex: "#FF9800")
+            self.init(hex: "#FFAC14")
         case .deeporange:
-            self.init(hex: "#FF5722")
+            self.init(hex: "#FF6B36")
         case .brown:
-            self.init(hex: "#795548")
+            self.init(hex: "#79695C")
         case .grey:
-            self.init(hex: "#9E9E9E")
+            self.init(hex: "#B2B2B2")
         case .bluegrey:
-            self.init(hex: "#607D8B")
+            self.init(hex: "#74919F")
         }
     }
     
@@ -90,8 +90,7 @@ extension UIColor {
         case bluegrey
         
         static func fromUIColor(color: UIColor?) -> Material {
-            let materialColour = self.allCases.first{ UIColor($0) == color }
-            return materialColour ?? Material.red
+            return self.allCases.first{ UIColor($0) == color } ?? .red
         }
         
         static func getColourPalette() -> [ColorSpec] {
@@ -101,6 +100,14 @@ extension UIColor {
             }
             return colourPalette
         }
+    }
+    
+    func adjustedForNavController() -> UIColor {
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        if self.getRed(&r, green: &g, blue: &b, alpha: &a) {
+            return UIColor(red: max(((r * 255) - 20) / 255, 0.0), green: max(((g * 255) - 20) / 255, 0.0), blue: max(((b * 255) - 20) / 255, 0.0), alpha: 1)
+        }
+        return self
     }
     
 }
