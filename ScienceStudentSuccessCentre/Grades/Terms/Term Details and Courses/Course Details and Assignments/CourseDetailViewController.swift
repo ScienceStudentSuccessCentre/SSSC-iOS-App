@@ -74,24 +74,24 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
 //        self.performSegue(withIdentifier: "assignmentDetail", sender: self)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+//        if editingStyle == .delete {
 //            let assignment = assignments[indexPath.row]
-//            if Database.instance.delete(courseId: course.id) {
-//                self.courses.remove(at: indexPath.row)
+//            if Database.instance.delete(assignmentId: assignment.id) {
+//                self.assignments.remove(at: indexPath.row)
 //                DispatchQueue.main.async {
 //                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
-//                    if self.courses.count == 0 {
+//                    if self.assignments.count == 0 {
 //                        self.toggleOffTableViewEditMode()
 //                    }
 //                }
-//                updateTermDetails()
+//                updateCourseDetails()
 //            }
-        }
+//        }
     }
     
     @objc private func editCoursePressed() {

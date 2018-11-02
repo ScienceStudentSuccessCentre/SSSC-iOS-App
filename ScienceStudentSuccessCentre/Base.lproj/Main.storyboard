@@ -713,7 +713,7 @@
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="396.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AssignmentTableViewCell" rowHeight="90" id="3C6-M3-wiS" userLabel="AssignmentTableViewCell" customClass="AssignmentTableViewCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AssignmentTableViewCell" rowHeight="90" id="3C6-M3-wiS" userLabel="AssignmentTableViewCell" customClass="AssignmentTableViewCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3C6-M3-wiS" id="BHn-Bg-FJd">
