@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GradesViewControllerDelegate {
+class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tableView: UITableView!
     
@@ -18,6 +18,10 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     private var terms = [Term]()
     private var isCurrentView = true
+    
+    private var oldScrollPosition = CGFloat(0)
+    
+    weak var delegate: SegmentControlDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +68,7 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let term = terms[indexPath.row]
-            if Database.instance.deleteTerm(id: term.id) {
+            if Database.instance.delete(termId: term.id) {
                 self.terms.remove(at: indexPath.row)
                 DispatchQueue.main.async {
                     self.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -77,6 +81,15 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentScrollPosition = scrollView.contentOffset.y
+        if currentScrollPosition < 0 {
+            let delta = currentScrollPosition - oldScrollPosition
+            delegate?.updateSegmentControlPosition(delta: -delta)
+        }
+        oldScrollPosition = currentScrollPosition
+    }
+    
     @objc func addTermPressed() {
         performSegue(withIdentifier: "createTerm", sender: self)
     }
@@ -86,32 +99,18 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         toggleTableViewButtons()
     }
     
-    func toggleOffTableViewEditMode() {
-        if tableView.isEditing {
-            toggleTableViewEditMode()
-        }
-    }
-    
     func toggleTableViewEditMode() {
         tableView.setEditing(!tableView.isEditing, animated: true)
     }
     
-    func updateTableViewButtons(show: Bool) {
-        if show && isCurrentView {
-            toggleTableViewButtons()
-        } else {
-            getNavigationItem()?.setLeftBarButton(nil, animated: true)
-            getNavigationItem()?.setRightBarButton(nil, animated: true)
-        }
-    }
-    
     func toggleTableViewButtons() {
+        var buttonList: [UIBarButtonItem] = [addTermButton]
         if tableView.isEditing {
-            getNavigationItem()?.setLeftBarButton(doneEditingTermsButton, animated: true)
+            buttonList.append(doneEditingTermsButton)
         } else {
-            getNavigationItem()?.setLeftBarButton(editTermsButton, animated: false)
+            buttonList.append(editTermsButton)
         }
-        getNavigationItem()?.setRightBarButton(addTermButton, animated: true)
+        getNavigationItem()?.setRightBarButtonItems(buttonList, animated: true)
     }
     
     private func loadTerms() {
@@ -140,6 +139,24 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let controller = segue.destination as! TermDetailViewController
             let indexPath = tableView.indexPathForSelectedRow!
             controller.term = terms[indexPath.row]
+        }
+    }
+    
+}
+
+extension TermsViewController: GradesViewControllerDelegate {
+    
+    func toggleOffTableViewEditMode() {
+        if tableView.isEditing {
+            toggleTableViewEditMode()
+        }
+    }
+    
+    func updateTableViewButtons(show: Bool) {
+        if show && isCurrentView {
+            toggleTableViewButtons()
+        } else {
+            getNavigationItem()?.setRightBarButtonItems(nil, animated: true)
         }
     }
     

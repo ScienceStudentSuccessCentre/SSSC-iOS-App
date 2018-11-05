@@ -24,6 +24,8 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.largeTitleDisplayMode = .never
+        
         addCourseButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCoursePressed))
         editCoursesButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editCoursesPressed))
         doneEditingCoursesButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editCoursesPressed))
@@ -36,11 +38,15 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         loadCourses()
         updateTermDetails()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
         toggleOffTableViewEditMode()
     }
     
@@ -55,7 +61,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         let course = courses[indexPath.row]
         cell.courseName.text = course.name
         cell.courseCode.text = course.code
-        cell.gradeView.backgroundColor = course.getColour()
+        cell.gradeView.backgroundColor = UIColor(course.colour)
         return cell
     }
     
@@ -66,7 +72,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let course = courses[indexPath.row]
-            if Database.instance.deleteCourse(id: course.id) {
+            if Database.instance.delete(courseId: course.id) {
                 self.courses.remove(at: indexPath.row)
                 DispatchQueue.main.async {
                     self.tableView.deleteRows(at: [indexPath], with: .automatic)

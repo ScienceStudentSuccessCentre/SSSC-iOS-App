@@ -24,8 +24,6 @@ class GradesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25),NSAttributedString.Key.foregroundColor: UIColor.white]
-        
         if let ctrl = children.first(where: { $0 is GradesViewControllerDelegate }) {
             delegate = ctrl as? GradesViewControllerDelegate
         }
@@ -62,4 +60,22 @@ class GradesViewController: UIViewController {
             break
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "termsViewController", let destinationController = segue.destination as? TermsViewController {
+            destinationController.delegate = self
+        }
+    }
+}
+
+extension GradesViewController: SegmentControlDelegate {
+    
+    func updateSegmentControlPosition(delta: CGFloat) {
+        let prevX = segmentControl.frame.origin.x
+        let prevY = segmentControl.frame.origin.y
+        let prevWidth = segmentControl.frame.size.width
+        let prevHeight = segmentControl.frame.size.height
+        segmentControl.frame = CGRect(x: prevX, y: prevY + delta, width: prevWidth, height: prevHeight)
+    }
+    
 }

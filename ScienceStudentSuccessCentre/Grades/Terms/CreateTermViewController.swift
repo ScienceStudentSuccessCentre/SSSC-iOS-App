@@ -64,7 +64,7 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
     }
     
     @objc private func createButtonPressed() {
-        if !Database.instance.addTerm(term: term!, year: year!) {
+        if !Database.instance.insert(term: term!, year: year!) {
             print("Failed to create term")
             //TODO: let the user know somehow
         }
