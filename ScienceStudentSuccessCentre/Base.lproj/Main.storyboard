@@ -710,7 +710,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bd5-Q8-7PF">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="396.5"/>
+                                <rect key="frame" x="0.0" y="75.5" width="375" height="376.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AssignmentTableViewCell" rowHeight="90" id="3C6-M3-wiS" userLabel="AssignmentTableViewCell" customClass="AssignmentTableViewCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
@@ -762,11 +762,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OsZ-pQ-4Iw" userLabel="Event Title View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OsZ-pQ-4Iw" userLabel="Course Title View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="75.5"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMP3000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBu-6x-H9h" userLabel="Course Code">
+                                        <rect key="frame" x="8" y="8" width="359" height="20"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Operating Systems" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Npt-Ie-Ujm">
-                                        <rect key="frame" x="8" y="8" width="359" height="31.5"/>
+                                        <rect key="frame" x="8" y="36" width="359" height="31.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -774,9 +780,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Npt-Ie-Ujm" firstAttribute="top" secondItem="OsZ-pQ-4Iw" secondAttribute="top" constant="8" id="5pj-TZ-I8k"/>
+                                    <constraint firstItem="mBu-6x-H9h" firstAttribute="top" secondItem="OsZ-pQ-4Iw" secondAttribute="top" constant="8" id="2vf-0T-24k"/>
+                                    <constraint firstItem="Npt-Ie-Ujm" firstAttribute="top" secondItem="mBu-6x-H9h" secondAttribute="bottom" constant="8" id="5pj-TZ-I8k"/>
                                     <constraint firstAttribute="trailing" secondItem="Npt-Ie-Ujm" secondAttribute="trailing" constant="8" id="GZ3-oV-MRx"/>
+                                    <constraint firstItem="mBu-6x-H9h" firstAttribute="leading" secondItem="OsZ-pQ-4Iw" secondAttribute="leading" constant="8" id="Mnr-LY-zK3"/>
                                     <constraint firstAttribute="bottom" secondItem="Npt-Ie-Ujm" secondAttribute="bottom" constant="8" id="QVO-JV-GYG"/>
+                                    <constraint firstAttribute="trailing" secondItem="mBu-6x-H9h" secondAttribute="trailing" constant="8" id="iEr-dv-ut6"/>
                                     <constraint firstItem="Npt-Ie-Ujm" firstAttribute="leading" secondItem="OsZ-pQ-4Iw" secondAttribute="leading" constant="8" id="kli-kQ-1Fa"/>
                                 </constraints>
                             </view>
@@ -785,7 +794,7 @@
                         <constraints>
                             <constraint firstItem="OsZ-pQ-4Iw" firstAttribute="top" secondItem="b52-R7-gxJ" secondAttribute="top" id="Rbj-b1-MbS"/>
                             <constraint firstItem="bd5-Q8-7PF" firstAttribute="bottom" secondItem="b52-R7-gxJ" secondAttribute="bottom" id="Tg6-8c-hKp"/>
-                            <constraint firstItem="bd5-Q8-7PF" firstAttribute="top" secondItem="OsZ-pQ-4Iw" secondAttribute="bottom" constant="8" id="Vcp-0f-Pm8"/>
+                            <constraint firstItem="bd5-Q8-7PF" firstAttribute="top" secondItem="OsZ-pQ-4Iw" secondAttribute="bottom" id="Vcp-0f-Pm8"/>
                             <constraint firstItem="OsZ-pQ-4Iw" firstAttribute="leading" secondItem="b52-R7-gxJ" secondAttribute="leading" id="cac-23-P1E"/>
                             <constraint firstItem="OsZ-pQ-4Iw" firstAttribute="trailing" secondItem="b52-R7-gxJ" secondAttribute="trailing" id="euB-oE-JDx"/>
                             <constraint firstItem="bd5-Q8-7PF" firstAttribute="trailing" secondItem="b52-R7-gxJ" secondAttribute="trailing" id="p9T-ma-KT9"/>
@@ -794,8 +803,9 @@
                         <viewLayoutGuide key="safeArea" id="b52-R7-gxJ"/>
                     </view>
                     <connections>
+                        <outlet property="courseCode" destination="mBu-6x-H9h" id="a3P-6y-T0t"/>
                         <outlet property="courseTitle" destination="Npt-Ie-Ujm" id="gnQ-AW-6l3"/>
-                        <outlet property="courseTitleView" destination="OsZ-pQ-4Iw" id="BPa-UO-BW4"/>
+                        <outlet property="courseTitleView" destination="OsZ-pQ-4Iw" id="cct-s5-zgc"/>
                         <outlet property="tableView" destination="bd5-Q8-7PF" id="hQn-Gl-Nho"/>
                         <segue destination="lC3-cb-RGX" kind="showDetail" identifier="editCourse" id="8vw-Sl-0KH"/>
                     </connections>

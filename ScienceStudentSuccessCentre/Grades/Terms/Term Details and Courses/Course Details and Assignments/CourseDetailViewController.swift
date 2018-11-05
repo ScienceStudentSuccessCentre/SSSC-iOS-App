@@ -10,6 +10,7 @@ import UIKit
 
 class CourseDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet var courseCode: UILabel!
     @IBOutlet var courseTitle: UILabel!
     @IBOutlet var courseTitleView: UIView!
     @IBOutlet var tableView: UITableView!
@@ -44,6 +45,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         if (dbCourse != nil) {
             course = dbCourse
         }
+        courseCode.text = course.code
         courseTitle.text = course.name
         navigationController?.navigationBar.barTintColor = UIColor(course.colour).adjustedForNavController()
         for cell in tableView.visibleCells as! [AssignmentTableViewCell] {
