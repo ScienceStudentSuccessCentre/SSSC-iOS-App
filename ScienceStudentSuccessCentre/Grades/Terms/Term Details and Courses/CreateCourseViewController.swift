@@ -19,7 +19,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        creditFormatter.numberStyle = NumberFormatter.Style.decimal
+        creditFormatter.numberStyle = .decimal
         creditFormatter.maximumFractionDigits = 1
         creditFormatter.minimumFractionDigits = 1
         

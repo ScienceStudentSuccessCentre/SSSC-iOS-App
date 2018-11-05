@@ -694,7 +694,7 @@
                         <outlet property="tableView" destination="jI6-WQ-7Cg" id="0vY-GT-ooq"/>
                         <outlet property="termDetailsView" destination="YzK-zN-Hrt" id="XpX-cv-GGh"/>
                         <segue destination="atS-1p-BMg" kind="show" identifier="courseDetail" id="gNE-LT-kLe"/>
-                        <segue destination="lC3-cb-RGX" kind="showDetail" identifier="createCourse" id="K9y-h4-UFx"/>
+                        <segue destination="lC3-cb-RGX" kind="showDetail" identifier="editCourse" id="K9y-h4-UFx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xF0-lb-MJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -808,6 +808,7 @@
                         <outlet property="courseTitleView" destination="OsZ-pQ-4Iw" id="cct-s5-zgc"/>
                         <outlet property="tableView" destination="bd5-Q8-7PF" id="hQn-Gl-Nho"/>
                         <segue destination="lC3-cb-RGX" kind="showDetail" identifier="editCourse" id="8vw-Sl-0KH"/>
+                        <segue destination="N7b-6V-vXm" kind="showDetail" identifier="editAssignment" id="tsD-S5-xqb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOO-qd-8VI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -877,6 +878,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l2c-Ws-lVG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5722" y="880"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8E0-FJ-5UC">
+            <objects>
+                <navigationController id="N7b-6V-vXm" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KUK-br-rZw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="LTp-qs-NGE" kind="relationship" relationship="rootViewController" id="qak-j6-bZg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JkR-zO-kj9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6543" y="308"/>
+        </scene>
+        <!--Create Assignment View Controller-->
+        <scene sceneID="JZZ-BL-FIt">
+            <objects>
+                <viewController id="LTp-qs-NGE" customClass="CreateAssignmentViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jBR-d1-4gx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="452"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Qde-Mm-ik6"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2Ay-Xv-tfk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jcZ-Ry-GZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7330" y="308"/>
         </scene>
     </scenes>
     <resources>

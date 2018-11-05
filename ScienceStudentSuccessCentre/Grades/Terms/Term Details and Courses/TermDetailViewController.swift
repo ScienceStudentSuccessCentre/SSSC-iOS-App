@@ -88,7 +88,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @objc private func addCoursePressed() {
-        performSegue(withIdentifier: "createCourse", sender: self)
+        performSegue(withIdentifier: "editCourse", sender: self)
     }
     
     @objc private func editCoursesPressed() {
@@ -130,7 +130,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             let indexPath = tableView.indexPathForSelectedRow!
             controller.course = courses[indexPath.row]
         }
-        if segue.identifier == "createCourse" {
+        if segue.identifier == "editCourse" {
             let controller = segue.destination.children.first as! CreateCourseViewController
             controller.term = term
         }

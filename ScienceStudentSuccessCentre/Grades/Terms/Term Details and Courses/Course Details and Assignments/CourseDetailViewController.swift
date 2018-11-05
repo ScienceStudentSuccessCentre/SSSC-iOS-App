@@ -60,8 +60,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return assignments.count
-        return 1
+        return assignments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,7 +76,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-//        self.performSegue(withIdentifier: "assignmentDetail", sender: self)
+        self.performSegue(withIdentifier: "assignmentDetail", sender: self)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -105,12 +104,16 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @objc private func addAssignmentPressed() {
-        
+        performSegue(withIdentifier: "editAssignment", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editCourse" {
             let controller = segue.destination.children.first as! CreateCourseViewController
+            controller.course = course
+        }
+        if segue.identifier == "editAssignment" {
+            let controller = segue.destination.children.first as! CreateAssignmentViewController
             controller.course = course
         }
     }

@@ -23,6 +23,7 @@
 		FF3D05DC215AC9AC0073D0E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */; };
 		FF4C4A9C215D7C550091BF2A /* GradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */; };
 		FF57A96521658509004AA50B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF57A96421658509004AA50B /* UIColor.swift */; };
+		FF651CEA2190F27100C37022 /* CreateAssignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF651CE92190F27100C37022 /* CreateAssignmentViewController.swift */; };
 		FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6835B52023C540001A35B2 /* EventTableViewCell.swift */; };
 		FF74BE81218CBE6100A8954B /* AssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF74BE80218CBE6100A8954B /* AssignmentTableViewCell.swift */; };
 		FF7A0905215967F600A98504 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7A0904215967F600A98504 /* Formatter.swift */; };
@@ -87,6 +88,7 @@
 		FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesViewController.swift; sourceTree = "<group>"; };
 		FF57A96421658509004AA50B /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		FF651CE92190F27100C37022 /* CreateAssignmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAssignmentViewController.swift; sourceTree = "<group>"; };
 		FF6835B52023C540001A35B2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		FF74BE80218CBE6100A8954B /* AssignmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentTableViewCell.swift; sourceTree = "<group>"; };
 		FF7A0904215967F600A98504 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */,
 				FFC6CF1721657CAE00657C34 /* Assignment.swift */,
 				FF74BE80218CBE6100A8954B /* AssignmentTableViewCell.swift */,
+				FF651CE92190F27100C37022 /* CreateAssignmentViewController.swift */,
 			);
 			path = "Course Details and Assignments";
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */,
 				FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */,
 				FF19EE4E202EA6DA00475B63 /* EventObserver.swift in Sources */,
+				FF651CEA2190F27100C37022 /* CreateAssignmentViewController.swift in Sources */,
 				FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */,
 				FFC6CF1621657C6D00657C34 /* CourseDetailViewController.swift in Sources */,
 				FFA7CBAB215DD4CB00A050B1 /* TermsViewController.swift in Sources */,
