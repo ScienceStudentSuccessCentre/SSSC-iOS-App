@@ -40,6 +40,7 @@
 		FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC18A2B202502A8001AB5BA /* EventParser.swift */; };
 		FFC6CF1621657C6D00657C34 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */; };
 		FFC6CF1821657CAE00657C34 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6CF1721657CAE00657C34 /* Assignment.swift */; };
+		FFD2DF532193860200C97FDF /* Grading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2DF522193860200C97FDF /* Grading.swift */; };
 		FFE84078215F1CAC00A5E33B /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE84077215F1CAC00A5E33B /* Term.swift */; };
 		FFFC6BC72162D6D6001585CE /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6BC62162D6D6001585CE /* Course.swift */; };
 		FFFC6BC92162D70D001585CE /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6BC82162D70D001585CE /* CourseTableViewCell.swift */; };
@@ -105,6 +106,7 @@
 		FFC18A2B202502A8001AB5BA /* EventParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventParser.swift; sourceTree = "<group>"; };
 		FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
 		FFC6CF1721657CAE00657C34 /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
+		FFD2DF522193860200C97FDF /* Grading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grading.swift; sourceTree = "<group>"; };
 		FFE84077215F1CAC00A5E33B /* Term.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
 		FFFC6BC62162D6D6001585CE /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		FFFC6BC82162D70D001585CE /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */,
 				FF57A96421658509004AA50B /* UIColor.swift */,
 				FFAE67912188ED2D0079CE16 /* UIView.swift */,
+				FFD2DF522193860200C97FDF /* Grading.swift */,
 			);
 			path = "Utilities and Extensions";
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				FFE84078215F1CAC00A5E33B /* Term.swift in Sources */,
 				FF327FCB20128C3E00B06E19 /* EventsViewController.swift in Sources */,
 				FF74BE81218CBE6100A8954B /* AssignmentTableViewCell.swift in Sources */,
+				FFD2DF532193860200C97FDF /* Grading.swift in Sources */,
 				FF3D05DC215AC9AC0073D0E7 /* TabBarViewController.swift in Sources */,
 				FFA7CBAF215DD54C00A050B1 /* PlannerViewController.swift in Sources */,
 				FFA7CBB1215DD59B00A050B1 /* TermTableViewCell.swift in Sources */,

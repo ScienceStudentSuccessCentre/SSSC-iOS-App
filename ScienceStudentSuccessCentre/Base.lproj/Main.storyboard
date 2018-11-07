@@ -709,7 +709,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="452"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bd5-Q8-7PF">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bd5-Q8-7PF">
                                 <rect key="frame" x="0.0" y="75.5" width="375" height="376.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -808,7 +808,8 @@
                         <outlet property="courseTitleView" destination="OsZ-pQ-4Iw" id="cct-s5-zgc"/>
                         <outlet property="tableView" destination="bd5-Q8-7PF" id="hQn-Gl-Nho"/>
                         <segue destination="lC3-cb-RGX" kind="showDetail" identifier="editCourse" id="8vw-Sl-0KH"/>
-                        <segue destination="N7b-6V-vXm" kind="showDetail" identifier="editAssignment" id="tsD-S5-xqb"/>
+                        <segue destination="N7b-6V-vXm" kind="showDetail" identifier="createAssignment" id="tsD-S5-xqb"/>
+                        <segue destination="N7b-6V-vXm" kind="showDetail" identifier="editAssignment" id="kLN-0H-OdZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOO-qd-8VI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -917,6 +918,7 @@
         <image name="gradesIcon" width="37.5" height="37.5"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="tsD-S5-xqb"/>
         <segue reference="8vw-Sl-0KH"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -32,6 +32,14 @@ class Database {
     private let t_courses_termId = Expression<Int>("termId")
     private let t_courses_colour = Expression<String>("colour")
     
+    private let t_assignments = Table("assignments")
+    private let t_assignments_id = Expression<Int>("assignmentId")
+    private let t_assignments_name = Expression<String>("name")
+    private let t_assignments_gradeEarned = Expression<Double>("gradeEarned")
+    private let t_assignments_gradeTotal = Expression<Double>("gradeTotal")
+    private let t_assignments_weight = Expression<Double>("weight")
+    private let t_assignments_courseId = Expression<Int>("courseId")
+    
     private var db: Connection?
     
     private init() {
@@ -49,6 +57,7 @@ class Database {
             
             createTermsTable()
             createCoursesTable()
+            createAssignmentsTable()
             
             postCreationScripts()
         }
@@ -83,6 +92,22 @@ class Database {
         }
     }
     
+    private func createAssignmentsTable() {
+        do {
+            try db?.run(t_assignments.create(ifNotExists: true) { t in
+                t.column(t_assignments_id, primaryKey: .autoincrement)
+                t.column(t_assignments_name)
+                t.column(t_assignments_gradeEarned)
+                t.column(t_assignments_gradeTotal)
+                t.column(t_assignments_weight)
+                t.column(t_assignments_courseId)
+                t.foreignKey(t_assignments_courseId, references: t_courses, t_courses_id, delete: .cascade)
+            })
+        } catch {
+            print("Did not create assignments table")
+        }
+    }
+    
     public func insert(term: String, year: String) -> Bool {
         print("Adding term \(term) \(year) into \(t_terms)")
         do {
@@ -90,13 +115,14 @@ class Database {
                                                    t_terms_term <- term,
                                                    t_terms_year <- year))
             print("Inserted rowid \(rowid!)")
-            return true
         } catch let Result.error(message, code, _) where code == SQLITE_CONSTRAINT {
             print("Constraint failed: \(message)")
+            return false
         } catch let error {
             print("Insertion failed: \(error)")
+            return false
         }
-        return false
+        return true
     }
     
     public func insertOrUpdate(course: Course) -> Bool {
@@ -123,10 +149,42 @@ class Database {
             }
         } catch let Result.error(message, code, _) where code == SQLITE_CONSTRAINT {
             print("Constraint failed: \(message)")
+            return false
         } catch let error {
             print("Insertion failed: \(error)")
+            return false
         }
-        return false
+        return true
+    }
+    
+    public func insertOrUpdate(assignment: Assignment) -> Bool {
+        do {
+            if assignment.id == -1 {
+                print("Adding assignment \(assignment.name) (\(assignment.gradeEarned), \(assignment.gradeTotal), \(assignment.weight)) into \(t_assignments)")
+                let insert = t_assignments.insert(t_assignments_name <- assignment.name,
+                                                   t_assignments_gradeEarned <- assignment.gradeEarned,
+                                                   t_assignments_gradeTotal <- assignment.gradeTotal,
+                                                   t_assignments_weight <- assignment.weight,
+                                                   t_assignments_courseId <- assignment.courseId)
+                try db?.run(insert)
+            } else {
+                print("Updating assignment \(assignment.name) (\(assignment.gradeEarned), \(assignment.gradeTotal), \(assignment.weight)) with id \(assignment.id) in \(t_assignments)")
+                let existingAssignment = t_assignments.filter(t_assignments_id == assignment.id)
+                let update = existingAssignment.update(t_assignments_name <- assignment.name,
+                                                       t_assignments_gradeEarned <- assignment.gradeEarned,
+                                                       t_assignments_gradeTotal <- assignment.gradeTotal,
+                                                       t_assignments_weight <- assignment.weight,
+                                                       t_assignments_courseId <- assignment.courseId)
+                try db?.run(update)
+            }
+        } catch let Result.error(message, code, _) where code == SQLITE_CONSTRAINT {
+            print("Constraint failed: \(message)")
+            return false
+        } catch let error {
+            print("Insertion failed: \(error)")
+            return false
+        }
+        return true
     }
     
     public func delete(termId: Int) -> Bool {
@@ -148,6 +206,19 @@ class Database {
         do {
             try db?.run(course.delete())
             print("Deleted course \(courseId)")
+            return true
+        } catch let error {
+            print("Delete failed: \(error)")
+        }
+        return false
+    }
+    
+    public func delete(assignmentId: Int) -> Bool {
+        print("Deleting assignment \(assignmentId) from \(t_assignments)")
+        let assignment = t_assignments.filter(t_assignments_id == assignmentId)
+        do {
+            try db?.run(assignment.delete())
+            print("Deleted assignment \(assignmentId)")
             return true
         } catch let error {
             print("Delete failed: \(error)")
@@ -212,6 +283,26 @@ class Database {
         }
         print("Found \(courses.count) courses")
         return courses
+    }
+    
+    public func getAssignmentsByCourseId(id: Int) -> [Assignment] {
+        print("Getting assignments from \(t_assignments) by courseId \(id)")
+        var assignments = [Assignment]()
+        do {
+            for row in try (db?.prepare(t_assignments.filter(t_assignments_courseId == id)))! {
+                let assignmentId = try row.get(t_assignments_id)
+                let name = try row.get(t_assignments_name)
+                let gradeEarned = try row.get(t_assignments_gradeEarned)
+                let gradeTotal = try row.get(t_assignments_gradeTotal)
+                let weight = try row.get(t_assignments_weight)
+                let courseId = try row.get(t_assignments_courseId)
+                assignments.append(Assignment(id: assignmentId, name: name, gradeEarned: gradeEarned, gradeTotal: gradeTotal, weight: weight, courseId: courseId))
+            }
+        } catch let error {
+            print("Select failed: \(error)")
+        }
+        print("Found \(assignments.count) assignments")
+        return assignments
     }
     
     private func preCreationScripts() {

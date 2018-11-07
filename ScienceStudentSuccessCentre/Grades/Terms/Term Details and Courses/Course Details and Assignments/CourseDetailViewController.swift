@@ -17,9 +17,11 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     var course: Course!
     var assignments = [Assignment]()
+    var accessoryButtonIndexPath: IndexPath! = nil
     
     private var courseInfoButton: UIBarButtonItem!
     private var editAssignmentsButton: UIBarButtonItem!
+    private var doneEditingAssignmentsButton: UIBarButtonItem!
     private var addAssignmentButton: UIBarButtonItem!
 
     override func viewDidLoad() {
@@ -32,6 +34,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         
         courseInfoButton = UIBarButtonItem(customView: editCourseButton)
         editAssignmentsButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editAssignmentsPressed))
+        doneEditingAssignmentsButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editAssignmentsPressed))
         addAssignmentButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAssignmentPressed))
         
         navigationItem.setRightBarButtonItems([courseInfoButton, addAssignmentButton, editAssignmentsButton], animated: true)
@@ -47,10 +50,20 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         }
         courseCode.text = course.code
         courseTitle.text = course.name
+        
         navigationController?.navigationBar.barTintColor = UIColor(course.colour).adjustedForNavController()
+        
+        loadAssignments()
+        
         for cell in tableView.visibleCells as! [AssignmentTableViewCell] {
             cell.setColour(colour: UIColor(course.colour))
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        toggleOffTableViewEditMode()
     }
     
     override func willMove(toParent parent: UIViewController?) {
@@ -67,32 +80,31 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AssignmentTableViewCell", for: indexPath) as? AssignmentTableViewCell  else {
             fatalError("The dequeued cell is not an instance of AssignmentTableViewCell.")
         }
-//        let assignment = assignments[indexPath.row]
-//        cell.assignmentName.text = assignment.name
-//        cell.grade.text = String(assignment.grade)
-//        cell.weight.text = String(assignment.weight)
+        let assignment = assignments[indexPath.row]
+        cell.assignmentName.text = assignment.name
+        cell.grade.text = String(assignment.gradeEarned)
         cell.setColour(colour: UIColor(course.colour))
         return cell
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "assignmentDetail", sender: self)
+        accessoryButtonIndexPath = indexPath
+        self.performSegue(withIdentifier: "editAssignment", sender: self)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            let assignment = assignments[indexPath.row]
-//            if Database.instance.delete(assignmentId: assignment.id) {
-//                self.assignments.remove(at: indexPath.row)
-//                DispatchQueue.main.async {
-//                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
-//                    if self.assignments.count == 0 {
-//                        self.toggleOffTableViewEditMode()
-//                    }
-//                }
-//                updateCourseDetails()
-//            }
-//        }
+        if editingStyle == .delete {
+            let assignment = assignments[indexPath.row]
+            if Database.instance.delete(assignmentId: assignment.id) {
+                self.assignments.remove(at: indexPath.row)
+                DispatchQueue.main.async {
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                    if self.assignments.count == 0 {
+                        self.toggleOffTableViewEditMode()
+                    }
+                }
+            }
+        }
     }
     
     @objc private func editCoursePressed() {
@@ -100,11 +112,43 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @objc private func editAssignmentsPressed() {
-        
+        toggleTableViewEditMode()
     }
     
     @objc private func addAssignmentPressed() {
-        performSegue(withIdentifier: "editAssignment", sender: self)
+        performSegue(withIdentifier: "createAssignment", sender: self)
+    }
+    
+    private func toggleOffTableViewEditMode() {
+        if tableView.isEditing {
+            toggleTableViewEditMode()
+        }
+    }
+    
+    private func loadAssignments() {
+        assignments.removeAll()
+        assignments = Database.instance.getAssignmentsByCourseId(id: course.id)
+        self.tableView.reloadData()
+    }
+    
+    private func toggleTableViewEditMode() {
+        tableView.setEditing(!tableView.isEditing, animated: true)
+        if tableView.isEditing {
+            navigationItem.setRightBarButtonItems([courseInfoButton, addAssignmentButton, doneEditingAssignmentsButton], animated: true)
+        } else {
+            navigationItem.setRightBarButtonItems([courseInfoButton, addAssignmentButton, editAssignmentsButton], animated: true)
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
+        if let ident = identifier {
+            if ident == "editAssignment" {
+                if accessoryButtonIndexPath == nil {
+                    return false
+                }
+            }
+        }
+        return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -112,8 +156,13 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
             let controller = segue.destination.children.first as! CreateCourseViewController
             controller.course = course
         }
+        if segue.identifier == "createAssignment" {
+            let controller = segue.destination.children.first as! CreateAssignmentViewController
+            controller.course = course
+        }
         if segue.identifier == "editAssignment" {
             let controller = segue.destination.children.first as! CreateAssignmentViewController
+            controller.assignment = assignments[accessoryButtonIndexPath.row]
             controller.course = course
         }
     }
