@@ -86,7 +86,7 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
         let gradeEarned = values["gradeEarned"] as? Double ?? -1
         let gradeTotal = values["gradeTotal"] as? Double ?? -1
         let weight = values["weight"] as? Double ?? -1
-        if !name.isEmpty && 0 ... gradeTotal ~= gradeEarned && gradeTotal >= 0 && 0 ... 100 ~= weight {
+        if !name.isEmpty && gradeEarned >= 0 && gradeTotal >= 0 && 0 ... 100 ~= weight {
             navigationItem.rightBarButtonItem?.isEnabled = true
         } else {
             navigationItem.rightBarButtonItem?.isEnabled = false

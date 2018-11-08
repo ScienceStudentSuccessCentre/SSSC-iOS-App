@@ -28,6 +28,7 @@
 		FF74BE81218CBE6100A8954B /* AssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF74BE80218CBE6100A8954B /* AssignmentTableViewCell.swift */; };
 		FF7A0905215967F600A98504 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7A0904215967F600A98504 /* Formatter.swift */; };
 		FF7FD89021485E8100DAC88C /* HtmlString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7FD88F21485E8100DAC88C /* HtmlString.swift */; };
+		FF80666E2193A31D00B202A6 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80666D2193A31D00B202A6 /* Double.swift */; };
 		FFA4B1D320229C8400BAC08F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B1D220229C8400BAC08F /* Event.swift */; };
 		FFA7CBAB215DD4CB00A050B1 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAA215DD4CB00A050B1 /* TermsViewController.swift */; };
 		FFA7CBAD215DD53300A050B1 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */; };
@@ -94,6 +95,7 @@
 		FF74BE80218CBE6100A8954B /* AssignmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentTableViewCell.swift; sourceTree = "<group>"; };
 		FF7A0904215967F600A98504 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		FF7FD88F21485E8100DAC88C /* HtmlString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlString.swift; sourceTree = "<group>"; };
+		FF80666D2193A31D00B202A6 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		FFA4B1D220229C8400BAC08F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		FFA7CBAA215DD4CB00A050B1 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				FF57A96421658509004AA50B /* UIColor.swift */,
 				FFAE67912188ED2D0079CE16 /* UIView.swift */,
 				FFD2DF522193860200C97FDF /* Grading.swift */,
+				FF80666D2193A31D00B202A6 /* Double.swift */,
 			);
 			path = "Utilities and Extensions";
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 			files = (
 				FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */,
 				FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */,
+				FF80666E2193A31D00B202A6 /* Double.swift in Sources */,
 				FF19EE4E202EA6DA00475B63 /* EventObserver.swift in Sources */,
 				FF651CEA2190F27100C37022 /* CreateAssignmentViewController.swift in Sources */,
 				FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */,

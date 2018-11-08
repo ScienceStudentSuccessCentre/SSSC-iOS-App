@@ -82,7 +82,8 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         }
         let assignment = assignments[indexPath.row]
         cell.assignmentName.text = assignment.name
-        cell.grade.text = String(assignment.gradeEarned)
+        cell.letterGrade.text = assignment.letterGrade()
+        cell.percentageGrade.text = "Grade: " + assignment.percentage()
         cell.setColour(colour: UIColor(course.colour))
         return cell
     }

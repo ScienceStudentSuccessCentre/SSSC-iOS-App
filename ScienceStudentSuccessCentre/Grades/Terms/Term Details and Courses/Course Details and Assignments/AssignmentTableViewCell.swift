@@ -11,8 +11,9 @@ import UIKit
 class AssignmentTableViewCell: UITableViewCell {
 
     @IBOutlet var assignmentName: UILabel!
-    @IBOutlet var grade: UILabel!
-    @IBOutlet var gradeView: UIView!
+    @IBOutlet var percentageGrade: UILabel!
+    @IBOutlet var letterGrade: UILabel!
+    @IBOutlet var letterGradeView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,7 +24,7 @@ class AssignmentTableViewCell: UITableViewCell {
     }
     
     func setColour(colour: UIColor) {
-        gradeView.backgroundColor = colour
+        letterGradeView.backgroundColor = colour
     }
 
 }
