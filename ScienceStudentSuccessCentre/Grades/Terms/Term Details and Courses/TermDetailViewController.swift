@@ -63,6 +63,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         let course = courses[indexPath.row]
         cell.courseName.text = course.name
         cell.courseCode.text = course.code
+        cell.grade.text = course.getGrade()
         cell.gradeView.backgroundColor = UIColor(course.colour)
         return cell
     }

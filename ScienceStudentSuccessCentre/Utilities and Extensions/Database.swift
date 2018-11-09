@@ -29,6 +29,7 @@ class Database {
     private let t_courses_code = Expression<String>("code")
     private let t_courses_credits = Expression<Double>("credits")
     private let t_courses_isCGPACourse = Expression<Bool>("isCGPACourse")
+    private let t_courses_finalGrade = Expression<String>("finalGrade")
     private let t_courses_termId = Expression<Int>("termId")
     private let t_courses_colour = Expression<String>("colour")
     
@@ -83,6 +84,7 @@ class Database {
                 t.column(t_courses_code)
                 t.column(t_courses_credits)
                 t.column(t_courses_isCGPACourse)
+                t.column(t_courses_finalGrade)
                 t.column(t_courses_termId)
                 t.column(t_courses_colour)
                 t.foreignKey(t_courses_termId, references: t_terms, t_terms_id, delete: .cascade)
@@ -133,6 +135,7 @@ class Database {
                                               t_courses_code <- course.code,
                                               t_courses_credits <- course.credits,
                                               t_courses_isCGPACourse <- course.isCGPACourse,
+                                              t_courses_finalGrade <- course.finalGrade,
                                               t_courses_termId <- course.termId,
                                               t_courses_colour <- String(describing: course.colour))
                 try db?.run(insert)
@@ -143,6 +146,7 @@ class Database {
                                                    t_courses_code <- course.code,
                                                    t_courses_credits <- course.credits,
                                                    t_courses_isCGPACourse <- course.isCGPACourse,
+                                                   t_courses_finalGrade <- course.finalGrade,
                                                    t_courses_termId <- course.termId,
                                                    t_courses_colour <- String(describing: course.colour))
                 try db?.run(update)
@@ -253,9 +257,10 @@ class Database {
                 let code = try row!.get(t_courses_code)
                 let credits = try row!.get(t_courses_credits)
                 let isCGPACourse = try row!.get(t_courses_isCGPACourse)
+                let finalGrade = try row!.get(t_courses_finalGrade)
                 let termId = try row!.get(t_courses_termId)
                 let colour = UIColor.Material(rawValue: try row!.get(t_courses_colour))
-                return Course(id: courseId, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId: termId, colour: colour)
+                return Course(id: courseId, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, finalGrade: finalGrade, termId: termId, colour: colour)
             }
         } catch let error {
             print("Select failed: \(error)")
@@ -274,9 +279,10 @@ class Database {
                 let code = try row.get(t_courses_code)
                 let credits = try row.get(t_courses_credits)
                 let isCGPACourse = try row.get(t_courses_isCGPACourse)
+                let finalGrade = try row.get(t_courses_finalGrade)
                 let termId = try row.get(t_courses_termId)
                 let colour = UIColor.Material(rawValue: try row.get(t_courses_colour))
-                courses.append(Course(id: courseId, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId: termId, colour: colour))
+                courses.append(Course(id: courseId, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, finalGrade: finalGrade, termId: termId, colour: colour))
             }
         } catch let error {
             print("Select failed: \(error)")

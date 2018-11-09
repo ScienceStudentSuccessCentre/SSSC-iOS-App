@@ -15,6 +15,8 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     var term: Term!
     var course: Course!
     let creditFormatter = NumberFormatter()
+    
+    let letterGrades = ["None", "A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +41,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     
     func createForm() {
         form
-        +++ Section("Course Info")
+            +++ Section("Course Info")
             <<< TextRow() { row in
                 row.tag = "name"
                 row.title = "Name"
@@ -68,8 +70,8 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                 row.tag = "isCGPACourse"
                 row.title = "Counts Towards Major GPA"
             }
-        +++ Section("Course Colour")
-            <<< InlineColorPickerRow() { (row) in
+            +++ Section("Course Colour")
+            <<< InlineColorPickerRow() { row in
                 row.tag = "colour"
                 row.title = "Select a Colour"
                 row.isCircular = false
@@ -79,12 +81,20 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                 let palette = ColorPalette(name: "Material", palette: UIColor.Material.getColourPalette())
                 row.palettes = [palette]
             }
+            +++ Section("Override Calculated Grade")
+            <<< PushRow<String>() { row in
+                row.tag = "finalGrade"
+                row.title = "Final Grade"
+                row.options = letterGrades
+                row.value = letterGrades.first
+            }
         
         if (course != nil) {
             form.rowBy(tag: "name")?.baseValue = course.name
             form.rowBy(tag: "code")?.baseValue = course.code
             form.rowBy(tag: "credits")?.baseValue = course.credits
             form.rowBy(tag: "isCGPACourse")?.baseValue = course.isCGPACourse
+            form.rowBy(tag: "finalGrade")?.baseValue = course.finalGrade
             form.rowBy(tag: "colour")?.baseValue = UIColor(course.colour)
         }
     }
@@ -107,8 +117,9 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         let code = values["code"] as? String ?? ""
         let credits = values["credits"] as? Double ?? 0
         let isCGPACourse = values["isCGPACourse"] as? Bool ?? false
+        let finalGrade = values["finalGrade"] as? String ?? "None"
         let colour = UIColor.Material.fromUIColor(color: values["colour"] as? UIColor ?? nil)
-        let course = Course(id: self.course != nil ? self.course.id : -1, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, termId: self.term != nil ? term.id : self.course.termId, colour: colour)
+        let course = Course(id: self.course != nil ? self.course.id : -1, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, finalGrade: finalGrade, termId: self.term != nil ? term.id : self.course.termId, colour: colour)
         if !Database.instance.insertOrUpdate(course: course) {
             print("Failed to create course")
             //TODO: let the user know somehow
