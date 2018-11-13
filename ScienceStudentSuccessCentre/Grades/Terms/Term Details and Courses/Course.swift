@@ -31,9 +31,9 @@ class Course {
         self.colour = colour ?? UIColor.Material.red
     }
     
-    func getGrade() -> String {
+    func getPercentGrade() -> Double {
         if finalGrade != "None" {
-            return finalGrade
+            return Grading.getPercentage(letterGrade: getLetterGrade())
         }
         var totalEarned: Double = 0
         var totalWeight: Double = 0
@@ -42,11 +42,23 @@ class Course {
             totalEarned += Grading.calculatePercentage(earned: assignment.gradeEarned, total: assignment.gradeTotal) * assignment.weight / 100
             totalWeight += assignment.weight
         }
-        if totalWeight <= 0 {
-            return "N/A"
-        } else {
-            return Grading.calculateLetterGrade(earned: totalEarned, total: totalWeight)
+        return Grading.calculatePercentage(earned: totalEarned, total: totalWeight)
+    }
+    
+    func getLetterGrade() -> String {
+        if finalGrade != "None" {
+            return finalGrade
         }
+        return Grading.calculateLetterGrade(percentage: getPercentGrade())
+    }
+    
+    func getGradeSummary() -> String {
+        if finalGrade != "None" {
+            return finalGrade
+        }
+        let percentGrade = getPercentGrade().rounded(toPlaces: 1)
+        let letterGrade = getLetterGrade()
+        return String(percentGrade) + "% (" + letterGrade + ")"
     }
     
 }

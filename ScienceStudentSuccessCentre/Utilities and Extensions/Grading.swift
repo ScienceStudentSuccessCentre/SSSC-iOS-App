@@ -10,16 +10,11 @@ import Foundation
 
 class Grading {
     
-    static func formatPercentage(percentage: Double) -> String {
-        let percentFormatter = NumberFormatter()
-        percentFormatter.maximumFractionDigits = 1
-        percentFormatter.minimumFractionDigits = 0
-        return percentFormatter.string(from: percentage as NSNumber) ?? ""
-    }
-    
     static func calculatePercentage(earned: Double, total: Double) -> Double {
-        let percent = earned / total * 100
-        return percent.rounded(toPlaces: 1)
+        if total <= 0 {
+            return -1
+        }
+        return earned / total * 100
     }
     
     static func calculateLetterGrade(earned: Double, total: Double) -> String {
@@ -59,6 +54,84 @@ class Grading {
             letterGrade = "N/A"
         }
         return letterGrade
+    }
+    
+    static func calculateGpa(percentage: Double) -> String {
+        var gpa: Double
+        switch percentage {
+        case 0 ..< 50:
+            gpa = percentage / 100
+        case 50 ..< 53:
+            gpa = ((percentage / 100) * 3) + 50
+        case 53 ..< 57:
+            gpa = ((percentage / 100) * 4) + 53
+        case 57 ..< 60:
+            gpa = ((percentage / 100) * 3) + 57
+        case 60 ..< 63:
+            gpa = ((percentage / 100) * 3) + 60
+        case 63 ..< 67:
+            gpa = ((percentage / 100) * 4) + 63
+        case 67 ..< 70:
+            gpa = ((percentage / 100) * 3) + 67
+        case 70 ..< 73:
+            gpa = ((percentage / 100) * 3) + 70
+        case 73 ..< 77:
+            gpa = ((percentage / 100) * 4) + 73
+        case 77 ..< 80:
+            gpa = ((percentage / 100) * 3) + 77
+        case 80 ..< 85:
+            gpa = ((percentage / 100) * 5) + 80
+        case 85 ..< 90:
+            gpa = ((percentage / 100) * 5) + 85
+        case _ where percentage >= 90:
+            gpa = ((percentage / 100) * 10) + 90
+        default:
+            gpa = -1
+        }
+        if gpa == -1 {
+            return "N/A"
+        }
+        return String(gpa.rounded(toPlaces: 1))
+    }
+    
+    static func getPercentage(letterGrade: String) -> Double {
+        var percentage: Double
+        //TODO: actually fill this in
+        return -1
+//        switch letterGrade {
+//        case "F":
+//            gpa = percentage / 100
+//        case 50 ..< 53:
+//            gpa = ((percentage / 100) * 3) + 50
+//        case 53 ..< 57:
+//            gpa = ((percentage / 100) * 4) + 53
+//        case 57 ..< 60:
+//            gpa = ((percentage / 100) * 3) + 57
+//        case 60 ..< 63:
+//            gpa = ((percentage / 100) * 3) + 60
+//        case 63 ..< 67:
+//            gpa = ((percentage / 100) * 4) + 63
+//        case 67 ..< 70:
+//            gpa = ((percentage / 100) * 3) + 67
+//        case 70 ..< 73:
+//            gpa = ((percentage / 100) * 3) + 70
+//        case 73 ..< 77:
+//            gpa = ((percentage / 100) * 4) + 73
+//        case 77 ..< 80:
+//            gpa = ((percentage / 100) * 3) + 77
+//        case 80 ..< 85:
+//            gpa = ((percentage / 100) * 5) + 80
+//        case 85 ..< 90:
+//            gpa = ((percentage / 100) * 5) + 85
+//        case _ where percentage >= 90:
+//            gpa = ((percentage / 100) * 10) + 90
+//        default:
+//            gpa = -1
+//        }
+//        if gpa == -1 {
+//            return "N/A"
+//        }
+//        return percentage
     }
     
 }

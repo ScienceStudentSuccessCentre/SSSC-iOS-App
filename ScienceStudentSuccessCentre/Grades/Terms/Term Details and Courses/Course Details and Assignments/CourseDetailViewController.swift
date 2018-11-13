@@ -14,6 +14,8 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet var courseTitle: UILabel!
     @IBOutlet var courseTitleView: UIView!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var courseGrade: UILabel!
+    @IBOutlet var courseGradeView: UIView!
     
     var course: Course!
     var assignments = [Assignment]()
@@ -28,6 +30,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         
         courseTitleView.addBorders(edges: [.bottom], color: UIColor(.bluegrey), width: 1)
+        courseGradeView.addBorders(edges: [.top], color: UIColor(.bluegrey), width: 0.4)
         
         let editCourseButton = UIButton(type: .infoLight)
         editCourseButton.addTarget(self, action: #selector(editCoursePressed), for: .touchUpInside)
@@ -54,6 +57,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         navigationController?.navigationBar.barTintColor = UIColor(course.colour).adjustedForNavController()
         
         loadAssignments()
+        updateCourseDetails()
         
         for cell in tableView.visibleCells as! [AssignmentTableViewCell] {
             cell.setColour(colour: UIColor(course.colour))
@@ -130,6 +134,10 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         assignments.removeAll()
         assignments = Database.instance.getAssignmentsByCourseId(id: course.id)
         self.tableView.reloadData()
+    }
+    
+    private func updateCourseDetails() {
+        courseGrade.text = "Overall Grade: " + course.getGradeSummary()
     }
     
     private func toggleTableViewEditMode() {

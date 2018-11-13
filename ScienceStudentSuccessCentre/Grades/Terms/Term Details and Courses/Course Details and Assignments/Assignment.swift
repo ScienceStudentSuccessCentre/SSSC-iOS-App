@@ -26,8 +26,8 @@ class Assignment {
     }
     
     func percentage() -> String {
-        let percentage = Grading.calculatePercentage(earned: gradeEarned, total: gradeTotal)
-        return Grading.formatPercentage(percentage: percentage) + "%"
+        let percentage = Grading.calculatePercentage(earned: gradeEarned, total: gradeTotal).rounded(toPlaces: 1)
+        return String(percentage) + "%"
     }
     
     func letterGrade() -> String {

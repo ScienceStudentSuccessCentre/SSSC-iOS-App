@@ -63,7 +63,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         let course = courses[indexPath.row]
         cell.courseName.text = course.name
         cell.courseCode.text = course.code
-        cell.grade.text = course.getGrade()
+        cell.grade.text = course.getLetterGrade()
         cell.gradeView.backgroundColor = UIColor(course.colour)
         return cell
     }
@@ -119,10 +119,23 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     private func updateTermDetails() {
         var totalCredits: Double = 0
+        var totalPercent: Double = 0
+        var totalCourses: Double = 0
         for course in courses {
             totalCredits += course.credits
+            let coursePercentage = course.getPercentGrade()
+            if coursePercentage >= 0 {
+                totalPercent += coursePercentage
+                totalCourses += 1
+            }
         }
         credits.text = "Total Credits: \(totalCredits)"
+        if totalCourses > 0 {
+            let termGpa = Grading.calculateGpa(percentage: totalPercent / totalCourses)
+            gpa.text = "Term GPA: " + termGpa
+        } else {
+            gpa.text = "Term GPA: N/A"
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
