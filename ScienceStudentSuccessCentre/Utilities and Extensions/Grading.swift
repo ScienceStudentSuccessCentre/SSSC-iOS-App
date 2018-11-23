@@ -62,29 +62,29 @@ class Grading {
         case 0 ..< 50:
             gpa = percentage / 100
         case 50 ..< 53:
-            gpa = ((percentage / 100) * 3) + 50
+            gpa = (percentage / 100) + 1
         case 53 ..< 57:
-            gpa = ((percentage / 100) * 4) + 53
+            gpa = (percentage / 100) + 2
         case 57 ..< 60:
-            gpa = ((percentage / 100) * 3) + 57
+            gpa = (percentage / 100) + 3
         case 60 ..< 63:
-            gpa = ((percentage / 100) * 3) + 60
+            gpa = (percentage / 100) + 4
         case 63 ..< 67:
-            gpa = ((percentage / 100) * 4) + 63
+            gpa = (percentage / 100) + 5
         case 67 ..< 70:
-            gpa = ((percentage / 100) * 3) + 67
+            gpa = (percentage / 100) + 6
         case 70 ..< 73:
-            gpa = ((percentage / 100) * 3) + 70
+            gpa = (percentage / 100) + 7
         case 73 ..< 77:
-            gpa = ((percentage / 100) * 4) + 73
+            gpa = (percentage / 100) + 8
         case 77 ..< 80:
-            gpa = ((percentage / 100) * 3) + 77
+            gpa = (percentage / 100) + 9
         case 80 ..< 85:
-            gpa = ((percentage / 100) * 5) + 80
+            gpa = (percentage / 100) + 10
         case 85 ..< 90:
-            gpa = ((percentage / 100) * 5) + 85
+            gpa = (percentage / 100) + 11
         case _ where percentage >= 90:
-            gpa = ((percentage / 100) * 10) + 90
+            gpa = 12
         default:
             gpa = -1
         }
