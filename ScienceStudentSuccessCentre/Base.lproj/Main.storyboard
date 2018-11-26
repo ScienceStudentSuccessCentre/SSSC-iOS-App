@@ -58,7 +58,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carleton Coding Challenge" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0R-cY-jsg">
-                                                    <rect key="frame" x="99" y="34.5" width="235" height="20.5"/>
+                                                    <rect key="frame" x="99" y="34.5" width="274" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -349,6 +349,7 @@
                     <connections>
                         <segue destination="EuL-kd-Bue" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="qnv-2C-gp0" kind="relationship" relationship="viewControllers" id="3hE-1b-bc0"/>
+                        <segue destination="4tN-9t-Zd2" kind="relationship" relationship="viewControllers" id="TWT-3T-Ifd"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -359,7 +360,7 @@
         <scene sceneID="g3i-wO-lt2">
             <objects>
                 <navigationController id="EuL-kd-Bue" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" image="eventsIcon" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="calendarIcon" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="iEx-jx-cxL">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
@@ -386,7 +387,7 @@
         <scene sceneID="De2-Iq-mMs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qnv-2C-gp0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Grades" image="gradesIcon" id="ou4-oL-mGO"/>
+                    <tabBarItem key="tabBarItem" title="Grades" image="checkboxIcon" id="ou4-oL-mGO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="vHn-4H-SSd">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
@@ -408,6 +409,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="amQ-io-ktD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="996" y="383"/>
+        </scene>
+        <!--Resources-->
+        <scene sceneID="Zu9-LT-jJM">
+            <objects>
+                <viewController id="4tN-9t-Zd2" customClass="ResourcesViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WPY-mW-hUh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="nTN-XE-pVN"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <tabBarItem key="tabBarItem" title="Resources" image="paperIcon" largeContentSizeImage="paperIcon" id="wv3-r1-Olv">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m7O-8G-G8n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="996" y="1110.4947526236883"/>
         </scene>
         <!--Terms View Controller-->
         <scene sceneID="SJe-Ar-C8Y">
@@ -447,7 +467,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fall 2018" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocs-vd-Sl9">
-                                                    <rect key="frame" x="99" y="34.5" width="235" height="20.5"/>
+                                                    <rect key="frame" x="99" y="34.5" width="274" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -551,7 +571,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Courses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPE-JU-Zsw">
-                                <rect key="frame" x="156" y="215.5" width="63.5" height="21"/>
+                                <rect key="frame" x="156" y="215.5" width="63" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -586,13 +606,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMP 3000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbJ-kL-1eC">
-                                                    <rect key="frame" x="99" y="19" width="235" height="27.5"/>
+                                                    <rect key="frame" x="99" y="19" width="274" height="27.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Operating Systems" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGf-FB-RNz">
-                                                    <rect key="frame" x="99" y="46.5" width="243" height="27"/>
+                                                    <rect key="frame" x="99" y="46.5" width="282" height="27"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -751,7 +771,7 @@
                                                     <rect key="frame" x="15" y="11" width="68" height="68"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaS-8Z-Pft" userLabel="Letter Grade">
-                                                            <rect key="frame" x="18.5" y="19" width="31.5" height="30"/>
+                                                            <rect key="frame" x="18.5" y="19" width="31" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -766,13 +786,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assignment 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjf-yW-i7A" userLabel="Assignment Name">
-                                                    <rect key="frame" x="99" y="16" width="229" height="29"/>
+                                                    <rect key="frame" x="99" y="16" width="268" height="29"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade: 100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zwi-eg-9Op" userLabel="Assignment Percentage">
-                                                    <rect key="frame" x="99" y="45" width="229" height="28.5"/>
+                                                    <rect key="frame" x="99" y="45" width="268" height="28.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -949,8 +969,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="eventsIcon" width="37.5" height="37.5"/>
-        <image name="gradesIcon" width="37.5" height="37.5"/>
+        <image name="calendarIcon" width="25" height="25"/>
+        <image name="checkboxIcon" width="25" height="25"/>
+        <image name="paperIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tsD-S5-xqb"/>
