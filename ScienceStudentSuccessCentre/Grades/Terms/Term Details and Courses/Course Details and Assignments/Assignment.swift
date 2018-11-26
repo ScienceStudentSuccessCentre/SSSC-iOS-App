@@ -9,14 +9,15 @@
 import Foundation
 
 class Assignment {
+    
     var id: Int
     var name: String
     var gradeEarned: Double
     var gradeTotal: Double
-    var weight: Double
+    var weight: Weight
     var courseId: Int
     
-    init(id: Int, name: String, gradeEarned: Double, gradeTotal: Double, weight: Double, courseId: Int) {
+    init(id: Int, name: String, gradeEarned: Double, gradeTotal: Double, weight: Weight, courseId: Int) {
         self.id = id
         self.name = name
         self.gradeEarned = gradeEarned

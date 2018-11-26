@@ -39,8 +39,8 @@ class Course {
         var totalWeight: Double = 0
         let assignments = Database.instance.getAssignmentsByCourseId(id: id)
         for assignment in assignments {
-            totalEarned += Grading.calculatePercentage(earned: assignment.gradeEarned, total: assignment.gradeTotal) * assignment.weight / 100
-            totalWeight += assignment.weight
+            totalEarned += Grading.calculatePercentage(earned: assignment.gradeEarned, total: assignment.gradeTotal) * assignment.weight.value / 100
+            totalWeight += assignment.weight.value
         }
         return Grading.calculatePercentage(earned: totalEarned, total: totalWeight)
     }

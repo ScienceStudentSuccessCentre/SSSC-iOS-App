@@ -15,6 +15,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     var term: Term!
     var course: Course!
     let creditFormatter = NumberFormatter()
+    let gradeFormatter = NumberFormatter()
     
     let letterGrades = ["None", "A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"]
 
@@ -24,6 +25,10 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         creditFormatter.numberStyle = .decimal
         creditFormatter.maximumFractionDigits = 1
         creditFormatter.minimumFractionDigits = 1
+        
+        gradeFormatter.numberStyle = .decimal
+        gradeFormatter.maximumFractionDigits = 1
+        gradeFormatter.minimumFractionDigits = 0
         
         navigationItem.setLeftBarButton(UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed)), animated: true)
         
@@ -80,6 +85,32 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             }.cellSetup { (cell, row) in
                 let palette = ColorPalette(name: "Material", palette: UIColor.Material.getColourPalette())
                 row.palettes = [palette]
+            }
+            +++ MultivaluedSection(
+                multivaluedOptions: [.Insert, .Delete],
+                header: "Assignment Weights",
+                footer: "Assignment weights should total 100%.") { row in
+                    row.addButtonProvider = { section in
+                        return ButtonRow() {
+                            $0.title = "Add New Weight"
+                        }
+                    }
+                    row.multivaluedRowToInsertAt = { index in
+                        return SplitRow<TextRow, DecimalRow>() {
+                            $0.rowLeft = TextRow() {
+                                $0.placeholder = "Final Exam"
+                                $0.cell.textField.autocapitalizationType = .words
+                            }
+                            
+                            $0.rowRight = DecimalRow() {
+                                $0.placeholder = "30%"
+//                                $0.formatter = self.gradeFormatter
+
+                            }.onChange {_ in
+                                self.validateForm()
+                            }
+                        }
+                    }
             }
             +++ Section("Override Calculated Grade")
             <<< PushRow<String>() { row in

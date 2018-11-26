@@ -38,8 +38,14 @@ class Database {
     private let t_assignments_name = Expression<String>("name")
     private let t_assignments_gradeEarned = Expression<Double>("gradeEarned")
     private let t_assignments_gradeTotal = Expression<Double>("gradeTotal")
-    private let t_assignments_weight = Expression<Double>("weight")
+    private let t_assignments_weightId = Expression<Int>("weightId")
     private let t_assignments_courseId = Expression<Int>("courseId")
+    
+    private let t_weights = Table("weights")
+    private let t_weights_id = Expression<Int>("weightId")
+    private let t_weights_name = Expression<String>("name")
+    private let t_weights_value = Expression<Double>("value")
+    private let t_weights_courseId = Expression<Int>("courseId")
     
     private var db: Connection?
     
@@ -58,6 +64,7 @@ class Database {
             
             createTermsTable()
             createCoursesTable()
+            createWeightsTable()
             createAssignmentsTable()
             
             postCreationScripts()
@@ -94,6 +101,20 @@ class Database {
         }
     }
     
+    private func createWeightsTable() {
+        do {
+            try db?.run(t_weights.create(ifNotExists: true) { t in
+                t.column(t_weights_id, primaryKey: .autoincrement)
+                t.column(t_weights_name)
+                t.column(t_weights_value)
+                t.column(t_weights_courseId)
+                t.foreignKey(t_weights_courseId, references: t_courses, t_courses_id, delete: .cascade)
+            })
+        } catch {
+            print("Did not create weights table")
+        }
+    }
+    
     private func createAssignmentsTable() {
         do {
             try db?.run(t_assignments.create(ifNotExists: true) { t in
@@ -101,8 +122,9 @@ class Database {
                 t.column(t_assignments_name)
                 t.column(t_assignments_gradeEarned)
                 t.column(t_assignments_gradeTotal)
-                t.column(t_assignments_weight)
+                t.column(t_assignments_weightId)
                 t.column(t_assignments_courseId)
+                t.foreignKey(t_assignments_id, references: t_weights, t_weights_id, delete: .cascade)
                 t.foreignKey(t_assignments_courseId, references: t_courses, t_courses_id, delete: .cascade)
             })
         } catch {
@@ -161,23 +183,49 @@ class Database {
         return true
     }
     
+    public func insertOrUpdate(weight: Weight) -> Bool {
+        do {
+            if weight.id == -1 {
+                print("Adding weight \(weight.name) (\(weight.value)) into \(t_weights)")
+                let insert = t_weights.insert(t_weights_name <- weight.name,
+                                                  t_weights_value <- weight.value,
+                                                  t_weights_courseId <- weight.courseId)
+                try db?.run(insert)
+            } else {
+                print("Updating weight \(weight.name) (\(weight.value)) with id \(weight.id) in \(t_weights)")
+                let existingWeight = t_weights.filter(t_weights_id == weight.id)
+                let update = existingWeight.update(t_weights_name <- weight.name,
+                                                       t_weights_value <- weight.value,
+                                                       t_weights_courseId <- weight.courseId)
+                try db?.run(update)
+            }
+        } catch let Result.error(message, code, _) where code == SQLITE_CONSTRAINT {
+            print("Constraint failed: \(message)")
+            return false
+        } catch let error {
+            print("Insertion failed: \(error)")
+            return false
+        }
+        return true
+    }
+    
     public func insertOrUpdate(assignment: Assignment) -> Bool {
         do {
             if assignment.id == -1 {
-                print("Adding assignment \(assignment.name) (\(assignment.gradeEarned), \(assignment.gradeTotal), \(assignment.weight)) into \(t_assignments)")
+                print("Adding assignment \(assignment.name) (\(assignment.gradeEarned), \(assignment.gradeTotal)) into \(t_assignments)")
                 let insert = t_assignments.insert(t_assignments_name <- assignment.name,
                                                    t_assignments_gradeEarned <- assignment.gradeEarned,
                                                    t_assignments_gradeTotal <- assignment.gradeTotal,
-                                                   t_assignments_weight <- assignment.weight,
+                                                   t_assignments_weightId <- assignment.weight.id,
                                                    t_assignments_courseId <- assignment.courseId)
                 try db?.run(insert)
             } else {
-                print("Updating assignment \(assignment.name) (\(assignment.gradeEarned), \(assignment.gradeTotal), \(assignment.weight)) with id \(assignment.id) in \(t_assignments)")
+                print("Updating assignment \(assignment.name) (\(assignment.gradeEarned), \(assignment.gradeTotal)) with id \(assignment.id) in \(t_assignments)")
                 let existingAssignment = t_assignments.filter(t_assignments_id == assignment.id)
                 let update = existingAssignment.update(t_assignments_name <- assignment.name,
                                                        t_assignments_gradeEarned <- assignment.gradeEarned,
                                                        t_assignments_gradeTotal <- assignment.gradeTotal,
-                                                       t_assignments_weight <- assignment.weight,
+                                                       t_assignments_weightId <- assignment.weight.id,
                                                        t_assignments_courseId <- assignment.courseId)
                 try db?.run(update)
             }
@@ -210,6 +258,19 @@ class Database {
         do {
             try db?.run(course.delete())
             print("Deleted course \(courseId)")
+            return true
+        } catch let error {
+            print("Delete failed: \(error)")
+        }
+        return false
+    }
+    
+    public func delete(weightId: Int) -> Bool {
+        print("Deleting weight \(weightId) from \(t_weights)")
+        let weight = t_weights.filter(t_weights_id == weightId)
+        do {
+            try db?.run(weight.delete())
+            print("Deleted weight \(weightId)")
             return true
         } catch let error {
             print("Delete failed: \(error)")
@@ -291,6 +352,42 @@ class Database {
         return courses
     }
     
+    public func getWeightById(id: Int) -> Weight? {
+        print("Getting weight from \(t_weights) with id \(id)")
+        do {
+            let row = try db?.pluck(t_weights.filter(t_weights_id == id))
+            if (row != nil) {
+                let weightId = try row!.get(t_weights_id)
+                let name = try row!.get(t_weights_name)
+                let value = try row!.get(t_weights_value)
+                let courseId = try row!.get(t_weights_courseId)
+                return Weight(id: weightId, name: name, value: value, courseId: courseId)
+            }
+        } catch let error {
+            print("Select failed: \(error)")
+        }
+        print("Unable to get weight")
+        return nil
+    }
+    
+    public func getWeightsByCourseId(id: Int) -> [Weight] {
+        print("Getting weights from \(t_weights) by courseId \(id)")
+        var weights = [Weight]()
+        do {
+            for row in try (db?.prepare(t_weights.filter(t_weights_courseId == id)))! {
+                let weightId = try row.get(t_weights_id)
+                let name = try row.get(t_weights_name)
+                let value = try row.get(t_weights_value)
+                let courseId = try row.get(t_weights_courseId)
+                weights.append(Weight(id: weightId, name: name, value: value, courseId: courseId))
+            }
+        } catch let error {
+            print("Select failed: \(error)")
+        }
+        print("Found \(weights.count) weights")
+        return weights
+    }
+    
     public func getAssignmentsByCourseId(id: Int) -> [Assignment] {
         print("Getting assignments from \(t_assignments) by courseId \(id)")
         var assignments = [Assignment]()
@@ -300,9 +397,10 @@ class Database {
                 let name = try row.get(t_assignments_name)
                 let gradeEarned = try row.get(t_assignments_gradeEarned)
                 let gradeTotal = try row.get(t_assignments_gradeTotal)
-                let weight = try row.get(t_assignments_weight)
+                let weightId = try row.get(t_assignments_weightId)
+                let weight = getWeightById(id: weightId)
                 let courseId = try row.get(t_assignments_courseId)
-                assignments.append(Assignment(id: assignmentId, name: name, gradeEarned: gradeEarned, gradeTotal: gradeTotal, weight: weight, courseId: courseId))
+                assignments.append(Assignment(id: assignmentId, name: name, gradeEarned: gradeEarned, gradeTotal: gradeTotal, weight: weight!, courseId: courseId))
             }
         } catch let error {
             print("Select failed: \(error)")
