@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49E8C3D2F9587958F0E68529 /* Pods_ScienceStudentSuccessCentre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1529DBD301B42B150D091F10 /* Pods_ScienceStudentSuccessCentre.framework */; };
+		329F8E552389FFC491AE14FB /* Pods_ScienceStudentSuccessCentre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEC5D0CEFAF32B91280EAE2 /* Pods_ScienceStudentSuccessCentre.framework */; };
+		A17011CB21AC8F4000A385FB /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */; };
 		FF13F7D421646AC1005733B0 /* CreateCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */; };
 		FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */; };
 		FF19EE4E202EA6DA00475B63 /* EventObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19EE4D202EA6DA00475B63 /* EventObserver.swift */; };
@@ -70,9 +71,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1529DBD301B42B150D091F10 /* Pods_ScienceStudentSuccessCentre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScienceStudentSuccessCentre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8525597F3437F6BA1F2946C5 /* Pods-ScienceStudentSuccessCentre.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.release.xcconfig"; sourceTree = "<group>"; };
-		992AC2AAAF4D116C7211A91F /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.debug.xcconfig"; sourceTree = "<group>"; };
+		364F26F45C538A20F0EDA887 /* Pods-ScienceStudentSuccessCentre.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.release.xcconfig"; sourceTree = "<group>"; };
+		A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
+		CA891BEE54A1B61A8BA92EF2 /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.debug.xcconfig"; sourceTree = "<group>"; };
 		FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCourseViewController.swift; sourceTree = "<group>"; };
 		FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurekaFormProtocol.swift; sourceTree = "<group>"; };
 		FF19EE4D202EA6DA00475B63 /* EventObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventObserver.swift; sourceTree = "<group>"; };
@@ -120,6 +121,7 @@
 		FFC6CF1721657CAE00657C34 /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
 		FFD2DF522193860200C97FDF /* Grading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grading.swift; sourceTree = "<group>"; };
 		FFE84077215F1CAC00A5E33B /* Term.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
+		FFEC5D0CEFAF32B91280EAE2 /* Pods_ScienceStudentSuccessCentre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScienceStudentSuccessCentre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFFC6BC62162D6D6001585CE /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		FFFC6BC82162D70D001585CE /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,7 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49E8C3D2F9587958F0E68529 /* Pods_ScienceStudentSuccessCentre.framework in Frameworks */,
+				329F8E552389FFC491AE14FB /* Pods_ScienceStudentSuccessCentre.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,13 +152,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		66DBD219742CF0D762D10983 /* Pods */ = {
+		7464AFC5A59DF6C8F5DF0B03 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				992AC2AAAF4D116C7211A91F /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */,
-				8525597F3437F6BA1F2946C5 /* Pods-ScienceStudentSuccessCentre.release.xcconfig */,
+				CA891BEE54A1B61A8BA92EF2 /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */,
+				364F26F45C538A20F0EDA887 /* Pods-ScienceStudentSuccessCentre.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A17011C921AC8ECD00A385FB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		FF327FBC20128C3E00B06E19 = {
@@ -167,7 +177,7 @@
 				FF327FE920128C3E00B06E19 /* ScienceStudentSuccessCentreUITests */,
 				FF327FC620128C3E00B06E19 /* Products */,
 				FF3C22892024317A0098B868 /* Frameworks */,
-				66DBD219742CF0D762D10983 /* Pods */,
+				7464AFC5A59DF6C8F5DF0B03 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -186,6 +196,7 @@
 			children = (
 				FFE84070215F17D200A5E33B /* Events */,
 				FFE84071215F190A00A5E33B /* Grades */,
+				A17011C921AC8ECD00A385FB /* Resources */,
 				FFE84073215F192E00A5E33B /* Utilities and Extensions */,
 				FF327FC820128C3E00B06E19 /* AppDelegate.swift */,
 				FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */,
@@ -219,7 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				FF3C228A2024317A0098B868 /* EventKit.framework */,
-				1529DBD301B42B150D091F10 /* Pods_ScienceStudentSuccessCentre.framework */,
+				FFEC5D0CEFAF32B91280EAE2 /* Pods_ScienceStudentSuccessCentre.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -532,6 +543,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A17011CB21AC8F4000A385FB /* ResourcesViewController.swift in Sources */,
 				FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */,
 				FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */,
 				FF80666E2193A31D00B202A6 /* Double.swift in Sources */,
@@ -736,7 +748,7 @@
 		};
 		FF327FF020128C3E00B06E19 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 992AC2AAAF4D116C7211A91F /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */;
+			baseConfigurationReference = CA891BEE54A1B61A8BA92EF2 /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -755,7 +767,7 @@
 		};
 		FF327FF120128C3E00B06E19 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8525597F3437F6BA1F2946C5 /* Pods-ScienceStudentSuccessCentre.release.xcconfig */;
+			baseConfigurationReference = 364F26F45C538A20F0EDA887 /* Pods-ScienceStudentSuccessCentre.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
