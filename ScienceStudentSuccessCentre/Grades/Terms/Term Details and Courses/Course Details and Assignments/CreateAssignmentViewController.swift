@@ -112,7 +112,7 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
         let weightName = values["weight"] as? String ?? ""
         let weight = Weight.getWeightByName(name: weightName, weights: weights)
         let assignment = Assignment(id: self.assignment != nil ? self.assignment.id : nil, name: name, gradeEarned: gradeEarned, gradeTotal: gradeTotal, weight: weight!, courseId: course.id)
-        if !Database.instance.insert(assignment: assignment) {
+        if !Database.instance.insertOrUpdate(assignment: assignment) {
             print("Failed to create assignment")
             //TODO: let the user know somehow
         }

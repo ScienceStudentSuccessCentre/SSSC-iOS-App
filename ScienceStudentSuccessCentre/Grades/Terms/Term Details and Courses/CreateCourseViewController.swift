@@ -144,7 +144,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                         $0.formatter = self.weightFormatter
                     }
                     
-                    $0.rowId = String(weight.id)
+                    $0.rowId = weight.id
                     
                 }.onChange { _ in
                     self.validateForm()
@@ -212,7 +212,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         let colour = UIColor.Material.fromUIColor(color: values["colour"] as? UIColor ?? nil)
         
         let course = Course(id: self.course != nil ? self.course.id : nil, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, finalGrade: finalGrade, termId: self.term != nil ? term.id : self.course.termId, colour: colour)
-        if !Database.instance.insert(course: course) {
+        if !Database.instance.insertOrUpdate(course: course) {
             print("Failed to create course")
             //TODO: let the user know somehow
         }
@@ -225,7 +225,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             let weightId = weightValue.id
             let weight = Weight(id: weightId, name: name, value: value, courseId: course.id)
             
-            if !Database.instance.insert(weight: weight) {
+            if !Database.instance.insertOrUpdate(weight: weight) {
                 print("Failed to create weight")
                 //TODO: let the user know somehow
             }

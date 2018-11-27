@@ -150,18 +150,30 @@ class Database {
         return true
     }
     
-    public func insert(course: Course) -> Bool {
+    public func insertOrUpdate(course: Course) -> Bool {
         do {
-            print("Inserting course \(course.name) (\(course.code)) with id \(course.id) into \(t_courses)")
-            try db?.run(t_courses.insert(or: .replace,
-                                         t_courses_id <- course.id,
-                                         t_courses_name <- course.name,
-                                         t_courses_code <- course.code,
-                                         t_courses_credits <- course.credits,
-                                         t_courses_isCGPACourse <- course.isCGPACourse,
-                                         t_courses_finalGrade <- course.finalGrade,
-                                         t_courses_termId <- course.termId,
-                                         t_courses_colour <- String(describing: course.colour)))
+            if getCourseById(id: course.id) == nil {
+                print("Inserting course \(course.name) (\(course.code)) with id \(course.id) into \(t_courses)")
+                try db?.run(t_courses.insert(or: .replace,
+                                             t_courses_id <- course.id,
+                                             t_courses_name <- course.name,
+                                             t_courses_code <- course.code,
+                                             t_courses_credits <- course.credits,
+                                             t_courses_isCGPACourse <- course.isCGPACourse,
+                                             t_courses_finalGrade <- course.finalGrade,
+                                             t_courses_termId <- course.termId,
+                                             t_courses_colour <- String(describing: course.colour)))
+            } else {
+                print("Updating course \(course.name) (\(course.code)) with id \(course.id) in \(t_courses)")
+                let courseWithId = t_courses.filter(t_courses_id == course.id)
+                try db?.run(courseWithId.update(t_courses_name <- course.name,
+                                                t_courses_code <- course.code,
+                                                t_courses_credits <- course.credits,
+                                                t_courses_isCGPACourse <- course.isCGPACourse,
+                                                t_courses_finalGrade <- course.finalGrade,
+                                                t_courses_termId <- course.termId,
+                                                t_courses_colour <- String(describing: course.colour)))
+            }
         } catch let Result.error(message, code, _) where code == SQLITE_CONSTRAINT {
             print("Constraint failed: \(message)")
             return false
@@ -172,14 +184,22 @@ class Database {
         return true
     }
     
-    public func insert(weight: Weight) -> Bool {
+    public func insertOrUpdate(weight: Weight) -> Bool {
         do {
-            print("Inserting weight \(weight.name) (\(weight.value)) with id \(weight.id) into \(t_weights)")
-            try db?.run(t_weights.insert(or: .replace,
-                                         t_weights_id <- weight.id,
-                                         t_weights_name <- weight.name,
-                                         t_weights_value <- weight.value,
-                                         t_weights_courseId <- weight.courseId))
+            if getWeightById(id: weight.id) == nil {
+                print("Inserting weight \(weight.name) (\(weight.value)) with id \(weight.id) into \(t_weights)")
+                try db?.run(t_weights.insert(or: .replace,
+                                             t_weights_id <- weight.id,
+                                             t_weights_name <- weight.name,
+                                             t_weights_value <- weight.value,
+                                             t_weights_courseId <- weight.courseId))
+            } else {
+                print("Updating weight \(weight.name) (\(weight.value)) with id \(weight.id) in \(t_weights)")
+                let weightWithId = t_weights.filter(t_weights_id == weight.id)
+                try db?.run(weightWithId.update(t_weights_name <- weight.name,
+                                                t_weights_value <- weight.value,
+                                                t_weights_courseId <- weight.courseId))
+            }
         } catch let Result.error(message, code, _) where code == SQLITE_CONSTRAINT {
             print("Constraint failed: \(message)")
             return false
@@ -190,16 +210,26 @@ class Database {
         return true
     }
     
-    public func insert(assignment: Assignment) -> Bool {
+    public func insertOrUpdate(assignment: Assignment) -> Bool {
         do {
-            print("Inserting assignment \(assignment.name) (\(assignment.gradeEarned), \(assignment.gradeTotal)) with id \(assignment.id) into \(t_assignments)")
-            try db?.run(t_assignments.insert(or: .replace,
-                                             t_assignments_id <- assignment.id,
-                                             t_assignments_name <- assignment.name,
-                                             t_assignments_gradeEarned <- assignment.gradeEarned,
-                                             t_assignments_gradeTotal <- assignment.gradeTotal,
-                                             t_assignments_weightId <- assignment.weight.id,
-                                             t_assignments_courseId <- assignment.courseId))
+            if getAssignmentById(id: assignment.id) == nil {
+                print("Inserting assignment \(assignment.name) (\(assignment.gradeEarned), \(assignment.gradeTotal)) with id \(assignment.id) into \(t_assignments)")
+                try db?.run(t_assignments.insert(or: .replace,
+                                                 t_assignments_id <- assignment.id,
+                                                 t_assignments_name <- assignment.name,
+                                                 t_assignments_gradeEarned <- assignment.gradeEarned,
+                                                 t_assignments_gradeTotal <- assignment.gradeTotal,
+                                                 t_assignments_weightId <- assignment.weight.id,
+                                                 t_assignments_courseId <- assignment.courseId))
+            } else {
+                print("Updating assignment \(assignment.name) (\(assignment.gradeEarned), \(assignment.gradeTotal)) with id \(assignment.id) in \(t_assignments)")
+                let assignmentWithId = t_assignments.filter(t_assignments_id == assignment.id)
+                try db?.run(assignmentWithId.update(t_assignments_name <- assignment.name,
+                                                    t_assignments_gradeEarned <- assignment.gradeEarned,
+                                                    t_assignments_gradeTotal <- assignment.gradeTotal,
+                                                    t_assignments_weightId <- assignment.weight.id,
+                                                    t_assignments_courseId <- assignment.courseId))
+            }
         } catch let Result.error(message, code, _) where code == SQLITE_CONSTRAINT {
             print("Constraint failed: \(message)")
             return false
@@ -357,6 +387,27 @@ class Database {
         }
         print("Found \(weights.count) weights")
         return weights
+    }
+    
+    public func getAssignmentById(id: String) -> Assignment? {
+        print("Getting assignment from \(t_assignments) with id \(id)")
+        do {
+            let row = try db?.pluck(t_assignments.filter(t_assignments_id == id))
+            if (row != nil) {
+                let assignmentId = try row!.get(t_assignments_id)
+                let name = try row!.get(t_assignments_name)
+                let gradeEarned = try row!.get(t_assignments_gradeEarned)
+                let gradeTotal = try row!.get(t_assignments_gradeTotal)
+                let weightId = try row!.get(t_assignments_weightId)
+                let weight = getWeightById(id: weightId)
+                let courseId = try row!.get(t_assignments_courseId)
+                return Assignment(id: assignmentId, name: name, gradeEarned: gradeEarned, gradeTotal: gradeTotal, weight: weight!, courseId: courseId)
+            }
+        } catch let error {
+            print("Select failed: \(error)")
+        }
+        print("Unable to get assignment")
+        return nil
     }
     
     public func getAssignmentsByCourseId(id: String) -> [Assignment] {

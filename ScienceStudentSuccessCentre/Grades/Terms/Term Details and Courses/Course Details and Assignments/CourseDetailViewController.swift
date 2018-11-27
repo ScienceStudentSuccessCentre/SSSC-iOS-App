@@ -16,6 +16,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet var tableView: UITableView!
     @IBOutlet var courseGrade: UILabel!
     @IBOutlet var courseGradeView: UIView!
+    @IBOutlet var calcReqFinalGrade: UIButton!
     
     var course: Course!
     var assignments = [Assignment]()
@@ -110,6 +111,10 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
                 }
             }
         }
+    }
+    
+    @IBAction private func calcReqFinalExamButtonPressed() {
+        
     }
     
     @objc private func editCoursePressed() {

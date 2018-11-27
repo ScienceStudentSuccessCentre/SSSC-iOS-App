@@ -96,6 +96,7 @@ open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L,R>> where L: Ba
         willSet {
             var rowValue = self.value ?? SplitRowValue<L.Cell.Value,R.Cell.Value>()
             rowValue.id = newValue
+            self.value = rowValue
         }
     }
     
