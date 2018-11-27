@@ -10,16 +10,20 @@ import Foundation
 
 class Weight {
     
-    var id: Int
+    var id: String
     var name: String
     var value: Double
-    var courseId: Int
+    var courseId: String
     
-    init(id: Int, name: String, value: Double, courseId: Int) {
-        self.id = id
+    init(id: String?, name: String, value: Double, courseId: String) {
+        self.id = id ?? UUID().uuidString
         self.name = name
         self.value = value
         self.courseId = courseId
+    }
+    
+    public static func getWeightByName(name: String, weights: [Weight]) -> Weight? {
+        return weights.first(where: {$0.name == name}) ?? nil
     }
     
 }

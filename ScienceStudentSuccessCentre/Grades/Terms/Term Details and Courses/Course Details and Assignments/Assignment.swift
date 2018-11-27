@@ -10,15 +10,15 @@ import Foundation
 
 class Assignment {
     
-    var id: Int
+    var id: String
     var name: String
     var gradeEarned: Double
     var gradeTotal: Double
     var weight: Weight
-    var courseId: Int
+    var courseId: String
     
-    init(id: Int, name: String, gradeEarned: Double, gradeTotal: Double, weight: Weight, courseId: Int) {
-        self.id = id
+    init(id: String?, name: String, gradeEarned: Double, gradeTotal: Double, weight: Weight, courseId: String) {
+        self.id = id ?? UUID().uuidString
         self.name = name
         self.gradeEarned = gradeEarned
         self.gradeTotal = gradeTotal
@@ -33,6 +33,16 @@ class Assignment {
     
     func letterGrade() -> String {
         return Grading.calculateLetterGrade(earned: gradeEarned, total: gradeTotal)
+    }
+    
+    static func getAssignmentsByWeight(weight: Weight, assignments: [Assignment]) -> [Assignment] {
+        var assignmentsWithWeight = [Assignment]()
+        for assignment in assignments {
+            if assignment.weight.id == weight.id {
+                assignmentsWithWeight.append(assignment)
+            }
+        }
+        return assignmentsWithWeight
     }
     
 }

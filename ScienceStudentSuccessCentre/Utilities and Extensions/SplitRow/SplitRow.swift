@@ -63,8 +63,8 @@ open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L,R>> where L: Ba
         case left,right
     }
     
-    public var rowLeft: L?{
-        willSet{
+    public var rowLeft: L? {
+        willSet {
             newValue?.tag = SplitRowTag.left.rawValue
             guard let row = newValue else{ return }
             
@@ -78,8 +78,8 @@ open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L,R>> where L: Ba
     }
     public var rowLeftPercentage: CGFloat = 0.7
     
-    public var rowRight: R?{
-        willSet{
+    public var rowRight: R? {
+        willSet {
             newValue?.tag = SplitRowTag.right.rawValue
             guard let row = newValue else{ return }
             
@@ -89,6 +89,13 @@ open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L,R>> where L: Ba
             
             subscribe(onChange: row)
             subscribe(onCellHighlightChanged: row)
+        }
+    }
+    
+    public var rowId: String? {
+        willSet {
+            var rowValue = self.value ?? SplitRowValue<L.Cell.Value,R.Cell.Value>()
+            rowValue.id = newValue
         }
     }
     

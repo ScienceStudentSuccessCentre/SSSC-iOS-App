@@ -8,20 +8,22 @@
 
 import Eureka
 
-public struct SplitRowValue<L: Equatable, R: Equatable>{
+public struct SplitRowValue<L: Equatable, R: Equatable> {
     public var left: L?
     public var right: R?
+    public var id: String?
     
-    public init(left: L?, right: R?){
+    public init(left: L?, right: R?, id: String?) {
         self.left = left
         self.right = right
+        self.id = id
     }
     
-    public init(){}
+    public init() {}
 }
 
-extension SplitRowValue: Equatable{
-    public static func == (lhs: SplitRowValue, rhs: SplitRowValue) -> Bool{
+extension SplitRowValue: Equatable {
+    public static func == (lhs: SplitRowValue, rhs: SplitRowValue) -> Bool {
         return lhs.left == rhs.left && lhs.right == rhs.right
     }
 }

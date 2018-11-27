@@ -10,13 +10,13 @@ import Foundation
 
 class Term {
     
-    var id: Int
+    var id: String
     var term: String
     var year: String
     var name: String
     
-    init(id: Int, term: String, year: String) {
-        self.id = id
+    init(id: String?, term: String, year: String) {
+        self.id = id ?? UUID().uuidString
         self.term = term
         self.year = year
         self.name = term + " " + year

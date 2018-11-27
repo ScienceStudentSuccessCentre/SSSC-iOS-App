@@ -14,8 +14,9 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     
     var term: Term!
     var course: Course!
+    var weights = [Weight]()
     let creditFormatter = NumberFormatter()
-    let gradeFormatter = NumberFormatter()
+    let weightFormatter = NumberFormatter()
     
     let letterGrades = ["None", "A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"]
 
@@ -26,9 +27,8 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         creditFormatter.maximumFractionDigits = 1
         creditFormatter.minimumFractionDigits = 1
         
-        gradeFormatter.numberStyle = .decimal
-        gradeFormatter.maximumFractionDigits = 1
-        gradeFormatter.minimumFractionDigits = 0
+        weightFormatter.numberStyle = .percent
+        weightFormatter.multiplier = 1
         
         navigationItem.setLeftBarButton(UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed)), animated: true)
         
@@ -39,6 +39,8 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         } else {
             navigationItem.title = "Edit Course"
             navigationItem.setRightBarButton(UIBarButtonItem(title: "Update", style: .done, target: self, action: #selector(createButtonPressed)), animated: true)
+            
+            weights = Database.instance.getWeightsByCourseId(id: course.id)
         }
         
         createForm()
@@ -89,28 +91,30 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             +++ MultivaluedSection(
                 multivaluedOptions: [.Insert, .Delete],
                 header: "Assignment Weights",
-                footer: "Assignment weights should total 100%.") { row in
-                    row.addButtonProvider = { section in
+                footer: "Assignment weights should total 100%.") { section in
+                    section.addButtonProvider = { section in
                         return ButtonRow() {
                             $0.title = "Add New Weight"
                         }
                     }
-                    row.multivaluedRowToInsertAt = { index in
-                        return SplitRow<TextRow, DecimalRow>() {
+                    section.multivaluedRowToInsertAt = { index in
+                        return SplitRow<TextRow, IntRow>() {
                             $0.rowLeft = TextRow() {
                                 $0.placeholder = "Final Exam"
-                                $0.cell.textField.autocapitalizationType = .words
+                                $0.cell.textField.autocapitalizationType = .words //TODO: this doesn't appear to be working
                             }
                             
-                            $0.rowRight = DecimalRow() {
+                            $0.rowRight = IntRow() {
                                 $0.placeholder = "30%"
-//                                $0.formatter = self.gradeFormatter
-
-                            }.onChange {_ in
-                                self.validateForm()
+                                $0.formatter = self.weightFormatter
                             }
+                            
+                            $0.rowId = nil
+                        }.onChange { _ in
+                            self.validateForm()
                         }
                     }
+                    section.tag = "weights"
             }
             +++ Section("Override Calculated Grade")
             <<< PushRow<String>() { row in
@@ -127,7 +131,41 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             form.rowBy(tag: "isCGPACourse")?.baseValue = course.isCGPACourse
             form.rowBy(tag: "finalGrade")?.baseValue = course.finalGrade
             form.rowBy(tag: "colour")?.baseValue = UIColor(course.colour)
+            var weightsSection = form.sectionBy(tag: "weights") as! MultivaluedSection
+            for weight in weights {
+                let newRow = SplitRow<TextRow, IntRow>() {
+                    $0.rowLeft = TextRow() {
+                        $0.value = weight.name
+                        $0.cell.textField.autocapitalizationType = .words //TODO: this doesn't appear to be working
+                    }
+                    
+                    $0.rowRight = IntRow() {
+                        $0.value = Int(weight.value)
+                        $0.formatter = self.weightFormatter
+                    }
+                    
+                    $0.rowId = String(weight.id)
+                    
+                }.onChange { _ in
+                    self.validateForm()
+                }
+                weightsSection.append(newRow)
+            }
+            let addButton = weightsSection.removeFirst()
+            weightsSection.append(addButton)
         }
+
+    }
+    
+    override func rowsHaveBeenAdded(_ rows: [BaseRow], at indexes: [IndexPath]) {
+        super.rowsHaveBeenAdded(rows, at: indexes)
+        self.validateForm()
+    }
+    
+    override func rowsHaveBeenRemoved(_ rows: [BaseRow], at indexes: [IndexPath]) {
+        super.rowsHaveBeenRemoved(rows, at: indexes)
+        //TODO: stop editing accessory buttons from appearing after a row is removed
+        self.validateForm()
     }
     
     func validateForm() {
@@ -135,7 +173,29 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         let name = values["name"] as? String ?? ""
         let code = values["code"] as? String ?? ""
         let credits = values["credits"] as? Double ?? 0
-        if !name.isEmpty && !code.isEmpty && credits > 0 {
+        
+        let weightsSection = form.sectionBy(tag: "weights") as! MultivaluedSection
+        let weightValues = weightsSection.values() as! [SplitRowValue<String, Int>]
+        var weightNames = [String]()
+        var validWeights = true
+        var weightTotal = 0
+        for weightValue in weightValues {
+            let weightName = weightValue.left ?? ""
+            let weightPercentage = weightValue.right ?? -1
+            if (weightName.isEmpty && 0 ... 100 ~= weightPercentage) || !(0 ... 100 ~= weightPercentage) || weightNames.contains(weightName) {
+                validWeights = false
+                break
+            }
+            if 0 ... 100 ~= weightPercentage {
+                weightTotal += weightPercentage
+            }
+            weightNames.append(weightName)
+        }
+        if weightTotal != 100 && weightTotal != 0 {
+            validWeights = false
+        }
+        
+        if !name.isEmpty && !code.isEmpty && credits > 0 && validWeights {
             navigationItem.rightBarButtonItem?.isEnabled = true
         } else {
             navigationItem.rightBarButtonItem?.isEnabled = false
@@ -150,10 +210,25 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         let isCGPACourse = values["isCGPACourse"] as? Bool ?? false
         let finalGrade = values["finalGrade"] as? String ?? "None"
         let colour = UIColor.Material.fromUIColor(color: values["colour"] as? UIColor ?? nil)
-        let course = Course(id: self.course != nil ? self.course.id : -1, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, finalGrade: finalGrade, termId: self.term != nil ? term.id : self.course.termId, colour: colour)
-        if !Database.instance.insertOrUpdate(course: course) {
+        
+        let course = Course(id: self.course != nil ? self.course.id : nil, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, finalGrade: finalGrade, termId: self.term != nil ? term.id : self.course.termId, colour: colour)
+        if !Database.instance.insert(course: course) {
             print("Failed to create course")
             //TODO: let the user know somehow
+        }
+        
+        let weightsSection = form.sectionBy(tag: "weights") as! MultivaluedSection
+        let weightValues = weightsSection.values() as! [SplitRowValue<String, Int>]
+        for weightValue in weightValues {
+            let name = weightValue.left ?? ""
+            let value = Double(weightValue.right ?? -1)
+            let weightId = weightValue.id
+            let weight = Weight(id: weightId, name: name, value: value, courseId: course.id)
+            
+            if !Database.instance.insert(weight: weight) {
+                print("Failed to create weight")
+                //TODO: let the user know somehow
+            }
         }
         navigationController?.dismiss(animated: true, completion: nil)
     }

@@ -13,8 +13,8 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
     
     var course: Course!
     var assignment: Assignment!
-    var weightNames: [String]!
     var weights: [Weight]!
+    var weightNames = [String]()
     let gradeFormatter = NumberFormatter()
     
     override func viewDidLoad() {
@@ -65,28 +65,21 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
                 row.formatter = gradeFormatter
                 }.onChange { _ in
                     self.validateForm()
-            }
+                }
             <<< PushRow<String>() { row in
                 row.tag = "weight"
                 row.title = "Weight"
                 row.options = weightNames
                 row.value = nil
-            }
-//            <<< DecimalRow() { row in
-//                row.tag = "weight"
-//                row.title = "Weight %"
-//                row.placeholder = "10%"
-//                row.formatter = gradeFormatter
-//                }.onChange { _ in
-//                    self.validateForm()
-//                }
+                }.onChange {_ in
+                    self.validateForm()
+                }
         
         if (assignment != nil) {
             form.rowBy(tag: "name")?.baseValue = assignment.name
             form.rowBy(tag: "gradeEarned")?.baseValue = assignment.gradeEarned
             form.rowBy(tag: "gradeTotal")?.baseValue = assignment.gradeTotal
             form.rowBy(tag: "weight")?.baseValue = assignment.weight.name
-//            form.rowBy(tag: "weight")?.baseValue = assignment.weight.value
         }
     }
     
@@ -96,7 +89,7 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
         let gradeEarned = values["gradeEarned"] as? Double ?? -1
         let gradeTotal = values["gradeTotal"] as? Double ?? -1
         let weightName = values["weight"] as? String ?? ""
-        let weight = getWeightFromName(name: weightName)
+        let weight = Weight.getWeightByName(name: weightName, weights: weights)
         if !name.isEmpty && gradeEarned >= 0 && gradeTotal >= 0 && weight != nil {
             navigationItem.rightBarButtonItem?.isEnabled = true
         } else {
@@ -111,19 +104,15 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
         }
     }
     
-    private func getWeightFromName(name: String) -> Weight? {
-        return weights.first(where: {$0.name == name}) ?? nil
-    }
-    
     @objc private func createButtonPressed() {
         let values = form.values()
         let name = values["name"] as? String ?? ""
         let gradeEarned = values["gradeEarned"] as? Double ?? 0
         let gradeTotal = values["gradeTotal"] as? Double ?? 0
         let weightName = values["weight"] as? String ?? ""
-        let weight = getWeightFromName(name: weightName)
-        let assignment = Assignment(id: self.assignment != nil ? self.assignment.id : -1, name: name, gradeEarned: gradeEarned, gradeTotal: gradeTotal, weight: weight!, courseId: self.course != nil ? course.id : self.assignment.courseId)
-        if !Database.instance.insertOrUpdate(assignment: assignment) {
+        let weight = Weight.getWeightByName(name: weightName, weights: weights)
+        let assignment = Assignment(id: self.assignment != nil ? self.assignment.id : nil, name: name, gradeEarned: gradeEarned, gradeTotal: gradeTotal, weight: weight!, courseId: course.id)
+        if !Database.instance.insert(assignment: assignment) {
             print("Failed to create assignment")
             //TODO: let the user know somehow
         }
