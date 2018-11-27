@@ -40,7 +40,7 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
         events += [sampleEvent1, sampleEvent2, sampleEvent3]
         DispatchQueue.main.async {
             self.activityIndicatorView.stopAnimating()
-            self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+            self.tableView.separatorStyle = .singleLine
             self.tableView.reloadData()
             print("Data reloaded")
         }
@@ -52,7 +52,7 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
         DispatchQueue.main.async {
             self.refreshControl.endRefreshing()
             self.activityIndicatorView.stopAnimating()
-            self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+            self.tableView.separatorStyle = .singleLine
             self.tableView.reloadData()
             print("Data reloaded")
         }
@@ -92,8 +92,8 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
         tableView.delegate = self
         tableView.dataSource = self
         
-        activityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
+        tableView.separatorStyle = .none
         tableView.backgroundView = activityIndicatorView
         activityIndicatorView.startAnimating()
         

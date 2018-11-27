@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9022C88B053E40AC3CB98152 /* Pods_ScienceStudentSuccessCentre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E172784443361CFF3BE597CB /* Pods_ScienceStudentSuccessCentre.framework */; };
+		329F8E552389FFC491AE14FB /* Pods_ScienceStudentSuccessCentre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEC5D0CEFAF32B91280EAE2 /* Pods_ScienceStudentSuccessCentre.framework */; };
+		A17011CB21AC8F4000A385FB /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */; };
 		FF13F7D421646AC1005733B0 /* CreateCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */; };
 		FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */; };
 		FF19EE4E202EA6DA00475B63 /* EventObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19EE4D202EA6DA00475B63 /* EventObserver.swift */; };
@@ -21,22 +22,32 @@
 		FF327FEB20128C3E00B06E19 /* ScienceStudentSuccessCentreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FEA20128C3E00B06E19 /* ScienceStudentSuccessCentreUITests.swift */; };
 		FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3C2287202427660098B868 /* EventDetailViewController.swift */; };
 		FF3D05DC215AC9AC0073D0E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */; };
+		FF4BCBCF21AB47790050A876 /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BCBCE21AB47790050A876 /* Weight.swift */; };
 		FF4C4A9C215D7C550091BF2A /* GradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */; };
 		FF57A96521658509004AA50B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF57A96421658509004AA50B /* UIColor.swift */; };
+		FF5FDB2D21ABB13200899963 /* SplitRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5FDB2C21ABB13200899963 /* SplitRow.swift */; };
+		FF5FDB2F21ABB16700899963 /* SplitRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5FDB2E21ABB16700899963 /* SplitRowCell.swift */; };
+		FF5FDB3121ABB17F00899963 /* SplitRowCellTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5FDB3021ABB17F00899963 /* SplitRowCellTableView.swift */; };
+		FF5FDB3321ABB19700899963 /* SplitRowValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5FDB3221ABB19700899963 /* SplitRowValue.swift */; };
+		FF651CEA2190F27100C37022 /* CreateAssignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF651CE92190F27100C37022 /* CreateAssignmentViewController.swift */; };
 		FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6835B52023C540001A35B2 /* EventTableViewCell.swift */; };
+		FF74BE81218CBE6100A8954B /* AssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF74BE80218CBE6100A8954B /* AssignmentTableViewCell.swift */; };
 		FF7A0905215967F600A98504 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7A0904215967F600A98504 /* Formatter.swift */; };
 		FF7FD89021485E8100DAC88C /* HtmlString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7FD88F21485E8100DAC88C /* HtmlString.swift */; };
+		FF80666E2193A31D00B202A6 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80666D2193A31D00B202A6 /* Double.swift */; };
 		FFA4B1D320229C8400BAC08F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B1D220229C8400BAC08F /* Event.swift */; };
 		FFA7CBAB215DD4CB00A050B1 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAA215DD4CB00A050B1 /* TermsViewController.swift */; };
 		FFA7CBAD215DD53300A050B1 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */; };
 		FFA7CBAF215DD54C00A050B1 /* PlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAE215DD54C00A050B1 /* PlannerViewController.swift */; };
 		FFA7CBB1215DD59B00A050B1 /* TermTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBB0215DD59B00A050B1 /* TermTableViewCell.swift */; };
 		FFAC093C215EBBD5007C4264 /* TermDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC093B215EBBD5007C4264 /* TermDetailViewController.swift */; };
+		FFAE67922188ED2D0079CE16 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAE67912188ED2D0079CE16 /* UIView.swift */; };
 		FFB5C4232187BC1E00183D12 /* SegmentControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB5C4222187BC1E00183D12 /* SegmentControlDelegate.swift */; };
 		FFB76C962030B5A200EC3F97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB76C952030B5A200EC3F97 /* Assets.xcassets */; };
 		FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC18A2B202502A8001AB5BA /* EventParser.swift */; };
 		FFC6CF1621657C6D00657C34 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */; };
 		FFC6CF1821657CAE00657C34 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6CF1721657CAE00657C34 /* Assignment.swift */; };
+		FFD2DF532193860200C97FDF /* Grading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2DF522193860200C97FDF /* Grading.swift */; };
 		FFE84078215F1CAC00A5E33B /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE84077215F1CAC00A5E33B /* Term.swift */; };
 		FFFC6BC72162D6D6001585CE /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6BC62162D6D6001585CE /* Course.swift */; };
 		FFFC6BC92162D70D001585CE /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6BC82162D70D001585CE /* CourseTableViewCell.swift */; };
@@ -60,9 +71,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		06DE3D182A98C7CB44DFE095 /* Pods-ScienceStudentSuccessCentre.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.release.xcconfig"; sourceTree = "<group>"; };
-		60E8E519C1363BFA18F63FA4 /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.debug.xcconfig"; sourceTree = "<group>"; };
-		E172784443361CFF3BE597CB /* Pods_ScienceStudentSuccessCentre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScienceStudentSuccessCentre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		364F26F45C538A20F0EDA887 /* Pods-ScienceStudentSuccessCentre.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.release.xcconfig"; sourceTree = "<group>"; };
+		A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
+		CA891BEE54A1B61A8BA92EF2 /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.debug.xcconfig"; sourceTree = "<group>"; };
 		FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCourseViewController.swift; sourceTree = "<group>"; };
 		FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurekaFormProtocol.swift; sourceTree = "<group>"; };
 		FF19EE4D202EA6DA00475B63 /* EventObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventObserver.swift; sourceTree = "<group>"; };
@@ -83,23 +94,34 @@
 		FF3C2287202427660098B868 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		FF3C228A2024317A0098B868 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		FF4BCBCE21AB47790050A876 /* Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weight.swift; sourceTree = "<group>"; };
 		FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesViewController.swift; sourceTree = "<group>"; };
 		FF57A96421658509004AA50B /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		FF5FDB2C21ABB13200899963 /* SplitRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitRow.swift; sourceTree = "<group>"; };
+		FF5FDB2E21ABB16700899963 /* SplitRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitRowCell.swift; sourceTree = "<group>"; };
+		FF5FDB3021ABB17F00899963 /* SplitRowCellTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitRowCellTableView.swift; sourceTree = "<group>"; };
+		FF5FDB3221ABB19700899963 /* SplitRowValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitRowValue.swift; sourceTree = "<group>"; };
+		FF651CE92190F27100C37022 /* CreateAssignmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAssignmentViewController.swift; sourceTree = "<group>"; };
 		FF6835B52023C540001A35B2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		FF74BE80218CBE6100A8954B /* AssignmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentTableViewCell.swift; sourceTree = "<group>"; };
 		FF7A0904215967F600A98504 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		FF7FD88F21485E8100DAC88C /* HtmlString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlString.swift; sourceTree = "<group>"; };
+		FF80666D2193A31D00B202A6 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		FFA4B1D220229C8400BAC08F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		FFA7CBAA215DD4CB00A050B1 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		FFA7CBAE215DD54C00A050B1 /* PlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerViewController.swift; sourceTree = "<group>"; };
 		FFA7CBB0215DD59B00A050B1 /* TermTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermTableViewCell.swift; sourceTree = "<group>"; };
 		FFAC093B215EBBD5007C4264 /* TermDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermDetailViewController.swift; sourceTree = "<group>"; };
+		FFAE67912188ED2D0079CE16 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		FFB5C4222187BC1E00183D12 /* SegmentControlDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControlDelegate.swift; sourceTree = "<group>"; };
 		FFB76C952030B5A200EC3F97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFC18A2B202502A8001AB5BA /* EventParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventParser.swift; sourceTree = "<group>"; };
 		FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
 		FFC6CF1721657CAE00657C34 /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
+		FFD2DF522193860200C97FDF /* Grading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grading.swift; sourceTree = "<group>"; };
 		FFE84077215F1CAC00A5E33B /* Term.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
+		FFEC5D0CEFAF32B91280EAE2 /* Pods_ScienceStudentSuccessCentre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScienceStudentSuccessCentre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFFC6BC62162D6D6001585CE /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		FFFC6BC82162D70D001585CE /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,7 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9022C88B053E40AC3CB98152 /* Pods_ScienceStudentSuccessCentre.framework in Frameworks */,
+				329F8E552389FFC491AE14FB /* Pods_ScienceStudentSuccessCentre.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,13 +152,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AAE2BB24AEF7CAE16398924D /* Pods */ = {
+		7464AFC5A59DF6C8F5DF0B03 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				60E8E519C1363BFA18F63FA4 /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */,
-				06DE3D182A98C7CB44DFE095 /* Pods-ScienceStudentSuccessCentre.release.xcconfig */,
+				CA891BEE54A1B61A8BA92EF2 /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */,
+				364F26F45C538A20F0EDA887 /* Pods-ScienceStudentSuccessCentre.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A17011C921AC8ECD00A385FB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		FF327FBC20128C3E00B06E19 = {
@@ -147,7 +177,7 @@
 				FF327FE920128C3E00B06E19 /* ScienceStudentSuccessCentreUITests */,
 				FF327FC620128C3E00B06E19 /* Products */,
 				FF3C22892024317A0098B868 /* Frameworks */,
-				AAE2BB24AEF7CAE16398924D /* Pods */,
+				7464AFC5A59DF6C8F5DF0B03 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +196,7 @@
 			children = (
 				FFE84070215F17D200A5E33B /* Events */,
 				FFE84071215F190A00A5E33B /* Grades */,
+				A17011C921AC8ECD00A385FB /* Resources */,
 				FFE84073215F192E00A5E33B /* Utilities and Extensions */,
 				FF327FC820128C3E00B06E19 /* AppDelegate.swift */,
 				FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */,
@@ -199,9 +230,20 @@
 			isa = PBXGroup;
 			children = (
 				FF3C228A2024317A0098B868 /* EventKit.framework */,
-				E172784443361CFF3BE597CB /* Pods_ScienceStudentSuccessCentre.framework */,
+				FFEC5D0CEFAF32B91280EAE2 /* Pods_ScienceStudentSuccessCentre.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF5FDB2B21ABB12200899963 /* SplitRow */ = {
+			isa = PBXGroup;
+			children = (
+				FF5FDB2C21ABB13200899963 /* SplitRow.swift */,
+				FF5FDB2E21ABB16700899963 /* SplitRowCell.swift */,
+				FF5FDB3021ABB17F00899963 /* SplitRowCellTableView.swift */,
+				FF5FDB3221ABB19700899963 /* SplitRowValue.swift */,
+			);
+			path = SplitRow;
 			sourceTree = "<group>";
 		};
 		FFC6CF1421657BCC00657C34 /* Course Details and Assignments */ = {
@@ -209,6 +251,9 @@
 			children = (
 				FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */,
 				FFC6CF1721657CAE00657C34 /* Assignment.swift */,
+				FF74BE80218CBE6100A8954B /* AssignmentTableViewCell.swift */,
+				FF651CE92190F27100C37022 /* CreateAssignmentViewController.swift */,
+				FF4BCBCE21AB47790050A876 /* Weight.swift */,
 			);
 			path = "Course Details and Assignments";
 			sourceTree = "<group>";
@@ -253,11 +298,15 @@
 		FFE84073215F192E00A5E33B /* Utilities and Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FF5FDB2B21ABB12200899963 /* SplitRow */,
 				FF1D7D24215D6DDD00A88467 /* Database.swift */,
 				FF7FD88F21485E8100DAC88C /* HtmlString.swift */,
 				FF7A0904215967F600A98504 /* Formatter.swift */,
 				FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */,
 				FF57A96421658509004AA50B /* UIColor.swift */,
+				FFAE67912188ED2D0079CE16 /* UIView.swift */,
+				FFD2DF522193860200C97FDF /* Grading.swift */,
+				FF80666D2193A31D00B202A6 /* Double.swift */,
 			);
 			path = "Utilities and Extensions";
 			sourceTree = "<group>";
@@ -297,12 +346,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF327FEF20128C3E00B06E19 /* Build configuration list for PBXNativeTarget "ScienceStudentSuccessCentre" */;
 			buildPhases = (
-				0BDF2ED5E9B3C941320B4F3C /* [CP] Check Pods Manifest.lock */,
+				3BCD4BFD38070AE9F656B757 /* [CP] Check Pods Manifest.lock */,
 				FF327FC120128C3E00B06E19 /* Sources */,
 				FF327FC220128C3E00B06E19 /* Frameworks */,
 				FF327FC320128C3E00B06E19 /* Resources */,
-				EEA013EB5481E9FB86BF3E58 /* [CP] Embed Pods Frameworks */,
-				D234B451A9E040B8C9EC12D6 /* [CP] Copy Pods Resources */,
+				1F0BF43B3D7265673810F809 /* [CP] Embed Pods Frameworks */,
+				EBC9EF47B2AAAC12B16C7352 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -426,40 +475,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0BDF2ED5E9B3C941320B4F3C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ScienceStudentSuccessCentre-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D234B451A9E040B8C9EC12D6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EEA013EB5481E9FB86BF3E58 /* [CP] Embed Pods Frameworks */ = {
+		1F0BF43B3D7265673810F809 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -487,6 +503,39 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3BCD4BFD38070AE9F656B757 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ScienceStudentSuccessCentre-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EBC9EF47B2AAAC12B16C7352 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -494,15 +543,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A17011CB21AC8F4000A385FB /* ResourcesViewController.swift in Sources */,
 				FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */,
 				FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */,
+				FF80666E2193A31D00B202A6 /* Double.swift in Sources */,
 				FF19EE4E202EA6DA00475B63 /* EventObserver.swift in Sources */,
+				FF651CEA2190F27100C37022 /* CreateAssignmentViewController.swift in Sources */,
 				FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */,
 				FFC6CF1621657C6D00657C34 /* CourseDetailViewController.swift in Sources */,
 				FFA7CBAB215DD4CB00A050B1 /* TermsViewController.swift in Sources */,
 				FFAC093C215EBBD5007C4264 /* TermDetailViewController.swift in Sources */,
 				FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */,
 				FF7A0905215967F600A98504 /* Formatter.swift in Sources */,
+				FF5FDB2D21ABB13200899963 /* SplitRow.swift in Sources */,
 				FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */,
 				FF4C4A9C215D7C550091BF2A /* GradesViewController.swift in Sources */,
 				FF7FD89021485E8100DAC88C /* HtmlString.swift in Sources */,
@@ -512,12 +565,19 @@
 				FF13F7D421646AC1005733B0 /* CreateCourseViewController.swift in Sources */,
 				FFFC6BC72162D6D6001585CE /* Course.swift in Sources */,
 				FFE84078215F1CAC00A5E33B /* Term.swift in Sources */,
+				FF5FDB3121ABB17F00899963 /* SplitRowCellTableView.swift in Sources */,
+				FF5FDB2F21ABB16700899963 /* SplitRowCell.swift in Sources */,
 				FF327FCB20128C3E00B06E19 /* EventsViewController.swift in Sources */,
+				FF74BE81218CBE6100A8954B /* AssignmentTableViewCell.swift in Sources */,
+				FFD2DF532193860200C97FDF /* Grading.swift in Sources */,
+				FF4BCBCF21AB47790050A876 /* Weight.swift in Sources */,
+				FF5FDB3321ABB19700899963 /* SplitRowValue.swift in Sources */,
 				FF3D05DC215AC9AC0073D0E7 /* TabBarViewController.swift in Sources */,
 				FFA7CBAF215DD54C00A050B1 /* PlannerViewController.swift in Sources */,
 				FFA7CBB1215DD59B00A050B1 /* TermTableViewCell.swift in Sources */,
 				FF57A96521658509004AA50B /* UIColor.swift in Sources */,
 				FFA7CBAD215DD53300A050B1 /* CalculatorViewController.swift in Sources */,
+				FFAE67922188ED2D0079CE16 /* UIView.swift in Sources */,
 				FFA4B1D320229C8400BAC08F /* Event.swift in Sources */,
 				FFC6CF1821657CAE00657C34 /* Assignment.swift in Sources */,
 				FFFC6BC92162D70D001585CE /* CourseTableViewCell.swift in Sources */,
@@ -688,7 +748,7 @@
 		};
 		FF327FF020128C3E00B06E19 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 60E8E519C1363BFA18F63FA4 /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */;
+			baseConfigurationReference = CA891BEE54A1B61A8BA92EF2 /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -707,7 +767,7 @@
 		};
 		FF327FF120128C3E00B06E19 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 06DE3D182A98C7CB44DFE095 /* Pods-ScienceStudentSuccessCentre.release.xcconfig */;
+			baseConfigurationReference = 364F26F45C538A20F0EDA887 /* Pods-ScienceStudentSuccessCentre.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

@@ -12,6 +12,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet var gpa: UILabel!
     @IBOutlet var credits: UILabel!
+    @IBOutlet var termDetailsView: UIView!
     @IBOutlet var tableView: UITableView!
     
     private var addCourseButton: UIBarButtonItem!
@@ -25,6 +26,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .never
+        termDetailsView.addBorders(edges: [.top], color: UIColor(.bluegrey), width: 0.4)
         
         addCourseButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCoursePressed))
         editCoursesButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editCoursesPressed))
@@ -61,6 +63,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         let course = courses[indexPath.row]
         cell.courseName.text = course.name
         cell.courseCode.text = course.code
+        cell.grade.text = course.getLetterGrade()
         cell.gradeView.backgroundColor = UIColor(course.colour)
         return cell
     }
@@ -86,7 +89,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @objc private func addCoursePressed() {
-        performSegue(withIdentifier: "createCourse", sender: self)
+        performSegue(withIdentifier: "editCourse", sender: self)
     }
     
     @objc private func editCoursesPressed() {
@@ -116,10 +119,23 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     private func updateTermDetails() {
         var totalCredits: Double = 0
+        var totalPercent: Double = 0
+        var totalCourses: Double = 0
         for course in courses {
             totalCredits += course.credits
+            let coursePercentage = course.getPercentGrade()
+            if coursePercentage >= 0 {
+                totalPercent += coursePercentage
+                totalCourses += 1
+            }
         }
         credits.text = "Total Credits: \(totalCredits)"
+        if totalCourses > 0 {
+            let termGpa = Grading.calculateGpa(percentage: totalPercent / totalCourses)
+            gpa.text = "Term GPA: " + termGpa
+        } else {
+            gpa.text = "Term GPA: N/A"
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -128,7 +144,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             let indexPath = tableView.indexPathForSelectedRow!
             controller.course = courses[indexPath.row]
         }
-        if segue.identifier == "createCourse" {
+        if segue.identifier == "editCourse" {
             let controller = segue.destination.children.first as! CreateCourseViewController
             controller.term = term
         }
