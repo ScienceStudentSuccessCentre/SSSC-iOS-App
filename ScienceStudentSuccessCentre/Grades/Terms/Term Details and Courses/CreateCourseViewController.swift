@@ -109,7 +109,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                                 $0.formatter = self.weightFormatter
                             }
                             
-                            $0.rowId = nil
+                            $0.tag = nil
                         }.onChange { _ in
                             self.validateForm()
                         }
@@ -144,13 +144,15 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                         $0.formatter = self.weightFormatter
                     }
                     
-                    $0.rowId = weight.id
+                    $0.tag = weight.id
                     
                 }.onChange { _ in
                     self.validateForm()
                 }
                 weightsSection.append(newRow)
             }
+            
+            // adjust the Add New Weight button so it's below the actual weights
             let addButton = weightsSection.removeFirst()
             weightsSection.append(addButton)
         }
@@ -218,18 +220,19 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         }
         
         let weightsSection = form.sectionBy(tag: "weights") as! MultivaluedSection
-        let weightValues = weightsSection.values() as! [SplitRowValue<String, Int>]
-        for weightValue in weightValues {
-            let name = weightValue.left ?? ""
-            let value = Double(weightValue.right ?? -1)
-            let weightId = weightValue.id
-            let weight = Weight(id: weightId, name: name, value: value, courseId: course.id)
-            
-            if !Database.instance.insertOrUpdate(weight: weight) {
-                print("Failed to create weight")
-                //TODO: let the user know somehow
+        weightsSection.forEach({ row in
+            if let weightValue = row.baseValue as? SplitRowValue<String, Int> {
+                let name = weightValue.left ?? ""
+                let value = Double(weightValue.right ?? -1)
+                let weightId = row.tag
+                let weight = Weight(id: weightId, name: name, value: value, courseId: course.id)
+                
+                if !Database.instance.insertOrUpdate(weight: weight) {
+                    print("Failed to create weight")
+                    //TODO: let the user know somehow
+                }
             }
-        }
+        })
         navigationController?.dismiss(animated: true, completion: nil)
     }
     

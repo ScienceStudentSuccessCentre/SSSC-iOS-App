@@ -11,12 +11,10 @@ import Eureka
 public struct SplitRowValue<L: Equatable, R: Equatable> {
     public var left: L?
     public var right: R?
-    public var id: String?
     
     public init(left: L?, right: R?, id: String?) {
         self.left = left
         self.right = right
-        self.id = id
     }
     
     public init() {}
