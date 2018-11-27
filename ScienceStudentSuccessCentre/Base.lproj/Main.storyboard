@@ -825,14 +825,14 @@
                                 <rect key="frame" x="0.0" y="384" width="375" height="68"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQp-gQ-O29" userLabel="Calculate Required Final Grade">
-                                        <rect key="frame" x="61.5" y="38" width="252" height="22"/>
-                                        <state key="normal" title="Calculate Required Final Exam Grade"/>
+                                        <rect key="frame" x="54" y="34" width="267" height="26"/>
+                                        <state key="normal" title="Required Exam Grade for Desired Mark"/>
                                         <connections>
                                             <action selector="calcReqFinalExamButtonPressed" destination="atS-1p-BMg" eventType="touchUpInside" id="BVF-hV-Ftd"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overall Grade: 100% (A+)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j68-jT-G53" userLabel="Course Grade">
-                                        <rect key="frame" x="90.5" y="8" width="194" height="22"/>
+                                        <rect key="frame" x="90.5" y="8" width="194" height="26"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -844,8 +844,9 @@
                                     <constraint firstItem="j68-jT-G53" firstAttribute="centerX" secondItem="whK-Ic-VN8" secondAttribute="centerX" id="Hr4-gO-6Af"/>
                                     <constraint firstAttribute="height" constant="68" id="JgW-4E-F5t"/>
                                     <constraint firstItem="j68-jT-G53" firstAttribute="top" secondItem="whK-Ic-VN8" secondAttribute="top" constant="8" id="LwD-ZY-XV1"/>
+                                    <constraint firstAttribute="bottom" secondItem="j68-jT-G53" secondAttribute="bottom" priority="999" constant="8" id="YEm-Q8-LG1"/>
                                     <constraint firstItem="j68-jT-G53" firstAttribute="height" secondItem="aQp-gQ-O29" secondAttribute="height" id="ahT-qy-StD"/>
-                                    <constraint firstItem="aQp-gQ-O29" firstAttribute="top" secondItem="j68-jT-G53" secondAttribute="bottom" constant="8" id="hlc-T5-A2y"/>
+                                    <constraint firstItem="aQp-gQ-O29" firstAttribute="top" secondItem="j68-jT-G53" secondAttribute="bottom" id="hlc-T5-A2y"/>
                                     <constraint firstItem="aQp-gQ-O29" firstAttribute="centerX" secondItem="whK-Ic-VN8" secondAttribute="centerX" id="orN-97-nRF"/>
                                 </constraints>
                             </view>
@@ -866,6 +867,7 @@
                         <viewLayoutGuide key="safeArea" id="b52-R7-gxJ"/>
                     </view>
                     <connections>
+                        <outlet property="bottomConstraint" destination="hlc-T5-A2y" id="9nD-vS-xxe"/>
                         <outlet property="calcReqFinalGrade" destination="aQp-gQ-O29" id="axP-jU-C3o"/>
                         <outlet property="courseCode" destination="mBu-6x-H9h" id="a3P-6y-T0t"/>
                         <outlet property="courseGrade" destination="j68-jT-G53" id="ALl-Bx-6MA"/>
@@ -876,7 +878,7 @@
                         <segue destination="lC3-cb-RGX" kind="showDetail" identifier="editCourse" id="8vw-Sl-0KH"/>
                         <segue destination="N7b-6V-vXm" kind="showDetail" identifier="createAssignment" id="tsD-S5-xqb"/>
                         <segue destination="N7b-6V-vXm" kind="showDetail" identifier="editAssignment" id="kLN-0H-OdZ"/>
-                        <segue destination="Tfa-ad-KS4" kind="showDetail" id="kRv-mp-xUD"/>
+                        <segue destination="Tfa-ad-KS4" kind="showDetail" identifier="calcReqFinalGrade" id="kRv-mp-xUD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOO-qd-8VI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -979,10 +981,10 @@
             </objects>
             <point key="canvasLocation" x="7330" y="308"/>
         </scene>
-        <!--View Controller-->
+        <!--Calculate Required Final View Controller-->
         <scene sceneID="RmA-ka-6yx">
             <objects>
-                <viewController id="I3K-VQ-2TJ" sceneMemberID="viewController">
+                <viewController id="I3K-VQ-2TJ" customClass="CalculateRequiredFinalViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cx7-Si-YSK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="452"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

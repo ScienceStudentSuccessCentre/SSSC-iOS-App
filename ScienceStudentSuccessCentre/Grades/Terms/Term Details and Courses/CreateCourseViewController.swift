@@ -222,14 +222,15 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         let weightsSection = form.sectionBy(tag: "weights") as! MultivaluedSection
         weightsSection.forEach({ row in
             if let weightValue = row.baseValue as? SplitRowValue<String, Int> {
-                let name = weightValue.left ?? ""
-                let value = Double(weightValue.right ?? -1)
-                let weightId = row.tag
-                let weight = Weight(id: weightId, name: name, value: value, courseId: course.id)
-                
-                if !Database.instance.insertOrUpdate(weight: weight) {
-                    print("Failed to create weight")
-                    //TODO: let the user know somehow
+                if let name = weightValue.left {
+                    let value = Double(weightValue.right ?? -1)
+                    let weightId = row.tag
+                    let weight = Weight(id: weightId, name: name, value: value, courseId: course.id)
+                    
+                    if !Database.instance.insertOrUpdate(weight: weight) {
+                        print("Failed to create weight")
+                        //TODO: let the user know somehow
+                    }
                 }
             }
         })

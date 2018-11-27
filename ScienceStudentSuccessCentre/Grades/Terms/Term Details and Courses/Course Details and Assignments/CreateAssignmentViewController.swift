@@ -35,7 +35,8 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
             navigationItem.setRightBarButton(UIBarButtonItem(title: "Update", style: .done, target: self, action: #selector(createButtonPressed)), animated: true)
         }
         
-        getWeightNames()
+        weights = Database.instance.getWeightsByCourseId(id: course.id)
+        weightNames = Weight.getNames(weights: weights)
         createForm()
     }
     
@@ -94,13 +95,6 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
             navigationItem.rightBarButtonItem?.isEnabled = true
         } else {
             navigationItem.rightBarButtonItem?.isEnabled = false
-        }
-    }
-    
-    private func getWeightNames() {
-        weights = Database.instance.getWeightsByCourseId(id: course.id)
-        for weight in weights {
-            weightNames.append(weight.name)
         }
     }
     
