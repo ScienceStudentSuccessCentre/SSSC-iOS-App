@@ -92,13 +92,6 @@ open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L,R>> where L: Ba
         }
     }
     
-    public var rowId: String? {
-        willSet {
-            var rowValue = self.value ?? SplitRowValue<L.Cell.Value,R.Cell.Value>()
-            rowValue.id = newValue
-        }
-    }
-    
     public var rowRightPercentage: CGFloat{
         return 1.0 - self.rowLeftPercentage
     }

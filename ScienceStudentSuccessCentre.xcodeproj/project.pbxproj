@@ -13,6 +13,7 @@
 		FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */; };
 		FF19EE4E202EA6DA00475B63 /* EventObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19EE4D202EA6DA00475B63 /* EventObserver.swift */; };
 		FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1D7D24215D6DDD00A88467 /* Database.swift */; };
+		FF2CC47F21ACF5F3002EE205 /* CalculateRequiredFinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CC47E21ACF5F3002EE205 /* CalculateRequiredFinalViewController.swift */; };
 		FF30AFB82162A6E200C1F22C /* CreateTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30AFB72162A6E200C1F22C /* CreateTermViewController.swift */; };
 		FF327FC920128C3E00B06E19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FC820128C3E00B06E19 /* AppDelegate.swift */; };
 		FF327FCB20128C3E00B06E19 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FCA20128C3E00B06E19 /* EventsViewController.swift */; };
@@ -78,6 +79,7 @@
 		FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurekaFormProtocol.swift; sourceTree = "<group>"; };
 		FF19EE4D202EA6DA00475B63 /* EventObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventObserver.swift; sourceTree = "<group>"; };
 		FF1D7D24215D6DDD00A88467 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		FF2CC47E21ACF5F3002EE205 /* CalculateRequiredFinalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateRequiredFinalViewController.swift; sourceTree = "<group>"; };
 		FF30AFB72162A6E200C1F22C /* CreateTermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTermViewController.swift; sourceTree = "<group>"; };
 		FF327FC520128C3E00B06E19 /* ScienceStudentSuccessCentre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScienceStudentSuccessCentre.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF327FC820128C3E00B06E19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				FFC6CF1721657CAE00657C34 /* Assignment.swift */,
 				FF74BE80218CBE6100A8954B /* AssignmentTableViewCell.swift */,
 				FF651CE92190F27100C37022 /* CreateAssignmentViewController.swift */,
+				FF2CC47E21ACF5F3002EE205 /* CalculateRequiredFinalViewController.swift */,
 				FF4BCBCE21AB47790050A876 /* Weight.swift */,
 			);
 			path = "Course Details and Assignments";
@@ -548,6 +551,7 @@
 				FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */,
 				FF80666E2193A31D00B202A6 /* Double.swift in Sources */,
 				FF19EE4E202EA6DA00475B63 /* EventObserver.swift in Sources */,
+				FF2CC47F21ACF5F3002EE205 /* CalculateRequiredFinalViewController.swift in Sources */,
 				FF651CEA2190F27100C37022 /* CreateAssignmentViewController.swift in Sources */,
 				FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */,
 				FFC6CF1621657C6D00657C34 /* CourseDetailViewController.swift in Sources */,

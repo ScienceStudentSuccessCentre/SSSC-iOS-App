@@ -58,7 +58,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carleton Coding Challenge" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0R-cY-jsg">
-                                                    <rect key="frame" x="99" y="34.5" width="274" height="20.5"/>
+                                                    <rect key="frame" x="99" y="34.5" width="235" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -467,7 +467,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fall 2018" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocs-vd-Sl9">
-                                                    <rect key="frame" x="99" y="34.5" width="274" height="20.5"/>
+                                                    <rect key="frame" x="99" y="34.5" width="235" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -606,13 +606,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMP 3000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbJ-kL-1eC">
-                                                    <rect key="frame" x="99" y="19" width="274" height="27.5"/>
+                                                    <rect key="frame" x="99" y="19" width="235" height="27.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Operating Systems" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGf-FB-RNz">
-                                                    <rect key="frame" x="99" y="46.5" width="282" height="27"/>
+                                                    <rect key="frame" x="99" y="46.5" width="243" height="27"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -786,13 +786,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assignment 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjf-yW-i7A" userLabel="Assignment Name">
-                                                    <rect key="frame" x="99" y="16" width="268" height="29"/>
+                                                    <rect key="frame" x="99" y="16" width="229" height="29"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade: 100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zwi-eg-9Op" userLabel="Assignment Percentage">
-                                                    <rect key="frame" x="99" y="45" width="268" height="28.5"/>
+                                                    <rect key="frame" x="99" y="45" width="229" height="28.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -805,7 +805,6 @@
                                                 <constraint firstAttribute="bottom" secondItem="Zwi-eg-9Op" secondAttribute="bottom" constant="16" id="CrR-dM-336"/>
                                                 <constraint firstItem="Jpk-7s-4nw" firstAttribute="leading" secondItem="BHn-Bg-FJd" secondAttribute="leadingMargin" id="J0f-vW-wkm"/>
                                                 <constraint firstItem="Jpk-7s-4nw" firstAttribute="bottom" secondItem="BHn-Bg-FJd" secondAttribute="bottomMargin" id="Mmg-6u-cbt"/>
-                                                <constraint firstItem="Zwi-eg-9Op" firstAttribute="top" secondItem="xjf-yW-i7A" secondAttribute="bottom" id="RNs-HJ-rYj"/>
                                                 <constraint firstItem="xjf-yW-i7A" firstAttribute="top" secondItem="BHn-Bg-FJd" secondAttribute="top" constant="16" id="Rer-ah-0ud"/>
                                                 <constraint firstItem="xjf-yW-i7A" firstAttribute="leading" secondItem="Jpk-7s-4nw" secondAttribute="trailing" constant="16" id="oJn-Ay-V7Q"/>
                                                 <constraint firstItem="Jpk-7s-4nw" firstAttribute="top" secondItem="BHn-Bg-FJd" secondAttribute="topMargin" id="oTr-8O-Vy2"/>
@@ -825,8 +824,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whK-Ic-VN8" userLabel="Course Percentage View">
                                 <rect key="frame" x="0.0" y="384" width="375" height="68"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overall Grade: 100% (A+)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j68-jT-G53" userLabel="Course Credit">
-                                        <rect key="frame" x="90.5" y="24" width="194" height="20.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQp-gQ-O29" userLabel="Calculate Required Final Grade">
+                                        <rect key="frame" x="61.5" y="38" width="252" height="22"/>
+                                        <state key="normal" title="Calculate Required Final Exam Grade"/>
+                                        <connections>
+                                            <action selector="calcReqFinalExamButtonPressed" destination="atS-1p-BMg" eventType="touchUpInside" id="BVF-hV-Ftd"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overall Grade: 100% (A+)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j68-jT-G53" userLabel="Course Grade">
+                                        <rect key="frame" x="90.5" y="8" width="194" height="22"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -834,9 +840,13 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="j68-jT-G53" firstAttribute="centerY" secondItem="whK-Ic-VN8" secondAttribute="centerY" id="1TF-44-07f"/>
+                                    <constraint firstAttribute="bottom" secondItem="aQp-gQ-O29" secondAttribute="bottom" constant="8" id="1O6-NG-HTX"/>
+                                    <constraint firstItem="j68-jT-G53" firstAttribute="centerX" secondItem="whK-Ic-VN8" secondAttribute="centerX" id="Hr4-gO-6Af"/>
                                     <constraint firstAttribute="height" constant="68" id="JgW-4E-F5t"/>
-                                    <constraint firstItem="j68-jT-G53" firstAttribute="centerX" secondItem="whK-Ic-VN8" secondAttribute="centerX" id="ZYg-vB-bIv"/>
+                                    <constraint firstItem="j68-jT-G53" firstAttribute="top" secondItem="whK-Ic-VN8" secondAttribute="top" constant="8" id="LwD-ZY-XV1"/>
+                                    <constraint firstItem="j68-jT-G53" firstAttribute="height" secondItem="aQp-gQ-O29" secondAttribute="height" id="ahT-qy-StD"/>
+                                    <constraint firstItem="aQp-gQ-O29" firstAttribute="top" secondItem="j68-jT-G53" secondAttribute="bottom" constant="8" id="hlc-T5-A2y"/>
+                                    <constraint firstItem="aQp-gQ-O29" firstAttribute="centerX" secondItem="whK-Ic-VN8" secondAttribute="centerX" id="orN-97-nRF"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -856,6 +866,7 @@
                         <viewLayoutGuide key="safeArea" id="b52-R7-gxJ"/>
                     </view>
                     <connections>
+                        <outlet property="calcReqFinalGrade" destination="aQp-gQ-O29" id="axP-jU-C3o"/>
                         <outlet property="courseCode" destination="mBu-6x-H9h" id="a3P-6y-T0t"/>
                         <outlet property="courseGrade" destination="j68-jT-G53" id="ALl-Bx-6MA"/>
                         <outlet property="courseGradeView" destination="whK-Ic-VN8" id="x7v-SO-Uk2"/>
@@ -865,6 +876,7 @@
                         <segue destination="lC3-cb-RGX" kind="showDetail" identifier="editCourse" id="8vw-Sl-0KH"/>
                         <segue destination="N7b-6V-vXm" kind="showDetail" identifier="createAssignment" id="tsD-S5-xqb"/>
                         <segue destination="N7b-6V-vXm" kind="showDetail" identifier="editAssignment" id="kLN-0H-OdZ"/>
+                        <segue destination="Tfa-ad-KS4" kind="showDetail" id="kRv-mp-xUD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOO-qd-8VI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -966,6 +978,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jcZ-Ry-GZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7330" y="308"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="RmA-ka-6yx">
+            <objects>
+                <viewController id="I3K-VQ-2TJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cx7-Si-YSK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="452"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="MgC-Ze-B9g"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ecZ-Na-9oG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WGU-tf-460" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7329" y="880"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oJb-qD-3ig">
+            <objects>
+                <navigationController id="Tfa-ad-KS4" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="968-zw-6dn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="I3K-VQ-2TJ" kind="relationship" relationship="rootViewController" id="kui-FB-bxq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ija-H8-aIl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6542" y="880"/>
         </scene>
     </scenes>
     <resources>
