@@ -134,4 +134,14 @@ class Grading {
 //        return percentage
     }
     
+    static func calculatedRequiredGrade(currentGrade: Double, desiredGrade: Double, weight: Weight, courseId: String) -> Double {
+        let allAssignmentsWithWeight = Database.instance.getAssignmentsByCourseId(id: courseId).filter({ $0.weight.id == weight.id }).count
+        let calculatedWeight = weight.value / Double(allAssignmentsWithWeight + 1)
+        var requiredGrade = ((desiredGrade - currentGrade) / calculatedWeight * 100) + currentGrade
+        if requiredGrade < 0 {
+            requiredGrade = 0
+        }
+        return requiredGrade
+    }
+    
 }

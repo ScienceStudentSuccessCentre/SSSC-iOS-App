@@ -74,14 +74,10 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
         let desiredGrade = values["desiredGrade"] as? Double ?? -1
         let weightName = values["weight"] as? String ?? ""
         let weight = Weight.getWeightByName(name: weightName, weights: weights)
-        
         let calculatedGradeRow = form.rowBy(tag: "requiredGrade")
+        
         if currentGrade >= 0 && 0 ... 100 ~= desiredGrade && weight != nil {
-            var requiredGrade = ((desiredGrade - currentGrade) / weight!.value * 100) + currentGrade
-            if requiredGrade < 0 {
-                requiredGrade = 0
-            }
-            calculatedGradeRow?.baseValue = requiredGrade
+            calculatedGradeRow?.baseValue = Grading.calculatedRequiredGrade(currentGrade: currentGrade, desiredGrade: desiredGrade, weight: weight!, courseId: course.id)
         } else {
             calculatedGradeRow?.baseValue = nil
         }
