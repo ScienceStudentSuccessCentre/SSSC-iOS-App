@@ -42,7 +42,7 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
     
     func createForm() {
         form
-            +++ Section("Assignment Info")
+            +++ Section(header: "Assignment Info", footer: weights.count == 0 ? "In order to add assignments, please create assignment weights for this course. This can be done from the previous screen." : "")
             <<< TextRow() { row in
                 row.tag = "name"
                 row.title = "Name"

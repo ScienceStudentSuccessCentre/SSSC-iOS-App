@@ -15,6 +15,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     var term: Term!
     var course: Course!
     var weights = [Weight]()
+    var initialWeights = [Weight]()
     let creditFormatter = NumberFormatter()
     let weightFormatter = NumberFormatter()
     
@@ -41,6 +42,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             navigationItem.setRightBarButton(UIBarButtonItem(title: "Update", style: .done, target: self, action: #selector(createButtonPressed)), animated: true)
             
             weights = Database.instance.getWeightsByCourseId(id: course.id)
+            initialWeights = weights
         }
         
         createForm()
@@ -122,6 +124,8 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                 row.title = "Final Grade"
                 row.options = letterGrades
                 row.value = letterGrades.first
+            }.onChange { _ in
+                self.validateForm()
             }
         
         if (course != nil) {
@@ -167,7 +171,14 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     override func rowsHaveBeenRemoved(_ rows: [BaseRow], at indexes: [IndexPath]) {
         super.rowsHaveBeenRemoved(rows, at: indexes)
         //TODO: stop editing accessory buttons from appearing after a row is removed
-        self.validateForm()
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        super.tableView(tableView, commit: editingStyle, forRowAt: indexPath)
+        if editingStyle == .delete {
+            isEditing = false
+            self.validateForm()
+        }
     }
     
     func validateForm() {
@@ -175,6 +186,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         let name = values["name"] as? String ?? ""
         let code = values["code"] as? String ?? ""
         let credits = values["credits"] as? Double ?? 0
+        let finalGrade = values["finalGrade"] as? String ?? "None"
         
         let weightsSection = form.sectionBy(tag: "weights") as! MultivaluedSection
         let weightValues = weightsSection.values() as! [SplitRowValue<String, Int>]
@@ -193,7 +205,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             }
             weightNames.append(weightName)
         }
-        if (weightTotal != 100 && weightTotal != 0) || weightValues.count == 0 {
+        if (weightTotal != 100 && weightTotal != 0) || (weightValues.count == 0 && finalGrade == "None") {
             validWeights = false
         }
         
@@ -204,7 +216,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         }
     }
     
-    @objc private func createButtonPressed() {
+    private func createCourse() {
         let values = form.values()
         let name = values["name"] as? String ?? ""
         let code = values["code"] as? String ?? ""
@@ -214,27 +226,65 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         let colour = UIColor.Material.fromUIColor(color: values["colour"] as? UIColor ?? nil)
         
         let course = Course(id: self.course != nil ? self.course.id : nil, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, finalGrade: finalGrade, termId: self.term != nil ? term.id : self.course.termId, colour: colour)
+        self.course = course
         if !Database.instance.insertOrUpdate(course: course) {
             print("Failed to create course")
             //TODO: let the user know somehow
         }
-        
+    }
+    
+    private func updateWeights() {
         let weightsSection = form.sectionBy(tag: "weights") as! MultivaluedSection
+        weights.removeAll()
+        
         weightsSection.forEach({ row in
             if let weightValue = row.baseValue as? SplitRowValue<String, Int> {
                 if let name = weightValue.left {
                     let value = Double(weightValue.right ?? -1)
                     let weightId = row.tag
                     let weight = Weight(id: weightId, name: name, value: value, courseId: course.id)
-                    
-                    if !Database.instance.insertOrUpdate(weight: weight) {
-                        print("Failed to create weight")
+                    weights.append(weight)
+                }
+            }
+        })
+        
+        let assignments = Database.instance.getAssignmentsByCourseId(id: course.id)
+        let weightIds = weights.map({ $0.id })
+        let initialWeightIds = initialWeights.map( {$0.id })
+        if assignments.filter({ initialWeightIds.contains($0.weight.id) }).count > 0 && assignments.filter({ weightIds.contains($0.weight.id) }).count == 0 {
+            invalidWeightDeletion()
+        } else {
+            for weight in initialWeights {
+                if weights.filter({ $0.id == weight.id }).count == 0 {
+                    if !Database.instance.delete(weightId: weight.id) {
+                        print("Failed to delete weight")
                         //TODO: let the user know somehow
                     }
                 }
             }
-        })
-        navigationController?.dismiss(animated: true, completion: nil)
+            
+            for weight in weights {
+                if !Database.instance.insertOrUpdate(weight: weight) {
+                    print("Failed to create weight")
+                    //TODO: let the user know somehow
+                }
+            }
+            navigationController?.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    private func invalidWeightDeletion() {
+        let alert = UIAlertController(title: "Can't modify weights!", message: "Please modify or delete all assignments that are marked with the weights you are trying to delete. All other course modifications were saved.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { action in
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc private func createButtonPressed() {
+        createCourse()
+        updateWeights()
     }
     
     @objc private func cancelButtonPressed() {
