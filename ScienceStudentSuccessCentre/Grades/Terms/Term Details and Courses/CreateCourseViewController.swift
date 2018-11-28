@@ -116,7 +116,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                     }
                     section.tag = "weights"
             }
-            +++ Section("Override Calculated Grade")
+            +++ Section(header: "Override Calculated Grade", footer: "If you have already received a final letter grade from Carleton for this course, enter it here to ensure GPA calculation accuracy.")
             <<< PushRow<String>() { row in
                 row.tag = "finalGrade"
                 row.title = "Final Grade"
@@ -193,7 +193,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             }
             weightNames.append(weightName)
         }
-        if weightTotal != 100 && weightTotal != 0 {
+        if (weightTotal != 100 && weightTotal != 0) || weightValues.count == 0 {
             validWeights = false
         }
         

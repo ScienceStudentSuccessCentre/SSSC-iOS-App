@@ -34,7 +34,8 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
     
     func createForm() {
         form
-            +++ Section("Course Details")
+            +++ Section(footer: "If you want a certain final grade in a course, you can use this section to determine what grade you should aim for on your final exam.")
+            +++ Section("Course Details - " + course.code)
             <<< DecimalRow() { row in
                 row.tag = "currentGrade"
                 row.title = "Current Course Grade"

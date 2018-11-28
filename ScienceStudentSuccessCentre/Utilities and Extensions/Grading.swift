@@ -56,6 +56,44 @@ class Grading {
         return letterGrade
     }
     
+    static func calculateGradePoints(letterGrade: String, creditWorth: Double) -> Double {
+        var numericalGrade: Double
+        switch letterGrade {
+        case "F":
+            numericalGrade = 0
+        case "D-":
+            numericalGrade = 1
+        case "D":
+            numericalGrade = 2
+        case "D+":
+            numericalGrade = 3
+        case "C-":
+            numericalGrade = 4
+        case "C":
+            numericalGrade = 5
+        case "C+":
+            numericalGrade = 6
+        case "B-":
+            numericalGrade = 7
+        case "B":
+            numericalGrade = 8
+        case "B+":
+            numericalGrade = 9
+        case "A-":
+            numericalGrade = 10
+        case "A":
+            numericalGrade = 11
+        case "A+":
+            numericalGrade = 12
+        default:
+            numericalGrade = -1
+        }
+        if numericalGrade != -1 {
+            numericalGrade *= creditWorth
+        }
+        return numericalGrade
+    }
+    
     static func calculateGpa(percentage: Double) -> String {
         var gpa: Double
         switch percentage {
@@ -92,46 +130,6 @@ class Grading {
             return "N/A"
         }
         return String(gpa.rounded(toPlaces: 1))
-    }
-    
-    static func getPercentage(letterGrade: String) -> Double {
-        var percentage: Double
-        //TODO: actually fill this in
-        return -1
-//        switch letterGrade {
-//        case "F":
-//            gpa = percentage / 100
-//        case 50 ..< 53:
-//            gpa = ((percentage / 100) * 3) + 50
-//        case 53 ..< 57:
-//            gpa = ((percentage / 100) * 4) + 53
-//        case 57 ..< 60:
-//            gpa = ((percentage / 100) * 3) + 57
-//        case 60 ..< 63:
-//            gpa = ((percentage / 100) * 3) + 60
-//        case 63 ..< 67:
-//            gpa = ((percentage / 100) * 4) + 63
-//        case 67 ..< 70:
-//            gpa = ((percentage / 100) * 3) + 67
-//        case 70 ..< 73:
-//            gpa = ((percentage / 100) * 3) + 70
-//        case 73 ..< 77:
-//            gpa = ((percentage / 100) * 4) + 73
-//        case 77 ..< 80:
-//            gpa = ((percentage / 100) * 3) + 77
-//        case 80 ..< 85:
-//            gpa = ((percentage / 100) * 5) + 80
-//        case 85 ..< 90:
-//            gpa = ((percentage / 100) * 5) + 85
-//        case _ where percentage >= 90:
-//            gpa = ((percentage / 100) * 10) + 90
-//        default:
-//            gpa = -1
-//        }
-//        if gpa == -1 {
-//            return "N/A"
-//        }
-//        return percentage
     }
     
     static func calculatedRequiredGrade(currentGrade: Double, desiredGrade: Double, weight: Weight, courseId: String) -> Double {
