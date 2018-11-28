@@ -17,6 +17,8 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet var courseGrade: UILabel!
     @IBOutlet var courseGradeView: UIView!
     @IBOutlet var calcReqFinalGrade: UIButton!
+    @IBOutlet var bottomConstraint: NSLayoutConstraint!
+    
     
     var course: Course!
     var assignments = [Assignment]()
@@ -114,7 +116,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     @IBAction private func calcReqFinalExamButtonPressed() {
-        
+        performSegue(withIdentifier: "calcReqFinalGrade", sender: self)
     }
     
     @objc private func editCoursePressed() {
@@ -143,6 +145,17 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     private func updateCourseDetails() {
         courseGrade.text = "Overall Grade: " + course.getGradeSummary()
+        
+        DispatchQueue.main.async {
+            if self.course.finalGrade != "None" {
+                self.calcReqFinalGrade.isHidden = true
+                self.bottomConstraint?.isActive = false
+            } else {
+                self.calcReqFinalGrade.isHidden = false
+                self.bottomConstraint?.isActive = true
+            }
+            self.view.layoutIfNeeded()
+        }
     }
     
     private func toggleTableViewEditMode() {
@@ -166,18 +179,26 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editCourse" {
+        switch segue.identifier {
+        case "editCourse":
             let controller = segue.destination.children.first as! CreateCourseViewController
             controller.course = course
-        }
-        if segue.identifier == "createAssignment" {
+            break
+        case "createAssignment":
             let controller = segue.destination.children.first as! CreateAssignmentViewController
             controller.course = course
-        }
-        if segue.identifier == "editAssignment" {
+            break
+        case "editAssignment":
             let controller = segue.destination.children.first as! CreateAssignmentViewController
             controller.assignment = assignments[accessoryButtonIndexPath.row]
             controller.course = course
+            break
+        case "calcReqFinalGrade":
+            let controller = segue.destination.children.first as! CalculateRequiredFinalViewController
+            controller.course = course
+            break
+        default:
+            return
         }
     }
 }

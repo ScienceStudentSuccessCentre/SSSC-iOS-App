@@ -32,9 +32,6 @@ class Course {
     }
     
     func getPercentGrade() -> Double {
-        if finalGrade != "None" {
-            return Grading.getPercentage(letterGrade: getLetterGrade())
-        }
         var totalEarned: Double = 0
         var totalWeight: Double = 0
         let assignments = Database.instance.getAssignmentsByCourseId(id: id)

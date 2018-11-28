@@ -118,21 +118,21 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     private func updateTermDetails() {
+        var totalGradePoints: Double = 0
         var totalCredits: Double = 0
-        var totalPercent: Double = 0
-        var totalCourses: Double = 0
+        var totalCreditsWithGrades: Double = 0
         for course in courses {
             totalCredits += course.credits
-            let coursePercentage = course.getPercentGrade()
-            if coursePercentage >= 0 {
-                totalPercent += coursePercentage
-                totalCourses += 1
+            let gradePoints = Grading.calculateGradePoints(letterGrade: course.getLetterGrade(), creditWorth: course.credits)
+            if gradePoints >= 0 {
+                totalGradePoints += gradePoints
+                totalCreditsWithGrades += course.credits
             }
         }
         credits.text = "Total Credits: \(totalCredits)"
-        if totalCourses > 0 {
-            let termGpa = Grading.calculateGpa(percentage: totalPercent / totalCourses)
-            gpa.text = "Term GPA: " + termGpa
+        if totalCreditsWithGrades > 0 {
+            let termGpa = (totalGradePoints / totalCreditsWithGrades).rounded(toPlaces: 1)
+            gpa.text = "Term GPA: " + String(termGpa)
         } else {
             gpa.text = "Term GPA: N/A"
         }
