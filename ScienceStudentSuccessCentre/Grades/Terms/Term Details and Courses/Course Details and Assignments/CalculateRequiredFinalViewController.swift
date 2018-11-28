@@ -29,6 +29,7 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
         
         weights = Database.instance.getWeightsByCourseId(id: course.id)
         weightNames = Weight.getNames(weights: weights)
+        
         createForm()
     }
     
@@ -39,9 +40,11 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
             <<< DecimalRow() { row in
                 row.tag = "currentGrade"
                 row.title = "Current Course Grade"
-                row.value = course.getPercentGrade()
+                row.placeholder = "85%"
+                row.value = course.getPercentGrade().rounded(toPlaces: 2)
                 row.formatter = gradeFormatter
-                row.baseCell.isUserInteractionEnabled = false
+                }.onChange { _ in
+                    self.validateForm()
                 }
             <<< DecimalRow() { row in
                 row.tag = "desiredGrade"

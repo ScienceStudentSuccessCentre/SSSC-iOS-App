@@ -37,7 +37,9 @@ class PlannerViewController: FormViewController, EurekaFormProtocol {
                 row.title = "Current CGPA"
                 row.placeholder = "4.9"
                 row.formatter = gpaFormatter
-            }
+                }.onChange { _ in
+                    self.validateForm()
+                }
             <<< DecimalRow() { row in
                 row.tag = "creditsComplete"
                 row.title = "Credits Complete"
