@@ -309,6 +309,28 @@ class Database {
         return terms
     }
     
+    public func getCourses() -> [Course] {
+        print("Getting courses from \(t_courses)")
+        var courses = [Course]()
+        do {
+            for row in try (db?.prepare(t_courses))! {
+                let courseId = try row.get(t_courses_id)
+                let name = try row.get(t_courses_name)
+                let code = try row.get(t_courses_code)
+                let credits = try row.get(t_courses_credits)
+                let isCGPACourse = try row.get(t_courses_isCGPACourse)
+                let finalGrade = try row.get(t_courses_finalGrade)
+                let termId = try row.get(t_courses_termId)
+                let colour = UIColor.Material(rawValue: try row.get(t_courses_colour))
+                courses.append(Course(id: courseId, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, finalGrade: finalGrade, termId: termId, colour: colour))
+            }
+        } catch let error {
+            print("Select failed: \(error)")
+        }
+        print("Found \(courses.count) terms")
+        return courses
+    }
+    
     public func getCourseById(id: String) -> Course? {
         print("Getting course from \(t_courses) with id \(id)")
         do {

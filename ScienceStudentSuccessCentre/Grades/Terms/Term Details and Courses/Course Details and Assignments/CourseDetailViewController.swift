@@ -111,6 +111,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
                         self.toggleOffTableViewEditMode()
                     }
                 }
+                updateCourseDetails()
             }
         }
     }
@@ -147,7 +148,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         courseGrade.text = "Overall Grade: " + course.getGradeSummary()
         
         DispatchQueue.main.async {
-            if self.course.finalGrade != "None" {
+            if self.course.finalGrade != "None" || self.assignments.count == 0 {
                 self.calcReqFinalGrade.isHidden = true
                 self.bottomConstraint?.isActive = false
             } else {
