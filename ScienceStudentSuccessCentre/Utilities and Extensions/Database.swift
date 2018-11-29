@@ -1,6 +1,6 @@
 //
 //  Database.swift
-//  SSSCTemp
+//  ScienceStudentSuccessCentre
 //
 //  Created by Avery Vine on 2018-09-27.
 //  Copyright © 2018 Avery Vine. All rights reserved.
@@ -14,9 +14,7 @@ class Database {
     
     public static let instance = Database()
     private static let name = "ssscdb.sqlite3"
-    private static let path = NSSearchPathForDirectoriesInDomains(
-        .documentDirectory, .userDomainMask, true
-        ).first!
+    private static let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
     
     private let t_terms = Table("terms")
     private let t_terms_id = Expression<String>("termId")
@@ -307,6 +305,28 @@ class Database {
         }
         print("Found \(terms.count) terms")
         return terms
+    }
+    
+    public func getCourses() -> [Course] {
+        print("Getting courses from \(t_courses)")
+        var courses = [Course]()
+        do {
+            for row in try (db?.prepare(t_courses))! {
+                let courseId = try row.get(t_courses_id)
+                let name = try row.get(t_courses_name)
+                let code = try row.get(t_courses_code)
+                let credits = try row.get(t_courses_credits)
+                let isCGPACourse = try row.get(t_courses_isCGPACourse)
+                let finalGrade = try row.get(t_courses_finalGrade)
+                let termId = try row.get(t_courses_termId)
+                let colour = UIColor.Material(rawValue: try row.get(t_courses_colour))
+                courses.append(Course(id: courseId, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, finalGrade: finalGrade, termId: termId, colour: colour))
+            }
+        } catch let error {
+            print("Select failed: \(error)")
+        }
+        print("Found \(courses.count) terms")
+        return courses
     }
     
     public func getCourseById(id: String) -> Course? {

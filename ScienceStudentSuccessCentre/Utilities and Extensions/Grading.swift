@@ -142,4 +142,24 @@ class Grading {
         return requiredGrade
     }
     
+    static func calculateOverallGpa(courses: [Course]!) -> Double {
+        var totalGradePoints: Double = 0
+        var totalCreditsWithGrades: Double = 0
+        for course in courses {
+            let gradePoints = Grading.calculateGradePoints(letterGrade: course.getLetterGrade(), creditWorth: course.credits)
+            if gradePoints >= 0 {
+                totalGradePoints += gradePoints
+                totalCreditsWithGrades += course.credits
+            }
+        }
+        if totalCreditsWithGrades > 0 {
+            return (totalGradePoints / totalCreditsWithGrades)
+        }
+        return -1
+    }
+    
+    static func calculateRequiredGpa(currentGpa: Double, creditsComplete: Double, desiredGpa: Double, creditsInProgress: Double) -> Double {
+        return (desiredGpa * (creditsInProgress + creditsComplete) - currentGpa * (creditsComplete)) / creditsInProgress
+    }
+    
 }

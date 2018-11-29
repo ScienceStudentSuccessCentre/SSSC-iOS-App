@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol GradesViewControllerDelegate: class {
-    func toggleOffTableViewEditMode()
-    func updateTableViewButtons(show: Bool)
-}
-
 class GradesViewController: UIViewController {
     
     @IBOutlet var segmentControl: UISegmentedControl!

@@ -10,9 +10,9 @@ import UIKit
 import WebKit
 
 class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
-    var statusBar: UIView!
     
-    var webView: WKWebView!
+    private var statusBar: UIView!
+    private var webView: WKWebView!
     
     override func loadView() {
         webView = WKWebView()

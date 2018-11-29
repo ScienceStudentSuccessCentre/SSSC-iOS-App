@@ -12,9 +12,9 @@ import Eureka
 class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtocol {
     
     var course: Course!
-    var weights = [Weight]()
-    var weightNames = [String]()
-    var gradeFormatter = NumberFormatter()
+    private var weights = [Weight]()
+    private var weightNames = [String]()
+    private var gradeFormatter = NumberFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +29,7 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
         
         weights = Database.instance.getWeightsByCourseId(id: course.id)
         weightNames = Weight.getNames(weights: weights)
+        
         createForm()
     }
     
@@ -39,26 +40,28 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
             <<< DecimalRow() { row in
                 row.tag = "currentGrade"
                 row.title = "Current Course Grade"
-                row.value = course.getPercentGrade()
+                row.placeholder = "85%"
+                row.value = course.getPercentGrade().rounded(toPlaces: 2)
                 row.formatter = gradeFormatter
-                row.baseCell.isUserInteractionEnabled = false
-                }
+            }.onChange { _ in
+                self.validateForm()
+            }
             <<< DecimalRow() { row in
                 row.tag = "desiredGrade"
                 row.title = "Desired Final Grade"
                 row.placeholder = "90%"
                 row.formatter = gradeFormatter
-                }.onChange { _ in
-                    self.validateForm()
-                }
+            }.onChange { _ in
+                self.validateForm()
+            }
             <<< PushRow<String>() { row in
                 row.tag = "weight"
                 row.title = "Final Exam Weight"
                 row.options = weightNames
                 row.value = nil
-                }.onChange {_ in
-                    self.validateForm()
-                }
+            }.onChange {_ in
+                self.validateForm()
+            }
             +++ Section("Minimum Final Exam Grade Required")
             <<< DecimalRow() { row in
                 row.tag = "requiredGrade"
@@ -66,7 +69,7 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
                 row.placeholder = "Enter Info Above"
                 row.formatter = gradeFormatter
                 row.baseCell.isUserInteractionEnabled = false
-                }
+            }
     }
     
     func validateForm() {

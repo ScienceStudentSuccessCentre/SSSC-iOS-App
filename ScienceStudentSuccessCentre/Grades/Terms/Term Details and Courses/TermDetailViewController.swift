@@ -1,6 +1,6 @@
 //
 //  CoursesViewController.swift
-//  SSSCTemp
+//  ScienceStudentSuccessCentre
 //
 //  Created by Avery Vine on 2018-09-28.
 //  Copyright © 2018 Avery Vine. All rights reserved.
@@ -19,6 +19,8 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     private var editCoursesButton: UIBarButtonItem!
     private var doneEditingCoursesButton: UIBarButtonItem!
     
+    private let gpaFormatter = NumberFormatter()
+    
     var term: Term!
     var courses = [Course]()
 
@@ -34,6 +36,10 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         navigationItem.title = term.name
         navigationItem.setRightBarButtonItems([addCourseButton, editCoursesButton], animated: true)
+        
+        gpaFormatter.numberStyle = .decimal
+        gpaFormatter.maximumFractionDigits = 1
+        gpaFormatter.minimumFractionDigits = 1
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -118,24 +124,20 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     private func updateTermDetails() {
-        var totalGradePoints: Double = 0
-        var totalCredits: Double = 0
-        var totalCreditsWithGrades: Double = 0
-        for course in courses {
-            totalCredits += course.credits
-            let gradePoints = Grading.calculateGradePoints(letterGrade: course.getLetterGrade(), creditWorth: course.credits)
-            if gradePoints >= 0 {
-                totalGradePoints += gradePoints
-                totalCreditsWithGrades += course.credits
+        let termGpa = Grading.calculateOverallGpa(courses: courses)
+        var newGpaText = "Term GPA: N/A"
+        if termGpa != -1 {
+            if let termGpaFormatted = gpaFormatter.string(from: termGpa as NSNumber) {
+                newGpaText = "Term GPA: " + termGpaFormatted
             }
         }
-        credits.text = "Total Credits: \(totalCredits)"
-        if totalCreditsWithGrades > 0 {
-            let termGpa = (totalGradePoints / totalCreditsWithGrades).rounded(toPlaces: 1)
-            gpa.text = "Term GPA: " + String(termGpa)
-        } else {
-            gpa.text = "Term GPA: N/A"
+        gpa.text = newGpaText
+        
+        var totalCredits: Double = 0
+        for course in courses {
+            totalCredits += course.credits
         }
+        credits.text = "Total Credits: \(totalCredits)"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
