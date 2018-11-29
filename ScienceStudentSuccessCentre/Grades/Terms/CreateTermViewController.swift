@@ -12,7 +12,7 @@ import Eureka
 class CreateTermViewController: FormViewController, EurekaFormProtocol {
     
     private let terms = ["Fall", "Winter", "Summer"]
-    private let years = ["2019", "2018", "2017", "2016", "2015", "2014"]
+    private var years: [String]!
     private var term: String?
     private var year: String?
 
@@ -23,6 +23,12 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
         navigationItem.setLeftBarButton(UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed)), animated: true)
         navigationItem.setRightBarButton(UIBarButtonItem(title: "Create", style: .done, target: self, action: #selector(createButtonPressed)), animated: true)
         navigationItem.rightBarButtonItem?.isEnabled = false
+        
+        years = [String]()
+        let currYear = Calendar.current.dateComponents([.year], from: Date()).year
+        for i in 0 ..< 10 {
+            years.append(String((currYear ?? 2019) - i + 1))
+        }
         
         createForm()
     }
