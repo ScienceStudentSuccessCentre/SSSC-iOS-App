@@ -22,7 +22,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     var course: Course!
     var assignments = [Assignment]()
-    var accessoryButtonIndexPath: IndexPath! = nil
+    private var accessoryButtonIndexPath: IndexPath! = nil
     
     private var courseInfoButton: UIBarButtonItem!
     private var editAssignmentsButton: UIBarButtonItem!

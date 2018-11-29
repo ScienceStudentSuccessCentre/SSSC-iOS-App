@@ -13,9 +13,9 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
     
     var course: Course!
     var assignment: Assignment!
-    var weights: [Weight]!
-    var weightNames = [String]()
-    let gradeFormatter = NumberFormatter()
+    private var weights: [Weight]!
+    private var weightNames = [String]()
+    private let gradeFormatter = NumberFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,33 +48,33 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
                 row.title = "Name"
                 row.placeholder = "Assignment 1"
                 row.cell.textField.autocapitalizationType = .words
-                }.onChange { _ in
-                    self.validateForm()
-                }
+            }.onChange { _ in
+                self.validateForm()
+            }
             <<< DecimalRow() { row in
                 row.tag = "gradeEarned"
                 row.title = "Grade Earned"
                 row.placeholder = "26"
                 row.formatter = gradeFormatter
-                }.onChange { _ in
-                    self.validateForm()
-                }
+            }.onChange { _ in
+                self.validateForm()
+            }
             <<< DecimalRow() { row in
                 row.tag = "gradeTotal"
                 row.title = "Maximum Grade"
                 row.placeholder = "30"
                 row.formatter = gradeFormatter
-                }.onChange { _ in
-                    self.validateForm()
-                }
+            }.onChange { _ in
+                self.validateForm()
+            }
             <<< PushRow<String>() { row in
                 row.tag = "weight"
                 row.title = "Weight"
                 row.options = weightNames
                 row.value = nil
-                }.onChange {_ in
-                    self.validateForm()
-                }
+            }.onChange {_ in
+                self.validateForm()
+            }
         
         if (assignment != nil) {
             form.rowBy(tag: "name")?.baseValue = assignment.name

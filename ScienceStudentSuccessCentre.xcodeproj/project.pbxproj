@@ -37,6 +37,7 @@
 		FF7FD89021485E8100DAC88C /* HtmlString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7FD88F21485E8100DAC88C /* HtmlString.swift */; };
 		FF80666E2193A31D00B202A6 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80666D2193A31D00B202A6 /* Double.swift */; };
 		FFA4B1D320229C8400BAC08F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B1D220229C8400BAC08F /* Event.swift */; };
+		FFA5849E21AF961200B15E25 /* GradesViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA5849D21AF961200B15E25 /* GradesViewControllerDelegate.swift */; };
 		FFA7CBAB215DD4CB00A050B1 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAA215DD4CB00A050B1 /* TermsViewController.swift */; };
 		FFA7CBAD215DD53300A050B1 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */; };
 		FFA7CBAF215DD54C00A050B1 /* PlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAE215DD54C00A050B1 /* PlannerViewController.swift */; };
@@ -110,6 +111,7 @@
 		FF7FD88F21485E8100DAC88C /* HtmlString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlString.swift; sourceTree = "<group>"; };
 		FF80666D2193A31D00B202A6 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		FFA4B1D220229C8400BAC08F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		FFA5849D21AF961200B15E25 /* GradesViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesViewControllerDelegate.swift; sourceTree = "<group>"; };
 		FFA7CBAA215DD4CB00A050B1 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		FFA7CBAE215DD54C00A050B1 /* PlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerViewController.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */,
+				FFA5849D21AF961200B15E25 /* GradesViewControllerDelegate.swift */,
 				FFB5C4222187BC1E00183D12 /* SegmentControlDelegate.swift */,
 				FFE84072215F191B00A5E33B /* Terms */,
 				FFE84075215F196700A5E33B /* Calculator */,
@@ -547,6 +550,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A17011CB21AC8F4000A385FB /* ResourcesViewController.swift in Sources */,
+				FFA5849E21AF961200B15E25 /* GradesViewControllerDelegate.swift in Sources */,
 				FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */,
 				FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */,
 				FF80666E2193A31D00B202A6 /* Double.swift in Sources */,
@@ -795,9 +799,9 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2Z33772VE8;
-				INFOPLIST_FILE = SSSCTempTests/Info.plist;
+				INFOPLIST_FILE = ScienceStudentSuccessCentreTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.averyvine.SSSCTempTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.averyvine.ScienceStudentSuccessCentreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -812,9 +816,9 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2Z33772VE8;
-				INFOPLIST_FILE = SSSCTempTests/Info.plist;
+				INFOPLIST_FILE = ScienceStudentSuccessCentreTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.averyvine.SSSCTempTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.averyvine.ScienceStudentSuccessCentreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -828,13 +832,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2Z33772VE8;
-				INFOPLIST_FILE = SSSCTempUITests/Info.plist;
+				INFOPLIST_FILE = ScienceStudentSuccessCentreUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.averyvine.SSSCTempUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.averyvine.ScienceStudentSuccessCentreUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SSSCTemp;
+				TEST_TARGET_NAME = ScienceStudentSuccessCentre;
 			};
 			name = Debug;
 		};
@@ -844,13 +848,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2Z33772VE8;
-				INFOPLIST_FILE = SSSCTempUITests/Info.plist;
+				INFOPLIST_FILE = ScienceStudentSuccessCentreUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.averyvine.SSSCTempUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.averyvine.ScienceStudentSuccessCentreUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SSSCTemp;
+				TEST_TARGET_NAME = ScienceStudentSuccessCentre;
 			};
 			name = Release;
 		};

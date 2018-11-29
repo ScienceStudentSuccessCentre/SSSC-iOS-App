@@ -1,6 +1,6 @@
 //
 //  Database.swift
-//  SSSCTemp
+//  ScienceStudentSuccessCentre
 //
 //  Created by Avery Vine on 2018-09-27.
 //  Copyright © 2018 Avery Vine. All rights reserved.
@@ -14,9 +14,7 @@ class Database {
     
     public static let instance = Database()
     private static let name = "ssscdb.sqlite3"
-    private static let path = NSSearchPathForDirectoriesInDomains(
-        .documentDirectory, .userDomainMask, true
-        ).first!
+    private static let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
     
     private let t_terms = Table("terms")
     private let t_terms_id = Expression<String>("termId")

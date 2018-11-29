@@ -1,6 +1,6 @@
 //
 //  PlannerViewController.swift
-//  SSSCTemp
+//  ScienceStudentSuccessCentre
 //
 //  Created by Avery Vine on 2018-09-27.
 //  Copyright © 2018 Avery Vine. All rights reserved.
@@ -11,9 +11,9 @@ import Eureka
 
 class PlannerViewController: FormViewController, EurekaFormProtocol {
     
-    var currentGpa: Double!
-    let creditFormatter = NumberFormatter()
-    let gpaFormatter = NumberFormatter()
+    private var currentGpa: Double!
+    private let creditFormatter = NumberFormatter()
+    private let gpaFormatter = NumberFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,33 +37,33 @@ class PlannerViewController: FormViewController, EurekaFormProtocol {
                 row.title = "Current CGPA"
                 row.placeholder = "4.9"
                 row.formatter = gpaFormatter
-                }.onChange { _ in
-                    self.validateForm()
-                }
+            }.onChange { _ in
+                self.validateForm()
+            }
             <<< DecimalRow() { row in
                 row.tag = "creditsComplete"
                 row.title = "Credits Complete"
                 row.placeholder = "5.0"
                 row.formatter = creditFormatter
-                }.onChange { _ in
-                    self.validateForm()
-                }
+            }.onChange { _ in
+                self.validateForm()
+            }
             <<< DecimalRow() { row in
                 row.tag = "desiredGpa"
                 row.title = "Desired CGPA"
                 row.placeholder = "6.0"
                 row.formatter = creditFormatter
-                }.onChange {_ in
-                    self.validateForm()
-                }
+            }.onChange {_ in
+                self.validateForm()
+            }
             <<< DecimalRow() { row in
                 row.tag = "creditsInProgress"
                 row.title = "Credits in Progress"
                 row.placeholder = "2.5"
                 row.formatter = creditFormatter
-                }.onChange {_ in
-                    self.validateForm()
-                }
+            }.onChange {_ in
+                self.validateForm()
+            }
             +++ Section("Minimum CGPA Required for Current Courses")
             <<< DecimalRow() { row in
                 row.tag = "requiredGpa"
@@ -71,7 +71,7 @@ class PlannerViewController: FormViewController, EurekaFormProtocol {
                 row.placeholder = "Enter Info Above"
                 row.formatter = gpaFormatter
                 row.baseCell.isUserInteractionEnabled = false
-                }
+            }
     }
     
     func validateForm() {

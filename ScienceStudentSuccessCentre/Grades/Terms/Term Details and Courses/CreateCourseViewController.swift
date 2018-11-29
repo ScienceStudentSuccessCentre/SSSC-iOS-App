@@ -1,6 +1,6 @@
 //
 //  CreateCourseViewController.swift
-//  SSSCTemp
+//  ScienceStudentSuccessCentre
 //
 //  Created by Avery Vine on 2018-10-02.
 //  Copyright © 2018 Avery Vine. All rights reserved.
@@ -14,12 +14,12 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     
     var term: Term!
     var course: Course!
-    var weights = [Weight]()
-    var initialWeights = [Weight]()
-    let creditFormatter = NumberFormatter()
-    let weightFormatter = NumberFormatter()
+    private var weights = [Weight]()
+    private var initialWeights = [Weight]()
+    private let creditFormatter = NumberFormatter()
+    private let weightFormatter = NumberFormatter()
     
-    let letterGrades = ["None", "A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"]
+    private let letterGrades = ["None", "A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,33 +90,30 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                 let palette = ColorPalette(name: "Material", palette: UIColor.Material.getColourPalette())
                 row.palettes = [palette]
             }
-            +++ MultivaluedSection(
-                multivaluedOptions: [.Insert, .Delete],
-                header: "Assignment Weights",
-                footer: "Assignment weights should total 100%.") { section in
-                    section.addButtonProvider = { section in
-                        return ButtonRow() {
-                            $0.title = "Add New Weight"
-                        }
+            +++ MultivaluedSection(multivaluedOptions: [.Insert, .Delete], header: "Assignment Weights", footer: "Assignment weights should total 100%.") { section in
+                section.addButtonProvider = { section in
+                    return ButtonRow() {
+                        $0.title = "Add New Weight"
                     }
-                    section.multivaluedRowToInsertAt = { index in
-                        return SplitRow<TextRow, IntRow>() {
-                            $0.rowLeft = TextRow() {
-                                $0.placeholder = "Final Exam"
-                                $0.cell.textField.autocapitalizationType = .words //TODO: this doesn't appear to be working
-                            }
-                            
-                            $0.rowRight = IntRow() {
-                                $0.placeholder = "30%"
-                                $0.formatter = self.weightFormatter
-                            }
-                            
-                            $0.tag = nil
-                        }.onChange { _ in
-                            self.validateForm()
+                }
+                section.multivaluedRowToInsertAt = { index in
+                    return SplitRow<TextRow, IntRow>() {
+                        $0.rowLeft = TextRow() {
+                            $0.placeholder = "Final Exam"
+                            $0.cell.textField.autocapitalizationType = .words //TODO: this doesn't appear to be working
                         }
+                        
+                        $0.rowRight = IntRow() {
+                            $0.placeholder = "30%"
+                            $0.formatter = self.weightFormatter
+                        }
+                        
+                        $0.tag = nil
+                    }.onChange { _ in
+                        self.validateForm()
                     }
-                    section.tag = "weights"
+                }
+                section.tag = "weights"
             }
             +++ Section(header: "Override Calculated Grade", footer: "If you have already received a final letter grade from Carleton for this course, enter it here to ensure GPA calculation accuracy.")
             <<< PushRow<String>() { row in
