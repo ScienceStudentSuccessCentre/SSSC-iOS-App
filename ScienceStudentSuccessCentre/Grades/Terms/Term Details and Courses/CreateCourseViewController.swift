@@ -248,7 +248,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         let assignments = Database.instance.getAssignmentsByCourseId(id: course.id)
         let weightIds = weights.map({ $0.id })
         let initialWeightIds = initialWeights.map( {$0.id })
-        if assignments.filter({ initialWeightIds.contains($0.weight.id) }).count > 0 && assignments.filter({ weightIds.contains($0.weight.id) }).count == 0 {
+        if assignments.filter({ initialWeightIds.contains($0.weight.id) }).count > assignments.filter({ weightIds.contains($0.weight.id) }).count {
             invalidWeightDeletion()
         } else {
             for weight in initialWeights {
