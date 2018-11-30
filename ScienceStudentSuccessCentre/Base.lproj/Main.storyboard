@@ -516,24 +516,88 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="452"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calculator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOU-E5-hon">
-                                <rect key="frame" x="148.5" y="215.5" width="78" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mSR-yn-Ced">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yqy-TF-PGU" userLabel="GPA Details View">
+                                <rect key="frame" x="0.0" y="384" width="375" height="68"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2U7-Ss-UG1" userLabel="Overall GPA View">
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="68"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overall CGPA: 12.0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hxt-uP-9IV" userLabel="Overall GPA">
+                                                <rect key="frame" x="8" y="8" width="171.5" height="52"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="68" id="2se-Az-Nw7"/>
+                                            <constraint firstAttribute="trailing" secondItem="Hxt-uP-9IV" secondAttribute="trailing" constant="8" id="WyY-J8-IR2"/>
+                                            <constraint firstAttribute="bottom" secondItem="Hxt-uP-9IV" secondAttribute="bottom" constant="8" id="cba-pC-71b"/>
+                                            <constraint firstItem="Hxt-uP-9IV" firstAttribute="leading" secondItem="2U7-Ss-UG1" secondAttribute="leading" constant="8" id="nBa-9N-EPZ"/>
+                                            <constraint firstItem="Hxt-uP-9IV" firstAttribute="leading" secondItem="2U7-Ss-UG1" secondAttribute="leading" constant="8" id="ps9-x7-0AV"/>
+                                            <constraint firstItem="Hxt-uP-9IV" firstAttribute="top" secondItem="2U7-Ss-UG1" secondAttribute="top" constant="8" id="yF7-Fp-sTn"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibv-jc-rks" userLabel="Major GPA View">
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="68"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Major CGPA: 12.0" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DW5-bL-1s5" userLabel="Major GPA">
+                                                <rect key="frame" x="8" y="24" width="171.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.84705882349999995" green="0.85490196080000003" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="DW5-bL-1s5" firstAttribute="leading" secondItem="ibv-jc-rks" secondAttribute="leading" constant="8" id="dCJ-zC-40H"/>
+                                            <constraint firstItem="DW5-bL-1s5" firstAttribute="centerY" secondItem="ibv-jc-rks" secondAttribute="centerY" id="gIF-Vu-anG"/>
+                                            <constraint firstAttribute="trailing" secondItem="DW5-bL-1s5" secondAttribute="trailing" constant="8" id="nke-Nr-Tni"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ibv-jc-rks" secondAttribute="bottom" id="1CF-Mr-z36"/>
+                                    <constraint firstAttribute="trailing" secondItem="ibv-jc-rks" secondAttribute="trailing" id="T3d-ly-63y"/>
+                                    <constraint firstItem="ibv-jc-rks" firstAttribute="width" secondItem="2U7-Ss-UG1" secondAttribute="width" id="YfG-4q-w8m"/>
+                                    <constraint firstAttribute="height" constant="68" id="bXf-lM-6F4"/>
+                                    <constraint firstItem="2U7-Ss-UG1" firstAttribute="leading" secondItem="yqy-TF-PGU" secondAttribute="leading" id="baW-LQ-4Y7"/>
+                                    <constraint firstItem="ibv-jc-rks" firstAttribute="leading" secondItem="2U7-Ss-UG1" secondAttribute="trailing" id="f5C-pR-Zp7"/>
+                                    <constraint firstItem="ibv-jc-rks" firstAttribute="top" secondItem="yqy-TF-PGU" secondAttribute="top" id="obF-Rl-jnG"/>
+                                    <constraint firstAttribute="bottom" secondItem="2U7-Ss-UG1" secondAttribute="bottom" id="uTh-UF-rVY"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="VOU-E5-hon" firstAttribute="centerY" secondItem="8W7-d2-zpr" secondAttribute="centerY" id="8qj-1m-VQe"/>
-                            <constraint firstItem="VOU-E5-hon" firstAttribute="centerX" secondItem="8W7-d2-zpr" secondAttribute="centerX" id="Wlh-xd-07R"/>
+                            <constraint firstItem="yqy-TF-PGU" firstAttribute="leading" secondItem="xiu-5m-JEt" secondAttribute="leading" id="1Ka-JL-qOU"/>
+                            <constraint firstItem="yqy-TF-PGU" firstAttribute="bottom" secondItem="xiu-5m-JEt" secondAttribute="bottom" id="2fE-qw-R7S"/>
+                            <constraint firstItem="mSR-yn-Ced" firstAttribute="trailing" secondItem="xiu-5m-JEt" secondAttribute="trailing" id="4Vm-Ho-cI4"/>
+                            <constraint firstItem="yqy-TF-PGU" firstAttribute="trailing" secondItem="xiu-5m-JEt" secondAttribute="trailing" id="Ucj-5n-ryt"/>
+                            <constraint firstItem="mSR-yn-Ced" firstAttribute="leading" secondItem="xiu-5m-JEt" secondAttribute="leading" id="hs4-dr-gPQ"/>
+                            <constraint firstItem="yqy-TF-PGU" firstAttribute="top" secondItem="mSR-yn-Ced" secondAttribute="bottom" id="kVx-bA-vYn"/>
+                            <constraint firstItem="mSR-yn-Ced" firstAttribute="leading" secondItem="xiu-5m-JEt" secondAttribute="leading" id="ogR-fM-bZ1"/>
+                            <constraint firstItem="mSR-yn-Ced" firstAttribute="top" secondItem="xiu-5m-JEt" secondAttribute="top" id="x9Q-VH-NaY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xiu-5m-JEt"/>
                     </view>
+                    <connections>
+                        <outlet property="gpa" destination="Hxt-uP-9IV" id="Mbn-Rx-UkK"/>
+                        <outlet property="gpaDetailsView" destination="yqy-TF-PGU" id="O7J-WP-Qbk"/>
+                        <outlet property="majorGpa" destination="DW5-bL-1s5" id="bdF-ec-32J"/>
+                        <outlet property="tableView" destination="mSR-yn-Ced" id="XlK-EG-pqM"/>
+                        <segue destination="qyO-ye-sR5" kind="show" identifier="calculatorDetail" id="Okk-9z-vi6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u5j-hZ-tlH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2582" y="1404"/>
+            <point key="canvasLocation" x="2581.5999999999999" y="1403.2983508245877"/>
         </scene>
         <!--Planner View Controller-->
         <scene sceneID="xzX-c9-24w">
@@ -1009,6 +1073,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tsD-S5-xqb"/>
-        <segue reference="8vw-Sl-0KH"/>
+        <segue reference="K9y-h4-UFx"/>
+        <segue reference="Okk-9z-vi6"/>
     </inferredMetricsTieBreakers>
 </document>

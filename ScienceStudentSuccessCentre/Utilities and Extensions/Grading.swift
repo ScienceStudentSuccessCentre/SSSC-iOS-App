@@ -162,4 +162,8 @@ class Grading {
         return (desiredGpa * (creditsInProgress + creditsComplete) - currentGpa * (creditsComplete)) / creditsInProgress
     }
     
+    static func calculatePredictedGpa(currentGpa: Double, creditsComplete: Double, predictedGpa: Double, creditsInProgress: Double) -> Double {
+        return ((currentGpa * creditsComplete) + (predictedGpa * creditsInProgress)) / (creditsComplete + creditsInProgress)
+    }
+    
 }
