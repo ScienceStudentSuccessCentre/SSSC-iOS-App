@@ -63,4 +63,26 @@ class Course {
         return String(percentGrade) + "% (" + letterGrade + ")"
     }
     
+    static func filterMajorCourses(courses: [Course]) -> [Course] {
+        var majorCourses = [Course]()
+        for course in courses {
+            if course.isCGPACourse {
+                majorCourses.append(course)
+            }
+        }
+        return majorCourses
+    }
+    
+}
+
+extension Course: Hashable {
+    
+    static func == (lhs: Course, rhs: Course) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
 }

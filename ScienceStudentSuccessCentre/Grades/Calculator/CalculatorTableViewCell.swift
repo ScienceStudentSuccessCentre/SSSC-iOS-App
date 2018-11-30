@@ -10,15 +10,20 @@ import UIKit
 
 class CalculatorTableViewCell: UITableViewCell {
 
+    @IBOutlet var courseColourView: UIView!
+    @IBOutlet var termAndCourseGrade: UILabel!
+    @IBOutlet var courseName: UILabel!
+    @IBOutlet var courseLetterGradeView: UIView!
+    @IBOutlet var courseLetterGrade: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        courseLetterGradeView.addBorders(edges: .left, color: UIColor(.grey), width: 1)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
