@@ -177,6 +177,17 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		FF300D1B21B241820048749A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FFE84077215F1CAC00A5E33B /* Term.swift */,
+				FFFC6BC62162D6D6001585CE /* Course.swift */,
+				FFC6CF1721657CAE00657C34 /* Assignment.swift */,
+				FF4BCBCE21AB47790050A876 /* Weight.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FF327FBC20128C3E00B06E19 = {
 			isa = PBXGroup;
 			children = (
@@ -259,11 +270,9 @@
 			isa = PBXGroup;
 			children = (
 				FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */,
-				FFC6CF1721657CAE00657C34 /* Assignment.swift */,
 				FF74BE80218CBE6100A8954B /* AssignmentTableViewCell.swift */,
 				FF651CE92190F27100C37022 /* CreateAssignmentViewController.swift */,
 				FF2CC47E21ACF5F3002EE205 /* CalculateRequiredFinalViewController.swift */,
-				FF4BCBCE21AB47790050A876 /* Weight.swift */,
 			);
 			path = "Course Details and Assignments";
 			sourceTree = "<group>";
@@ -292,6 +301,7 @@
 		FFE84071215F190A00A5E33B /* Grades */ = {
 			isa = PBXGroup;
 			children = (
+				FF300D1B21B241820048749A /* Model */,
 				FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */,
 				FFA5849D21AF961200B15E25 /* GradesViewControllerDelegate.swift */,
 				FFB5C4222187BC1E00183D12 /* SegmentControlDelegate.swift */,
@@ -307,7 +317,6 @@
 			children = (
 				FFA7CBAA215DD4CB00A050B1 /* TermsViewController.swift */,
 				FFA7CBB0215DD59B00A050B1 /* TermTableViewCell.swift */,
-				FFE84077215F1CAC00A5E33B /* Term.swift */,
 				FF30AFB72162A6E200C1F22C /* CreateTermViewController.swift */,
 				FFE84074215F195900A5E33B /* Term Details and Courses */,
 			);
@@ -335,7 +344,6 @@
 			children = (
 				FFAC093B215EBBD5007C4264 /* TermDetailViewController.swift */,
 				FFFC6BC82162D70D001585CE /* CourseTableViewCell.swift */,
-				FFFC6BC62162D6D6001585CE /* Course.swift */,
 				FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */,
 				FFC6CF1421657BCC00657C34 /* Course Details and Assignments */,
 			);

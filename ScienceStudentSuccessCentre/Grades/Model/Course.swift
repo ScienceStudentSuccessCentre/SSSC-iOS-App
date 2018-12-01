@@ -15,17 +15,17 @@ class Course {
     var name: String
     var code: String
     var credits: Double
-    var isCGPACourse: Bool
+    var isMajorCourse: Bool
     var finalGrade: String
     var termId: String
     var colour: UIColor.Material
     
-    init(id: String?, name: String, code: String, credits: Double, isCGPACourse: Bool, finalGrade: String, termId: String, colour: UIColor.Material?) {
+    init(id: String?, name: String, code: String, credits: Double, isMajorCourse: Bool, finalGrade: String, termId: String, colour: UIColor.Material?) {
         self.id = id ?? UUID().uuidString
         self.name = name
         self.code = code
         self.credits = credits
-        self.isCGPACourse = isCGPACourse
+        self.isMajorCourse = isMajorCourse
         self.finalGrade = finalGrade
         self.termId = termId
         self.colour = colour ?? UIColor.Material.red
@@ -66,7 +66,7 @@ class Course {
     static func filterMajorCourses(courses: [Course]) -> [Course] {
         var majorCourses = [Course]()
         for course in courses {
-            if course.isCGPACourse {
+            if course.isMajorCourse {
                 majorCourses.append(course)
             }
         }

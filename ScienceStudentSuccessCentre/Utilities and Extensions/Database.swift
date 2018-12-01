@@ -26,7 +26,7 @@ class Database {
     private let t_courses_name = Expression<String>("name")
     private let t_courses_code = Expression<String>("code")
     private let t_courses_credits = Expression<Double>("credits")
-    private let t_courses_isCGPACourse = Expression<Bool>("isCGPACourse")
+    private let t_courses_isMajorCourse = Expression<Bool>("isMajorCourse")
     private let t_courses_finalGrade = Expression<String>("finalGrade")
     private let t_courses_termId = Expression<String>("termId")
     private let t_courses_colour = Expression<String>("colour")
@@ -88,7 +88,7 @@ class Database {
                 t.column(t_courses_name)
                 t.column(t_courses_code)
                 t.column(t_courses_credits)
-                t.column(t_courses_isCGPACourse)
+                t.column(t_courses_isMajorCourse)
                 t.column(t_courses_finalGrade)
                 t.column(t_courses_termId)
                 t.column(t_courses_colour)
@@ -157,7 +157,7 @@ class Database {
                                              t_courses_name <- course.name,
                                              t_courses_code <- course.code,
                                              t_courses_credits <- course.credits,
-                                             t_courses_isCGPACourse <- course.isCGPACourse,
+                                             t_courses_isMajorCourse <- course.isMajorCourse,
                                              t_courses_finalGrade <- course.finalGrade,
                                              t_courses_termId <- course.termId,
                                              t_courses_colour <- String(describing: course.colour)))
@@ -167,7 +167,7 @@ class Database {
                 try db?.run(courseWithId.update(t_courses_name <- course.name,
                                                 t_courses_code <- course.code,
                                                 t_courses_credits <- course.credits,
-                                                t_courses_isCGPACourse <- course.isCGPACourse,
+                                                t_courses_isMajorCourse <- course.isMajorCourse,
                                                 t_courses_finalGrade <- course.finalGrade,
                                                 t_courses_termId <- course.termId,
                                                 t_courses_colour <- String(describing: course.colour)))
@@ -316,11 +316,11 @@ class Database {
                 let name = try row.get(t_courses_name)
                 let code = try row.get(t_courses_code)
                 let credits = try row.get(t_courses_credits)
-                let isCGPACourse = try row.get(t_courses_isCGPACourse)
+                let isMajorCourse = try row.get(t_courses_isMajorCourse)
                 let finalGrade = try row.get(t_courses_finalGrade)
                 let termId = try row.get(t_courses_termId)
                 let colour = UIColor.Material(rawValue: try row.get(t_courses_colour))
-                courses.append(Course(id: courseId, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, finalGrade: finalGrade, termId: termId, colour: colour))
+                courses.append(Course(id: courseId, name: name, code: code, credits: credits, isMajorCourse: isMajorCourse, finalGrade: finalGrade, termId: termId, colour: colour))
             }
         } catch let error {
             print("Select failed: \(error)")
@@ -338,11 +338,11 @@ class Database {
                 let name = try row!.get(t_courses_name)
                 let code = try row!.get(t_courses_code)
                 let credits = try row!.get(t_courses_credits)
-                let isCGPACourse = try row!.get(t_courses_isCGPACourse)
+                let isMajorCourse = try row!.get(t_courses_isMajorCourse)
                 let finalGrade = try row!.get(t_courses_finalGrade)
                 let termId = try row!.get(t_courses_termId)
                 let colour = UIColor.Material(rawValue: try row!.get(t_courses_colour))
-                return Course(id: courseId, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, finalGrade: finalGrade, termId: termId, colour: colour)
+                return Course(id: courseId, name: name, code: code, credits: credits, isMajorCourse: isMajorCourse, finalGrade: finalGrade, termId: termId, colour: colour)
             }
         } catch let error {
             print("Select failed: \(error)")
@@ -360,11 +360,11 @@ class Database {
                 let name = try row.get(t_courses_name)
                 let code = try row.get(t_courses_code)
                 let credits = try row.get(t_courses_credits)
-                let isCGPACourse = try row.get(t_courses_isCGPACourse)
+                let isMajorCourse = try row.get(t_courses_isMajorCourse)
                 let finalGrade = try row.get(t_courses_finalGrade)
                 let termId = try row.get(t_courses_termId)
                 let colour = UIColor.Material(rawValue: try row.get(t_courses_colour))
-                courses.append(Course(id: courseId, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, finalGrade: finalGrade, termId: termId, colour: colour))
+                courses.append(Course(id: courseId, name: name, code: code, credits: credits, isMajorCourse: isMajorCourse, finalGrade: finalGrade, termId: termId, colour: colour))
             }
         } catch let error {
             print("Select failed: \(error)")
@@ -453,14 +453,23 @@ class Database {
     
     private func preCreationScripts() {
         // any custom scripts that should be run while developing/testing/debugging BEFORE creating tables
-//        try! db?.run(t_assignments.drop())
-//        try! db?.run(t_courses.drop())
-//        try! db?.run(t_weights.drop())
-//        try! db?.run(t_terms.drop())
+//        do {
+//            try db?.run(t_assignments.drop())
+//            try db?.run(t_courses.drop())
+//            try db?.run(t_weights.drop())
+//            try db?.run(t_terms.drop())
+//        } catch {
+//            print("Failed to execute pre-creation scripts")
+//        }
     }
     
     private func postCreationScripts() {
         // any custom scripts that should be run while developing/testing/debugging AFTER creating tables
+//        do {
+//
+//        } catch {
+//            print("Failed to execute post-creation scripts")
+//        }
     }
     
 }

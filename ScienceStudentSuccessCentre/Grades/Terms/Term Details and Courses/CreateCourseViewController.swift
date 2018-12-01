@@ -76,8 +76,8 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                 self.validateForm()
             }
             <<< SwitchRow() { row in
-                row.tag = "isCGPACourse"
-                row.title = "Counts Towards Major GPA"
+                row.tag = "isMajorCourse"
+                row.title = "Counts Towards Major CGPA"
             }
             +++ Section("Course Colour")
             <<< InlineColorPickerRow() { row in
@@ -129,7 +129,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             form.rowBy(tag: "name")?.baseValue = course.name
             form.rowBy(tag: "code")?.baseValue = course.code
             form.rowBy(tag: "credits")?.baseValue = course.credits
-            form.rowBy(tag: "isCGPACourse")?.baseValue = course.isCGPACourse
+            form.rowBy(tag: "isMajorCourse")?.baseValue = course.isMajorCourse
             form.rowBy(tag: "finalGrade")?.baseValue = course.finalGrade
             form.rowBy(tag: "colour")?.baseValue = UIColor(course.colour)
             var weightsSection = form.sectionBy(tag: "weights") as! MultivaluedSection
@@ -218,11 +218,11 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         let name = values["name"] as? String ?? ""
         let code = values["code"] as? String ?? ""
         let credits = values["credits"] as? Double ?? 0
-        let isCGPACourse = values["isCGPACourse"] as? Bool ?? false
+        let isMajorCourse = values["isMajorCourse"] as? Bool ?? false
         let finalGrade = values["finalGrade"] as? String ?? "None"
         let colour = UIColor.Material.fromUIColor(color: values["colour"] as? UIColor ?? nil)
         
-        let course = Course(id: self.course != nil ? self.course.id : nil, name: name, code: code, credits: credits, isCGPACourse: isCGPACourse, finalGrade: finalGrade, termId: self.term != nil ? term.id : self.course.termId, colour: colour)
+        let course = Course(id: self.course != nil ? self.course.id : nil, name: name, code: code, credits: credits, isMajorCourse: isMajorCourse, finalGrade: finalGrade, termId: self.term != nil ? term.id : self.course.termId, colour: colour)
         self.course = course
         if !Database.instance.insertOrUpdate(course: course) {
             print("Failed to create course")
