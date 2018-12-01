@@ -28,7 +28,7 @@ class PlannerViewController: FormViewController, EurekaFormProtocol {
     
     func createForm() {
         form
-            +++ Section(footer: "If you want to achieve a certain overall CGPA, you can use this section to determine what CGPA you should aim for the current term.")
+            +++ Section(footer: "If you want to achieve a certain overall CGPA, you can use the section below to determine what CGPA you should aim for the current term.")
             +++ Section("Term CGPA for desired overall CGPA")
             <<< DecimalRow() { row in
                 row.tag = "currentGpa_form1"
@@ -69,7 +69,7 @@ class PlannerViewController: FormViewController, EurekaFormProtocol {
                 row.formatter = formatter
                 row.disabled = true
             }
-            +++ Section(footer: "You can use this section to determine your overall CGPA based off a predicted CGPA for this term.")
+            +++ Section(footer: "\nYou can use the section below to determine your overall CGPA based off a predicted CGPA for this term.")
             +++ Section("Overall CGPA with predicted term CGPA")
             <<< DecimalRow() { row in
                 row.tag = "currentGpa_form2"

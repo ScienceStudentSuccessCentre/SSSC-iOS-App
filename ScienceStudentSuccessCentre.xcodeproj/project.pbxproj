@@ -180,6 +180,7 @@
 		FF300D1B21B241820048749A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FFA4B1D220229C8400BAC08F /* Event.swift */,
 				FFE84077215F1CAC00A5E33B /* Term.swift */,
 				FFFC6BC62162D6D6001585CE /* Course.swift */,
 				FFC6CF1721657CAE00657C34 /* Assignment.swift */,
@@ -213,6 +214,7 @@
 		FF327FC720128C3E00B06E19 /* ScienceStudentSuccessCentre */ = {
 			isa = PBXGroup;
 			children = (
+				FF300D1B21B241820048749A /* Model */,
 				FFE84070215F17D200A5E33B /* Events */,
 				FFE84071215F190A00A5E33B /* Grades */,
 				A17011C921AC8ECD00A385FB /* Resources */,
@@ -292,7 +294,6 @@
 				FF6835B52023C540001A35B2 /* EventTableViewCell.swift */,
 				FF3C2287202427660098B868 /* EventDetailViewController.swift */,
 				FFC18A2B202502A8001AB5BA /* EventParser.swift */,
-				FFA4B1D220229C8400BAC08F /* Event.swift */,
 				FF19EE4D202EA6DA00475B63 /* EventObserver.swift */,
 			);
 			path = Events;
@@ -301,7 +302,6 @@
 		FFE84071215F190A00A5E33B /* Grades */ = {
 			isa = PBXGroup;
 			children = (
-				FF300D1B21B241820048749A /* Model */,
 				FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */,
 				FFA5849D21AF961200B15E25 /* GradesViewControllerDelegate.swift */,
 				FFB5C4222187BC1E00183D12 /* SegmentControlDelegate.swift */,
