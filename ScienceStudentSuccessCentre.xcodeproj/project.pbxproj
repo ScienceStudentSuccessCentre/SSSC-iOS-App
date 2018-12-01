@@ -49,6 +49,8 @@
 		FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC18A2B202502A8001AB5BA /* EventParser.swift */; };
 		FFC6CF1621657C6D00657C34 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */; };
 		FFC6CF1821657CAE00657C34 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6CF1721657CAE00657C34 /* Assignment.swift */; };
+		FFD0205521B1B2D8008D960B /* CalculatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD0205421B1B2D8008D960B /* CalculatorTableViewCell.swift */; };
+		FFD0205821B1E1E6008D960B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD0205721B1E1E6008D960B /* SettingsViewController.swift */; };
 		FFD2DF532193860200C97FDF /* Grading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2DF522193860200C97FDF /* Grading.swift */; };
 		FFE84078215F1CAC00A5E33B /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE84077215F1CAC00A5E33B /* Term.swift */; };
 		FFFC6BC72162D6D6001585CE /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6BC62162D6D6001585CE /* Course.swift */; };
@@ -123,6 +125,8 @@
 		FFC18A2B202502A8001AB5BA /* EventParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventParser.swift; sourceTree = "<group>"; };
 		FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
 		FFC6CF1721657CAE00657C34 /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
+		FFD0205421B1B2D8008D960B /* CalculatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTableViewCell.swift; sourceTree = "<group>"; };
+		FFD0205721B1E1E6008D960B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FFD2DF522193860200C97FDF /* Grading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grading.swift; sourceTree = "<group>"; };
 		FFE84077215F1CAC00A5E33B /* Term.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
 		FFEC5D0CEFAF32B91280EAE2 /* Pods_ScienceStudentSuccessCentre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScienceStudentSuccessCentre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +205,7 @@
 				FFE84070215F17D200A5E33B /* Events */,
 				FFE84071215F190A00A5E33B /* Grades */,
 				A17011C921AC8ECD00A385FB /* Resources */,
+				FFD0205621B1E1CB008D960B /* Settings */,
 				FFE84073215F192E00A5E33B /* Utilities and Extensions */,
 				FF327FC820128C3E00B06E19 /* AppDelegate.swift */,
 				FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */,
@@ -261,6 +266,14 @@
 				FF4BCBCE21AB47790050A876 /* Weight.swift */,
 			);
 			path = "Course Details and Assignments";
+			sourceTree = "<group>";
+		};
+		FFD0205621B1E1CB008D960B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				FFD0205721B1E1E6008D960B /* SettingsViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		FFE84070215F17D200A5E33B /* Events */ = {
@@ -333,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */,
+				FFD0205421B1B2D8008D960B /* CalculatorTableViewCell.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -572,12 +586,14 @@
 				FF327FC920128C3E00B06E19 /* AppDelegate.swift in Sources */,
 				FF13F7D421646AC1005733B0 /* CreateCourseViewController.swift in Sources */,
 				FFFC6BC72162D6D6001585CE /* Course.swift in Sources */,
+				FFD0205821B1E1E6008D960B /* SettingsViewController.swift in Sources */,
 				FFE84078215F1CAC00A5E33B /* Term.swift in Sources */,
 				FF5FDB3121ABB17F00899963 /* SplitRowCellTableView.swift in Sources */,
 				FF5FDB2F21ABB16700899963 /* SplitRowCell.swift in Sources */,
 				FF327FCB20128C3E00B06E19 /* EventsViewController.swift in Sources */,
 				FF74BE81218CBE6100A8954B /* AssignmentTableViewCell.swift in Sources */,
 				FFD2DF532193860200C97FDF /* Grading.swift in Sources */,
+				FFD0205521B1B2D8008D960B /* CalculatorTableViewCell.swift in Sources */,
 				FF4BCBCF21AB47790050A876 /* Weight.swift in Sources */,
 				FF5FDB3321ABB19700899963 /* SplitRowValue.swift in Sources */,
 				FF3D05DC215AC9AC0073D0E7 /* TabBarViewController.swift in Sources */,

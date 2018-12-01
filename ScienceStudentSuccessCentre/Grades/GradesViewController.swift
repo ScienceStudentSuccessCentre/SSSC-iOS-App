@@ -50,13 +50,13 @@ class GradesViewController: UIViewController {
             termsView.isHidden = true
             calculatorView.isHidden = false
             plannerView.isHidden = true
-            navigationItem.title = "GPA Calculator"
+            navigationItem.title = "CGPA Calculator"
             delegate?.updateTableViewButtons(show: false)
         case 2:
             termsView.isHidden = true
             calculatorView.isHidden = true
             plannerView.isHidden = false
-            navigationItem.title = "GPA Planner"
+            navigationItem.title = "CGPA Planner"
             delegate?.updateTableViewButtons(show: false)
         default:
             break

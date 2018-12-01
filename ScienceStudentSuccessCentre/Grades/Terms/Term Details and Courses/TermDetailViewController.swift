@@ -125,10 +125,10 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     private func updateTermDetails() {
         let termGpa = Grading.calculateOverallGpa(courses: courses)
-        var newGpaText = "Term GPA: N/A"
+        var newGpaText = "Term CGPA: N/A"
         if termGpa != -1 {
             if let termGpaFormatted = gpaFormatter.string(from: termGpa as NSNumber) {
-                newGpaText = "Term GPA: " + termGpaFormatted
+                newGpaText = "Term CGPA: " + termGpaFormatted
             }
         }
         gpa.text = newGpaText

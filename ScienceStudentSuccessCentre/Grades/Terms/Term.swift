@@ -14,6 +14,11 @@ class Term {
     var term: String
     var year: String
     var name: String
+    var shortForm: String {
+        get {
+            return String(term.prefix(1)) + String(year.suffix(2))
+        }
+    }
     
     init(id: String?, term: String, year: String) {
         self.id = id ?? UUID().uuidString
