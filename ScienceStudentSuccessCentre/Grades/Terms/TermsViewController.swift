@@ -51,7 +51,7 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         let term = terms[indexPath.row]
         cell.termName.text = term.name
-        cell.termAbbr.text = String(term.term.prefix(1)) + String(term.year.suffix(2))
+        cell.termAbbr.text = term.shortForm
         return cell
     }
     

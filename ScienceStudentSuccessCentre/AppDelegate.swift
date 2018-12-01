@@ -23,6 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         { (granted, error) in
             // Enable or disable features based on authorization.
         }
+        
+        let defaults = UserDefaults.standard
+        if defaults.value(forKey: "includeInProgressCourses") == nil {
+            defaults.set(true, forKey: "includeInProgressCourses")
+        }
 
         return true
     }

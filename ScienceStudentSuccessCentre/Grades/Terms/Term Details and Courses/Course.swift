@@ -73,6 +73,16 @@ class Course {
         return majorCourses
     }
     
+    static func filterCompletedCourses(courses: [Course]) -> [Course] {
+        var completedCourses = [Course]()
+        for course in courses {
+            if course.finalGrade != "None" {
+                completedCourses.append(course)
+            }
+        }
+        return completedCourses
+    }
+    
 }
 
 extension Course: Hashable {

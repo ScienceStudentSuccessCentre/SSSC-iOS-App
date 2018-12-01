@@ -49,7 +49,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
         let course = courses[indexPath.row]
         let term = terms[course]
         cell.courseColourView.backgroundColor = UIColor(course.colour)
-        cell.termAndCourseGrade.text = (term != nil ? (term!.name + " - ") : "") + course.code
+        cell.termAndCourseGrade.text = (term != nil ? ("[" + term!.shortForm + "] ") : "") + course.code
         cell.courseName.text = course.name
         cell.courseLetterGrade.text = course.getLetterGrade()
         return cell
@@ -60,14 +60,47 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     private func loadCourses() {
+        let defaults = UserDefaults.standard
+        let includeInProgressCourses = defaults.bool(forKey: "includeInProgressCourses")
+        
         courses.removeAll()
         courses = Database.instance.getCourses()
+        if !includeInProgressCourses {
+            courses = Course.filterCompletedCourses(courses: courses)
+        }
+        sortCoursesByTerm()
         self.tableView.reloadData()
+    }
+    
+    private func sortCoursesByTerm() {
+        let allTerms = Database.instance.getTerms()
+        courses = courses.sorted { course1, course2  in
+            if terms[course1] == nil {
+                terms[course1] = allTerms.filter({ $0.id == course1.termId }).first
+            }
+            if terms[course2] == nil {
+                terms[course2] = allTerms.filter({ $0.id == course2.termId }).first
+            }
+            if let term1 = terms[course1], let term2 = terms[course2] {
+                if term1.year != term2.year {
+                    return term1.year > term2.year
+                }
+                else {
+                    if term1.term == "Fall" || (term1.term == "Summer" && term2.term == "Winter") {
+                        return true
+                    }
+                    return false
+                }
+            }
+            return false
+        }
     }
     
     private func updateGpaDetails() {
         let overallGpa = Grading.calculateOverallGpa(courses: courses)
-        let majorGpa = Grading.calculateOverallGpa(courses: Course.filterMajorCourses(courses: courses))
+        
+        let majorCourses = Course.filterMajorCourses(courses: courses)
+        let majorGpa = Grading.calculateOverallGpa(courses: majorCourses)
         
         var newGpaText = "Overall CGPA: N/A"
         if overallGpa != -1 {
