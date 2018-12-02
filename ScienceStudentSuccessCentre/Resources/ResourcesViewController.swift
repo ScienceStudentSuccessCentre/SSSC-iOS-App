@@ -14,14 +14,13 @@ class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     private var statusBar: UIView!
     private var webView: WKWebView!
     
-    override func loadView() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
         webView = WKWebView()
         webView.navigationDelegate = self
         view = webView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+        
         let url = URL(string: "http://sssc.carleton.ca/resources")!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
