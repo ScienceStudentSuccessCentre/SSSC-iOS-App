@@ -11,20 +11,35 @@ class GradesViewController: UIViewController {
     
     @IBOutlet var segmentControl: UISegmentedControl!
     @IBOutlet var segmentControlView: UIView!
-    @IBOutlet var termsView: UIView!
-    @IBOutlet var calculatorView: UIView!
-    @IBOutlet var plannerView: UIView!
+    @IBOutlet weak var containerView: UIView!
     
     weak var delegate: GradesViewControllerDelegate?
+    
+    private lazy var termsViewController: TermsViewController = {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        var viewController = storyboard.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+        self.add(asChildViewController: viewController)
+        return viewController
+    }()
+    
+    private lazy var calculatorViewController: CalculatorViewController = {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        var viewController = storyboard.instantiateViewController(withIdentifier: "CalculatorViewController") as! CalculatorViewController
+        self.add(asChildViewController: viewController)
+        return viewController
+    }()
+    
+    private lazy var plannerViewController: PlannerViewController = {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        var viewController = storyboard.instantiateViewController(withIdentifier: "PlannerViewController") as! PlannerViewController
+        self.add(asChildViewController: viewController)
+        return viewController
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         segmentControlView.addBorders(edges: [.bottom], color: UIColor(.bluegrey), width: 0.5)
-        
-        if let ctrl = children.first(where: { $0 is GradesViewControllerDelegate }) {
-            delegate = ctrl as? GradesViewControllerDelegate
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,26 +56,44 @@ class GradesViewController: UIViewController {
         delegate?.toggleOffTableViewEditMode()
         switch segmentIndex {
         case 0:
-            termsView.isHidden = false
-            calculatorView.isHidden = true
-            plannerView.isHidden = true
+            remove(asChildViewController: calculatorViewController)
+            remove(asChildViewController: plannerViewController)
+            add(asChildViewController: termsViewController)
             navigationItem.title = "Terms"
             delegate?.updateTableViewButtons(show: true)
         case 1:
-            termsView.isHidden = true
-            calculatorView.isHidden = false
-            plannerView.isHidden = true
+            remove(asChildViewController: termsViewController)
+            remove(asChildViewController: plannerViewController)
+            add(asChildViewController: calculatorViewController)
             navigationItem.title = "CGPA Calculator"
             delegate?.updateTableViewButtons(show: false)
         case 2:
-            termsView.isHidden = true
-            calculatorView.isHidden = true
-            plannerView.isHidden = false
+            remove(asChildViewController: termsViewController)
+            remove(asChildViewController: calculatorViewController)
+            add(asChildViewController: plannerViewController)
             navigationItem.title = "CGPA Planner"
             delegate?.updateTableViewButtons(show: false)
         default:
             break
         }
+    }
+    
+    private func add(asChildViewController viewController: UIViewController) {
+        addChild(viewController)
+        containerView.addSubview(viewController.view)
+        viewController.view.frame = containerView.bounds
+        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        viewController.didMove(toParent: self)
+        
+        if let ctrl = children.first(where: { $0 is GradesViewControllerDelegate }) {
+            delegate = ctrl as? GradesViewControllerDelegate
+        }
+    }
+    
+    private func remove(asChildViewController viewController: UIViewController) {
+        viewController.willMove(toParent: nil)
+        viewController.view.removeFromSuperview()
+        viewController.removeFromParent()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
