@@ -265,14 +265,14 @@
                                     <segue destination="bYq-yI-Ggz" kind="embed" identifier="termsViewController" id="9rC-t7-cRs"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aP5-iu-6VZ">
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aP5-iu-6VZ">
                                 <rect key="frame" x="0.0" y="166" width="375" height="452"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="1WP-EV-xxx" kind="embed" identifier="calculatorViewController" id="GXi-rD-3yb"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iZ9-8Z-rqd">
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iZ9-8Z-rqd">
                                 <rect key="frame" x="0.0" y="166" width="375" height="452"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -593,7 +593,7 @@
                                                     <rect key="frame" x="297" y="12.5" width="45" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="A+" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glA-NC-8bx" userLabel="Course Letter Grade">
-                                                            <rect key="frame" x="16" y="8" width="25.5" height="24"/>
+                                                            <rect key="frame" x="16" y="8" width="29" height="24"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -602,6 +602,7 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="glA-NC-8bx" firstAttribute="centerY" secondItem="zbO-ly-xtU" secondAttribute="centerY" id="Jf8-Sa-Huf"/>
+                                                        <constraint firstAttribute="trailing" secondItem="glA-NC-8bx" secondAttribute="trailing" id="UnU-mV-ajK"/>
                                                         <constraint firstAttribute="width" constant="45" id="abf-DD-Xbi"/>
                                                         <constraint firstItem="glA-NC-8bx" firstAttribute="leading" secondItem="zbO-ly-xtU" secondAttribute="leading" constant="16" id="kjq-UF-6Zv"/>
                                                         <constraint firstAttribute="height" constant="40" id="oGj-7m-fw0"/>

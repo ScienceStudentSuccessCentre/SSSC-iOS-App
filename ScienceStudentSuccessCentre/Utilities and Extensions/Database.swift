@@ -325,7 +325,7 @@ class Database {
         } catch let error {
             print("Select failed: \(error)")
         }
-        print("Found \(courses.count) terms")
+        print("Found \(courses.count) courses")
         return courses
     }
     

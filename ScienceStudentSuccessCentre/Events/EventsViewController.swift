@@ -12,8 +12,8 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
     
     //MARK: Properties
     
-    var events = [Event]()
-    var activityIndicatorView: UIActivityIndicatorView!
+    private var events = [Event]()
+    private var activityIndicatorView: UIActivityIndicatorView!
     
     private let refreshControl = UIRefreshControl()
     
@@ -72,12 +72,14 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
         tableView.delegate = self
         tableView.dataSource = self
         
-        activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
-        tableView.separatorStyle = .none
-        tableView.backgroundView = activityIndicatorView
+        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        activityIndicatorView.center = view.center
         activityIndicatorView.startAnimating()
         
         EventParser.getInstance().attachObserver(observer: self)
+        
+        tableView.separatorStyle = .none
+        tableView.backgroundView = activityIndicatorView
         
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refreshControl
