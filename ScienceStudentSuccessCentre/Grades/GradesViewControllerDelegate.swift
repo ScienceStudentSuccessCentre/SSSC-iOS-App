@@ -8,5 +8,5 @@
 
 protocol GradesViewControllerDelegate: class {
     func toggleOffTableViewEditMode()
-    func updateTableViewButtons(show: Bool)
+    func showTableViewButtons()
 }

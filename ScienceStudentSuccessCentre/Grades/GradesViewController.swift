@@ -84,7 +84,7 @@ class GradesViewController: UIViewController {
         
         if let ctrl = children.first(where: { $0 is GradesViewControllerDelegate }) {
             delegate = ctrl as? GradesViewControllerDelegate
-            delegate?.updateTableViewButtons(show: true)
+            delegate?.showTableViewButtons()
         } else {
             navigationItem.rightBarButtonItems = nil
         }

@@ -142,12 +142,8 @@ extension TermsViewController: GradesViewControllerDelegate {
         }
     }
     
-    func updateTableViewButtons(show: Bool) {
-        if show {
-            toggleTableViewButtons()
-        } else {
-            getNavigationItem()?.setRightBarButtonItems(nil, animated: true)
-        }
+    func showTableViewButtons() {
+        toggleTableViewButtons()
     }
     
 }
