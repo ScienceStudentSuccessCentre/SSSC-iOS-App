@@ -60,19 +60,16 @@ class GradesViewController: UIViewController {
             remove(asChildViewController: plannerViewController)
             add(asChildViewController: termsViewController)
             navigationItem.title = "Terms"
-            delegate?.updateTableViewButtons(show: true)
         case 1:
             remove(asChildViewController: termsViewController)
             remove(asChildViewController: plannerViewController)
             add(asChildViewController: calculatorViewController)
             navigationItem.title = "CGPA Calculator"
-            delegate?.updateTableViewButtons(show: false)
         case 2:
             remove(asChildViewController: termsViewController)
             remove(asChildViewController: calculatorViewController)
             add(asChildViewController: plannerViewController)
             navigationItem.title = "CGPA Planner"
-            delegate?.updateTableViewButtons(show: false)
         default:
             break
         }
@@ -87,6 +84,9 @@ class GradesViewController: UIViewController {
         
         if let ctrl = children.first(where: { $0 is GradesViewControllerDelegate }) {
             delegate = ctrl as? GradesViewControllerDelegate
+            delegate?.updateTableViewButtons(show: true)
+        } else {
+            navigationItem.rightBarButtonItems = nil
         }
     }
     
