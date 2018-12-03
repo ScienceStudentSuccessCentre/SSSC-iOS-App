@@ -193,8 +193,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39y-qr-enf" userLabel="Event Location View">
                                         <rect key="frame" x="150" y="0.0" width="225" height="68"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SSSC (3431 Herzberg)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZI-oG-Ba3">
-                                                <rect key="frame" x="8" y="24" width="209" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SSSC (3431 Herzberg)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UZI-oG-Ba3">
+                                                <rect key="frame" x="8" y="8" width="209" height="52"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -202,9 +202,10 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.84705882352941175" green="0.85490196078431369" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="UZI-oG-Ba3" firstAttribute="centerY" secondItem="39y-qr-enf" secondAttribute="centerY" id="4Dp-oo-m2f"/>
+                                            <constraint firstItem="UZI-oG-Ba3" firstAttribute="top" secondItem="39y-qr-enf" secondAttribute="top" constant="8" id="8Wp-cS-034"/>
                                             <constraint firstItem="UZI-oG-Ba3" firstAttribute="leading" secondItem="39y-qr-enf" secondAttribute="leading" constant="8" id="LmN-zm-mLM"/>
                                             <constraint firstAttribute="trailing" secondItem="UZI-oG-Ba3" secondAttribute="trailing" constant="8" id="T5w-WR-ZN3"/>
+                                            <constraint firstAttribute="bottom" secondItem="UZI-oG-Ba3" secondAttribute="bottom" constant="8" id="fbH-3x-bIw"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -467,9 +468,9 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHZ-eQ-Rjv">
                                                     <rect key="frame" x="15" y="11" width="68" height="68"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F18" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAO-hC-zgu">
-                                                            <rect key="frame" x="13.5" y="19" width="41" height="30"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F18" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FAO-hC-zgu">
+                                                            <rect key="frame" x="8" y="8" width="52" height="52"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -477,9 +478,11 @@
                                                     <color key="backgroundColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="68" id="AsL-y6-pnD"/>
-                                                        <constraint firstItem="FAO-hC-zgu" firstAttribute="centerX" secondItem="cHZ-eQ-Rjv" secondAttribute="centerX" id="GwE-zp-fzm"/>
-                                                        <constraint firstItem="FAO-hC-zgu" firstAttribute="centerY" secondItem="cHZ-eQ-Rjv" secondAttribute="centerY" id="I74-Fc-NwZ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="FAO-hC-zgu" secondAttribute="bottom" constant="8" id="UwB-7Q-k2f"/>
+                                                        <constraint firstItem="FAO-hC-zgu" firstAttribute="top" secondItem="cHZ-eQ-Rjv" secondAttribute="top" constant="8" id="XfB-fI-tB5"/>
+                                                        <constraint firstAttribute="trailing" secondItem="FAO-hC-zgu" secondAttribute="trailing" constant="8" id="a42-mH-ATx"/>
                                                         <constraint firstAttribute="width" constant="68" id="eWE-5t-HEx"/>
+                                                        <constraint firstItem="FAO-hC-zgu" firstAttribute="leading" secondItem="cHZ-eQ-Rjv" secondAttribute="leading" constant="8" id="tHk-eB-4SY"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fall 2018" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocs-vd-Sl9">
@@ -730,19 +733,21 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AGz-7g-cCa">
                                                     <rect key="frame" x="15" y="11" width="68" height="68"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2u-Sp-sbH">
-                                                            <rect key="frame" x="18" y="19" width="32" height="30"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K2u-Sp-sbH">
+                                                            <rect key="frame" x="8" y="8" width="52" height="52"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
+                                                        <constraint firstItem="K2u-Sp-sbH" firstAttribute="top" secondItem="AGz-7g-cCa" secondAttribute="top" constant="8" id="703-sx-FIr"/>
                                                         <constraint firstAttribute="width" constant="68" id="RX8-U1-rHM"/>
-                                                        <constraint firstItem="K2u-Sp-sbH" firstAttribute="centerX" secondItem="AGz-7g-cCa" secondAttribute="centerX" id="cIq-Rg-c1u"/>
+                                                        <constraint firstItem="K2u-Sp-sbH" firstAttribute="leading" secondItem="AGz-7g-cCa" secondAttribute="leading" constant="8" id="azC-Ia-WhH"/>
+                                                        <constraint firstAttribute="trailing" secondItem="K2u-Sp-sbH" secondAttribute="trailing" constant="8" id="bkm-bP-H8V"/>
+                                                        <constraint firstAttribute="bottom" secondItem="K2u-Sp-sbH" secondAttribute="bottom" constant="8" id="cF3-bd-O44"/>
                                                         <constraint firstAttribute="height" constant="68" id="upc-yb-ayw"/>
-                                                        <constraint firstItem="K2u-Sp-sbH" firstAttribute="centerY" secondItem="AGz-7g-cCa" secondAttribute="centerY" id="xWy-3N-Iyq"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMP 3000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbJ-kL-1eC">
@@ -910,9 +915,9 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jpk-7s-4nw" userLabel="Letter Grade View">
                                                     <rect key="frame" x="15" y="11" width="68" height="68"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaS-8Z-Pft" userLabel="Letter Grade">
-                                                            <rect key="frame" x="18.5" y="19" width="31" height="30"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QaS-8Z-Pft" userLabel="Letter Grade">
+                                                            <rect key="frame" x="8" y="8" width="52" height="52"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -920,9 +925,11 @@
                                                     <color key="backgroundColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="68" id="2fe-Fq-dtZ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="QaS-8Z-Pft" secondAttribute="bottom" constant="8" id="ATt-W4-g8f"/>
                                                         <constraint firstAttribute="height" constant="68" id="BNN-d9-dT2"/>
-                                                        <constraint firstItem="QaS-8Z-Pft" firstAttribute="centerX" secondItem="Jpk-7s-4nw" secondAttribute="centerX" id="V2V-CB-1lk"/>
-                                                        <constraint firstItem="QaS-8Z-Pft" firstAttribute="centerY" secondItem="Jpk-7s-4nw" secondAttribute="centerY" id="cbL-JR-ojU"/>
+                                                        <constraint firstAttribute="trailing" secondItem="QaS-8Z-Pft" secondAttribute="trailing" constant="8" id="ROm-Z8-9ne"/>
+                                                        <constraint firstItem="QaS-8Z-Pft" firstAttribute="leading" secondItem="Jpk-7s-4nw" secondAttribute="leading" constant="8" id="Vw1-2w-9Ms"/>
+                                                        <constraint firstItem="QaS-8Z-Pft" firstAttribute="top" secondItem="Jpk-7s-4nw" secondAttribute="top" constant="8" id="hLY-1Y-jB2"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assignment 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjf-yW-i7A" userLabel="Assignment Name">
@@ -1162,7 +1169,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tsD-S5-xqb"/>
-        <segue reference="8vw-Sl-0KH"/>
+        <segue reference="K9y-h4-UFx"/>
         <segue reference="gNE-LT-kLe"/>
     </inferredMetricsTieBreakers>
 </document>
