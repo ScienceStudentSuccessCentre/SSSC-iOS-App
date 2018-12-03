@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		329F8E552389FFC491AE14FB /* Pods_ScienceStudentSuccessCentre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFEC5D0CEFAF32B91280EAE2 /* Pods_ScienceStudentSuccessCentre.framework */; };
 		A17011CB21AC8F4000A385FB /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */; };
+		B3DAA679B7EE10AA33500129 /* Pods_ScienceStudentSuccessCentre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B119DC8533C8844ED79B707 /* Pods_ScienceStudentSuccessCentre.framework */; };
 		FF13F7D421646AC1005733B0 /* CreateCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */; };
 		FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */; };
 		FF19EE4E202EA6DA00475B63 /* EventObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF19EE4D202EA6DA00475B63 /* EventObserver.swift */; };
@@ -75,9 +75,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		364F26F45C538A20F0EDA887 /* Pods-ScienceStudentSuccessCentre.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.release.xcconfig"; sourceTree = "<group>"; };
+		497CB330CF40A5E769862DB8 /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.debug.xcconfig"; sourceTree = "<group>"; };
+		7A3F227F4867DBBC4D89F84B /* Pods-ScienceStudentSuccessCentre.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.release.xcconfig"; sourceTree = "<group>"; };
+		7B119DC8533C8844ED79B707 /* Pods_ScienceStudentSuccessCentre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScienceStudentSuccessCentre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
-		CA891BEE54A1B61A8BA92EF2 /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.debug.xcconfig"; sourceTree = "<group>"; };
 		FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCourseViewController.swift; sourceTree = "<group>"; };
 		FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurekaFormProtocol.swift; sourceTree = "<group>"; };
 		FF19EE4D202EA6DA00475B63 /* EventObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventObserver.swift; sourceTree = "<group>"; };
@@ -129,7 +130,6 @@
 		FFD0205721B1E1E6008D960B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FFD2DF522193860200C97FDF /* Grading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grading.swift; sourceTree = "<group>"; };
 		FFE84077215F1CAC00A5E33B /* Term.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
-		FFEC5D0CEFAF32B91280EAE2 /* Pods_ScienceStudentSuccessCentre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScienceStudentSuccessCentre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFFC6BC62162D6D6001585CE /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		FFFC6BC82162D70D001585CE /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,7 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				329F8E552389FFC491AE14FB /* Pods_ScienceStudentSuccessCentre.framework in Frameworks */,
+				B3DAA679B7EE10AA33500129 /* Pods_ScienceStudentSuccessCentre.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,11 +160,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7464AFC5A59DF6C8F5DF0B03 /* Pods */ = {
+		3CD13A174D7AE92C54C7B576 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CA891BEE54A1B61A8BA92EF2 /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */,
-				364F26F45C538A20F0EDA887 /* Pods-ScienceStudentSuccessCentre.release.xcconfig */,
+				497CB330CF40A5E769862DB8 /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */,
+				7A3F227F4867DBBC4D89F84B /* Pods-ScienceStudentSuccessCentre.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -197,7 +197,7 @@
 				FF327FE920128C3E00B06E19 /* ScienceStudentSuccessCentreUITests */,
 				FF327FC620128C3E00B06E19 /* Products */,
 				FF3C22892024317A0098B868 /* Frameworks */,
-				7464AFC5A59DF6C8F5DF0B03 /* Pods */,
+				3CD13A174D7AE92C54C7B576 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -252,7 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				FF3C228A2024317A0098B868 /* EventKit.framework */,
-				FFEC5D0CEFAF32B91280EAE2 /* Pods_ScienceStudentSuccessCentre.framework */,
+				7B119DC8533C8844ED79B707 /* Pods_ScienceStudentSuccessCentre.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -374,12 +374,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF327FEF20128C3E00B06E19 /* Build configuration list for PBXNativeTarget "ScienceStudentSuccessCentre" */;
 			buildPhases = (
-				3BCD4BFD38070AE9F656B757 /* [CP] Check Pods Manifest.lock */,
+				72E3810940D378044852F434 /* [CP] Check Pods Manifest.lock */,
 				FF327FC120128C3E00B06E19 /* Sources */,
 				FF327FC220128C3E00B06E19 /* Frameworks */,
 				FF327FC320128C3E00B06E19 /* Resources */,
-				1F0BF43B3D7265673810F809 /* [CP] Embed Pods Frameworks */,
-				EBC9EF47B2AAAC12B16C7352 /* [CP] Copy Pods Resources */,
+				E89D28BBD3DD116694A63769 /* [CP] Embed Pods Frameworks */,
+				07CBF4B2DFA8534F467E6E23 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -503,7 +503,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1F0BF43B3D7265673810F809 /* [CP] Embed Pods Frameworks */ = {
+		07CBF4B2DFA8534F467E6E23 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72E3810940D378044852F434 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ScienceStudentSuccessCentre-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E89D28BBD3DD116694A63769 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -529,39 +562,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3BCD4BFD38070AE9F656B757 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ScienceStudentSuccessCentre-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EBC9EF47B2AAAC12B16C7352 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -780,7 +780,7 @@
 		};
 		FF327FF020128C3E00B06E19 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA891BEE54A1B61A8BA92EF2 /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */;
+			baseConfigurationReference = 497CB330CF40A5E769862DB8 /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -799,7 +799,7 @@
 		};
 		FF327FF120128C3E00B06E19 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 364F26F45C538A20F0EDA887 /* Pods-ScienceStudentSuccessCentre.release.xcconfig */;
+			baseConfigurationReference = 7A3F227F4867DBBC4D89F84B /* Pods-ScienceStudentSuccessCentre.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
