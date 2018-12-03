@@ -11,7 +11,7 @@ import Foundation
 class Event {
     
     // This sets each event's notification datetime to be be 15 seconds after the time of viewing an event
-    private let DEBUG_NOTIFICATION_TRIGGER = false
+    private let DEBUG_NOTIFICATION_TRIGGER = true
     
     private var id: String
     private var name: String
@@ -41,7 +41,9 @@ class Event {
         self.id = eventData["id"] as! String
         self.name = eventData["name"] as! String
         self.description = eventData["description"] as! String
-        self.dateTime = Formatter.iso8601.date(from: eventData["dateTime"] as! String)
+        let dateTimeWithMillis = eventData["dateTime"] as! String
+        let dateTime = dateTimeWithMillis.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
+        self.dateTime = Formatter.iso8601.date(from: dateTime)
         self.rawTime = eventData["rawTime"] as! String
         self.location = eventData["location"] as! String
         

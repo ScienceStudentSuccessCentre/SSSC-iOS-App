@@ -27,7 +27,10 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.largeTitleDisplayMode = .never
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
+        
         termDetailsView.addBorders(edges: [.top], color: UIColor(.bluegrey), width: 0.4)
         
         addCourseButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCoursePressed))
