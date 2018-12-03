@@ -77,7 +77,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     override func willMove(toParent parent: UIViewController?) {
         super.willMove(toParent: parent)
         
-        navigationController?.navigationBar.barTintColor = UIColor(.bluegrey)
+        navigationController?.navigationBar.barTintColor = UIColor(.navbar)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

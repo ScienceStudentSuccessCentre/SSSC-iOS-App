@@ -66,6 +66,8 @@ extension UIColor {
             self.init(hex: "#B2B2B2")
         case .bluegrey:
             self.init(hex: "#74919F")
+        case .navbar:
+            self.init(hex: "#779AA9")
         }
     }
     
@@ -88,6 +90,7 @@ extension UIColor {
         case brown
         case grey
         case bluegrey
+        case navbar
         
         static func fromUIColor(color: UIColor?) -> Material {
             return self.allCases.first{ UIColor($0) == color } ?? .red
