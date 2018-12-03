@@ -11,7 +11,7 @@ import Foundation
 class Event {
     
     // This sets each event's notification datetime to be be 15 seconds after the time of viewing an event
-    private let DEBUG_NOTIFICATION_TRIGGER = true
+    private let DEBUG_NOTIFICATION_TRIGGER = false
     
     private var id: String
     private var name: String
