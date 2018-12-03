@@ -322,8 +322,8 @@
                     <connections>
                         <segue destination="EuL-kd-Bue" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="qnv-2C-gp0" kind="relationship" relationship="viewControllers" id="3hE-1b-bc0"/>
-                        <segue destination="Up2-BA-9yi" kind="relationship" relationship="viewControllers" id="8ui-Kg-98T"/>
                         <segue destination="4tN-9t-Zd2" kind="relationship" relationship="viewControllers" id="JIw-fh-zp4"/>
+                        <segue destination="Up2-BA-9yi" kind="relationship" relationship="viewControllers" id="8ui-Kg-98T"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
