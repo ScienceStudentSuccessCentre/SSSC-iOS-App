@@ -915,7 +915,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jpk-7s-4nw" userLabel="Letter Grade View">
                                                     <rect key="frame" x="15" y="11" width="68" height="68"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QaS-8Z-Pft" userLabel="Letter Grade">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QaS-8Z-Pft" userLabel="Letter Grade">
                                                             <rect key="frame" x="8" y="8" width="52" height="52"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -971,8 +971,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whK-Ic-VN8" userLabel="Course Percentage View">
                                 <rect key="frame" x="0.0" y="599" width="375" height="68"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQp-gQ-O29" userLabel="Calculate Required Final Grade">
-                                        <rect key="frame" x="54" y="34" width="267" height="26"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQp-gQ-O29" userLabel="Calculate Required Final Grade">
+                                        <rect key="frame" x="8" y="34" width="359" height="26"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <state key="normal" title="Required Exam Grade for Desired Mark"/>
                                         <connections>
                                             <action selector="calcReqFinalExamButtonPressed" destination="atS-1p-BMg" eventType="touchUpInside" id="BVF-hV-Ftd"/>
@@ -988,13 +989,14 @@
                                 <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="aQp-gQ-O29" secondAttribute="bottom" constant="8" id="1O6-NG-HTX"/>
+                                    <constraint firstItem="aQp-gQ-O29" firstAttribute="leading" secondItem="whK-Ic-VN8" secondAttribute="leading" constant="8" id="E0j-oi-bn8"/>
                                     <constraint firstItem="j68-jT-G53" firstAttribute="centerX" secondItem="whK-Ic-VN8" secondAttribute="centerX" id="Hr4-gO-6Af"/>
                                     <constraint firstAttribute="height" constant="68" id="JgW-4E-F5t"/>
                                     <constraint firstItem="j68-jT-G53" firstAttribute="top" secondItem="whK-Ic-VN8" secondAttribute="top" constant="8" id="LwD-ZY-XV1"/>
+                                    <constraint firstAttribute="trailing" secondItem="aQp-gQ-O29" secondAttribute="trailing" constant="8" id="Nbp-XI-dRa"/>
                                     <constraint firstAttribute="bottom" secondItem="j68-jT-G53" secondAttribute="bottom" priority="999" constant="8" id="YEm-Q8-LG1"/>
                                     <constraint firstItem="j68-jT-G53" firstAttribute="height" secondItem="aQp-gQ-O29" secondAttribute="height" id="ahT-qy-StD"/>
                                     <constraint firstItem="aQp-gQ-O29" firstAttribute="top" secondItem="j68-jT-G53" secondAttribute="bottom" id="hlc-T5-A2y"/>
-                                    <constraint firstItem="aQp-gQ-O29" firstAttribute="centerX" secondItem="whK-Ic-VN8" secondAttribute="centerX" id="orN-97-nRF"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1169,7 +1171,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tsD-S5-xqb"/>
-        <segue reference="K9y-h4-UFx"/>
+        <segue reference="8vw-Sl-0KH"/>
         <segue reference="gNE-LT-kLe"/>
     </inferredMetricsTieBreakers>
 </document>

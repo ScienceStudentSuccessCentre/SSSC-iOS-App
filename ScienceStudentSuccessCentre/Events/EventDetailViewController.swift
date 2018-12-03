@@ -57,6 +57,8 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         
         var barButtonItems: [UIBarButtonItem] = []
         if event.getNotificationDateTime()!.compare(Date()) != ComparisonResult.orderedAscending {
+            notifyMeButton.accessibilityLabel = "Notifications"
+            notifyMeButton.accessibilityTraits = .button
             barButtonItems.append(UIBarButtonItem(customView: notifyMeButton))
         }
         if event.getActionUrl() != "" {
@@ -91,6 +93,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
                     break
                 }
             }
+            
             if notifyMe {
                 self.notifyMeImage = UIImage(named: "notifyOnColoured")
             } else {
