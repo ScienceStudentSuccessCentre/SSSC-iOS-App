@@ -1,6 +1,6 @@
 //
 //  EventTableViewCell.swift
-//  SSSCTemp
+//  ScienceStudentSuccessCentre
 //
 //  Created by Avery Vine on 2018-01-31.
 //  Copyright © 2018 Avery Vine. All rights reserved.

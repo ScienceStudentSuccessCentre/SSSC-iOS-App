@@ -1,6 +1,6 @@
 //
 //  CoursesViewController.swift
-//  SSSCTemp
+//  ScienceStudentSuccessCentre
 //
 //  Created by Avery Vine on 2018-09-28.
 //  Copyright © 2018 Avery Vine. All rights reserved.
@@ -12,11 +12,14 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet var gpa: UILabel!
     @IBOutlet var credits: UILabel!
+    @IBOutlet var termDetailsView: UIView!
     @IBOutlet var tableView: UITableView!
     
     private var addCourseButton: UIBarButtonItem!
     private var editCoursesButton: UIBarButtonItem!
     private var doneEditingCoursesButton: UIBarButtonItem!
+    
+    private let gpaFormatter = NumberFormatter()
     
     var term: Term!
     var courses = [Course]()
@@ -25,6 +28,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .never
+        termDetailsView.addBorders(edges: [.top], color: UIColor(.bluegrey), width: 0.4)
         
         addCourseButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCoursePressed))
         editCoursesButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editCoursesPressed))
@@ -32,6 +36,10 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         navigationItem.title = term.name
         navigationItem.setRightBarButtonItems([addCourseButton, editCoursesButton], animated: true)
+        
+        gpaFormatter.numberStyle = .decimal
+        gpaFormatter.maximumFractionDigits = 1
+        gpaFormatter.minimumFractionDigits = 1
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -61,6 +69,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         let course = courses[indexPath.row]
         cell.courseName.text = course.name
         cell.courseCode.text = course.code
+        cell.grade.text = course.getLetterGrade()
         cell.gradeView.backgroundColor = UIColor(course.colour)
         return cell
     }
@@ -86,7 +95,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @objc private func addCoursePressed() {
-        performSegue(withIdentifier: "createCourse", sender: self)
+        performSegue(withIdentifier: "editCourse", sender: self)
     }
     
     @objc private func editCoursesPressed() {
@@ -115,6 +124,15 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     private func updateTermDetails() {
+        let termGpa = Grading.calculateOverallGpa(courses: courses)
+        var newGpaText = "Term CGPA: N/A"
+        if termGpa != -1 {
+            if let termGpaFormatted = gpaFormatter.string(from: termGpa as NSNumber) {
+                newGpaText = "Term CGPA: " + termGpaFormatted
+            }
+        }
+        gpa.text = newGpaText
+        
         var totalCredits: Double = 0
         for course in courses {
             totalCredits += course.credits
@@ -128,7 +146,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             let indexPath = tableView.indexPathForSelectedRow!
             controller.course = courses[indexPath.row]
         }
-        if segue.identifier == "createCourse" {
+        if segue.identifier == "editCourse" {
             let controller = segue.destination.children.first as! CreateCourseViewController
             controller.term = term
         }

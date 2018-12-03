@@ -1,6 +1,6 @@
 //
 //  EventDetailViewController.swift
-//  SSSCTemp
+//  ScienceStudentSuccessCentre
 //
 //  Created by Avery Vine on 2018-02-01.
 //  Copyright © 2018 Avery Vine. All rights reserved.
@@ -13,14 +13,16 @@ import UserNotifications
 class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     var event: Event!
-    let notifyMeDimension = CGFloat(integerLiteral: 30)
-    let notifyMeButton = UIButton(type: .custom)
-    var notifyMeImage = UIImage(named: "notifyOff")
-    let notificationCenter = UNUserNotificationCenter.current()
-    var actionUrlButton: UIBarButtonItem!
+    private let notifyMeDimension = CGFloat(integerLiteral: 30)
+    private let notifyMeButton = UIButton(type: .custom)
+    private var notifyMeImage = UIImage(named: "notifyOff")
+    private let notificationCenter = UNUserNotificationCenter.current()
+    private var actionUrlButton: UIBarButtonItem!
     
     @IBOutlet var eventTitleLabel: UILabel!
+    @IBOutlet var eventTitleView: UIView!
     @IBOutlet var eventDescriptionTextView: UITextView!
+    @IBOutlet var eventDetailsView: UIView!
     @IBOutlet var eventDateTimeLabel: UILabel!
     @IBOutlet var eventLocationLabel: UILabel!
     @IBOutlet var eventImageView: UIImageView!
@@ -30,6 +32,9 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .never
+        
+        eventTitleView.addBorders(edges: [.bottom], color: UIColor(.bluegrey), width: 1)
+        eventDetailsView.addBorders(edges: [.top], color: UIColor(.bluegrey), width: 0.4)
         
         eventDescriptionTextView.delegate = self
 

@@ -1,6 +1,6 @@
 //
 //  TermsViewController.swift
-//  SSSCTemp
+//  ScienceStudentSuccessCentre
 //
 //  Created by Avery Vine on 2018-09-27.
 //  Copyright © 2018 Avery Vine. All rights reserved.
@@ -17,7 +17,6 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     private var doneEditingTermsButton: UIBarButtonItem!
     
     private var terms = [Term]()
-    private var isCurrentView = true
     
     private var oldScrollPosition = CGFloat(0)
     
@@ -38,17 +37,8 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         loadTerms()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        isCurrentView = true
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         toggleOffTableViewEditMode()
-        updateTableViewButtons(show: true)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        isCurrentView = false
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,7 +51,7 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         let term = terms[indexPath.row]
         cell.termName.text = term.name
-        cell.termAbbr.text = String(term.term.prefix(1)) + String(term.year.suffix(2))
+        cell.termAbbr.text = term.shortForm
         return cell
     }
     
@@ -152,12 +142,8 @@ extension TermsViewController: GradesViewControllerDelegate {
         }
     }
     
-    func updateTableViewButtons(show: Bool) {
-        if show && isCurrentView {
-            toggleTableViewButtons()
-        } else {
-            getNavigationItem()?.setRightBarButtonItems(nil, animated: true)
-        }
+    func showTableViewButtons() {
+        toggleTableViewButtons()
     }
     
 }

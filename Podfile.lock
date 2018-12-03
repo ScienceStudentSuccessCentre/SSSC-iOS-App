@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.7.3)
+  - Alamofire (4.8.0)
   - ColorPickerRow (1.2.1):
     - Eureka (>= 3.0.0)
     - UIColor_Hex_Swift (>= 3.0.0)
@@ -11,12 +11,11 @@ PODS:
   - UIColor_Hex_Swift (4.2.0)
 
 DEPENDENCIES:
-  - Alamofire
+  - Alamofire (~> 4.8.0)
   - ColorPickerRow (from `https://github.com/EurekaCommunity/ColorPickerRow`)
-  - Eureka
+  - Eureka (~> 4.3.0)
   - SQLite.swift (~> 0.11.5)
-  - SwiftSoup
-  - UIColor_Hex_Swift
+  - SwiftSoup (~> 1.7.4)
 
 EXTERNAL SOURCES:
   ColorPickerRow:
@@ -24,17 +23,17 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ColorPickerRow:
-    :commit: 3c1be59fb9be7f6d81c985d2837b6d31e66889c5
+    :commit: fafd3328fb729cee2e06a95e285631aa80cf04fe
     :git: https://github.com/EurekaCommunity/ColorPickerRow
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   ColorPickerRow: 87dd091c54fff65cf554f79ca1556312ee66282f
   Eureka: 6d711cb30ca333b4bc893110285a722ae3840114
   SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
   SwiftSoup: 92f5b348c131aed8af04f4326db1579ab19fa08c
   UIColor_Hex_Swift: bc07fc197421ee896b9ed6dcfa2054b7fbf75145
 
-PODFILE CHECKSUM: d0b90a9b48db2bf17f723dce430742f4c16b9b13
+PODFILE CHECKSUM: f464baddebafc0a81ddd9f6716cb739c3272c548
 
 COCOAPODS: 1.4.0

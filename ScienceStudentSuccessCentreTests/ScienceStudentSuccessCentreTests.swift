@@ -1,6 +1,6 @@
 //
-//  SSSCTempTests.swift
-//  SSSCTempTests
+//  ScienceStudentSuccessCentreTests.swift
+//  ScienceStudentSuccessCentreTests
 //
 //  Created by Avery Vine on 2018-01-19.
 //  Copyright © 2018 Avery Vine. All rights reserved.

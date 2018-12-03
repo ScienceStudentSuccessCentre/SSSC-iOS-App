@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  SSSCTemp
+//  ScienceStudentSuccessCentre
 //
 //  Created by Avery Vine on 2018-01-19.
 //  Copyright © 2018 Avery Vine. All rights reserved.
@@ -22,6 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         center.requestAuthorization(options: [.alert, .sound])
         { (granted, error) in
             // Enable or disable features based on authorization.
+        }
+        
+        let defaults = UserDefaults.standard
+        if defaults.value(forKey: "includeInProgressCourses") == nil {
+            defaults.set(true, forKey: "includeInProgressCourses")
         }
 
         return true
