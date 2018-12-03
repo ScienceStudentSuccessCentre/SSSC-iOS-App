@@ -13,7 +13,7 @@ This is the iOS app for the Carleton University Science Student Success Centre.
 2. Navigate into the directory
 3. Run `pod install`
 4. Open the project using the `ScienceStudentSuccessCentre.xcworkspace` file. **BE AWARE:** if you try to make changes to the project using `ScienceStudentSuccessCentre.xcproj`, none of the external cocoapod dependencies will work.
-5. Ensure that the selected build scheme in the top left of Xcode is `ScienceStudentSuccessCentre`, *not* `ScienceStudentSuccessCentreTests`
+5. Ensure that the selected build scheme in the top left of Xcode is `ScienceStudentSuccessCentre`
 
 ## Brief overview of the internal workings
 
