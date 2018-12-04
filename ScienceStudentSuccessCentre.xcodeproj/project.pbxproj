@@ -785,11 +785,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G89Y5GN529;
+				DEVELOPMENT_TEAM = DKPYUUQV7N;
 				INFOPLIST_FILE = "$(SRCROOT)/ScienceStudentSuccessCentre/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.averyvine.sssc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carleton.sciencestudentsuccesscentre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -804,11 +804,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G89Y5GN529;
+				DEVELOPMENT_TEAM = DKPYUUQV7N;
 				INFOPLIST_FILE = "$(SRCROOT)/ScienceStudentSuccessCentre/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.averyvine.sssc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carleton.sciencestudentsuccesscentre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;

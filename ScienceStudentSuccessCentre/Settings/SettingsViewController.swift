@@ -38,7 +38,7 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
             }.onChange { _ in
                 self.validateForm()
             }
-            +++ Section(header: "\nAcknowledgments", footer: "This app was developed for the Carleton University Science Student Success Centre by Avery Vine. Special thanks to Kshamina Ghelani, Selasi Kudolo, Gina Bak, Anisha Ghelani, Lily Visanuvimol, Divin Kang, and everyone else at the SSSC who helped out along the way.\n\nReleased under MIT License | Copyright @ 2018")
+            +++ Section(header: "\nAcknowledgments", footer: "This app was developed for the Carleton University Science Student Success Centre by Avery Vine. Special thanks to Kshamina Ghelani, Selasi Kudolo, Gina Bak, Anisha Ghelani, Lily Visanuvimol, Divin Kang, and everyone else at the SSSC who helped out along the way.\n\nReleased under GNU General Public License v3.0 | Copyright @ 2018")
     }
     
     func validateForm() {
