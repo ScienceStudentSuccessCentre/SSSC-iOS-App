@@ -76,6 +76,8 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
         activityIndicatorView.center = view.center
         activityIndicatorView.startAnimating()
         
+        navigationController?.view.backgroundColor = .white
+        
         EventParser.getInstance().attachObserver(observer: self)
         
         tableView.separatorStyle = .none
@@ -90,7 +92,6 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
         refreshControl.addTarget(self, action: #selector(refreshEventData(_:)), for: .valueChanged)
         
         loadEvents()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

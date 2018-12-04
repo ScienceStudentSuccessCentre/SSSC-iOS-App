@@ -276,7 +276,7 @@
                                         </connections>
                                     </segmentedControl>
                                 </subviews>
-                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="3px-4d-R5i" firstAttribute="centerX" secondItem="8T2-b6-FCq" secondAttribute="centerX" id="JJP-Ec-5gd"/>
                                     <constraint firstAttribute="height" constant="50" id="Jfa-Fa-nxm"/>

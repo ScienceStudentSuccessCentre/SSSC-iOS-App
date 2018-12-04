@@ -39,6 +39,7 @@ class GradesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.view.backgroundColor = UIColor(.lightgrey)
         segmentControlView.addBorders(edges: [.bottom], color: UIColor(.bluegrey), width: 0.5)
     }
     
