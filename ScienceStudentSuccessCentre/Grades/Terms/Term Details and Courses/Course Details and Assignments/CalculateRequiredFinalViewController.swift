@@ -28,7 +28,7 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
         navigationItem.setRightBarButton(UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonPressed)), animated: true)
         
         weights = Database.instance.getWeightsByCourseId(id: course.id)
-        weightNames = Weight.getNames(weights: weights)
+        weightNames = weights.map({ $0.name })
         
         createForm()
     }
@@ -77,7 +77,7 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
         let currentGrade = values["currentGrade"] as? Double ?? -1
         let desiredGrade = values["desiredGrade"] as? Double ?? -1
         let weightName = values["weight"] as? String ?? ""
-        let weight = Weight.getWeightByName(name: weightName, weights: weights)
+        let weight = weights.first(where: {$0.name == weightName})
         let calculatedGradeRow = form.rowBy(tag: "requiredGrade")
         
         if currentGrade >= 0 && 0 ... 100 ~= desiredGrade && weight != nil {

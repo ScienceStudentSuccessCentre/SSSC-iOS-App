@@ -66,7 +66,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
         courses.removeAll()
         courses = Database.instance.getCourses()
         if !includeInProgressCourses {
-            courses = Course.filterCompletedCourses(courses: courses)
+            courses = courses.filter({ $0.finalGrade != "None" })
         }
         sortCoursesByTerm()
         self.tableView.reloadData()
@@ -99,7 +99,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     private func updateGpaDetails() {
         let overallGpa = Grading.calculateOverallGpa(courses: courses)
         
-        let majorCourses = Course.filterMajorCourses(courses: courses)
+        let majorCourses = courses.filter({ $0.isMajorCourse })
         let majorGpa = Grading.calculateOverallGpa(courses: majorCourses)
         
         var newGpaText = "Overall CGPA: N/A"

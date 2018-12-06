@@ -219,7 +219,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         let code = values["code"] as? String ?? ""
         let credits = values["credits"] as? Double ?? 0
         let isMajorCourse = values["isMajorCourse"] as? Bool ?? false
-        let finalGrade = values["finalGrade"] as? String ?? "None"
+        let finalGrade = values["finalGrade"] as? String
         let colour = UIColor.Material.fromUIColor(color: values["colour"] as? UIColor ?? nil)
         
         let course = Course(id: self.course != nil ? self.course.id : nil, name: name, code: code, credits: credits, isMajorCourse: isMajorCourse, finalGrade: finalGrade, termId: self.term != nil ? term.id : self.course.termId, colour: colour)

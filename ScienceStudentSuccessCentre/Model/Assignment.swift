@@ -38,14 +38,4 @@ class Assignment {
         return Grading.calculateLetterGrade(earned: gradeEarned, total: gradeTotal)
     }
     
-    static func getAssignmentsByWeight(weight: Weight, assignments: [Assignment]) -> [Assignment] {
-        var assignmentsWithWeight = [Assignment]()
-        for assignment in assignments {
-            if assignment.weight.id == weight.id {
-                assignmentsWithWeight.append(assignment)
-            }
-        }
-        return assignmentsWithWeight
-    }
-    
 }

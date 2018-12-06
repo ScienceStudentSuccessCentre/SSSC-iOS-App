@@ -22,16 +22,4 @@ class Weight {
         self.courseId = courseId
     }
     
-    public static func getWeightByName(name: String, weights: [Weight]) -> Weight? {
-        return weights.first(where: {$0.name == name}) ?? nil
-    }
-    
-    public static func getNames(weights: [Weight]) -> [String] {
-        var weightNames = [String]()
-        for weight in weights {
-            weightNames.append(weight.name)
-        }
-        return weightNames
-    }
-    
 }

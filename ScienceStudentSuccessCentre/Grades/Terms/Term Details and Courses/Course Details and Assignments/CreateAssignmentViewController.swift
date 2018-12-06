@@ -36,7 +36,7 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
         }
         
         weights = Database.instance.getWeightsByCourseId(id: course.id)
-        weightNames = Weight.getNames(weights: weights)
+        weightNames = weights.map({ $0.name })
         createForm()
     }
     
@@ -90,7 +90,7 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
         let gradeEarned = values["gradeEarned"] as? Double ?? -1
         let gradeTotal = values["gradeTotal"] as? Double ?? -1
         let weightName = values["weight"] as? String ?? ""
-        let weight = Weight.getWeightByName(name: weightName, weights: weights)
+        let weight = weights.first(where: {$0.name == weightName})
         if !name.isEmpty && gradeEarned >= 0 && gradeTotal >= 0 && weight != nil {
             navigationItem.rightBarButtonItem?.isEnabled = true
         } else {
@@ -104,7 +104,7 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
         let gradeEarned = values["gradeEarned"] as? Double ?? 0
         let gradeTotal = values["gradeTotal"] as? Double ?? 0
         let weightName = values["weight"] as? String ?? ""
-        let weight = Weight.getWeightByName(name: weightName, weights: weights)
+        let weight = weights.first(where: {$0.name == weightName})
         let assignment = Assignment(id: self.assignment != nil ? self.assignment.id : nil, name: name, gradeEarned: gradeEarned, gradeTotal: gradeTotal, weight: weight!, courseId: course.id)
         if !Database.instance.insertOrUpdate(assignment: assignment) {
             print("Failed to create assignment")
