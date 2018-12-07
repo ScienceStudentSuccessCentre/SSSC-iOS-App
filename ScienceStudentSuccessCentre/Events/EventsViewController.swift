@@ -10,8 +10,6 @@ import UIKit
 
 class EventsViewController: UIViewController, EventObserver, UITableViewDelegate, UITableViewDataSource {
     
-    //MARK: Properties
-    
     private var events = [Event]()
     private var activityIndicatorView: UIActivityIndicatorView!
     
@@ -19,14 +17,14 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
     
     @IBOutlet var tableView: UITableView!
     
-    //MARK: Private Methods
-    
+    /// Asks the EventParser to start retrieving events from the SSSC website.
     private func loadEvents() {
         DispatchQueue(label: "Dispatch Queue", attributes: [], target: nil).async {
             EventParser.getInstance().loadEvents()
         }
     }
     
+    /// Retrieves the latest events from the EventParser and loads them into the tableview.
     func update() {
         events = EventParser.getInstance().getEvents()
         print("Received events")
@@ -39,6 +37,9 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
         }
     }
     
+    /// Displays an alert to the user.
+    ///
+    /// - Parameter alert: The alert to be displayed.
     func presentAlert(alert: UIAlertController) {
         self.present(alert, animated: true)
     }
@@ -58,10 +59,16 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
         return cell
     }
     
+    
+    /// Refreshes the events in the tableview at the user's request.
+    ///
+    /// - Parameter sender: The object that initiated the refresh.
     @objc func refreshEventData(_ sender: Any) {
         loadEvents()
     }
     
+    
+    /// Scrolls the user to the top of the event tableview.
     func scrollToTop() {
         tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
@@ -69,32 +76,31 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        activityIndicatorView = UIActivityIndicatorView(style: .gray)
-        activityIndicatorView.center = view.center
-        activityIndicatorView.startAnimating()
-        
         navigationController?.view.backgroundColor = .white
         
-        EventParser.getInstance().attachObserver(observer: self)
-        
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.backgroundView = activityIndicatorView
-        
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refreshControl
         } else {
             tableView.addSubview(refreshControl)
         }
-        
         refreshControl.addTarget(self, action: #selector(refreshEventData(_:)), for: .valueChanged)
+        
+        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        activityIndicatorView.center = view.center
+        activityIndicatorView.startAnimating()
+        
+        EventParser.getInstance().attachObserver(observer: self)
         
         loadEvents()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         tableView.reloadData()
     }
 

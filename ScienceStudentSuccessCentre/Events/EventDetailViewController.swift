@@ -35,11 +35,53 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
             navigationItem.largeTitleDisplayMode = .never
         }
         
-        eventTitleView.addBorders(edges: [.bottom], color: UIColor(.bluegrey), width: 1)
-        eventDetailsView.addBorders(edges: [.top], color: UIColor(.bluegrey), width: 0.4)
+        prepareEventDetails()
+        prepareNavigationBarButtons()
         
+        view.sendSubviewToBack(eventStackView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateNotifyMeButtonImage()
+    }
+    
+    /// Determines which buttons (action, notification) should be added to the navigation bar, if any.
+    ///
+    /// - Remark:
+    ///     - If there is an action associated to the event being displayed, the action button is displayed.
+    ///     - If the notification date/time for this event has not passed, the notification button is displayed.
+    private func prepareNavigationBarButtons() {
+        var barButtonItems: [UIBarButtonItem] = []
+        
+        actionUrlButton =  UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.reply, target: self, action: #selector(actionUrlTapped))
+        
+        if event.getNotificationDateTime()!.compare(Date()) != ComparisonResult.orderedAscending {
+            prepareNotifyMeButton()
+            barButtonItems.append(UIBarButtonItem(customView: notifyMeButton))
+        }
+        
+        if event.getActionUrl() != "" {
+            barButtonItems.append(actionUrlButton)
+        }
+        
+        navigationItem.setRightBarButtonItems(barButtonItems, animated: true)
+    }
+    
+    /// Prepares the custom notifications button to be displayed.
+    private func prepareNotifyMeButton() {
+        notifyMeButton.addTarget(self, action: #selector(notifyMeTapped), for: .touchUpInside)
+        notifyMeButton.frame = CGRect(x: 0, y: 0, width: notifyMeDimension, height: notifyMeDimension)
+        notifyMeButton.widthAnchor.constraint(equalToConstant: notifyMeDimension).isActive = true
+        notifyMeButton.heightAnchor.constraint(equalToConstant: notifyMeDimension).isActive = true
+        notifyMeButton.translatesAutoresizingMaskIntoConstraints = false
+        notifyMeButton.accessibilityLabel = "Notify Me"
+        notifyMeButton.accessibilityTraits = .button
+    }
+    
+    /// Prepares the details of this event to be displayed, including loading in all of the text, the associated image (if any), and adding small borders to various event-related views.
+    private func prepareEventDetails() {
         eventDescriptionTextView.delegate = self
-
+        
         eventTitleLabel.text = event.getName()
         eventDateTimeLabel.text = event.getMonthName() + " " + event.getDayLeadingZero() + "\n" + event.getRawTime()
         eventLocationLabel.text = event.getLocation()
@@ -53,40 +95,14 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
             loadImage()
         }
         
-        prepareNotifyMeButton()
-        
-        actionUrlButton =  UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.reply, target: self, action: #selector(actionUrlTapped))
-        
-        var barButtonItems: [UIBarButtonItem] = []
-        if event.getNotificationDateTime()!.compare(Date()) != ComparisonResult.orderedAscending {
-            notifyMeButton.accessibilityLabel = "Notifications"
-            notifyMeButton.accessibilityTraits = .button
-            barButtonItems.append(UIBarButtonItem(customView: notifyMeButton))
-        }
-        if event.getActionUrl() != "" {
-            barButtonItems.append(actionUrlButton)
-        }
-    
-        navigationItem.setRightBarButtonItems(barButtonItems, animated: true)
-        
-        view.sendSubviewToBack(eventStackView)
+        eventTitleView.addBorders(edges: [.bottom], color: UIColor(.bluegrey), width: 1)
+        eventDetailsView.addBorders(edges: [.top], color: UIColor(.bluegrey), width: 0.4)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        updateNotifyMeImage()
-    }
-    
-    private func prepareNotifyMeButton() {
-        if event.getNotificationDateTime()!.compare(Date()) != ComparisonResult.orderedAscending {
-            notifyMeButton.addTarget(self, action: #selector(notifyMeTapped), for: .touchUpInside)
-            notifyMeButton.frame = CGRect(x: 0, y: 0, width: notifyMeDimension, height: notifyMeDimension)
-            notifyMeButton.widthAnchor.constraint(equalToConstant: notifyMeDimension).isActive = true
-            notifyMeButton.heightAnchor.constraint(equalToConstant: notifyMeDimension).isActive = true
-            notifyMeButton.translatesAutoresizingMaskIntoConstraints = false
-        }
-    }
-    
-    private func updateNotifyMeImage() {
+    /// Ensures the notification button displays the correct image (on/off).
+    ///
+    /// This function iterates over all pending system notifications, and updates the notification button image to "On" if one is found associated to this event, and "Off" otherwise.
+    private func updateNotifyMeButtonImage() {
         notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
             var notifyMe = false
             for request in requests {
@@ -108,6 +124,9 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         })
     }
     
+    /// Creates (or removes) a notification for this event when the notification button is tapped.
+    ///
+    /// This function first checks if the user has notification permissions enabled (and if not, prompts the user to enable them in the Settings app). It then iterates over all existing system notifications, removing any existing notifications for this event, or adding a new one if none are found.
     @objc private func notifyMeTapped() {
         notificationCenter.getNotificationSettings { (settings) in
             guard settings.authorizationStatus == .authorized else {
@@ -129,28 +148,22 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
             }
             
             self.notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
-                var notifyMeEnabled = false
-                for request in requests {
-                    if request.identifier == self.event.getId() {
-                        notifyMeEnabled = true
-                        break
-                    }
-                }
-                if !notifyMeEnabled {
-                    self.prepareDeviceNotification()
+                if requests.first(where: { $0.identifier == self.event.getId() }) == nil {
+                    self.prepareEventNotification()
                 } else {
-                    self.removeDeviceNotification()
+                    self.removeEventNotification()
                 }
             })
         }
     }
     
+    /// Delegates opening the actionUrl to the in-app browser when the action button is tapped.
     @objc private func actionUrlTapped() {
-        let safariVC = SFSafariViewController(url: URL(string: event.getActionUrl()!)!)
-        present (safariVC, animated: true, completion:nil)
+        openUrlInAppBrowser(url: URL(string: event.getActionUrl() ?? ""))
     }
     
-    private func prepareDeviceNotification() {
+    /// Generates a new notification request, updates the notification button image, and lets the user know that a notification has been prepared for this event.
+    private func prepareEventNotification() {
         let request = generateUNNotificationRequest()
         if (request != nil) {
             self.notificationCenter.add(request!, withCompletionHandler: { (error) in
@@ -158,7 +171,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
                     print(error)
                     self.presentGenericErrorAlert()
                 } else {
-                    self.updateNotifyMeImage()
+                    self.updateNotifyMeButtonImage()
                     
                     let alert = UIAlertController(title: "Notification enabled!", message: "You'll be sent a notification an hour before this event starts.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
@@ -168,11 +181,15 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    private func removeDeviceNotification() {
+    /// Removes any pending notifications for this event and updates the notification button to reflect that.
+    private func removeEventNotification() {
         notificationCenter.removePendingNotificationRequests(withIdentifiers: [self.event.getId()])
-        self.updateNotifyMeImage()
+        self.updateNotifyMeButtonImage()
     }
     
+    /// Generates a new notification request for this event.
+    ///
+    /// - Returns: The generated notification request.
     private func generateUNNotificationRequest() -> UNNotificationRequest? {
         var request: UNNotificationRequest? = nil
         let content = UNMutableNotificationContent()
@@ -221,9 +238,15 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    private func openUrlInAppBrowser(url: URL?) {
+        if url != nil {
+            let safariVC = SFSafariViewController(url: url!)
+            present(safariVC, animated: true, completion: nil)
+        }
+    }
+    
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-        let safariVC = SFSafariViewController(url: URL)
-        present(safariVC, animated: true, completion: nil)
+        openUrlInAppBrowser(url: URL)
         return false
     }
 

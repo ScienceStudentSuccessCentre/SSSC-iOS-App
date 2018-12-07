@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-/// A Course belongs to a Term (and thus has an associated `termId`), and has several Assignments associated with it.
+/// A Course belongs to a Term (and thus has an associated `termId`), and has several Assignments and Weights associated with it.
 class Course {
     
     var id: String
