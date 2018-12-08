@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/// An observer that watches the EventParser to know when events are ready to be retrieved.
 protocol EventObserver {
     func update()
     func presentAlert(alert: UIAlertController)

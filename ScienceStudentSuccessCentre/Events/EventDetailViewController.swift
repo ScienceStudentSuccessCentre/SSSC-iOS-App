@@ -211,6 +211,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         return request
     }
     
+    /// Generates and presents a generic error alert.
     private func presentGenericErrorAlert() {
         let alert = UIAlertController(title: "Something went wrong!", message: "Please try again later. If this issue persists, please let the SSSC know!", preferredStyle: .alert)
         
@@ -218,26 +219,27 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         self.present(alert, animated: true)
     }
     
+    /// Loads and displays any image associated with this event.
+    ///
+    /// This function loads an image by downloading it into a byte buffer and creating a UIImage object from there.
     private func loadImage() {
         let url = event.getImageUrl()
-        
         DispatchQueue.global().async {
             let data = try? Data(contentsOf: url!)
             DispatchQueue.main.async {
-                let image = UIImage(data: data!)
-                
-                if (image != nil) {
+                if let image = UIImage(data: data!) {
                     self.eventImageView.image = image
-                    
-                    let ratio = image!.size.height / image!.size.width
+                    let ratio = image.size.height / image.size.width
                     let newHeight = self.eventImageView.frame.size.width * ratio
-                    
                     self.eventImageView.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
                 }
             }
         }
     }
     
+    /// Opens a provided URL in the in-app browser.
+    ///
+    /// - Parameter url: The URL to be opened.
     private func openUrlInAppBrowser(url: URL?) {
         if url != nil {
             let safariVC = SFSafariViewController(url: url!)
@@ -248,10 +250,6 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         openUrlInAppBrowser(url: URL)
         return false
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 
 }

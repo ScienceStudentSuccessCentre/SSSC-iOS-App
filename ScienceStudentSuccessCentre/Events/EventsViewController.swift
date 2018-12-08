@@ -103,10 +103,6 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
         
         tableView.reloadData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "eventDetail" {
