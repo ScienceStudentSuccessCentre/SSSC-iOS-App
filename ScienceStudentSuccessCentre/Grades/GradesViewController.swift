@@ -53,6 +53,10 @@ class GradesViewController: UIViewController {
         switchToView(segmentIndex: sender.selectedSegmentIndex)
     }
     
+    /// Switch to the tab view with the given index.
+    ///
+    /// This function switches to the new tab by removing any other tabs attached to the view, then adding the correct tab. Finally, the title is updated to match the tab.
+    /// - Parameter segmentIndex: The index of the `SegmentControl` tab to switch to.
     private func switchToView(segmentIndex: Int) {
         delegate?.toggleOffTableViewEditMode()
         switch segmentIndex {
@@ -76,6 +80,10 @@ class GradesViewController: UIViewController {
         }
     }
     
+    /// Adds a given view to the overarching view.
+    ///
+    /// This function adds the given view to the overarching view. If the new view is a `GradesViewControllerDelegate`, then the `delegate` for the overarching view is set to the new view, and the related table view buttons are displayed.
+    /// - Parameter viewController: The view to add to the overarching view.
     private func add(asChildViewController viewController: UIViewController) {
         addChild(viewController)
         containerView.addSubview(viewController.view)
@@ -91,6 +99,9 @@ class GradesViewController: UIViewController {
         }
     }
     
+    /// Removes a specified view from the overarching view.
+    ///
+    /// - Parameter viewController: The view to remove from the overarching view.
     private func remove(asChildViewController viewController: UIViewController) {
         viewController.willMove(toParent: nil)
         viewController.view.removeFromSuperview()
@@ -106,6 +117,9 @@ class GradesViewController: UIViewController {
 
 extension GradesViewController: SegmentControlDelegate {
     
+    /// Shifts the `SegmentControl` up or down by the given delta.
+    ///
+    /// - Parameter delta: The distance to move the `SegmentControl`.
     func updateSegmentControlPosition(delta: CGFloat) {
         let prevX = segmentControlView.frame.origin.x
         let prevY = segmentControlView.frame.origin.y

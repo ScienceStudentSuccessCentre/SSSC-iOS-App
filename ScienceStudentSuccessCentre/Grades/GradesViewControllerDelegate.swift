@@ -6,6 +6,9 @@
 //  Copyright © 2018 Avery Vine. All rights reserved.
 //
 
+/// A protocol that lets other views control any view that has this protocol.
+///
+/// This protocol provides functions for interacting with tableview buttons.
 protocol GradesViewControllerDelegate: class {
     func toggleOffTableViewEditMode()
     func showTableViewButtons()

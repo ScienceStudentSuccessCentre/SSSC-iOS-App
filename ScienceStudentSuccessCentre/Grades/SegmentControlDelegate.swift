@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+/// A protocol that lets other views control any view that has this protocol.
+///
+/// This protocol provides functions for interacting with `SegmentControl` objects.
 protocol SegmentControlDelegate: class {
     func updateSegmentControlPosition(delta: CGFloat)
 }
