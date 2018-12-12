@@ -14,8 +14,6 @@ class PlannerViewController: FormViewController, EurekaFormProtocol {
     private var currentGpa: Double!
     private let formatter = NumberFormatter()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +24,9 @@ class PlannerViewController: FormViewController, EurekaFormProtocol {
         createForm()
     }
     
+    /// Creates a Eureka form for performing various GPA projections and calculations.
+    ///
+    /// - Remark: A quick note about this form. Since Eureka only supports having a single form at a time on a ViewController, I decided to implement both calculators in the same form. Fields should be differentiated between forms by the "_form#" portion of their row tags. Validation of each form is done separately. Check out `validateForm()`, `validateForm1()`, and `validateForm2()` for validation.
     func createForm() {
         form
             +++ Section(footer: "If you want to achieve a certain overall CGPA, you can use the section below to determine what CGPA you should aim for the current term.")
@@ -112,11 +113,20 @@ class PlannerViewController: FormViewController, EurekaFormProtocol {
             }
     }
     
+    /// Validates the current form values, for all the "different" forms.
     func validateForm() {
         validateForm1()
         validateForm2()
     }
     
+    /// Validates the current form values for form 1.
+    ///
+    /// This function will run the required term GPA calculation if all conditions are met.
+    /// Validity conditions:
+    /// - A current GPA is filled in
+    /// - A number of completed credits is filled in
+    /// - A desired GPA is filled in
+    /// - The number of credits in progress is greater than 0
     private func validateForm1() {
         let values = form.values()
         let currentGpa = values["currentGpa_form1"] as? Double ?? -1
@@ -133,6 +143,14 @@ class PlannerViewController: FormViewController, EurekaFormProtocol {
         calculatedGpaRow?.updateCell()
     }
     
+    /// Validates the current form values for form 2.
+    ///
+    /// This function will run the projected overall GPA calculation if all conditions are met.
+    /// Validity conditions:
+    /// - A current GPA is filled in
+    /// - A number of completed credits is filled in
+    /// - A predicted GPA is filled in
+    /// - The number of credits in progress is greater than 0
     private func validateForm2() {
         let values = form.values()
         let currentGpa = values["currentGpa_form2"] as? Double ?? -1
@@ -141,7 +159,7 @@ class PlannerViewController: FormViewController, EurekaFormProtocol {
         let creditsInProgress = values["creditsInProgress_form2"] as? Double ?? -1
         let calculatedGpaRow = form.rowBy(tag: "overallGpa_form2")
         
-        if currentGpa >= 0 && creditsComplete >= 0 && predictedGpa >= 0 && creditsComplete > 0 {
+        if currentGpa >= 0 && creditsComplete >= 0 && predictedGpa >= 0 && creditsInProgress > 0 {
             calculatedGpaRow?.baseValue = Grading.calculatePredictedGpa(currentGpa: currentGpa, creditsComplete: creditsComplete, predictedGpa: predictedGpa, creditsInProgress: creditsInProgress)
         } else {
             calculatedGpaRow?.baseValue = nil

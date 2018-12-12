@@ -8,6 +8,7 @@
 
 import Eureka
 
+/// This is not my code... good luck trying to debug it.
 public struct SplitRowValue<L: Equatable, R: Equatable> {
     public var left: L?
     public var right: R?

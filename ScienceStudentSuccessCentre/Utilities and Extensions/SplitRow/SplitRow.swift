@@ -8,6 +8,7 @@
 
 import Eureka
 
+/// This is not my code... good luck trying to debug it.
 open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L,R>> where L: BaseRow, R: BaseRow {
     
     open override var section: Section?{

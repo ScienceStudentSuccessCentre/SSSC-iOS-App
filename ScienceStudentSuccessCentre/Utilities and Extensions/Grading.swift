@@ -8,8 +8,15 @@
 
 import Foundation
 
+/// Utility class that groups all grade-related calculations together.
 class Grading {
     
+    /// Calculates a grade as a percentage.
+    ///
+    /// - Parameters:
+    ///   - earned: The mark earned, out of the total marks available.
+    ///   - total: The total marks available.
+    /// - Returns: The grade as a percentage, or -1 if the total marks available is less than or equal to 0.
     static func calculatePercentage(earned: Double, total: Double) -> Double {
         if total <= 0 {
             return -1
@@ -17,10 +24,20 @@ class Grading {
         return earned / total * 100
     }
     
+    /// Calculates a grade as a letter grade from A+ to F.
+    ///
+    /// - Parameters:
+    ///   - earned: The mark earned, out of the total marks available.
+    ///   - total: The total marks available.
+    /// - Returns: The grade as a letter grade, or "N/A" if one cannot be calculated.
     static func calculateLetterGrade(earned: Double, total: Double) -> String {
         return calculateLetterGrade(percentage: calculatePercentage(earned: earned, total: total))
     }
     
+    /// Calculates a grade as a letter grade from A+ to F.
+    ///
+    /// - Parameter percentage: The grade for which to calculate a letter grade, as a percentage.
+    /// - Returns: The grade as a letter grade, or "N/A" if one cannot be calculated.
     static func calculateLetterGrade(percentage: Double) -> String {
         var letterGrade: String
         switch percentage {
@@ -56,6 +73,12 @@ class Grading {
         return letterGrade
     }
     
+    /// Calculates the grade point worth for a course.
+    ///
+    /// - Parameters:
+    ///   - letterGrade: The course grade as a letter grade from A+ to F
+    ///   - creditWorth: The number of credits the course is worth
+    /// - Returns: The grade point worth of the course, or -1 if one cannot be calculated.
     static func calculateGradePoints(letterGrade: String, creditWorth: Double) -> Double {
         var numericalGrade: Double
         switch letterGrade {
@@ -94,44 +117,14 @@ class Grading {
         return numericalGrade
     }
     
-    static func calculateGpa(percentage: Double) -> String {
-        var gpa: Double
-        switch percentage {
-        case 0 ..< 50:
-            gpa = percentage / 100
-        case 50 ..< 53:
-            gpa = (percentage / 100) + 1
-        case 53 ..< 57:
-            gpa = (percentage / 100) + 2
-        case 57 ..< 60:
-            gpa = (percentage / 100) + 3
-        case 60 ..< 63:
-            gpa = (percentage / 100) + 4
-        case 63 ..< 67:
-            gpa = (percentage / 100) + 5
-        case 67 ..< 70:
-            gpa = (percentage / 100) + 6
-        case 70 ..< 73:
-            gpa = (percentage / 100) + 7
-        case 73 ..< 77:
-            gpa = (percentage / 100) + 8
-        case 77 ..< 80:
-            gpa = (percentage / 100) + 9
-        case 80 ..< 85:
-            gpa = (percentage / 100) + 10
-        case 85 ..< 90:
-            gpa = (percentage / 100) + 11
-        case _ where percentage >= 90:
-            gpa = 12
-        default:
-            gpa = -1
-        }
-        if gpa == -1 {
-            return "N/A"
-        }
-        return String(gpa.rounded(toPlaces: 1))
-    }
-    
+    /// Calculates the grade required on a final exam to achieve a desired grade in a course.
+    ///
+    /// - Parameters:
+    ///   - currentGrade: The current grade in the course
+    ///   - desiredGrade: The desired grade for the course
+    ///   - weight: The weight of the final exam
+    ///   - courseId: The ID of the course for which to calculate the required grade
+    /// - Returns: The grade required on the final exam to achieve a desired grade in a course.
     static func calculatedRequiredGrade(currentGrade: Double, desiredGrade: Double, weight: Weight, courseId: String) -> Double {
         let allAssignmentsWithWeight = Database.instance.getAssignmentsByCourseId(id: courseId).filter({ $0.weight.id == weight.id }).count
         let calculatedWeight = weight.value / Double(allAssignmentsWithWeight + 1)
@@ -142,6 +135,10 @@ class Grading {
         return requiredGrade
     }
     
+    /// Calculates the overall GPA for a list of courses.
+    ///
+    /// - Parameter courses: The list of courses for which to calculate an overall GPA
+    /// - Returns: The overall GPA of the courses provided, or -1 if one cannot be calculated.
     static func calculateOverallGpa(courses: [Course]!) -> Double {
         var totalGradePoints: Double = 0
         var totalCreditsWithGrades: Double = 0
@@ -158,10 +155,26 @@ class Grading {
         return -1
     }
     
+    /// Calculates the GPA required for a term in order to achieve a desired overall GPA.
+    ///
+    /// - Parameters:
+    ///   - currentGpa: The user's current overall GPA
+    ///   - creditsComplete: The number of course credits the user has completed
+    ///   - desiredGpa: The overall GPA desired by the user
+    ///   - creditsInProgress: The number of course credits the user is currently taking
+    /// - Returns: The term GPA required to achieve a desired overall GPA
     static func calculateRequiredGpa(currentGpa: Double, creditsComplete: Double, desiredGpa: Double, creditsInProgress: Double) -> Double {
         return (desiredGpa * (creditsInProgress + creditsComplete) - currentGpa * (creditsComplete)) / creditsInProgress
     }
     
+    /// Calculates an overall GPA based off an estimated current term GPA.
+    ///
+    /// - Parameters:
+    ///   - currentGpa: The user's current overall GPA
+    ///   - creditsComplete: The number of course credits the user has completed
+    ///   - predictedGpa: The GPA the user predicts they will get for the current term
+    ///   - creditsInProgress: The number of course credits the user is currently taking
+    /// - Returns: The overall GPA based off an estimated current term GPA
     static func calculatePredictedGpa(currentGpa: Double, creditsComplete: Double, predictedGpa: Double, creditsInProgress: Double) -> Double {
         return ((currentGpa * creditsComplete) + (predictedGpa * creditsInProgress)) / (creditsComplete + creditsInProgress)
     }

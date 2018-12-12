@@ -59,6 +59,9 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
         self.performSegue(withIdentifier: "calculatorDetail", sender: self)
     }
     
+    /// Loads and displays all of the user's courses, sorted by term.
+    ///
+    /// This function will get all of the user's courses. If the users wants to only display completed courses, all courses without final grades will be filtered out. Finally, courses are sorted by term and displayed to the user.
     private func loadCourses() {
         let defaults = UserDefaults.standard
         let includeInProgressCourses = defaults.bool(forKey: "includeInProgressCourses")
@@ -72,6 +75,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
         self.tableView.reloadData()
     }
     
+    /// A sorting function that gets all terms from the database, then sorts loaded courses based off the reverse chronological order of those terms.
     private func sortCoursesByTerm() {
         let allTerms = Database.instance.getTerms()
         courses = courses.sorted { course1, course2  in
@@ -96,6 +100,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    /// Calculates and displays the overall GPA and major GPA across all courses and terms.
     private func updateGpaDetails() {
         let overallGpa = Grading.calculateOverallGpa(courses: courses)
         

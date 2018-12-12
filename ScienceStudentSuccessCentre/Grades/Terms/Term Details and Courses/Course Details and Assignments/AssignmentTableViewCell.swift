@@ -15,14 +15,6 @@ class AssignmentTableViewCell: UITableViewCell {
     @IBOutlet var letterGrade: UILabel!
     @IBOutlet var letterGradeView: UIView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
     func setColour(colour: UIColor) {
         letterGradeView.backgroundColor = colour
     }

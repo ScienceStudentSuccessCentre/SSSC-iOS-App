@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import ColorPickerRow
 
+// MARK: - This extension provides a custom set of named colours, which are grouped under the name `Material`. In order to add a new colour option, add a new case to both the `enum Material` and the `convenience init(_ colorString: Material)` sections.
 extension UIColor {
     
     convenience init(hex:  String) {
@@ -106,14 +107,6 @@ extension UIColor {
             }
             return colourPalette
         }
-    }
-    
-    func adjustedForNavController() -> UIColor {
-        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
-        if self.getRed(&r, green: &g, blue: &b, alpha: &a) {
-            return UIColor(red: max(((r * 255) - 20) / 255, 0.0), green: max(((g * 255) - 20) / 255, 0.0), blue: max(((b * 255) - 20) / 255, 0.0), alpha: 1)
-        }
-        return self
     }
     
 }

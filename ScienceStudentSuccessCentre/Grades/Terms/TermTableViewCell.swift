@@ -13,12 +13,4 @@ class TermTableViewCell: UITableViewCell {
     @IBOutlet var termName: UILabel!
     @IBOutlet var termAbbr: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-
 }

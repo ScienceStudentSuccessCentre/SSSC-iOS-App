@@ -37,9 +37,14 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
         
         weights = Database.instance.getWeightsByCourseId(id: course.id)
         weightNames = weights.map({ $0.name })
+        
         createForm()
+        if assignment != nil {
+            fillForm()
+        }
     }
     
+    /// Creates a Eureka form for creating and editing Assignment objects.
     func createForm() {
         form
             +++ Section(header: "Assignment Info", footer: weights.count == 0 ? "In order to add assignments, please create assignment weights for this course. This can be done from the previous screen." : "")
@@ -75,15 +80,25 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
             }.onChange {_ in
                 self.validateForm()
             }
-        
-        if (assignment != nil) {
-            form.rowBy(tag: "name")?.baseValue = assignment.name
-            form.rowBy(tag: "gradeEarned")?.baseValue = assignment.gradeEarned
-            form.rowBy(tag: "gradeTotal")?.baseValue = assignment.gradeTotal
-            form.rowBy(tag: "weight")?.baseValue = assignment.weight.name
-        }
     }
     
+    /// Fills in form values from the Assignment object provided to this view controller.
+    private func fillForm() {
+        form.rowBy(tag: "name")?.baseValue = assignment.name
+        form.rowBy(tag: "gradeEarned")?.baseValue = assignment.gradeEarned
+        form.rowBy(tag: "gradeTotal")?.baseValue = assignment.gradeTotal
+        form.rowBy(tag: "weight")?.baseValue = assignment.weight.name
+    }
+    
+    /// Validates the current form values.
+    ///
+    /// If all values are valid, the Assignment creation/update button will be enabled. Otherwise, the button will remain disabled.
+    ///
+    /// Validity conditions:
+    /// - A name exists
+    /// - An earned grade is filled in
+    /// - A total grade is filled in
+    /// - A weight is associated with this assignment
     func validateForm() {
         let values = form.values()
         let name = values["name"] as? String ?? ""

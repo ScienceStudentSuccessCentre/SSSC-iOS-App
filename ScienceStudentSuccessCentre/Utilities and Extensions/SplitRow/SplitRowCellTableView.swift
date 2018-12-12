@@ -8,6 +8,7 @@
 
 import Eureka
 
+/// This is not my code... good luck trying to debug it.
 class SplitRowCellTableView<T: TypedRowType>: UITableView, UITableViewDelegate, UITableViewDataSource{
     
     var row: T?

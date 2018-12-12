@@ -25,12 +25,10 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addTermButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTermPressed))
-        editTermsButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTermPressed))
-        doneEditingTermsButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editTermPressed))
-        
         tableView.delegate = self
         tableView.dataSource = self
+        
+        prepareNavigationBarButtons()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +69,17 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    /// Sets up the various navigation bar buttons (associates them with their actions).
+    private func prepareNavigationBarButtons() {
+        addTermButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTermPressed))
+        editTermsButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTermPressed))
+        doneEditingTermsButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editTermPressed))
+    }
+    
+    /// Runs each time the provided UIScrollView has been scrolled.
+    ///
+    /// This function sends the `SegmentControlDelegate` a delta value for which to scroll the `SegmentControl`.
+    /// - Parameter scrollView: The `UIScrollView` that was scrolled.
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentScrollPosition = scrollView.contentOffset.y
         if currentScrollPosition < 0 {
@@ -89,10 +98,12 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         toggleTableViewButtons()
     }
     
+    /// Toggles whether the table view is editing or not.
     func toggleTableViewEditMode() {
         tableView.setEditing(!tableView.isEditing, animated: true)
     }
     
+    /// Toggles the table view buttons between Done/Add and Edit/Add, depending on whether the table view is editing or not.
     func toggleTableViewButtons() {
         var buttonList: [UIBarButtonItem] = [addTermButton]
         if tableView.isEditing {
@@ -100,9 +111,12 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } else {
             buttonList.append(editTermsButton)
         }
-        getNavigationItem()?.setRightBarButtonItems(buttonList, animated: true)
+        if let navigationItem = navigationController?.navigationBar.topItem {
+            navigationItem.setRightBarButtonItems(buttonList, animated: true)
+        }
     }
     
+    /// Loads all of the terms from the database, and displays them to the user in chronologically sorted order.
     private func loadTerms() {
         terms.removeAll()
         terms = Database.instance.getTerms()
@@ -118,10 +132,6 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
         self.tableView.reloadData()
-    }
-    
-    private func getNavigationItem() -> UINavigationItem? {
-        return navigationController?.navigationBar.topItem
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

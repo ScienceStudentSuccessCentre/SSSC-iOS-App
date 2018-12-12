@@ -24,15 +24,11 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
         navigationItem.setRightBarButton(UIBarButtonItem(title: "Create", style: .done, target: self, action: #selector(createButtonPressed)), animated: true)
         navigationItem.rightBarButtonItem?.isEnabled = false
         
-        years = [String]()
-        let currYear = Calendar.current.dateComponents([.year], from: Date()).year
-        for i in 0 ..< 10 {
-            years.append(String((currYear ?? 2019) - i + 1))
-        }
-        
+        setAvailableYears()
         createForm()
     }
     
+    /// Creates a Eureka form for creating Term objects.
     func createForm() {
         form
         +++ SelectableSection<ListCheckRow<String>>("Select a Term", selectionType: SelectionType.singleSelection(enableDeselection: false)) { row in
@@ -63,9 +59,23 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
         }
     }
     
+    /// Validates the current form values.
+    ///
+    /// Once all values are valid, the term creation button will be switched from disabled to enabled.
     func validateForm() {
         if term != nil && year != nil {
             navigationItem.rightBarButtonItem?.isEnabled = true
+        }
+    }
+    
+    /// Gets a set of 10 years for which terms can be created.
+    ///
+    /// This function sets the list of available term years to be the current year, one year in the future, and 8 years in the past.
+    private func setAvailableYears() {
+        years = [String]()
+        let currYear = Calendar.current.dateComponents([.year], from: Date()).year
+        for i in 0 ..< 10 {
+            years.append(String((currYear ?? 2019) - i + 1))
         }
     }
     

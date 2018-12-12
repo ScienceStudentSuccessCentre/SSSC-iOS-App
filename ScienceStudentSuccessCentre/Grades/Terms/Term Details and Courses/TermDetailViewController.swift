@@ -33,12 +33,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         termDetailsView.addBorders(edges: [.top], color: UIColor(.bluegrey), width: 0.4)
         
-        addCourseButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCoursePressed))
-        editCoursesButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editCoursesPressed))
-        doneEditingCoursesButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editCoursesPressed))
-        
         navigationItem.title = term.name
-        navigationItem.setRightBarButtonItems([addCourseButton, editCoursesButton], animated: true)
         
         gpaFormatter.numberStyle = .decimal
         gpaFormatter.maximumFractionDigits = 1
@@ -46,6 +41,8 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        prepareNavigationBarButtons()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,6 +94,15 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    /// Sets up the various navigation bar buttons (associates them with their actions).
+    private func prepareNavigationBarButtons() {
+        addCourseButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCoursePressed))
+        editCoursesButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editCoursesPressed))
+        doneEditingCoursesButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editCoursesPressed))
+        
+        navigationItem.setRightBarButtonItems([addCourseButton, editCoursesButton], animated: true)
+    }
+    
     @objc private func addCoursePressed() {
         performSegue(withIdentifier: "editCourse", sender: self)
     }
@@ -105,12 +111,14 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         toggleTableViewEditMode()
     }
     
+    /// Toggles off table view editing, if it is on.
     private func toggleOffTableViewEditMode() {
         if tableView.isEditing {
             toggleTableViewEditMode()
         }
     }
     
+    /// Toggles table view buttons between Add/Done and Add/Edit, depending on whether table view editing is on or not.
     private func toggleTableViewEditMode() {
         tableView.setEditing(!tableView.isEditing, animated: true)
         if tableView.isEditing {
@@ -120,12 +128,14 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    /// Loads all of the user's courses for the term being displayed, and displays them to the user.
     private func loadCourses() {
         courses.removeAll()
         courses = Database.instance.getCoursesByTermId(id: term.id)
         self.tableView.reloadData()
     }
     
+    /// Calculates and displays the overall GPA and the total credits for the term being displayed.
     private func updateTermDetails() {
         let termGpa = Grading.calculateOverallGpa(courses: courses)
         var newGpaText = "Term CGPA: N/A"

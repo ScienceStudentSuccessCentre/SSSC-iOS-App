@@ -38,18 +38,10 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         courseTitleView.addBorders(edges: [.bottom], color: UIColor(.bluegrey), width: 1)
         courseGradeView.addBorders(edges: [.top], color: UIColor(.bluegrey), width: 0.4)
         
-        let editCourseButton = UIButton(type: .infoLight)
-        editCourseButton.addTarget(self, action: #selector(editCoursePressed), for: .touchUpInside)
-        
-        courseInfoButton = UIBarButtonItem(customView: editCourseButton)
-        editAssignmentsButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editAssignmentsPressed))
-        doneEditingAssignmentsButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editAssignmentsPressed))
-        addAssignmentButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAssignmentPressed))
-        
-        navigationItem.setRightBarButtonItems([courseInfoButton, addAssignmentButton, editAssignmentsButton], animated: true)
-        
         tableView.delegate = self
         tableView.dataSource = self
+        
+        prepareNavigationBarButtons()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +52,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         courseCode.text = course.code
         courseTitle.text = course.name
         
-        navigationController?.navigationBar.barTintColor = UIColor(course.colour).adjustedForNavController()
+        navigationController?.navigationBar.barTintColor = UIColor(course.colour)
         
         loadAssignments()
         updateCourseDetails()
@@ -119,6 +111,19 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
+    /// Sets up the various navigation bar buttons (associates them with their actions).
+    private func prepareNavigationBarButtons() {
+        let editCourseButton = UIButton(type: .infoLight)
+        editCourseButton.addTarget(self, action: #selector(editCoursePressed), for: .touchUpInside)
+        
+        courseInfoButton = UIBarButtonItem(customView: editCourseButton)
+        editAssignmentsButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editAssignmentsPressed))
+        doneEditingAssignmentsButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editAssignmentsPressed))
+        addAssignmentButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAssignmentPressed))
+        
+        navigationItem.setRightBarButtonItems([courseInfoButton, addAssignmentButton, editAssignmentsButton], animated: true)
+    }
+    
     @IBAction private func calcReqFinalExamButtonPressed() {
         performSegue(withIdentifier: "calcReqFinalGrade", sender: self)
     }
@@ -135,18 +140,21 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         performSegue(withIdentifier: "createAssignment", sender: self)
     }
     
+    /// Toggles off table view editing, if it is on.
     private func toggleOffTableViewEditMode() {
         if tableView.isEditing {
             toggleTableViewEditMode()
         }
     }
     
+    /// Loads all of the users assignments for the course being displayed, and displays them to the user.
     private func loadAssignments() {
         assignments.removeAll()
         assignments = Database.instance.getAssignmentsByCourseId(id: course.id)
         self.tableView.reloadData()
     }
     
+    /// Calculates and displays the overall grade for the course being displayed, and shows/hides the final grade calculator button.
     private func updateCourseDetails() {
         courseGrade.text = "Overall Grade: " + course.getGradeSummary()
         
@@ -162,6 +170,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
+    /// Toggles the table view buttons between CourseInfo/Add/Done and CourseInfo/Add/Edit, depending on whether table view editing is on or off.
     private func toggleTableViewEditMode() {
         tableView.setEditing(!tableView.isEditing, animated: true)
         if tableView.isEditing {

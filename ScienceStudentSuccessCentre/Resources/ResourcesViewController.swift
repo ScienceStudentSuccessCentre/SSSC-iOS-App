@@ -14,9 +14,12 @@ class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     private var statusBar: UIView!
     private var webView: WKWebView!
     private var activityIndicator: UIActivityIndicatorView!
+    private let urlString = "http://sssc.carleton.ca/resources"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        statusBar = UIApplication.shared.value(forKey: "statusBar") as? UIView
 
         webView = WKWebView(frame: view.frame)
         webView.navigationDelegate = self
@@ -28,11 +31,10 @@ class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
 
-        let url = URL(string: "http://sssc.carleton.ca/resources")!
-        webView.load(URLRequest(url: url))
-        webView.allowsBackForwardNavigationGestures = true
-
-        statusBar = UIApplication.shared.value(forKey: "statusBar") as? UIView
+        if let url = URL(string: urlString) {
+            webView.load(URLRequest(url: url))
+            webView.allowsBackForwardNavigationGestures = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
