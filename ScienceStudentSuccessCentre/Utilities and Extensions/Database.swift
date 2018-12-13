@@ -270,7 +270,7 @@ class Database {
     /// - Parameter termId: The ID of the term to delete
     /// - Returns: A Boolean indicating if deletion was successful
     public func delete(termId: String) -> Bool {
-        print("Deleting term \(termId) from \(t_terms)")
+        print("Deleting term \(termId)...")
         let term = t_terms.filter(t_terms_id == termId)
         do {
             try db?.run(term.delete())
@@ -287,7 +287,7 @@ class Database {
     /// - Parameter courseId: The ID of the course to delete
     /// - Returns: A Boolean indicating if deletion was successful
     public func delete(courseId: String) -> Bool {
-        print("Deleting course \(courseId) from \(t_courses)")
+        print("Deleting course \(courseId)...")
         let course = t_courses.filter(t_courses_id == courseId)
         do {
             try db?.run(course.delete())
@@ -304,7 +304,7 @@ class Database {
     /// - Parameter weightId: The ID of the weight to delete
     /// - Returns: A Boolean indicating if deletion was successful
     public func delete(weightId: String) -> Bool {
-        print("Deleting weight \(weightId) from \(t_weights)")
+        print("Deleting weight \(weightId)...")
         let weight = t_weights.filter(t_weights_id == weightId)
         do {
             try db?.run(weight.delete())
@@ -321,7 +321,7 @@ class Database {
     /// - Parameter assignmentId: The ID of the assignment to delete
     /// - Returns: A Boolean indicating if deletion was successful
     public func delete(assignmentId: String) -> Bool {
-        print("Deleting assignment \(assignmentId) from \(t_assignments)")
+        print("Deleting assignment \(assignmentId)...")
         let assignment = t_assignments.filter(t_assignments_id == assignmentId)
         do {
             try db?.run(assignment.delete())
@@ -337,7 +337,7 @@ class Database {
     ///
     /// - Returns: List of terms
     public func getTerms() -> [Term] {
-        print("Getting terms from \(t_terms)")
+        print("Getting terms...")
         var terms = [Term]()
         do {
             for row in try (db?.prepare(t_terms))! {
@@ -357,7 +357,7 @@ class Database {
     ///
     /// - Returns: List of courses
     public func getCourses() -> [Course] {
-        print("Getting courses from \(t_courses)")
+        print("Getting courses...")
         var courses = [Course]()
         do {
             for row in try (db?.prepare(t_courses))! {
@@ -383,7 +383,7 @@ class Database {
     /// - Parameter id: The ID of the course to retrieve
     /// - Returns: The course
     public func getCourseById(id: String) -> Course? {
-        print("Getting course from \(t_courses) with id \(id)")
+        print("Getting course with id \(id)...")
         var course: Course? = nil
         do {
             let row = try db?.pluck(t_courses.filter(t_courses_id == id))
@@ -409,7 +409,7 @@ class Database {
     /// - Parameter id: The ID of the term with which the courses are associated
     /// - Returns: List of courses
     public func getCoursesByTermId(id: String) -> [Course] {
-        print("Getting courses from \(t_courses) by termId \(id)")
+        print("Getting courses by termId \(id)...")
         var courses = [Course]()
         do {
             for row in try (db?.prepare(t_courses.filter(t_courses_termId == id)))! {
@@ -435,7 +435,7 @@ class Database {
     /// - Parameter id: The ID of the weight to retrieve
     /// - Returns: The weight
     public func getWeightById(id: String) -> Weight? {
-        print("Getting weight from \(t_weights) with id \(id)")
+        print("Getting weight with id \(id)...")
         var weight: Weight? = nil
         do {
             let row = try db?.pluck(t_weights.filter(t_weights_id == id))
@@ -457,7 +457,7 @@ class Database {
     /// - Parameter id: The ID of the course with which the weights are associated
     /// - Returns: List of weights
     public func getWeightsByCourseId(id: String) -> [Weight] {
-        print("Getting weights from \(t_weights) by courseId \(id)")
+        print("Getting weights by courseId \(id)...")
         var weights = [Weight]()
         do {
             for row in try (db?.prepare(t_weights.filter(t_weights_courseId == id)))! {
@@ -479,7 +479,7 @@ class Database {
     /// - Parameter id: The ID of the assignment to retrieve
     /// - Returns: The assignment
     public func getAssignmentById(id: String) -> Assignment? {
-        print("Getting assignment from \(t_assignments) with id \(id)")
+        print("Getting assignment with id \(id)...")
         var assignment: Assignment? = nil
         do {
             let row = try db?.pluck(t_assignments.filter(t_assignments_id == id))
@@ -504,7 +504,7 @@ class Database {
     /// - Parameter id: The ID of the course with which the assignments are associated
     /// - Returns: List of assignments
     public func getAssignmentsByCourseId(id: String) -> [Assignment] {
-        print("Getting assignments from \(t_assignments) by courseId \(id)")
+        print("Getting assignments by courseId \(id)...")
         var assignments = [Assignment]()
         do {
             for row in try (db?.prepare(t_assignments.filter(t_assignments_courseId == id)))! {
