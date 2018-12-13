@@ -32,35 +32,35 @@ extension UIColor {
     convenience init(_ colorString: Material) {
         switch colorString {
         case .red:
-            self.init(hex: "#FF574A")
+            self.init(hex: "#f44336")
         case .pink:
-            self.init(hex: "#FD3277")
+            self.init(hex: "#ff4081")
         case .purple:
-            self.init(hex: "#BD66C7")
+            self.init(hex: "#ab47bc")
         case .deeppurple:
-            self.init(hex: "#7B4ECB")
+            self.init(hex: "#673ab7")
         case .indigo:
-            self.init(hex: "#5365C9")
+            self.init(hex: "#3f51b5")
         case .blue:
-            self.init(hex: "#35AAFF")
+            self.init(hex: "#2196f3")
         case .lightblue:
-            self.init(hex: "#17BDFF")
+            self.init(hex: "#29b6f6")
         case .cyan:
-            self.init(hex: "#14D0E8")
+            self.init(hex: "#26c6da")
         case .teal:
-            self.init(hex: "#14AA9C")
+            self.init(hex: "#26a69a")
         case .green:
-            self.init(hex: "#60C364")
+            self.init(hex: "#4caf50")
         case .lightgreen:
-            self.init(hex: "#9FD75E")
-        case .lime:
-            self.init(hex: "#E1F04D")
+            self.init(hex: "#8bc34a")
         case .amber:
-            self.init(hex: "#FFD51B")
+            self.init(hex: "#ffc107")
         case .orange:
-            self.init(hex: "#FFAC14")
-        case .deeporange:
-            self.init(hex: "#FF6B36")
+            self.init(hex: "#ff9800")
+        case .tangerine:
+            self.init(hex: "#ff7043")
+        case .steelblue:
+            self.init(hex: "#789aa8")
         case .brown:
             self.init(hex: "#79695C")
         case .grey:
@@ -69,8 +69,6 @@ extension UIColor {
             self.init(hex: "#74919F")
         case .lightgrey:
             self.init(hex: "#EBEBEB")
-        case .navbar:
-            self.init(hex: "#779AA9")
         }
     }
     
@@ -86,24 +84,26 @@ extension UIColor {
         case teal
         case green
         case lightgreen
-        case lime
         case amber
         case orange
-        case deeporange
+        case tangerine
+        case steelblue
         case brown
         case grey
         case bluegrey
         case lightgrey
-        case navbar
         
         static func fromUIColor(color: UIColor?) -> Material {
             return self.allCases.first{ UIColor($0) == color } ?? .red
         }
         
-        static func getColourPalette() -> [ColorSpec] {
+        static func getCourseColourPalette() -> [ColorSpec] {
+            let excludedCourseColours: [Material] = [brown, grey, bluegrey, lightgrey]
             var colourPalette = [ColorSpec]()
             for colour in Material.allCases {
-                colourPalette.append(ColorSpec(hex: UIColor(colour).hexString(), name: colour.rawValue))
+                if !excludedCourseColours.contains(colour) {
+                    colourPalette.append(ColorSpec(hex: UIColor(colour).hexString(), name: colour.rawValue))
+                }
             }
             return colourPalette
         }

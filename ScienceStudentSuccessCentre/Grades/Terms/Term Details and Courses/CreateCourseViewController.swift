@@ -94,7 +94,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             row.showsPaletteNames = false
             row.value = UIColor(.red)
         }.cellSetup { (cell, row) in
-            let palette = ColorPalette(name: "Material", palette: UIColor.Material.getColourPalette())
+            let palette = ColorPalette(name: "Material", palette: UIColor.Material.getCourseColourPalette())
             row.palettes = [palette]
         }
         +++ MultivaluedSection(multivaluedOptions: [.Insert, .Delete], header: "Assignment Weights", footer: "Assignment weights should total 100%.") { section in
