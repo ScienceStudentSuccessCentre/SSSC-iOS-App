@@ -10,6 +10,7 @@ import Foundation
 import SQLite
 import UIKit
 
+/// Singleton class that handles all interactions with the SQLite database.
 class Database {
     
     public static let instance = Database()
@@ -47,6 +48,9 @@ class Database {
     
     private var db: Connection?
     
+    /// Initializes the Database singleton and prepares the database for use.
+    ///
+    /// This constructor starts by attempting to connect to the database at the given path. If successful, `foreign_key` functionality is turned on. Following this, pre-table-creation scripts run, the tables are created (if they don't already exist), and post-table-creation scripts are run.
     private init() {
         db = try? Connection("\(Database.path)/\(Database.name)")
         if db != nil {
@@ -69,6 +73,7 @@ class Database {
         }
     }
     
+    /// Creates a table to store `Term` objects, if one doesn't already exist.
     private func createTermsTable() {
         do {
             try db?.run(t_terms.create(ifNotExists: true) { t in
@@ -77,10 +82,11 @@ class Database {
                 t.column(t_terms_year)
             })
         } catch {
-            print("Did not create terms table")
+            print("Could not create terms table: \(error)")
         }
     }
     
+    /// Creates a table to store `Course` objects, if one doesn't already exist.
     private func createCoursesTable() {
         do {
             try db?.run(t_courses.create(ifNotExists: true) { t in
@@ -95,10 +101,11 @@ class Database {
                 t.foreignKey(t_courses_termId, references: t_terms, t_terms_id, delete: .cascade)
             })
         } catch {
-            print("Did not create courses table")
+            print("Could not create courses table: \(error)")
         }
     }
     
+    /// Creates a table to store `Weight` objects, if one doesn't already exist.
     private func createWeightsTable() {
         do {
             try db?.run(t_weights.create(ifNotExists: true) { t in
@@ -109,10 +116,11 @@ class Database {
                 t.foreignKey(t_weights_courseId, references: t_courses, t_courses_id, delete: .cascade)
             })
         } catch {
-            print("Did not create weights table")
+            print("Could not create weights table: \(error)")
         }
     }
     
+    /// Creates a table to store `Assignment` objects, if one doesn't already exist.
     private func createAssignmentsTable() {
         do {
             try db?.run(t_assignments.create(ifNotExists: true) { t in
@@ -126,10 +134,14 @@ class Database {
                 t.foreignKey(t_assignments_courseId, references: t_courses, t_courses_id, delete: .cascade)
             })
         } catch {
-            print("Did not create assignments table")
+            print("Could not create assignments table: \(error)")
         }
     }
     
+    /// Inserts a term into the database.
+    ///
+    /// - Parameter term: The term to insert
+    /// - Returns: A Boolean indicating if insertion was successful
     public func insert(term: Term) -> Bool {
         print("Adding term \(term.term) \(term.year) into \(t_terms)")
         do {
@@ -148,6 +160,11 @@ class Database {
         return true
     }
     
+    /// Inserts or updates a course in the database.
+    ///
+    /// This function will attempt to insert a new course into the table, unless a course with matching ID is found in the table, in which case it will attempt to update the existing course.
+    /// - Parameter course: The course to insert or update
+    /// - Returns: A Boolean indicating if insertion/updating was successful
     public func insertOrUpdate(course: Course) -> Bool {
         do {
             if getCourseById(id: course.id) == nil {
@@ -182,6 +199,11 @@ class Database {
         return true
     }
     
+    /// Inserts or updates a weight in the database.
+    ///
+    /// This function will attempt to insert a new weight into the table, unless a weight with matching ID is found in the table, in which case it will attempt to update the existing weight.
+    /// - Parameter weight: The weight to insert or update
+    /// - Returns: A Boolean indicating if insertion/updating was successful
     public func insertOrUpdate(weight: Weight) -> Bool {
         do {
             if getWeightById(id: weight.id) == nil {
@@ -208,6 +230,11 @@ class Database {
         return true
     }
     
+    /// Inserts or updates an assignment in the database.
+    ///
+    /// This function will attempt to insert a new assignment into the table, unless an assignment with matching ID is found in the table, in which case it will attempt to update the existing assignment.
+    /// - Parameter assignment: The assignment to insert or update
+    /// - Returns: A Boolean indicating if insertion/updating was successful
     public func insertOrUpdate(assignment: Assignment) -> Bool {
         do {
             if getAssignmentById(id: assignment.id) == nil {
@@ -238,58 +265,77 @@ class Database {
         return true
     }
     
+    /// Attempts to delete an existing term from the database.
+    ///
+    /// - Parameter termId: The ID of the term to delete
+    /// - Returns: A Boolean indicating if deletion was successful
     public func delete(termId: String) -> Bool {
         print("Deleting term \(termId) from \(t_terms)")
         let term = t_terms.filter(t_terms_id == termId)
         do {
             try db?.run(term.delete())
             print("Deleted term \(termId)")
-            return true
         } catch let error {
             print("Delete failed: \(error)")
+            return false
         }
-        return false
+        return true
     }
     
+    /// Attempts to delete an existing course from the database.
+    ///
+    /// - Parameter courseId: The ID of the course to delete
+    /// - Returns: A Boolean indicating if deletion was successful
     public func delete(courseId: String) -> Bool {
         print("Deleting course \(courseId) from \(t_courses)")
         let course = t_courses.filter(t_courses_id == courseId)
         do {
             try db?.run(course.delete())
             print("Deleted course \(courseId)")
-            return true
         } catch let error {
             print("Delete failed: \(error)")
+            return false
         }
-        return false
+        return true
     }
     
+    /// Attempts to delete an existing weight from the database.
+    ///
+    /// - Parameter weightId: The ID of the weight to delete
+    /// - Returns: A Boolean indicating if deletion was successful
     public func delete(weightId: String) -> Bool {
         print("Deleting weight \(weightId) from \(t_weights)")
         let weight = t_weights.filter(t_weights_id == weightId)
         do {
             try db?.run(weight.delete())
             print("Deleted weight \(weightId)")
-            return true
         } catch let error {
             print("Delete failed: \(error)")
+            return false
         }
-        return false
+        return true
     }
     
+    /// Attempts to delete an existing assignment from the database.
+    ///
+    /// - Parameter assignmentId: The ID of the assignment to delete
+    /// - Returns: A Boolean indicating if deletion was successful
     public func delete(assignmentId: String) -> Bool {
         print("Deleting assignment \(assignmentId) from \(t_assignments)")
         let assignment = t_assignments.filter(t_assignments_id == assignmentId)
         do {
             try db?.run(assignment.delete())
             print("Deleted assignment \(assignmentId)")
-            return true
         } catch let error {
             print("Delete failed: \(error)")
+            return false
         }
-        return false
+        return true
     }
     
+    /// Retrieves all of the terms stored in the database.
+    ///
+    /// - Returns: List of terms
     public func getTerms() -> [Term] {
         print("Getting terms from \(t_terms)")
         var terms = [Term]()
@@ -301,12 +347,15 @@ class Database {
                 terms.append(Term(id: termId, term: term, year: year))
             }
         } catch let error {
-            print("Select failed: \(error)")
+            print("Terms select failed: \(error)")
         }
         print("Found \(terms.count) terms")
         return terms
     }
     
+    /// Retrieves all of the courses stored in the database.
+    ///
+    /// - Returns: List of courses
     public func getCourses() -> [Course] {
         print("Getting courses from \(t_courses)")
         var courses = [Course]()
@@ -323,14 +372,19 @@ class Database {
                 courses.append(Course(id: courseId, name: name, code: code, credits: credits, isMajorCourse: isMajorCourse, finalGrade: finalGrade, termId: termId, colour: colour))
             }
         } catch let error {
-            print("Select failed: \(error)")
+            print("Courses select failed: \(error)")
         }
         print("Found \(courses.count) courses")
         return courses
     }
     
+    /// Retrieves a course from the database by its ID.
+    ///
+    /// - Parameter id: The ID of the course to retrieve
+    /// - Returns: The course
     public func getCourseById(id: String) -> Course? {
         print("Getting course from \(t_courses) with id \(id)")
+        var course: Course? = nil
         do {
             let row = try db?.pluck(t_courses.filter(t_courses_id == id))
             if (row != nil) {
@@ -342,15 +396,18 @@ class Database {
                 let finalGrade = try row!.get(t_courses_finalGrade)
                 let termId = try row!.get(t_courses_termId)
                 let colour = UIColor.Material(rawValue: try row!.get(t_courses_colour))
-                return Course(id: courseId, name: name, code: code, credits: credits, isMajorCourse: isMajorCourse, finalGrade: finalGrade, termId: termId, colour: colour)
+                course = Course(id: courseId, name: name, code: code, credits: credits, isMajorCourse: isMajorCourse, finalGrade: finalGrade, termId: termId, colour: colour)
             }
         } catch let error {
-            print("Select failed: \(error)")
+            print("Course select failed: \(error)")
         }
-        print("Unable to get course")
-        return nil
+        return course
     }
     
+    /// Retrieves all courses from the database with a given termId.
+    ///
+    /// - Parameter id: The ID of the term with which the courses are associated
+    /// - Returns: List of courses
     public func getCoursesByTermId(id: String) -> [Course] {
         print("Getting courses from \(t_courses) by termId \(id)")
         var courses = [Course]()
@@ -367,14 +424,19 @@ class Database {
                 courses.append(Course(id: courseId, name: name, code: code, credits: credits, isMajorCourse: isMajorCourse, finalGrade: finalGrade, termId: termId, colour: colour))
             }
         } catch let error {
-            print("Select failed: \(error)")
+            print("Courses select failed: \(error)")
         }
         print("Found \(courses.count) courses")
         return courses
     }
     
+    /// Retrieves a weight from the database by its ID.
+    ///
+    /// - Parameter id: The ID of the weight to retrieve
+    /// - Returns: The weight
     public func getWeightById(id: String) -> Weight? {
         print("Getting weight from \(t_weights) with id \(id)")
+        var weight: Weight? = nil
         do {
             let row = try db?.pluck(t_weights.filter(t_weights_id == id))
             if (row != nil) {
@@ -382,15 +444,18 @@ class Database {
                 let name = try row!.get(t_weights_name)
                 let value = try row!.get(t_weights_value)
                 let courseId = try row!.get(t_weights_courseId)
-                return Weight(id: weightId, name: name, value: value, courseId: courseId)
+                weight = Weight(id: weightId, name: name, value: value, courseId: courseId)
             }
         } catch let error {
-            print("Select failed: \(error)")
+            print("Weight select failed: \(error)")
         }
-        print("Unable to get weight")
-        return nil
+        return weight
     }
     
+    /// Retrieves all weights from the database with a given courseId.
+    ///
+    /// - Parameter id: The ID of the course with which the weights are associated
+    /// - Returns: List of weights
     public func getWeightsByCourseId(id: String) -> [Weight] {
         print("Getting weights from \(t_weights) by courseId \(id)")
         var weights = [Weight]()
@@ -403,14 +468,19 @@ class Database {
                 weights.append(Weight(id: weightId, name: name, value: value, courseId: courseId))
             }
         } catch let error {
-            print("Select failed: \(error)")
+            print("Weights select failed: \(error)")
         }
         print("Found \(weights.count) weights")
         return weights
     }
     
+    /// Retrieves an assignment from the databse by its ID.
+    ///
+    /// - Parameter id: The ID of the assignment to retrieve
+    /// - Returns: The assignment
     public func getAssignmentById(id: String) -> Assignment? {
         print("Getting assignment from \(t_assignments) with id \(id)")
+        var assignment: Assignment? = nil
         do {
             let row = try db?.pluck(t_assignments.filter(t_assignments_id == id))
             if (row != nil) {
@@ -421,15 +491,18 @@ class Database {
                 let weightId = try row!.get(t_assignments_weightId)
                 let weight = getWeightById(id: weightId)
                 let courseId = try row!.get(t_assignments_courseId)
-                return Assignment(id: assignmentId, name: name, gradeEarned: gradeEarned, gradeTotal: gradeTotal, weight: weight!, courseId: courseId)
+                assignment = Assignment(id: assignmentId, name: name, gradeEarned: gradeEarned, gradeTotal: gradeTotal, weight: weight!, courseId: courseId)
             }
         } catch let error {
-            print("Select failed: \(error)")
+            print("Assignment select failed: \(error)")
         }
-        print("Unable to get assignment")
-        return nil
+        return assignment
     }
     
+    /// Retrieves all assignments from the database with a given courseId.
+    ///
+    /// - Parameter id: The ID of the course with which the assignments are associated
+    /// - Returns: List of assignments
     public func getAssignmentsByCourseId(id: String) -> [Assignment] {
         print("Getting assignments from \(t_assignments) by courseId \(id)")
         var assignments = [Assignment]()
@@ -451,25 +524,18 @@ class Database {
         return assignments
     }
     
+    /// Runs any custom scripts that should be run BEFORE creating tables.
+    ///
+    /// - Attention: This function should only be used for development/testing/debugging purposes.
     private func preCreationScripts() {
-        // any custom scripts that should be run while developing/testing/debugging BEFORE creating tables
-//        do {
-//            try db?.run(t_assignments.drop())
-//            try db?.run(t_courses.drop())
-//            try db?.run(t_weights.drop())
-//            try db?.run(t_terms.drop())
-//        } catch {
-//            print("Failed to execute pre-creation scripts")
-//        }
+        print("No pre-creation scripts to run")
     }
     
+    /// Runs any custom scripts that should be run AFTER creating tables.
+    ///
+    /// - Attention: This function should only be used for development/testing/debugging purposes.
     private func postCreationScripts() {
-        // any custom scripts that should be run while developing/testing/debugging AFTER creating tables
-//        do {
-//
-//        } catch {
-//            print("Failed to execute post-creation scripts")
-//        }
+        print("No post-creation scripts to run")
     }
     
 }
