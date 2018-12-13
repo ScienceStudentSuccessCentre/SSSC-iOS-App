@@ -36,41 +36,41 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
     /// Creates a Eureka form for calculating required final exam grades for a desired course grade.
     func createForm() {
         form
-            +++ Section(footer: "If you want a certain final grade in a course, you can use this section to determine what grade you should aim for on your final exam.")
-            +++ Section("Course Details - " + course.code)
-            <<< DecimalRow() { row in
-                row.tag = "currentGrade"
-                row.title = "Current Course Grade"
-                row.placeholder = "85%"
-                row.value = course.getPercentGrade().rounded(toPlaces: 2)
-                row.formatter = gradeFormatter
-            }.onChange { _ in
-                self.validateForm()
-            }
-            <<< DecimalRow() { row in
-                row.tag = "desiredGrade"
-                row.title = "Desired Final Grade"
-                row.placeholder = "90%"
-                row.formatter = gradeFormatter
-            }.onChange { _ in
-                self.validateForm()
-            }
-            <<< PushRow<String>() { row in
-                row.tag = "weight"
-                row.title = "Final Exam Weight"
-                row.options = weightNames
-                row.value = nil
-            }.onChange {_ in
-                self.validateForm()
-            }
-            +++ Section("Minimum Final Exam Grade Required")
-            <<< DecimalRow() { row in
-                row.tag = "requiredGrade"
-                row.title = "Grade"
-                row.placeholder = "Enter Info Above"
-                row.formatter = gradeFormatter
-                row.baseCell.isUserInteractionEnabled = false
-            }
+        +++ Section(footer: "If you want a certain final grade in a course, you can use this section to determine what grade you should aim for on your final exam.")
+        +++ Section("Course Details - " + course.code)
+        <<< DecimalRow() { row in
+            row.tag = "currentGrade"
+            row.title = "Current Course Grade"
+            row.placeholder = "85%"
+            row.value = course.getPercentGrade().rounded(toPlaces: 2)
+            row.formatter = gradeFormatter
+        }.onChange { _ in
+            self.validateForm()
+        }
+        <<< DecimalRow() { row in
+            row.tag = "desiredGrade"
+            row.title = "Desired Final Grade"
+            row.placeholder = "90%"
+            row.formatter = gradeFormatter
+        }.onChange { _ in
+            self.validateForm()
+        }
+        <<< PushRow<String>() { row in
+            row.tag = "weight"
+            row.title = "Final Exam Weight"
+            row.options = weightNames
+            row.value = nil
+        }.onChange {_ in
+            self.validateForm()
+        }
+        +++ Section("Minimum Final Exam Grade Required")
+        <<< DecimalRow() { row in
+            row.tag = "requiredGrade"
+            row.title = "Grade"
+            row.placeholder = "Enter Info Above"
+            row.formatter = gradeFormatter
+            row.baseCell.isUserInteractionEnabled = false
+        }
     }
     
     /// Validates the current form values.

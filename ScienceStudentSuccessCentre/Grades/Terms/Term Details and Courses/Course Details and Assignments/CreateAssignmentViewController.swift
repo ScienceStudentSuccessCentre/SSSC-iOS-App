@@ -41,45 +41,46 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
         createForm()
         if assignment != nil {
             fillForm()
+            validateForm()
         }
     }
     
     /// Creates a Eureka form for creating and editing Assignment objects.
     func createForm() {
         form
-            +++ Section(header: "Assignment Info", footer: weights.count == 0 ? "In order to add assignments, please create assignment weights for this course. This can be done from the previous screen." : "")
-            <<< TextRow() { row in
-                row.tag = "name"
-                row.title = "Name"
-                row.placeholder = "Assignment 1"
-                row.cell.textField.autocapitalizationType = .words
-            }.onChange { _ in
-                self.validateForm()
-            }
-            <<< DecimalRow() { row in
-                row.tag = "gradeEarned"
-                row.title = "Grade Earned"
-                row.placeholder = "26"
-                row.formatter = gradeFormatter
-            }.onChange { _ in
-                self.validateForm()
-            }
-            <<< DecimalRow() { row in
-                row.tag = "gradeTotal"
-                row.title = "Maximum Grade"
-                row.placeholder = "30"
-                row.formatter = gradeFormatter
-            }.onChange { _ in
-                self.validateForm()
-            }
-            <<< PushRow<String>() { row in
-                row.tag = "weight"
-                row.title = "Weight"
-                row.options = weightNames
-                row.value = nil
-            }.onChange {_ in
-                self.validateForm()
-            }
+        +++ Section(header: "Assignment Info", footer: weights.count == 0 ? "In order to add assignments, please create assignment weights for this course. This can be done from the previous screen." : "")
+        <<< TextRow() { row in
+            row.tag = "name"
+            row.title = "Name"
+            row.placeholder = "Assignment 1"
+            row.cell.textField.autocapitalizationType = .words
+        }.onChange { _ in
+            self.validateForm()
+        }
+        <<< DecimalRow() { row in
+            row.tag = "gradeEarned"
+            row.title = "Grade Earned"
+            row.placeholder = "26"
+            row.formatter = gradeFormatter
+        }.onChange { _ in
+            self.validateForm()
+        }
+        <<< DecimalRow() { row in
+            row.tag = "gradeTotal"
+            row.title = "Maximum Grade"
+            row.placeholder = "30"
+            row.formatter = gradeFormatter
+        }.onChange { _ in
+            self.validateForm()
+        }
+        <<< PushRow<String>() { row in
+            row.tag = "weight"
+            row.title = "Weight"
+            row.options = weightNames
+            row.value = nil
+        }.onChange {_ in
+            self.validateForm()
+        }
     }
     
     /// Fills in form values from the Assignment object provided to this view controller.

@@ -50,86 +50,93 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         createForm()
         if course != nil {
             fillForm()
+            validateForm()
         }
     }
     
     /// Creates a Eureka form for creating and editing Course objects.
     func createForm() {
         form
-            +++ Section("Course Info")
-            <<< TextRow() { row in
-                row.tag = "name"
-                row.title = "Name"
-                row.placeholder = "Operating Systems"
-                row.cell.textField.autocapitalizationType = .words
-            }.onChange { _ in
-                self.validateForm()
-            }
-            <<< TextRow() { row in
-                row.tag = "code"
-                row.title = "Code"
-                row.placeholder = "COMP 3000"
-                row.cell.textField.autocapitalizationType = .allCharacters
-            }.onChange { _ in
-                self.validateForm()
-            }
-            <<< DecimalRow() { row in
-                row.tag = "credits"
-                row.title = "Credits"
-                row.placeholder = "0.5"
-                row.formatter = creditFormatter
-            }.onChange { _ in
-                self.validateForm()
-            }
-            <<< SwitchRow() { row in
-                row.tag = "isMajorCourse"
-                row.title = "Counts Towards Major CGPA"
-            }
-            +++ Section("Course Colour")
-            <<< InlineColorPickerRow() { row in
-                row.tag = "colour"
-                row.title = "Select a Colour"
-                row.isCircular = false
-                row.showsPaletteNames = false
-                row.value = UIColor(.red)
-            }.cellSetup { (cell, row) in
-                let palette = ColorPalette(name: "Material", palette: UIColor.Material.getColourPalette())
-                row.palettes = [palette]
-            }
-            +++ MultivaluedSection(multivaluedOptions: [.Insert, .Delete], header: "Assignment Weights", footer: "Assignment weights should total 100%.") { section in
-                section.addButtonProvider = { section in
-                    return ButtonRow() {
-                        $0.title = "Add New Weight"
-                    }
+        +++ Section("Course Info")
+        <<< TextRow() { row in
+            row.tag = "name"
+            row.title = "Name"
+            row.placeholder = "Operating Systems"
+            row.cell.textField.autocapitalizationType = .words
+        }.onChange { _ in
+            self.validateForm()
+        }
+        <<< TextRow() { row in
+            row.tag = "code"
+            row.title = "Code"
+            row.placeholder = "COMP 3000"
+            row.cell.textField.autocapitalizationType = .allCharacters
+        }.onChange { _ in
+            self.validateForm()
+        }
+        <<< DecimalRow() { row in
+            row.tag = "credits"
+            row.title = "Credits"
+            row.placeholder = "0.5"
+            row.formatter = creditFormatter
+        }.onChange { _ in
+            self.validateForm()
+        }
+        <<< SwitchRow() { row in
+            row.tag = "isMajorCourse"
+            row.title = "Counts Towards Major CGPA"
+        }
+        +++ Section("Course Colour")
+        <<< InlineColorPickerRow() { row in
+            row.tag = "colour"
+            row.title = "Select a Colour"
+            row.isCircular = false
+            row.showsPaletteNames = false
+            row.value = UIColor(.red)
+        }.cellSetup { (cell, row) in
+            let palette = ColorPalette(name: "Material", palette: UIColor.Material.getColourPalette())
+            row.palettes = [palette]
+        }
+        +++ MultivaluedSection(multivaluedOptions: [.Insert, .Delete], header: "Assignment Weights", footer: "Assignment weights should total 100%.") { section in
+            section.addButtonProvider = { section in
+                return ButtonRow() {
+                    $0.title = "Add New Weight"
                 }
-                section.multivaluedRowToInsertAt = { index in
-                    return SplitRow<TextRow, IntRow>() {
-                        $0.rowLeft = TextRow() {
-                            $0.placeholder = "Final Exam"
-                            $0.cell.textField.autocapitalizationType = .words //TODO: this doesn't appear to be working
-                        }
-                        
-                        $0.rowRight = IntRow() {
-                            $0.placeholder = "30%"
-                            $0.formatter = self.weightFormatter
-                        }
-                        
-                        $0.tag = nil
-                    }.onChange { _ in
-                        self.validateForm()
+            }
+            section.multivaluedRowToInsertAt = { index in
+                return SplitRow<TextRow, IntRow>() {
+                    $0.tag = nil
+                    $0.rowLeft = TextRow() {
+                        $0.placeholder = "Final Exam"
+                        $0.cell.textField.autocapitalizationType = .words //TODO: this doesn't appear to be working
                     }
+                    $0.rowRight = IntRow() {
+                        $0.placeholder = "30%"
+                        $0.formatter = self.weightFormatter
+                    }
+                    $0.trailingSwipe.actions = [SwipeAction(
+                        style: .destructive,
+                        title: "Delete",
+                        handler: { (action, row, completionHandler) in
+                            section.remove(at: row.indexPath!.row)
+                            self.tableView.isEditing = false
+                            self.validateForm()
+                    })]
+                }.onChange { _ in
+                    self.validateForm()
                 }
-                section.tag = "weights"
             }
-            +++ Section(header: "Override Calculated Grade", footer: "If you have already received a final letter grade from Carleton for this course, enter it here to ensure GPA calculation accuracy.")
-            <<< PushRow<String>() { row in
-                row.tag = "finalGrade"
-                row.title = "Final Grade"
-                row.options = letterGrades
-                row.value = letterGrades.first
-            }.onChange { _ in
-                self.validateForm()
-            }
+            section.tag = "weights"
+        }
+        +++ Section(header: "Override Calculated Grade", footer: "If you have already received a final letter grade from Carleton for this course, enter it here to ensure GPA calculation accuracy.")
+        <<< PushRow<String>() { row in
+            row.tag = "finalGrade"
+            row.title = "Final Grade"
+            row.options = letterGrades
+            row.value = letterGrades.first
+        }.onChange { _ in
+            self.validateForm()
+        }
     }
     
     /// Fills in form values from the Course object provided to this view controller.
@@ -143,20 +150,26 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         var weightsSection = form.sectionBy(tag: "weights") as! MultivaluedSection
         for weight in weights {
             let newRow = SplitRow<TextRow, IntRow>() {
+                $0.tag = weight.id
                 $0.rowLeft = TextRow() {
                     $0.value = weight.name
                     $0.cell.textField.autocapitalizationType = .words //TODO: This (.words) doesn't appear to be working
                 }
-                
                 $0.rowRight = IntRow() {
                     $0.value = Int(weight.value)
                     $0.formatter = self.weightFormatter
                 }
-                
-                $0.tag = weight.id
-                
-                }.onChange { _ in
-                    self.validateForm()
+                $0.trailingSwipe.actions = [SwipeAction(
+                    style: .destructive,
+                    title: "Delete",
+                    handler: { (action, row, completionHandler) in
+                        weightsSection.remove(at: row.indexPath!.row)
+                        self.tableView.isEditing = false
+                        self.validateForm()
+                        completionHandler?(true)
+                })]
+            }.onChange { _ in
+                self.validateForm()
             }
             weightsSection.append(newRow)
         }
@@ -164,24 +177,6 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         // Adjust the Add New Weight button so it's below the actual weights
         let addButton = weightsSection.removeFirst()
         weightsSection.append(addButton)
-    }
-    
-    override func rowsHaveBeenAdded(_ rows: [BaseRow], at indexes: [IndexPath]) {
-        super.rowsHaveBeenAdded(rows, at: indexes)
-        self.validateForm()
-    }
-    
-    override func rowsHaveBeenRemoved(_ rows: [BaseRow], at indexes: [IndexPath]) {
-        super.rowsHaveBeenRemoved(rows, at: indexes)
-        //TODO: Stop editing accessory buttons from appearing after a row is removed
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        super.tableView(tableView, commit: editingStyle, forRowAt: indexPath)
-        if editingStyle == .delete {
-            isEditing = false
-            self.validateForm()
-        }
     }
     
     /// Validates the current form values.
