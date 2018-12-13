@@ -63,14 +63,17 @@ class Database {
             }
             
             preCreationScripts()
-            
-            createTermsTable()
-            createCoursesTable()
-            createWeightsTable()
-            createAssignmentsTable()
-            
+            createTables()
             postCreationScripts()
         }
+    }
+    
+    /// Creates all of the tables for the database.
+    private func createTables() {
+        createTermsTable()
+        createCoursesTable()
+        createWeightsTable()
+        createAssignmentsTable()
     }
     
     /// Creates a table to store `Term` objects, if one doesn't already exist.
@@ -430,6 +433,27 @@ class Database {
         return courses
     }
     
+    /// Retrieves all of the weights stored in the database.
+    ///
+    /// - Returns: List of weights
+    public func getWeights() -> [Weight] {
+        print("Getting weights...")
+        var weights = [Weight]()
+        do {
+            for row in try (db?.prepare(t_weights))! {
+                let weightId = try row.get(t_weights_id)
+                let name = try row.get(t_weights_name)
+                let value = try row.get(t_weights_value)
+                let courseId = try row.get(t_weights_courseId)
+                weights.append(Weight(id: weightId, name: name, value: value, courseId: courseId))
+            }
+        } catch let error {
+            print("Weights select failed: \(error)")
+        }
+        print("Found \(weights.count) weights")
+        return weights
+    }
+    
     /// Retrieves a weight from the database by its ID.
     ///
     /// - Parameter id: The ID of the weight to retrieve
@@ -472,6 +496,30 @@ class Database {
         }
         print("Found \(weights.count) weights")
         return weights
+    }
+    
+    /// Retrieves all of the assignments stored in the database.
+    ///
+    /// - Returns: List of assignments
+    public func getAssignments() -> [Assignment] {
+        print("Getting assignments...")
+        var assignments = [Assignment]()
+        do {
+            for row in try (db?.prepare(t_assignments))! {
+                let assignmentId = try row.get(t_assignments_id)
+                let name = try row.get(t_assignments_name)
+                let gradeEarned = try row.get(t_assignments_gradeEarned)
+                let gradeTotal = try row.get(t_assignments_gradeTotal)
+                let weightId = try row.get(t_assignments_weightId)
+                let weight = getWeightById(id: weightId)
+                let courseId = try row.get(t_assignments_courseId)
+                assignments.append(Assignment(id: assignmentId, name: name, gradeEarned: gradeEarned, gradeTotal: gradeTotal, weight: weight!, courseId: courseId))
+            }
+        } catch let error {
+            print("Assignments select failed: \(error)")
+        }
+        print("Found \(assignments.count) assignments")
+        return assignments
     }
     
     /// Retrieves an assignment from the databse by its ID.
@@ -524,6 +572,79 @@ class Database {
         return assignments
     }
     
+    /// Encodes the entire contents of the database for exporting to a file.
+    ///
+    /// - Returns: The encoded database contents.
+    func exportData() -> Data? {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        
+        let gradesContainer = GradesContainer(terms: getTerms(), courses: getCourses(), assignments: getAssignments(), weights: getWeights())
+        
+        do {
+            let gradesData = try encoder.encode(gradesContainer)
+            return gradesData
+        } catch {
+            return nil
+        }
+    }
+    
+    /// Decodes database contents from a provided URL, replacing whatever exists in the database so far.
+    ///
+    /// - Parameter url: The URL of the data to decode
+    /// - Returns: A Boolean indicating whether importing was successful
+    func importData(from url: URL) -> Bool {
+        let decoder = JSONDecoder()
+        do {
+            let gradesData = try Data(contentsOf: url)
+            let gradesContainer = try decoder.decode(GradesContainer.self, from: gradesData)
+            dropTables()
+            createTables()
+            for term in gradesContainer.terms {
+                if !insert(term: term) {
+                    print("Failed to save import data")
+                    return false
+                }
+            }
+            for course in gradesContainer.courses {
+                if !insertOrUpdate(course: course) {
+                    print("Failed to save import data")
+                    return false
+                }
+            }
+            for weight in gradesContainer.weights {
+                if !insertOrUpdate(weight: weight) {
+                    print("Failed to save import data")
+                    return false
+                }
+            }
+            for assignment in gradesContainer.assignments {
+                if !insertOrUpdate(assignment: assignment) {
+                    print("Failed to save import data")
+                    return false
+                }
+            }
+            return true
+        } catch {
+            print("Failed to read import data")
+            return false
+        }
+    }
+    
+    /// Drops all of the tables in the database.
+    ///
+    /// - Attention: Be aware of what you are doing when you use this function!
+    private func dropTables() {
+        do {
+            try db?.run(t_terms.drop(ifExists: true))
+            try db?.run(t_courses.drop(ifExists: true))
+            try db?.run(t_weights.drop(ifExists: true))
+            try db?.run(t_assignments.drop(ifExists: true))
+        } catch {
+            print("Failed to drop tables: \(error)")
+        }
+    }
+    
     /// Runs any custom scripts that should be run BEFORE creating tables.
     ///
     /// - Attention: This function should only be used for development/testing/debugging purposes.
@@ -536,6 +657,23 @@ class Database {
     /// - Attention: This function should only be used for development/testing/debugging purposes.
     private func postCreationScripts() {
         print("No post-creation scripts to run")
+    }
+    
+}
+
+/// A utility class to make grades data encoding and decoding easy.
+private class GradesContainer: Codable {
+    
+    let terms: [Term]
+    let courses: [Course]
+    let assignments: [Assignment]
+    let weights: [Weight]
+    
+    init(terms: [Term], courses: [Course], assignments: [Assignment], weights: [Weight]) {
+        self.terms = terms
+        self.courses = courses
+        self.assignments = assignments
+        self.weights = weights
     }
     
 }

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 /// A Course belongs to a Term (and thus has an associated `termId`), and has several Assignments and Weights associated with it.
-class Course {
+class Course : Codable {
     
     var id: String
     var name: String
@@ -42,7 +42,6 @@ class Course {
         self.termId = termId
         self.colour = colour ?? UIColor.Material.red
     }
-    
     
     /// Calculates the grade for this course by iterating over all assignments for this course and summing their grades and weights, before passing it off to the Percentage calculator.
     ///

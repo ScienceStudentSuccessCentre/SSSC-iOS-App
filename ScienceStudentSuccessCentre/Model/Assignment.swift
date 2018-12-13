@@ -10,7 +10,7 @@ import Foundation
 
 
 /// An Assignment belongs to a Course, and is associated to a Weight.
-class Assignment {
+class Assignment : Codable {
     
     var id: String
     var name: String

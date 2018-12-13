@@ -156,4 +156,8 @@ extension TermsViewController: GradesViewControllerDelegate {
         toggleTableViewButtons()
     }
     
+    func refreshTableViewData() {
+        loadTerms()
+    }
+    
 }

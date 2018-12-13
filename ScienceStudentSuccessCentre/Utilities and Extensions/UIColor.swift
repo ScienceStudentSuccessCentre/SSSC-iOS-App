@@ -72,7 +72,7 @@ extension UIColor {
         }
     }
     
-    enum Material: String, CaseIterable  {
+    enum Material: String, CaseIterable, Codable  {
         case red
         case pink
         case purple

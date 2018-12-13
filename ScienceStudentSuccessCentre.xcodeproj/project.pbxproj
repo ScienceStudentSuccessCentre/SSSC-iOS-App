@@ -46,6 +46,7 @@
 		FFAE67922188ED2D0079CE16 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAE67912188ED2D0079CE16 /* UIView.swift */; };
 		FFB5C4232187BC1E00183D12 /* SegmentControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB5C4222187BC1E00183D12 /* SegmentControlDelegate.swift */; };
 		FFB76C962030B5A200EC3F97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB76C952030B5A200EC3F97 /* Assets.xcassets */; };
+		FFB80AF721C3080A0027D586 /* ItunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FFB80AF621C3080A0027D586 /* ItunesArtwork@2x.png */; };
 		FFC18A2C202502A8001AB5BA /* EventParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC18A2B202502A8001AB5BA /* EventParser.swift */; };
 		FFC6CF1621657C6D00657C34 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */; };
 		FFC6CF1821657CAE00657C34 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6CF1721657CAE00657C34 /* Assignment.swift */; };
@@ -123,6 +124,7 @@
 		FFAE67912188ED2D0079CE16 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		FFB5C4222187BC1E00183D12 /* SegmentControlDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControlDelegate.swift; sourceTree = "<group>"; };
 		FFB76C952030B5A200EC3F97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FFB80AF621C3080A0027D586 /* ItunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ItunesArtwork@2x.png"; path = "ScienceStudentSuccessCentre/Assets.xcassets/AppIcon.appiconset/ItunesArtwork@2x.png"; sourceTree = "<group>"; };
 		FFC18A2B202502A8001AB5BA /* EventParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventParser.swift; sourceTree = "<group>"; };
 		FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
 		FFC6CF1721657CAE00657C34 /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 		FF327FBC20128C3E00B06E19 = {
 			isa = PBXGroup;
 			children = (
+				FFB80AF621C3080A0027D586 /* ItunesArtwork@2x.png */,
 				FF327FC720128C3E00B06E19 /* ScienceStudentSuccessCentre */,
 				FF327FDE20128C3E00B06E19 /* ScienceStudentSuccessCentreTests */,
 				FF327FE920128C3E00B06E19 /* ScienceStudentSuccessCentreUITests */,
@@ -483,6 +486,7 @@
 				FFB76C962030B5A200EC3F97 /* Assets.xcassets in Resources */,
 				FF327FD520128C3E00B06E19 /* LaunchScreen.storyboard in Resources */,
 				FF327FD020128C3E00B06E19 /* Main.storyboard in Resources */,
+				FFB80AF721C3080A0027D586 /* ItunesArtwork@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

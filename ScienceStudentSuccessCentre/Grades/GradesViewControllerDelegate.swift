@@ -8,8 +8,9 @@
 
 /// A protocol that lets other views control any view that has this protocol.
 ///
-/// This protocol provides functions for interacting with tableview buttons.
+/// This protocol provides functions for interacting with tableview buttons, as well as refreshing the data in the tableview.
 protocol GradesViewControllerDelegate: class {
     func toggleOffTableViewEditMode()
     func showTableViewButtons()
+    func refreshTableViewData()
 }
