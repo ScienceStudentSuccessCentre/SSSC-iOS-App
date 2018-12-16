@@ -65,7 +65,7 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
     private func exportGradesTapped(cell: ButtonCellOf<String>, row: ButtonRow) {
         if let data = Database.instance.exportData() {
             if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                let file = dir.appendingPathComponent("gradeData.sssc")
+                let file = dir.appendingPathComponent("GradeData.sssc")
                 do {
                     try data.write(to: file, options: .atomic)
                     let activityVC = UIActivityViewController(activityItems: [file], applicationActivities: nil)
