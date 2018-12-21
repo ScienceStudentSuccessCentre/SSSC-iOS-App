@@ -1,6 +1,6 @@
 # <!-- omit in toc --> Carleton Science Student Success Centre - iOS App
 
-This is the iOS app for the Carleton University Science Student Success Centre.
+This is the iOS app for the Carleton University Science Student Success Centre. You can find the SSSC Server code [here](https://github.com/ScienceStudentSuccessCentre/SSSC-Server).
 
 - [Setting up the workspace](#setting-up-the-workspace)
 - [Brief overview of the internal workings](#brief-overview-of-the-internal-workings)
