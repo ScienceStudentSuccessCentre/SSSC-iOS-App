@@ -29,10 +29,10 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
         events = EventParser.getInstance().getEvents()
         print("Received events")
         DispatchQueue.main.async {
-            self.refreshControl.endRefreshing()
             self.activityIndicatorView.stopAnimating()
             self.tableView.separatorStyle = .singleLine
             self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
             print("Data reloaded")
         }
     }
@@ -61,9 +61,7 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
     
     
     /// Refreshes the events in the tableview at the user's request.
-    ///
-    /// - Parameter sender: The object that initiated the refresh.
-    @objc func refreshEventData(_ sender: Any) {
+    @objc func refreshEventData() {
         loadEvents()
     }
     
@@ -76,22 +74,24 @@ class EventsViewController: UIViewController, EventObserver, UITableViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.view.backgroundColor = .white
+        self.navigationController?.view.backgroundColor = .white
+        self.extendedLayoutIncludesOpaqueBars = true
+        
+        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        activityIndicatorView.center = view.center
+        activityIndicatorView.startAnimating()
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.backgroundView = activityIndicatorView
+        
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refreshControl
         } else {
             tableView.addSubview(refreshControl)
         }
-        refreshControl.addTarget(self, action: #selector(refreshEventData(_:)), for: .valueChanged)
-        
-        activityIndicatorView = UIActivityIndicatorView(style: .gray)
-        activityIndicatorView.center = view.center
-        activityIndicatorView.startAnimating()
+        refreshControl.addTarget(self, action: #selector(refreshEventData), for: .valueChanged)
         
         EventParser.getInstance().attachObserver(observer: self)
         
