@@ -13,11 +13,10 @@ import UserNotifications
 class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     var event: Event!
-    private let notifyMeDimension = CGFloat(integerLiteral: 30)
-    private let notifyMeButton = UIButton(type: .custom)
-    private var notifyMeImage = UIImage(named: "notifyOff")
+    private let customButtonDimension = CGFloat(integerLiteral: 30)
     private let notificationCenter = UNUserNotificationCenter.current()
-    private var actionUrlButton: UIBarButtonItem!
+    private var actionUrlButton = UIButton()
+    private var notifyMeButton = UIButton()
     
     @IBOutlet var eventTitleLabel: UILabel!
     @IBOutlet var eventTitleView: UIView!
@@ -53,15 +52,14 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     private func prepareNavigationBarButtons() {
         var barButtonItems: [UIBarButtonItem] = []
         
-        actionUrlButton =  UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.reply, target: self, action: #selector(actionUrlTapped))
-        
         if event.getNotificationDateTime()!.compare(Date()) != ComparisonResult.orderedAscending {
             prepareNotifyMeButton()
             barButtonItems.append(UIBarButtonItem(customView: notifyMeButton))
         }
         
         if event.getActionUrl() != "" {
-            barButtonItems.append(actionUrlButton)
+            prepareActionUrlButton()
+            barButtonItems.append(UIBarButtonItem(customView: actionUrlButton))
         }
         
         navigationItem.setRightBarButtonItems(barButtonItems, animated: true)
@@ -69,13 +67,26 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     /// Prepares the custom notifications button to be displayed.
     private func prepareNotifyMeButton() {
+        notifyMeButton.setImage(UIImage(named: "notifyOff"), for: .normal)
         notifyMeButton.addTarget(self, action: #selector(notifyMeTapped), for: .touchUpInside)
-        notifyMeButton.frame = CGRect(x: 0, y: 0, width: notifyMeDimension, height: notifyMeDimension)
-        notifyMeButton.widthAnchor.constraint(equalToConstant: notifyMeDimension).isActive = true
-        notifyMeButton.heightAnchor.constraint(equalToConstant: notifyMeDimension).isActive = true
+        notifyMeButton.frame = CGRect(x: 0, y: 0, width: customButtonDimension, height: customButtonDimension)
+        notifyMeButton.widthAnchor.constraint(equalToConstant: customButtonDimension).isActive = true
+        notifyMeButton.heightAnchor.constraint(equalToConstant: customButtonDimension).isActive = true
         notifyMeButton.translatesAutoresizingMaskIntoConstraints = false
         notifyMeButton.accessibilityLabel = "Notify Me"
         notifyMeButton.accessibilityTraits = .button
+    }
+    
+    /// Prepares the custom action URL button to be displayed.
+    private func prepareActionUrlButton() {
+        actionUrlButton.setImage(UIImage(named: "linkIcon"), for: .normal)
+        actionUrlButton.addTarget(self, action: #selector(actionUrlTapped), for: .touchUpInside)
+        actionUrlButton.frame = CGRect(x: 0, y: 0, width: customButtonDimension, height: customButtonDimension)
+        actionUrlButton.widthAnchor.constraint(equalToConstant: customButtonDimension).isActive = true
+        actionUrlButton.heightAnchor.constraint(equalToConstant: customButtonDimension).isActive = true
+        actionUrlButton.translatesAutoresizingMaskIntoConstraints = false
+        actionUrlButton.accessibilityLabel = "External Website: " + (event.getActionUrl() ?? "")
+        actionUrlButton.accessibilityTraits = .link
     }
     
     /// Prepares the details of this event to be displayed, including loading in all of the text, the associated image (if any), and adding small borders to various event-related views.
@@ -112,14 +123,10 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
                 }
             }
             
-            if notifyMe {
-                self.notifyMeImage = UIImage(named: "notifyOnColoured")
-            } else {
-                self.notifyMeImage = UIImage(named: "notifyOff")
-            }
+            let notifyMeImage = UIImage(named: notifyMe ? "notifyOnColoured" : "notifyOff")
             
             DispatchQueue.main.async {
-                self.notifyMeButton.setImage(self.notifyMeImage, for: .normal)
+                self.notifyMeButton.setImage(notifyMeImage, for: .normal)
             }
         })
     }
