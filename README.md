@@ -2,18 +2,27 @@
 
 This is the iOS app for the Carleton University Science Student Success Centre. You can find the SSSC Server code [here](https://github.com/ScienceStudentSuccessCentre/SSSC-Server).
 
+- [Project summary](#project-summary)
 - [Setting up the workspace](#setting-up-the-workspace)
 - [Brief overview of the internal workings](#brief-overview-of-the-internal-workings)
 - [Modifying the internal database](#modifying-the-internal-database)
 - [Documentation for cocoa pods (third-party libraries)](#documentation-for-cocoa-pods-third-party-libraries)
 
+## Project summary
+
+This project is the iOS app for the Science Student Success Centre. It allows students to view all of the events that are shown on the SSSC's website, quickly access the SSSC's resources page, and keep track of their grades using the built-in grade calculator.
+
+Event data is retrieved using a GET request to the SSSC Server (linked above) using the `/events` endpoint, so as to avoid unnecessary parsing and such inside the app.
+
 ## Setting up the workspace
 
-1. Clone the workspace: https://github.com/AveryVine/SSSC-iOS-App.git
+1. Clone the repository: https://github.com/ScienceStudentSuccessCentre/SSSC-iOS-App.git
 2. Navigate into the directory
 3. Run `pod install`
 4. Open the project using the `ScienceStudentSuccessCentre.xcworkspace` file. **BE AWARE:** if you try to make changes to the project using `ScienceStudentSuccessCentre.xcproj`, none of the external cocoapod dependencies will work.
-5. Ensure that the selected build scheme in the top left of Xcode is `ScienceStudentSuccessCentre`
+5. Navigate to the `ScienceStudentSucessCentre` project file in the left sidebar, and select `General`.
+6. Make sure the selected team is `Lily Visanuvimol` (the SSSC's account). This will require you to sign in. See any of the SSSC staff for account details.
+7. Get the necessary certificates and provisioning profiles from the SSSC staff, and install by double-clicking them.
 
 ## Brief overview of the internal workings
 
