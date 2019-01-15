@@ -14,7 +14,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     var event: Event!
     private let customButtonDimension = CGFloat(integerLiteral: 30)
-    private let notificationCenter = UNUserNotificationCenter.current()
+    private let notificationsManager = NotificationsManager.shared
     private var actionUrlButton = UIButton()
     private var notifyMeButton = UIButton()
     
@@ -112,19 +112,10 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     /// Ensures the notification button displays the correct image (on/off).
     ///
-    /// This function iterates over all pending system notifications, and updates the notification button image to "On" if one is found associated to this event, and "Off" otherwise.
+    /// This function asks the SSSC notifications manager if there are any pending notifications for this particular event, and updates the notification button image to "On" if one is found associated to this event, and "Off" otherwise.
     private func updateNotifyMeButtonImage() {
-        notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
-            var notifyMe = false
-            for request in requests {
-                if request.identifier == self.event.getId() {
-                    notifyMe = true
-                    break
-                }
-            }
-            
-            let notifyMeImage = UIImage(named: notifyMe ? "notifyOnColoured" : "notifyOff")
-            
+        notificationsManager.checkPendingNotifications(for: event, completion: { notificationPending in
+            let notifyMeImage = UIImage(named: notificationPending ? "notifyOnColoured" : "notifyOff")
             DispatchQueue.main.async {
                 self.notifyMeButton.setImage(notifyMeImage, for: .normal)
             }
@@ -133,10 +124,10 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     /// Creates (or removes) a notification for this event when the notification button is tapped.
     ///
-    /// This function first checks if the user has notification permissions enabled (and if not, prompts the user to enable them in the Settings app). It then iterates over all existing system notifications, removing any existing notifications for this event, or adding a new one if none are found.
+    /// This function first checks if the user has notification permissions enabled (and if not, prompts the user to enable them in the Settings app). It then removes any existing notifications for this event, or adds a new one if none are found.
     @objc private func notifyMeTapped() {
-        notificationCenter.getNotificationSettings { (settings) in
-            guard settings.authorizationStatus == .authorized else {
+        notificationsManager.checkAuthorized { isAuthorized in
+            guard isAuthorized else {
                 let alert = UIAlertController(title: "Notification permissions required", message: "In order to be notified of events, we need you to grant notification permissions to this app in Settings.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
                 alert.addAction(UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
@@ -154,9 +145,9 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
                 return
             }
             
-            self.notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
-                if requests.first(where: { $0.identifier == self.event.getId() }) == nil {
-                    self.prepareEventNotification()
+            self.notificationsManager.checkPendingNotifications(for: self.event, completion: { notificationPending in
+                if !notificationPending {
+                    self.createEventNotification()
                 } else {
                     self.removeEventNotification()
                 }
@@ -169,28 +160,25 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         openUrlInAppBrowser(url: URL(string: event.getActionUrl() ?? ""))
     }
     
-    /// Generates a new notification request, updates the notification button image, and lets the user know that a notification has been prepared for this event.
-    private func prepareEventNotification() {
-        let request = generateUNNotificationRequest()
-        if (request != nil) {
-            self.notificationCenter.add(request!, withCompletionHandler: { (error) in
-                if let error = error {
-                    print(error)
-                    self.presentGenericErrorAlert()
-                } else {
+    /// Creates a new event notification, updates the notification button image, and lets the user know that a notification has been prepared for this event.
+    private func createEventNotification() {
+        notificationsManager.createNotification(for: event, completion: { result in
+            DispatchQueue.main.async {
+                if result == "success" {
                     self.updateNotifyMeButtonImage()
-                    
                     let alert = UIAlertController(title: "Notification enabled!", message: "You'll be sent a notification an hour before this event starts.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
                     self.present(alert, animated: true)
+                } else if result == "failure" {
+                    self.presentGenericErrorAlert()
                 }
-            })
-        }
+            }
+        })
     }
     
     /// Removes any pending notifications for this event and updates the notification button to reflect that.
     private func removeEventNotification() {
-        notificationCenter.removePendingNotificationRequests(withIdentifiers: [self.event.getId()])
+        notificationsManager.removeNotifications(for: event)
         self.updateNotifyMeButtonImage()
     }
     

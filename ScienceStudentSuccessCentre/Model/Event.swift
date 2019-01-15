@@ -14,11 +14,6 @@ import Foundation
 /// - Attention: You should never have to generate these yourself, as event generation is handled by the server.
 class Event {
     
-    /// This sets each event's notification datetime to be be 15 seconds after the time of viewing an event.
-    ///
-    /// - Remark: See `getNotificationDateTime()` for usage.
-    private let DEBUG_NOTIFICATION_TRIGGER = false
-    
     private var id: String
     private var name: String
     private var description: String
@@ -100,14 +95,12 @@ class Event {
     /// Provides the date and time the user should receive a notification for this event.
     ///
     /// - Remark: For the actual date and time of this event, use `getDateTime()`.
-    /// - Attention: If `DEBUG_NOTIFICATION_TRIGGER` is on, a notification will be sent to the user 15 seconds after toggling on the notification for this event.
     /// - Returns: The notification date and time, or `nil` if one could not be calculated.
     public func getNotificationDateTime() -> Date? {
-        if (DEBUG_NOTIFICATION_TRIGGER) {
-            return calendar.date(byAdding: .second, value: 15, to: Date())!
-        } else {
-            return calendar.date(byAdding: .hour, value: -1, to: dateTime!)
+        if let dateTime = dateTime {
+            return calendar.date(byAdding: .hour, value: -1, to: dateTime)
         }
+        return nil
     }
     
     

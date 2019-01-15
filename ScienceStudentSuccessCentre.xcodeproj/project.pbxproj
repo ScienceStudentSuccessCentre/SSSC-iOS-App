@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		442EC65C21EE8C36002B961E /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442EC65B21EE8C36002B961E /* NotificationsManager.swift */; };
 		A17011CB21AC8F4000A385FB /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */; };
 		B3DAA679B7EE10AA33500129 /* Pods_ScienceStudentSuccessCentre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B119DC8533C8844ED79B707 /* Pods_ScienceStudentSuccessCentre.framework */; };
 		FF13F7D421646AC1005733B0 /* CreateCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */; };
@@ -76,6 +77,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		442EC65B21EE8C36002B961E /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		497CB330CF40A5E769862DB8 /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.debug.xcconfig"; sourceTree = "<group>"; };
 		7A3F227F4867DBBC4D89F84B /* Pods-ScienceStudentSuccessCentre.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.release.xcconfig"; sourceTree = "<group>"; };
 		7B119DC8533C8844ED79B707 /* Pods_ScienceStudentSuccessCentre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScienceStudentSuccessCentre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,10 +184,10 @@
 		FF300D1B21B241820048749A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FFC6CF1721657CAE00657C34 /* Assignment.swift */,
+				FFFC6BC62162D6D6001585CE /* Course.swift */,
 				FFA4B1D220229C8400BAC08F /* Event.swift */,
 				FFE84077215F1CAC00A5E33B /* Term.swift */,
-				FFFC6BC62162D6D6001585CE /* Course.swift */,
-				FFC6CF1721657CAE00657C34 /* Assignment.swift */,
 				FF4BCBCE21AB47790050A876 /* Weight.swift */,
 			);
 			path = Model;
@@ -217,18 +219,18 @@
 		FF327FC720128C3E00B06E19 /* ScienceStudentSuccessCentre */ = {
 			isa = PBXGroup;
 			children = (
-				FF300D1B21B241820048749A /* Model */,
+				FF327FD620128C3E00B06E19 /* Info.plist */,
+				FF327FC820128C3E00B06E19 /* AppDelegate.swift */,
+				FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */,
+				FFB76C952030B5A200EC3F97 /* Assets.xcassets */,
 				FFE84070215F17D200A5E33B /* Events */,
 				FFE84071215F190A00A5E33B /* Grades */,
+				FF327FD320128C3E00B06E19 /* LaunchScreen.storyboard */,
+				FF327FCE20128C3E00B06E19 /* Main.storyboard */,
+				FF300D1B21B241820048749A /* Model */,
 				A17011C921AC8ECD00A385FB /* Resources */,
 				FFD0205621B1E1CB008D960B /* Settings */,
 				FFE84073215F192E00A5E33B /* Utilities and Extensions */,
-				FF327FC820128C3E00B06E19 /* AppDelegate.swift */,
-				FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */,
-				FF327FCE20128C3E00B06E19 /* Main.storyboard */,
-				FF327FD320128C3E00B06E19 /* LaunchScreen.storyboard */,
-				FFB76C952030B5A200EC3F97 /* Assets.xcassets */,
-				FF327FD620128C3E00B06E19 /* Info.plist */,
 			);
 			path = ScienceStudentSuccessCentre;
 			sourceTree = "<group>";
@@ -274,10 +276,10 @@
 		FFC6CF1421657BCC00657C34 /* Course Details and Assignments */ = {
 			isa = PBXGroup;
 			children = (
-				FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */,
 				FF74BE80218CBE6100A8954B /* AssignmentTableViewCell.swift */,
-				FF651CE92190F27100C37022 /* CreateAssignmentViewController.swift */,
 				FF2CC47E21ACF5F3002EE205 /* CalculateRequiredFinalViewController.swift */,
+				FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */,
+				FF651CE92190F27100C37022 /* CreateAssignmentViewController.swift */,
 			);
 			path = "Course Details and Assignments";
 			sourceTree = "<group>";
@@ -293,11 +295,11 @@
 		FFE84070215F17D200A5E33B /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				FF3C2287202427660098B868 /* EventDetailViewController.swift */,
+				FF19EE4D202EA6DA00475B63 /* EventObserver.swift */,
+				FFC18A2B202502A8001AB5BA /* EventParser.swift */,
 				FF327FCA20128C3E00B06E19 /* EventsViewController.swift */,
 				FF6835B52023C540001A35B2 /* EventTableViewCell.swift */,
-				FF3C2287202427660098B868 /* EventDetailViewController.swift */,
-				FFC18A2B202502A8001AB5BA /* EventParser.swift */,
-				FF19EE4D202EA6DA00475B63 /* EventObserver.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -308,9 +310,9 @@
 				FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */,
 				FFA5849D21AF961200B15E25 /* GradesViewControllerDelegate.swift */,
 				FFB5C4222187BC1E00183D12 /* SegmentControlDelegate.swift */,
-				FFE84072215F191B00A5E33B /* Terms */,
 				FFE84075215F196700A5E33B /* Calculator */,
 				FFE84076215F198000A5E33B /* Planner */,
+				FFE84072215F191B00A5E33B /* Terms */,
 			);
 			path = Grades;
 			sourceTree = "<group>";
@@ -318,9 +320,9 @@
 		FFE84072215F191B00A5E33B /* Terms */ = {
 			isa = PBXGroup;
 			children = (
+				FF30AFB72162A6E200C1F22C /* CreateTermViewController.swift */,
 				FFA7CBAA215DD4CB00A050B1 /* TermsViewController.swift */,
 				FFA7CBB0215DD59B00A050B1 /* TermTableViewCell.swift */,
-				FF30AFB72162A6E200C1F22C /* CreateTermViewController.swift */,
 				FFE84074215F195900A5E33B /* Term Details and Courses */,
 			);
 			path = Terms;
@@ -329,15 +331,16 @@
 		FFE84073215F192E00A5E33B /* Utilities and Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FF5FDB2B21ABB12200899963 /* SplitRow */,
 				FF1D7D24215D6DDD00A88467 /* Database.swift */,
-				FF7FD88F21485E8100DAC88C /* HtmlString.swift */,
-				FF7A0904215967F600A98504 /* Formatter.swift */,
+				FF80666D2193A31D00B202A6 /* Double.swift */,
 				FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */,
+				FF7A0904215967F600A98504 /* Formatter.swift */,
+				FFD2DF522193860200C97FDF /* Grading.swift */,
+				FF7FD88F21485E8100DAC88C /* HtmlString.swift */,
+				442EC65B21EE8C36002B961E /* NotificationsManager.swift */,
 				FF57A96421658509004AA50B /* UIColor.swift */,
 				FFAE67912188ED2D0079CE16 /* UIView.swift */,
-				FFD2DF522193860200C97FDF /* Grading.swift */,
-				FF80666D2193A31D00B202A6 /* Double.swift */,
+				FF5FDB2B21ABB12200899963 /* SplitRow */,
 			);
 			path = "Utilities and Extensions";
 			sourceTree = "<group>";
@@ -345,9 +348,9 @@
 		FFE84074215F195900A5E33B /* Term Details and Courses */ = {
 			isa = PBXGroup;
 			children = (
-				FFAC093B215EBBD5007C4264 /* TermDetailViewController.swift */,
 				FFFC6BC82162D70D001585CE /* CourseTableViewCell.swift */,
 				FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */,
+				FFAC093B215EBBD5007C4264 /* TermDetailViewController.swift */,
 				FFC6CF1421657BCC00657C34 /* Course Details and Assignments */,
 			);
 			path = "Term Details and Courses";
@@ -356,8 +359,8 @@
 		FFE84075215F196700A5E33B /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */,
 				FFD0205421B1B2D8008D960B /* CalculatorTableViewCell.swift */,
+				FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				FFD0205821B1E1E6008D960B /* SettingsViewController.swift in Sources */,
 				FFE84078215F1CAC00A5E33B /* Term.swift in Sources */,
 				FF5FDB3121ABB17F00899963 /* SplitRowCellTableView.swift in Sources */,
+				442EC65C21EE8C36002B961E /* NotificationsManager.swift in Sources */,
 				FF5FDB2F21ABB16700899963 /* SplitRowCell.swift in Sources */,
 				FF327FCB20128C3E00B06E19 /* EventsViewController.swift in Sources */,
 				FF74BE81218CBE6100A8954B /* AssignmentTableViewCell.swift in Sources */,
