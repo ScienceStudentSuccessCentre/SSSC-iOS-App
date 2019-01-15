@@ -185,7 +185,6 @@
                                             <constraint firstItem="GMX-va-wn1" firstAttribute="leading" secondItem="PTV-Kn-bRe" secondAttribute="leading" constant="8" id="cfE-gW-8r9"/>
                                             <constraint firstAttribute="trailing" secondItem="GMX-va-wn1" secondAttribute="trailing" constant="8" id="frg-1g-aHV"/>
                                             <constraint firstItem="GMX-va-wn1" firstAttribute="top" secondItem="PTV-Kn-bRe" secondAttribute="top" constant="8" id="kCa-SO-rip"/>
-                                            <constraint firstAttribute="width" constant="150" id="qxm-4K-2C6"/>
                                             <constraint firstAttribute="height" constant="68" id="r3F-QK-w5X"/>
                                             <constraint firstAttribute="bottom" secondItem="GMX-va-wn1" secondAttribute="bottom" constant="8" id="uAm-n3-YQK"/>
                                         </constraints>
@@ -218,6 +217,7 @@
                                     <constraint firstAttribute="height" constant="68" id="OIY-8k-6Jq"/>
                                     <constraint firstAttribute="trailing" secondItem="39y-qr-enf" secondAttribute="trailing" id="kGI-TW-hwK"/>
                                     <constraint firstItem="PTV-Kn-bRe" firstAttribute="leading" secondItem="OrX-ag-Cla" secondAttribute="leading" id="pqj-xJ-IOk"/>
+                                    <constraint firstItem="39y-qr-enf" firstAttribute="width" secondItem="PTV-Kn-bRe" secondAttribute="width" multiplier="1.5" id="yQM-WD-79s"/>
                                 </constraints>
                             </view>
                         </subviews>
