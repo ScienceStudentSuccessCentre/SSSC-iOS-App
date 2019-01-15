@@ -42,6 +42,7 @@ class Event {
         let dateTime = dateTimeWithMillis.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
         self.dateTime = Formatter.iso8601.date(from: dateTime)
         self.rawTime = eventData["rawTime"] as! String
+        
         self.location = eventData["location"] as! String
         
         if ((eventData["url"]) != nil) {
@@ -86,6 +87,14 @@ class Event {
     /// - Returns: The event start date and time, or `nil` if the server could not provide one.
     public func getDateTime() -> Date? {
         return dateTime
+    }
+    
+    public func getFormattedDateAndTime() -> String {
+        var formattedDateAndTime = getMonthName() + " " + getDayLeadingZero()
+        if getRawTime() != "" {
+            formattedDateAndTime += "\n" + getRawTime()
+        }
+        return formattedDateAndTime
     }
     
     /// Provides the date and time the user should receive a notification for this event.

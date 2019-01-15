@@ -94,7 +94,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         eventDescriptionTextView.delegate = self
         
         eventTitleLabel.text = event.getName()
-        eventDateTimeLabel.text = event.getMonthName() + " " + event.getDayLeadingZero() + "\n" + event.getRawTime()
+        eventDateTimeLabel.text = event.getFormattedDateAndTime()
         eventLocationLabel.text = event.getLocation()
         
         eventDescriptionTextView.attributedText = event.getDescription().htmlToAttributedString
