@@ -40,16 +40,14 @@ class Event {
         
         self.location = eventData["location"] as! String
         
-        if ((eventData["url"]) != nil) {
-            self.url = URL(string: eventData["url"] as! String)
-        } else {
-            self.url = nil
+        self.url = nil
+        if let urlString = eventData["url"] as? String, urlString != "" {
+            self.url = URL(string: urlString)
         }
         
-        if ((eventData["imageUrl"]) != nil) {
-            self.imageUrl = URL(string: eventData["imageUrl"] as! String)
-        } else {
-            self.imageUrl = nil
+        self.imageUrl = nil
+        if let imageUrlString = eventData["imageUrl"] as? String, imageUrlString != "" {
+            self.imageUrl = URL(string: imageUrlString)
         }
         
         self.actionUrl = eventData["actionUrl"] as? String

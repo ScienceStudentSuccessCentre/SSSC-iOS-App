@@ -41,7 +41,9 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        updateNotifyMeButtonImage()
+        notificationsManager.checkPendingNotifications(for: event, completion: { notificationPending in
+            self.updateNotifyMeButtonImage(notificationPending: notificationPending)
+        })
     }
     
     /// Determines which buttons (action, notification) should be added to the navigation bar, if any.
@@ -100,9 +102,8 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         eventDescriptionTextView.attributedText = event.getDescription().htmlToAttributedString
         eventDescriptionTextView.font = .preferredFont(forTextStyle: .body)
         
-        if (event.getImageUrl() == nil) {
-            eventImageView.isHidden = true;
-        } else {
+        eventImageView.isHidden = true;
+        if (event.getImageUrl() != nil) {
             loadImage()
         }
         
@@ -113,13 +114,13 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     /// Ensures the notification button displays the correct image (on/off).
     ///
     /// This function asks the SSSC notifications manager if there are any pending notifications for this particular event, and updates the notification button image to "On" if one is found associated to this event, and "Off" otherwise.
-    private func updateNotifyMeButtonImage() {
-        notificationsManager.checkPendingNotifications(for: event, completion: { notificationPending in
+    private func updateNotifyMeButtonImage(notificationPending: Bool) {
+//        notificationsManager.checkPendingNotifications(for: event, completion: { notificationPending in
             let notifyMeImage = UIImage(named: notificationPending ? "notifyOnColoured" : "notifyOff")
             DispatchQueue.main.async {
                 self.notifyMeButton.setImage(notifyMeImage, for: .normal)
             }
-        })
+//        })
     }
     
     /// Creates (or removes) a notification for this event when the notification button is tapped.
@@ -146,10 +147,16 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
             }
             
             self.notificationsManager.checkPendingNotifications(for: self.event, completion: { notificationPending in
+                self.updateNotifyMeButtonImage(notificationPending: !notificationPending)
                 if !notificationPending {
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Notification enabled!", message: "You'll be sent a notification an hour before this event starts.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
                     self.createEventNotification()
                 } else {
-                    self.removeEventNotification()
+                    self.notificationsManager.removeNotifications(for: self.event)
                 }
             })
         }
@@ -162,24 +169,13 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     /// Creates a new event notification, updates the notification button image, and lets the user know that a notification has been prepared for this event.
     private func createEventNotification() {
-        notificationsManager.createNotification(for: event, completion: { result in
+        notificationsManager.createNotification(for: event, completion: { error in
             DispatchQueue.main.async {
-                if result == "success" {
-                    self.updateNotifyMeButtonImage()
-                    let alert = UIAlertController(title: "Notification enabled!", message: "You'll be sent a notification an hour before this event starts.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-                    self.present(alert, animated: true)
-                } else if result == "failure" {
+                if error {
                     self.presentGenericErrorAlert()
                 }
             }
         })
-    }
-    
-    /// Removes any pending notifications for this event and updates the notification button to reflect that.
-    private func removeEventNotification() {
-        notificationsManager.removeNotifications(for: event)
-        self.updateNotifyMeButtonImage()
     }
     
     /// Generates a new notification request for this event.
@@ -218,15 +214,18 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     ///
     /// This function loads an image by downloading it into a byte buffer and creating a UIImage object from there.
     private func loadImage() {
-        let url = event.getImageUrl()
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: url!)
-            DispatchQueue.main.async {
-                if let image = UIImage(data: data!) {
-                    self.eventImageView.image = image
-                    let ratio = image.size.height / image.size.width
-                    let newHeight = self.eventImageView.frame.size.width * ratio
-                    self.eventImageView.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
+        if let url = event.getImageUrl() {
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: url) {
+                    DispatchQueue.main.async {
+                        if let image = UIImage(data: data) {
+                            self.eventImageView.image = image
+                            let ratio = image.size.height / image.size.width
+                            let newHeight = self.eventImageView.frame.size.width * ratio
+                            self.eventImageView.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
+                            self.eventImageView.isHidden = false;
+                        }
+                    }
                 }
             }
         }
