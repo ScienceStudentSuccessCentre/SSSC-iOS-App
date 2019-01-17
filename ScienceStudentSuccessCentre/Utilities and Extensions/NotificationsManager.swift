@@ -18,12 +18,12 @@ class NotificationsManager {
     /// This sets each event's notification datetime to be be 15 seconds after the time of viewing an event.
     ///
     /// - Remark: See `getNotificationDateTime()` for usage.
-    private let DEBUG_NOTIFICATION_TRIGGER = true
+    private let DEBUG_NOTIFICATION_TRIGGER = false
     
     private let notificationCenter = UNUserNotificationCenter.current()
     
     private init() {
-        
+         
     }
     
     public func checkPendingNotifications(for event: Event, completion: @escaping (Bool) -> Void) {
@@ -46,19 +46,6 @@ class NotificationsManager {
         content.subtitle = "Today at " + event.getFormattedTime()
         content.body = event.getLocation()
         content.sound = UNNotificationSound.default
-        
-        if let url = event.getImageUrl() {
-            DispatchQueue.global().async {
-                if let data = try? Data(contentsOf: url) {
-                    DispatchQueue.main.async {
-                        if let image = UIImage(data: data),
-                            let attachment = UNNotificationAttachment.create(identifier: event.getId(), image: image, options: nil) {
-                            content.attachments = [attachment]
-                        }
-                    }
-                }
-            }
-        }
         
         var failed = false
         if let notificationDateTime = determineNotificationDateTime(for: event) {
@@ -96,26 +83,4 @@ class NotificationsManager {
         return event.getNotificationDateTime()
     }
     
-}
-
-extension UNNotificationAttachment {
-    static func create(identifier: String, image: UIImage, options: [NSObject : AnyObject]?) -> UNNotificationAttachment? {
-        let fileManager = FileManager.default
-        let tmpSubFolderName = ProcessInfo.processInfo.globallyUniqueString
-        let tmpSubFolderURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(tmpSubFolderName, isDirectory: true)
-        do {
-            try fileManager.createDirectory(at: tmpSubFolderURL, withIntermediateDirectories: true, attributes: nil)
-            let imageFileIdentifier = identifier + ".png"
-            let fileURL = tmpSubFolderURL.appendingPathComponent(imageFileIdentifier)
-            guard let imageData = image.pngData() else {
-                return nil
-            }
-            try imageData.write(to: fileURL)
-            let imageAttachment = try UNNotificationAttachment.init(identifier: imageFileIdentifier, url: fileURL, options: options)
-            return imageAttachment
-        } catch {
-            print("Failed to create UNNotificationAttachment: \(error)")
-        }
-        return nil
-    }
 }
