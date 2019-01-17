@@ -13,7 +13,7 @@ import UserNotifications
 class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     var event: Event!
-    private let customButtonDimension = CGFloat(integerLiteral: 30)
+    private let customButtonDimension = CGFloat(integerLiteral: 27)
     private let notificationsManager = NotificationsManager.shared
     private var actionUrlButton = UIButton()
     private var notifyMeButton = UIButton()
@@ -52,7 +52,8 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     ///     - If there is an action associated to the event being displayed, the action button is displayed.
     ///     - If the notification date/time for this event has not passed, the notification button is displayed.
     private func prepareNavigationBarButtons() {
-        var barButtonItems: [UIBarButtonItem] = []
+        let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped))
+        var barButtonItems = [shareButton]
         
         if event.getNotificationDateTime()!.compare(Date()) != ComparisonResult.orderedAscending {
             prepareNotifyMeButton()
@@ -115,12 +116,10 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     ///
     /// This function asks the SSSC notifications manager if there are any pending notifications for this particular event, and updates the notification button image to "On" if one is found associated to this event, and "Off" otherwise.
     private func updateNotifyMeButtonImage(notificationPending: Bool) {
-//        notificationsManager.checkPendingNotifications(for: event, completion: { notificationPending in
-            let notifyMeImage = UIImage(named: notificationPending ? "notifyOnColoured" : "notifyOff")
-            DispatchQueue.main.async {
-                self.notifyMeButton.setImage(notifyMeImage, for: .normal)
-            }
-//        })
+        let notifyMeImage = UIImage(named: notificationPending ? "notifyOnColoured" : "notifyOff")
+        DispatchQueue.main.async {
+            self.notifyMeButton.setImage(notifyMeImage, for: .normal)
+        }
     }
     
     /// Creates (or removes) a notification for this event when the notification button is tapped.
@@ -165,6 +164,10 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     /// Delegates opening the actionUrl to the in-app browser when the action button is tapped.
     @objc private func actionUrlTapped() {
         openUrlInAppBrowser(url: URL(string: event.getActionUrl() ?? ""))
+    }
+    
+    @objc private func shareButtonTapped() {
+        //TODO share event URL
     }
     
     /// Creates a new event notification, updates the notification button image, and lets the user know that a notification has been prepared for this event.
