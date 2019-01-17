@@ -10,10 +10,9 @@ import UIKit
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -28,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if defaults.value(forKey: "includeInProgressCourses") == nil {
             defaults.set(true, forKey: "includeInProgressCourses")
         }
+        
+        UNUserNotificationCenter.current().delegate = self
 
         return true
     }
@@ -62,6 +63,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         viewController.present(alert, animated: true, completion: nil)
         
         return true
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
