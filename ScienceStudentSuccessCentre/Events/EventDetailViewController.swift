@@ -115,12 +115,10 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     ///
     /// This function asks the SSSC notifications manager if there are any pending notifications for this particular event, and updates the notification button image to "On" if one is found associated to this event, and "Off" otherwise.
     private func updateNotifyMeButtonImage(notificationPending: Bool) {
-//        notificationsManager.checkPendingNotifications(for: event, completion: { notificationPending in
-            let notifyMeImage = UIImage(named: notificationPending ? "notifyOnColoured" : "notifyOff")
-            DispatchQueue.main.async {
-                self.notifyMeButton.setImage(notifyMeImage, for: .normal)
-            }
-//        })
+        let notifyMeImage = UIImage(named: notificationPending ? "notifyOnColoured" : "notifyOff")
+        DispatchQueue.main.async {
+            self.notifyMeButton.setImage(notifyMeImage, for: .normal)
+        }
     }
     
     /// Creates (or removes) a notification for this event when the notification button is tapped.
