@@ -13,7 +13,6 @@ import UserNotifications
 class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     var event: Event!
-    private let customButtonDimension = CGFloat(integerLiteral: 27)
     private let notificationsManager = NotificationsManager.shared
     private var actionUrlButton = UIButton()
     private var notifyMeButton = UIButton()
@@ -70,11 +69,12 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     /// Prepares the custom notifications button to be displayed.
     private func prepareNotifyMeButton() {
+        let dimension = CGFloat(integerLiteral: 29)
         notifyMeButton.setImage(UIImage(named: "notifyOff"), for: .normal)
         notifyMeButton.addTarget(self, action: #selector(notifyMeTapped), for: .touchUpInside)
-        notifyMeButton.frame = CGRect(x: 0, y: 0, width: customButtonDimension, height: customButtonDimension)
-        notifyMeButton.widthAnchor.constraint(equalToConstant: customButtonDimension).isActive = true
-        notifyMeButton.heightAnchor.constraint(equalToConstant: customButtonDimension).isActive = true
+        notifyMeButton.frame = CGRect(x: 0, y: 0, width: dimension, height: dimension)
+        notifyMeButton.widthAnchor.constraint(equalToConstant: dimension).isActive = true
+        notifyMeButton.heightAnchor.constraint(equalToConstant: dimension).isActive = true
         notifyMeButton.translatesAutoresizingMaskIntoConstraints = false
         notifyMeButton.accessibilityLabel = "Notify Me"
         notifyMeButton.accessibilityTraits = .button
@@ -82,11 +82,12 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     /// Prepares the custom action URL button to be displayed.
     private func prepareActionUrlButton() {
+        let dimension = CGFloat(integerLiteral: 30)
         actionUrlButton.setImage(UIImage(named: "linkIcon"), for: .normal)
         actionUrlButton.addTarget(self, action: #selector(actionUrlTapped), for: .touchUpInside)
-        actionUrlButton.frame = CGRect(x: 0, y: 0, width: customButtonDimension, height: customButtonDimension)
-        actionUrlButton.widthAnchor.constraint(equalToConstant: customButtonDimension).isActive = true
-        actionUrlButton.heightAnchor.constraint(equalToConstant: customButtonDimension).isActive = true
+        actionUrlButton.frame = CGRect(x: 0, y: 0, width: dimension, height: dimension)
+        actionUrlButton.widthAnchor.constraint(equalToConstant: dimension).isActive = true
+        actionUrlButton.heightAnchor.constraint(equalToConstant: dimension).isActive = true
         actionUrlButton.translatesAutoresizingMaskIntoConstraints = false
         actionUrlButton.accessibilityLabel = "External Website: " + (event.getActionUrl() ?? "")
         actionUrlButton.accessibilityTraits = .link
@@ -166,8 +167,12 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         openUrlInAppBrowser(url: URL(string: event.getActionUrl() ?? ""))
     }
     
+    /// Opens a share sheet that allows the user to share the link to this event.
     @objc private func shareButtonTapped() {
-        //TODO share event URL
+        if let url = event.getUrl()?.absoluteString {
+            let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            self.present(activityVC, animated: true, completion: nil)
+        }
     }
     
     /// Creates a new event notification, updates the notification button image, and lets the user know that a notification has been prepared for this event.

@@ -14,6 +14,8 @@ import Foundation
 /// - Attention: You should never have to generate these yourself, as event generation is handled by the server.
 class Event {
     
+    private let urlPrefix = "https://sssc.carleton.ca"
+    
     private var id: String
     private var name: String
     private var description: String
@@ -178,6 +180,16 @@ class Event {
     /// - Returns: The location of the event.
     public func getLocation() -> String {
         return location
+    }
+    
+    /// Gets the complete URL of the event, including the domain name portion.
+    ///
+    /// - Returns: The complete event URL, or `nil` if there one could not be found.
+    public func getUrl() -> URL? {
+        if let url = url {
+            return URL(string: urlPrefix + url.absoluteString)
+        }
+        return nil
     }
     
     
