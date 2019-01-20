@@ -18,7 +18,7 @@ class NotificationsManager {
     /// This sets each event's notification datetime to be be 15 seconds after the time of viewing an event.
     ///
     /// - Remark: See `determineNotificationDateTime()` for usage.
-    private let DEBUG_NOTIFICATION_TRIGGER = true
+    private let DEBUG_NOTIFICATION_TRIGGER = false
     
     private let notificationCenter = UNUserNotificationCenter.current()
     
