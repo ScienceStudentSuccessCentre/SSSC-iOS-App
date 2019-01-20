@@ -13,6 +13,7 @@ import UserNotifications
 class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     var event: Event!
+    
     private let notificationsManager = NotificationsManager.shared
     private var actionUrlButton = UIButton()
     private var notifyMeButton = UIButton()
@@ -52,7 +53,11 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     ///     - If the notification date/time for this event has not passed, the notification button is displayed.
     private func prepareNavigationBarButtons() {
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped))
-        var barButtonItems = [shareButton]
+        var barButtonItems: [UIBarButtonItem] = []
+        
+        if event.getUrl() != nil {
+            barButtonItems.append(shareButton)
+        }
         
         if event.getNotificationDateTime()!.compare(Date()) != ComparisonResult.orderedAscending {
             prepareNotifyMeButton()
