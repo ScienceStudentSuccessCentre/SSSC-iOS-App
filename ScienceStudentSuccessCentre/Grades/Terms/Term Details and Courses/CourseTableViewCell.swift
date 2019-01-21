@@ -14,5 +14,23 @@ class CourseTableViewCell: UITableViewCell {
     @IBOutlet var courseName: UILabel!
     @IBOutlet var grade: UILabel!
     @IBOutlet var gradeView: UIView!
-
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        let color = gradeView.backgroundColor
+        super.setSelected(selected, animated: animated)
+        
+        if selected {
+            gradeView.backgroundColor = color
+        }
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        let color = gradeView.backgroundColor
+        super.setHighlighted(highlighted, animated: animated)
+        
+        if highlighted {
+            gradeView.backgroundColor = color
+        }
+    }
+    
 }

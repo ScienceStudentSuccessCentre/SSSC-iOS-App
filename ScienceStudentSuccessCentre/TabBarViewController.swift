@@ -21,21 +21,41 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     /// Overrides tapping the tab bar icons to run custom behaviour.
     ///
-    /// This function will determine if the tapped tab bar is that of the `EventsViewController`. If so, and that view controller is the one already visible, it will be scrolled to the top.
+    /// This function will scroll the view controller to the top if it is an `EventsViewController`, or execute the default behaviour (dismissing the controller to reach the `EventsViewController`) otherwise.
     /// - Parameters:
-    ///   - tabBarController: The tab bar controller
-    ///   - viewController: The view controller associated with the tapped tab
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if previousController == viewController || previousController == nil {
-            if let navigationController = viewController as? UINavigationController {
-                if let eventViewController = navigationController.viewControllers.first as? EventsViewController {
-                    if eventViewController.isViewLoaded && eventViewController.view.window != nil {
-                        eventViewController.scrollToTop()
-                    }
+    ///   - tabBarController: The tab bar controller.
+    ///   - viewController: The view controller associated with the tapped tab.
+    /// - Returns: Whether to select the tapped view controller or not.
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if viewController == viewControllers?[selectedIndex] {
+            guard let splitVC = viewController as? UISplitViewController,
+                let navController = splitVC.viewControllers.first as? UINavigationController else {
+                    return true
+            }
+            if let eventsVC = navController.viewControllers.last as? EventsViewController {
+                if !eventsVC.isScrolledToTop {
+                    eventsVC.scrollToTop()
+                    return false
                 }
             }
+            navController.popViewController(animated: true)
         }
-        previousController = viewController
+        
+        return true
     }
     
+}
+
+extension UIViewController {
+    var isScrolledToTop: Bool {
+        if self is UITableViewController {
+            return (self as! UITableViewController).tableView.contentOffset.y == 0
+        }
+        for subView in view.subviews {
+            if let scrollView = subView as? UIScrollView {
+                return (scrollView.contentOffset.y == 0)
+            }
+        }
+        return true
+    }
 }

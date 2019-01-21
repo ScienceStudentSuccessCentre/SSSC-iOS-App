@@ -21,5 +21,23 @@ class CalculatorTableViewCell: UITableViewCell {
         
         courseLetterGradeView.addBorders(edges: .left, color: UIColor(.grey), width: 1)
     }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        let color = courseColourView.backgroundColor
+        super.setSelected(selected, animated: animated)
+        
+        if selected {
+            courseColourView.backgroundColor = color
+        }
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        let color = courseColourView.backgroundColor
+        super.setHighlighted(highlighted, animated: animated)
+        
+        if highlighted {
+            courseColourView.backgroundColor = color
+        }
+    }
 
 }

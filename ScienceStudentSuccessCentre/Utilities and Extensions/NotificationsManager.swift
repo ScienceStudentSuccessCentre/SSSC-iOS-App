@@ -18,7 +18,7 @@ class NotificationsManager {
     /// This sets each event's notification datetime to be be 15 seconds after the time of viewing an event.
     ///
     /// - Remark: See `determineNotificationDateTime()` for usage.
-    private let DEBUG_NOTIFICATION_TRIGGER = false
+    private let DEBUG_NOTIFICATION_TRIGGER = true
     
     private let notificationCenter = UNUserNotificationCenter.current()
     
@@ -36,6 +36,15 @@ class NotificationsManager {
             let exists = requests.contains(where: { $0.identifier == event.getId() })
             completion(exists)
         })
+    }
+    
+    /// Requests authorization from the user to deliver notifications.
+    ///
+    /// - Parameter completion: The block fo code run upon completion of the request.
+    public func requestAuthorization(completion: @escaping (Bool) -> Void) {
+        notificationCenter.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            completion(granted)
+        }
     }
     
     /// Check if the app is authorized to send notifications to the user.

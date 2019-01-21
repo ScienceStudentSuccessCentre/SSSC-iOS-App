@@ -15,21 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound])
-        { (granted, error) in
-            // Enable or disable features based on authorization.
-        }
-        
         let defaults = UserDefaults.standard
         if defaults.value(forKey: "includeInProgressCourses") == nil {
             defaults.set(true, forKey: "includeInProgressCourses")
         }
         
         UNUserNotificationCenter.current().delegate = self
-
+        
+        guard let tabBarController = window?.rootViewController as? UITabBarController,
+            let splitViewController = tabBarController.viewControllers?.first as? UISplitViewController
+            else { fatalError() }
+        splitViewController.preferredDisplayMode = .allVisible
+        
         return true
     }
     
