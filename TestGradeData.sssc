@@ -1,0 +1,108 @@
+{
+  "terms" : [
+    {
+      "id" : "9B3BAD62-49AD-4C57-B26E-9B7E73320739",
+      "year" : "2018",
+      "term" : "Fall"
+    }
+  ],
+  "assignments" : [
+    {
+      "courseId" : "9EC645F6-24B0-4D3A-A828-0ECC3A07BFE6",
+      "id" : "2A7B81E0-DE3B-4C7F-884B-988D4CC05C8D",
+      "gradeEarned" : 20,
+      "name" : "Quiz 1",
+      "weight" : {
+        "id" : "169CEFF6-45F3-4511-B233-59FF3642E86A",
+        "value" : 15,
+        "courseId" : "9EC645F6-24B0-4D3A-A828-0ECC3A07BFE6",
+        "name" : "Quizzes"
+      },
+      "gradeTotal" : 20
+    },
+    {
+      "courseId" : "9EC645F6-24B0-4D3A-A828-0ECC3A07BFE6",
+      "id" : "5C206E19-5AC0-4470-84C7-0AEF8C5F00A1",
+      "gradeEarned" : 8,
+      "name" : "Quiz 2",
+      "weight" : {
+        "id" : "169CEFF6-45F3-4511-B233-59FF3642E86A",
+        "value" : 15,
+        "courseId" : "9EC645F6-24B0-4D3A-A828-0ECC3A07BFE6",
+        "name" : "Quizzes"
+      },
+      "gradeTotal" : 10
+    },
+    {
+      "courseId" : "9EC645F6-24B0-4D3A-A828-0ECC3A07BFE6",
+      "id" : "C36440DE-AE08-4972-BA34-A9CE02E1412A",
+      "gradeEarned" : 44,
+      "name" : "Case Study",
+      "weight" : {
+        "id" : "BED65B8E-1E3B-4F62-91F7-C81D48A247F2",
+        "value" : 15,
+        "courseId" : "9EC645F6-24B0-4D3A-A828-0ECC3A07BFE6",
+        "name" : "Assignment"
+      },
+      "gradeTotal" : 50
+    }
+  ],
+  "courses" : [
+    {
+      "termId" : "9B3BAD62-49AD-4C57-B26E-9B7E73320739",
+      "isMajorCourse" : true,
+      "colour" : "red",
+      "id" : "F323B430-6230-4F69-B789-948621081663",
+      "code" : "BIOL 3104",
+      "finalGrade" : "A-",
+      "credits" : 0.5,
+      "name" : "Molecular Genetics"
+    },
+    {
+      "termId" : "9B3BAD62-49AD-4C57-B26E-9B7E73320739",
+      "isMajorCourse" : true,
+      "colour" : "lightblue",
+      "id" : "9EC645F6-24B0-4D3A-A828-0ECC3A07BFE6",
+      "code" : "BIOL 3306",
+      "finalGrade" : "None",
+      "credits" : 0.5,
+      "name" : "Human Anatomy and Physiology"
+    },
+    {
+      "termId" : "9B3BAD62-49AD-4C57-B26E-9B7E73320739",
+      "isMajorCourse" : true,
+      "colour" : "green",
+      "id" : "A722E9B2-B0EF-4E39-A6C6-FE71DA80EDC6",
+      "code" : "BIOL 2200",
+      "finalGrade" : "B",
+      "credits" : 0.5,
+      "name" : "Cellular Biochemistry"
+    }
+  ],
+  "weights" : [
+    {
+      "id" : "18B132B3-777A-42CA-B544-8D577B6A5077",
+      "value" : 30,
+      "courseId" : "9EC645F6-24B0-4D3A-A828-0ECC3A07BFE6",
+      "name" : "Midterm"
+    },
+    {
+      "id" : "BED65B8E-1E3B-4F62-91F7-C81D48A247F2",
+      "value" : 15,
+      "courseId" : "9EC645F6-24B0-4D3A-A828-0ECC3A07BFE6",
+      "name" : "Assignment"
+    },
+    {
+      "id" : "169CEFF6-45F3-4511-B233-59FF3642E86A",
+      "value" : 15,
+      "courseId" : "9EC645F6-24B0-4D3A-A828-0ECC3A07BFE6",
+      "name" : "Quizzes"
+    },
+    {
+      "id" : "820AF0F3-FC14-402E-AC4D-848C18B558EC",
+      "value" : 40,
+      "courseId" : "9EC645F6-24B0-4D3A-A828-0ECC3A07BFE6",
+      "name" : "Final"
+    }
+  ]
+}

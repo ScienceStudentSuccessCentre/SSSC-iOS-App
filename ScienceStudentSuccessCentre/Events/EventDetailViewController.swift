@@ -202,6 +202,9 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     @objc private func shareButtonTapped() {
         if let url = event?.getUrl()?.absoluteString {
             let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            if let popOver = activityVC.popoverPresentationController {
+                popOver.barButtonItem = navigationItem.rightBarButtonItems?.first
+            }
             self.present(activityVC, animated: true, completion: nil)
         }
     }

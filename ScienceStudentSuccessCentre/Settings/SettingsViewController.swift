@@ -69,6 +69,10 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
                 do {
                     try data.write(to: file, options: .atomic)
                     let activityVC = UIActivityViewController(activityItems: [file], applicationActivities: nil)
+                    if let popOver = activityVC.popoverPresentationController {
+                        popOver.sourceView = cell
+                        popOver.sourceRect = CGRect(x: cell.bounds.midX, y: cell.bounds.maxY, width: 0, height: 0)
+                    }
                     self.present(activityVC, animated: true, completion: nil)
                 } catch {
                     print("Failed to export grade data")
