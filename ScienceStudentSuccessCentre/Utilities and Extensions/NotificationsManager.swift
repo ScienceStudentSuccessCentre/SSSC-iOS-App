@@ -48,10 +48,21 @@ class NotificationsManager {
     /// Check if the app is authorized to send notifications to the user.
     ///
     /// - Parameter completion: The block of code run upon completion of the check.
-    public static func checkAuthorization() -> Promise<UNAuthorizationStatus> {
+    public static func checkAuthorized() -> Promise<Bool> {
         return Promise { seal in
             notificationCenter.getNotificationSettings { settings in
-                seal.fulfill(settings.authorizationStatus)
+                switch settings.authorizationStatus {
+                case .authorized:
+                    seal.fulfill(true)
+                    break
+                case .notDetermined:
+                    NotificationsManager.requestAuthorization().done { granted in
+                        seal.fulfill(granted)
+                    }.cauterize()
+                    break;
+                default:
+                    seal.fulfill(false)
+                }
             }
         }
     }
@@ -88,16 +99,15 @@ class NotificationsManager {
                         if let error = error {
                             print("Failed to create event notification:\n\(error)")
                             seal.fulfill(false)
-                        } else {
-                            seal.fulfill(true)
+                            return
                         }
                     })
-                } else {
-                    seal.fulfill(true)
                 }
             } else {
                 seal.fulfill(false)
+                return
             }
+            seal.fulfill(true)
         }
     }
     

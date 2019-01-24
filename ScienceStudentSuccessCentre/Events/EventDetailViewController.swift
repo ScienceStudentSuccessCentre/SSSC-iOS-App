@@ -147,39 +147,24 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     /// Checks if notifications are authorized (and requests authorization if not), and if so toggles whether the notification for this event is enabled.
     @objc private func notifyMeTapped() {
-        func denyUser() {
-            let alert = UIAlertController(title: "Notification permissions required", message: "In order to be notified of events, we need you to grant notification permissions to this app in Settings.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
-                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                    return
-                }
-                
-                if UIApplication.shared.canOpenURL(settingsUrl) {
-                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                        print("Settings opened: \(success)")
-                    })
-                }
-            })
-            self.present(alert, animated: true)
-        }
-        
-        NotificationsManager.checkAuthorization().done { status in
-            switch status {
-            case .authorized:
+        NotificationsManager.checkAuthorized().done { isAuthorized in
+            if isAuthorized {
                 self.toggleNotificationEnabled()
-                break
-            case .notDetermined:
-                NotificationsManager.requestAuthorization().done { granted in
-                    if granted {
-                        self.toggleNotificationEnabled()
-                    } else {
-                        denyUser()
+            } else {
+                let alert = UIAlertController(title: "Notification permissions required", message: "In order to be notified of events, we need you to grant notification permissions to this app in Settings.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                        return
                     }
-                }.cauterize()
-                break;
-            default:
-                denyUser()
+                    
+                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                            print("Settings opened: \(success)")
+                        })
+                    }
+                })
+                self.present(alert, animated: true)
             }
         }.cauterize()
     }
