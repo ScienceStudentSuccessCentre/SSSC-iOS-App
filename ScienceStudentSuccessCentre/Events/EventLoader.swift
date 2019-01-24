@@ -8,15 +8,13 @@
 
 import Foundation
 import SwiftSoup
-import Alamofire
 import PromiseKit
+import Alamofire
 
 /// Utility class that retrieves SSSC events from the server and parses them into proper `Event` objects.
 class EventLoader {
     
-    private static let baseURL = "http://sssc.carleton.ca"
-    private static let serverURL = "http://sssc-carleton-app-server.herokuapp.com/events";
-    private static let eventsURL = "/events"
+    private static let serverUrl = "http://sssc-carleton-app-server.herokuapp.com/events"
     
     /// Asynchronously gathers event data from the server and parses the contents into proper `Event` objects.
     ///
@@ -28,7 +26,7 @@ class EventLoader {
     /// - Returns: The newly parsed events in the form of a promise.
     public static func loadEvents() -> Promise<[Event]> {
         return Promise { seal in
-            Alamofire.request(serverURL).responseJSON { response in
+            Alamofire.request(serverUrl).responseJSON { response in
                 switch response.result {
                 case .success(let json):
                     let events = parseEvents(json: json)

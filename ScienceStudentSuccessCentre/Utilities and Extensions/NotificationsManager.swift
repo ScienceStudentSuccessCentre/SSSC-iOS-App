@@ -9,51 +9,50 @@
 import Foundation
 import UserNotifications
 import UIKit
+import PromiseKit
 
 class NotificationsManager {
-    
-    /// The shared instance (Singleton) of NotificationsManager.
-    static let shared = NotificationsManager()
     
     /// This sets each event's notification datetime to be be 15 seconds after the time of viewing an event.
     ///
     /// - Remark: See `determineNotificationDateTime()` for usage.
-    private let DEBUG_NOTIFICATION_TRIGGER = false
+    private static let DEBUG_NOTIFICATION_TRIGGER = false
     
-    private let notificationCenter = UNUserNotificationCenter.current()
-    
-    private init() {
-         // This is required to ensure that this remains a Singleton
-    }
+    private static let notificationCenter = UNUserNotificationCenter.current()
     
     /// Check if there are any pending notifications for the provided event.
     ///
     /// - Parameters:
     ///   - event: The event about which the user is being notified.
     ///   - completion: The block of code run upon completion of the check.
-    public func checkPendingNotifications(for event: Event, completion: @escaping (Bool) -> Void) {
-        notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
-            let exists = requests.contains(where: { $0.identifier == event.getId() })
-            completion(exists)
-        })
+    public static func checkPendingNotifications(for event: Event) -> Promise<Bool> {
+        return Promise { seal in
+            notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
+                let exists = requests.contains(where: { $0.identifier == event.getId() })
+                seal.fulfill(exists)
+            })
+        }
     }
     
     /// Requests authorization from the user to deliver notifications.
     ///
     /// - Parameter completion: The block fo code run upon completion of the request.
-    public func requestAuthorization(completion: @escaping (Bool) -> Void) {
-        notificationCenter.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            completion(granted)
+    public static func requestAuthorization() -> Promise<Bool> {
+        return Promise { seal in
+            notificationCenter.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+                seal.fulfill(granted)
+            }
         }
     }
     
     /// Check if the app is authorized to send notifications to the user.
     ///
-    /// - Parameter completion: The block of code run upon completino of the check.
-    public func checkAuthorized(completion: @escaping (Bool) -> Void) {
-        notificationCenter.getNotificationSettings { (settings) in
-            let isAuthorized = settings.authorizationStatus == .authorized
-            completion(isAuthorized)
+    /// - Parameter completion: The block of code run upon completion of the check.
+    public static func checkAuthorization() -> Promise<UNAuthorizationStatus> {
+        return Promise { seal in
+            notificationCenter.getNotificationSettings { settings in
+                seal.fulfill(settings.authorizationStatus)
+            }
         }
     }
     
@@ -63,7 +62,7 @@ class NotificationsManager {
     /// - Parameters:
     ///   - event: The event about which the user is being notified.
     ///   - completion: The block of code run upon completion of the notification creation.
-    public func createNotification(for event: Event, completion: @escaping (Bool) -> Void) {
+    public static func createNotification(for event: Event) -> Promise<Bool> {
         let content = UNMutableNotificationContent()
         content.title = event.getName()
         content.subtitle = "Today at " + event.getFormattedTime()
@@ -78,30 +77,34 @@ class NotificationsManager {
             }
         }
         
-        var failed = false
-        if let notificationDateTime = determineNotificationDateTime(for: event) {
-            if notificationDateTime.compare(Date()) != ComparisonResult.orderedAscending {
-                let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second,], from: notificationDateTime)
-                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-                let request = UNNotificationRequest(identifier: event.getId(), content: content, trigger: trigger)
-                
-                notificationCenter.add(request, withCompletionHandler: { (error) in
-                    if let error = error {
-                        print(error)
-                        failed = true
-                    }
-                })
+        return Promise { seal in
+            if let notificationDateTime = determineNotificationDateTime(for: event) {
+                if notificationDateTime.compare(Date()) != ComparisonResult.orderedAscending {
+                    let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second,], from: notificationDateTime)
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+                    let request = UNNotificationRequest(identifier: event.getId(), content: content, trigger: trigger)
+                    
+                    notificationCenter.add(request, withCompletionHandler: { (error) in
+                        if let error = error {
+                            print("Failed to create event notification:\n\(error)")
+                            seal.fulfill(false)
+                        } else {
+                            seal.fulfill(true)
+                        }
+                    })
+                } else {
+                    seal.fulfill(true)
+                }
+            } else {
+                seal.fulfill(false)
             }
-        } else {
-            failed = true
         }
-        completion(failed)
     }
     
     /// Removes all pending notifications for a provided event.
     ///
     /// - Parameter event: The event about which the user is being notified.
-    public func removeNotifications(for event: Event) {
+    public static func removeNotifications(for event: Event) {
         notificationCenter.removePendingNotificationRequests(withIdentifiers: [event.getId()])
     }
     
@@ -110,7 +113,7 @@ class NotificationsManager {
     /// - Remark: For the actual date and time of this event, use `getDateTime()`.
     /// - Attention: If `DEBUG_NOTIFICATION_TRIGGER` is on, a notification will be sent to the user 15 seconds after toggling on the notification for this event.
     /// - Returns: The notification date and time, or `nil` if one could not be calculated.
-    private func determineNotificationDateTime(for event: Event) -> Date? {
+    private static func determineNotificationDateTime(for event: Event) -> Date? {
         if DEBUG_NOTIFICATION_TRIGGER {
             return Calendar.current.date(byAdding: .second, value: 15, to: Date())!
         }

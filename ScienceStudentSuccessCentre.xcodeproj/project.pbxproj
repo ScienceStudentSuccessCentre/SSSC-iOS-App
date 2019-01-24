@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		042678B87BEA9695228061A8 /* Pods_ScienceStudentSuccessCentre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A519D0B6B2D10C171824AAD9 /* Pods_ScienceStudentSuccessCentre.framework */; };
 		442EC65C21EE8C36002B961E /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442EC65B21EE8C36002B961E /* NotificationsManager.swift */; };
+		44BB378F21FA64C900F7250F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB378E21FA64C900F7250F /* UIViewController.swift */; };
 		A17011CB21AC8F4000A385FB /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */; };
 		FF13F7D421646AC1005733B0 /* CreateCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */; };
 		FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */; };
@@ -77,6 +78,7 @@
 
 /* Begin PBXFileReference section */
 		442EC65B21EE8C36002B961E /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
+		44BB378E21FA64C900F7250F /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		7B021D16CACA69B8319CC12F /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.debug.xcconfig"; sourceTree = "<group>"; };
 		A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
 		A519D0B6B2D10C171824AAD9 /* Pods_ScienceStudentSuccessCentre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScienceStudentSuccessCentre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -337,6 +339,7 @@
 				442EC65B21EE8C36002B961E /* NotificationsManager.swift */,
 				FF57A96421658509004AA50B /* UIColor.swift */,
 				FFAE67912188ED2D0079CE16 /* UIView.swift */,
+				44BB378E21FA64C900F7250F /* UIViewController.swift */,
 				FF5FDB2B21ABB12200899963 /* SplitRow */,
 			);
 			path = "Utilities and Extensions";
@@ -593,6 +596,7 @@
 				FFFC6BC72162D6D6001585CE /* Course.swift in Sources */,
 				FFD0205821B1E1E6008D960B /* SettingsViewController.swift in Sources */,
 				FFE84078215F1CAC00A5E33B /* Term.swift in Sources */,
+				44BB378F21FA64C900F7250F /* UIViewController.swift in Sources */,
 				FF5FDB3121ABB17F00899963 /* SplitRowCellTableView.swift in Sources */,
 				442EC65C21EE8C36002B961E /* NotificationsManager.swift in Sources */,
 				FF5FDB2F21ABB16700899963 /* SplitRowCell.swift in Sources */,

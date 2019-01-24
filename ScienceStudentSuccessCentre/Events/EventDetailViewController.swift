@@ -18,7 +18,6 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    private let notificationsManager = NotificationsManager.shared
     private var actionUrlButton = UIButton()
     private var notifyMeButton = UIButton()
     
@@ -49,9 +48,9 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let event = event {
-            notificationsManager.checkPendingNotifications(for: event, completion: { notificationPending in
+            NotificationsManager.checkPendingNotifications(for: event).done { notificationPending in
                 self.updateNotifyMeButtonImage(notificationPending: notificationPending)
-            })
+            }.cauterize()
         }
     }
     
@@ -148,37 +147,46 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     /// Checks if notifications are authorized (and requests authorization if not), and if so toggles whether the notification for this event is enabled.
     @objc private func notifyMeTapped() {
-        notificationsManager.checkAuthorized { isAuthorized in
-            if !isAuthorized {
-                self.notificationsManager.requestAuthorization(completion: { granted in
-                    guard granted else {
-                        let alert = UIAlertController(title: "Notification permissions required", message: "In order to be notified of events, we need you to grant notification permissions to this app in Settings.", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
-                        alert.addAction(UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
-                            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                                return
-                            }
-                            
-                            if UIApplication.shared.canOpenURL(settingsUrl) {
-                                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                                    print("Settings opened: \(success)")
-                                })
-                            }
-                        })
-                        self.present(alert, animated: true)
-                        return
-                    }
-                    self.toggleNotificationEnabled()
-                })
-            } else {
-                self.toggleNotificationEnabled()
-            }
+        func denyUser() {
+            let alert = UIAlertController(title: "Notification permissions required", message: "In order to be notified of events, we need you to grant notification permissions to this app in Settings.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                    return
+                }
+                
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)")
+                    })
+                }
+            })
+            self.present(alert, animated: true)
         }
+        
+        NotificationsManager.checkAuthorization().done { status in
+            switch status {
+            case .authorized:
+                self.toggleNotificationEnabled()
+                break
+            case .notDetermined:
+                NotificationsManager.requestAuthorization().done { granted in
+                    if granted {
+                        self.toggleNotificationEnabled()
+                    } else {
+                        denyUser()
+                    }
+                }.cauterize()
+                break;
+            default:
+                denyUser()
+            }
+        }.cauterize()
     }
     
     /// Creates (or removes) a notification for this event when the notification button is tapped.
     private func toggleNotificationEnabled() {
-        self.notificationsManager.checkPendingNotifications(for: self.event!, completion: { notificationPending in
+        NotificationsManager.checkPendingNotifications(for: self.event!).done { notificationPending in
             self.updateNotifyMeButtonImage(notificationPending: !notificationPending)
             if !notificationPending {
                 DispatchQueue.main.async {
@@ -188,9 +196,9 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
                 }
                 self.createEventNotification()
             } else {
-                self.notificationsManager.removeNotifications(for: self.event!)
+                NotificationsManager.removeNotifications(for: self.event!)
             }
-        })
+        }.cauterize()
     }
     
     /// Delegates opening the actionUrl to the in-app browser when the action button is tapped.
@@ -211,13 +219,11 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     /// Creates a new event notification, updates the notification button image, and lets the user know that a notification has been prepared for this event.
     private func createEventNotification() {
-        notificationsManager.createNotification(for: event!, completion: { error in
-            DispatchQueue.main.async {
-                if error {
-                    self.presentGenericErrorAlert()
-                }
+        NotificationsManager.createNotification(for: event!).done { success in
+            if !success {
+                self.presentGenericErrorAlert()
             }
-        })
+        }.cauterize()
     }
     
     /// Generates a new notification request for this event.
@@ -246,14 +252,6 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         return request
     }
     
-    /// Generates and presents a generic error alert.
-    private func presentGenericErrorAlert() {
-        let alert = UIAlertController(title: "Something went wrong!", message: "Please try again later. If this issue persists, please let the SSSC know!", preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-        self.present(alert, animated: true)
-    }
-    
     /// Loads and displays any image associated with this event.
     ///
     /// This function loads an image by downloading it into a byte buffer and creating a UIImage object from there.
@@ -261,8 +259,8 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         if let url = event?.getImageUrl() {
             DispatchQueue.global().async {
                 if let data = try? Data(contentsOf: url) {
-                    DispatchQueue.main.async {
-                        if let image = UIImage(data: data) {
+                    if let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
                             self.eventImageView.image = image
                             let ratio = image.size.height / image.size.width
                             let newHeight = self.eventImageView.frame.size.width * ratio
