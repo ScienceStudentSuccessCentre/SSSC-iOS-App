@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventsViewController: UIViewController, UITableViewDataSource, EventObserver {
+class EventsViewController: UIViewController, UITableViewDataSource {
     
     private var events = [Event]()
     private var collapseDetailViewController = true
@@ -41,8 +41,6 @@ class EventsViewController: UIViewController, UITableViewDataSource, EventObserv
         }
         refreshControl.addTarget(self, action: #selector(refreshEventData), for: .valueChanged)
         
-        EventParser.getInstance().attachObserver(observer: self)
-        
         loadEvents()
     }
     
@@ -52,37 +50,26 @@ class EventsViewController: UIViewController, UITableViewDataSource, EventObserv
         tableView.reloadData()
     }
     
-    /// Asks the EventParser to start retrieving events from the SSSC website.
+    /// Retrieves the list of events from the SSSC website, and selects the first one on the list when viewing on iPads.
     private func loadEvents() {
-        DispatchQueue(label: "Dispatch Queue", attributes: [], target: nil).async {
-            EventParser.getInstance().loadEvents()
-        }
-    }
-    
-    /// Retrieves the latest events from the EventParser and loads them into the tableview.
-    func update() {
-        events = EventParser.getInstance().getEvents()
-        print("Received events")
-        DispatchQueue.main.async {
-            self.activityIndicatorView.stopAnimating()
-            self.tableView.separatorStyle = .singleLine
-            self.tableView.reloadData()
-            self.refreshControl.endRefreshing()
-            print("Data reloaded")
-            
+        EventLoader.loadEvents().done { events in
+            self.events = events
             if let navigationController = self.splitViewController?.children.last as? UINavigationController,
                 let detailViewController = navigationController.viewControllers.first as? EventDetailViewController {
                 self.tableView.selectRow(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: UITableView.ScrollPosition(rawValue: 0)!)
                 detailViewController.event = self.events.first
             }
+            }.catch { error in
+                print("Failed to load events:\n\(error)")
+                let alert = UIAlertController(title: "Something went wrong!", message: "Something went wrong when loading the SSSC's upcoming events! Please try again later. If the issue persists, contact the SSSC so we can fix the problem as soon as possible.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }.finally {
+                self.activityIndicatorView.stopAnimating()
+                self.tableView.separatorStyle = .singleLine
+                self.refreshControl.endRefreshing()
+                self.tableView.reloadData()
         }
-    }
-    
-    /// Displays an alert to the user.
-    ///
-    /// - Parameter alert: The alert to be displayed.
-    func presentAlert(alert: UIAlertController) {
-        self.present(alert, animated: true)
     }
     
     /// Refreshes the events in the tableview at the user's request.
