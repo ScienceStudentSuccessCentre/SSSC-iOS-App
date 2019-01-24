@@ -40,4 +40,5 @@ Event data is retrieved using a GET request to the SSSC Server (linked above) us
 - [Alamofire](https://github.com/Alamofire/Alamofire) (version 4.8.0)
 - [SQLite.swift](https://github.com/stephencelis/SQLite.swift) (version 0.11.5)
 - [Eureka](https://github.com/xmartlabs/Eureka) (version 4.3.0)
+- [PromiseKit](https://github.com/mxcl/PromiseKit) (version 6.7.1)
 - [ColorPickerRow](https://github.com/EurekaCommunity/ColorPickerRow) (version 1.2.1, although this is not a part of the native cocoapods library, so version will not be necessarily match when running `pod install`)

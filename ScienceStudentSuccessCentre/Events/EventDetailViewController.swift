@@ -18,6 +18,8 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    private let notificationCenter = UNUserNotificationCenter.current()
+    
     private var actionUrlButton = UIButton()
     private var notifyMeButton = UIButton()
     
@@ -48,7 +50,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let event = event {
-            NotificationsManager.checkPendingNotifications(for: event).done { notificationPending in
+            notificationCenter.checkPendingNotifications(for: event).done { notificationPending in
                 self.updateNotifyMeButtonImage(notificationPending: notificationPending)
             }.cauterize()
         }
@@ -147,7 +149,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     /// Checks if notifications are authorized (and requests authorization if not), and if so toggles whether the notification for this event is enabled.
     @objc private func notifyMeTapped() {
-        NotificationsManager.checkAuthorized().done { isAuthorized in
+        notificationCenter.checkAuthorized().done { isAuthorized in
             if isAuthorized {
                 self.toggleNotificationEnabled()
             } else {
@@ -171,7 +173,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     /// Creates (or removes) a notification for this event when the notification button is tapped.
     private func toggleNotificationEnabled() {
-        NotificationsManager.checkPendingNotifications(for: self.event!).done { notificationPending in
+        notificationCenter.checkPendingNotifications(for: self.event!).done { notificationPending in
             self.updateNotifyMeButtonImage(notificationPending: !notificationPending)
             if !notificationPending {
                 DispatchQueue.main.async {
@@ -181,7 +183,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
                 }
                 self.createEventNotification()
             } else {
-                NotificationsManager.removeNotifications(for: self.event!)
+                self.notificationCenter.removeNotifications(for: self.event!)
             }
         }.cauterize()
     }
@@ -204,7 +206,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     /// Creates a new event notification, updates the notification button image, and lets the user know that a notification has been prepared for this event.
     private func createEventNotification() {
-        NotificationsManager.createNotification(for: event!).done { success in
+        notificationCenter.createNotification(for: event!).done { success in
             if !success {
                 self.presentGenericErrorAlert()
             }
