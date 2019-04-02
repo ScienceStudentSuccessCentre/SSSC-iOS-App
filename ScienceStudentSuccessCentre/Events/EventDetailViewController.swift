@@ -40,6 +40,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
             navigationItem.largeTitleDisplayMode = .never
         }
         
+        eventDetailsView.isHidden = true
         eventImageView.isHidden = true;
         eventTitleView.addBorders(edges: [.bottom], color: UIColor(.bluegrey), width: 1)
         eventDetailsView.addBorders(edges: [.top], color: UIColor(.bluegrey), width: 0.4)
@@ -120,6 +121,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     /// Prepares the details of this event to be displayed, including loading in all of the text, the associated image (if any), and adding small borders to various event-related views.
     private func prepareEventDetails() {
         if let event = event {
+            eventDetailsView.isHidden = false
             eventDescriptionTextView.delegate = self
             
             eventTitleLabel.text = event.getName()
@@ -134,6 +136,8 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
             } else {
                 self.eventImageView.isHidden = true
             }
+        } else {
+            eventDetailsView.isHidden = true
         }
     }
     

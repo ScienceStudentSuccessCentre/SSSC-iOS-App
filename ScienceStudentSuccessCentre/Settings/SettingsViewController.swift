@@ -14,6 +14,7 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.extendedLayoutIncludesOpaqueBars = true
         createForm()
     }
     
