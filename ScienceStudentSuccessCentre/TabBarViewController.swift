@@ -48,8 +48,8 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
 extension UIViewController {
     var isScrolledToTop: Bool {
-        if self is UITableViewController {
-            return (self as! UITableViewController).tableView.contentOffset.y == 0
+        if let tableVC = self as? UITableViewController {
+            return tableVC.tableView.contentOffset.y == 0
         }
         for subView in view.subviews {
             if let scrollView = subView as? UIScrollView {
