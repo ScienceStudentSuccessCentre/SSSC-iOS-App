@@ -8,7 +8,6 @@
 import UIKit
 
 class GradesViewController: UIViewController {
-    
     @IBOutlet weak var containerView: UIView!
     
     weak var delegate: GradesViewControllerDelegate?
@@ -21,22 +20,19 @@ class GradesViewController: UIViewController {
     }()
     
     private lazy var termsViewController: TermsViewController = {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        var viewController = storyboard.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+        var viewController = storyboard?.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
         self.add(asChildViewController: viewController)
         return viewController
     }()
     
     private lazy var calculatorViewController: CalculatorViewController = {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        var viewController = storyboard.instantiateViewController(withIdentifier: "CalculatorViewController") as! CalculatorViewController
+        var viewController = storyboard?.instantiateViewController(withIdentifier: "CalculatorViewController") as! CalculatorViewController
         self.add(asChildViewController: viewController)
         return viewController
     }()
     
     private lazy var plannerViewController: PlannerViewController = {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        var viewController = storyboard.instantiateViewController(withIdentifier: "PlannerViewController") as! PlannerViewController
+        var viewController = storyboard?.instantiateViewController(withIdentifier: "PlannerViewController") as! PlannerViewController
         self.add(asChildViewController: viewController)
         return viewController
     }()
@@ -44,6 +40,7 @@ class GradesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        extendedLayoutIncludesOpaqueBars = true;
         navigationController?.view.backgroundColor = UIColor(.lightgrey)
         navigationItem.titleView = segmentControl
     }
