@@ -291,52 +291,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8T2-b6-FCq" userLabel="Segment Control View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                                <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3px-4d-R5i">
-                                        <rect key="frame" x="14" y="11" width="347" height="29"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <segments>
-                                            <segment title="Terms"/>
-                                            <segment title="CGPA Calculator"/>
-                                            <segment title="CGPA Planner"/>
-                                        </segments>
-                                        <color key="tintColor" red="0.95686274509803915" green="0.2627450980392157" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <action selector="segmentSelectedActionWithSender:" destination="wsO-6Z-Lpi" eventType="valueChanged" id="Egi-ey-pTP"/>
-                                        </connections>
-                                    </segmentedControl>
-                                </subviews>
-                                <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="3px-4d-R5i" firstAttribute="centerX" secondItem="8T2-b6-FCq" secondAttribute="centerX" id="JJP-Ec-5gd"/>
-                                    <constraint firstAttribute="height" constant="50" id="Jfa-Fa-nxm"/>
-                                    <constraint firstItem="3px-4d-R5i" firstAttribute="centerY" secondItem="8T2-b6-FCq" secondAttribute="centerY" id="iVp-e4-3ZN"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wqe-EJ-Gb6">
-                                <rect key="frame" x="0.0" y="50" width="375" height="452"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Wqe-EJ-Gb6" firstAttribute="leading" secondItem="JzO-nb-f3D" secondAttribute="leading" id="Ado-lW-dt1"/>
-                            <constraint firstItem="8T2-b6-FCq" firstAttribute="top" secondItem="JzO-nb-f3D" secondAttribute="top" id="MkI-YI-4n1"/>
                             <constraint firstItem="JzO-nb-f3D" firstAttribute="trailing" secondItem="Wqe-EJ-Gb6" secondAttribute="trailing" id="PRy-y7-Q3l"/>
                             <constraint firstItem="JzO-nb-f3D" firstAttribute="bottom" secondItem="Wqe-EJ-Gb6" secondAttribute="bottom" id="dDf-bd-N3R"/>
-                            <constraint firstItem="8T2-b6-FCq" firstAttribute="trailing" secondItem="JzO-nb-f3D" secondAttribute="trailing" id="h7d-px-Fbu"/>
-                            <constraint firstItem="8T2-b6-FCq" firstAttribute="leading" secondItem="JzO-nb-f3D" secondAttribute="leading" id="oOY-Ux-ruS"/>
-                            <constraint firstItem="Wqe-EJ-Gb6" firstAttribute="top" secondItem="8T2-b6-FCq" secondAttribute="bottom" id="vC7-fo-7dj"/>
+                            <constraint firstItem="Wqe-EJ-Gb6" firstAttribute="top" secondItem="JzO-nb-f3D" secondAttribute="top" id="oMg-yT-3Y7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JzO-nb-f3D"/>
                     </view>
                     <navigationItem key="navigationItem" title="Grades" id="ZDs-qg-ZD6"/>
                     <connections>
                         <outlet property="containerView" destination="Wqe-EJ-Gb6" id="CN5-EU-BqP"/>
-                        <outlet property="segmentControl" destination="3px-4d-R5i" id="Hij-HP-2hW"/>
-                        <outlet property="segmentControlView" destination="8T2-b6-FCq" id="r5F-5c-nde"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epR-96-5D6" userLabel="First Responder" sceneMemberID="firstResponder"/>

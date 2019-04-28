@@ -19,8 +19,6 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     private var terms = [Term]()
     
     private var oldScrollPosition = CGFloat(0)
-    
-    weak var delegate: SegmentControlDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,19 +74,6 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         doneEditingTermsButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editTermPressed))
     }
     
-    /// Runs each time the provided UIScrollView has been scrolled.
-    ///
-    /// This function sends the `SegmentControlDelegate` a delta value for which to scroll the `SegmentControl`.
-    /// - Parameter scrollView: The `UIScrollView` that was scrolled.
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let currentScrollPosition = scrollView.contentOffset.y
-        if currentScrollPosition < 0 {
-            let delta = currentScrollPosition - oldScrollPosition
-            delegate?.updateSegmentControlPosition(delta: -delta)
-        }
-        oldScrollPosition = currentScrollPosition
-    }
-    
     @objc func addTermPressed() {
         performSegue(withIdentifier: "createTerm", sender: self)
     }
@@ -105,14 +90,13 @@ class TermsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     /// Toggles the table view buttons between Done/Add and Edit/Add, depending on whether the table view is editing or not.
     func toggleTableViewButtons() {
-        var buttonList: [UIBarButtonItem] = [addTermButton]
-        if tableView.isEditing {
-            buttonList.append(doneEditingTermsButton)
-        } else {
-            buttonList.append(editTermsButton)
-        }
         if let navigationItem = navigationController?.navigationBar.topItem {
-            navigationItem.setRightBarButtonItems(buttonList, animated: true)
+            navigationItem.setRightBarButton(addTermButton, animated: true)
+            if tableView.isEditing {
+                navigationItem.setLeftBarButton(doneEditingTermsButton, animated: true)
+            } else {
+                navigationItem.setLeftBarButton(editTermsButton, animated: true)
+            }
         }
     }
     

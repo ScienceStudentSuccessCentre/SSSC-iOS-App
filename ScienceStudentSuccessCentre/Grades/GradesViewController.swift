@@ -9,11 +9,16 @@ import UIKit
 
 class GradesViewController: UIViewController {
     
-    @IBOutlet var segmentControl: UISegmentedControl!
-    @IBOutlet var segmentControlView: UIView!
     @IBOutlet weak var containerView: UIView!
     
     weak var delegate: GradesViewControllerDelegate?
+    
+    private lazy var segmentControl: UISegmentedControl = {
+        let segmentControl = UISegmentedControl(items: ["Terms", "Calculator", "Planner"])
+        segmentControl.selectedSegmentIndex = 0
+        segmentControl.addTarget(self, action: #selector(segmentSelectedAction(sender:)), for: .primaryActionTriggered)
+        return segmentControl
+    }()
     
     private lazy var termsViewController: TermsViewController = {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -40,7 +45,7 @@ class GradesViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.view.backgroundColor = UIColor(.lightgrey)
-        segmentControlView.addBorders(edges: [.bottom], color: UIColor(.bluegrey), width: 0.5)
+        navigationItem.titleView = segmentControl
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,7 +100,8 @@ class GradesViewController: UIViewController {
             delegate = ctrl as? GradesViewControllerDelegate
             delegate?.showTableViewButtons()
         } else {
-            navigationItem.rightBarButtonItems = nil
+            navigationItem.setLeftBarButton(nil, animated: true)
+            navigationItem.setRightBarButton(nil, animated: true)
         }
     }
     
@@ -107,25 +113,4 @@ class GradesViewController: UIViewController {
         viewController.view.removeFromSuperview()
         viewController.removeFromParent()
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "termsViewController", let destinationController = segue.destination as? TermsViewController {
-            destinationController.delegate = self
-        }
-    }
-}
-
-extension GradesViewController: SegmentControlDelegate {
-    
-    /// Shifts the `SegmentControl` up or down by the given delta.
-    ///
-    /// - Parameter delta: The distance to move the `SegmentControl`.
-    func updateSegmentControlPosition(delta: CGFloat) {
-        let prevX = segmentControlView.frame.origin.x
-        let prevY = segmentControlView.frame.origin.y
-        let prevWidth = segmentControlView.frame.size.width
-        let prevHeight = segmentControlView.frame.size.height
-        segmentControlView.frame = CGRect(x: prevX, y: prevY + delta, width: prevWidth, height: prevHeight)
-    }
-    
 }
