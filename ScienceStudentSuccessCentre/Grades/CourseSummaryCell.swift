@@ -1,17 +1,16 @@
 //
-//  CalculatorTableViewCell.swift
+//  CourseSummaryCell.swift
 //  ScienceStudentSuccessCentre
 //
-//  Created by Avery Vine on 2018-11-30.
-//  Copyright © 2018 Avery Vine. All rights reserved.
+//  Created by Avery Vine on 4/28/19.
+//  Copyright © 2019 Avery Vine. All rights reserved.
 //
 
 import UIKit
 
-class CalculatorTableViewCell: UITableViewCell {
-
+class CourseSummaryCell: UITableViewCell {
     @IBOutlet var courseColourView: UIView!
-    @IBOutlet var termAndCourseGrade: UILabel!
+    @IBOutlet var termAndCourseCode: UILabel!
     @IBOutlet var courseName: UILabel!
     @IBOutlet var courseLetterGradeView: UIView!
     @IBOutlet var courseLetterGrade: UILabel!
@@ -20,6 +19,7 @@ class CalculatorTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         courseLetterGradeView.addBorders(edges: .left, color: UIColor(.grey), width: 1)
+        accessoryType = .disclosureIndicator
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -39,5 +39,11 @@ class CalculatorTableViewCell: UITableViewCell {
             courseColourView.backgroundColor = color
         }
     }
-
+    
+    func configure(with course: Course, term: Term?) {
+        courseColourView.backgroundColor = UIColor(course.colour)
+        termAndCourseCode.text = (term != nil ? "[\(term!.shortForm)] " : "") + "\(course.code)"
+        courseName.text = course.name
+        courseLetterGrade.text = course.getLetterGrade()
+    }
 }

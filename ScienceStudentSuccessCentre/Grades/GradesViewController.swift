@@ -12,6 +12,16 @@ class GradesViewController: UIViewController {
     
     weak var delegate: GradesViewControllerDelegate?
     
+    private lazy var searchController: UISearchController = {
+        let resultsViewController = CourseSearchViewController(actionDelegate: self)
+        let searchController = UISearchController(searchResultsController: resultsViewController)
+        searchController.searchResultsUpdater = resultsViewController
+        searchController.searchBar.delegate = resultsViewController
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.placeholder = "Course Search"
+        return searchController
+    }()
+    
     private lazy var segmentControl: UISegmentedControl = {
         let segmentControl = UISegmentedControl(items: ["Terms", "Calculator", "Planner"])
         segmentControl.selectedSegmentIndex = 0
@@ -40,7 +50,8 @@ class GradesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        extendedLayoutIncludesOpaqueBars = true;
+        definesPresentationContext = true
+        extendedLayoutIncludesOpaqueBars = true
         navigationController?.view.backgroundColor = UIColor(.lightgrey)
         navigationItem.titleView = segmentControl
     }
@@ -67,16 +78,31 @@ class GradesViewController: UIViewController {
             remove(asChildViewController: plannerViewController)
             add(asChildViewController: termsViewController)
             navigationItem.title = "Terms"
+            if #available(iOS 11.0, *) {
+                navigationItem.searchController = searchController
+            } else {
+                termsViewController.tableView.tableHeaderView = searchController.searchBar
+            }
         case 1:
             remove(asChildViewController: termsViewController)
             remove(asChildViewController: plannerViewController)
             add(asChildViewController: calculatorViewController)
             navigationItem.title = "CGPA Calculator"
+            if #available(iOS 11.0, *) {
+                navigationItem.searchController = nil
+            } else {
+                termsViewController.tableView.tableHeaderView = nil
+            }
         case 2:
             remove(asChildViewController: termsViewController)
             remove(asChildViewController: calculatorViewController)
             add(asChildViewController: plannerViewController)
             navigationItem.title = "CGPA Planner"
+            if #available(iOS 11.0, *) {
+                navigationItem.searchController = nil
+            } else {
+                termsViewController.tableView.tableHeaderView = nil
+            }
         default:
             break
         }
@@ -93,9 +119,8 @@ class GradesViewController: UIViewController {
         viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         viewController.didMove(toParent: self)
         
-        if let ctrl = children.first(where: { $0 is GradesViewControllerDelegate }) {
-            delegate = ctrl as? GradesViewControllerDelegate
-            delegate?.showTableViewButtons()
+        if let delegate = viewController as? GradesViewControllerDelegate {
+            delegate.showTableViewButtons()
         } else {
             navigationItem.setLeftBarButton(nil, animated: true)
             navigationItem.setRightBarButton(nil, animated: true)
@@ -109,5 +134,16 @@ class GradesViewController: UIViewController {
         viewController.willMove(toParent: nil)
         viewController.view.removeFromSuperview()
         viewController.removeFromParent()
+    }
+}
+
+extension GradesViewController: CourseSearchActionDelegate {
+    func didTapCourse(_ course: Course) {
+        dismiss(animated: true, completion: {
+            guard let courseDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "CourseDetailViewController") as? CourseDetailViewController else { return }
+            courseDetailVC.course = course
+            self.searchController.searchBar.text = nil
+            self.navigationController?.pushViewController(courseDetailVC, animated: true)
+        })
     }
 }

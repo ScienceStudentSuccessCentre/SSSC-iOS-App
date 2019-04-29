@@ -10,6 +10,9 @@
 		042678B87BEA9695228061A8 /* Pods_ScienceStudentSuccessCentre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A519D0B6B2D10C171824AAD9 /* Pods_ScienceStudentSuccessCentre.framework */; };
 		442EC65C21EE8C36002B961E /* UNUserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442EC65B21EE8C36002B961E /* UNUserNotificationCenter.swift */; };
 		44B2CAE22273DE20007E53AB /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B2CAE12273DE20007E53AB /* EventsViewController.swift */; };
+		44B2CAE6227675FF007E53AB /* CourseSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B2CAE5227675FF007E53AB /* CourseSearchViewController.swift */; };
+		44B2CAEA2276A2BD007E53AB /* CourseSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44B2CAE92276A2BD007E53AB /* CourseSummaryCell.xib */; };
+		44B2CAEC2276A4C2007E53AB /* CourseSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B2CAEB2276A4C2007E53AB /* CourseSummaryCell.swift */; };
 		44BB378F21FA64C900F7250F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB378E21FA64C900F7250F /* UIViewController.swift */; };
 		A17011CB21AC8F4000A385FB /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */; };
 		FF13F7D421646AC1005733B0 /* CreateCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */; };
@@ -50,7 +53,6 @@
 		FFC18A2C202502A8001AB5BA /* EventLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC18A2B202502A8001AB5BA /* EventLoader.swift */; };
 		FFC6CF1621657C6D00657C34 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */; };
 		FFC6CF1821657CAE00657C34 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6CF1721657CAE00657C34 /* Assignment.swift */; };
-		FFD0205521B1B2D8008D960B /* CalculatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD0205421B1B2D8008D960B /* CalculatorTableViewCell.swift */; };
 		FFD0205821B1E1E6008D960B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD0205721B1E1E6008D960B /* SettingsViewController.swift */; };
 		FFD2DF532193860200C97FDF /* Grading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2DF522193860200C97FDF /* Grading.swift */; };
 		FFE84078215F1CAC00A5E33B /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE84077215F1CAC00A5E33B /* Term.swift */; };
@@ -78,6 +80,9 @@
 /* Begin PBXFileReference section */
 		442EC65B21EE8C36002B961E /* UNUserNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenter.swift; sourceTree = "<group>"; };
 		44B2CAE12273DE20007E53AB /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		44B2CAE5227675FF007E53AB /* CourseSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSearchViewController.swift; sourceTree = "<group>"; };
+		44B2CAE92276A2BD007E53AB /* CourseSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseSummaryCell.xib; sourceTree = "<group>"; };
+		44B2CAEB2276A4C2007E53AB /* CourseSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseSummaryCell.swift; sourceTree = "<group>"; };
 		44BB378E21FA64C900F7250F /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		7B021D16CACA69B8319CC12F /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.debug.xcconfig"; sourceTree = "<group>"; };
 		A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
@@ -128,7 +133,6 @@
 		FFC18A2B202502A8001AB5BA /* EventLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLoader.swift; sourceTree = "<group>"; };
 		FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
 		FFC6CF1721657CAE00657C34 /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
-		FFD0205421B1B2D8008D960B /* CalculatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTableViewCell.swift; sourceTree = "<group>"; };
 		FFD0205721B1E1E6008D960B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FFD2DF522193860200C97FDF /* Grading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grading.swift; sourceTree = "<group>"; };
 		FFE84077215F1CAC00A5E33B /* Term.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
@@ -304,8 +308,11 @@
 		FFE84071215F190A00A5E33B /* Grades */ = {
 			isa = PBXGroup;
 			children = (
+				44B2CAEB2276A4C2007E53AB /* CourseSummaryCell.swift */,
+				44B2CAE5227675FF007E53AB /* CourseSearchViewController.swift */,
 				FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */,
 				FFA5849D21AF961200B15E25 /* GradesViewControllerDelegate.swift */,
+				44B2CAE92276A2BD007E53AB /* CourseSummaryCell.xib */,
 				FFE84075215F196700A5E33B /* Calculator */,
 				FFE84076215F198000A5E33B /* Planner */,
 				FFE84072215F191B00A5E33B /* Terms */,
@@ -356,7 +363,6 @@
 		FFE84075215F196700A5E33B /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				FFD0205421B1B2D8008D960B /* CalculatorTableViewCell.swift */,
 				FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */,
 			);
 			path = Calculator;
@@ -486,6 +492,7 @@
 				FFB76C962030B5A200EC3F97 /* Assets.xcassets in Resources */,
 				FF327FD520128C3E00B06E19 /* LaunchScreen.storyboard in Resources */,
 				FF327FD020128C3E00B06E19 /* Main.storyboard in Resources */,
+				44B2CAEA2276A2BD007E53AB /* CourseSummaryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,8 +588,10 @@
 				FFA7CBAB215DD4CB00A050B1 /* TermsViewController.swift in Sources */,
 				FFAC093C215EBBD5007C4264 /* TermDetailViewController.swift in Sources */,
 				44B2CAE22273DE20007E53AB /* EventsViewController.swift in Sources */,
+				44B2CAEC2276A4C2007E53AB /* CourseSummaryCell.swift in Sources */,
 				FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */,
 				FF7A0905215967F600A98504 /* Formatter.swift in Sources */,
+				44B2CAE6227675FF007E53AB /* CourseSearchViewController.swift in Sources */,
 				FF5FDB2D21ABB13200899963 /* SplitRow.swift in Sources */,
 				FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */,
 				FF4C4A9C215D7C550091BF2A /* GradesViewController.swift in Sources */,
@@ -599,7 +608,6 @@
 				FF5FDB2F21ABB16700899963 /* SplitRowCell.swift in Sources */,
 				FF74BE81218CBE6100A8954B /* AssignmentTableViewCell.swift in Sources */,
 				FFD2DF532193860200C97FDF /* Grading.swift in Sources */,
-				FFD0205521B1B2D8008D960B /* CalculatorTableViewCell.swift in Sources */,
 				FF4BCBCF21AB47790050A876 /* Weight.swift in Sources */,
 				FF5FDB3321ABB19700899963 /* SplitRowValue.swift in Sources */,
 				FF3D05DC215AC9AC0073D0E7 /* TabBarViewController.swift in Sources */,

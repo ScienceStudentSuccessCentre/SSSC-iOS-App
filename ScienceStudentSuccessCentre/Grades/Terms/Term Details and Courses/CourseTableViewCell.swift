@@ -9,7 +9,6 @@
 import UIKit
 
 class CourseTableViewCell: UITableViewCell {
-    
     @IBOutlet var courseCode: UILabel!
     @IBOutlet var courseName: UILabel!
     @IBOutlet var grade: UILabel!

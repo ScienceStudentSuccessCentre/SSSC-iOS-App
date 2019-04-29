@@ -501,78 +501,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mSR-yn-Ced">
-                                <rect key="frame" x="0.0" y="20" width="375" height="579"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CalculatorTableViewCell" rowHeight="65" id="dcx-5P-fPE" customClass="CalculatorTableViewCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CourseSummaryCell" rowHeight="65" id="dcx-5P-fPE" customClass="CourseSummaryCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dcx-5P-fPE" id="QeE-fn-mmj">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="64.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B0k-Up-ZBM" userLabel="Course Colour View">
-                                                    <rect key="frame" x="0.0" y="0.0" width="5" height="64.5"/>
-                                                    <color key="backgroundColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="5" id="2QA-vQ-3z5"/>
-                                                    </constraints>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fall 2018 - COMP 3000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WcY-7r-zLh" userLabel="Term and Course Code">
-                                                    <rect key="frame" x="21" y="11" width="260" height="24"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Operating Systems" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMt-3g-XAx" userLabel="Course Name">
-                                                    <rect key="frame" x="21" y="35" width="260" height="23.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zbO-ly-xtU" userLabel="Course Letter Grade View">
-                                                    <rect key="frame" x="297" y="12.5" width="45" height="40"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="A+" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="glA-NC-8bx" userLabel="Course Letter Grade">
-                                                            <rect key="frame" x="16" y="8" width="29" height="24"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstItem="glA-NC-8bx" firstAttribute="centerY" secondItem="zbO-ly-xtU" secondAttribute="centerY" id="Jf8-Sa-Huf"/>
-                                                        <constraint firstAttribute="trailing" secondItem="glA-NC-8bx" secondAttribute="trailing" id="UnU-mV-ajK"/>
-                                                        <constraint firstAttribute="width" constant="45" id="abf-DD-Xbi"/>
-                                                        <constraint firstItem="glA-NC-8bx" firstAttribute="leading" secondItem="zbO-ly-xtU" secondAttribute="leading" constant="16" id="kjq-UF-6Zv"/>
-                                                        <constraint firstAttribute="height" constant="40" id="oGj-7m-fw0"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="zbO-ly-xtU" secondAttribute="trailing" id="2dX-ca-8ee"/>
-                                                <constraint firstItem="IMt-3g-XAx" firstAttribute="height" secondItem="WcY-7r-zLh" secondAttribute="height" id="3Th-WH-TBO"/>
-                                                <constraint firstItem="WcY-7r-zLh" firstAttribute="top" secondItem="QeE-fn-mmj" secondAttribute="topMargin" id="EWo-tm-4xc"/>
-                                                <constraint firstItem="zbO-ly-xtU" firstAttribute="centerY" secondItem="QeE-fn-mmj" secondAttribute="centerY" id="H45-I6-7d2"/>
-                                                <constraint firstItem="zbO-ly-xtU" firstAttribute="leading" secondItem="WcY-7r-zLh" secondAttribute="trailing" constant="16" id="Ny4-Ii-fOc"/>
-                                                <constraint firstItem="B0k-Up-ZBM" firstAttribute="top" secondItem="QeE-fn-mmj" secondAttribute="top" id="cqf-SG-kLN"/>
-                                                <constraint firstItem="zbO-ly-xtU" firstAttribute="leading" secondItem="IMt-3g-XAx" secondAttribute="trailing" constant="16" id="eqT-Wg-JRF"/>
-                                                <constraint firstItem="IMt-3g-XAx" firstAttribute="top" secondItem="WcY-7r-zLh" secondAttribute="bottom" id="hCP-cc-7tI"/>
-                                                <constraint firstItem="WcY-7r-zLh" firstAttribute="leading" secondItem="B0k-Up-ZBM" secondAttribute="trailing" constant="16" id="jrn-LE-eRh"/>
-                                                <constraint firstItem="IMt-3g-XAx" firstAttribute="leading" secondItem="B0k-Up-ZBM" secondAttribute="trailing" constant="16" id="rnT-2o-Ho1"/>
-                                                <constraint firstAttribute="bottom" secondItem="IMt-3g-XAx" secondAttribute="bottom" constant="6" id="tC9-Ox-hsR"/>
-                                                <constraint firstAttribute="bottom" secondItem="B0k-Up-ZBM" secondAttribute="bottom" id="ypH-QO-u8M"/>
-                                                <constraint firstItem="B0k-Up-ZBM" firstAttribute="leading" secondItem="QeE-fn-mmj" secondAttribute="leading" id="zWb-au-6M6"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="courseColourView" destination="B0k-Up-ZBM" id="ny7-d4-XWV"/>
-                                            <outlet property="courseLetterGrade" destination="glA-NC-8bx" id="fmd-RP-ZuN"/>
-                                            <outlet property="courseLetterGradeView" destination="zbO-ly-xtU" id="OKn-1g-9ds"/>
-                                            <outlet property="courseName" destination="IMt-3g-XAx" id="LzV-89-jaH"/>
-                                            <outlet property="termAndCourseGrade" destination="WcY-7r-zLh" id="Zfc-oy-gC0"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -638,8 +576,7 @@
                             <constraint firstItem="yqy-TF-PGU" firstAttribute="trailing" secondItem="xiu-5m-JEt" secondAttribute="trailing" id="Ucj-5n-ryt"/>
                             <constraint firstItem="mSR-yn-Ced" firstAttribute="leading" secondItem="xiu-5m-JEt" secondAttribute="leading" id="hs4-dr-gPQ"/>
                             <constraint firstItem="yqy-TF-PGU" firstAttribute="top" secondItem="mSR-yn-Ced" secondAttribute="bottom" id="kVx-bA-vYn"/>
-                            <constraint firstItem="mSR-yn-Ced" firstAttribute="leading" secondItem="xiu-5m-JEt" secondAttribute="leading" id="ogR-fM-bZ1"/>
-                            <constraint firstItem="mSR-yn-Ced" firstAttribute="top" secondItem="xiu-5m-JEt" secondAttribute="top" id="x9Q-VH-NaY"/>
+                            <constraint firstItem="mSR-yn-Ced" firstAttribute="top" secondItem="8W7-d2-zpr" secondAttribute="top" id="x9Q-VH-NaY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xiu-5m-JEt"/>
                     </view>
@@ -834,7 +771,7 @@
         <!--Course Detail View Controller-->
         <scene sceneID="Ejg-L8-pr3">
             <objects>
-                <viewController id="atS-1p-BMg" customClass="CourseDetailViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CourseDetailViewController" id="atS-1p-BMg" customClass="CourseDetailViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hdr-uN-Pz9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1164,6 +1101,6 @@
         <segue reference="tIv-iP-yUy"/>
         <segue reference="tsD-S5-xqb"/>
         <segue reference="K9y-h4-UFx"/>
-        <segue reference="gNE-LT-kLe"/>
+        <segue reference="Qdr-u9-Mbc"/>
     </inferredMetricsTieBreakers>
 </document>

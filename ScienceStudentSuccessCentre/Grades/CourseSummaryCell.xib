@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CourseSummaryCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CourseSummaryCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="327" height="65"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6rT-eZ-Mbf" userLabel="Course Letter Grade View">
+                    <rect key="frame" x="250" y="12.5" width="45" height="40"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="A+" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dSI-Zf-P3h" userLabel="Course Letter Grade">
+                            <rect key="frame" x="16" y="8" width="29" height="24"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="dSI-Zf-P3h" firstAttribute="centerY" secondItem="6rT-eZ-Mbf" secondAttribute="centerY" id="HWA-HM-nYo"/>
+                        <constraint firstItem="dSI-Zf-P3h" firstAttribute="leading" secondItem="6rT-eZ-Mbf" secondAttribute="leading" constant="16" id="NsJ-AC-bgf"/>
+                        <constraint firstAttribute="trailing" secondItem="dSI-Zf-P3h" secondAttribute="trailing" id="hKT-f6-7XV"/>
+                        <constraint firstAttribute="width" constant="45" id="jmi-Gt-UTI"/>
+                        <constraint firstAttribute="height" constant="40" id="olf-14-nNs"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Operating Systems" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0II-tv-JZB" userLabel="Course Name">
+                    <rect key="frame" x="21" y="32.5" width="213" height="24.5"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ako-fi-DR2" userLabel="Course Colour View">
+                    <rect key="frame" x="0.0" y="0.0" width="5" height="65"/>
+                    <color key="backgroundColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="5" id="Cnz-RT-pgG"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[F18] COMP 3000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KiH-F8-Xth" userLabel="Term and Course Code">
+                    <rect key="frame" x="21" y="8" width="213" height="24.5"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="KiH-F8-Xth" firstAttribute="leading" secondItem="ako-fi-DR2" secondAttribute="trailing" constant="16" id="25s-eP-rdt"/>
+                <constraint firstItem="6rT-eZ-Mbf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="EPS-WN-9IW"/>
+                <constraint firstItem="0II-tv-JZB" firstAttribute="leading" secondItem="ako-fi-DR2" secondAttribute="trailing" constant="16" id="HhL-Up-Tls"/>
+                <constraint firstItem="ako-fi-DR2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Hqy-0V-0FC"/>
+                <constraint firstItem="0II-tv-JZB" firstAttribute="top" secondItem="KiH-F8-Xth" secondAttribute="bottom" id="Lkp-Ud-MXB"/>
+                <constraint firstItem="KiH-F8-Xth" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="MJo-WG-gqn"/>
+                <constraint firstAttribute="trailing" secondItem="6rT-eZ-Mbf" secondAttribute="trailing" constant="32" id="PIs-vF-uEH"/>
+                <constraint firstItem="ako-fi-DR2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VDi-xi-vN8"/>
+                <constraint firstItem="6rT-eZ-Mbf" firstAttribute="leading" secondItem="0II-tv-JZB" secondAttribute="trailing" constant="16" id="crd-XA-x6k"/>
+                <constraint firstItem="6rT-eZ-Mbf" firstAttribute="leading" secondItem="KiH-F8-Xth" secondAttribute="trailing" constant="16" id="eXC-YS-lBK"/>
+                <constraint firstAttribute="bottom" secondItem="ako-fi-DR2" secondAttribute="bottom" id="hIb-Pl-ZxP"/>
+                <constraint firstItem="0II-tv-JZB" firstAttribute="height" secondItem="KiH-F8-Xth" secondAttribute="height" id="lkk-yg-ML9"/>
+                <constraint firstAttribute="bottom" secondItem="0II-tv-JZB" secondAttribute="bottom" constant="8" id="mRD-Rw-eIV"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="courseColourView" destination="ako-fi-DR2" id="10H-yq-wxT"/>
+                <outlet property="courseLetterGrade" destination="dSI-Zf-P3h" id="ZPy-Qa-Z4f"/>
+                <outlet property="courseLetterGradeView" destination="6rT-eZ-Mbf" id="YX4-zg-73p"/>
+                <outlet property="courseName" destination="0II-tv-JZB" id="Jpz-xt-4ZN"/>
+                <outlet property="termAndCourseCode" destination="KiH-F8-Xth" id="IyQ-pJ-RKX"/>
+            </connections>
+            <point key="canvasLocation" x="-80.434782608695656" y="-32.477678571428569"/>
+        </view>
+    </objects>
+</document>

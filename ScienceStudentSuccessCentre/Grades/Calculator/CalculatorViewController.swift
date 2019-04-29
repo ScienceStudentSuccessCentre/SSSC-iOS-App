@@ -29,6 +29,9 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
         gpaFormatter.numberStyle = .decimal
         gpaFormatter.maximumFractionDigits = 1
         gpaFormatter.minimumFractionDigits = 1
+        
+        extendedLayoutIncludesOpaqueBars = true
+        tableView.register(UINib(nibName: "CourseSummaryCell", bundle: nil), forCellReuseIdentifier: "CourseSummaryCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,15 +46,12 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CalculatorTableViewCell", for: indexPath) as? CalculatorTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of CalculatorTableViewCell.")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CourseSummaryCell", for: indexPath) as? CourseSummaryCell  else {
+            fatalError("The dequeued cell is not an instance of CourseSummaryCell.")
         }
         let course = courses[indexPath.row]
         let term = terms[course]
-        cell.courseColourView.backgroundColor = UIColor(course.colour)
-        cell.termAndCourseGrade.text = (term != nil ? ("[" + term!.shortForm + "] ") : "") + course.code
-        cell.courseName.text = course.name
-        cell.courseLetterGrade.text = course.getLetterGrade()
+        cell.configure(with: course, term: term)
         return cell
     }
     

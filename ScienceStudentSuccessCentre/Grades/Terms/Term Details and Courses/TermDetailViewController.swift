@@ -67,8 +67,8 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             fatalError("The dequeued cell is not an instance of CourseTableViewCell.")
         }
         let course = courses[indexPath.row]
-        cell.courseName.text = course.name
         cell.courseCode.text = course.code
+        cell.courseName.text = course.name
         cell.grade.text = course.getLetterGrade()
         cell.gradeView.backgroundColor = UIColor(course.colour)
         return cell
