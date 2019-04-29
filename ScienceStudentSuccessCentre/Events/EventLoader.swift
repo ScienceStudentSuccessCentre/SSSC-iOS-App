@@ -13,7 +13,7 @@ import Alamofire
 
 /// Utility class that retrieves SSSC events from the server and parses them into proper `Event` objects.
 class EventLoader {
-    
+    private static let includeTestEvents = true
     private static let serverUrl = "http://sssc-carleton-app-server.herokuapp.com/events"
     
     /// Asynchronously gathers event data from the server and parses the contents into proper `Event` objects.
@@ -58,6 +58,10 @@ class EventLoader {
             print("JSON data is invalid")
         }
         events = sortEvents(events)
+        if includeTestEvents {
+            events.append(Event.generateTestEvent())
+            events.append(Event.generateTestEvent2())
+        }
         return events
     }
     
@@ -82,5 +86,4 @@ class EventLoader {
             return false
         }
     }
-    
 }
