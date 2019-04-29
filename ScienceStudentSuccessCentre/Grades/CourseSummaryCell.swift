@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CourseSummaryCell: UITableViewCell {
+class CourseSummaryCell: ColourRestorableCell {
     @IBOutlet var courseColourView: UIView!
     @IBOutlet var termAndCourseCode: UILabel!
     @IBOutlet var courseName: UILabel!
@@ -18,26 +18,9 @@ class CourseSummaryCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        colouredView = courseColourView
         courseLetterGradeView.addBorders(edges: .left, color: UIColor(.grey), width: 1)
         accessoryType = .disclosureIndicator
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        let color = courseColourView.backgroundColor
-        super.setSelected(selected, animated: animated)
-        
-        if selected {
-            courseColourView.backgroundColor = color
-        }
-    }
-    
-    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        let color = courseColourView.backgroundColor
-        super.setHighlighted(highlighted, animated: animated)
-        
-        if highlighted {
-            courseColourView.backgroundColor = color
-        }
     }
     
     func configure(with course: Course, term: Term?) {

@@ -15,8 +15,11 @@ class AssignmentTableViewCell: UITableViewCell {
     @IBOutlet var letterGrade: UILabel!
     @IBOutlet var letterGradeView: UIView!
     
+    override func awakeFromNib() {
+        letterGradeView.layer.cornerRadius = 3
+    }
+    
     func setColour(colour: UIColor) {
         letterGradeView.backgroundColor = colour
     }
-
 }

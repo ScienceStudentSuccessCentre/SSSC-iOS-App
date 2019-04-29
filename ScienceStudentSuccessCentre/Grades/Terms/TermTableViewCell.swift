@@ -8,27 +8,15 @@
 
 import UIKit
 
-class TermTableViewCell: UITableViewCell {
+class TermTableViewCell: ColourRestorableCell {
     
     @IBOutlet var termName: UILabel!
     @IBOutlet var termAbbr: UILabel!
     @IBOutlet var termView: UIView!
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        let color = termView.backgroundColor
-        super.setSelected(selected, animated: animated)
-        
-        if selected {
-            termView.backgroundColor = color
-        }
-    }
     
-    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        let color = termView.backgroundColor
-        super.setHighlighted(highlighted, animated: animated)
-        
-        if highlighted {
-            termView.backgroundColor = color
-        }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        colouredView = termView
+        termView.layer.cornerRadius = 3
     }
 }

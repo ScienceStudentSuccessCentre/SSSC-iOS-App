@@ -8,30 +8,17 @@
 
 import UIKit
 
-class EventTableViewCell: UITableViewCell {
+class EventTableViewCell: ColourRestorableCell {
     
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var eventLabel: UILabel!
     @IBOutlet weak var dateView: UIView!
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        let color = dateView.backgroundColor
-        super.setSelected(selected, animated: animated)
-        
-        if selected {
-            dateView.backgroundColor = color
-        }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        colouredView = dateView
+        dateView.layer.cornerRadius = 3
     }
-    
-    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
-        let color = dateView.backgroundColor
-        super.setHighlighted(highlighted, animated: animated)
-        
-        if highlighted {
-            dateView.backgroundColor = color
-        }
-    }
-    
 }
 
