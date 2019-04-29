@@ -30,6 +30,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        guard let tabBarController = window?.rootViewController as? UITabBarController else { fatalError() }
+        switch shortcutItem.type {
+        case "com.carleton.sciencestudentsuccesscentre.events":
+            tabBarController.selectedIndex = 0
+        case "com.carleton.sciencestudentsuccesscentre.grades":
+            tabBarController.selectedIndex = 1
+        case "com.carleton.sciencestudentsuccesscentre.resources":
+            tabBarController.selectedIndex = 2
+        default: break
+        }
+    }
+    
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         guard url.pathExtension == "sssc" else { return false }
         guard let tabBarController = window?.rootViewController as? UITabBarController,
