@@ -58,7 +58,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     }
     
     /// Refreshes all UI details related to events, including title, description, nav bar buttons, etc.
-    private func refreshUI() {
+    func refreshUI() {
         loadViewIfNeeded()
         prepareEventDetails()
         prepareNavigationBarButtons()

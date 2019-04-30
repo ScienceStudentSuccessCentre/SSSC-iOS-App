@@ -116,9 +116,9 @@ extension UNUserNotificationCenter {
     /// - Returns: The notification date and time, or `nil` if one could not be calculated.
     private func determineNotificationDateTime(for event: Event) -> Date? {
         #if DEBUG
-            return Calendar.current.date(byAdding: .second, value: 15, to: Date())!
+        return Calendar.current.date(byAdding: .second, value: 15, to: Date())!
         #else
-            return event.getNotificationDateTime()
+        return event.getNotificationDateTime()
         #endif
     }
     

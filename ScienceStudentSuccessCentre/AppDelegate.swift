@@ -78,6 +78,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
     }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        guard let tabBarController = window?.rootViewController as? UITabBarController else { return }
+        tabBarController.selectedIndex = 0
+        
+        guard let splitViewController = tabBarController.selectedViewController as? UISplitViewController else { return }
+        guard let eventsNavController = splitViewController.viewControllers.first as? UINavigationController else { return }
+        guard let eventsViewController = eventsNavController.viewControllers.first as? EventsViewController else { return }
+        
+        let deepLinkId = response.notification.request.identifier
+        if let detailNavController = eventsNavController.viewControllers.last as? UINavigationController,
+            let detailViewController = detailNavController.viewControllers.first as? EventDetailViewController {
+            if detailViewController.event?.getId() == deepLinkId {
+                detailViewController.refreshUI()
+                completionHandler()
+                return
+            }
+        }
+        
+        if eventsViewController.events.count == 0 {
+            eventsViewController.loadEvents(deepLinkId: deepLinkId)
+        } else {
+            eventsViewController.navigateToDeepLinkId(deepLinkId)
+        }
+        completionHandler()
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

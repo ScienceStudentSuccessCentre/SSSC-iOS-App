@@ -245,7 +245,7 @@ class Event {
                      rawTime: "2pm",
                      location: "3431 Herzberg",
                      url: nil,
-                     imageUrl: nil,
+                     imageUrl: URL(string: "https://sssc.carleton.ca/sites/default/files/inline-images/Roxy.jpg"),
                      actionUrl: nil)
     }
 }

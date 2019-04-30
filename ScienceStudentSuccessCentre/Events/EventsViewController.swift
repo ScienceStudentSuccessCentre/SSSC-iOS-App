@@ -10,7 +10,7 @@ import UIKit
 
 class EventsViewController: UITableViewController {
     
-    private var events = [Event]()
+    private(set) var events = [Event]()
     private var collapseDetailViewController = true
     private var activityIndicatorView: UIActivityIndicatorView!
     
@@ -62,7 +62,10 @@ class EventsViewController: UITableViewController {
     }
     
     /// Retrieves the list of events from the SSSC website, and selects the first one on the list when viewing on iPads.
-    private func loadEvents() {
+    func loadEvents(deepLinkId: String? = nil) {
+        if deepLinkId != nil {
+            UIApplication.shared.beginIgnoringInteractionEvents()
+        }
         EventLoader.loadEvents().done { events in
             self.events = events
         }.catch { error in
@@ -87,10 +90,22 @@ class EventsViewController: UITableViewController {
                     self.tableView.selectRow(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: UITableView.ScrollPosition(rawValue: 0)!)
                     detailViewController.event = self.events.first
                 }
+                
+                if let deepLinkId = deepLinkId {
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                    self.navigateToDeepLinkId(deepLinkId)
+                }
             } else {
                 self.tableView.separatorStyle = .none
                 self.noEventsLabel?.isHidden = false
             }
+        }
+    }
+    
+    func navigateToDeepLinkId(_ id: String) {
+        if let eventIndex = events.firstIndex(where: { $0.getId() == id }) {
+            tableView.selectRow(at: IndexPath(row: eventIndex, section: 0), animated: true, scrollPosition: .none)
+            performSegue(withIdentifier: "eventDetail", sender: self)
         }
     }
     
