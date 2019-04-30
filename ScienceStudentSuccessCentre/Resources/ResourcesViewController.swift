@@ -10,7 +10,6 @@ import UIKit
 import WebKit
 
 class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
-    
     private var statusBar: UIView!
     private var webView: WKWebView!
     private var activityIndicator: UIActivityIndicatorView!
@@ -52,5 +51,8 @@ class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         activityIndicator.stopAnimating()
     }
-
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        webView.frame = CGRect(origin: .zero, size: size)
+    }
 }
