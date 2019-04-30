@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
-    
     var previousController: UIViewController?
     
     override func viewDidLoad() {
@@ -43,7 +42,6 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         
         return true
     }
-    
 }
 
 extension UIViewController {

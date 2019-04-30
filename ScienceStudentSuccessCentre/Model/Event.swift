@@ -13,7 +13,6 @@ import Foundation
 ///
 /// - Attention: You should never have to generate these yourself, as event generation is handled by the server.
 class Event {
-    
     private let urlPrefix = "https://sssc.carleton.ca"
     
     private var id: String

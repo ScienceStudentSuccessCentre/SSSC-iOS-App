@@ -30,19 +30,19 @@ class GradesViewController: UIViewController {
     }()
     
     private lazy var termsViewController: TermsViewController = {
-        var viewController = storyboard?.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+        var viewController = storyboard?.instantiateViewController(withIdentifier: "\(TermsViewController.self)") as! TermsViewController
         self.add(asChildViewController: viewController)
         return viewController
     }()
     
     private lazy var calculatorViewController: CalculatorViewController = {
-        var viewController = storyboard?.instantiateViewController(withIdentifier: "CalculatorViewController") as! CalculatorViewController
+        var viewController = storyboard?.instantiateViewController(withIdentifier: "\(CalculatorViewController.self)") as! CalculatorViewController
         self.add(asChildViewController: viewController)
         return viewController
     }()
     
     private lazy var plannerViewController: PlannerViewController = {
-        var viewController = storyboard?.instantiateViewController(withIdentifier: "PlannerViewController") as! PlannerViewController
+        var viewController = storyboard?.instantiateViewController(withIdentifier: "\(PlannerViewController.self)") as! PlannerViewController
         self.add(asChildViewController: viewController)
         return viewController
     }()
@@ -140,7 +140,7 @@ class GradesViewController: UIViewController {
 extension GradesViewController: CourseSearchActionDelegate {
     func didTapCourse(_ course: Course) {
         dismiss(animated: true, completion: {
-            guard let courseDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "CourseDetailViewController") as? CourseDetailViewController else { return }
+            guard let courseDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "\(CourseDetailViewController.self)") as? CourseDetailViewController else { return }
             courseDetailVC.course = course
             self.searchController.searchBar.text = nil
             self.navigationController?.pushViewController(courseDetailVC, animated: true)

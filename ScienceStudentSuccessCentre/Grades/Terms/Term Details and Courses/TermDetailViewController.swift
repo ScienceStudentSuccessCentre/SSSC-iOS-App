@@ -9,7 +9,6 @@
 import UIKit
 
 class TermDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
     @IBOutlet var gpa: UILabel!
     @IBOutlet var credits: UILabel!
     @IBOutlet var termDetailsView: UIView!
@@ -63,8 +62,8 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CourseTableViewCell", for: indexPath) as? CourseTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of CourseTableViewCell.")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CourseTableViewCell.self)", for: indexPath) as? CourseTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of \(CourseTableViewCell.self).")
         }
         let course = courses[indexPath.row]
         cell.courseCode.text = course.code
@@ -164,5 +163,4 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             controller.term = term
         }
     }
-
 }

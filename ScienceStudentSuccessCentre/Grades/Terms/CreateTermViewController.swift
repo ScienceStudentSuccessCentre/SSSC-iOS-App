@@ -10,7 +10,6 @@ import UIKit
 import Eureka
 
 class CreateTermViewController: FormViewController, EurekaFormProtocol {
-    
     private let terms = ["Fall", "Winter", "Summer"]
     private var years: [String]!
     private var term: String?
@@ -91,5 +90,4 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
     @objc private func cancelButtonPressed() {
         navigationController?.dismiss(animated: true, completion: nil)
     }
-
 }

@@ -11,7 +11,6 @@ import UIKit
 
 // MARK: - This extension adds the ability to quickly add borders to views. Border edge side, colour, and width are all customizable.
 extension UIView {
-
     func addBorders(edges: UIRectEdge = .all, color: UIColor = .black, width: CGFloat = 1.0) {
 
         func createBorder() -> UIView {

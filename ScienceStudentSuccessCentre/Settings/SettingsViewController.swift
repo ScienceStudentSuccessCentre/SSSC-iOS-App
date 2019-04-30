@@ -10,7 +10,6 @@ import UIKit
 import Eureka
 
 class SettingsViewController: FormViewController, EurekaFormProtocol {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,5 +85,4 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
             }
         }
     }
-
 }

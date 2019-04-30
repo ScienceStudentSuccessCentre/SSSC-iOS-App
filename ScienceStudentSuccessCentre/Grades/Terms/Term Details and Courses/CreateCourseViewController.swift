@@ -12,7 +12,6 @@ import ColorPickerRow
 
 /// This one's a doozy, I'm sorry to whoever has to work on this.
 class CreateCourseViewController: FormViewController, EurekaFormProtocol {
-    
     var term: Term!
     var course: Course!
     private var weights = [Weight]()
@@ -305,5 +304,4 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     @objc private func cancelButtonPressed() {
         navigationController?.dismiss(animated: true, completion: nil)
     }
-
 }

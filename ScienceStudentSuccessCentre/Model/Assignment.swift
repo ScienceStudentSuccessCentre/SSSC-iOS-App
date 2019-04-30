@@ -8,10 +8,8 @@
 
 import Foundation
 
-
 /// An Assignment belongs to a Course, and is associated to a Weight.
 class Assignment : Codable {
-    
     var id: String
     var name: String
     var gradeEarned: Double
@@ -57,5 +55,4 @@ class Assignment : Codable {
     func letterGrade() -> String {
         return Grading.calculateLetterGrade(earned: gradeEarned, total: gradeTotal)
     }
-    
 }

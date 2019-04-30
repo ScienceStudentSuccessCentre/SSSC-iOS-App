@@ -12,7 +12,6 @@ import ColorPickerRow
 
 // MARK: - This extension provides a custom set of named colours, which are grouped under the name `Material`. In order to add a new colour option, add a new case to both the `enum Material` and the `convenience init(_ colorString: Material)` sections.
 extension UIColor {
-    
     convenience init(hex:  String) {
         var hexFormatted = hex
         if hexFormatted.hasPrefix("#") {
@@ -108,5 +107,4 @@ extension UIColor {
             return colourPalette
         }
     }
-    
 }

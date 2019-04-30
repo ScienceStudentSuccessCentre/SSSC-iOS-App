@@ -9,7 +9,6 @@
 import UIKit
 
 class AssignmentTableViewCell: UITableViewCell {
-
     @IBOutlet var assignmentName: UILabel!
     @IBOutlet var percentageGrade: UILabel!
     @IBOutlet var letterGrade: UILabel!

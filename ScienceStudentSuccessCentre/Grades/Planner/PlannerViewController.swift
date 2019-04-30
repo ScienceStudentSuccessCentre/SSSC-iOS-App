@@ -10,7 +10,6 @@ import UIKit
 import Eureka
 
 class PlannerViewController: FormViewController, EurekaFormProtocol {
-    
     private var currentGpa: Double!
     private let formatter = NumberFormatter()
     
@@ -166,5 +165,4 @@ class PlannerViewController: FormViewController, EurekaFormProtocol {
         }
         calculatedGpaRow?.updateCell()
     }
-
 }

@@ -12,7 +12,6 @@ import UIKit
 
 /// Singleton class that handles all interactions with the SQLite database.
 class Database {
-    
     public static let instance = Database()
     private static let name = "ssscdb.sqlite3"
     private static let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
@@ -658,7 +657,6 @@ class Database {
     private func postCreationScripts() {
         print("No post-creation scripts to run")
     }
-    
 }
 
 /// A utility class to make grades data encoding and decoding easy.

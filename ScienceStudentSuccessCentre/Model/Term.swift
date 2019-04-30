@@ -11,7 +11,6 @@ import Foundation
 
 /// A Term consists mainly of a unique ID, a "term" (Fall, Winter, Summer), and a year. The remaining fields are generated from those primary fields.
 class Term : Codable {
-    
     var id: String
     var term: String
     var year: String
@@ -41,5 +40,4 @@ class Term : Codable {
         self.term = term
         self.year = year
     }
-    
 }

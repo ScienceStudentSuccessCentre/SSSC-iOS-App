@@ -9,7 +9,6 @@
 import UIKit
 
 class TermTableViewCell: ColourRestorableCell {
-    
     @IBOutlet var termName: UILabel!
     @IBOutlet var termAbbr: UILabel!
     @IBOutlet var termView: UIView!

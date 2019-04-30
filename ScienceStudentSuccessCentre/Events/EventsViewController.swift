@@ -123,8 +123,8 @@ extension EventsViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableViewCell", for: indexPath) as? EventTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of EventTableViewCell.")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EventTableViewCell.self)", for: indexPath) as? EventTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of \(EventTableViewCell.self).")
         }
         let event = events[indexPath.row]
         cell.monthLabel.text = event.getMonthName()

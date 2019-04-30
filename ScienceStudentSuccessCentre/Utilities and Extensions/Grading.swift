@@ -10,7 +10,6 @@ import Foundation
 
 /// Utility class that groups all grade-related calculations together.
 class Grading {
-    
     /// Calculates a grade as a percentage.
     ///
     /// - Parameters:
@@ -178,5 +177,4 @@ class Grading {
     static func calculatePredictedGpa(currentGpa: Double, creditsComplete: Double, predictedGpa: Double, creditsInProgress: Double) -> Double {
         return ((currentGpa * creditsComplete) + (predictedGpa * creditsInProgress)) / (creditsComplete + creditsInProgress)
     }
-    
 }

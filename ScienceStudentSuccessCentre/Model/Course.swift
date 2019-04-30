@@ -11,7 +11,6 @@ import UIKit
 
 /// A Course belongs to a Term (and thus has an associated `termId`), and has several Assignments and Weights associated with it.
 class Course : Codable {
-    
     var id: String
     var name: String
     var code: String
@@ -86,11 +85,9 @@ class Course : Codable {
         let letterGrade = getLetterGrade()
         return String(percentGrade) + "% (" + letterGrade + ")"
     }
-    
 }
 
 extension Course: Hashable {
-    
     static func == (lhs: Course, rhs: Course) -> Bool {
         return lhs.id == rhs.id
     }
@@ -98,5 +95,4 @@ extension Course: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
-    
 }

@@ -9,7 +9,6 @@
 import UIKit
 
 class EventTableViewCell: ColourRestorableCell {
-    
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var eventLabel: UILabel!

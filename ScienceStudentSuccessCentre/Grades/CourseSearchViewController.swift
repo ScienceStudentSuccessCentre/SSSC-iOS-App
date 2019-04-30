@@ -22,7 +22,7 @@ class CourseSearchViewController: UITableViewController {
     init(actionDelegate delegate: CourseSearchActionDelegate) {
         self.delegate = delegate
         super.init(style: .plain)
-        tableView.register(UINib(nibName: "CourseSummaryCell", bundle: nil), forCellReuseIdentifier: "CourseSummaryCell")
+        tableView.register(UINib(nibName: "\(CourseSummaryCell.self)", bundle: nil), forCellReuseIdentifier: "\(CourseSummaryCell.self)")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,7 +34,7 @@ class CourseSearchViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "CourseSummaryCell", for: indexPath) as? CourseSummaryCell else { fatalError("Failed to dequeue search result cell") }
+        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "\(CourseSummaryCell.self)", for: indexPath) as? CourseSummaryCell else { fatalError("Failed to dequeue \(CourseSummaryCell.self)") }
         let course = results[indexPath.row]
         let term = terms.first(where: { $0.id == course.id })
         cell.configure(with: course, term: term)

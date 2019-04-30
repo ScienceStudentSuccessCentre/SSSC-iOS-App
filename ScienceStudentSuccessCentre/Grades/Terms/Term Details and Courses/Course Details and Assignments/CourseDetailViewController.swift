@@ -9,7 +9,6 @@
 import UIKit
 
 class CourseDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
     @IBOutlet var courseCode: UILabel!
     @IBOutlet var courseTitle: UILabel!
     @IBOutlet var courseTitleView: UIView!
@@ -18,7 +17,6 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet var courseGradeView: UIView!
     @IBOutlet var calcReqFinalGrade: UIButton!
     @IBOutlet var bottomConstraint: NSLayoutConstraint!
-    
     
     var course: Course!
     var assignments = [Assignment]()
@@ -79,8 +77,8 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AssignmentTableViewCell", for: indexPath) as? AssignmentTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of AssignmentTableViewCell.")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(AssignmentTableViewCell.self)", for: indexPath) as? AssignmentTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of \(AssignmentTableViewCell.self).")
         }
         let assignment = assignments[indexPath.row]
         cell.assignmentName.text = assignment.name

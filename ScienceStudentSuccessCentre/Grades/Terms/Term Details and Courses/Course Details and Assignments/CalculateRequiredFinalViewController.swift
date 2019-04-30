@@ -10,7 +10,6 @@ import UIKit
 import Eureka
 
 class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtocol {
-    
     var course: Course!
     private var weights = [Weight]()
     private var weightNames = [String]()
@@ -99,5 +98,4 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
     @objc private func doneButtonPressed() {
         navigationController?.dismiss(animated: true, completion: nil)
     }
-    
 }
