@@ -13,11 +13,6 @@ import PromiseKit
 
 extension UNUserNotificationCenter {
     
-    /// This sets each event's notification datetime to be be 15 seconds after the time of viewing an event.
-    ///
-    /// - Remark: See `determineNotificationDateTime()` for usage.
-    private static let DEBUG_NOTIFICATION_TRIGGER = false
-    
     /// Checks if there are any pending notifications for the provided event.
     ///
     /// - Parameter event: The event about which the user is being notified.
@@ -117,13 +112,14 @@ extension UNUserNotificationCenter {
     /// Provides the date and time the user should receive a notification for this event.
     ///
     /// - Remark: For the actual date and time of this event, use `getDateTime()`.
-    /// - Attention: If `DEBUG_NOTIFICATION_TRIGGER` is on, a notification will be sent to the user 15 seconds after toggling on the notification for this event.
+    /// - Attention: If the build is running in DEBUG mode (i.e. anything except what's being pushed to the App Store in an archive), a notification will be sent to the user 15 seconds after toggling on the notification for this event.
     /// - Returns: The notification date and time, or `nil` if one could not be calculated.
     private func determineNotificationDateTime(for event: Event) -> Date? {
-        if UNUserNotificationCenter.DEBUG_NOTIFICATION_TRIGGER {
+        #if DEBUG
             return Calendar.current.date(byAdding: .second, value: 15, to: Date())!
-        }
-        return event.getNotificationDateTime()
+        #else
+            return event.getNotificationDateTime()
+        #endif
     }
     
 }

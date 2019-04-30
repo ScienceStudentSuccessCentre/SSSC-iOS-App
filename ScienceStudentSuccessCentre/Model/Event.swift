@@ -241,7 +241,7 @@ class Event {
         return Event(id: "67890",
                      name: "Test Event 2",
                      description: "Description description description description description description description description description description.",
-                     dateTime: Date(),
+                     dateTime: Date(timeInterval: TimeInterval(integerLiteral: 86400), since: Date()),
                      rawTime: "2pm",
                      location: "3431 Herzberg",
                      url: nil,
