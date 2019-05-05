@@ -45,8 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         guard url.pathExtension == "sssc" else { return false }
-        guard let tabBarController = window?.rootViewController as? UITabBarController,
-            let navigationController = tabBarController.selectedViewController as? UINavigationController,
+        guard let tabBarController = window?.rootViewController as? UITabBarController else { return true }
+        tabBarController.selectedIndex = 1
+        
+        guard let navigationController = tabBarController.selectedViewController as? UINavigationController,
             let viewController = navigationController.viewControllers.first else {
                 return true
         }

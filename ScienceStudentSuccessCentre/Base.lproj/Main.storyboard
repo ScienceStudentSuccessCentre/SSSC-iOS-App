@@ -424,7 +424,7 @@
         <scene sceneID="d12-xa-sxT">
             <objects>
                 <tableViewController storyboardIdentifier="TermsViewController" id="x4f-wK-5rI" customClass="TermsViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ipk-IC-UNC" customClass="I">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ipk-IC-UNC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -501,7 +501,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mSR-yn-Ced">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="579"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CourseSummaryCell" rowHeight="65" id="dcx-5P-fPE" customClass="CourseSummaryCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
@@ -576,7 +576,7 @@
                             <constraint firstItem="yqy-TF-PGU" firstAttribute="trailing" secondItem="xiu-5m-JEt" secondAttribute="trailing" id="Ucj-5n-ryt"/>
                             <constraint firstItem="mSR-yn-Ced" firstAttribute="leading" secondItem="xiu-5m-JEt" secondAttribute="leading" id="hs4-dr-gPQ"/>
                             <constraint firstItem="yqy-TF-PGU" firstAttribute="top" secondItem="mSR-yn-Ced" secondAttribute="bottom" id="kVx-bA-vYn"/>
-                            <constraint firstItem="mSR-yn-Ced" firstAttribute="top" secondItem="8W7-d2-zpr" secondAttribute="top" id="x9Q-VH-NaY"/>
+                            <constraint firstItem="mSR-yn-Ced" firstAttribute="top" secondItem="xiu-5m-JEt" secondAttribute="top" id="x9Q-VH-NaY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xiu-5m-JEt"/>
                     </view>

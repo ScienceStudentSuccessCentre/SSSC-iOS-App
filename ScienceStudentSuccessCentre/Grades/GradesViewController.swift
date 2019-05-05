@@ -51,9 +51,12 @@ class GradesViewController: UIViewController {
         super.viewDidLoad()
         
         definesPresentationContext = true
-        extendedLayoutIncludesOpaqueBars = true
         navigationController?.view.backgroundColor = UIColor(.lightgrey)
         navigationItem.titleView = segmentControl
+        
+        if #available(iOS 11.0, *) {
+            extendedLayoutIncludesOpaqueBars = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
