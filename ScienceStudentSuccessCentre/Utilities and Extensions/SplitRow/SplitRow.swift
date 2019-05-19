@@ -9,11 +9,11 @@
 import Eureka
 
 /// This is not my code... good luck trying to debug it.
-open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L,R>> where L: BaseRow, R: BaseRow {
+open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L, R>> where L: BaseRow, R: BaseRow {
     
-    open override var section: Section?{
-        get{ return super.section }
-        set{
+    open override var section: Section? {
+        get { return super.section }
+        set {
             rowLeft?.section = newValue
             rowRight?.section = newValue
             
@@ -21,7 +21,7 @@ open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L,R>> where L: Ba
         }
     }
     
-    open override func updateCell(){
+    open override func updateCell() {
         super.updateCell()
         
         self.rowLeft?.updateCell()
@@ -33,9 +33,9 @@ open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L,R>> where L: Ba
     
     private(set) public var valueChanged = Set<SplitRowTag>()
     
-    open override var value: SplitRowValue<L.Cell.Value, R.Cell.Value>?{
-        get{ return super.value }
-        set{
+    open override var value: SplitRowValue<L.Cell.Value, R.Cell.Value>? {
+        get { return super.value }
+        set {
             valueChanged = []
             if super.value?.left != newValue?.left {
                 valueChanged.insert(.left)
@@ -44,30 +44,30 @@ open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L,R>> where L: Ba
                 valueChanged.insert(.right)
             }
             
-            if self.rowLeft?.value != newValue?.left{
+            if self.rowLeft?.value != newValue?.left {
                 self.rowLeft?.value = newValue?.left
                 valueChanged.insert(.left)
             }
             
-            if self.rowRight?.value != newValue?.right{
+            if self.rowRight?.value != newValue?.right {
                 self.rowRight?.value = newValue?.right
                 valueChanged.insert(.right)
             }
             
-            if false == valueChanged.isEmpty{
+            if false == valueChanged.isEmpty {
                 super.value = newValue
             }
         }
     }
     
-    public enum SplitRowTag: String{
-        case left,right
+    public enum SplitRowTag: String {
+        case left, right
     }
     
     public var rowLeft: L? {
         willSet {
             newValue?.tag = SplitRowTag.left.rawValue
-            guard let row = newValue else{ return }
+            guard let row = newValue else { return }
             
             var rowValue = self.value ?? SplitRowValue<L.Cell.Value,R.Cell.Value>()
             rowValue.left = row.value
@@ -82,7 +82,7 @@ open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L,R>> where L: Ba
     public var rowRight: R? {
         willSet {
             newValue?.tag = SplitRowTag.right.rawValue
-            guard let row = newValue else{ return }
+            guard let row = newValue else { return }
             
             var rowValue = self.value ?? SplitRowValue<L.Cell.Value,R.Cell.Value>()
             rowValue.right = row.value
@@ -93,7 +93,7 @@ open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L,R>> where L: Ba
         }
     }
     
-    public var rowRightPercentage: CGFloat{
+    public var rowRightPercentage: CGFloat {
         return 1.0 - self.rowLeftPercentage
     }
     
@@ -102,9 +102,9 @@ open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L,R>> where L: Ba
         cellProvider = CellProvider<SplitRowCell<L,R>>()
     }
     
-    open func subscribe<T: RowType>(onChange row: T) where T: BaseRow{
-        row.onChange{ [weak self] row in
-            guard let strongSelf = self, let rowTagString = row.tag, let rowTag = SplitRowTag(rawValue: rowTagString) else{ return }
+    open func subscribe<T: RowType>(onChange row: T) where T: BaseRow {
+        row.onChange { [weak self] row in
+            guard let strongSelf = self, let rowTagString = row.tag, let rowTag = SplitRowTag(rawValue: rowTagString) else { return }
             strongSelf.cell?.update()  //TODO: This should only be done on cells which need an update. e.g. PushRow etc.
             
             var value = SplitRowValue<L.Cell.Value,R.Cell.Value>()
@@ -120,8 +120,8 @@ open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L,R>> where L: Ba
         }
     }
     
-    open func subscribe<T: RowType>(onCellHighlightChanged row: T) where T: BaseRow{
-        row.onCellHighlightChanged{ [weak self] cell, row in
+    open func subscribe<T: RowType>(onCellHighlightChanged row: T) where T: BaseRow {
+        row.onCellHighlightChanged { [weak self] cell, row in
             guard let strongSelf = self,
                 let splitRowCell = strongSelf.cell,
                 let formViewController = strongSelf.cell.formViewController()
@@ -136,4 +136,4 @@ open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L,R>> where L: Ba
     }
 }
 
-public final class SplitRow<L: RowType, R: RowType>: _SplitRow<L,R>, RowType where L: BaseRow, R: BaseRow{}
+public final class SplitRow<L: RowType, R: RowType>: _SplitRow<L, R>, RowType where L: BaseRow, R: BaseRow {}

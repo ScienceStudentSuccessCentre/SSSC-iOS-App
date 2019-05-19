@@ -9,13 +9,13 @@
 import Eureka
 
 /// This is not my code... good luck trying to debug it.
-class SplitRowCellTableView<T: TypedRowType>: UITableView, UITableViewDelegate, UITableViewDataSource{
+class SplitRowCellTableView<T: TypedRowType>: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     var row: T?
     
-    var leftSeparatorStyle: UITableViewCell.SeparatorStyle = .none{
+    var leftSeparatorStyle: UITableViewCell.SeparatorStyle = .none {
         didSet{
-            if oldValue != self.leftSeparatorStyle{
+            if oldValue != self.leftSeparatorStyle {
                 self.reloadData()
             }
         }
@@ -33,13 +33,13 @@ class SplitRowCellTableView<T: TypedRowType>: UITableView, UITableViewDelegate, 
     }
     
     open func setup(){
-        guard let row = self.row else{ return }
+        guard let row = self.row else { return }
         row.baseCell.setup()
         row.baseCell.selectionStyle = .none
     }
     
-    open func update(){
-        guard let row = self.row else{ return }
+    open func update() {
+        guard let row = self.row else { return }
         row.updateCell()
         row.baseCell.selectionStyle = .none
     }
@@ -48,7 +48,7 @@ class SplitRowCellTableView<T: TypedRowType>: UITableView, UITableViewDelegate, 
     // MARK: UITableViewDelegate
     
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let row = self.row else{ return }
+        guard let row = self.row else { return }
         
         // row.baseCell.cellBecomeFirstResponder() may be cause InlineRow collapsed then section count will be changed. Use orignal indexPath will out of  section's bounds.
         if !row.baseCell.cellCanBecomeFirstResponder() || !row.baseCell.cellBecomeFirstResponder() {
@@ -58,12 +58,12 @@ class SplitRowCellTableView<T: TypedRowType>: UITableView, UITableViewDelegate, 
     }
     
     open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let row = self.row else{ return tableView.rowHeight }
+        guard let row = self.row else { return tableView.rowHeight }
         return row.baseCell.height?() ?? tableView.rowHeight
     }
     
     open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let row = self.row else{ return tableView.rowHeight }
+        guard let row = self.row else { return tableView.rowHeight }
         return row.baseCell.height?() ?? tableView.estimatedRowHeight
     }
     
@@ -83,9 +83,9 @@ class SplitRowCellTableView<T: TypedRowType>: UITableView, UITableViewDelegate, 
     }
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let row = self.row else{ fatalError() }
+        guard let row = self.row else { fatalError() }
         
-        if let cell = row.baseCell, leftSeparatorStyle == .singleLine, false == cell.subviews.contains(where: { $0.backgroundColor == .groupTableViewBackground }){
+        if let cell = row.baseCell, leftSeparatorStyle == .singleLine, false == cell.subviews.contains(where: { $0.backgroundColor == .groupTableViewBackground }) {
             let separatorView = UIView()
             separatorView.backgroundColor = .groupTableViewBackground
             separatorView.translatesAutoresizingMaskIntoConstraints = false

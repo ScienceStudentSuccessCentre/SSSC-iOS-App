@@ -9,7 +9,7 @@
 import Eureka
 
 /// This is not my code... good luck trying to debug it.
-open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value,R.Cell.Value>>, CellType where L: BaseRow, R: BaseRow{
+open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value, R.Cell.Value>>, CellType where L: BaseRow, R: BaseRow {
     var tableViewLeft: SplitRowCellTableView<L>!
     var tableViewRight: SplitRowCellTableView<R>!
     
@@ -32,10 +32,10 @@ open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value
         tableViewRight.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.addSubview(tableViewLeft)
-        contentView.addConstraint(NSLayoutConstraint(item: tableViewLeft, attribute: .left, relatedBy: .equal, toItem: contentView, attribute: .left, multiplier: 1.0, constant: 0.0))
+        contentView.addConstraint(NSLayoutConstraint(item: tableViewLeft ?? SplitRowCellTableView<L>(), attribute: .left, relatedBy: .equal, toItem: contentView, attribute: .left, multiplier: 1.0, constant: 0.0))
         
         contentView.addSubview(tableViewRight)
-        contentView.addConstraint(NSLayoutConstraint(item: tableViewRight, attribute: .right, relatedBy: .equal, toItem: contentView, attribute: .right, multiplier: 1.0, constant: 0.0))
+        contentView.addConstraint(NSLayoutConstraint(item: tableViewRight ?? SplitRowCellTableView<R>(), attribute: .right, relatedBy: .equal, toItem: contentView, attribute: .right, multiplier: 1.0, constant: 0.0))
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -46,7 +46,7 @@ open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value
         selectionStyle = .none
         
         //ignore Xcode Cast warning here, it works!
-        guard let row = self.row as? _SplitRow<L,R> else{ return }
+        guard let row = self.row as? _SplitRow<L,R> else { return }
         
         //TODO: If we use UITableViewAutomaticDimension instead of 44.0 we encounter constraint errors :(
         let maxRowHeight = max(row.rowLeft?.cell?.height?() ?? 44.0, row.rowRight?.cell?.height?() ?? 44.0)
@@ -68,30 +68,30 @@ open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value
     }
     
     
-    open override func update(){
+    open override func update() {
         tableViewLeft.update()
         tableViewRight.update()
     }
     
     private func setupConstraints(){
-        guard let row = self.row as? _SplitRow<L,R> else{ return }
+        guard let row = self.row as? _SplitRow<L,R> else { return }
         
-        if let height = self.height?(){
-            self.contentView.addConstraint(NSLayoutConstraint(item: tableViewLeft, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .height, multiplier: 1.0, constant: height))
-            self.contentView.addConstraint(NSLayoutConstraint(item: tableViewRight, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .height, multiplier: 1.0, constant: height))
+        if let height = self.height?() {
+            self.contentView.addConstraint(NSLayoutConstraint(item: tableViewLeft ?? SplitRowCellTableView<L>(), attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .height, multiplier: 1.0, constant: height))
+            self.contentView.addConstraint(NSLayoutConstraint(item: tableViewRight ?? SplitRowCellTableView<R>(), attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .height, multiplier: 1.0, constant: height))
         }
         
-        self.contentView.addConstraint(NSLayoutConstraint(item: tableViewLeft, attribute: .width, relatedBy: .equal, toItem: contentView, attribute: .width, multiplier: row.rowLeftPercentage, constant: 0.0))
-        self.contentView.addConstraint(NSLayoutConstraint(item: tableViewRight, attribute: .width, relatedBy: .equal, toItem: contentView, attribute: .width, multiplier: row.rowRightPercentage, constant: 0.0))
+        self.contentView.addConstraint(NSLayoutConstraint(item: tableViewLeft ?? SplitRowCellTableView<L>(), attribute: .width, relatedBy: .equal, toItem: contentView, attribute: .width, multiplier: row.rowLeftPercentage, constant: 0.0))
+        self.contentView.addConstraint(NSLayoutConstraint(item: tableViewRight ?? SplitRowCellTableView<R>(), attribute: .width, relatedBy: .equal, toItem: contentView, attribute: .width, multiplier: row.rowRightPercentage, constant: 0.0))
     }
     
-    private func rowCanBecomeFirstResponder(_ row: BaseRow?) -> Bool{
-        guard let row = row else{ return false }
+    private func rowCanBecomeFirstResponder(_ row: BaseRow?) -> Bool {
+        guard let row = row else { return false }
         return false == row.isDisabled && row.baseCell?.cellCanBecomeFirstResponder() ?? false
     }
     
-    open override var isFirstResponder: Bool{
-        guard let row = self.row as? _SplitRow<L,R> else{ return false }
+    open override var isFirstResponder: Bool {
+        guard let row = self.row as? _SplitRow<L,R> else { return false }
         
         let rowLeftFirstResponder = row.rowLeft?.cell.findFirstResponder()
         let rowRightFirstResponder = row.rowRight?.cell?.findFirstResponder()
@@ -99,20 +99,20 @@ open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value
         return rowLeftFirstResponder != nil || rowRightFirstResponder != nil
     }
     
-    open override func cellCanBecomeFirstResponder() -> Bool{
-        guard let row = self.row as? _SplitRow<L,R> else{ return false }
-        guard false == row.isDisabled else{ return false }
+    open override func cellCanBecomeFirstResponder() -> Bool {
+        guard let row = self.row as? _SplitRow<L,R> else { return false }
+        guard false == row.isDisabled else { return false }
         
         let rowLeftFirstResponder = row.rowLeft?.cell.findFirstResponder()
         let rowRightFirstResponder = row.rowRight?.cell?.findFirstResponder()
         
-        if rowLeftFirstResponder == nil && rowRightFirstResponder == nil{
+        if rowLeftFirstResponder == nil && rowRightFirstResponder == nil {
             return rowCanBecomeFirstResponder(row.rowLeft) || rowCanBecomeFirstResponder(row.rowRight)
             
-        } else if rowLeftFirstResponder == nil{
+        } else if rowLeftFirstResponder == nil {
             return rowCanBecomeFirstResponder(row.rowLeft)
             
-        } else if rowRightFirstResponder == nil{
+        } else if rowRightFirstResponder == nil {
             return rowCanBecomeFirstResponder(row.rowRight)
         }
         
@@ -120,7 +120,7 @@ open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value
     }
     
     open override func cellBecomeFirstResponder(withDirection: Direction) -> Bool {
-        guard let row = self.row as? _SplitRow<L,R> else{ return false }
+        guard let row = self.row as? _SplitRow<L,R> else { return false }
         
         let rowLeftFirstResponder = row.rowLeft?.cell.findFirstResponder()
         let rowLeftCanBecomeFirstResponder = rowCanBecomeFirstResponder(row.rowLeft)
@@ -129,19 +129,19 @@ open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value
         let rowRightFirstResponder = row.rowRight?.cell?.findFirstResponder()
         let rowRightCanBecomeFirstResponder = rowCanBecomeFirstResponder(row.rowRight)
         
-        if withDirection == .down{
-            if rowLeftFirstResponder == nil, rowLeftCanBecomeFirstResponder{
+        if withDirection == .down {
+            if rowLeftFirstResponder == nil, rowLeftCanBecomeFirstResponder {
                 isFirstResponder = row.rowLeft?.cell?.cellBecomeFirstResponder(withDirection: withDirection) ?? false
                 
-            } else if rowRightFirstResponder == nil, rowRightCanBecomeFirstResponder{
+            } else if rowRightFirstResponder == nil, rowRightCanBecomeFirstResponder {
                 isFirstResponder = row.rowRight?.cell?.cellBecomeFirstResponder(withDirection: withDirection) ?? false
             }
             
-        } else if withDirection == .up{
-            if rowRightFirstResponder == nil, rowRightCanBecomeFirstResponder{
+        } else if withDirection == .up {
+            if rowRightFirstResponder == nil, rowRightCanBecomeFirstResponder {
                 isFirstResponder = row.rowRight?.cell?.cellBecomeFirstResponder(withDirection: withDirection) ?? false
                 
-            } else if rowLeftFirstResponder == nil, rowLeftCanBecomeFirstResponder{
+            } else if rowLeftFirstResponder == nil, rowLeftCanBecomeFirstResponder {
                 isFirstResponder = row.rowLeft?.cell?.cellBecomeFirstResponder(withDirection: withDirection) ?? false
             }
         }
@@ -153,8 +153,8 @@ open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value
         return isFirstResponder
     }
     
-    open override func cellResignFirstResponder() -> Bool{
-        guard let row = self.row as? _SplitRow<L,R> else{ return false }
+    open override func cellResignFirstResponder() -> Bool {
+        guard let row = self.row as? _SplitRow<L,R> else { return false }
         
         let rowLeftResignFirstResponder = row.rowLeft?.cell?.cellResignFirstResponder() ?? false
         let rowRightResignFirstResponder = row.rowRight?.cell?.cellResignFirstResponder() ?? false
