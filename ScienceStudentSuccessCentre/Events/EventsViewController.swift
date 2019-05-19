@@ -71,7 +71,12 @@ class EventsViewController: UITableViewController {
         }.catch { error in
             self.events = [Event]()
             print("Failed to load events:\n\(error)")
-            let alert = UIAlertController(title: "Something went wrong!", message: "Something went wrong when loading the SSSC's upcoming events! Please try again later. If the issue persists, contact the SSSC so we can fix the problem as soon as possible.", preferredStyle: .alert)
+            let alert: UIAlertController
+            if error.localizedDescription.lowercased().contains("offline") {
+                alert = UIAlertController(title: "No Connection", message: "It looks like you might be offline! Please try again once you have an internet connection.", preferredStyle: .alert)
+            } else {
+                alert = UIAlertController(title: "Something went wrong!", message: "Something went wrong when loading the SSSC's upcoming events! Please try again later. If the issue persists, contact the SSSC so we can fix the problem as soon as possible.", preferredStyle: .alert)
+            }
             alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
             self.present(alert, animated: true)
         }.finally {

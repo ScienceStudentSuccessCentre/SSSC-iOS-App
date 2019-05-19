@@ -1,39 +1,36 @@
 PODS:
-  - Alamofire (4.8.0)
-  - ColorPickerRow (1.2.1):
+  - ColorPickerRow (1.3.1):
     - Eureka (>= 3.0.0)
     - UIColor_Hex_Swift (>= 3.0.0)
-  - Eureka (4.3.0)
-  - PromiseKit (6.7.1):
-    - PromiseKit/CorePromise (= 6.7.1)
-    - PromiseKit/Foundation (= 6.7.1)
-    - PromiseKit/UIKit (= 6.7.1)
-  - PromiseKit/CorePromise (6.7.1)
-  - PromiseKit/Foundation (6.7.1):
+  - Eureka (5.0.0)
+  - PromiseKit (6.8.4):
+    - PromiseKit/CorePromise (= 6.8.4)
+    - PromiseKit/Foundation (= 6.8.4)
+    - PromiseKit/UIKit (= 6.8.4)
+  - PromiseKit/CorePromise (6.8.4)
+  - PromiseKit/Foundation (6.8.4):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.7.1):
+  - PromiseKit/UIKit (6.8.4):
     - PromiseKit/CorePromise
-  - SQLite.swift (0.11.5):
-    - SQLite.swift/standard (= 0.11.5)
-  - SQLite.swift/standard (0.11.5)
-  - SwiftSoup (1.7.4)
-  - UIColor_Hex_Swift (4.2.0)
+  - SimulatorStatusMagic (2.4.1)
+  - SQLite.swift (0.12.0):
+    - SQLite.swift/standard (= 0.12.0)
+  - SQLite.swift/standard (0.12.0)
+  - UIColor_Hex_Swift (5.1.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.8.0)
   - ColorPickerRow (from `https://github.com/EurekaCommunity/ColorPickerRow`)
-  - Eureka (~> 4.3.0)
-  - PromiseKit (~> 6.7.1)
-  - SQLite.swift (~> 0.11.5)
-  - SwiftSoup (~> 1.7.4)
+  - Eureka (~> 5.0.0)
+  - PromiseKit (~> 6.8.4)
+  - SimulatorStatusMagic
+  - SQLite.swift (~> 0.12.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Alamofire
     - Eureka
     - PromiseKit
+    - SimulatorStatusMagic
     - SQLite.swift
-    - SwiftSoup
     - UIColor_Hex_Swift
 
 EXTERNAL SOURCES:
@@ -42,18 +39,17 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ColorPickerRow:
-    :commit: fafd3328fb729cee2e06a95e285631aa80cf04fe
+    :commit: 5513c34deee59881acf5f67a976ee0f4032470b9
     :git: https://github.com/EurekaCommunity/ColorPickerRow
 
 SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
-  ColorPickerRow: 87dd091c54fff65cf554f79ca1556312ee66282f
-  Eureka: 6d711cb30ca333b4bc893110285a722ae3840114
-  PromiseKit: ef376fb8b4e92edfeb66bd403b983eaa07fbde0c
-  SQLite.swift: 6e5356850bb1791459f8c16d6ee9195b28714a2e
-  SwiftSoup: 92f5b348c131aed8af04f4326db1579ab19fa08c
-  UIColor_Hex_Swift: bc07fc197421ee896b9ed6dcfa2054b7fbf75145
+  ColorPickerRow: ae26aa29e8ec0c52c21df8e3955b871a7e5b8985
+  Eureka: 0f64f477ec8ef6201c6fec143d60ff5c201cf654
+  PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
+  SimulatorStatusMagic: 28d4a9d1a500ac7cea0b2b5a43c1c6ddb40ba56c
+  SQLite.swift: 7cad9db150a03716336e69469ec9559c85aece5b
+  UIColor_Hex_Swift: 8be7432edacb7fa91c78aa05ef3c30b66e4f9415
 
-PODFILE CHECKSUM: cf4a2160f5983ade31c20473364ec123c94d5fc8
+PODFILE CHECKSUM: ff3f055e9a2482ecd9e85b9308c58c36270978c2
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.2

@@ -57,6 +57,7 @@
 		FFD0205821B1E1E6008D960B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD0205721B1E1E6008D960B /* SettingsViewController.swift */; };
 		FFD2DF532193860200C97FDF /* Grading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2DF522193860200C97FDF /* Grading.swift */; };
 		FFE84078215F1CAC00A5E33B /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE84077215F1CAC00A5E33B /* Term.swift */; };
+		FFF093AF2291B1E300217DE3 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF093AE2291B1E300217DE3 /* URLSession.swift */; };
 		FFFC6BC72162D6D6001585CE /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6BC62162D6D6001585CE /* Course.swift */; };
 		FFFC6BC92162D70D001585CE /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6BC82162D70D001585CE /* CourseTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -138,6 +139,7 @@
 		FFD0205721B1E1E6008D960B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FFD2DF522193860200C97FDF /* Grading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grading.swift; sourceTree = "<group>"; };
 		FFE84077215F1CAC00A5E33B /* Term.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
+		FFF093AE2291B1E300217DE3 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		FFFC6BC62162D6D6001585CE /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		FFFC6BC82162D70D001585CE /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -347,6 +349,7 @@
 				FFAE67912188ED2D0079CE16 /* UIView.swift */,
 				44BB378E21FA64C900F7250F /* UIViewController.swift */,
 				442EC65B21EE8C36002B961E /* UNUserNotificationCenter.swift */,
+				FFF093AE2291B1E300217DE3 /* URLSession.swift */,
 				FF5FDB2B21ABB12200899963 /* SplitRow */,
 			);
 			path = "Utilities and Extensions";
@@ -546,30 +549,28 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ColorPickerRow/ColorPickerRow.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
+				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
 				"${BUILT_PRODUCTS_DIR}/UIColor_Hex_Swift/UIColor_Hex_Swift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ColorPickerRow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIColor_Hex_Swift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -611,6 +612,7 @@
 				442EC65C21EE8C36002B961E /* UNUserNotificationCenter.swift in Sources */,
 				FF5FDB2F21ABB16700899963 /* SplitRowCell.swift in Sources */,
 				FF74BE81218CBE6100A8954B /* AssignmentTableViewCell.swift in Sources */,
+				FFF093AF2291B1E300217DE3 /* URLSession.swift in Sources */,
 				FFD2DF532193860200C97FDF /* Grading.swift in Sources */,
 				FF4BCBCF21AB47790050A876 /* Weight.swift in Sources */,
 				FF5FDB3321ABB19700899963 /* SplitRowValue.swift in Sources */,
