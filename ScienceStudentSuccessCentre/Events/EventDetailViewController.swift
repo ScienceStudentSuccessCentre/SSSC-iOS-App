@@ -80,7 +80,9 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
             
             if event.getNotificationDateTime()!.compare(Date()) != ComparisonResult.orderedAscending {
                 prepareNotifyMeButton()
-                barButtonItems.append(UIBarButtonItem(customView: notifyMeButton))
+                let notificationButton = UIBarButtonItem(customView: notifyMeButton)
+                notificationButton.accessibilityIdentifier = "ToggleNotification"
+                barButtonItems.append(notificationButton)
             }
             
             if event.getActionUrl() != "" {

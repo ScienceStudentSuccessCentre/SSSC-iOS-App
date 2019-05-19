@@ -1,0 +1,50 @@
+{
+    "device_frame_version": "latest",
+    "default": {
+        "title": {
+            "font": "SF-Pro-Text-Light.otf",
+            "color": "#FFFFFF"
+        },
+        "background": "./background.jpg",
+        "padding": 50,
+        "show_complete_frame": false
+    },
+    "data": [
+        {
+            "filter": "EventsTab",
+            "title": {
+                "text": "View Upcoming Events"
+            }
+        },
+        {
+            "filter": "EventDetailsWithNotificationAlert",
+            "title": {
+                "text": "Get Notified"
+            }
+        },
+        {
+            "filter": "CoursesList",
+            "title": {
+                "text": "Track Your Courses"
+            }
+        },
+        {
+            "filter": "AssignmentsList",
+            "title": {
+                "text": "Track Your Grades"
+            }
+        },
+        {
+            "filter": "EditCourse",
+            "title": {
+                "text": "Customize Your Experience"
+            }
+        },
+        {
+            "filter": "GpaCalculator",
+            "title": {
+                "text": "Strive For Academic Greatness!"
+            }
+        }
+    ]
+}

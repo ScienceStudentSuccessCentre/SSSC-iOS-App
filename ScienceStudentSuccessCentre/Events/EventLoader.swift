@@ -11,7 +11,6 @@ import PromiseKit
 
 /// Utility class that retrieves SSSC events from the server and parses them into proper `Event` objects.
 class EventLoader {
-    private static let includeTestEventsWhenDebugging = true
     private static let serverUrl = URL(string: "http://sssc-carleton-app-server.herokuapp.com/events")
     
     /// Asynchronously gathers event data from the server and parses the contents into proper `Event` objects.
@@ -65,7 +64,7 @@ class EventLoader {
         }
         events = sortEvents(events)
         #if DEBUG
-        if includeTestEventsWhenDebugging {
+        if UserDefaults.standard.bool(forKey: "showTestEvents") {
             events.append(Event.generateTestEvent())
             events.append(Event.generateTestEvent2())
         }

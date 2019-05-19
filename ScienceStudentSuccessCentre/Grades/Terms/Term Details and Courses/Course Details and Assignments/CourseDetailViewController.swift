@@ -115,6 +115,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         editCourseButton.addTarget(self, action: #selector(editCoursePressed), for: .touchUpInside)
         
         courseInfoButton = UIBarButtonItem(customView: editCourseButton)
+        courseInfoButton.accessibilityIdentifier = "EditCourse"
         editAssignmentsButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editAssignmentsPressed))
         doneEditingAssignmentsButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editAssignmentsPressed))
         addAssignmentButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAssignmentPressed))

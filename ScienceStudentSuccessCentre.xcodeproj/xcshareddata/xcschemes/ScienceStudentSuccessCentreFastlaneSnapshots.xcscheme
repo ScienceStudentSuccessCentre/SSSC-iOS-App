@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1010"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -9,14 +9,14 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FF327FC420128C3E00B06E19"
-               BuildableName = "ScienceStudentSuccessCentre.app"
-               BlueprintName = "ScienceStudentSuccessCentre"
+               BlueprintIdentifier = "FFF093B52291BA1200217DE3"
+               BuildableName = "ScienceStudentSuccessCentreFastlaneSnapshots.xctest"
+               BlueprintName = "ScienceStudentSuccessCentreFastlaneSnapshots"
                ReferencedContainer = "container:ScienceStudentSuccessCentre.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -39,15 +39,6 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FF327FC420128C3E00B06E19"
-            BuildableName = "ScienceStudentSuccessCentre.app"
-            BlueprintName = "ScienceStudentSuccessCentre"
-            ReferencedContainer = "container:ScienceStudentSuccessCentre.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -61,16 +52,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FF327FC420128C3E00B06E19"
-            BuildableName = "ScienceStudentSuccessCentre.app"
-            BlueprintName = "ScienceStudentSuccessCentre"
+            BlueprintIdentifier = "FFF093B52291BA1200217DE3"
+            BuildableName = "ScienceStudentSuccessCentreFastlaneSnapshots.xctest"
+            BlueprintName = "ScienceStudentSuccessCentreFastlaneSnapshots"
             ReferencedContainer = "container:ScienceStudentSuccessCentre.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -80,16 +70,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FF327FC420128C3E00B06E19"
-            BuildableName = "ScienceStudentSuccessCentre.app"
-            BlueprintName = "ScienceStudentSuccessCentre"
+            BlueprintIdentifier = "FFF093B52291BA1200217DE3"
+            BuildableName = "ScienceStudentSuccessCentreFastlaneSnapshots.xctest"
+            BlueprintName = "ScienceStudentSuccessCentreFastlaneSnapshots"
             ReferencedContainer = "container:ScienceStudentSuccessCentre.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
