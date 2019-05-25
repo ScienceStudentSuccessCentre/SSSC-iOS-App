@@ -22,7 +22,7 @@ DEPENDENCIES:
   - ColorPickerRow (from `https://github.com/EurekaCommunity/ColorPickerRow`)
   - Eureka (~> 5.0.0)
   - PromiseKit (~> 6.8.4)
-  - SimulatorStatusMagic
+  - SimulatorStatusMagic (~> 2.4.1)
   - SQLite.swift (~> 0.12.0)
 
 SPEC REPOS:
@@ -50,6 +50,6 @@ SPEC CHECKSUMS:
   SQLite.swift: 7cad9db150a03716336e69469ec9559c85aece5b
   UIColor_Hex_Swift: 8be7432edacb7fa91c78aa05ef3c30b66e4f9415
 
-PODFILE CHECKSUM: ff3f055e9a2482ecd9e85b9308c58c36270978c2
+PODFILE CHECKSUM: 009dc18463fbbbe93d00807092e392cc57c7948d
 
-COCOAPODS: 1.6.2
+COCOAPODS: 1.7.0

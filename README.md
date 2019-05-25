@@ -32,7 +32,7 @@ It can be a tedious task to take all of the necessary screenshots across various
 ### Using Fastlane
 
 1. Run `brew cask install fastlane` or `sudo gem install fastlane -NV` to install Fastlane on your machine (I recommend the first one)
-   - You may also need to install [Bundler](https://bundler.io). You can do this by running `gem install bundler`
+   - You may also need to install [Bundler](https://bundler.io). You can do this by running `sudo gem install bundler`
 2. Run `bundle exec fastlane screenshots` to take the screenshots (takes time, be patient!)
    - You can also use `bundle exec fastlane` to view all possible "lanes", and execute the screenshots one from there
 3. Find the screenshots in `fastlane/screenshots/en-US`
