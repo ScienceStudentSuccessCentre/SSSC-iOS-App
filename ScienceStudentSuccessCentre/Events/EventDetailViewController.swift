@@ -11,7 +11,6 @@ import SafariServices
 import UserNotifications
 
 class EventDetailViewController: UIViewController, UITextViewDelegate {
-    
     var event: Event? {
         didSet {
             refreshUI()
@@ -134,9 +133,10 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
             eventDescriptionTextView.font = .preferredFont(forTextStyle: .body)
             
             if (event.getImageUrl() != nil) {
+                eventImageView.image = nil
                 loadImage()
             } else {
-                self.eventImageView.isHidden = true
+                eventImageView.isHidden = true
             }
         } else {
             eventDetailsView.isHidden = true
@@ -251,15 +251,13 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     private func loadImage() {
         if let url = event?.getImageUrl() {
             DispatchQueue.global().async {
-                if let data = try? Data(contentsOf: url) {
-                    if let image = UIImage(data: data) {
-                        DispatchQueue.main.async {
-                            self.eventImageView.image = image
-                            let ratio = image.size.height / image.size.width
-                            let newHeight = self.eventImageView.frame.size.width * ratio
-                            self.eventImageView.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
-                            self.eventImageView.isHidden = false;
-                        }
+                if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self.eventImageView.image = image
+                        let ratio = image.size.height / image.size.width
+                        let newHeight = self.eventImageView.frame.size.width * ratio
+                        self.eventImageView.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
+                        self.eventImageView.isHidden = false;
                     }
                 }
             }
@@ -280,5 +278,4 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         openUrlInAppBrowser(url: URL)
         return false
     }
-
 }
