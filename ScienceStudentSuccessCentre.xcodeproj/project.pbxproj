@@ -30,6 +30,7 @@
 		FF4BCBCF21AB47790050A876 /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BCBCE21AB47790050A876 /* Weight.swift */; };
 		FF4C4A9C215D7C550091BF2A /* GradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */; };
 		FF57A96521658509004AA50B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF57A96421658509004AA50B /* UIColor.swift */; };
+		FF58D17D229AD77C00B78D3C /* UISplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58D17C229AD77C00B78D3C /* UISplitViewController.swift */; };
 		FF592B3921C76C71002319C0 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF592B3821C76C71002319C0 /* AppIcon.png */; };
 		FF5FDB2D21ABB13200899963 /* SplitRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5FDB2C21ABB13200899963 /* SplitRow.swift */; };
 		FF5FDB2F21ABB16700899963 /* SplitRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5FDB2E21ABB16700899963 /* SplitRowCell.swift */; };
@@ -101,6 +102,7 @@
 		FF4BCBCE21AB47790050A876 /* Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weight.swift; sourceTree = "<group>"; };
 		FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesViewController.swift; sourceTree = "<group>"; };
 		FF57A96421658509004AA50B /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		FF58D17C229AD77C00B78D3C /* UISplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISplitViewController.swift; sourceTree = "<group>"; };
 		FF592B3821C76C71002319C0 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon.png; path = ScienceStudentSuccessCentre/AppIcon.png; sourceTree = "<group>"; };
 		FF5FDB2C21ABB13200899963 /* SplitRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitRow.swift; sourceTree = "<group>"; };
 		FF5FDB2E21ABB16700899963 /* SplitRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitRowCell.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				FFD2DF522193860200C97FDF /* Grading.swift */,
 				FF7FD88F21485E8100DAC88C /* HtmlString.swift */,
 				FF57A96421658509004AA50B /* UIColor.swift */,
+				FF58D17C229AD77C00B78D3C /* UISplitViewController.swift */,
 				FFAE67912188ED2D0079CE16 /* UIView.swift */,
 				44BB378E21FA64C900F7250F /* UIViewController.swift */,
 				442EC65B21EE8C36002B961E /* UNUserNotificationCenter.swift */,
@@ -556,6 +559,7 @@
 				FFF093AF2291B1E300217DE3 /* URLSession.swift in Sources */,
 				FFD2DF532193860200C97FDF /* Grading.swift in Sources */,
 				FF4BCBCF21AB47790050A876 /* Weight.swift in Sources */,
+				FF58D17D229AD77C00B78D3C /* UISplitViewController.swift in Sources */,
 				FF5FDB3321ABB19700899963 /* SplitRowValue.swift in Sources */,
 				FF3D05DC215AC9AC0073D0E7 /* TabBarViewController.swift in Sources */,
 				FFA7CBAF215DD54C00A050B1 /* PlannerViewController.swift in Sources */,
