@@ -11,7 +11,7 @@ import WebKit
 
 class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     private var statusBar: UIView!
-    private var webView: WKWebView!
+    private var webView: WKWebView?
     private var activityIndicator: UIActivityIndicatorView!
     private let urlString = "http://sssc.carleton.ca/resources"
     
@@ -21,8 +21,10 @@ class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         statusBar = UIApplication.shared.value(forKey: "statusBar") as? UIView
 
         webView = WKWebView(frame: view.frame)
-        webView.navigationDelegate = self
-        view.addSubview(webView)
+        webView?.navigationDelegate = self
+        if let webView = webView {
+            view.addSubview(webView)
+        }
         
         activityIndicator = UIActivityIndicatorView()
         activityIndicator.center = view.center
@@ -31,8 +33,8 @@ class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         view.addSubview(activityIndicator)
 
         if let url = URL(string: urlString) {
-            webView.load(URLRequest(url: url))
-            webView.allowsBackForwardNavigationGestures = true
+            webView?.load(URLRequest(url: url))
+            webView?.allowsBackForwardNavigationGestures = true
         }
     }
     
@@ -53,6 +55,6 @@ class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        webView.frame = CGRect(origin: .zero, size: size)
+        webView?.frame = CGRect(origin: .zero, size: size)
     }
 }

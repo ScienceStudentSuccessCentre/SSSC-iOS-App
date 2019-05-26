@@ -113,6 +113,7 @@
                                     <outlet property="dateView" destination="dgx-cP-xF1" id="uzn-To-BjT"/>
                                     <outlet property="eventLabel" destination="g0R-cY-jsg" id="BMd-zH-gCs"/>
                                     <outlet property="monthLabel" destination="n96-Nf-piI" id="vKC-dt-s3P"/>
+                                    <segue destination="Da1-Vq-r4W" kind="showDetail" identifier="eventDetail" id="CpN-Ek-qSP"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -122,13 +123,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Upcoming Events" id="xXY-rW-mwk"/>
-                    <connections>
-                        <segue destination="Da1-Vq-r4W" kind="showDetail" identifier="eventDetail" id="tIv-iP-yUy"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fQx-F2-twt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1508" y="-1606"/>
+            <point key="canvasLocation" x="1508" y="-1606.1469265367318"/>
         </scene>
         <!--Event Detail View Controller-->
         <scene sceneID="zuD-9Z-7jj">
@@ -475,6 +473,7 @@
                                     <outlet property="termAbbr" destination="FAO-hC-zgu" id="mrL-y3-QLh"/>
                                     <outlet property="termName" destination="ocs-vd-Sl9" id="aQQ-49-npX"/>
                                     <outlet property="termView" destination="cHZ-eQ-Rjv" id="42a-y2-GHN"/>
+                                    <segue destination="qyO-ye-sR5" kind="show" identifier="termDetail" id="98O-Zl-agm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -485,7 +484,6 @@
                     </tableView>
                     <connections>
                         <segue destination="vuU-UQ-j4z" kind="showDetail" identifier="createTerm" id="pRk-Ti-sxa"/>
-                        <segue destination="qyO-ye-sR5" kind="show" identifier="termDetail" id="Pk4-T6-AOY"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szN-bi-73y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -511,6 +509,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="64.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="atS-1p-BMg" kind="show" identifier="calculatorDetail" id="II0-2O-iZm"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -585,7 +586,6 @@
                         <outlet property="majorGpaLabel" destination="DW5-bL-1s5" id="bdF-ec-32J"/>
                         <outlet property="overallGpaLabel" destination="Hxt-uP-9IV" id="Mbn-Rx-UkK"/>
                         <outlet property="tableView" destination="mSR-yn-Ced" id="XlK-EG-pqM"/>
-                        <segue destination="atS-1p-BMg" kind="show" identifier="calculatorDetail" id="Qdr-u9-Mbc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u5j-hZ-tlH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -683,6 +683,7 @@
                                             <outlet property="courseName" destination="FGf-FB-RNz" id="zgF-kC-jsr"/>
                                             <outlet property="grade" destination="K2u-Sp-sbH" id="2q5-kh-1sV"/>
                                             <outlet property="gradeView" destination="AGz-7g-cCa" id="KQB-Qn-YT0"/>
+                                            <segue destination="atS-1p-BMg" kind="show" identifier="courseDetail" id="5rR-5l-Qoc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -760,7 +761,6 @@
                         <outlet property="gpa" destination="DrG-zT-rJF" id="Diw-Zo-pHN"/>
                         <outlet property="tableView" destination="jI6-WQ-7Cg" id="0vY-GT-ooq"/>
                         <outlet property="termDetailsView" destination="YzK-zN-Hrt" id="XpX-cv-GGh"/>
-                        <segue destination="atS-1p-BMg" kind="show" identifier="courseDetail" id="gNE-LT-kLe"/>
                         <segue destination="lC3-cb-RGX" kind="showDetail" identifier="editCourse" id="K9y-h4-UFx"/>
                     </connections>
                 </viewController>
@@ -1098,9 +1098,9 @@
         <image name="settingsIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tIv-iP-yUy"/>
-        <segue reference="tsD-S5-xqb"/>
+        <segue reference="CpN-Ek-qSP"/>
+        <segue reference="kLN-0H-OdZ"/>
         <segue reference="K9y-h4-UFx"/>
-        <segue reference="Qdr-u9-Mbc"/>
+        <segue reference="II0-2O-iZm"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -21,10 +21,12 @@ class TermsViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadTerms()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         toggleOffTableViewEditMode()
     }
     
@@ -117,10 +119,6 @@ extension TermsViewController {
                 }
             }
         }
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "termDetail", sender: self)
     }
 }
 

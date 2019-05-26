@@ -234,7 +234,7 @@ class Event {
                      location: "3431 Herzberg",
                      url: nil,
                      imageUrl: nil,
-                     actionUrl: nil)
+                     actionUrl: "https://central.carleton.ca")
     }
     
     public static func generateTestEvent2() -> Event {
@@ -242,9 +242,9 @@ class Event {
                      name: "Test Event 2",
                      description: "Description description description description description description description description description description.",
                      dateTime: Date(timeInterval: TimeInterval(integerLiteral: 86400), since: Date()),
-                     rawTime: "2pm",
+                     rawTime: "2:00pm - 3:00pm",
                      location: "3431 Herzberg",
-                     url: nil,
+                     url: URL(string: "https://sssc.carleton.ca/sites/default/files/inline-images/Roxy.jpg")!,
                      imageUrl: URL(string: "https://sssc.carleton.ca/sites/default/files/inline-images/Roxy.jpg"),
                      actionUrl: nil)
     }

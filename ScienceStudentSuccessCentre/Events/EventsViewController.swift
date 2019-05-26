@@ -155,7 +155,6 @@ extension EventsViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.collapseDetailViewController = false
-        self.performSegue(withIdentifier: "eventDetail", sender: self)
     }
 }
 

@@ -85,7 +85,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
                 barButtonItems.append(notificationButton)
             }
             
-            if event.getActionUrl() != "" {
+            if !(event.getActionUrl() ?? "").isEmpty {
                 prepareActionUrlButton()
                 barButtonItems.append(UIBarButtonItem(customView: actionUrlButton))
             }
