@@ -10,8 +10,8 @@ import XCTest
 
 class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
     var app: XCUIApplication!
-    let networkWait: UInt32 = 2
-    let processingWait: UInt32 = 1
+    let networkWait: useconds_t = 1000000 // 1 second - purpose is to allow for slow networks
+    let processWait: useconds_t = 500000 // 0.5 seconds - purpose is to allow UI elements to (dis)appear
     
     override func setUp() {
         super.setUp()
@@ -37,35 +37,36 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
     
     func testEventsTab() {
         app.tabBars.buttons["Events"].tap()
-        snapshot("0EventsTab", timeWaitingForIdle: TimeInterval(networkWait))
+        usleep(networkWait)
+        snapshot("0EventsTab")
     }
-    
+
     func testEventDetailsWithNotificationAlert() {
         app.tabBars.buttons["Events"].tap()
-        sleep(networkWait)
+        usleep(networkWait)
         app.cells.element(boundBy: 3).tap()
-        sleep(processingWait)
+        usleep(processWait)
         app.buttons["ToggleNotification"].tap()
-        sleep(processingWait)
+        usleep(processWait)
         app.tap() // Dismiss notification permissions dialog / notification enabled dialog
-        sleep(processingWait)
-        app.tap() // Dismiss notification enabled dialog
+        usleep(processWait)
+        app.tap() // Dismiss notification enabled dialog (if not already dismissed)
         app.buttons["ToggleNotification"].tap()
     }
-    
+
     func testCoursesList() {
         app.tabBars.buttons["Grades"].tap()
         app.cells.firstMatch.tap()
         snapshot("2CoursesList")
     }
-    
+
     func testAssignmentsList() {
         app.tabBars.buttons["Grades"].tap()
         app.cells.firstMatch.tap()
         app.cells.element(boundBy: 1).tap()
         snapshot("3AssignmentsList")
     }
-    
+
     func testEditCourse() {
         app.tabBars.buttons["Grades"].tap()
         app.cells.firstMatch.tap()
@@ -73,11 +74,11 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         app.buttons["EditCourse"].tap()
         snapshot("4EditCourse")
     }
-    
-    func testGpaList() {
+
+    func testCalculatorList() {
         app.tabBars.buttons["Grades"].tap()
         app.buttons["Calculator"].tap()
-        snapshot("5GpaCalculator")
+        snapshot("5CGPACalculator")
     }
     
 }

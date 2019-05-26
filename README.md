@@ -33,9 +33,12 @@ It can be a tedious task to take all of the necessary screenshots across various
 
 1. Run `brew cask install fastlane` or `sudo gem install fastlane -NV` to install Fastlane on your machine (I recommend the first one)
    - You may also need to install [Bundler](https://bundler.io). You can do this by running `sudo gem install bundler`
-2. Run `bundle exec fastlane screenshots` to take the screenshots (takes time, be patient!)
+2. Run `bundle install` to set up Fastlane with Bundler
+3. Run `brew install libpng jpeg imagemagick` to install the software that frames the screenshots with devices
+4. Run `bundle exec fastlane screenshots` to take the screenshots (takes time, be patient!)
    - You can also use `bundle exec fastlane` to view all possible "lanes", and execute the screenshots one from there
-3. Find the screenshots in `fastlane/screenshots/en-US`
+   - If you get an error related to passing invalid arguments to capture_screenshot, try running `sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer` to ensure that Fastlane knows where your Xcode app is located on your computer
+5. Find the completed screenshots in `fastlane/screenshots/en-US`
 
 ## Modifying the internal database schema
 

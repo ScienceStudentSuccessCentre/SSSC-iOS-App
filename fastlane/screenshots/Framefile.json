@@ -41,7 +41,7 @@
             }
         },
         {
-            "filter": "GpaCalculator",
+            "filter": "CGPACalculator",
             "title": {
                 "text": "Strive For Academic Greatness!"
             }

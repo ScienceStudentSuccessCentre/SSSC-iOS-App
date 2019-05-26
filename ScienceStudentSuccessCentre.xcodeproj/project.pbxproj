@@ -26,6 +26,7 @@
 		FF327FD520128C3E00B06E19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF327FD320128C3E00B06E19 /* LaunchScreen.storyboard */; };
 		FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3C2287202427660098B868 /* EventDetailViewController.swift */; };
 		FF3D05DC215AC9AC0073D0E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */; };
+		FF4A9D12229A19DA00DE8EED /* TestGradeData.sssc in Resources */ = {isa = PBXBuildFile; fileRef = FFF093C22291BC6C00217DE3 /* TestGradeData.sssc */; };
 		FF4BCBCF21AB47790050A876 /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BCBCE21AB47790050A876 /* Weight.swift */; };
 		FF4C4A9C215D7C550091BF2A /* GradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */; };
 		FF57A96521658509004AA50B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF57A96421658509004AA50B /* UIColor.swift */; };
@@ -58,7 +59,6 @@
 		FFF093AF2291B1E300217DE3 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF093AE2291B1E300217DE3 /* URLSession.swift */; };
 		FFF093B92291BA1200217DE3 /* ScienceStudentSuccessCentreFastlaneSnapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF093B82291BA1200217DE3 /* ScienceStudentSuccessCentreFastlaneSnapshots.swift */; };
 		FFF093C12291BC5200217DE3 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF093C02291BC5200217DE3 /* SnapshotHelper.swift */; };
-		FFF093C32291BC6C00217DE3 /* TestGradeData.sssc in Resources */ = {isa = PBXBuildFile; fileRef = FFF093C22291BC6C00217DE3 /* TestGradeData.sssc */; };
 		FFFC6BC72162D6D6001585CE /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6BC62162D6D6001585CE /* Course.swift */; };
 		FFFC6BC92162D70D001585CE /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6BC82162D70D001585CE /* CourseTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -448,6 +448,7 @@
 				FF592B3921C76C71002319C0 /* AppIcon.png in Resources */,
 				FFB76C962030B5A200EC3F97 /* Assets.xcassets in Resources */,
 				FF327FD520128C3E00B06E19 /* LaunchScreen.storyboard in Resources */,
+				FF4A9D12229A19DA00DE8EED /* TestGradeData.sssc in Resources */,
 				FF327FD020128C3E00B06E19 /* Main.storyboard in Resources */,
 				44B2CAEA2276A2BD007E53AB /* CourseSummaryCell.xib in Resources */,
 			);
@@ -457,7 +458,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFF093C32291BC6C00217DE3 /* TestGradeData.sssc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
