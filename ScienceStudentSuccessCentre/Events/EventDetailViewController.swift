@@ -11,10 +11,14 @@ import SafariServices
 import UserNotifications
 
 class EventDetailViewController: UIViewController, UITextViewDelegate {
-    
     var event: Event? {
         didSet {
             refreshUI()
+        }
+    }
+    var isPreview: Bool = false {
+        didSet {
+            prepareNavigationBarButtons()
         }
     }
     
@@ -73,7 +77,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped))
         var barButtonItems: [UIBarButtonItem] = []
         
-        if let event = event {
+        if let event = event, !isPreview {
             if event.getUrl() != nil {
                 barButtonItems.append(shareButton)
             }
@@ -91,6 +95,8 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
             }
             
             navigationItem.setRightBarButtonItems(barButtonItems, animated: false)
+        } else {
+            navigationItem.setRightBarButtonItems([], animated: false)
         }
     }
     

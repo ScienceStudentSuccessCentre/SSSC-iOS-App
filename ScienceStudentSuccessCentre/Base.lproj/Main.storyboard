@@ -113,7 +113,10 @@
                                     <outlet property="dateView" destination="dgx-cP-xF1" id="uzn-To-BjT"/>
                                     <outlet property="eventLabel" destination="g0R-cY-jsg" id="BMd-zH-gCs"/>
                                     <outlet property="monthLabel" destination="n96-Nf-piI" id="vKC-dt-s3P"/>
-                                    <segue destination="Da1-Vq-r4W" kind="showDetail" identifier="eventDetail" id="CpN-Ek-qSP"/>
+                                    <segue destination="Da1-Vq-r4W" kind="showDetail" identifier="eventDetail" id="CpN-Ek-qSP">
+                                        <segue key="commit" inheritsFrom="parent" id="AgO-GS-APs"/>
+                                        <segue key="preview" destination="Da1-Vq-r4W" identifier="eventDetailPreview" id="oWK-2l-eoL"/>
+                                    </segue>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -473,7 +476,10 @@
                                     <outlet property="termAbbr" destination="FAO-hC-zgu" id="mrL-y3-QLh"/>
                                     <outlet property="termName" destination="ocs-vd-Sl9" id="aQQ-49-npX"/>
                                     <outlet property="termView" destination="cHZ-eQ-Rjv" id="42a-y2-GHN"/>
-                                    <segue destination="qyO-ye-sR5" kind="show" identifier="termDetail" id="98O-Zl-agm"/>
+                                    <segue destination="qyO-ye-sR5" kind="show" identifier="termDetail" id="98O-Zl-agm">
+                                        <segue key="commit" inheritsFrom="parent" id="ret-P0-zS9"/>
+                                        <segue key="preview" inheritsFrom="commit" id="lvD-lx-TzU"/>
+                                    </segue>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -683,7 +689,10 @@
                                             <outlet property="courseName" destination="FGf-FB-RNz" id="zgF-kC-jsr"/>
                                             <outlet property="grade" destination="K2u-Sp-sbH" id="2q5-kh-1sV"/>
                                             <outlet property="gradeView" destination="AGz-7g-cCa" id="KQB-Qn-YT0"/>
-                                            <segue destination="atS-1p-BMg" kind="show" identifier="courseDetail" id="5rR-5l-Qoc"/>
+                                            <segue destination="atS-1p-BMg" kind="show" identifier="courseDetail" id="5rR-5l-Qoc">
+                                                <segue key="commit" inheritsFrom="parent" id="j0Q-gr-Ffm"/>
+                                                <segue key="preview" inheritsFrom="commit" id="QGK-a7-AjZ"/>
+                                            </segue>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1102,5 +1111,6 @@
         <segue reference="kLN-0H-OdZ"/>
         <segue reference="K9y-h4-UFx"/>
         <segue reference="II0-2O-iZm"/>
+        <segue reference="98O-Zl-agm"/>
     </inferredMetricsTieBreakers>
 </document>

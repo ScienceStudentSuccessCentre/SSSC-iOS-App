@@ -127,11 +127,13 @@ class EventsViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "eventDetail" {
+        if let identifier = segue.identifier, identifier.contains("eventDetail") {
             if let navigationController = segue.destination as? UINavigationController,
                 let detailViewController = navigationController.viewControllers.first as? EventDetailViewController,
-                let indexPath = tableView.indexPathForSelectedRow {
+                let cell = sender as? EventTableViewCell,
+                let indexPath = tableView.indexPath(for: cell) {
                 detailViewController.event = events[indexPath.row]
+                detailViewController.isPreview = identifier.contains("Preview")
             }
         }
     }

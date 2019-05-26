@@ -75,9 +75,10 @@ class TermsViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "termDetail" {
+        if segue.identifier == "termDetail",
+            let cell = sender as? TermTableViewCell,
+            let indexPath = tableView.indexPath(for: cell) {
             let controller = segue.destination as! TermDetailViewController
-            let indexPath = tableView.indexPathForSelectedRow!
             controller.term = terms[indexPath.row]
         }
     }
