@@ -76,6 +76,7 @@ class GradesViewController: UIViewController {
         delegate?.toggleOffTableViewEditMode()
         switch segmentIndex {
         case 0:
+            guard !self.children.contains(termsViewController) else { return }
             remove(asChildViewController: calculatorViewController)
             remove(asChildViewController: plannerViewController)
             add(asChildViewController: termsViewController)
@@ -86,6 +87,7 @@ class GradesViewController: UIViewController {
                 termsViewController.tableView.tableHeaderView = searchController.searchBar
             }
         case 1:
+            guard !self.children.contains(calculatorViewController) else { return }
             remove(asChildViewController: termsViewController)
             remove(asChildViewController: plannerViewController)
             add(asChildViewController: calculatorViewController)
@@ -96,6 +98,7 @@ class GradesViewController: UIViewController {
                 termsViewController.tableView.tableHeaderView = nil
             }
         case 2:
+            guard !self.children.contains(plannerViewController) else { return }
             remove(asChildViewController: termsViewController)
             remove(asChildViewController: calculatorViewController)
             add(asChildViewController: plannerViewController)
