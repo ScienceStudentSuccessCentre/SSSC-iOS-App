@@ -14,7 +14,6 @@
 		44B2CAEA2276A2BD007E53AB /* CourseSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44B2CAE92276A2BD007E53AB /* CourseSummaryCell.xib */; };
 		44B2CAEC2276A4C2007E53AB /* CourseSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B2CAEB2276A4C2007E53AB /* CourseSummaryCell.swift */; };
 		44B2CAEE22777E0E007E53AB /* ColourRestorableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B2CAED22777E0E007E53AB /* ColourRestorableCell.swift */; };
-		44BB378F21FA64C900F7250F /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB378E21FA64C900F7250F /* UIViewController.swift */; };
 		A17011CB21AC8F4000A385FB /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */; };
 		FF13F7D421646AC1005733B0 /* CreateCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */; };
 		FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */; };
@@ -43,7 +42,6 @@
 		FF7FD89021485E8100DAC88C /* HtmlString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7FD88F21485E8100DAC88C /* HtmlString.swift */; };
 		FF80666E2193A31D00B202A6 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80666D2193A31D00B202A6 /* Double.swift */; };
 		FFA4B1D320229C8400BAC08F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B1D220229C8400BAC08F /* Event.swift */; };
-		FFA5849E21AF961200B15E25 /* GradesViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA5849D21AF961200B15E25 /* GradesViewControllerDelegate.swift */; };
 		FFA7CBAB215DD4CB00A050B1 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAA215DD4CB00A050B1 /* TermsViewController.swift */; };
 		FFA7CBAD215DD53300A050B1 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */; };
 		FFA7CBAF215DD54C00A050B1 /* PlannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBAE215DD54C00A050B1 /* PlannerViewController.swift */; };
@@ -81,7 +79,6 @@
 		44B2CAE92276A2BD007E53AB /* CourseSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseSummaryCell.xib; sourceTree = "<group>"; };
 		44B2CAEB2276A4C2007E53AB /* CourseSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseSummaryCell.swift; sourceTree = "<group>"; };
 		44B2CAED22777E0E007E53AB /* ColourRestorableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourRestorableCell.swift; sourceTree = "<group>"; };
-		44BB378E21FA64C900F7250F /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		7B021D16CACA69B8319CC12F /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.debug.xcconfig"; sourceTree = "<group>"; };
 		A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
 		A519D0B6B2D10C171824AAD9 /* Pods_ScienceStudentSuccessCentre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScienceStudentSuccessCentre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,7 +112,6 @@
 		FF7FD88F21485E8100DAC88C /* HtmlString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlString.swift; sourceTree = "<group>"; };
 		FF80666D2193A31D00B202A6 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		FFA4B1D220229C8400BAC08F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		FFA5849D21AF961200B15E25 /* GradesViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesViewControllerDelegate.swift; sourceTree = "<group>"; };
 		FFA7CBAA215DD4CB00A050B1 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		FFA7CBAC215DD53300A050B1 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		FFA7CBAE215DD54C00A050B1 /* PlannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerViewController.swift; sourceTree = "<group>"; };
@@ -214,7 +210,6 @@
 			children = (
 				FF327FD620128C3E00B06E19 /* Info.plist */,
 				FF327FC820128C3E00B06E19 /* AppDelegate.swift */,
-				44B2CAED22777E0E007E53AB /* ColourRestorableCell.swift */,
 				FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */,
 				FFB76C952030B5A200EC3F97 /* Assets.xcassets */,
 				FFE84070215F17D200A5E33B /* Events */,
@@ -285,7 +280,6 @@
 				44B2CAEB2276A4C2007E53AB /* CourseSummaryCell.swift */,
 				44B2CAE5227675FF007E53AB /* CourseSearchViewController.swift */,
 				FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */,
-				FFA5849D21AF961200B15E25 /* GradesViewControllerDelegate.swift */,
 				44B2CAE92276A2BD007E53AB /* CourseSummaryCell.xib */,
 				FFE84075215F196700A5E33B /* Calculator */,
 				FFE84076215F198000A5E33B /* Planner */,
@@ -308,6 +302,7 @@
 		FFE84073215F192E00A5E33B /* Utilities and Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				44B2CAED22777E0E007E53AB /* ColourRestorableCell.swift */,
 				FF1D7D24215D6DDD00A88467 /* Database.swift */,
 				FF80666D2193A31D00B202A6 /* Double.swift */,
 				FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */,
@@ -317,7 +312,6 @@
 				FF57A96421658509004AA50B /* UIColor.swift */,
 				FF58D17C229AD77C00B78D3C /* UISplitViewController.swift */,
 				FFAE67912188ED2D0079CE16 /* UIView.swift */,
-				44BB378E21FA64C900F7250F /* UIViewController.swift */,
 				442EC65B21EE8C36002B961E /* UNUserNotificationCenter.swift */,
 				FFF093AE2291B1E300217DE3 /* URLSession.swift */,
 				FF5FDB2B21ABB12200899963 /* SplitRow */,
@@ -525,7 +519,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A17011CB21AC8F4000A385FB /* ResourcesViewController.swift in Sources */,
-				FFA5849E21AF961200B15E25 /* GradesViewControllerDelegate.swift in Sources */,
 				FFC18A2C202502A8001AB5BA /* EventLoader.swift in Sources */,
 				FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */,
 				FF80666E2193A31D00B202A6 /* Double.swift in Sources */,
@@ -551,7 +544,6 @@
 				FFFC6BC72162D6D6001585CE /* Course.swift in Sources */,
 				FFD0205821B1E1E6008D960B /* SettingsViewController.swift in Sources */,
 				FFE84078215F1CAC00A5E33B /* Term.swift in Sources */,
-				44BB378F21FA64C900F7250F /* UIViewController.swift in Sources */,
 				FF5FDB3121ABB17F00899963 /* SplitRowCellTableView.swift in Sources */,
 				442EC65C21EE8C36002B961E /* UNUserNotificationCenter.swift in Sources */,
 				FF5FDB2F21ABB16700899963 /* SplitRowCell.swift in Sources */,

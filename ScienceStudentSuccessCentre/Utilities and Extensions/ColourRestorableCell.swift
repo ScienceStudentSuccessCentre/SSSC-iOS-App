@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Superclass for table cells in which we want to be able to save and restore a particular background colour.
 class ColourRestorableCell: UITableViewCell {
     var colouredView: UIView?
     

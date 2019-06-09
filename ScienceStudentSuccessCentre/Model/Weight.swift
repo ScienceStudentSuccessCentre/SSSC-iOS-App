@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 /// A Weight belongs to a Course, and is associated with multiple Assignments.
 class Weight : Codable {
     var id: String

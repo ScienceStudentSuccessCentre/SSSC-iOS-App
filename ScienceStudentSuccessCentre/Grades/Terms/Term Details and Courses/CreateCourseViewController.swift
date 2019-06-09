@@ -53,7 +53,6 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         }
     }
     
-    /// Creates a Eureka form for creating and editing Course objects.
     func createForm() {
         form
         +++ Section("Course Info")
@@ -180,16 +179,14 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     
     /// Validates the current form values.
     ///
-    /// If all values are valid, the Course creation/update button will be enabled. Otherwise, the button will remain disabled.
-    ///
-    /// Validity conditions:
-    /// - A name exists
-    /// - A course code exists
-    /// - The course is worth more than 0 credits
-    /// - The weights for this course are valid:
-    ///     - All weights either have BOTH a name and a value or NEITHER a name nor a value
-    ///     - All weights with values total 100%
-    ///     - All weight names are unique
+    /// If all values are valid, the Course creation/update button will be enabled. Otherwise, the button will remain disabled. For the form to be valid:
+    /// - A name must exist
+    /// - A course code must exist
+    /// - The course must be worth more than 0 credits
+    /// - The weights must be valid:
+    ///     - All weights must either have BOTH a name and a value or NEITHER a name nor a value
+    ///     - All weights with values must total 100%
+    ///     - All weight names must be unique
     func validateForm() {
         let values = form.values()
         let name = values["name"] as? String ?? ""
@@ -225,7 +222,6 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         }
     }
     
-    /// Creates a Course object from the form values.
     private func createCourse() {
         let values = form.values()
         let name = values["name"] as? String ?? ""
@@ -286,7 +282,6 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         }
     }
     
-    /// Alerts the user that there is an assignment associated to one of the weights they are trying to delete.
     private func invalidWeightDeletion() {
         let alert = UIAlertController(title: "Can't modify weights!", message: "Please modify or delete all assignments that are marked with the weights you are trying to delete. All other course modifications were saved.", preferredStyle: .alert)
         

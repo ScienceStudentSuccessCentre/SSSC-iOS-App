@@ -27,7 +27,6 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
         createForm()
     }
     
-    /// Creates a Eureka form for creating Term objects.
     func createForm() {
         form
         +++ SelectableSection<ListCheckRow<String>>("Select a Term", selectionType: SelectionType.singleSelection(enableDeselection: false)) { row in

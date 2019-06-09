@@ -44,7 +44,6 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
         }
     }
     
-    /// Creates a Eureka form for creating and editing Assignment objects.
     func createForm() {
         form
         +++ Section(header: "Assignment Info", footer: weights.count == 0 ? "In order to add assignments, please create assignment weights for this course. This can be done from the previous screen." : "")
@@ -92,13 +91,11 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
     
     /// Validates the current form values.
     ///
-    /// If all values are valid, the Assignment creation/update button will be enabled. Otherwise, the button will remain disabled.
-    ///
-    /// Validity conditions:
-    /// - A name exists
-    /// - An earned grade is filled in
-    /// - A total grade is filled in
-    /// - A weight is associated with this assignment
+    /// If all values are valid, the Assignment creation/update button will be enabled. Otherwise, the button will remain disabled. For the form to be valid:
+    /// - A name must exist
+    /// - An earned grade must be filled in
+    /// - A total grade must be filled in
+    /// - A weight must be associated with this assignment
     func validateForm() {
         let values = form.values()
         let name = values["name"] as? String ?? ""

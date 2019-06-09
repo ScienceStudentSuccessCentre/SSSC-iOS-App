@@ -29,7 +29,6 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
         form.rowBy(tag: "includeInProgressCourses")?.baseValue = includeInProgressCourses
     }
     
-    /// Creates a Eureka form for both Settings and Acknowledgments.
     func createForm() {
         form
             +++ Section(header: "Settings - CGPA Calculator", footer: "If toggled on, courses without a Final Grade specified will be included in CGPA calculations on the CGPA Calculator page.")
@@ -48,7 +47,6 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
             +++ Section(header: "\nAcknowledgments", footer: "This app was developed for the Carleton University Science Student Success Centre by Avery Vine. Special thanks to Kshamina Ghelani, Selasi Kudolo, Gina Bak, Anisha Ghelani, Lily Visanuvimol, Divin Kang, and everyone else at the SSSC who helped out along the way.\n\nReleased under GNU General Public License v3.0 | Copyright @ 2018")
     }
     
-    /// Validates the current form values, and applies any settings changes necessary.
     func validateForm() {
         if let includeInProgressCourses = form.rowBy(tag: "includeInProgressCourses")?.baseValue as? Bool {
             let defaults = UserDefaults.standard
@@ -76,7 +74,7 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
                     self.present(activityVC, animated: true, completion: nil)
                 } catch {
                     print("Failed to export grade data")
-                    let alert = UIAlertController(title: "Failed to export!", message: "We were unable to export your grade data. Please try again! If this issue persists, contact the SSSC.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Failed to export!", message: "We were unable to export your grade data. Please try again!", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { action in
                         self.navigationController?.dismiss(animated: true, completion: nil)
                     }))

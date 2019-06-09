@@ -13,15 +13,10 @@ import PromiseKit
 class EventLoader {
     private static let serverUrl = URL(string: "http://sssc-carleton-app-server.herokuapp.com/events")
     
-    /// Asynchronously gathers event data from the server and parses the contents into proper `Event` objects.
-    ///
-    /// - Remark: Events downloaded and parsed by this function can be retrieved using `getEvents()`. This class will notify all observers when event data is ready to be retrieved.
-    
-    
-    /// Gathers event data from the server and parses them into `Event` objects.
+    /// Gathers event data from the server and passes it on to be deserialized.
     ///
     /// - Returns: The newly parsed events in the form of a promise.
-    public static func loadEvents() -> Promise<[Event]> {
+    static func loadEvents() -> Promise<[Event]> {
         return Promise { seal in
             if let url = serverUrl {
                 URLSession.shared.dataTask(with: url) { result in
@@ -31,8 +26,9 @@ class EventLoader {
                             seal.reject(URLError(.badServerResponse))
                             return
                         }
-                        let events = parseEvents(json: json)
-                        seal.fulfill(events)
+                        let events = deserializeEvents(json: json)
+                        let sortedEvents = sortEvents(events)
+                        seal.fulfill(sortedEvents)
                     case .failure(let error):
                         seal.reject(error)
                     }
@@ -43,11 +39,11 @@ class EventLoader {
         }
     }
     
-    /// Converts JSON data into a chronologically sorted list of SSSC events.
+    /// Converts JSON data into a list of SSSC events.
     ///
     /// - Parameter json: JSON data retrieved from the server.
     /// - Returns: The list of events, parsed and sorted.
-    private static func parseEvents(json: Any) -> [Event] {
+    private static func deserializeEvents(json: Any) -> [Event] {
         var events = [Event]()
         if let jsonEvents = json as? NSArray {
             for jsonEvent in jsonEvents {
@@ -62,7 +58,7 @@ class EventLoader {
         } else {
             print("JSON data is invalid")
         }
-        events = sortEvents(events)
+
         #if DEBUG
         if UserDefaults.standard.bool(forKey: "showTestEvents") {
             events.append(Event.generateTestEvent())

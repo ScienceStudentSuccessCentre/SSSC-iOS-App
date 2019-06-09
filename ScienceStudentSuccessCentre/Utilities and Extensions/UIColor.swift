@@ -71,6 +71,7 @@ extension UIColor {
         }
     }
     
+    // Once a colour makes it into a release, it should not be changed! Otherwise grade importing may fail.
     enum Material: String, CaseIterable, Codable  {
         case red
         case pink

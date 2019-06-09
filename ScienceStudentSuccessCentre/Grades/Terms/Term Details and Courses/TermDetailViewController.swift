@@ -89,7 +89,6 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    /// Sets up the various navigation bar buttons (associates them with their actions).
     private func prepareNavigationBarButtons() {
         addCourseButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCoursePressed))
         editCoursesButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editCoursesPressed))
@@ -106,7 +105,6 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         toggleTableViewEditMode()
     }
     
-    /// Toggles off table view editing, if it is on.
     private func toggleOffTableViewEditMode() {
         if tableView.isEditing {
             toggleTableViewEditMode()
@@ -123,7 +121,6 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    /// Loads all of the user's courses for the term being displayed, and displays them to the user.
     private func loadCourses() {
         courses.removeAll()
         courses = Database.instance.getCoursesByTermId(id: term.id)

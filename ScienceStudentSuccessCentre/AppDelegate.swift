@@ -32,6 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
+    /// Used to prepare the environment in the case of launch variables. Should only be used for testing, App Store screenshots, etc.
+    ///
+    /// Current valid arguments:
+    /// - `UseTestGradeData` (automatically imports some test data, overwriting what is already there)
+    /// - `HideTestEvents` (hides the test events that are automatically added when compiling for debugging)
+    /// - `CleanStatusBar` (sets the simulator battery to full, changes the time to 9:41 am, and sets wifi/cellular to full signal)
     func processLaunchArguments() {
         let arguments = ProcessInfo.processInfo.arguments
         

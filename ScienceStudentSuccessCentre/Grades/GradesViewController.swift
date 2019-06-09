@@ -7,6 +7,16 @@
 
 import UIKit
 
+protocol GradesSegment: UIViewController {
+    var segmentTitle: String { get }
+}
+
+protocol GradesViewControllerDelegate: AnyObject {
+    func toggleOffTableViewEditMode()
+    func showTableViewButtons()
+    func refreshTableViewData()
+}
+
 class GradesViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     
@@ -31,20 +41,16 @@ class GradesViewController: UIViewController {
     
     private lazy var termsViewController: TermsViewController = {
         var viewController = storyboard?.instantiateViewController(withIdentifier: "\(TermsViewController.self)") as! TermsViewController
-        self.add(asChildViewController: viewController)
+        viewController.tableView.tableHeaderView = searchController.searchBar
         return viewController
     }()
     
     private lazy var calculatorViewController: CalculatorViewController = {
-        var viewController = storyboard?.instantiateViewController(withIdentifier: "\(CalculatorViewController.self)") as! CalculatorViewController
-        self.add(asChildViewController: viewController)
-        return viewController
+        return storyboard?.instantiateViewController(withIdentifier: "\(CalculatorViewController.self)") as! CalculatorViewController
     }()
     
     private lazy var plannerViewController: PlannerViewController = {
-        var viewController = storyboard?.instantiateViewController(withIdentifier: "\(PlannerViewController.self)") as! PlannerViewController
-        self.add(asChildViewController: viewController)
-        return viewController
+        return storyboard?.instantiateViewController(withIdentifier: "\(PlannerViewController.self)") as! PlannerViewController
     }()
 
     override func viewDidLoad() {
@@ -70,46 +76,22 @@ class GradesViewController: UIViewController {
     
     /// Switch to the tab view with the given index.
     ///
-    /// This function switches to the new tab by removing any other tabs attached to the view, then adding the correct tab. Finally, the title is updated to match the tab.
+    /// This function switches to the new tab by removing any other tabs attached to the view, then adding the correct tab.
     /// - Parameter segmentIndex: The index of the `SegmentControl` tab to switch to.
     private func switchToView(segmentIndex: Int) {
+        let allViews: [GradesSegment] = [termsViewController, calculatorViewController, plannerViewController]
+        let view = allViews[segmentIndex]
+        let title = view.segmentTitle
+        
+        guard !self.children.contains(view) else { return }
+        
         delegate?.toggleOffTableViewEditMode()
-        switch segmentIndex {
-        case 0:
-            guard !self.children.contains(termsViewController) else { return }
-            remove(asChildViewController: calculatorViewController)
-            remove(asChildViewController: plannerViewController)
-            add(asChildViewController: termsViewController)
-            navigationItem.title = "Terms"
-            if #available(iOS 11.0, *) {
-                navigationItem.searchController = searchController
-            } else {
-                termsViewController.tableView.tableHeaderView = searchController.searchBar
-            }
-        case 1:
-            guard !self.children.contains(calculatorViewController) else { return }
-            remove(asChildViewController: termsViewController)
-            remove(asChildViewController: plannerViewController)
-            add(asChildViewController: calculatorViewController)
-            navigationItem.title = "CGPA Calculator"
-            if #available(iOS 11.0, *) {
-                navigationItem.searchController = nil
-            } else {
-                termsViewController.tableView.tableHeaderView = nil
-            }
-        case 2:
-            guard !self.children.contains(plannerViewController) else { return }
-            remove(asChildViewController: termsViewController)
-            remove(asChildViewController: calculatorViewController)
-            add(asChildViewController: plannerViewController)
-            navigationItem.title = "CGPA Planner"
-            if #available(iOS 11.0, *) {
-                navigationItem.searchController = nil
-            } else {
-                termsViewController.tableView.tableHeaderView = nil
-            }
-        default:
-            break
+        allViews.forEach { remove(asChildViewController: $0) }
+        add(asChildViewController: view)
+        navigationItem.title = title
+        if #available(iOS 11.0, *), view is TermsViewController {
+            navigationItem.searchController = searchController
+            termsViewController.tableView.tableHeaderView = nil
         }
     }
     

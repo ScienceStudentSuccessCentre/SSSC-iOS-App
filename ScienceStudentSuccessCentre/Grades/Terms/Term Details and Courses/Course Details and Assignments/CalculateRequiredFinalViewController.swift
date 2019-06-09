@@ -32,7 +32,6 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
         createForm()
     }
     
-    /// Creates a Eureka form for calculating required final exam grades for a desired course grade.
     func createForm() {
         form
         +++ Section(footer: "If you want a certain final grade in a course, you can use this section to determine what grade you should aim for on your final exam.")
@@ -74,11 +73,10 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
     
     /// Validates the current form values.
     ///
-    /// This function will run the required final exam grade calculation if all conditions are met.
-    /// Validity conditions:
-    /// - A current grade is filled in
-    /// - A desired grade is filled in, between 0 and 100
-    /// - A final exam weight is chosen
+    /// This function will run the required final exam grade calculation if all conditions are met. For the form to be valid:
+    /// - A current grade must be filled in
+    /// - A desired grade must be filled in, between 0 and 100
+    /// - A final exam weight must be chosen
     func validateForm() {
         let values = form.values()
         let currentGrade = values["currentGrade"] as? Double ?? -1

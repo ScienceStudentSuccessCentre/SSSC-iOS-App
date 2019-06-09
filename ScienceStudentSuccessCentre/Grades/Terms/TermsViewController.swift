@@ -8,7 +8,9 @@
 
 import UIKit
 
-class TermsViewController: UITableViewController {
+class TermsViewController: UITableViewController, GradesSegment {
+    let segmentTitle = "Terms"
+    
     private var terms = [Term]()
     
     private var addTermButton: UIBarButtonItem!
@@ -39,7 +41,6 @@ class TermsViewController: UITableViewController {
         toggleTableViewButtons()
     }
     
-    /// Toggles whether the table view is editing or not.
     func toggleTableViewEditMode() {
         tableView.setEditing(!tableView.isEditing, animated: true)
     }
@@ -56,7 +57,6 @@ class TermsViewController: UITableViewController {
         }
     }
     
-    /// Loads all of the terms from the database, and displays them to the user in chronologically sorted order.
     private func loadTerms() {
         terms.removeAll()
         terms = Database.instance.getTerms()
@@ -83,7 +83,6 @@ class TermsViewController: UITableViewController {
         }
     }
     
-    /// Sets up the various navigation bar buttons (associates them with their actions).
     private func prepareNavigationBarButtons() {
         addTermButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTermPressed))
         editTermsButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTermPressed))

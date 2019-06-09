@@ -9,7 +9,9 @@
 import UIKit
 import Eureka
 
-class PlannerViewController: FormViewController, EurekaFormProtocol {
+class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegment {
+    let segmentTitle = "CGPA Planner"
+    
     private var currentGpa: Double!
     private let formatter = NumberFormatter()
     

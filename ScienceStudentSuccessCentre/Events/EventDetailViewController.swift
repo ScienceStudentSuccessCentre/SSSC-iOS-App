@@ -61,7 +61,6 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    /// Refreshes all UI details related to events, including title, description, nav bar buttons, etc.
     func refreshUI() {
         loadViewIfNeeded()
         prepareEventDetails()
@@ -70,9 +69,9 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     /// Determines which buttons (action, notification, share) should be added to the navigation bar, if any.
     ///
-    /// - Remark:
-    ///     - If there is an action associated to the event being displayed, the action button is displayed.
-    ///     - If the notification date/time for this event has not passed, the notification button is displayed.
+    /// - If there is an action associated to the event being displayed, the action button is displayed.
+    /// - If the notification date/time for this event has not passed, the notification button is displayed.
+    /// - If arriving from peek and pop (i.e. `isPreview == true`), no buttons are shown
     private func prepareNavigationBarButtons() {
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped))
         var barButtonItems: [UIBarButtonItem] = []
@@ -100,7 +99,6 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    /// Prepares the custom notifications button to be displayed.
     private func prepareNotifyMeButton() {
         let dimension = CGFloat(integerLiteral: 29)
         notifyMeButton.setImage(UIImage(named: "notifyOff"), for: .normal)
@@ -113,7 +111,6 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         notifyMeButton.accessibilityTraits = .button
     }
     
-    /// Prepares the custom action URL button to be displayed.
     private func prepareActionUrlButton() {
         let dimension = CGFloat(integerLiteral: 30)
         actionUrlButton.setImage(UIImage(named: "linkIcon"), for: .normal)
@@ -149,9 +146,6 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    /// Ensures the notification button displays the correct image (on/off).
-    ///
-    /// This function asks the SSSC notifications manager if there are any pending notifications for this particular event, and updates the notification button image to "On" if one is found associated to this event, and "Off" otherwise.
     private func updateNotifyMeButtonImage(notificationPending: Bool) {
         let notifyMeImage = UIImage(named: notificationPending ? "notifyOnColoured" : "notifyOff")
         DispatchQueue.main.async {
@@ -159,12 +153,12 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    /// Checks if notifications are authorized (and requests authorization if not), and if so toggles whether the notification for this event is enabled.
     @objc private func notifyMeTapped() {
         notificationCenter.checkAuthorized().done { isAuthorized in
             if isAuthorized {
                 self.toggleNotificationEnabled()
             } else {
+                // Prompt the user to allow notifications in settings
                 let alert = UIAlertController(title: "Notification permissions required", message: "In order to be notified of events, we need you to grant notification permissions to this app in Settings.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
                 alert.addAction(UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
@@ -183,16 +177,11 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         }.cauterize()
     }
     
-    /// Creates (or removes) a notification for this event when the notification button is tapped.
     private func toggleNotificationEnabled() {
         notificationCenter.checkPendingNotifications(for: self.event!).done { notificationPending in
-            self.updateNotifyMeButtonImage(notificationPending: !notificationPending)
-            if !notificationPending {
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Notification enabled!", message: "You'll be sent a notification an hour before this event starts.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-                    self.present(alert, animated: true)
-                }
+            let shouldEnableNotification = !notificationPending
+            self.updateNotifyMeButtonImage(notificationPending: shouldEnableNotification)
+            if shouldEnableNotification {
                 self.createEventNotification()
             } else {
                 self.notificationCenter.removeNotifications(for: self.event!)
@@ -216,44 +205,21 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    /// Creates a new event notification, updates the notification button image, and lets the user know that a notification has been prepared for this event.
     private func createEventNotification() {
         notificationCenter.createNotification(for: event!).done { success in
+            DispatchQueue.main.async {
+                let alert = success
+                    ? UIAlertController(title: "Notification enabled!", message: "You'll be sent a notification an hour before this event starts.", preferredStyle: .alert)
+                    : UIAlertController(title: "Something went wrong!", message: "Please try again later. If this issue persists, please let the SSSC know!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
             if !success {
-                self.presentGenericErrorAlert()
+                self.updateNotifyMeButtonImage(notificationPending: false)
             }
         }.cauterize()
     }
     
-    /// Generates a new notification request for this event.
-    ///
-    /// - Returns: The generated notification request.
-    private func generateUNNotificationRequest() -> UNNotificationRequest? {
-        var request: UNNotificationRequest? = nil
-        if let event = event {
-            let content = UNMutableNotificationContent()
-            content.title = event.getName()
-            content.subtitle = "Today at " + event.getFormattedTime()
-            content.body = event.getLocation()
-            content.sound = UNNotificationSound.default
-            
-            let notificationDateTime = event.getNotificationDateTime()
-            if (notificationDateTime != nil) {
-                if notificationDateTime!.compare(Date()) != ComparisonResult.orderedAscending {
-                    let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second,], from: notificationDateTime!)
-                    let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-                    request = UNNotificationRequest(identifier: event.getId(), content: content, trigger: trigger)
-                } else {
-                    print("Not setting notification due to time")
-                }
-            }
-        }
-        return request
-    }
-    
-    /// Loads and displays any image associated with this event.
-    ///
-    /// This function loads an image by downloading it into a byte buffer and creating a UIImage object from there.
     private func loadImage() {
         if let url = event?.getImageUrl() {
             DispatchQueue.global().async {
@@ -272,9 +238,6 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    /// Opens a provided URL in the in-app browser.
-    ///
-    /// - Parameter url: The URL to be opened.
     private func openUrlInAppBrowser(url: URL?) {
         if url != nil {
             let safariVC = SFSafariViewController(url: url!)
@@ -286,5 +249,4 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         openUrlInAppBrowser(url: URL)
         return false
     }
-
 }

@@ -109,7 +109,6 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-    /// Sets up the various navigation bar buttons (associates them with their actions).
     private func prepareNavigationBarButtons() {
         let editCourseButton = UIButton(type: .infoLight)
         editCourseButton.addTarget(self, action: #selector(editCoursePressed), for: .touchUpInside)
@@ -139,14 +138,12 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         performSegue(withIdentifier: "createAssignment", sender: self)
     }
     
-    /// Toggles off table view editing, if it is on.
     private func toggleOffTableViewEditMode() {
         if tableView.isEditing {
             toggleTableViewEditMode()
         }
     }
     
-    /// Loads all of the users assignments for the course being displayed, and displays them to the user.
     private func loadAssignments() {
         assignments.removeAll()
         assignments = Database.instance.getAssignmentsByCourseId(id: course.id)

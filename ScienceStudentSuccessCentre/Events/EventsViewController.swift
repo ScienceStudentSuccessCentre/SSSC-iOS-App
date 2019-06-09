@@ -14,7 +14,7 @@ class EventsViewController: UITableViewController {
     private var collapseDetailViewController = true
     private var activityIndicatorView: UIActivityIndicatorView!
     
-    var noEventsLabel: UILabel?
+    var noEventsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +47,9 @@ class EventsViewController: UITableViewController {
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
-        if let label = noEventsLabel {
-            tableView.addSubview(label)
-            label.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
-            label.centerYAnchor.constraint(equalTo: tableView.topAnchor, constant: tableView.frame.height / 5).isActive = true
-        }
+        tableView.addSubview(noEventsLabel)
+        noEventsLabel.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+        noEventsLabel.centerYAnchor.constraint(equalTo: tableView.topAnchor, constant: tableView.frame.height / 5).isActive = true
         
         loadEvents()
     }
@@ -64,6 +62,7 @@ class EventsViewController: UITableViewController {
     /// Retrieves the list of events from the SSSC website, and selects the first one on the list when viewing on iPads.
     func loadEvents(deepLinkId: String? = nil) {
         if deepLinkId != nil {
+            // We wait for the events to load before re-enabling interactions, so the user doesn't navigate away before we finish the deeplink.
             UIApplication.shared.beginIgnoringInteractionEvents()
         }
         EventLoader.loadEvents().done { events in
@@ -88,7 +87,7 @@ class EventsViewController: UITableViewController {
             
             if self.events.count > 0 {
                 self.tableView.separatorStyle = .singleLine
-                self.noEventsLabel?.isHidden = true
+                self.noEventsLabel.isHidden = true
                 
                 if let navigationController = self.splitViewController?.children.last as? UINavigationController,
                     let detailViewController = navigationController.viewControllers.first as? EventDetailViewController {
@@ -97,12 +96,13 @@ class EventsViewController: UITableViewController {
                 }
                 
                 if let deepLinkId = deepLinkId {
+                    // Re-enable user interaction and navigate to the deeplink.
                     UIApplication.shared.endIgnoringInteractionEvents()
                     self.navigateToDeepLinkId(deepLinkId)
                 }
             } else {
                 self.tableView.separatorStyle = .none
-                self.noEventsLabel?.isHidden = false
+                self.noEventsLabel.isHidden = false
             }
         }
     }
@@ -114,12 +114,10 @@ class EventsViewController: UITableViewController {
         }
     }
     
-    /// Refreshes the events in the tableview at the user's request.
     @objc func refreshEventData() {
         loadEvents()
     }
     
-    /// Scrolls the user to the top of the event tableview.
     func scrollToTop() {
         if events.count > 0 {
             tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
