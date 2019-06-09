@@ -302,7 +302,7 @@
                             <constraint firstItem="Wqe-EJ-Gb6" firstAttribute="leading" secondItem="JzO-nb-f3D" secondAttribute="leading" id="Ado-lW-dt1"/>
                             <constraint firstItem="JzO-nb-f3D" firstAttribute="trailing" secondItem="Wqe-EJ-Gb6" secondAttribute="trailing" id="PRy-y7-Q3l"/>
                             <constraint firstItem="JzO-nb-f3D" firstAttribute="bottom" secondItem="Wqe-EJ-Gb6" secondAttribute="bottom" id="dDf-bd-N3R"/>
-                            <constraint firstItem="Wqe-EJ-Gb6" firstAttribute="top" secondItem="JzO-nb-f3D" secondAttribute="top" id="oMg-yT-3Y7"/>
+                            <constraint firstItem="Wqe-EJ-Gb6" firstAttribute="top" secondItem="Z1o-QX-ROK" secondAttribute="top" id="oMg-yT-3Y7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JzO-nb-f3D"/>
                     </view>
