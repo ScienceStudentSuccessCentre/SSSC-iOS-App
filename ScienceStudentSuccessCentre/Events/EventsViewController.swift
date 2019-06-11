@@ -109,8 +109,9 @@ class EventsViewController: UITableViewController {
     
     func navigateToDeepLinkId(_ id: String) {
         if let eventIndex = events.firstIndex(where: { $0.getId() == id }) {
-            tableView.selectRow(at: IndexPath(row: eventIndex, section: 0), animated: true, scrollPosition: .none)
-            performSegue(withIdentifier: "eventDetail", sender: self)
+            let indexPath = IndexPath(row: eventIndex, section: 0)
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+            performSegue(withIdentifier: "eventDetail", sender: tableView.cellForRow(at: indexPath))
         }
     }
     

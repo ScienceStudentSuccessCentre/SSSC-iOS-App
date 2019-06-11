@@ -114,15 +114,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         guard let eventsViewController = eventsNavController.viewControllers.first as? EventsViewController else { return }
         
         let deepLinkId = response.notification.request.identifier
-        if let detailNavController = eventsNavController.viewControllers.last as? UINavigationController,
-            let detailViewController = detailNavController.viewControllers.first as? EventDetailViewController {
-            if detailViewController.event?.getId() == deepLinkId {
-                detailViewController.refreshUI()
-                completionHandler()
-                return
-            }
-        }
-        
         if eventsViewController.events.count == 0 {
             eventsViewController.loadEvents(deepLinkId: deepLinkId)
         } else {
