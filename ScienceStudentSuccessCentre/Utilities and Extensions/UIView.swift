@@ -20,7 +20,7 @@ extension UIView {
             return borderView
         }
 
-        if (edges.contains(.all) || edges.contains(.top)) {
+        if edges.contains(.all) || edges.contains(.top) {
             let topBorder = createBorder()
             self.addSubview(topBorder)
             NSLayoutConstraint.activate([
@@ -30,7 +30,7 @@ extension UIView {
                 topBorder.heightAnchor.constraint(equalToConstant: width)
                 ])
         }
-        if (edges.contains(.all) || edges.contains(.left)) {
+        if edges.contains(.all) || edges.contains(.left) {
             let leftBorder = createBorder()
             self.addSubview(leftBorder)
             NSLayoutConstraint.activate([
@@ -40,7 +40,7 @@ extension UIView {
                 leftBorder.widthAnchor.constraint(equalToConstant: width)
                 ])
         }
-        if (edges.contains(.all) || edges.contains(.right)) {
+        if edges.contains(.all) || edges.contains(.right) {
             let rightBorder = createBorder()
             self.addSubview(rightBorder)
             NSLayoutConstraint.activate([
@@ -50,7 +50,7 @@ extension UIView {
                 rightBorder.widthAnchor.constraint(equalToConstant: width)
                 ])
         }
-        if (edges.contains(.all) || edges.contains(.bottom)) {
+        if edges.contains(.all) || edges.contains(.bottom) {
             let bottomBorder = createBorder()
             self.addSubview(bottomBorder)
             NSLayoutConstraint.activate([

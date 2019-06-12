@@ -44,7 +44,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewWillAppear(_ animated: Bool) {
         let dbCourse = Database.instance.getCourseById(id: course.id)
-        if (dbCourse != nil) {
+        if dbCourse != nil {
             course = dbCourse
         }
         courseCode.text = course.code
@@ -55,7 +55,8 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         loadAssignments()
         updateCourseDetails()
         
-        for cell in tableView.visibleCells as! [AssignmentTableViewCell] {
+        guard let cells = tableView.visibleCells as? [AssignmentTableViewCell] else { return }
+        for cell in cells {
             cell.setColour(colour: UIColor(course.colour))
         }
     }
@@ -77,7 +78,8 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(AssignmentTableViewCell.self)", for: indexPath) as? AssignmentTableViewCell  else {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "\(AssignmentTableViewCell.self)", for: indexPath) as? AssignmentTableViewCell else {
             fatalError("The dequeued cell is not an instance of \(AssignmentTableViewCell.self).")
         }
         let assignment = assignments[indexPath.row]
@@ -190,22 +192,22 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "editCourse":
-            let controller = segue.destination.children.first as! CreateCourseViewController
+            guard let controller = segue.destination.children.first as? CreateCourseViewController
+                else { return }
             controller.course = course
-            break
         case "createAssignment":
-            let controller = segue.destination.children.first as! CreateAssignmentViewController
+            guard let controller = segue.destination.children.first as? CreateAssignmentViewController
+                else { return }
             controller.course = course
-            break
         case "editAssignment":
-            let controller = segue.destination.children.first as! CreateAssignmentViewController
+            guard let controller = segue.destination.children.first as? CreateAssignmentViewController
+                else { return }
             controller.assignment = assignments[accessoryButtonIndexPath.row]
             controller.course = course
-            break
         case "calcReqFinalGrade":
-            let controller = segue.destination.children.first as! CalculateRequiredFinalViewController
+            guard let controller = segue.destination.children.first as? CalculateRequiredFinalViewController
+                else { return }
             controller.course = course
-            break
         default:
             return
         }

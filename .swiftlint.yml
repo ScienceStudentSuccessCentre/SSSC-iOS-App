@@ -1,0 +1,25 @@
+disabled_rules:
+  - trailing_whitespace
+  - identifier_name
+  - type_name
+  - cyclomatic_complexity
+
+excluded:
+  - Pods
+
+line_length:
+  warning: 165
+  error: 200
+  ignores_comments: true
+
+function_body_length:
+  warning: 250
+  error: 300
+
+type_body_length:
+  warning: 500
+  error: 750
+
+file_length:
+  warning: 750
+  error: 1000

@@ -9,14 +9,13 @@
 import Foundation
 
 /// An Assignment belongs to a Course, and is associated to a Weight.
-class Assignment : Codable {
+class Assignment: Codable {
     var id: String
     var name: String
     var gradeEarned: Double
     var gradeTotal: Double
     var weight: Weight
     var courseId: String
-    
     
     /// Creates an Assignment object.
     ///
@@ -36,7 +35,6 @@ class Assignment : Codable {
         self.courseId = courseId
     }
     
-    
     /// Calculatee the grade the user earned for this assignment, as a percentage.
     ///
     /// - Returns: The percent grade for this assignment, or `nil` if one cannot be calculated.
@@ -47,7 +45,6 @@ class Assignment : Codable {
         }
         return "N/A"
     }
-    
     
     /// Calculates the grade the user earned for this assignment, as a letter grade.
     ///

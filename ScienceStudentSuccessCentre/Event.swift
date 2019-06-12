@@ -38,29 +38,27 @@ class Event {
     }
     
     init(eventData: NSDictionary) {
-        self.id = eventData["id"] as! String
-        self.name = eventData["name"] as! String
-        self.description = eventData["description"] as! String
-        self.dateTime = Formatter.iso8601.date(from: eventData["dateTime"] as! String)
-        self.rawTime = eventData["rawTime"] as! String
-        self.location = eventData["location"] as! String
+        self.id = eventData["id"] as? String
+        self.name = eventData["name"] as? String
+        self.description = eventData["description"] as? String
+        self.dateTime = Formatter.iso8601.date(from: eventData["dateTime"] as? String)
+        self.rawTime = eventData["rawTime"] as? String
+        self.location = eventData["location"] as? String
         
-        if ((eventData["url"]) != nil) {
-            self.url = URL(string: eventData["url"] as! String)
-        } else {
-            self.url = nil
+        if let urlString = eventData["url"] as? String {
+            self.url = URL(string: urlString)
         }
         
-        if ((eventData["imageUrl"]) != nil) {
-            self.imageUrl = URL(string: eventData["imageUrl"] as! String)
-        } else {
-            self.imageUrl = nil
+        if let imageUrlString = eventData["imageUrl"] {
+            self.imageUrl = URL(string: imageUrlString)
         }
         
         self.actionUrl = eventData["actionUrl"] as? String
     }
     
-    init(id: String, name: String, description: String, dateTime: Date, rawTime: String, location: String, url: URL?, imageUrl: URL?, actionUrl: String) {
+    init(id: String, name: String, description: String,
+         dateTime: Date, rawTime: String, location: String,
+         url: URL?, imageUrl: URL?, actionUrl: String) {
         self.id = id
         self.name = name
         self.description = description
@@ -89,7 +87,7 @@ class Event {
     }
     
     public func getNotificationDateTime() -> Date? {
-        if (DEBUG_NOTIFICATION_TRIGGER) {
+        if DEBUG_NOTIFICATION_TRIGGER {
             return calendar.date(byAdding: .second, value: 15, to: Date())!
         } else {
             return calendar.date(byAdding: .hour, value: -1, to: dateTime!)
@@ -115,7 +113,7 @@ class Event {
     
     public func getDayLeadingZero() -> String {
         let day: Int = getDay()
-        if (day < 10) {
+        if day < 10 {
             return "0" + String(day)
         }
         return String(day)

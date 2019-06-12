@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 /// A Course belongs to a Term (and thus has an associated `termId`), and has several Assignments and Weights associated with it.
-class Course : Codable {
+class Course: Codable {
     var id: String
     var name: String
     var code: String
@@ -31,7 +31,8 @@ class Course : Codable {
     ///   - finalGrade: The final grade the user earned in the course ("None" if incomplete).
     ///   - termId: The id of the Term to which this course belongs.
     ///   - colour: A UIColor.Material colour for the course (red by default).
-    init(id: String?, name: String, code: String, credits: Double, isMajorCourse: Bool, finalGrade: String?, termId: String, colour: UIColor.Material?) {
+    init(id: String?, name: String, code: String, credits: Double,
+         isMajorCourse: Bool, finalGrade: String?, termId: String, colour: UIColor.Material?) {
         self.id = id ?? UUID().uuidString
         self.name = name
         self.code = code
@@ -58,7 +59,6 @@ class Course : Codable {
         return Grading.calculatePercentage(earned: totalEarned, total: totalWeight)
     }
     
-    
     /// Retrieves the letter grade for this course by getting the result of the Letter Grade calculator, unless there is a final grade specified for this course.
     ///
     /// - Returns: The letter grade for this course, or `N/A` if the grade cannot be calculated.
@@ -68,7 +68,6 @@ class Course : Codable {
         }
         return Grading.calculateLetterGrade(percentage: getPercentGrade())
     }
-    
     
     /// Gets a summary of the user's grade for this course (i.e. both letter grade and percentage). If a final grade is specified, just the final grade is returned (no percentage).
     ///

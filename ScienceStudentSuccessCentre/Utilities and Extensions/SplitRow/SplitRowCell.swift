@@ -31,24 +31,29 @@ open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value
         tableViewRight.leftSeparatorStyle = .singleLine
         tableViewRight.translatesAutoresizingMaskIntoConstraints = false
         
+        let leftItem = tableViewLeft ?? SplitRowCellTableView<L>()
         contentView.addSubview(tableViewLeft)
-        contentView.addConstraint(NSLayoutConstraint(item: tableViewLeft ?? SplitRowCellTableView<L>(), attribute: .left, relatedBy: .equal, toItem: contentView, attribute: .left, multiplier: 1.0, constant: 0.0))
+        contentView.addConstraint(NSLayoutConstraint(item: leftItem, attribute: .left, relatedBy: .equal,
+                                                     toItem: contentView, attribute: .left,
+                                                     multiplier: 1.0, constant: 0.0))
         
+        let rightItem = tableViewRight ?? SplitRowCellTableView<R>()
         contentView.addSubview(tableViewRight)
-        contentView.addConstraint(NSLayoutConstraint(item: tableViewRight ?? SplitRowCellTableView<R>(), attribute: .right, relatedBy: .equal, toItem: contentView, attribute: .right, multiplier: 1.0, constant: 0.0))
+        contentView.addConstraint(NSLayoutConstraint(item: rightItem, attribute: .right, relatedBy: .equal,
+                                                     toItem: contentView, attribute: .right,
+                                                     multiplier: 1.0, constant: 0.0))
     }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    open override func setup(){
+    open override func setup() {
         selectionStyle = .none
         
         //ignore Xcode Cast warning here, it works!
-        guard let row = self.row as? _SplitRow<L,R> else { return }
+        guard let row = self.row as? SplitRow<L, R> else { return }
         
-        //TODO: If we use UITableViewAutomaticDimension instead of 44.0 we encounter constraint errors :(
         let maxRowHeight = max(row.rowLeft?.cell?.height?() ?? 44.0, row.rowRight?.cell?.height?() ?? 44.0)
         if maxRowHeight != UITableView.automaticDimension {
             self.height = { maxRowHeight }
@@ -67,22 +72,33 @@ open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value
         setupConstraints()
     }
     
-    
     open override func update() {
         tableViewLeft.update()
         tableViewRight.update()
     }
     
-    private func setupConstraints(){
-        guard let row = self.row as? _SplitRow<L,R> else { return }
+    private func setupConstraints() {
+        guard let row = self.row as? SplitRow<L, R> else { return }
         
         if let height = self.height?() {
-            self.contentView.addConstraint(NSLayoutConstraint(item: tableViewLeft ?? SplitRowCellTableView<L>(), attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .height, multiplier: 1.0, constant: height))
-            self.contentView.addConstraint(NSLayoutConstraint(item: tableViewRight ?? SplitRowCellTableView<R>(), attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .height, multiplier: 1.0, constant: height))
+            let leftItem = tableViewLeft ?? SplitRowCellTableView<L>()
+            let rightItem = tableViewRight ?? SplitRowCellTableView<R>()
+            self.contentView.addConstraint(NSLayoutConstraint(item: leftItem, attribute: .height, relatedBy: .greaterThanOrEqual,
+                                                              toItem: nil, attribute: .height,
+                                                              multiplier: 1.0, constant: height))
+            self.contentView.addConstraint(NSLayoutConstraint(item: rightItem, attribute: .height, relatedBy: .greaterThanOrEqual,
+                                                              toItem: nil, attribute: .height,
+                                                              multiplier: 1.0, constant: height))
         }
         
-        self.contentView.addConstraint(NSLayoutConstraint(item: tableViewLeft ?? SplitRowCellTableView<L>(), attribute: .width, relatedBy: .equal, toItem: contentView, attribute: .width, multiplier: row.rowLeftPercentage, constant: 0.0))
-        self.contentView.addConstraint(NSLayoutConstraint(item: tableViewRight ?? SplitRowCellTableView<R>(), attribute: .width, relatedBy: .equal, toItem: contentView, attribute: .width, multiplier: row.rowRightPercentage, constant: 0.0))
+        let leftItem = tableViewLeft ?? SplitRowCellTableView<L>()
+        let rightItem = tableViewRight ?? SplitRowCellTableView<R>()
+        self.contentView.addConstraint(NSLayoutConstraint(item: leftItem, attribute: .width, relatedBy: .equal,
+                                                          toItem: contentView, attribute: .width,
+                                                          multiplier: row.rowLeftPercentage, constant: 0.0))
+        self.contentView.addConstraint(NSLayoutConstraint(item: rightItem, attribute: .width, relatedBy: .equal,
+                                                          toItem: contentView, attribute: .width,
+                                                          multiplier: row.rowRightPercentage, constant: 0.0))
     }
     
     private func rowCanBecomeFirstResponder(_ row: BaseRow?) -> Bool {
@@ -91,7 +107,7 @@ open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value
     }
     
     open override var isFirstResponder: Bool {
-        guard let row = self.row as? _SplitRow<L,R> else { return false }
+        guard let row = self.row as? SplitRow<L, R> else { return false }
         
         let rowLeftFirstResponder = row.rowLeft?.cell.findFirstResponder()
         let rowRightFirstResponder = row.rowRight?.cell?.findFirstResponder()
@@ -100,7 +116,7 @@ open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value
     }
     
     open override func cellCanBecomeFirstResponder() -> Bool {
-        guard let row = self.row as? _SplitRow<L,R> else { return false }
+        guard let row = self.row as? SplitRow<L, R> else { return false }
         guard false == row.isDisabled else { return false }
         
         let rowLeftFirstResponder = row.rowLeft?.cell.findFirstResponder()
@@ -120,7 +136,7 @@ open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value
     }
     
     open override func cellBecomeFirstResponder(withDirection: Direction) -> Bool {
-        guard let row = self.row as? _SplitRow<L,R> else { return false }
+        guard let row = self.row as?_SplitRow<L, R> else { return false }
         
         let rowLeftFirstResponder = row.rowLeft?.cell.findFirstResponder()
         let rowLeftCanBecomeFirstResponder = rowCanBecomeFirstResponder(row.rowLeft)
@@ -154,7 +170,7 @@ open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value
     }
     
     open override func cellResignFirstResponder() -> Bool {
-        guard let row = self.row as? _SplitRow<L,R> else { return false }
+        guard let row = self.row as? SplitRow<L, R> else { return false }
         
         let rowLeftResignFirstResponder = row.rowLeft?.cell?.cellResignFirstResponder() ?? false
         let rowRightResignFirstResponder = row.rowRight?.cell?.cellResignFirstResponder() ?? false

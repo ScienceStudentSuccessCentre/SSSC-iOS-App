@@ -17,7 +17,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet var majorGpaLabel: UILabel!
     
     private var courses = [Course]()
-    private var terms = [Course : Term]()
+    private var terms = [Course: Term]()
     
     private let gpaFormatter = NumberFormatter()
     
@@ -89,8 +89,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
             if let term1 = terms[course1], let term2 = terms[course2] {
                 if term1.year != term2.year {
                     return term1.year > term2.year
-                }
-                else {
+                } else {
                     if term1.term == "Fall" || (term1.term == "Summer" && term2.term == "Winter") {
                         return true
                     }
@@ -126,9 +125,9 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "calculatorDetail" {
-            let controller = segue.destination as! CourseDetailViewController
-            let indexPath = tableView.indexPathForSelectedRow!
+        if segue.identifier == "calculatorDetail",
+            let controller = segue.destination as? CourseDetailViewController,
+            let indexPath = tableView.indexPathForSelectedRow {
             controller.course = courses[indexPath.row]
         }
     }

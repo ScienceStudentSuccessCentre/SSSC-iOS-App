@@ -23,15 +23,18 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
         gradeFormatter.maximumFractionDigits = 2
         gradeFormatter.minimumFractionDigits = 0
         
-        navigationItem.setLeftBarButton(UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed)), animated: true)
+        navigationItem.setLeftBarButton(UIBarButtonItem(title: "Cancel", style: .plain, target: self,
+                                                        action: #selector(cancelButtonPressed)), animated: true)
         
-        if (assignment == nil) {
+        if assignment == nil {
             navigationItem.title = "New Assignment"
-            navigationItem.setRightBarButton(UIBarButtonItem(title: "Create", style: .done, target: self, action: #selector(createButtonPressed)), animated: true)
+            navigationItem.setRightBarButton(UIBarButtonItem(title: "Create", style: .done, target: self,
+                                                             action: #selector(createButtonPressed)), animated: true)
             navigationItem.rightBarButtonItem?.isEnabled = false
         } else {
             navigationItem.title = "Edit Assignment"
-            navigationItem.setRightBarButton(UIBarButtonItem(title: "Update", style: .done, target: self, action: #selector(createButtonPressed)), animated: true)
+            navigationItem.setRightBarButton(UIBarButtonItem(title: "Update", style: .done, target: self,
+                                                             action: #selector(createButtonPressed)), animated: true)
         }
         
         weights = Database.instance.getWeightsByCourseId(id: course.id)
@@ -46,8 +49,11 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
     
     func createForm() {
         form
-        +++ Section(header: "Assignment Info", footer: weights.count == 0 ? "In order to add assignments, please create assignment weights for this course. This can be done from the previous screen." : "")
-        <<< TextRow() { row in
+        +++ Section(header: "Assignment Info",
+                    footer: weights.count == 0
+                        ? "In order to add assignments, please create assignment weights for this course. This can be done from the previous screen."
+                        : "")
+        <<< TextRow { row in
             row.tag = "name"
             row.title = "Name"
             row.placeholder = "Assignment 1"
@@ -55,7 +61,7 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
         }.onChange { _ in
             self.validateForm()
         }
-        <<< DecimalRow() { row in
+        <<< DecimalRow { row in
             row.tag = "gradeEarned"
             row.title = "Grade Earned"
             row.placeholder = "26"
@@ -63,7 +69,7 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
         }.onChange { _ in
             self.validateForm()
         }
-        <<< DecimalRow() { row in
+        <<< DecimalRow { row in
             row.tag = "gradeTotal"
             row.title = "Maximum Grade"
             row.placeholder = "30"
@@ -71,7 +77,7 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
         }.onChange { _ in
             self.validateForm()
         }
-        <<< PushRow<String>() { row in
+        <<< PushRow<String> { row in
             row.tag = "weight"
             row.title = "Weight"
             row.options = weightNames
@@ -117,15 +123,17 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
         let gradeTotal = values["gradeTotal"] as? Double ?? 0
         let weightName = values["weight"] as? String ?? ""
         let weight = weights.first(where: {$0.name == weightName})
-        let assignment = Assignment(id: self.assignment != nil ? self.assignment.id : nil, name: name, gradeEarned: gradeEarned, gradeTotal: gradeTotal, weight: weight!, courseId: course.id)
+        let assignment = Assignment(id: self.assignment?.id, name: name,
+                                    gradeEarned: gradeEarned, gradeTotal: gradeTotal,
+                                    weight: weight!, courseId: course.id)
         if !Database.instance.insertOrUpdate(assignment: assignment) {
             print("Failed to create assignment")
-            //TODO: let the user know somehow
+            presentGenericError()
         }
-        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.dismiss(animated: true)
     }
     
     @objc private func cancelButtonPressed() {
-        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.dismiss(animated: true)
     }
 }

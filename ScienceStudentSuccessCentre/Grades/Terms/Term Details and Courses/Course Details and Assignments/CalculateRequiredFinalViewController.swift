@@ -24,7 +24,8 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
         gradeFormatter.multiplier = 1
         
         navigationItem.title = "Required Final Exam Grade"
-        navigationItem.setRightBarButton(UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonPressed)), animated: true)
+        navigationItem.setRightBarButton(UIBarButtonItem(title: "Done", style: .done, target: self,
+                                                         action: #selector(doneButtonPressed)), animated: true)
         
         weights = Database.instance.getWeightsByCourseId(id: course.id)
         weightNames = weights.map({ $0.name })
@@ -36,7 +37,7 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
         form
         +++ Section(footer: "If you want a certain final grade in a course, you can use this section to determine what grade you should aim for on your final exam.")
         +++ Section("Course Details - " + course.code)
-        <<< DecimalRow() { row in
+        <<< DecimalRow { row in
             row.tag = "currentGrade"
             row.title = "Current Course Grade"
             row.placeholder = "85%"
@@ -45,7 +46,7 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
         }.onChange { _ in
             self.validateForm()
         }
-        <<< DecimalRow() { row in
+        <<< DecimalRow { row in
             row.tag = "desiredGrade"
             row.title = "Desired Final Grade"
             row.placeholder = "90%"
@@ -53,7 +54,7 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
         }.onChange { _ in
             self.validateForm()
         }
-        <<< PushRow<String>() { row in
+        <<< PushRow<String> { row in
             row.tag = "weight"
             row.title = "Final Exam Weight"
             row.options = weightNames
@@ -62,7 +63,7 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
             self.validateForm()
         }
         +++ Section("Minimum Final Exam Grade Required")
-        <<< DecimalRow() { row in
+        <<< DecimalRow { row in
             row.tag = "requiredGrade"
             row.title = "Grade"
             row.placeholder = "Enter Info Above"
@@ -86,7 +87,11 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
         let calculatedGradeRow = form.rowBy(tag: "requiredGrade")
         
         if currentGrade >= 0 && 0 ... 100 ~= desiredGrade && weight != nil {
-            calculatedGradeRow?.baseValue = Grading.calculatedRequiredGrade(currentGrade: currentGrade, desiredGrade: desiredGrade, weight: weight!, courseId: course.id)
+            let calculatedGrade = Grading.calculatedRequiredGrade(currentGrade: currentGrade,
+                                                                  desiredGrade: desiredGrade,
+                                                                  weight: weight!,
+                                                                  courseId: course.id)
+            calculatedGradeRow?.baseValue = calculatedGrade
         } else {
             calculatedGradeRow?.baseValue = nil
         }
@@ -94,6 +99,6 @@ class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtoc
     }
     
     @objc private func doneButtonPressed() {
-        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.dismiss(animated: true)
     }
 }

@@ -12,7 +12,7 @@ import ColorPickerRow
 
 // MARK: - This extension provides a custom set of named colours, which are grouped under the name `Material`. In order to add a new colour option, add a new case to both the `enum Material` and the `convenience init(_ colorString: Material)` sections.
 extension UIColor {
-    convenience init(hex:  String) {
+    convenience init(hex: String) {
         var hexFormatted = hex
         if hexFormatted.hasPrefix("#") {
             hexFormatted.removeFirst()
@@ -72,7 +72,7 @@ extension UIColor {
     }
     
     // Once a colour makes it into a release, it should not be changed! Otherwise grade importing may fail.
-    enum Material: String, CaseIterable, Codable  {
+    enum Material: String, CaseIterable, Codable {
         case red
         case pink
         case purple
@@ -94,7 +94,7 @@ extension UIColor {
         case lightgrey
         
         static func fromUIColor(color: UIColor?) -> Material {
-            return self.allCases.first{ UIColor($0) == color } ?? .red
+            return self.allCases.first { UIColor($0) == color } ?? .red
         }
         
         static func getCourseColourPalette() -> [ColorSpec] {

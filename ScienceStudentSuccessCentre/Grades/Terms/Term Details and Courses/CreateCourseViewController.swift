@@ -31,16 +31,19 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         weightFormatter.numberStyle = .percent
         weightFormatter.multiplier = 1
         
-        navigationItem.setLeftBarButton(UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed)), animated: true)
+        navigationItem.setLeftBarButton(UIBarButtonItem(title: "Cancel", style: .plain, target: self,
+                                                        action: #selector(cancelButtonPressed)), animated: true)
         
         // If a course is passed in, we are editing it. Otherwise, we are creating a new course
-        if (course == nil) {
+        if course == nil {
             navigationItem.title = "New Course"
-            navigationItem.setRightBarButton(UIBarButtonItem(title: "Create", style: .done, target: self, action: #selector(createButtonPressed)), animated: true)
+            navigationItem.setRightBarButton(UIBarButtonItem(title: "Create", style: .done, target: self,
+                                                             action: #selector(createButtonPressed)), animated: true)
             navigationItem.rightBarButtonItem?.isEnabled = false
         } else {
             navigationItem.title = "Edit Course"
-            navigationItem.setRightBarButton(UIBarButtonItem(title: "Update", style: .done, target: self, action: #selector(createButtonPressed)), animated: true)
+            navigationItem.setRightBarButton(UIBarButtonItem(title: "Update", style: .done, target: self,
+                                                             action: #selector(createButtonPressed)), animated: true)
             
             weights = Database.instance.getWeightsByCourseId(id: course.id)
             initialWeights = weights
@@ -56,7 +59,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     func createForm() {
         form
         +++ Section("Course Info")
-        <<< TextRow() { row in
+        <<< TextRow { row in
             row.tag = "name"
             row.title = "Name"
             row.placeholder = "Operating Systems"
@@ -64,7 +67,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         }.onChange { _ in
             self.validateForm()
         }
-        <<< TextRow() { row in
+        <<< TextRow { row in
             row.tag = "code"
             row.title = "Code"
             row.placeholder = "COMP 3000"
@@ -72,7 +75,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         }.onChange { _ in
             self.validateForm()
         }
-        <<< DecimalRow() { row in
+        <<< DecimalRow { row in
             row.tag = "credits"
             row.title = "Credits"
             row.placeholder = "0.5"
@@ -80,42 +83,44 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         }.onChange { _ in
             self.validateForm()
         }
-        <<< SwitchRow() { row in
+        <<< SwitchRow { row in
             row.tag = "isMajorCourse"
             row.title = "Counts Towards Major CGPA"
         }
         +++ Section("Course Colour")
-        <<< InlineColorPickerRow() { row in
+        <<< InlineColorPickerRow { row in
             row.tag = "colour"
             row.title = "Select a Colour"
             row.isCircular = false
             row.showsPaletteNames = false
             row.value = UIColor(.red)
-        }.cellSetup { (cell, row) in
+        }.cellSetup { _, row in
             let palette = ColorPalette(name: "Material", palette: UIColor.Material.getCourseColourPalette())
             row.palettes = [palette]
         }
-        +++ MultivaluedSection(multivaluedOptions: [.Insert, .Delete], header: "Assignment Weights", footer: "Assignment weights should total 100%.") { section in
+        +++ MultivaluedSection(multivaluedOptions: [.Insert, .Delete],
+                               header: "Assignment Weights",
+                               footer: "Assignment weights should total 100%.") { section in
             section.addButtonProvider = { section in
-                return ButtonRow() {
+                return ButtonRow {
                     $0.title = "Add New Weight"
                 }
             }
             section.multivaluedRowToInsertAt = { index in
-                return SplitRow<TextRow, IntRow>() {
+                return SplitRow<TextRow, IntRow> {
                     $0.tag = nil
-                    $0.rowLeft = TextRow() {
+                    $0.rowLeft = TextRow {
                         $0.placeholder = "Final Exam"
                         $0.cell.textField.autocapitalizationType = .words //TODO: this doesn't appear to be working
                     }
-                    $0.rowRight = IntRow() {
+                    $0.rowRight = IntRow {
                         $0.placeholder = "30%"
                         $0.formatter = self.weightFormatter
                     }
                     $0.trailingSwipe.actions = [SwipeAction(
                         style: .destructive,
                         title: "Delete",
-                        handler: { (action, row, completionHandler) in
+                        handler: { _, row, _ in
                             section.remove(at: row.indexPath!.row)
                             self.tableView.isEditing = false
                             self.validateForm()
@@ -126,8 +131,9 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             }
             section.tag = "weights"
         }
-        +++ Section(header: "Override Calculated Grade", footer: "If you have already received a final letter grade from Carleton for this course, enter it here to ensure GPA calculation accuracy.")
-        <<< PushRow<String>() { row in
+        +++ Section(header: "Override Calculated Grade",
+                    footer: "If you have already received a final letter grade from Carleton for this course, enter it here to ensure GPA calculation accuracy.")
+        <<< PushRow<String> { row in
             row.tag = "finalGrade"
             row.title = "Final Grade"
             row.options = letterGrades
@@ -145,22 +151,22 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         form.rowBy(tag: "isMajorCourse")?.baseValue = course.isMajorCourse
         form.rowBy(tag: "finalGrade")?.baseValue = course.finalGrade
         form.rowBy(tag: "colour")?.baseValue = UIColor(course.colour)
-        var weightsSection = form.sectionBy(tag: "weights") as! MultivaluedSection
+        guard var weightsSection = form.sectionBy(tag: "weights") as? MultivaluedSection else { return }
         for weight in weights {
-            let newRow = SplitRow<TextRow, IntRow>() {
+            let newRow = SplitRow<TextRow, IntRow> {
                 $0.tag = weight.id
-                $0.rowLeft = TextRow() {
+                $0.rowLeft = TextRow {
                     $0.value = weight.name
                     $0.cell.textField.autocapitalizationType = .words //TODO: This (.words) doesn't appear to be working
                 }
-                $0.rowRight = IntRow() {
+                $0.rowRight = IntRow {
                     $0.value = Int(weight.value)
                     $0.formatter = self.weightFormatter
                 }
                 $0.trailingSwipe.actions = [SwipeAction(
                     style: .destructive,
                     title: "Delete",
-                    handler: { (action, row, completionHandler) in
+                    handler: { _, row, completionHandler in
                         weightsSection.remove(at: row.indexPath!.row)
                         self.tableView.isEditing = false
                         self.validateForm()
@@ -194,8 +200,10 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         let credits = values["credits"] as? Double ?? 0
         let finalGrade = values["finalGrade"] as? String ?? "None"
         
-        let weightsSection = form.sectionBy(tag: "weights") as! MultivaluedSection
-        let weightValues = weightsSection.values() as! [SplitRowValue<String, Int>]
+        guard let weightsSection = form.sectionBy(tag: "weights") as? MultivaluedSection,
+            let weightValues = weightsSection.values() as? [SplitRowValue<String, Int>] else {
+                return
+        }
         var weightNames = [String]()
         var validWeights = true
         var weightTotal = 0
@@ -231,11 +239,13 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         let finalGrade = values["finalGrade"] as? String
         let colour = UIColor.Material.fromUIColor(color: values["colour"] as? UIColor ?? nil)
         
-        let course = Course(id: self.course != nil ? self.course.id : nil, name: name, code: code, credits: credits, isMajorCourse: isMajorCourse, finalGrade: finalGrade, termId: self.term != nil ? term.id : self.course.termId, colour: colour)
+        let course = Course(id: self.course?.id, name: name, code: code, credits: credits,
+                            isMajorCourse: isMajorCourse, finalGrade: finalGrade,
+                            termId: self.term != nil ? term.id : self.course.termId, colour: colour)
         self.course = course
         if !Database.instance.insertOrUpdate(course: course) {
             print("Failed to create course")
-            //TODO: let the user know somehow
+            presentGenericError()
         }
     }
     
@@ -243,10 +253,10 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     ///
     /// This function checks to ensure there are no assignments associated with any of the weights being deleted, then compares with a list of the existing weights to determine which ones should be deleted, which should be inserted, and which should be updated.
     private func updateWeights() {
-        let weightsSection = form.sectionBy(tag: "weights") as! MultivaluedSection
+        guard let weightsSection = form.sectionBy(tag: "weights") as? MultivaluedSection else { return }
         weights.removeAll()
         
-        weightsSection.forEach({ row in
+        weightsSection.forEach { row in
             if let weightValue = row.baseValue as? SplitRowValue<String, Int> {
                 if let name = weightValue.left {
                     let value = Double(weightValue.right ?? -1)
@@ -255,11 +265,11 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                     weights.append(weight)
                 }
             }
-        })
+        }
         
         let assignments = Database.instance.getAssignmentsByCourseId(id: course.id)
         let weightIds = weights.map({ $0.id })
-        let initialWeightIds = initialWeights.map( {$0.id })
+        let initialWeightIds = initialWeights.map { $0.id }
         if assignments.filter({ initialWeightIds.contains($0.weight.id) }).count > assignments.filter({ weightIds.contains($0.weight.id) }).count {
             invalidWeightDeletion()
         } else {
@@ -267,7 +277,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                 if weights.filter({ $0.id == weight.id }).count == 0 {
                     if !Database.instance.delete(weightId: weight.id) {
                         print("Failed to delete weight")
-                        //TODO: let the user know somehow
+                        presentGenericError()
                     }
                 }
             }
@@ -275,20 +285,23 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             for weight in weights {
                 if !Database.instance.insertOrUpdate(weight: weight) {
                     print("Failed to create weight")
-                    //TODO: let the user know somehow
+                    presentGenericError()
                 }
             }
-            navigationController?.dismiss(animated: true, completion: nil)
+            navigationController?.dismiss(animated: true)
         }
     }
     
     private func invalidWeightDeletion() {
-        let alert = UIAlertController(title: "Can't modify weights!", message: "Please modify or delete all assignments that are marked with the weights you are trying to delete. All other course modifications were saved.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Can't modify weights!",
+                                      //swiftlint:disable:next line_length
+                                      message: "Please modify or delete all assignments that are marked with the weights you are trying to delete. All other course modifications were saved.",
+                                      preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { action in
-            self.navigationController?.dismiss(animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { _ in
+            self.navigationController?.dismiss(animated: true)
         }))
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true)
     }
     
     @objc private func createButtonPressed() {
@@ -297,6 +310,6 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     }
     
     @objc private func cancelButtonPressed() {
-        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.dismiss(animated: true)
     }
 }
