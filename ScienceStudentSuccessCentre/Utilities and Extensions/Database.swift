@@ -371,7 +371,9 @@ class Database {
                 let finalGrade = try row.get(t_courses_finalGrade)
                 let termId = try row.get(t_courses_termId)
                 let colour = UIColor.Material(rawValue: try row.get(t_courses_colour))
-                courses.append(Course(id: courseId, name: name, code: code, credits: credits, isMajorCourse: isMajorCourse, finalGrade: finalGrade, termId: termId, colour: colour))
+                courses.append(Course(id: courseId, name: name, code: code,
+                                      credits: credits, isMajorCourse: isMajorCourse,
+                                      finalGrade: finalGrade, termId: termId, colour: colour))
             }
         } catch let error {
             print("Courses select failed: \(error)")
@@ -386,10 +388,10 @@ class Database {
     /// - Returns: The course
     public func getCourseById(id: String) -> Course? {
         print("Getting course with id \(id)...")
-        var course: Course? = nil
+        var course: Course?
         do {
             let row = try db?.pluck(t_courses.filter(t_courses_id == id))
-            if (row != nil) {
+            if row != nil {
                 let courseId = try row!.get(t_courses_id)
                 let name = try row!.get(t_courses_name)
                 let code = try row!.get(t_courses_code)
@@ -398,7 +400,9 @@ class Database {
                 let finalGrade = try row!.get(t_courses_finalGrade)
                 let termId = try row!.get(t_courses_termId)
                 let colour = UIColor.Material(rawValue: try row!.get(t_courses_colour))
-                course = Course(id: courseId, name: name, code: code, credits: credits, isMajorCourse: isMajorCourse, finalGrade: finalGrade, termId: termId, colour: colour)
+                course = Course(id: courseId, name: name, code: code,
+                                credits: credits, isMajorCourse: isMajorCourse,
+                                finalGrade: finalGrade, termId: termId, colour: colour)
             }
         } catch let error {
             print("Course select failed: \(error)")
@@ -423,7 +427,9 @@ class Database {
                 let finalGrade = try row.get(t_courses_finalGrade)
                 let termId = try row.get(t_courses_termId)
                 let colour = UIColor.Material(rawValue: try row.get(t_courses_colour))
-                courses.append(Course(id: courseId, name: name, code: code, credits: credits, isMajorCourse: isMajorCourse, finalGrade: finalGrade, termId: termId, colour: colour))
+                courses.append(Course(id: courseId, name: name, code: code,
+                                      credits: credits, isMajorCourse: isMajorCourse,
+                                      finalGrade: finalGrade, termId: termId, colour: colour))
             }
         } catch let error {
             print("Courses select failed: \(error)")
@@ -459,10 +465,10 @@ class Database {
     /// - Returns: The weight
     public func getWeightById(id: String) -> Weight? {
         print("Getting weight with id \(id)...")
-        var weight: Weight? = nil
+        var weight: Weight?
         do {
             let row = try db?.pluck(t_weights.filter(t_weights_id == id))
-            if (row != nil) {
+            if row != nil {
                 let weightId = try row!.get(t_weights_id)
                 let name = try row!.get(t_weights_name)
                 let value = try row!.get(t_weights_value)
@@ -512,7 +518,9 @@ class Database {
                 let weightId = try row.get(t_assignments_weightId)
                 let weight = getWeightById(id: weightId)
                 let courseId = try row.get(t_assignments_courseId)
-                assignments.append(Assignment(id: assignmentId, name: name, gradeEarned: gradeEarned, gradeTotal: gradeTotal, weight: weight!, courseId: courseId))
+                assignments.append(Assignment(id: assignmentId, name: name,
+                                              gradeEarned: gradeEarned, gradeTotal: gradeTotal,
+                                              weight: weight!, courseId: courseId))
             }
         } catch let error {
             print("Assignments select failed: \(error)")
@@ -527,10 +535,10 @@ class Database {
     /// - Returns: The assignment
     public func getAssignmentById(id: String) -> Assignment? {
         print("Getting assignment with id \(id)...")
-        var assignment: Assignment? = nil
+        var assignment: Assignment?
         do {
             let row = try db?.pluck(t_assignments.filter(t_assignments_id == id))
-            if (row != nil) {
+            if row != nil {
                 let assignmentId = try row!.get(t_assignments_id)
                 let name = try row!.get(t_assignments_name)
                 let gradeEarned = try row!.get(t_assignments_gradeEarned)
@@ -538,7 +546,9 @@ class Database {
                 let weightId = try row!.get(t_assignments_weightId)
                 let weight = getWeightById(id: weightId)
                 let courseId = try row!.get(t_assignments_courseId)
-                assignment = Assignment(id: assignmentId, name: name, gradeEarned: gradeEarned, gradeTotal: gradeTotal, weight: weight!, courseId: courseId)
+                assignment = Assignment(id: assignmentId, name: name,
+                                        gradeEarned: gradeEarned, gradeTotal: gradeTotal,
+                                        weight: weight!, courseId: courseId)
             }
         } catch let error {
             print("Assignment select failed: \(error)")
@@ -562,7 +572,9 @@ class Database {
                 let weightId = try row.get(t_assignments_weightId)
                 let weight = getWeightById(id: weightId)
                 let courseId = try row.get(t_assignments_courseId)
-                assignments.append(Assignment(id: assignmentId, name: name, gradeEarned: gradeEarned, gradeTotal: gradeTotal, weight: weight!, courseId: courseId))
+                assignments.append(Assignment(id: assignmentId, name: name,
+                                              gradeEarned: gradeEarned, gradeTotal: gradeTotal,
+                                              weight: weight!, courseId: courseId))
             }
         } catch let error {
             print("Select failed: \(error)")
@@ -661,7 +673,6 @@ class Database {
 
 /// A utility class to make grades data encoding and decoding easy.
 private class GradesContainer: Codable {
-    
     let terms: [Term]
     let courses: [Course]
     let assignments: [Assignment]
@@ -673,5 +684,4 @@ private class GradesContainer: Codable {
         self.assignments = assignments
         self.weights = weights
     }
-    
 }

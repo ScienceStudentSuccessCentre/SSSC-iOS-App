@@ -72,9 +72,14 @@ class EventsViewController: UITableViewController {
             print("Failed to load events:\n\(error)")
             let alert: UIAlertController
             if error.localizedDescription.lowercased().contains("offline") {
-                alert = UIAlertController(title: "No Connection", message: "It looks like you might be offline! Please try again once you have an internet connection.", preferredStyle: .alert)
+                alert = UIAlertController(title: "No Connection",
+                                          message: "It looks like you might be offline! Please try again once you have an internet connection.",
+                                          preferredStyle: .alert)
             } else {
-                alert = UIAlertController(title: "Something went wrong!", message: "Something went wrong when loading the SSSC's upcoming events! Please try again later. If the issue persists, contact the SSSC so we can fix the problem as soon as possible.", preferredStyle: .alert)
+                alert = UIAlertController(title: "Something went wrong!",
+                                          // swiftlint:disable:next line_length
+                                          message: "Something went wrong when loading the SSSC's upcoming events! Please try again later. If the issue persists, contact the SSSC so we can fix the problem as soon as possible.",
+                                          preferredStyle: .alert)
             }
             alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
             self.present(alert, animated: true)
@@ -91,7 +96,9 @@ class EventsViewController: UITableViewController {
                 
                 if let navigationController = self.splitViewController?.children.last as? UINavigationController,
                     let detailViewController = navigationController.viewControllers.first as? EventDetailViewController {
-                    self.tableView.selectRow(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: UITableView.ScrollPosition(rawValue: 0)!)
+                    self.tableView.selectRow(at: IndexPath(item: 0, section: 0),
+                                             animated: true,
+                                             scrollPosition: UITableView.ScrollPosition(rawValue: 0)!)
                     detailViewController.event = self.events.first
                 }
                 
@@ -161,7 +168,9 @@ extension EventsViewController {
 
 extension EventsViewController: UISplitViewControllerDelegate {
     /// This is to ensure that smaller devices (like iPhones) will show the master view (this view controller) first, before any detail views.
-    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+    func splitViewController(_ splitViewController: UISplitViewController,
+                             collapseSecondary secondaryViewController: UIViewController,
+                             onto primaryViewController: UIViewController) -> Bool {
         return collapseDetailViewController
     }
 }

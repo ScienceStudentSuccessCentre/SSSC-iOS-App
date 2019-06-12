@@ -19,8 +19,10 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
         super.viewDidLoad()
         
         navigationItem.title = "New Term"
-        navigationItem.setLeftBarButton(UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed)), animated: true)
-        navigationItem.setRightBarButton(UIBarButtonItem(title: "Create", style: .done, target: self, action: #selector(createButtonPressed)), animated: true)
+        navigationItem.setLeftBarButton(UIBarButtonItem(title: "Cancel", style: .plain, target: self,
+                                                        action: #selector(cancelButtonPressed)), animated: true)
+        navigationItem.setRightBarButton(UIBarButtonItem(title: "Create", style: .done, target: self,
+                                                         action: #selector(createButtonPressed)), animated: true)
         navigationItem.rightBarButtonItem?.isEnabled = false
         
         setAvailableYears()
@@ -81,12 +83,12 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
         let newTerm = Term(id: nil, term: term!, year: year!)
         if !Database.instance.insert(term: newTerm) {
             print("Failed to create term")
-            //TODO: let the user know somehow
+            presentGenericError()
         }
-        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.dismiss(animated: true)
     }
     
     @objc private func cancelButtonPressed() {
-        navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.dismiss(animated: true)
     }
 }

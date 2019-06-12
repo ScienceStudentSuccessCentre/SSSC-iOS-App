@@ -40,17 +40,27 @@ class GradesViewController: UIViewController {
     }()
     
     private lazy var termsViewController: TermsViewController = {
-        var viewController = storyboard?.instantiateViewController(withIdentifier: "\(TermsViewController.self)") as! TermsViewController
+        guard let viewController = storyboard?.instantiateViewController(withIdentifier: "\(TermsViewController.self)") as? TermsViewController else {
+            fatalError()
+        }
         viewController.tableView.tableHeaderView = searchController.searchBar
         return viewController
     }()
     
     private lazy var calculatorViewController: CalculatorViewController = {
-        return storyboard?.instantiateViewController(withIdentifier: "\(CalculatorViewController.self)") as! CalculatorViewController
+        guard let viewController = storyboard?.instantiateViewController(
+            withIdentifier: "\(CalculatorViewController.self)") as? CalculatorViewController else {
+            fatalError()
+        }
+        return viewController
     }()
     
     private lazy var plannerViewController: PlannerViewController = {
-        return storyboard?.instantiateViewController(withIdentifier: "\(PlannerViewController.self)") as! PlannerViewController
+        guard let viewController = storyboard?.instantiateViewController(
+            withIdentifier: "\(PlannerViewController.self)") as? PlannerViewController else {
+            fatalError()
+        }
+        return viewController
     }()
 
     override func viewDidLoad() {
@@ -127,7 +137,8 @@ class GradesViewController: UIViewController {
 extension GradesViewController: CourseSearchActionDelegate {
     func didTapCourse(_ course: Course) {
         dismiss(animated: true, completion: {
-            guard let courseDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "\(CourseDetailViewController.self)") as? CourseDetailViewController else { return }
+            guard let courseDetailVC = self.storyboard?.instantiateViewController(
+                withIdentifier: "\(CourseDetailViewController.self)") as? CourseDetailViewController else { return }
             courseDetailVC.course = course
             self.searchController.searchBar.text = nil
             self.navigationController?.pushViewController(courseDetailVC, animated: true)

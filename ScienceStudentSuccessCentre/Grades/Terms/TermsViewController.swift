@@ -63,8 +63,7 @@ class TermsViewController: UITableViewController, GradesSegment {
         terms = terms.sorted {
             if $0.year != $1.year {
                 return $0.year > $1.year
-            }
-            else {
+            } else {
                 if $0.term == "Fall" || ($0.term == "Summer" && $1.term == "Winter") {
                     return true
                 }
@@ -77,8 +76,8 @@ class TermsViewController: UITableViewController, GradesSegment {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "termDetail",
             let cell = sender as? TermTableViewCell,
-            let indexPath = tableView.indexPath(for: cell) {
-            let controller = segue.destination as! TermDetailViewController
+            let indexPath = tableView.indexPath(for: cell),
+            let controller = segue.destination as? TermDetailViewController {
             controller.term = terms[indexPath.row]
         }
     }

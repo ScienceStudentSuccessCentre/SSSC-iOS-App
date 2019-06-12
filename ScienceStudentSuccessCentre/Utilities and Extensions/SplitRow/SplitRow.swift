@@ -69,7 +69,7 @@ open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L, R>> where L: B
             newValue?.tag = SplitRowTag.left.rawValue
             guard let row = newValue else { return }
             
-            var rowValue = self.value ?? SplitRowValue<L.Cell.Value,R.Cell.Value>()
+            var rowValue = self.value ?? SplitRowValue<L.Cell.Value, R.Cell.Value>()
             rowValue.left = row.value
             self.value = rowValue
             
@@ -84,7 +84,7 @@ open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L, R>> where L: B
             newValue?.tag = SplitRowTag.right.rawValue
             guard let row = newValue else { return }
             
-            var rowValue = self.value ?? SplitRowValue<L.Cell.Value,R.Cell.Value>()
+            var rowValue = self.value ?? SplitRowValue<L.Cell.Value, R.Cell.Value>()
             rowValue.right = row.value
             self.value = rowValue
             
@@ -99,15 +99,15 @@ open class _SplitRow<L: RowType, R: RowType>: Row<SplitRowCell<L, R>> where L: B
     
     required public init(tag: String?) {
         super.init(tag: tag)
-        cellProvider = CellProvider<SplitRowCell<L,R>>()
+        cellProvider = CellProvider<SplitRowCell<L, R>>()
     }
     
     open func subscribe<T: RowType>(onChange row: T) where T: BaseRow {
         row.onChange { [weak self] row in
             guard let strongSelf = self, let rowTagString = row.tag, let rowTag = SplitRowTag(rawValue: rowTagString) else { return }
-            strongSelf.cell?.update()  //TODO: This should only be done on cells which need an update. e.g. PushRow etc.
+            strongSelf.cell?.update()
             
-            var value = SplitRowValue<L.Cell.Value,R.Cell.Value>()
+            var value = SplitRowValue<L.Cell.Value, R.Cell.Value>()
             if rowTag == .left {
                 value.left = row.value as? L.Cell.Value
                 value.right = strongSelf.value?.right

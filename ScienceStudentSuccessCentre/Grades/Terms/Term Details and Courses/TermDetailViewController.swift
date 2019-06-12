@@ -148,12 +148,12 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "courseDetail",
             let cell = sender as? CourseTableViewCell,
-            let indexPath = tableView.indexPath(for: cell) {
-            let controller = segue.destination as! CourseDetailViewController
+            let indexPath = tableView.indexPath(for: cell),
+            let controller = segue.destination as? CourseDetailViewController {
             controller.course = courses[indexPath.row]
         }
-        if segue.identifier == "editCourse" {
-            let controller = segue.destination.children.first as! CreateCourseViewController
+        if segue.identifier == "editCourse",
+            let controller = segue.destination.children.first as? CreateCourseViewController {
             controller.term = term
         }
     }

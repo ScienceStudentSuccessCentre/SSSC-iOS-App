@@ -48,8 +48,8 @@ class EventLoader {
         if let jsonEvents = json as? NSArray {
             for jsonEvent in jsonEvents {
                 print(jsonEvent)
-                if let eventData = jsonEvent as? NSDictionary {
-                    let event = Event(eventData: eventData)
+                if let eventData = jsonEvent as? NSDictionary,
+                    let event = Event(eventData: eventData) {
                     events.append(event)
                 } else {
                     print("Failed to generate event...")

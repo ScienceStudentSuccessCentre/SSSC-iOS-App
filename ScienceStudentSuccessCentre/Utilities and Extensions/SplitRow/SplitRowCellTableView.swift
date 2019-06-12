@@ -14,7 +14,7 @@ class SplitRowCellTableView<T: TypedRowType>: UITableView, UITableViewDelegate, 
     var row: T?
     
     var leftSeparatorStyle: UITableViewCell.SeparatorStyle = .none {
-        didSet{
+        didSet {
             if oldValue != self.leftSeparatorStyle {
                 self.reloadData()
             }
@@ -32,7 +32,7 @@ class SplitRowCellTableView<T: TypedRowType>: UITableView, UITableViewDelegate, 
         fatalError("init(coder:) has not been implemented")
     }
     
-    open func setup(){
+    open func setup() {
         guard let row = self.row else { return }
         row.baseCell.setup()
         row.baseCell.selectionStyle = .none
@@ -43,7 +43,6 @@ class SplitRowCellTableView<T: TypedRowType>: UITableView, UITableViewDelegate, 
         row.updateCell()
         row.baseCell.selectionStyle = .none
     }
-    
     
     // MARK: UITableViewDelegate
     
@@ -71,7 +70,6 @@ class SplitRowCellTableView<T: TypedRowType>: UITableView, UITableViewDelegate, 
         return false
     }
     
-    
     // MARK: UITableViewDataSource
     
     open func numberOfSections(in tableView: UITableView) -> Int {
@@ -85,7 +83,9 @@ class SplitRowCellTableView<T: TypedRowType>: UITableView, UITableViewDelegate, 
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let row = self.row else { fatalError() }
         
-        if let cell = row.baseCell, leftSeparatorStyle == .singleLine, false == cell.subviews.contains(where: { $0.backgroundColor == .groupTableViewBackground }) {
+        if let cell = row.baseCell,
+            leftSeparatorStyle == .singleLine,
+            false == cell.subviews.contains(where: { $0.backgroundColor == .groupTableViewBackground }) {
             let separatorView = UIView()
             separatorView.backgroundColor = .groupTableViewBackground
             separatorView.translatesAutoresizingMaskIntoConstraints = false
@@ -93,9 +93,16 @@ class SplitRowCellTableView<T: TypedRowType>: UITableView, UITableViewDelegate, 
             cell.addSubview(separatorView)
             cell.bringSubviewToFront(separatorView)
             
-            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[separatorView(1)]", options: [], metrics: nil, views: ["separatorView":separatorView]))
-            cell.addConstraint(NSLayoutConstraint(item: separatorView, attribute: .top, relatedBy: .equal, toItem: cell, attribute: .top, multiplier: 1.0, constant: 11.0))
-            cell.addConstraint(NSLayoutConstraint(item: separatorView, attribute: .bottom, relatedBy: .equal, toItem: cell, attribute: .bottom, multiplier: 1.0, constant: -11.0))
+            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[separatorView(1)]",
+                                                               options: [],
+                                                               metrics: nil,
+                                                               views: ["separatorView": separatorView]))
+            cell.addConstraint(NSLayoutConstraint(item: separatorView, attribute: .top,
+                                                  relatedBy: .equal, toItem: cell, attribute: .top,
+                                                  multiplier: 1.0, constant: 11.0))
+            cell.addConstraint(NSLayoutConstraint(item: separatorView, attribute: .bottom,
+                                                  relatedBy: .equal, toItem: cell, attribute: .bottom,
+                                                  multiplier: 1.0, constant: -11.0))
         }
         
         return row.baseCell

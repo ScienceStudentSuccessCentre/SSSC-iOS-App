@@ -30,9 +30,9 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
     /// - Remark: A quick note about this form. Since Eureka only supports having a single form at a time on a ViewController, I decided to implement both calculators in the same form. Fields should be differentiated between forms by the "_form#" portion of their row tags. Validation of each form is done separately. Check out `validateForm()`, `validateForm1()`, and `validateForm2()` for validation.
     func createForm() {
         form
-        +++ Section(footer: "If you want to achieve a certain overall CGPA, you can use the section below to determine what CGPA you should aim for the current term.")
+        +++ Section(footer: "If you want to achieve a certain overall CGPA, use the section below to determine what CGPA you should aim for the current term.")
         +++ Section("Term CGPA for desired overall CGPA")
-        <<< DecimalRow() { row in
+        <<< DecimalRow { row in
             row.tag = "currentGpa_form1"
             row.title = "Current CGPA"
             row.placeholder = "8.9"
@@ -40,7 +40,7 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
         }.onChange { _ in
             self.validateForm()
         }
-        <<< DecimalRow() { row in
+        <<< DecimalRow { row in
             row.tag = "creditsComplete_form1"
             row.title = "Credits Complete"
             row.placeholder = "5.0"
@@ -48,7 +48,7 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
         }.onChange { _ in
             self.validateForm()
         }
-        <<< DecimalRow() { row in
+        <<< DecimalRow { row in
             row.tag = "desiredGpa_form1"
             row.title = "Desired CGPA"
             row.placeholder = "10.0"
@@ -56,7 +56,7 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
         }.onChange {_ in
             self.validateForm()
         }
-        <<< DecimalRow() { row in
+        <<< DecimalRow { row in
             row.tag = "creditsInProgress_form1"
             row.title = "Credits in Progress"
             row.placeholder = "2.5"
@@ -64,7 +64,7 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
         }.onChange {_ in
             self.validateForm()
         }
-        <<< DecimalRow() { row in
+        <<< DecimalRow { row in
             row.tag = "requiredGpa_form1"
             row.title = "Calculated CGPA"
             row.placeholder = "Enter Info Above"
@@ -73,7 +73,7 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
         }
         +++ Section(footer: "\nYou can use the section below to determine your overall CGPA based off a predicted CGPA for this term.")
         +++ Section("Overall CGPA with predicted term CGPA")
-        <<< DecimalRow() { row in
+        <<< DecimalRow { row in
             row.tag = "currentGpa_form2"
             row.title = "Current CGPA"
             row.placeholder = "8.9"
@@ -81,7 +81,7 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
         }.onChange { _ in
             self.validateForm()
         }
-        <<< DecimalRow() { row in
+        <<< DecimalRow { row in
             row.tag = "creditsComplete_form2"
             row.title = "Credits Complete"
             row.placeholder = "5.0"
@@ -89,7 +89,7 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
         }.onChange { _ in
             self.validateForm()
         }
-        <<< DecimalRow() { row in
+        <<< DecimalRow { row in
             row.tag = "predictedGpa_form2"
             row.title = "Predicted CGPA"
             row.placeholder = "9.4"
@@ -97,7 +97,7 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
         }.onChange {_ in
             self.validateForm()
         }
-        <<< DecimalRow() { row in
+        <<< DecimalRow { row in
             row.tag = "creditsInProgress_form2"
             row.title = "Credits in Progress"
             row.placeholder = "2.5"
@@ -105,7 +105,7 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
         }.onChange {_ in
             self.validateForm()
         }
-        <<< DecimalRow() { row in
+        <<< DecimalRow { row in
             row.tag = "overallGpa_form2"
             row.title = "Overall CGPA"
             row.placeholder = "Enter Info Above"
@@ -137,7 +137,11 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
         let calculatedGpaRow = form.rowBy(tag: "requiredGpa_form1")
         
         if currentGpa >= 0 && creditsComplete >= 0 && desiredGpa >= 0 && creditsInProgress > 0 {
-            calculatedGpaRow?.baseValue = Grading.calculateRequiredGpa(currentGpa: currentGpa, creditsComplete: creditsComplete, desiredGpa: desiredGpa, creditsInProgress: creditsInProgress)
+            let calculatedGpa = Grading.calculateRequiredGpa(currentGpa: currentGpa,
+                                                             creditsComplete: creditsComplete,
+                                                             desiredGpa: desiredGpa,
+                                                             creditsInProgress: creditsInProgress)
+            calculatedGpaRow?.baseValue = calculatedGpa
         } else {
             calculatedGpaRow?.baseValue = nil
         }
@@ -161,7 +165,11 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
         let calculatedGpaRow = form.rowBy(tag: "overallGpa_form2")
         
         if currentGpa >= 0 && creditsComplete >= 0 && predictedGpa >= 0 && creditsInProgress > 0 {
-            calculatedGpaRow?.baseValue = Grading.calculatePredictedGpa(currentGpa: currentGpa, creditsComplete: creditsComplete, predictedGpa: predictedGpa, creditsInProgress: creditsInProgress)
+            let calculatedGpa = Grading.calculatePredictedGpa(currentGpa: currentGpa,
+                                                              creditsComplete: creditsComplete,
+                                                              predictedGpa: predictedGpa,
+                                                              creditsInProgress: creditsInProgress)
+            calculatedGpaRow?.baseValue = calculatedGpa
         } else {
             calculatedGpaRow?.baseValue = nil
         }

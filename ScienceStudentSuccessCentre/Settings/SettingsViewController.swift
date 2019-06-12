@@ -31,20 +31,24 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
     
     func createForm() {
         form
-            +++ Section(header: "Settings - CGPA Calculator", footer: "If toggled on, courses without a Final Grade specified will be included in CGPA calculations on the CGPA Calculator page.")
-            <<< SwitchRow() { row in
+            +++ Section(header: "Settings - CGPA Calculator",
+                        footer: "If toggled on, courses without a Final Grade specified will be included in CGPA calculations on the CGPA Calculator page.")
+            <<< SwitchRow { row in
                 row.tag = "includeInProgressCourses"
                 row.title = "Include Courses in Progress"
             }.onChange { _ in
                 self.validateForm()
             }
-            +++ Section(header: "\nBack Up Grades Data", footer: "Open the exported attachement on your device to launch the Science Student Success Centre app and restore your data.")
-            <<< ButtonRow() { row in
+            +++ Section(header: "\nBack Up Grades Data",
+                        footer: "Open the exported attachement on your device to launch the Science Student Success Centre app and restore your data.")
+            <<< ButtonRow { row in
                 row.tag = "exportData"
                 row.title = "Back Up Grades"
                 row.onCellSelection(self.exportGradesTapped)
             }
-            +++ Section(header: "\nAcknowledgments", footer: "This app was developed for the Carleton University Science Student Success Centre by Avery Vine. Special thanks to Kshamina Ghelani, Selasi Kudolo, Gina Bak, Anisha Ghelani, Lily Visanuvimol, Divin Kang, and everyone else at the SSSC who helped out along the way.\n\nReleased under GNU General Public License v3.0 | Copyright @ 2018")
+            +++ Section(header: "\nAcknowledgments",
+                        // swiftlint:disable:next line_length
+                        footer: "This app was developed for the Carleton University Science Student Success Centre by Avery Vine. Special thanks to Kshamina Ghelani, Selasi Kudolo, Gina Bak, Anisha Ghelani, Lily Visanuvimol, Divin Kang, and everyone else at the SSSC who helped out along the way.\n\nReleased under GNU General Public License v3.0 | Copyright @ 2018")
     }
     
     func validateForm() {
@@ -71,14 +75,16 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
                         popOver.sourceView = cell
                         popOver.sourceRect = CGRect(x: cell.bounds.midX, y: cell.bounds.maxY, width: 0, height: 0)
                     }
-                    self.present(activityVC, animated: true, completion: nil)
+                    self.present(activityVC, animated: true)
                 } catch {
                     print("Failed to export grade data")
-                    let alert = UIAlertController(title: "Failed to export!", message: "We were unable to export your grade data. Please try again!", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { action in
-                        self.navigationController?.dismiss(animated: true, completion: nil)
+                    let alert = UIAlertController(title: "Failed to export!",
+                                                  message: "We were unable to export your grade data. Please try again!",
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { _ in
+                        self.navigationController?.dismiss(animated: true)
                     }))
-                    self.present(alert, animated: true, completion: nil)
+                    self.present(alert, animated: true)
                 }
             }
         }

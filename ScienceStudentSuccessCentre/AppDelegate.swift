@@ -12,7 +12,6 @@ import SimulatorStatusMagic
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-    
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -67,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         guard url.pathExtension == "sssc" else { return false }
         guard let tabBarController = window?.rootViewController as? UITabBarController else { return true }
         tabBarController.selectedIndex = 1
@@ -89,23 +88,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             message = "Your grades data was successfully imported."
         } else {
             title = "Failed to import data!"
+            //swiftlint:disable:next line_length
             message = "Your grades data was not imported. Please make sure the file you are trying to import is not modified in any way from what was originally exported from the app!"
         }
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { action in
-            navigationController.dismiss(animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { _ in
+            navigationController.dismiss(animated: true)
         }))
-        viewController.present(alert, animated: true, completion: nil)
+        viewController.present(alert, animated: true)
         
         return true
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
         guard let tabBarController = window?.rootViewController as? UITabBarController else { return }
         tabBarController.selectedIndex = 0
         
@@ -114,6 +118,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         guard let eventsViewController = eventsNavController.viewControllers.first as? EventsViewController else { return }
         
         let deepLinkId = response.notification.request.identifier
+        if let detailNavController = eventsNavController.viewControllers.last as? UINavigationController,
+            let detailViewController = detailNavController.viewControllers.first as? EventDetailViewController {
+            if detailViewController.event?.getId() == deepLinkId {
+                detailViewController.refreshUI()
+                completionHandler()
+                return
+            }
+        }
+        
         if eventsViewController.events.count == 0 {
             eventsViewController.loadEvents(deepLinkId: deepLinkId)
         } else {
@@ -143,6 +156,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
-    
 }

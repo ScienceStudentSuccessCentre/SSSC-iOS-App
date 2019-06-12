@@ -58,6 +58,7 @@
 		FFF093AF2291B1E300217DE3 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF093AE2291B1E300217DE3 /* URLSession.swift */; };
 		FFF093B92291BA1200217DE3 /* ScienceStudentSuccessCentreFastlaneSnapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF093B82291BA1200217DE3 /* ScienceStudentSuccessCentreFastlaneSnapshots.swift */; };
 		FFF093C12291BC5200217DE3 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF093C02291BC5200217DE3 /* SnapshotHelper.swift */; };
+		FFF72DA822B0889300A24DB9 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF72DA722B0889300A24DB9 /* UIViewController.swift */; };
 		FFFC6BC72162D6D6001585CE /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6BC62162D6D6001585CE /* Course.swift */; };
 		FFFC6BC92162D70D001585CE /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFC6BC82162D70D001585CE /* CourseTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -131,6 +132,7 @@
 		FFF093BA2291BA1200217DE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFF093C02291BC5200217DE3 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		FFF093C22291BC6C00217DE3 /* TestGradeData.sssc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TestGradeData.sssc; sourceTree = "<group>"; };
+		FFF72DA722B0889300A24DB9 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		FFFC6BC62162D6D6001585CE /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		FFFC6BC82162D70D001585CE /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -312,6 +314,7 @@
 				FF57A96421658509004AA50B /* UIColor.swift */,
 				FF58D17C229AD77C00B78D3C /* UISplitViewController.swift */,
 				FFAE67912188ED2D0079CE16 /* UIView.swift */,
+				FFF72DA722B0889300A24DB9 /* UIViewController.swift */,
 				442EC65B21EE8C36002B961E /* UNUserNotificationCenter.swift */,
 				FFF093AE2291B1E300217DE3 /* URLSession.swift */,
 				FF5FDB2B21ABB12200899963 /* SplitRow */,
@@ -368,6 +371,7 @@
 				FF327FC220128C3E00B06E19 /* Frameworks */,
 				FF327FC320128C3E00B06E19 /* Resources */,
 				FE070426935AA6B39FCF6068 /* [CP] Embed Pods Frameworks */,
+				FFF72DA622B0756200A24DB9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -511,6 +515,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FFF72DA622B0756200A24DB9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -547,6 +568,7 @@
 				FF5FDB3121ABB17F00899963 /* SplitRowCellTableView.swift in Sources */,
 				442EC65C21EE8C36002B961E /* UNUserNotificationCenter.swift in Sources */,
 				FF5FDB2F21ABB16700899963 /* SplitRowCell.swift in Sources */,
+				FFF72DA822B0889300A24DB9 /* UIViewController.swift in Sources */,
 				FF74BE81218CBE6100A8954B /* AssignmentTableViewCell.swift in Sources */,
 				FFF093AF2291B1E300217DE3 /* URLSession.swift in Sources */,
 				FFD2DF532193860200C97FDF /* Grading.swift in Sources */,

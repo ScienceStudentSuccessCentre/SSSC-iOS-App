@@ -31,7 +31,7 @@ extension UNUserNotificationCenter {
     /// - Returns: Whether permission was granted by the user, in the form of a promise.
     private func requestAuthorization() -> Promise<Bool> {
         return Promise { seal in
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, _) in
                 seal.fulfill(granted)
             }
         }
@@ -47,12 +47,10 @@ extension UNUserNotificationCenter {
                 switch settings.authorizationStatus {
                 case .authorized:
                     seal.fulfill(true)
-                    break
                 case .notDetermined:
                     self.requestAuthorization().done { granted in
                         seal.fulfill(granted)
                     }.cauterize()
-                    break;
                 default:
                     seal.fulfill(false)
                 }
@@ -82,7 +80,7 @@ extension UNUserNotificationCenter {
         return Promise { seal in
             if let notificationDateTime = determineNotificationDateTime(for: event) {
                 if notificationDateTime.compare(Date()) != ComparisonResult.orderedAscending {
-                    let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second,], from: notificationDateTime)
+                    let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: notificationDateTime)
                     let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
                     let request = UNNotificationRequest(identifier: event.getId(), content: content, trigger: trigger)
                     
@@ -132,7 +130,7 @@ extension UNNotificationAttachment {
     ///   - data: The actual data of the attachment.
     ///   - options: Any configuration options for attachment creation.
     /// - Returns: The generated `UNNotificationAttachment`, or `nil` if something went wrong.
-    static func create(identifier: String, data: Data, options: [NSObject : AnyObject]?) -> UNNotificationAttachment? {
+    static func create(identifier: String, data: Data, options: [NSObject: AnyObject]?) -> UNNotificationAttachment? {
         let fileManager = FileManager.default
         let tempFolderName = ProcessInfo.processInfo.globallyUniqueString
         let tempFolderUrl = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(tempFolderName, isDirectory: true)

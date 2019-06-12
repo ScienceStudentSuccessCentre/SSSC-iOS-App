@@ -34,7 +34,10 @@ class CourseSearchViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "\(CourseSummaryCell.self)", for: indexPath) as? CourseSummaryCell else { fatalError("Failed to dequeue \(CourseSummaryCell.self)") }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CourseSummaryCell.self)",
+            for: indexPath) as? CourseSummaryCell else {
+                fatalError("Failed to dequeue \(CourseSummaryCell.self)")
+        }
         let course = results[indexPath.row]
         let term = terms.first(where: { $0.id == course.id })
         cell.configure(with: course, term: term)

@@ -20,4 +20,3 @@ class EventTableViewCell: ColourRestorableCell {
         dateView.layer.cornerRadius = 3
     }
 }
-

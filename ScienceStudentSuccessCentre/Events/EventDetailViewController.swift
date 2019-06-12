@@ -45,7 +45,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         }
         
         eventDetailsView.isHidden = true
-        eventImageView.isHidden = true;
+        eventImageView.isHidden = true
         eventTitleView.addBorders(edges: [.bottom], color: UIColor(.bluegrey), width: 1)
         eventDetailsView.addBorders(edges: [.top], color: UIColor(.bluegrey), width: 0.4)
         
@@ -136,7 +136,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
             eventDescriptionTextView.attributedText = event.getDescription().htmlToAttributedString
             eventDescriptionTextView.font = .preferredFont(forTextStyle: .body)
             
-            if (event.getImageUrl() != nil) {
+            if event.getImageUrl() != nil {
                 loadImage()
             } else {
                 self.eventImageView.isHidden = true
@@ -159,7 +159,9 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
                 self.toggleNotificationEnabled()
             } else {
                 // Prompt the user to allow notifications in settings
-                let alert = UIAlertController(title: "Notification permissions required", message: "In order to be notified of events, we need you to grant notification permissions to this app in Settings.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Notification permissions required",
+                                              message: "In order to be notified of events, we need you to grant notification permissions to this app in Settings.",
+                                              preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
                 alert.addAction(UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
                     guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
@@ -201,18 +203,22 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
             if let popOver = activityVC.popoverPresentationController {
                 popOver.barButtonItem = navigationItem.rightBarButtonItems?.first
             }
-            self.present(activityVC, animated: true, completion: nil)
+            self.present(activityVC, animated: true)
         }
     }
     
     private func createEventNotification() {
         notificationCenter.createNotification(for: event!).done { success in
             DispatchQueue.main.async {
-                let alert = success
-                    ? UIAlertController(title: "Notification enabled!", message: "You'll be sent a notification an hour before this event starts.", preferredStyle: .alert)
-                    : UIAlertController(title: "Something went wrong!", message: "Please try again later. If this issue persists, please let the SSSC know!", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-                self.present(alert, animated: true)
+                if success {
+                    let alert = UIAlertController(title: "Notification enabled!",
+                                                  message: "You'll be sent a notification an hour before this event starts.",
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                } else {
+                    self.presentGenericError()
+                }
             }
             if !success {
                 self.updateNotifyMeButtonImage(notificationPending: false)
@@ -230,7 +236,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
                             let ratio = image.size.height / image.size.width
                             let newHeight = self.eventImageView.frame.size.width * ratio
                             self.eventImageView.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
-                            self.eventImageView.isHidden = false;
+                            self.eventImageView.isHidden = false
                         }
                     }
                 }
@@ -241,7 +247,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     private func openUrlInAppBrowser(url: URL?) {
         if url != nil {
             let safariVC = SFSafariViewController(url: url!)
-            present(safariVC, animated: true, completion: nil)
+            present(safariVC, animated: true)
         }
     }
     

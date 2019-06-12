@@ -34,8 +34,8 @@ class EventDetailViewController: UIViewController {
         eventDescriptionTextView.attributedText = event.getDescription().htmlToAttributedString
         eventDescriptionTextView.font = .preferredFont(forTextStyle: .body)
         
-        if (event.getImageUrl() == nil) {
-            eventImageView.isHidden = true;
+        if event.getImageUrl() == nil {
+            eventImageView.isHidden = true
         } else {
             loadImage()
         }
@@ -85,7 +85,9 @@ class EventDetailViewController: UIViewController {
     @objc private func notifyMeTapped() {
         notificationCenter.getNotificationSettings { (settings) in
             guard settings.authorizationStatus == .authorized else {
-                let alert = UIAlertController(title: "Notification permissions required", message: "In order to be notified of events, we need you to grant notification permissions to this app in Settings.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Notification permissions required",
+                                              message: "In order to be notified of events, we need you to grant notification permissions to this app in Settings.",
+                                              preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
                 alert.addAction(UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
                     guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
@@ -121,7 +123,7 @@ class EventDetailViewController: UIViewController {
     
     private func prepareDeviceNotification() {
         let request = generateUNNotificationRequest()
-        if (request != nil) {
+        if request != nil {
             self.notificationCenter.add(request!, withCompletionHandler: { (error) in
                 if let error = error {
                     print(error)
@@ -129,7 +131,9 @@ class EventDetailViewController: UIViewController {
                 } else {
                     self.updateNotifyMeImage()
                     
-                    let alert = UIAlertController(title: "Notification enabled!", message: "You'll be sent a notification an hour before this event starts.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Notification enabled!",
+                                                  message: "You'll be sent a notification an hour before this event starts.",
+                                                  preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
                     self.present(alert, animated: true)
                 }
@@ -143,7 +147,7 @@ class EventDetailViewController: UIViewController {
     }
     
     private func generateUNNotificationRequest() -> UNNotificationRequest? {
-        var request: UNNotificationRequest? = nil
+        var request: UNNotificationRequest
         let content = UNMutableNotificationContent()
         content.title = self.event.getName()
         content.subtitle = "Today at " + self.event.getFormattedTime()
@@ -151,9 +155,9 @@ class EventDetailViewController: UIViewController {
         content.sound = UNNotificationSound.default
         
         let notificationDateTime = self.event.getNotificationDateTime()
-        if (notificationDateTime != nil) {
+        if notificationDateTime != nil {
             if notificationDateTime!.compare(Date()) != ComparisonResult.orderedAscending {
-                let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second,], from: notificationDateTime!)
+                let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: notificationDateTime!)
                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
                 request = UNNotificationRequest(identifier: self.event.getId(), content: content, trigger: trigger)
             } else {
@@ -164,7 +168,9 @@ class EventDetailViewController: UIViewController {
     }
     
     private func presentGenericErrorAlert() {
-        let alert = UIAlertController(title: "Something went wrong!", message: "Please try again later. If this issue persists, please let the SSSC know!", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Something went wrong!",
+                                      message: "Please try again later. If this issue persists, please let the SSSC know!",
+                                      preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
         self.present(alert, animated: true)
@@ -178,7 +184,7 @@ class EventDetailViewController: UIViewController {
             DispatchQueue.main.async {
                 let image = UIImage(data: data!)
                 
-                if (image != nil) {
+                if image != nil {
                     self.eventImageView.image = image
                     
                     let ratio = image!.size.height / image!.size.width
