@@ -30,6 +30,10 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             navigationItem.largeTitleDisplayMode = .never
         }
         
+        if #available(iOS 13.0, *) {
+            prepareStandardTitleNavigationBarAppearance(barTintColour: UIColor(.steelblue))
+        }
+        
         termDetailsView.addBorders(edges: [.top], color: UIColor(.bluegrey), width: 0.4)
         
         navigationItem.title = term.name

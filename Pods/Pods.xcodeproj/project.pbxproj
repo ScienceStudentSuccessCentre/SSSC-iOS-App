@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = SwiftLint;
+			productName = SwiftLint;
 		};
 /* End PBXAggregateTarget section */
 
@@ -283,14 +284,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		002B1E88BA14EBF633CD66EBFBA107E9 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		01BD20332B20F4C7AD9AE19A3D170209 /* Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Sources/SQLite/Typed/Operators.swift; sourceTree = "<group>"; };
 		02FF291C21C2109D4F939E6DFBA7D2A1 /* ColorPickerRow.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ColorPickerRow.xcconfig; sourceTree = "<group>"; };
 		04486269659737940FC2F2DBE2483B9F /* Eureka-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Eureka-prefix.pch"; sourceTree = "<group>"; };
 		05CAA276CFB6E6DD8EEA15955F0BDB7C /* Resolver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Resolver.swift; path = Sources/Resolver.swift; sourceTree = "<group>"; };
 		063CBDEF02391894A08A586B1B2CA47A /* ColorPalettes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPalettes.swift; path = ColorPicker/ColorPalettes.swift; sourceTree = "<group>"; };
+		082977F3777A7D434AB35C357B487F83 /* Eureka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Eureka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		08B01AFD3B7176B8CC32BC1D38E2A02B /* Query.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Query.swift; path = Sources/SQLite/Typed/Query.swift; sourceTree = "<group>"; };
 		08B4AB027B45268EAF583D43CB1C3CBA /* ColorSwatchView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorSwatchView.swift; path = ColorPicker/ColorSwatchView.swift; sourceTree = "<group>"; };
-		09ACBF11009520F2D26EFCCAE52AFB60 /* ColorPickerRow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ColorPickerRow.framework; path = ColorPickerRow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		09F9F00CBEEFB2E270E75195F092AD06 /* RowControllerType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RowControllerType.swift; path = Source/Core/RowControllerType.swift; sourceTree = "<group>"; };
 		0A597D7642CD4FE3CA0DCBB12AE96CD6 /* AlertRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AlertRow.swift; path = Source/Rows/AlertRow.swift; sourceTree = "<group>"; };
 		0B33122B500DACFAE00A372C7516FC00 /* SDStatusBarOverriderPost8_3.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDStatusBarOverriderPost8_3.m; path = SDStatusBarManager/SDStatusBarOverriderPost8_3.m; sourceTree = "<group>"; };
@@ -328,7 +330,6 @@
 		351BDC450A659F29EEFF4EA01B7D7D0A /* Setter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Setter.swift; path = Sources/SQLite/Typed/Setter.swift; sourceTree = "<group>"; };
 		36C5D54917D884C4814B4A2638970263 /* Eureka-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Eureka-umbrella.h"; sourceTree = "<group>"; };
 		370E54BAA661CED614930704498B2DAD /* AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AnyPromise.m; path = Sources/AnyPromise.m; sourceTree = "<group>"; };
-		37EB63A47718B981BAEE0D6B6AAEF344 /* Eureka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Eureka.framework; path = Eureka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38108AB325856104BBAC690B6C485D05 /* Connection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Connection.swift; path = Sources/SQLite/Core/Connection.swift; sourceTree = "<group>"; };
 		3852C064850E7012FEF6CA39FAF4E42E /* SDStatusBarOverriderPost11_0.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDStatusBarOverriderPost11_0.h; path = SDStatusBarManager/SDStatusBarOverriderPost11_0.h; sourceTree = "<group>"; };
 		3889473506F0A3DBDCFFD54EE77831C9 /* firstly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = firstly.swift; path = Sources/firstly.swift; sourceTree = "<group>"; };
@@ -357,6 +358,7 @@
 		56814848B3858273873B480126DFF76C /* SDStatusBarOverrider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDStatusBarOverrider.h; path = SDStatusBarManager/SDStatusBarOverrider.h; sourceTree = "<group>"; };
 		57247AACDCB177FE5677AB0D598461E1 /* FTS4.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FTS4.swift; path = Sources/SQLite/Extensions/FTS4.swift; sourceTree = "<group>"; };
 		58E82EB5B63875997D4CC4E918588083 /* DoublePickerRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoublePickerRow.swift; path = Source/Rows/DoublePickerRow.swift; sourceTree = "<group>"; };
+		58FA08FD4595D3CA9B2AA81405DE2EFA /* UIColor_Hex_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIColor_Hex_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CD74ACC06439B4B4A4DA009EC5923C2 /* PMKUIKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PMKUIKit.h; path = Extensions/UIKit/Sources/PMKUIKit.h; sourceTree = "<group>"; };
 		5CFC1B6447856C73D721FBCABD12B633 /* PromiseKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PromiseKit.xcconfig; sourceTree = "<group>"; };
 		5D337ACB1271F6E8F336A7F4D94CE6E6 /* ColorPickerRow-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ColorPickerRow-Info.plist"; sourceTree = "<group>"; };
@@ -392,14 +394,12 @@
 		8A60EA55AA46AA015F561327D7C2667E /* RuleLength.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RuleLength.swift; path = Source/Validations/RuleLength.swift; sourceTree = "<group>"; };
 		8C8949DDA0AAD46CF7D75EADAD246200 /* ListCheckRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ListCheckRow.swift; path = Source/Rows/SelectableRows/ListCheckRow.swift; sourceTree = "<group>"; };
 		8ED8D39ACC18D32204859FCB4F30EB9C /* InlineColorPickerRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InlineColorPickerRow.swift; path = ColorPicker/InlineColorPickerRow.swift; sourceTree = "<group>"; };
-		9025CF0C83D20C61DE6BBE6C93B6BFA4 /* SimulatorStatusMagic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SimulatorStatusMagic.framework; path = SimulatorStatusMagic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9072F4C368BDD279A412833C14AF4B26 /* Eureka.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Eureka.modulemap; sourceTree = "<group>"; };
 		93027AC489354B57161B2BC94F638A06 /* Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Foundation.swift; path = Sources/SQLite/Foundation.swift; sourceTree = "<group>"; };
 		954E79D96C9031ECE9FEB4A18EAEA991 /* MultipleSelectorRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipleSelectorRow.swift; path = Source/Rows/MultipleSelectorRow.swift; sourceTree = "<group>"; };
 		95E79F3628F91DB2043D3D7348C4B37C /* SDStatusBarOverriderPost8_3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDStatusBarOverriderPost8_3.h; path = SDStatusBarManager/SDStatusBarOverriderPost8_3.h; sourceTree = "<group>"; };
 		968B465958294745F80F0999F5D86BD3 /* LogEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogEvent.swift; path = Sources/LogEvent.swift; sourceTree = "<group>"; };
 		97E76DA2FABAF329C85FC546D2DD4F03 /* Collation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Collation.swift; path = Sources/SQLite/Typed/Collation.swift; sourceTree = "<group>"; };
-		987EDE6374691D8B2CB1E748131C2166 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PromiseKit.framework; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		988ABD913D36C52F4489D25205AE13EB /* Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Promise.swift; path = Sources/Promise.swift; sourceTree = "<group>"; };
 		98FDE536BA3DD276E429FA01232A721C /* HEXColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HEXColor.h; path = HEXColor/HEXColor.h; sourceTree = "<group>"; };
 		993EAFE56639F86EC951A5B812CBB1D5 /* UIColorInputError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIColorInputError.swift; path = HEXColor/UIColorInputError.swift; sourceTree = "<group>"; };
@@ -413,7 +413,7 @@
 		9CD62C2D344358BE39BBDEF6C8BE7D89 /* UIViewController+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+AnyPromise.h"; path = "Extensions/UIKit/Sources/UIViewController+AnyPromise.h"; sourceTree = "<group>"; };
 		9CE896653E3894611247268DDEFBB09D /* LabelRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LabelRow.swift; path = Source/Rows/LabelRow.swift; sourceTree = "<group>"; };
 		9D37CBB99ABCBF9638F67F430ABCD527 /* NSNotificationCenter+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSNotificationCenter+Promise.swift"; path = "Extensions/Foundation/Sources/NSNotificationCenter+Promise.swift"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9D94919EE5F1FCCD6C11AB10F7620562 /* SDStatusBarOverriderPost12_0.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDStatusBarOverriderPost12_0.m; path = SDStatusBarManager/SDStatusBarOverriderPost12_0.m; sourceTree = "<group>"; };
 		9DC4AD420932BFBE58ADBDC995ABF297 /* StringExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = HEXColor/StringExtension.swift; sourceTree = "<group>"; };
 		A03436F31A0EFFD31B3889EE00362BDA /* Guarantee.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Guarantee.swift; path = Sources/Guarantee.swift; sourceTree = "<group>"; };
@@ -425,6 +425,7 @@
 		A3FAA80517A2D0855F34FF3F01DE5DBC /* Statement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Statement.swift; path = Sources/SQLite/Core/Statement.swift; sourceTree = "<group>"; };
 		A50822B25452F7F98A947E24B56DD9C3 /* GenericMultipleSelectorRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GenericMultipleSelectorRow.swift; path = Source/Rows/Common/GenericMultipleSelectorRow.swift; sourceTree = "<group>"; };
 		A72F231C34EF92DFBF0E809191330D0D /* SQLite.swift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SQLite.swift-Info.plist"; sourceTree = "<group>"; };
+		A787CDE742CEB6FDF5F73F556D790691 /* SimulatorStatusMagic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimulatorStatusMagic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7C5EC27329E7EF1AAC11E6F7043AC8D /* RowType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RowType.swift; path = Source/Core/RowType.swift; sourceTree = "<group>"; };
 		A8E5EA8996829358183EB90DF806BD7F /* PromiseKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PromiseKit-Info.plist"; sourceTree = "<group>"; };
 		A917EEEE8136798E5C93E8E9D2E3CE59 /* dispatch_promise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = dispatch_promise.m; path = Sources/dispatch_promise.m; sourceTree = "<group>"; };
@@ -437,13 +438,12 @@
 		AF897A1D414F9ED62F224224BA53C93E /* DecimalFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DecimalFormatter.swift; path = Source/Rows/Common/DecimalFormatter.swift; sourceTree = "<group>"; };
 		AFD95673B2D11998CA4A5AE7B13ACF2A /* RTree.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RTree.swift; path = Sources/SQLite/Extensions/RTree.swift; sourceTree = "<group>"; };
 		B2AB9BCCB187EA4690DD6E66EB8F89CD /* Eureka-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Eureka-dummy.m"; sourceTree = "<group>"; };
-		B3712325C80C84DFEAA814A91BF91F3E /* Pods_ScienceStudentSuccessCentre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ScienceStudentSuccessCentre.framework; path = "Pods-ScienceStudentSuccessCentre.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B461CED17BDEC6A4394E697B3D29D467 /* SQLite.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SQLite.h; path = Sources/SQLite/SQLite.h; sourceTree = "<group>"; };
 		B528E8936C0B02E6F3A0769B44062438 /* CustomFunctions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomFunctions.swift; path = Sources/SQLite/Typed/CustomFunctions.swift; sourceTree = "<group>"; };
-		B8340E756774E8AA1FF13E102D8C33E4 /* SQLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SQLite.framework; path = SQLite.swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9E70D4110F1A89E0A092FEB393C818B /* SliderRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SliderRow.swift; path = Source/Rows/SliderRow.swift; sourceTree = "<group>"; };
 		BB02593E780CB4B63D7AF9DC6F730482 /* CheckRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CheckRow.swift; path = Source/Rows/CheckRow.swift; sourceTree = "<group>"; };
 		BB54D134CD4F801BB60F612410E66D4D /* SQLite.swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SQLite.swift-umbrella.h"; sourceTree = "<group>"; };
+		BBC72C2657636A834EA93D48676825B9 /* ColorPickerRow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ColorPickerRow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD726F2D4DC784E6F58DE7205D100E01 /* Pods-ScienceStudentSuccessCentre-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ScienceStudentSuccessCentre-acknowledgements.plist"; sourceTree = "<group>"; };
 		BDC82C5DABB80172D57E7445ED89A2B3 /* MultipleSelectorViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipleSelectorViewController.swift; path = Source/Rows/Controllers/MultipleSelectorViewController.swift; sourceTree = "<group>"; };
 		BE02F62878F7D49DFE81C80BF3ABDCE2 /* PromiseKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PromiseKit-prefix.pch"; sourceTree = "<group>"; };
@@ -454,10 +454,10 @@
 		C592DA23336B83263019B42911293D67 /* HeaderFooterView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeaderFooterView.swift; path = Source/Core/HeaderFooterView.swift; sourceTree = "<group>"; };
 		C85CD67657FF0F4331778BB1EEABCDC4 /* DateRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateRow.swift; path = Source/Rows/DateRow.swift; sourceTree = "<group>"; };
 		C8737EC83501717A9A53EFD3C261D857 /* InlineRowType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InlineRowType.swift; path = Source/Core/InlineRowType.swift; sourceTree = "<group>"; };
+		CA8A5E841F5E0BDD825CA77ED3B3DAB6 /* Pods_ScienceStudentSuccessCentre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScienceStudentSuccessCentre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB400FF8EF2785E91D534C3D2E871BA8 /* SimulatorStatusMagic-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SimulatorStatusMagic-Info.plist"; sourceTree = "<group>"; };
 		CB86C337457DC5D095D6E3B36581606F /* Row.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Row.swift; path = Source/Core/Row.swift; sourceTree = "<group>"; };
 		CBF3B6D2E5A19BBD1356285A5B665437 /* TriplePickerInputRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TriplePickerInputRow.swift; path = Source/Rows/TriplePickerInputRow.swift; sourceTree = "<group>"; };
-		CC9917A9EBBE493810C7750AEFE7ABE4 /* UIColor_Hex_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = UIColor_Hex_Swift.framework; path = UIColor_Hex_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD72FE0AB398C01D92A614427FF650B /* SQLiteObjc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SQLiteObjc.h; path = Sources/SQLiteObjc/include/SQLiteObjc.h; sourceTree = "<group>"; };
 		CDE480C0564DD70884072D6EB378230D /* SDStatusBarOverriderPre8_3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDStatusBarOverriderPre8_3.h; path = SDStatusBarManager/SDStatusBarOverriderPre8_3.h; sourceTree = "<group>"; };
 		CE0C190F9CCEA9797F6E99165E2606DA /* RowProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RowProtocols.swift; path = Source/Core/RowProtocols.swift; sourceTree = "<group>"; };
@@ -502,6 +502,7 @@
 		F2DC2E674E3D064B5DD3CF76FDEAB9D0 /* UIColor_Hex_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIColor_Hex_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F30962B0E30CDCDA08B9F9940D30871D /* AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AnyPromise.h; path = Sources/AnyPromise.h; sourceTree = "<group>"; };
 		F3E3B902C158C1AA0F32C832443C009F /* SDStatusBarOverriderPost9_3.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDStatusBarOverriderPost9_3.h; path = SDStatusBarManager/SDStatusBarOverriderPost9_3.h; sourceTree = "<group>"; };
+		F5FA45A44C42CC2CA3A324A3E914CE19 /* SQLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SQLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7FC97F67F9DB0507259A43CCF47788E /* ColorRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorRow.swift; path = ColorPicker/ColorRow.swift; sourceTree = "<group>"; };
 		F82453973B77F8065ECBDAEF17E21546 /* NSURLSession+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSURLSession+AnyPromise.h"; path = "Extensions/Foundation/Sources/NSURLSession+AnyPromise.h"; sourceTree = "<group>"; };
 		FB49F21DF833C51F4D6B9199F2AE3AA7 /* SimulatorStatusMagic-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SimulatorStatusMagic-prefix.pch"; sourceTree = "<group>"; };
@@ -608,7 +609,6 @@
 				993EAFE56639F86EC951A5B812CBB1D5 /* UIColorInputError.swift */,
 				51286DE149E9E3E2AFAB92E4FF6E94DA /* Support Files */,
 			);
-			name = UIColor_Hex_Swift;
 			path = UIColor_Hex_Swift;
 			sourceTree = "<group>";
 		};
@@ -636,7 +636,6 @@
 				1D573E28E655443363F5F66734A45A80 /* SDStatusBarOverriderPre8_3.m */,
 				7DBAC1FCD49C1FC19BD0A4F5A06C54FC /* Support Files */,
 			);
-			name = SimulatorStatusMagic;
 			path = SimulatorStatusMagic;
 			sourceTree = "<group>";
 		};
@@ -718,7 +717,6 @@
 				8ED8D39ACC18D32204859FCB4F30EB9C /* InlineColorPickerRow.swift */,
 				0E4794814BCD187F7FE0F91CF9F61EB0 /* Support Files */,
 			);
-			name = ColorPickerRow;
 			path = ColorPickerRow;
 			sourceTree = "<group>";
 		};
@@ -837,13 +835,13 @@
 		B5D6865027727D68F45D311DD8924D44 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				09ACBF11009520F2D26EFCCAE52AFB60 /* ColorPickerRow.framework */,
-				37EB63A47718B981BAEE0D6B6AAEF344 /* Eureka.framework */,
-				B3712325C80C84DFEAA814A91BF91F3E /* Pods_ScienceStudentSuccessCentre.framework */,
-				987EDE6374691D8B2CB1E748131C2166 /* PromiseKit.framework */,
-				9025CF0C83D20C61DE6BBE6C93B6BFA4 /* SimulatorStatusMagic.framework */,
-				B8340E756774E8AA1FF13E102D8C33E4 /* SQLite.framework */,
-				CC9917A9EBBE493810C7750AEFE7ABE4 /* UIColor_Hex_Swift.framework */,
+				BBC72C2657636A834EA93D48676825B9 /* ColorPickerRow.framework */,
+				082977F3777A7D434AB35C357B487F83 /* Eureka.framework */,
+				CA8A5E841F5E0BDD825CA77ED3B3DAB6 /* Pods_ScienceStudentSuccessCentre.framework */,
+				002B1E88BA14EBF633CD66EBFBA107E9 /* PromiseKit.framework */,
+				A787CDE742CEB6FDF5F73F556D790691 /* SimulatorStatusMagic.framework */,
+				F5FA45A44C42CC2CA3A324A3E914CE19 /* SQLite.framework */,
+				58FA08FD4595D3CA9B2AA81405DE2EFA /* UIColor_Hex_Swift.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -881,7 +879,6 @@
 				465F37FA437CA1D3DB738694E3F57ED1 /* Support Files */,
 				85C9C36432DB0FE940D33EE04587E4CE /* UIKit */,
 			);
-			name = PromiseKit;
 			path = PromiseKit;
 			sourceTree = "<group>";
 		};
@@ -890,7 +887,6 @@
 			children = (
 				9F8D744CDDD2284FED9C1D2E029477EE /* Support Files */,
 			);
-			name = SwiftLint;
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
@@ -966,7 +962,6 @@
 				0F83E503D768DAFC6BD165C3973F11BE /* Resources */,
 				FDDCD2A527504393FE2AAB308CE1CC76 /* Support Files */,
 			);
-			name = Eureka;
 			path = Eureka;
 			sourceTree = "<group>";
 		};
@@ -995,7 +990,6 @@
 				B1F1278B6B1CDC951C46D388325D5286 /* standard */,
 				BFED88EC128CDCC9FC70290EE5358FB2 /* Support Files */,
 			);
-			name = SQLite.swift;
 			path = SQLite.swift;
 			sourceTree = "<group>";
 		};
@@ -1131,7 +1125,7 @@
 			);
 			name = "Pods-ScienceStudentSuccessCentre";
 			productName = "Pods-ScienceStudentSuccessCentre";
-			productReference = B3712325C80C84DFEAA814A91BF91F3E /* Pods_ScienceStudentSuccessCentre.framework */;
+			productReference = CA8A5E841F5E0BDD825CA77ED3B3DAB6 /* Pods_ScienceStudentSuccessCentre.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		3F2C1776D90B62B156DB52C41A5C419C /* SQLite.swift */ = {
@@ -1149,7 +1143,7 @@
 			);
 			name = SQLite.swift;
 			productName = SQLite.swift;
-			productReference = B8340E756774E8AA1FF13E102D8C33E4 /* SQLite.framework */;
+			productReference = F5FA45A44C42CC2CA3A324A3E914CE19 /* SQLite.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		7C579CE66A1E7A9AA33CA5F97F9C22C5 /* PromiseKit */ = {
@@ -1167,7 +1161,7 @@
 			);
 			name = PromiseKit;
 			productName = PromiseKit;
-			productReference = 987EDE6374691D8B2CB1E748131C2166 /* PromiseKit.framework */;
+			productReference = 002B1E88BA14EBF633CD66EBFBA107E9 /* PromiseKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8366B26507014B0F85C92FA3395D2AC5 /* ColorPickerRow */ = {
@@ -1187,7 +1181,7 @@
 			);
 			name = ColorPickerRow;
 			productName = ColorPickerRow;
-			productReference = 09ACBF11009520F2D26EFCCAE52AFB60 /* ColorPickerRow.framework */;
+			productReference = BBC72C2657636A834EA93D48676825B9 /* ColorPickerRow.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		88BE8BE7A2FE6CED4193CCD8FF3CBEF7 /* Eureka */ = {
@@ -1205,7 +1199,7 @@
 			);
 			name = Eureka;
 			productName = Eureka;
-			productReference = 37EB63A47718B981BAEE0D6B6AAEF344 /* Eureka.framework */;
+			productReference = 082977F3777A7D434AB35C357B487F83 /* Eureka.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		95F19093D340358F7EE721EC01F43355 /* SimulatorStatusMagic */ = {
@@ -1223,7 +1217,7 @@
 			);
 			name = SimulatorStatusMagic;
 			productName = SimulatorStatusMagic;
-			productReference = 9025CF0C83D20C61DE6BBE6C93B6BFA4 /* SimulatorStatusMagic.framework */;
+			productReference = A787CDE742CEB6FDF5F73F556D790691 /* SimulatorStatusMagic.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		A0CA3B0841360687C00D0E48D3E4C1B9 /* UIColor_Hex_Swift */ = {
@@ -1241,7 +1235,7 @@
 			);
 			name = UIColor_Hex_Swift;
 			productName = UIColor_Hex_Swift;
-			productReference = CC9917A9EBBE493810C7750AEFE7ABE4 /* UIColor_Hex_Swift.framework */;
+			productReference = 58FA08FD4595D3CA9B2AA81405DE2EFA /* UIColor_Hex_Swift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -1259,6 +1253,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = B5D6865027727D68F45D311DD8924D44 /* Products */;
@@ -2036,8 +2031,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
