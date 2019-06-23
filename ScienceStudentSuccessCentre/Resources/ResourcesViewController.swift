@@ -10,40 +10,33 @@ import UIKit
 import WebKit
 
 class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
-    private var statusBar: UIView!
+    private var statusBarBackground: UIView?
     private var webView: WKWebView?
     private var activityIndicator: UIActivityIndicatorView!
     private let urlString = "http://sssc.carleton.ca/resources"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        statusBar = UIApplication.shared.value(forKey: "statusBar") as? UIView
 
         webView = WKWebView(frame: view.frame)
         webView?.navigationDelegate = self
-        if let webView = webView {
-            view.addSubview(webView)
-        }
+        view.addSubview(webView!)
         
         activityIndicator = UIActivityIndicatorView()
         activityIndicator.center = view.center
         activityIndicator.style = .gray
         activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
+        
+        let frame = UIApplication.shared.statusBarFrame
+        statusBarBackground = UIView(frame: frame)
+        statusBarBackground?.backgroundColor = .white
+        view.addSubview(statusBarBackground!)
 
         if let url = URL(string: urlString) {
             webView?.load(URLRequest(url: url))
             webView?.allowsBackForwardNavigationGestures = true
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        statusBar.backgroundColor = .white
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        statusBar.backgroundColor = .clear
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
@@ -56,5 +49,7 @@ class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         webView?.frame = CGRect(origin: .zero, size: size)
+        guard let oldFrame = statusBarBackground?.frame else { return }
+        statusBarBackground?.frame = CGRect(x: oldFrame.minX, y: oldFrame.minY, width: size.width, height: oldFrame.height)
     }
 }

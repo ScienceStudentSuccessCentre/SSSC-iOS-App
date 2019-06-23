@@ -21,7 +21,10 @@ class EventsViewController: UITableViewController {
         
         self.extendedLayoutIncludesOpaqueBars = true
         self.navigationController?.view.backgroundColor = .white
-        self.splitViewController?.delegate = self
+        if #available(iOS 13.0, *) {
+            prepareLargeTitleNavigationBarAppearance()
+            prepareStandardTitleNavigationBarAppearance(barTintColour: UIColor(.steelblue))
+        }
         
         activityIndicatorView = UIActivityIndicatorView(style: .gray)
         activityIndicatorView.center = view.center
@@ -163,14 +166,5 @@ extension EventsViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.collapseDetailViewController = false
-    }
-}
-
-extension EventsViewController: UISplitViewControllerDelegate {
-    /// This is to ensure that smaller devices (like iPhones) will show the master view (this view controller) first, before any detail views.
-    func splitViewController(_ splitViewController: UISplitViewController,
-                             collapseSecondary secondaryViewController: UIViewController,
-                             onto primaryViewController: UIViewController) -> Bool {
-        return collapseDetailViewController
     }
 }

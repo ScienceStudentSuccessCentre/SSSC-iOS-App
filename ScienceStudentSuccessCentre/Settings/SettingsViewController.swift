@@ -14,6 +14,10 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
         super.viewDidLoad()
         
         self.extendedLayoutIncludesOpaqueBars = true
+        if #available(iOS 13.0, *) {
+            prepareLargeTitleNavigationBarAppearance()
+        }
+        
         createForm()
     }
     

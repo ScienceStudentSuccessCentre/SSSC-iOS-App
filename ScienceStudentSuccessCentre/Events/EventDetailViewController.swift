@@ -44,6 +44,11 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
             navigationItem.largeTitleDisplayMode = .never
         }
         
+        if #available(iOS 13.0, *) {
+            // iPad-specific
+            prepareLargeTitleNavigationBarAppearance()
+        }
+        
         eventDetailsView.isHidden = true
         eventImageView.isHidden = true
         eventTitleView.addBorders(edges: [.bottom], color: UIColor(.bluegrey), width: 1)

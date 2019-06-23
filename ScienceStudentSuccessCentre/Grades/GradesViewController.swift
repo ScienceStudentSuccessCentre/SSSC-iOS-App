@@ -39,6 +39,9 @@ class GradesViewController: UIViewController {
         let segmentControl = UISegmentedControl(items: ["Terms", "Calculator", "Planner"])
         segmentControl.selectedSegmentIndex = 0
         segmentControl.addTarget(self, action: #selector(segmentSelectedAction(sender:)), for: .primaryActionTriggered)
+        if #available(iOS 13.0, *) {
+            segmentControl.overrideUserInterfaceStyle = .dark
+        }
         return segmentControl
     }()
     
@@ -75,6 +78,10 @@ class GradesViewController: UIViewController {
         
         if #available(iOS 11.0, *) {
             extendedLayoutIncludesOpaqueBars = true
+        }
+        
+        if #available(iOS 13.0, *) {
+            prepareLargeTitleNavigationBarAppearance()
         }
     }
     
