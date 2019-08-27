@@ -16,6 +16,7 @@ class CourseSearchViewController: UITableViewController {
     private var results = [Course]()
     private var courses = [Course]()
     private var terms = [Term]()
+    private let noResultsLabel = UILabel()
     
     private weak var delegate: CourseSearchActionDelegate?
     
@@ -27,6 +28,12 @@ class CourseSearchViewController: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        noResultsLabel.text = "No Results"
+        noResultsLabel.textAlignment = .center
+        tableView.backgroundView = noResultsLabel
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,6 +61,8 @@ extension CourseSearchViewController: UISearchResultsUpdating {
         guard let query = searchController.searchBar.text?.lowercased() else { return }
         results = courses.filter({ $0.code.lowercased().contains(query) || $0.name.lowercased().contains(query) })
         tableView.reloadData()
+        tableView.separatorStyle = results.count > 0 ? .singleLine : .none
+        noResultsLabel.isHidden = results.count > 0
     }
 }
 
