@@ -29,7 +29,9 @@ class GradesViewController: UIViewController {
         searchController.searchBar.delegate = resultsViewController
         searchController.searchBar.tintColor = .white
         searchController.searchBar.placeholder = "Course Search"
-        searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false
+        if #available(iOS 11.0, *) {
+            searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false
+        }
         return searchController
     }()
     
