@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalculatorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GradesSegment {
+class CalculatorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GradesSegment, SearchableList {
     let segmentTitle: String = "CGPA Calculator"
     
     @IBOutlet var tableView: UITableView!

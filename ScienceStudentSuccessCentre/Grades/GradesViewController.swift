@@ -102,9 +102,21 @@ class GradesViewController: UIViewController {
         allViews.forEach { remove(asChildViewController: $0) }
         add(asChildViewController: view)
         navigationItem.title = title
-        if #available(iOS 11.0, *), view is TermsViewController {
-            navigationItem.searchController = searchController
-            termsViewController.tableView.tableHeaderView = nil
+        
+        if let view = view as? SearchableList {
+            if #available(iOS 11.0, *) {
+                navigationItem.searchController = searchController
+                view.tableView.tableHeaderView = nil
+            } else if view is TermsViewController {
+                termsViewController.tableView.tableHeaderView = searchController.searchBar
+                termsViewController.tableView.contentOffset = CGPoint(x: 0, y: searchController.searchBar.frame.size.height)
+            }
+            // There is a weird bug with the search bar disappearing if enabled on < iOS 11 for both the TermsViewController and the CalculatorViewController
+            // For this reason it is only enabled for the TermsViewController on < iOS 11
+        } else {
+            if #available(iOS 11.0, *) {
+                navigationItem.searchController = nil
+            }
         }
     }
     

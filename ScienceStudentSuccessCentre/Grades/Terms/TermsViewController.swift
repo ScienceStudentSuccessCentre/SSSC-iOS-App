@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TermsViewController: UITableViewController, GradesSegment {
+class TermsViewController: UITableViewController, GradesSegment, SearchableList {
     let segmentTitle = "Terms"
     
     private var terms = [Term]()
