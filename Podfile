@@ -6,6 +6,6 @@ target 'ScienceStudentSuccessCentre' do
   pod "Eureka", "~> 5.0.0"
   pod "PromiseKit", "~> 6.8.4"
   pod "ColorPickerRow", :git => "https://github.com/EurekaCommunity/ColorPickerRow"
-  pod "SimulatorStatusMagic", "~> 2.4.1"
   pod "SwiftLint"
+  pod "SimulatorStatusMagic", "~> 2.4.1", :configurations => ['Debug']
 end

@@ -8,7 +8,9 @@
 
 import UIKit
 import UserNotifications
+#if DEBUG
 import SimulatorStatusMagic
+#endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -46,11 +48,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         UserDefaults.standard.set(!arguments.contains("HideTestEvents"), forKey: "showTestEvents")
         
+        #if DEBUG
         if arguments.contains("CleanStatusBar") {
             SDStatusBarManager.sharedInstance()?.enableOverrides()
         } else {
             SDStatusBarManager.sharedInstance()?.disableOverrides()
         }
+        #endif
     }
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
