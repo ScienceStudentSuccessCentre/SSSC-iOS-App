@@ -18,15 +18,8 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         continueAfterFailure = false
         app = XCUIApplication()
         app.launchArguments = ["UseTestGradeData", "HideTestEvents", "CleanStatusBar"]
-        addUIInterruptionMonitor(withDescription: "Allow Notifications") { alert -> Bool in
-            if alert.buttons["Allow"].exists {
-                alert.buttons["Allow"].tap()
-            } else if alert.buttons["Close"].exists {
-                snapshot("1EventDetailsWithNotificationAlert")
-                alert.buttons["Close"].tap()
-            }
-            return true
-        }
+        addUIInterruptionMonitor(withDescription: "Allow Notifications",
+                                 handler: eventDetailsWithNotificationAlertSnapshot(alert:))
         setupSnapshot(app)
         app.launch()
     }
@@ -35,12 +28,14 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         
     }
     
+    // Screenshot 0 - EventsList
     func testEventsTab() {
         app.tabBars.buttons["Events"].tap()
         usleep(networkWait)
-        snapshot("0EventsTab")
+        snapshot("0EventsList")
     }
 
+    // Screenshot 1 - EventsListWithNotification
     func testEventDetailsWithNotificationAlert() {
         app.tabBars.buttons["Events"].tap()
         usleep(networkWait)
@@ -52,14 +47,27 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         usleep(processWait)
         app.tap() // Dismiss notification enabled dialog (if not already dismissed)
         app.buttons["ToggleNotification"].tap()
+        // The snapshot itself is taken in eventDetailsWithNitificationAlertSnapshot
+    }
+    
+    func eventDetailsWithNotificationAlertSnapshot(alert: XCUIElement) -> Bool {
+        if alert.buttons["Allow"].exists {
+            alert.buttons["Allow"].tap()
+        } else if alert.buttons["Close"].exists {
+            snapshot("1EventDetailsWithNotification")
+            alert.buttons["Close"].tap()
+        }
+        return true
     }
 
+    // Screenshot 2 - CoursesList
     func testCoursesList() {
         app.tabBars.buttons["Grades"].tap()
         app.cells.firstMatch.tap()
         snapshot("2CoursesList")
     }
 
+    // Screenshot 3 - AssignmentsList
     func testAssignmentsList() {
         app.tabBars.buttons["Grades"].tap()
         app.cells.firstMatch.tap()
@@ -67,6 +75,7 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         snapshot("3AssignmentsList")
     }
 
+    // Screenshot 4 - EditCourse
     func testEditCourse() {
         app.tabBars.buttons["Grades"].tap()
         app.cells.firstMatch.tap()
@@ -74,11 +83,27 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         app.buttons["EditCourse"].tap()
         snapshot("4EditCourse")
     }
+    
+    // Screenshot 5 - Resources
+    func testResources() {
+        app.tabBars.buttons["Resources"].tap()
+        usleep(networkWait)
+        usleep(networkWait)
+        snapshot("5Resources")
+    }
+    
+    // Screenshot 6 - CGPAPlanner
+    func testCGPAPlanner() {
+        app.tabBars.buttons["Grades"].tap()
+        app.buttons["Planner"].tap()
+        snapshot("6CGPAPlanner")
+    }
 
+    // Screenshot 7 - CGPACalculator
     func testCalculatorList() {
         app.tabBars.buttons["Grades"].tap()
         app.buttons["Calculator"].tap()
-        snapshot("5CGPACalculator")
+        snapshot("7CGPACalculator")
     }
     
 }
