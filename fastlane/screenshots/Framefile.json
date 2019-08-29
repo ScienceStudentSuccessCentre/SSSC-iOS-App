@@ -11,13 +11,13 @@
     },
     "data": [
         {
-            "filter": "EventsTab",
+            "filter": "EventsList",
             "title": {
-                "text": "View Upcoming Events"
+                "text": "Stay Up To Date"
             }
         },
         {
-            "filter": "EventDetailsWithNotificationAlert",
+            "filter": "EventDetailsWithNotification",
             "title": {
                 "text": "Get Notified"
             }
@@ -25,25 +25,37 @@
         {
             "filter": "CoursesList",
             "title": {
-                "text": "Track Your Courses"
+                "text": "Track Courses..."
             }
         },
         {
             "filter": "AssignmentsList",
             "title": {
-                "text": "Track Your Grades"
+                "text": "... And Grades"
             }
         },
         {
             "filter": "EditCourse",
             "title": {
-                "text": "Customize Your Experience"
+                "text": "Customizable Experience"
+            }
+        },
+        {
+            "filter": "Resources",
+            "title": {
+                "text": "Get Help With Resources"
+            }
+        },
+        {
+            "filter": "CGPAPlanner",
+            "title": {
+                "text": "Set Your Goals..."
             }
         },
         {
             "filter": "CGPACalculator",
             "title": {
-                "text": "Strive For Academic Greatness!"
+                "text": "... And Achieve Them!"
             }
         }
     ]
