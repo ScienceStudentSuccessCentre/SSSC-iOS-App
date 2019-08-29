@@ -28,5 +28,6 @@ class CourseSummaryCell: ColourRestorableCell {
         termAndCourseCode.text = (term != nil ? "[\(term!.shortForm)] " : "") + "\(course.code)"
         courseName.text = course.name
         courseLetterGrade.text = course.getLetterGrade()
+        backgroundColor = UIColor(named: "primaryBackground")
     }
 }

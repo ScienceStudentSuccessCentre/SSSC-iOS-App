@@ -23,6 +23,10 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
         formatter.minimumFractionDigits = 1
         
         createForm()
+        
+        if #available(iOS 13.0, *) {
+            tableView.backgroundColor = UIColor(named: "formBackground")
+        }
     }
     
     /// Creates a Eureka form for performing various GPA projections and calculations.
@@ -37,6 +41,12 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
             row.title = "Current CGPA"
             row.placeholder = "8.9"
             row.formatter = formatter
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+                cell.textField?.textColor = UIColor.label
+            }
         }.onChange { _ in
             self.validateForm()
         }
@@ -45,6 +55,12 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
             row.title = "Credits Complete"
             row.placeholder = "5.0"
             row.formatter = formatter
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+                cell.textField?.textColor = UIColor.label
+            }
         }.onChange { _ in
             self.validateForm()
         }
@@ -53,6 +69,12 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
             row.title = "Desired CGPA"
             row.placeholder = "10.0"
             row.formatter = formatter
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+                cell.textField?.textColor = UIColor.label
+            }
         }.onChange {_ in
             self.validateForm()
         }
@@ -61,6 +83,12 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
             row.title = "Credits in Progress"
             row.placeholder = "2.5"
             row.formatter = formatter
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+                cell.textField?.textColor = UIColor.label
+            }
         }.onChange {_ in
             self.validateForm()
         }
@@ -70,6 +98,11 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
             row.placeholder = "Enter Info Above"
             row.formatter = formatter
             row.disabled = true
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textField?.textColor = UIColor.label
+            }
         }
         +++ Section(footer: "\nYou can use the section below to determine your overall CGPA based off a predicted CGPA for this term.")
         +++ Section("Overall CGPA with predicted term CGPA")
@@ -78,6 +111,12 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
             row.title = "Current CGPA"
             row.placeholder = "8.9"
             row.formatter = formatter
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+                cell.textField?.textColor = UIColor.label
+            }
         }.onChange { _ in
             self.validateForm()
         }
@@ -86,6 +125,12 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
             row.title = "Credits Complete"
             row.placeholder = "5.0"
             row.formatter = formatter
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+                cell.textField?.textColor = UIColor.label
+            }
         }.onChange { _ in
             self.validateForm()
         }
@@ -94,6 +139,12 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
             row.title = "Predicted CGPA"
             row.placeholder = "9.4"
             row.formatter = formatter
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+                cell.textField?.textColor = UIColor.label
+            }
         }.onChange {_ in
             self.validateForm()
         }
@@ -102,6 +153,12 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
             row.title = "Credits in Progress"
             row.placeholder = "2.5"
             row.formatter = formatter
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+                cell.textField?.textColor = UIColor.label
+            }
         }.onChange {_ in
             self.validateForm()
         }
@@ -111,6 +168,11 @@ class PlannerViewController: FormViewController, EurekaFormProtocol, GradesSegme
             row.placeholder = "Enter Info Above"
             row.formatter = formatter
             row.disabled = true
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textField?.textColor = UIColor.label
+            }
         }
     }
     

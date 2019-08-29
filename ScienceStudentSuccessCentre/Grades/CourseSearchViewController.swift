@@ -34,6 +34,7 @@ class CourseSearchViewController: UITableViewController {
         noResultsLabel.text = "No Results"
         noResultsLabel.textAlignment = .center
         tableView.backgroundView = noResultsLabel
+        tableView.backgroundColor = UIColor(named: "primaryBackground")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

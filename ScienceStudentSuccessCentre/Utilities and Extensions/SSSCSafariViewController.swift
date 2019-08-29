@@ -16,6 +16,10 @@ class SSSCSafariViewController: SFSafariViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = UIColor(named: "primaryBackground")
+        }
+        
         let backgroundView = UIView()
         backgroundView.layer.masksToBounds = true
         backgroundView.layer.cornerRadius = 5.0

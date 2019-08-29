@@ -45,6 +45,10 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
             fillForm()
             validateForm()
         }
+        
+        if #available(iOS 13.0, *) {
+            tableView.backgroundColor = UIColor(named: "formBackground")
+        }
     }
     
     func createForm() {
@@ -58,6 +62,12 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
             row.title = "Name"
             row.placeholder = "Assignment 1"
             row.cell.textField.autocapitalizationType = .words
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+                cell.textField?.textColor = UIColor.label
+            }
         }.onChange { _ in
             self.validateForm()
         }
@@ -66,6 +76,12 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
             row.title = "Grade Earned"
             row.placeholder = "26"
             row.formatter = gradeFormatter
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+                cell.textField?.textColor = UIColor.label
+            }
         }.onChange { _ in
             self.validateForm()
         }
@@ -74,6 +90,12 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
             row.title = "Maximum Grade"
             row.placeholder = "30"
             row.formatter = gradeFormatter
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+                cell.textField?.textColor = UIColor.label
+            }
         }.onChange { _ in
             self.validateForm()
         }
@@ -82,6 +104,11 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
             row.title = "Weight"
             row.options = weightNames
             row.value = nil
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+            }
         }.onChange {_ in
             self.validateForm()
         }

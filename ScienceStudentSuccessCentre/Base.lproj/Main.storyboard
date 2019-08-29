@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -54,7 +55,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vyn-Z8-fZo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="571"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="primaryBackground"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventTableViewCell" rowHeight="90" id="Ryj-pH-6Hj" customClass="EventTableViewCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
@@ -106,6 +107,7 @@
                                         <constraint firstItem="dgx-cP-xF1" firstAttribute="centerY" secondItem="tds-tQ-HSf" secondAttribute="centerY" id="f7b-F7-Ldc"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" name="primaryBackground"/>
                                 <connections>
                                     <outlet property="dateLabel" destination="jpO-KW-fNS" id="2Zj-tK-6aW"/>
                                     <outlet property="dateView" destination="dgx-cP-xF1" id="uzn-To-BjT"/>
@@ -143,11 +145,10 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No events 😕" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JOQ-gI-Rbo">
                                         <rect key="frame" x="8" y="8" width="359" height="36"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="secondaryBackground"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="JOQ-gI-Rbo" secondAttribute="bottom" constant="8" id="N3F-ec-oxo"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="52" id="ZNQ-bR-393"/>
@@ -160,23 +161,23 @@
                                 <rect key="frame" x="8" y="52" width="359" height="454"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="yIA-Vy-Ot7">
-                                        <rect key="frame" x="0.0" y="0.0" width="359" height="166"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="158"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5Z-m7-uJu">
-                                                <rect key="frame" x="0.0" y="0.0" width="359" height="38"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5Z-m7-uJu">
+                                                <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
+                                                <color key="backgroundColor" name="primaryBackground"/>
+                                                <attributedString key="attributedText"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfm-Rh-U4T" userLabel="Event Image Container View">
-                                                <rect key="frame" x="0.0" y="38" width="359" height="128"/>
+                                                <rect key="frame" x="0.0" y="30" width="359" height="128"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J4h-Na-QPy">
                                                         <rect key="frame" x="0.0" y="0.0" width="359" height="120"/>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" name="primaryBackground"/>
                                                 <constraints>
                                                     <constraint firstItem="J4h-Na-QPy" firstAttribute="leading" secondItem="Jfm-Rh-U4T" secondAttribute="leading" id="Shx-3h-T78"/>
                                                     <constraint firstAttribute="trailing" secondItem="J4h-Na-QPy" secondAttribute="trailing" id="dIH-va-5w5"/>
@@ -228,7 +229,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.84705882352941175" green="0.85490196078431369" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" name="tertiaryBackground"/>
                                         <constraints>
                                             <constraint firstItem="UZI-oG-Ba3" firstAttribute="top" secondItem="39y-qr-enf" secondAttribute="top" constant="8" id="8Wp-cS-034"/>
                                             <constraint firstItem="UZI-oG-Ba3" firstAttribute="leading" secondItem="39y-qr-enf" secondAttribute="leading" constant="8" id="LmN-zm-mLM"/>
@@ -250,7 +251,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="primaryBackground"/>
                         <constraints>
                             <constraint firstItem="dFM-bk-TKl" firstAttribute="leading" secondItem="z7U-0h-3Ak" secondAttribute="leading" constant="8" id="203-uC-fGK"/>
                             <constraint firstItem="dFM-bk-TKl" firstAttribute="trailing" secondItem="z7U-0h-3Ak" secondAttribute="trailing" constant="-8" id="6e9-qX-mbu"/>
@@ -325,7 +326,7 @@
                     <connections>
                         <segue destination="X8w-Lv-fB9" kind="relationship" relationship="viewControllers" id="3zd-S1-laQ"/>
                         <segue destination="qnv-2C-gp0" kind="relationship" relationship="viewControllers" id="3hE-1b-bc0"/>
-                        <segue destination="hKm-az-aWD" kind="relationship" relationship="viewControllers" id="AuT-px-cFt"/>
+                        <segue destination="YIE-gG-F4r" kind="relationship" relationship="viewControllers" id="GZA-Qg-e6l"/>
                         <segue destination="4tN-9t-Zd2" kind="relationship" relationship="viewControllers" id="JIw-fh-zp4"/>
                         <segue destination="Up2-BA-9yi" kind="relationship" relationship="viewControllers" id="8ui-Kg-98T"/>
                     </connections>
@@ -421,10 +422,10 @@
             <point key="canvasLocation" x="641" y="841"/>
         </scene>
         <!--Mentoring-->
-        <scene sceneID="PmN-C2-eeQ">
+        <scene sceneID="R17-Kq-zGz">
             <objects>
-                <viewController id="Djf-Ec-EmQ" customClass="MentoringViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="eD6-qm-FlW">
+                <viewController id="K3j-pU-hPm" customClass="MentoringViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q9w-Ux-SP5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="571"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -437,7 +438,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="bookingButtonPressed" destination="Djf-Ec-EmQ" eventType="touchUpInside" id="VXs-9q-AyS"/>
+                                    <action selector="bookingButtonPressed" destination="K3j-pU-hPm" eventType="touchUpInside" id="AeF-AS-4Hs"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to make an appointment with one of our mentors? Tap below to get started!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0P-AL-CrZ">
@@ -450,7 +451,7 @@
                                 <rect key="frame" x="64" y="238" width="247" height="236"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="primaryBackground"/>
                         <constraints>
                             <constraint firstItem="UpI-VA-z4E" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="pg3-a5-o5J" secondAttribute="bottom" constant="48" id="3cD-dV-vqn"/>
                             <constraint firstItem="UpI-VA-z4E" firstAttribute="trailing" secondItem="pg3-a5-o5J" secondAttribute="trailing" constant="64" id="6fq-W1-TA1"/>
@@ -462,14 +463,14 @@
                             <constraint firstItem="pg3-a5-o5J" firstAttribute="leading" secondItem="UpI-VA-z4E" secondAttribute="leading" constant="64" id="pb0-yJ-v0s"/>
                             <constraint firstItem="pg3-a5-o5J" firstAttribute="top" secondItem="094-eK-UPj" secondAttribute="bottom" constant="32" id="yDL-3v-8Xx"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="UpI-VA-z4E"/>
+                        <viewLayoutGuide key="safeArea" id="fNV-0q-8Fk"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Mentoring" id="Vdx-8U-1u8"/>
+                    <navigationItem key="navigationItem" title="Mentoring" id="N4h-CV-lpg"/>
                     <connections>
-                        <outlet property="bookingButton" destination="094-eK-UPj" id="H0A-3E-TFa"/>
+                        <outlet property="bookingButton" destination="rya-ex-Mdu" id="LSs-tS-nho"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t6n-Kg-ttR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UkY-bl-5Ap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-218" y="841"/>
         </scene>
@@ -480,7 +481,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ipk-IC-UNC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="primaryBackground"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TermTableViewCell" rowHeight="90" id="Mfd-OC-8aU" customClass="TermTableViewCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
@@ -524,6 +525,7 @@
                                         <constraint firstItem="ocs-vd-Sl9" firstAttribute="leading" secondItem="cHZ-eQ-Rjv" secondAttribute="trailing" constant="16" id="zgL-c5-Pfz"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" name="primaryBackground"/>
                                 <connections>
                                     <outlet property="termAbbr" destination="FAO-hC-zgu" id="mrL-y3-QLh"/>
                                     <outlet property="termName" destination="ocs-vd-Sl9" id="aQQ-49-npX"/>
@@ -558,7 +560,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mSR-yn-Ced">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="primaryBackground"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CourseSummaryCell" rowHeight="65" id="dcx-5P-fPE" customClass="CourseSummaryCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="65"/>
@@ -567,6 +569,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="348.5" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="primaryBackground"/>
                                         <connections>
                                             <segue destination="atS-1p-BMg" kind="show" identifier="calculatorDetail" id="II0-2O-iZm"/>
                                         </connections>
@@ -606,7 +609,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.84705882349999995" green="0.85490196080000003" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" name="tertiaryBackground"/>
                                         <constraints>
                                             <constraint firstItem="DW5-bL-1s5" firstAttribute="leading" secondItem="ibv-jc-rks" secondAttribute="leading" constant="8" id="dCJ-zC-40H"/>
                                             <constraint firstItem="DW5-bL-1s5" firstAttribute="centerY" secondItem="ibv-jc-rks" secondAttribute="centerY" id="gIF-Vu-anG"/>
@@ -681,7 +684,7 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jI6-WQ-7Cg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="579"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="primaryBackground"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CourseTableViewCell" rowHeight="90" id="r9o-1c-cGt" customClass="CourseTableViewCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
@@ -736,6 +739,7 @@
                                                 <constraint firstItem="AGz-7g-cCa" firstAttribute="centerY" secondItem="194-o2-bvm" secondAttribute="centerY" id="wzH-C2-Mz0"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="primaryBackground"/>
                                         <connections>
                                             <outlet property="courseCode" destination="hbJ-kL-1eC" id="uPL-jv-WyS"/>
                                             <outlet property="courseName" destination="FGf-FB-RNz" id="zgF-kC-jsr"/>
@@ -782,7 +786,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.84705882352941175" green="0.85490196078431369" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" name="tertiaryBackground"/>
                                         <constraints>
                                             <constraint firstItem="gNO-ze-1Zh" firstAttribute="leading" secondItem="RlG-AZ-1Tq" secondAttribute="leading" constant="8" id="8fj-On-A9J"/>
                                             <constraint firstItem="gNO-ze-1Zh" firstAttribute="centerY" secondItem="RlG-AZ-1Tq" secondAttribute="centerY" id="LaX-fQ-Iv3"/>
@@ -853,7 +857,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="secondaryBackground"/>
                                 <constraints>
                                     <constraint firstItem="mBu-6x-H9h" firstAttribute="top" secondItem="OsZ-pQ-4Iw" secondAttribute="top" constant="8" id="2vf-0T-24k"/>
                                     <constraint firstItem="Npt-Ie-Ujm" firstAttribute="top" secondItem="mBu-6x-H9h" secondAttribute="bottom" constant="8" id="5pj-TZ-I8k"/>
@@ -866,7 +870,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bd5-Q8-7PF">
                                 <rect key="frame" x="0.0" y="75.5" width="375" height="503.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="primaryBackground"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AssignmentTableViewCell" rowHeight="90" id="3C6-M3-wiS" userLabel="AssignmentTableViewCell" customClass="AssignmentTableViewCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
@@ -922,6 +926,7 @@
                                                 <constraint firstItem="Zwi-eg-9Op" firstAttribute="leading" secondItem="Jpk-7s-4nw" secondAttribute="trailing" constant="16" id="tt9-1t-0NQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="primaryBackground"/>
                                         <connections>
                                             <outlet property="assignmentName" destination="xjf-yW-i7A" id="oZc-SH-woT"/>
                                             <outlet property="letterGrade" destination="QaS-8Z-Pft" id="YOk-pe-2lI"/>
@@ -949,7 +954,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="tertiaryBackground"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="aQp-gQ-O29" secondAttribute="bottom" constant="8" id="1O6-NG-HTX"/>
                                     <constraint firstItem="aQp-gQ-O29" firstAttribute="leading" secondItem="whK-Ic-VN8" secondAttribute="leading" constant="8" id="E0j-oi-bn8"/>
@@ -1152,29 +1157,22 @@
             <point key="canvasLocation" x="641" y="-861"/>
         </scene>
         <!--Mentoring-->
-        <scene sceneID="o5o-Jg-0l8">
+        <scene sceneID="GJC-pt-fGo">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hKm-az-aWD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Mentoring" image="peopleIcon" id="iUt-Ln-LSP"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YIE-gG-F4r" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Mentoring" image="peopleIcon" id="NJK-4s-vk8"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="09w-U2-2FT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="Njf-VK-cPL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.46666666666666667" green="0.60392156862745094" blue="0.66274509803921566" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
+                        <color key="barTintColor" red="0.46666666670000001" green="0.60392156860000001" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Djf-Ec-EmQ" kind="relationship" relationship="rootViewController" id="ZpQ-h0-jD1"/>
+                        <segue destination="K3j-pU-hPm" kind="relationship" relationship="rootViewController" id="0So-YI-HBa"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GkI-u9-qtv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WK7-hp-OYs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1108" y="841"/>
         </scene>
@@ -1186,11 +1184,20 @@
         <image name="paperIcon" width="25" height="25"/>
         <image name="peopleIcon" width="25" height="25"/>
         <image name="settingsIcon" width="25" height="25"/>
+        <namedColor name="primaryBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondaryBackground">
+            <color red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="tertiaryBackground">
+            <color red="0.84700000286102295" green="0.85500001907348633" blue="0.87099999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CpN-Ek-qSP"/>
         <segue reference="kLN-0H-OdZ"/>
-        <segue reference="K9y-h4-UFx"/>
+        <segue reference="8vw-Sl-0KH"/>
         <segue reference="II0-2O-iZm"/>
         <segue reference="98O-Zl-agm"/>
     </inferredMetricsTieBreakers>

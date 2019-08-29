@@ -16,6 +16,7 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
         self.extendedLayoutIncludesOpaqueBars = true
         if #available(iOS 13.0, *) {
             prepareLargeTitleNavigationBarAppearance()
+            tableView.backgroundColor = UIColor(named: "formBackground")
         }
         
         createForm()
@@ -40,6 +41,11 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
             <<< SwitchRow { row in
                 row.tag = "includeInProgressCourses"
                 row.title = "Include Courses in Progress"
+            }.cellUpdate { cell, _ in
+                if #available(iOS 13.0, *) {
+                    cell.backgroundColor = UIColor(named: "formAccent")
+                    cell.textLabel?.textColor = UIColor.label
+                }
             }.onChange { _ in
                 self.validateForm()
             }
@@ -49,6 +55,10 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
                 row.tag = "exportData"
                 row.title = "Back Up Grades"
                 row.onCellSelection(self.exportGradesTapped)
+            }.cellUpdate { cell, _ in
+                if #available(iOS 13.0, *) {
+                    cell.backgroundColor = UIColor(named: "formAccent")
+                }
             }
             +++ Section(header: "\nAcknowledgments",
                         // swiftlint:disable:next line_length

@@ -54,6 +54,10 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             fillForm()
             validateForm()
         }
+        
+        if #available(iOS 13.0, *) {
+            tableView.backgroundColor = UIColor(named: "formBackground")
+        }
     }
     
     func createForm() {
@@ -64,6 +68,12 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             row.title = "Name"
             row.placeholder = "Operating Systems"
             row.cell.textField.autocapitalizationType = .words
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+                cell.textField?.textColor = UIColor.label
+            }
         }.onChange { _ in
             self.validateForm()
         }
@@ -72,6 +82,12 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             row.title = "Code"
             row.placeholder = "COMP 3000"
             row.cell.textField.autocapitalizationType = .allCharacters
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+                cell.textField?.textColor = UIColor.label
+            }
         }.onChange { _ in
             self.validateForm()
         }
@@ -80,12 +96,23 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             row.title = "Credits"
             row.placeholder = "0.5"
             row.formatter = creditFormatter
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+                cell.textField?.textColor = UIColor.label
+            }
         }.onChange { _ in
             self.validateForm()
         }
         <<< SwitchRow { row in
             row.tag = "isMajorCourse"
             row.title = "Counts Towards Major CGPA"
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+            }
         }
         +++ Section("Course Colour")
         <<< InlineColorPickerRow { row in
@@ -94,9 +121,14 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             row.isCircular = false
             row.showsPaletteNames = false
             row.value = UIColor(.red)
-        }.cellSetup { _, row in
+        }.cellUpdate { cell, row in
             let palette = ColorPalette(name: "Material", palette: UIColor.Material.getCourseColourPalette())
             row.palettes = [palette]
+            
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+            }
         }
         +++ MultivaluedSection(multivaluedOptions: [.Insert, .Delete],
                                header: "Assignment Weights",
@@ -104,20 +136,36 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             section.addButtonProvider = { section in
                 return ButtonRow {
                     $0.title = "Add New Weight"
+                }.cellUpdate { cell, _ in
+                    if #available(iOS 13.0, *) {
+                        cell.backgroundColor = UIColor(named: "formAccent")
+                    }
                 }
             }
             section.multivaluedRowToInsertAt = { index in
-                return SplitRow<TextRow, IntRow> {
-                    $0.tag = nil
-                    $0.rowLeft = TextRow {
-                        $0.placeholder = "Final Exam"
-                        $0.cell.textField.autocapitalizationType = .words //TODO: this doesn't appear to be working
+                return SplitRow<TextRow, IntRow> { splitRow in
+                    splitRow.tag = nil
+                    splitRow.rowLeft = TextRow { textRow in
+                        textRow.placeholder = "Final Exam"
+                        textRow.cell.textField.autocapitalizationType = .words //TODO: this doesn't appear to be working
+                        textRow.cellUpdate { cell, _ in
+                            if #available(iOS 13.0, *) {
+                                cell.backgroundColor = UIColor(named: "formAccent")
+                                cell.textField?.textColor = UIColor.label
+                            }
+                        }
                     }
-                    $0.rowRight = IntRow {
-                        $0.placeholder = "30%"
-                        $0.formatter = self.weightFormatter
+                    splitRow.rowRight = IntRow { intRow in
+                        intRow.placeholder = "30%"
+                        intRow.formatter = self.weightFormatter
+                        intRow.cellUpdate { cell, _ in
+                            if #available(iOS 13.0, *) {
+                                cell.backgroundColor = UIColor(named: "formAccent")
+                                cell.textField?.textColor = UIColor.label
+                            }
+                        }
                     }
-                    $0.trailingSwipe.actions = [SwipeAction(
+                    splitRow.trailingSwipe.actions = [SwipeAction(
                         style: .destructive,
                         title: "Delete",
                         handler: { _, row, _ in
@@ -138,6 +186,11 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             row.title = "Final Grade"
             row.options = letterGrades
             row.value = letterGrades.first
+        }.cellUpdate { cell, _ in
+            if #available(iOS 13.0, *) {
+                cell.backgroundColor = UIColor(named: "formAccent")
+                cell.textLabel?.textColor = UIColor.label
+            }
         }.onChange { _ in
             self.validateForm()
         }
@@ -153,17 +206,29 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         form.rowBy(tag: "colour")?.baseValue = UIColor(course.colour)
         guard var weightsSection = form.sectionBy(tag: "weights") as? MultivaluedSection else { return }
         for weight in weights {
-            let newRow = SplitRow<TextRow, IntRow> {
-                $0.tag = weight.id
-                $0.rowLeft = TextRow {
-                    $0.value = weight.name
-                    $0.cell.textField.autocapitalizationType = .words //TODO: This (.words) doesn't appear to be working
+            let newRow = SplitRow<TextRow, IntRow> { splitRow in
+                splitRow.tag = weight.id
+                splitRow.rowLeft = TextRow { textRow in
+                    textRow.value = weight.name
+                    textRow.cell.textField.autocapitalizationType = .words //TODO: This (.words) doesn't appear to be working
+                    textRow.cellUpdate { cell, _ in
+                        if #available(iOS 13.0, *) {
+                            cell.backgroundColor = UIColor(named: "formAccent")
+                            cell.textField?.textColor = UIColor.label
+                        }
+                    }
                 }
-                $0.rowRight = IntRow {
-                    $0.value = Int(weight.value)
-                    $0.formatter = self.weightFormatter
+                splitRow.rowRight = IntRow { intRow in
+                    intRow.value = Int(weight.value)
+                    intRow.formatter = self.weightFormatter
+                    intRow.cellUpdate { cell, _ in
+                        if #available(iOS 13.0, *) {
+                            cell.backgroundColor = UIColor(named: "formAccent")
+                            cell.textField?.textColor = UIColor.label
+                        }
+                    }
                 }
-                $0.trailingSwipe.actions = [SwipeAction(
+                splitRow.trailingSwipe.actions = [SwipeAction(
                     style: .destructive,
                     title: "Delete",
                     handler: { _, row, completionHandler in

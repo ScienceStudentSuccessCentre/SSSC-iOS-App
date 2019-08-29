@@ -30,7 +30,11 @@ class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         
         let frame = UIApplication.shared.statusBarFrame
         statusBarBackground = UIView(frame: frame)
-        statusBarBackground?.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            statusBarBackground?.backgroundColor = UIColor(named: "primaryBackground")
+        } else {
+            statusBarBackground?.backgroundColor = .white
+        }
         view.addSubview(statusBarBackground!)
 
         if let url = URL(string: urlString) {

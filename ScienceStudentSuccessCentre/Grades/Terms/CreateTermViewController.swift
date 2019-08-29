@@ -27,6 +27,10 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
         
         setAvailableYears()
         createForm()
+        
+        if #available(iOS 13.0, *) {
+            tableView.backgroundColor = UIColor(named: "formBackground")
+        }
     }
     
     func createForm() {
@@ -37,6 +41,11 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
                     listRow.title = option
                     listRow.selectableValue = option
                     listRow.value = nil
+                }.cellUpdate { cell, _ in
+                    if #available(iOS 13.0, *) {
+                        cell.backgroundColor = UIColor(named: "formAccent")
+                        cell.textLabel?.textColor = UIColor.label
+                    }
                 }
             }
             row.onSelectSelectableRow = { cell, _ in
@@ -50,6 +59,11 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
                     listRow.title = option
                     listRow.selectableValue = option
                     listRow.value = nil
+                }.cellUpdate { cell, _ in
+                    if #available(iOS 13.0, *) {
+                        cell.backgroundColor = UIColor(named: "formAccent")
+                        cell.textLabel?.textColor = UIColor.label
+                    }
                 }
             }
             row.onSelectSelectableRow = { cell, _ in

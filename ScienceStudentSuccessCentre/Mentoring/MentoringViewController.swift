@@ -15,6 +15,10 @@ class MentoringViewController: UIViewController {
     override func viewDidLoad() {
         bookingButton.backgroundColor = UIColor(.red)
         bookingButton.layer.cornerRadius = 10
+        
+        if #available(iOS 13.0, *) {
+            prepareLargeTitleNavigationBarAppearance()
+        }
     }
     
     @IBAction func bookingButtonPressed() {
