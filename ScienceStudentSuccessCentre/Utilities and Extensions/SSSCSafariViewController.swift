@@ -32,6 +32,7 @@ class SSSCSafariViewController: SFSafariViewController {
         let helpButton = UIButton(type: .system)
         helpButton.addTarget(self, action: #selector(helpButtonTapped), for: .touchUpInside)
         helpButton.setImage(UIImage(named: "questionMark"), for: .normal)
+        helpButton.tintColor = UIColor(.lightblue)
         view.insertSubview(helpButton, at: 0)
         self.helpButton = helpButton
     }

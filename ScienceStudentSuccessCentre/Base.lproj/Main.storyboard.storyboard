@@ -140,7 +140,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dwG-b7-Njp" userLabel="Event Title View">
-                                <rect key="frame" x="0.0" y="44" width="375" height="52"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No events 😕" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JOQ-gI-Rbo">
                                         <rect key="frame" x="8" y="8" width="359" height="36"/>
@@ -158,7 +158,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dFM-bk-TKl">
-                                <rect key="frame" x="8" y="96" width="359" height="410"/>
+                                <rect key="frame" x="8" y="52" width="359" height="454"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="yIA-Vy-Ot7">
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="158"/>
@@ -322,7 +322,6 @@
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="selectedImageTintColor" name="tint"/>
                     </tabBar>
                     <connections>
                         <segue destination="X8w-Lv-fB9" kind="relationship" relationship="viewControllers" id="3zd-S1-laQ"/>
@@ -430,9 +429,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="571"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+<<<<<<< HEAD
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="094-eK-UPj">
                                 <rect key="frame" x="96.5" y="162" width="182" height="44"/>
                                 <color key="backgroundColor" red="0.95686274509803915" green="0.2627450980392157" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+=======
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rya-ex-Mdu">
+                                <rect key="frame" x="96.5" y="263.5" width="182" height="44"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+>>>>>>> initial dark mode version, removed support for iOS 10
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" title="Book Appointment">
@@ -442,8 +447,13 @@
                                     <action selector="bookingButtonPressed" destination="K3j-pU-hPm" eventType="touchUpInside" id="AeF-AS-4Hs"/>
                                 </connections>
                             </button>
+<<<<<<< HEAD
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to make an appointment with one of our mentors? Tap below to get started!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0P-AL-CrZ">
                                 <rect key="frame" x="24" y="48" width="327" height="74"/>
+=======
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to make an appointment with one of our mentors? Tap below to get started!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gy-FA-Sai">
+                                <rect key="frame" x="32" y="169.5" width="311" height="74"/>
+>>>>>>> initial dark mode version, removed support for iOS 10
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -454,26 +464,34 @@
                         </subviews>
                         <color key="backgroundColor" name="primaryBackground"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="pg3-a5-o5J" secondAttribute="trailing" constant="64" id="6fq-W1-TA1"/>
-                            <constraint firstItem="pg3-a5-o5J" firstAttribute="leading" secondItem="Q9w-Ux-SP5" secondAttribute="leading" constant="64" id="Fzz-zW-vRE"/>
-                            <constraint firstAttribute="trailing" secondItem="A0P-AL-CrZ" secondAttribute="trailing" constant="24" id="Qea-Jq-vtY"/>
-                            <constraint firstItem="A0P-AL-CrZ" firstAttribute="top" secondItem="fNV-0q-8Fk" secondAttribute="top" constant="48" id="TKn-pl-buY"/>
+<<<<<<< HEAD
+                            <constraint firstItem="UpI-VA-z4E" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="pg3-a5-o5J" secondAttribute="bottom" constant="48" id="3cD-dV-vqn"/>
+                            <constraint firstItem="UpI-VA-z4E" firstAttribute="trailing" secondItem="pg3-a5-o5J" secondAttribute="trailing" constant="64" id="6fq-W1-TA1"/>
+                            <constraint firstItem="094-eK-UPj" firstAttribute="centerX" secondItem="eD6-qm-FlW" secondAttribute="centerX" id="QUp-zm-f5m"/>
+                            <constraint firstItem="UpI-VA-z4E" firstAttribute="trailing" secondItem="A0P-AL-CrZ" secondAttribute="trailing" constant="24" id="Qea-Jq-vtY"/>
                             <constraint firstItem="094-eK-UPj" firstAttribute="top" secondItem="A0P-AL-CrZ" secondAttribute="bottom" constant="40" id="Wl3-y1-cZb"/>
-                            <constraint firstItem="fNV-0q-8Fk" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="pg3-a5-o5J" secondAttribute="bottom" constant="48" id="ZmA-Jk-S4g"/>
-                            <constraint firstItem="094-eK-UPj" firstAttribute="centerX" secondItem="Q9w-Ux-SP5" secondAttribute="centerX" id="dt1-Ko-rIO"/>
-                            <constraint firstItem="A0P-AL-CrZ" firstAttribute="leading" secondItem="Q9w-Ux-SP5" secondAttribute="leading" constant="24" id="mGa-zi-nA1"/>
+                            <constraint firstItem="A0P-AL-CrZ" firstAttribute="leading" secondItem="UpI-VA-z4E" secondAttribute="leading" constant="24" id="ajw-5D-drE"/>
+                            <constraint firstItem="A0P-AL-CrZ" firstAttribute="top" secondItem="UpI-VA-z4E" secondAttribute="top" constant="48" id="gkA-xC-8JL"/>
+                            <constraint firstItem="pg3-a5-o5J" firstAttribute="leading" secondItem="UpI-VA-z4E" secondAttribute="leading" constant="64" id="pb0-yJ-v0s"/>
                             <constraint firstItem="pg3-a5-o5J" firstAttribute="top" secondItem="094-eK-UPj" secondAttribute="bottom" constant="32" id="yDL-3v-8Xx"/>
+=======
+                            <constraint firstItem="rya-ex-Mdu" firstAttribute="centerX" secondItem="Q9w-Ux-SP5" secondAttribute="centerX" id="0Vw-1y-hrb"/>
+                            <constraint firstItem="rya-ex-Mdu" firstAttribute="top" secondItem="8gy-FA-Sai" secondAttribute="bottom" constant="20" id="7de-vr-P6r"/>
+                            <constraint firstItem="rya-ex-Mdu" firstAttribute="centerY" secondItem="Q9w-Ux-SP5" secondAttribute="centerY" id="ZwJ-v0-Qnj"/>
+                            <constraint firstItem="fNV-0q-8Fk" firstAttribute="trailing" secondItem="8gy-FA-Sai" secondAttribute="trailing" constant="32" id="fPN-cc-lAa"/>
+                            <constraint firstItem="8gy-FA-Sai" firstAttribute="leading" secondItem="fNV-0q-8Fk" secondAttribute="leading" constant="32" id="hUg-FK-Ss6"/>
+>>>>>>> initial dark mode version, removed support for iOS 10
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fNV-0q-8Fk"/>
                     </view>
                     <navigationItem key="navigationItem" title="Mentoring" id="N4h-CV-lpg"/>
                     <connections>
-                        <outlet property="bookingButton" destination="094-eK-UPj" id="n3c-Mu-YIo"/>
+                        <outlet property="bookingButton" destination="rya-ex-Mdu" id="LSs-tS-nho"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UkY-bl-5Ap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-218.40000000000001" y="840.62968515742136"/>
+            <point key="canvasLocation" x="-218" y="841"/>
         </scene>
         <!--Terms View Controller-->
         <scene sceneID="d12-xa-sxT">
@@ -1194,16 +1212,12 @@
         <namedColor name="tertiaryBackground">
             <color red="0.84700000286102295" green="0.85500001907348633" blue="0.87099999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="tint">
-            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hN5-d3-g4O"/>
+        <segue reference="CpN-Ek-qSP"/>
         <segue reference="kLN-0H-OdZ"/>
         <segue reference="8vw-Sl-0KH"/>
         <segue reference="II0-2O-iZm"/>
         <segue reference="98O-Zl-agm"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" name="tint"/>
 </document>
