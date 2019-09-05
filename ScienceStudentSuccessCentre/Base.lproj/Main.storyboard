@@ -429,7 +429,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="094-eK-UPj">
-                                <rect key="frame" x="96.5" y="263.5" width="182" height="44"/>
+                                <rect key="frame" x="96.5" y="162" width="182" height="44"/>
                                 <color key="backgroundColor" red="0.95686274509803915" green="0.2627450980392157" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -441,19 +441,26 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to make an appointment with one of our mentors? Tap below to get started!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0P-AL-CrZ">
-                                <rect key="frame" x="32" y="169.5" width="311" height="74"/>
+                                <rect key="frame" x="24" y="48" width="327" height="74"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="logoFull" translatesAutoresizingMaskIntoConstraints="NO" id="pg3-a5-o5J">
+                                <rect key="frame" x="64" y="238" width="247" height="236"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="094-eK-UPj" firstAttribute="centerY" secondItem="eD6-qm-FlW" secondAttribute="centerY" id="7O2-Lg-46r"/>
-                            <constraint firstItem="094-eK-UPj" firstAttribute="centerX" secondItem="eD6-qm-FlW" secondAttribute="centerX" id="Fv8-UB-wCt"/>
-                            <constraint firstItem="UpI-VA-z4E" firstAttribute="trailing" secondItem="A0P-AL-CrZ" secondAttribute="trailing" constant="32" id="Qea-Jq-vtY"/>
-                            <constraint firstItem="094-eK-UPj" firstAttribute="top" secondItem="A0P-AL-CrZ" secondAttribute="bottom" constant="20" id="Wl3-y1-cZb"/>
-                            <constraint firstItem="A0P-AL-CrZ" firstAttribute="leading" secondItem="UpI-VA-z4E" secondAttribute="leading" constant="32" id="ajw-5D-drE"/>
+                            <constraint firstItem="UpI-VA-z4E" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="pg3-a5-o5J" secondAttribute="bottom" constant="48" id="3cD-dV-vqn"/>
+                            <constraint firstItem="UpI-VA-z4E" firstAttribute="trailing" secondItem="pg3-a5-o5J" secondAttribute="trailing" constant="64" id="6fq-W1-TA1"/>
+                            <constraint firstItem="094-eK-UPj" firstAttribute="centerX" secondItem="eD6-qm-FlW" secondAttribute="centerX" id="QUp-zm-f5m"/>
+                            <constraint firstItem="UpI-VA-z4E" firstAttribute="trailing" secondItem="A0P-AL-CrZ" secondAttribute="trailing" constant="24" id="Qea-Jq-vtY"/>
+                            <constraint firstItem="094-eK-UPj" firstAttribute="top" secondItem="A0P-AL-CrZ" secondAttribute="bottom" constant="40" id="Wl3-y1-cZb"/>
+                            <constraint firstItem="A0P-AL-CrZ" firstAttribute="leading" secondItem="UpI-VA-z4E" secondAttribute="leading" constant="24" id="ajw-5D-drE"/>
+                            <constraint firstItem="A0P-AL-CrZ" firstAttribute="top" secondItem="UpI-VA-z4E" secondAttribute="top" constant="48" id="gkA-xC-8JL"/>
+                            <constraint firstItem="pg3-a5-o5J" firstAttribute="leading" secondItem="UpI-VA-z4E" secondAttribute="leading" constant="64" id="pb0-yJ-v0s"/>
+                            <constraint firstItem="pg3-a5-o5J" firstAttribute="top" secondItem="094-eK-UPj" secondAttribute="bottom" constant="32" id="yDL-3v-8Xx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UpI-VA-z4E"/>
                     </view>
@@ -1175,6 +1182,7 @@
     <resources>
         <image name="calendarIcon" width="25" height="25"/>
         <image name="checkboxIcon" width="25" height="25"/>
+        <image name="logoFull" width="400" height="400"/>
         <image name="paperIcon" width="25" height="25"/>
         <image name="peopleIcon" width="25" height="25"/>
         <image name="settingsIcon" width="25" height="25"/>

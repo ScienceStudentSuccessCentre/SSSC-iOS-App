@@ -15,10 +15,6 @@ class MentoringViewController: UIViewController {
     override func viewDidLoad() {
         bookingButton.backgroundColor = UIColor(.red)
         bookingButton.layer.cornerRadius = 10
-        
-//        let frame = bookingButton.frame
-//        let newFrame = CGRect(x: frame.minX, y: frame.minY, width: frame.width + 100, height: frame.height)
-//        bookingButton.frame = newFrame
     }
     
     @IBAction func bookingButtonPressed() {
