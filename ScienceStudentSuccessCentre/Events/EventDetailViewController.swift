@@ -11,6 +11,16 @@ import SafariServices
 import UserNotifications
 
 class EventDetailViewController: UIViewController, UITextViewDelegate {
+    @IBOutlet var eventTitleLabel: UILabel!
+    @IBOutlet var eventTitleView: UIView!
+    @IBOutlet var eventDescriptionTextView: UITextView!
+    @IBOutlet var eventDetailsView: UIView!
+    @IBOutlet var eventDateTimeLabel: UILabel!
+    @IBOutlet var eventLocationLabel: UILabel!
+    @IBOutlet var eventImageView: UIImageView!
+    @IBOutlet var eventStackView: UIStackView!
+    @IBOutlet var eventScrollView: UIScrollView!
+    
     var event: Event? {
         didSet {
             refreshUI()
@@ -24,18 +34,51 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     private let notificationCenter = UNUserNotificationCenter.current()
     
-    private var actionUrlButton = UIButton()
-    private var notifyMeButton = UIButton()
+    private var actionUrlButton: UIBarButtonItem {
+        let customView = UIButton()
+        let dimension: CGFloat
+        if #available(iOS 13.0, *) {
+            let config = UIImage.SymbolConfiguration(scale: .large)
+            customView.setImage(UIImage(systemName: "link", withConfiguration: config), for: .normal)
+            dimension = 45
+        } else {
+            customView.setImage(UIImage(named: "linkIcon"), for: .normal)
+            dimension = 30
+        }
+        customView.addTarget(self, action: #selector(actionUrlTapped), for: .touchUpInside)
+        customView.frame = CGRect(x: 0, y: 0, width: dimension, height: dimension)
+        customView.widthAnchor.constraint(equalToConstant: dimension).isActive = true
+        customView.heightAnchor.constraint(equalToConstant: dimension).isActive = true
+        customView.translatesAutoresizingMaskIntoConstraints = false
+        customView.accessibilityLabel = "External Website: " + (event?.getActionUrl() ?? "")
+        customView.accessibilityTraits = .link
+        let button = UIBarButtonItem(customView: customView)
+        return button
+    }
     
-    @IBOutlet var eventTitleLabel: UILabel!
-    @IBOutlet var eventTitleView: UIView!
-    @IBOutlet var eventDescriptionTextView: UITextView!
-    @IBOutlet var eventDetailsView: UIView!
-    @IBOutlet var eventDateTimeLabel: UILabel!
-    @IBOutlet var eventLocationLabel: UILabel!
-    @IBOutlet var eventImageView: UIImageView!
-    @IBOutlet var eventStackView: UIStackView!
-    @IBOutlet var eventScrollView: UIScrollView!
+    private func notificationButton(notificationPending: Bool) -> UIBarButtonItem {
+        let customView = UIButton()
+        let dimension = CGFloat(integerLiteral: 29)
+        if #available(iOS 13.0, *) {
+            let config = UIImage.SymbolConfiguration(scale: .large)
+            customView.setImage(UIImage(systemName: notificationPending ? "bell.fill" : "bell", withConfiguration: config), for: .normal)
+            if notificationPending {
+                customView.tintColor = UIColor(.amber)
+            }
+        } else {
+            customView.setImage(UIImage(named: notificationPending ? "notifyOnColoured" : "notifyOff"), for: .normal)
+        }
+        customView.addTarget(self, action: #selector(notifyMeTapped), for: .touchUpInside)
+        customView.frame = CGRect(x: 0, y: 0, width: dimension, height: dimension)
+        customView.widthAnchor.constraint(equalToConstant: dimension).isActive = true
+        customView.heightAnchor.constraint(equalToConstant: dimension).isActive = true
+        customView.translatesAutoresizingMaskIntoConstraints = false
+        customView.accessibilityLabel = "Notify Me"
+        customView.accessibilityTraits = .button
+        let button = UIBarButtonItem(customView: customView)
+        button.accessibilityIdentifier = "ToggleNotification"
+        return button
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +99,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         super.viewWillAppear(animated)
         if let event = event {
             notificationCenter.checkPendingNotifications(for: event).done { notificationPending in
-                self.updateNotifyMeButtonImage(notificationPending: notificationPending)
+                self.prepareNavigationBarButtons(notificationPending: notificationPending)
             }.cauterize()
         }
     }
@@ -72,7 +115,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     /// - If there is an action associated to the event being displayed, the action button is displayed.
     /// - If the notification date/time for this event has not passed, the notification button is displayed.
     /// - If arriving from peek and pop (i.e. `isPreview == true`), no buttons are shown
-    private func prepareNavigationBarButtons() {
+    private func prepareNavigationBarButtons(notificationPending: Bool = false) {
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped))
         var barButtonItems: [UIBarButtonItem] = []
         
@@ -80,47 +123,16 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
             if event.getUrl() != nil {
                 barButtonItems.append(shareButton)
             }
-            
             if event.getNotificationDateTime()!.compare(Date()) != ComparisonResult.orderedAscending {
-                prepareNotifyMeButton()
-                let notificationButton = UIBarButtonItem(customView: notifyMeButton)
-                notificationButton.accessibilityIdentifier = "ToggleNotification"
-                barButtonItems.append(notificationButton)
+                barButtonItems.append(notificationButton(notificationPending: notificationPending))
             }
-            
             if !(event.getActionUrl() ?? "").isEmpty {
-                prepareActionUrlButton()
-                barButtonItems.append(UIBarButtonItem(customView: actionUrlButton))
+                barButtonItems.append(actionUrlButton)
             }
-            
             navigationItem.setRightBarButtonItems(barButtonItems, animated: false)
         } else {
             navigationItem.setRightBarButtonItems([], animated: false)
         }
-    }
-    
-    private func prepareNotifyMeButton() {
-        let dimension = CGFloat(integerLiteral: 29)
-        notifyMeButton.setImage(UIImage(named: "notifyOff"), for: .normal)
-        notifyMeButton.addTarget(self, action: #selector(notifyMeTapped), for: .touchUpInside)
-        notifyMeButton.frame = CGRect(x: 0, y: 0, width: dimension, height: dimension)
-        notifyMeButton.widthAnchor.constraint(equalToConstant: dimension).isActive = true
-        notifyMeButton.heightAnchor.constraint(equalToConstant: dimension).isActive = true
-        notifyMeButton.translatesAutoresizingMaskIntoConstraints = false
-        notifyMeButton.accessibilityLabel = "Notify Me"
-        notifyMeButton.accessibilityTraits = .button
-    }
-    
-    private func prepareActionUrlButton() {
-        let dimension = CGFloat(integerLiteral: 30)
-        actionUrlButton.setImage(UIImage(named: "linkIcon"), for: .normal)
-        actionUrlButton.addTarget(self, action: #selector(actionUrlTapped), for: .touchUpInside)
-        actionUrlButton.frame = CGRect(x: 0, y: 0, width: dimension, height: dimension)
-        actionUrlButton.widthAnchor.constraint(equalToConstant: dimension).isActive = true
-        actionUrlButton.heightAnchor.constraint(equalToConstant: dimension).isActive = true
-        actionUrlButton.translatesAutoresizingMaskIntoConstraints = false
-        actionUrlButton.accessibilityLabel = "External Website: " + (event?.getActionUrl() ?? "")
-        actionUrlButton.accessibilityTraits = .link
     }
     
     /// Prepares the details of this event to be displayed, including loading in all of the text, the associated image (if any), and adding small borders to various event-related views.
@@ -143,13 +155,6 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
             }
         } else {
             eventDetailsView.isHidden = true
-        }
-    }
-    
-    private func updateNotifyMeButtonImage(notificationPending: Bool) {
-        let notifyMeImage = UIImage(named: notificationPending ? "notifyOnColoured" : "notifyOff")
-        DispatchQueue.main.async {
-            self.notifyMeButton.setImage(notifyMeImage, for: .normal)
         }
     }
     
@@ -182,7 +187,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     private func toggleNotificationEnabled() {
         notificationCenter.checkPendingNotifications(for: self.event!).done { notificationPending in
             let shouldEnableNotification = !notificationPending
-            self.updateNotifyMeButtonImage(notificationPending: shouldEnableNotification)
+            self.prepareNavigationBarButtons(notificationPending: shouldEnableNotification)
             if shouldEnableNotification {
                 self.createEventNotification()
             } else {
@@ -221,7 +226,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
                 }
             }
             if !success {
-                self.updateNotifyMeButtonImage(notificationPending: false)
+                self.prepareNavigationBarButtons(notificationPending: false)
             }
         }.cauterize()
     }

@@ -14,8 +14,31 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.delegate = self
+        
+        if #available(iOS 13.0, *) {
+            let config = UIImage.SymbolConfiguration(scale: .large)
+            for item in tabBar.items! {
+                let image: UIImage?
+                switch item.title {
+                case "Events":
+                    image = UIImage(systemName: "calendar", withConfiguration: config)
+                case "Grades":
+                    image = UIImage(systemName: "checkmark.square", withConfiguration: config)
+                case "Mentoring":
+                    image = UIImage(systemName: "person.crop.circle", withConfiguration: config)
+                case "Resources":
+                    image = UIImage(systemName: "doc.text", withConfiguration: config)
+                case "Settings":
+                    image = UIImage(systemName: "gear", withConfiguration: config)
+                default:
+                    image = nil
+                }
+                guard let newImage = image else { return }
+                item.image = newImage
+                item.selectedImage = newImage
+            }
+        }
     }
     
     /// Overrides tapping the tab bar icons to run custom behaviour.
