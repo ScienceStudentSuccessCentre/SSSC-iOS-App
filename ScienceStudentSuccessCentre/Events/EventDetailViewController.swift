@@ -66,7 +66,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
                 customView.tintColor = UIColor(.amber)
             }
         } else {
-            customView.setImage(UIImage(named: notificationPending ? "notifyOnColoured" : "notifyOff"), for: .normal)
+            customView.setImage(UIImage(named: notificationPending ? "notifyOn" : "notifyOff"), for: .normal)
         }
         customView.addTarget(self, action: #selector(notifyMeTapped), for: .touchUpInside)
         customView.frame = CGRect(x: 0, y: 0, width: dimension, height: dimension)
