@@ -12,6 +12,15 @@ import SafariServices
 class MentoringViewController: UIViewController {
     @IBOutlet var bookingButton: UIButton!
     
+    override func viewDidLoad() {
+        bookingButton.backgroundColor = UIColor(.red)
+        bookingButton.layer.cornerRadius = 10
+        
+//        let frame = bookingButton.frame
+//        let newFrame = CGRect(x: frame.minX, y: frame.minY, width: frame.width + 100, height: frame.height)
+//        bookingButton.frame = newFrame
+    }
+    
     @IBAction func bookingButtonPressed() {
         guard let url = URL(string: "https://central.carleton.ca") else { return }
         let webpage = SSSCSafariViewController(url: url)
