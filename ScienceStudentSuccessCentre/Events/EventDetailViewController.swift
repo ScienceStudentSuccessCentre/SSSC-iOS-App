@@ -246,7 +246,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     private func openUrlInAppBrowser(url: URL?) {
         if url != nil {
-            let safariVC = SFSafariViewController(url: url!)
+            let safariVC = SSSCSafariViewController(url: url!)
             present(safariVC, animated: true)
         }
     }

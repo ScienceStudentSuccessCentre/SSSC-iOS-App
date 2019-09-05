@@ -15,6 +15,8 @@
 		44B2CAEC2276A4C2007E53AB /* CourseSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B2CAEB2276A4C2007E53AB /* CourseSummaryCell.swift */; };
 		44B2CAEE22777E0E007E53AB /* ColourRestorableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B2CAED22777E0E007E53AB /* ColourRestorableCell.swift */; };
 		A17011CB21AC8F4000A385FB /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */; };
+		FF04D843231FEB2000A8F34E /* MentoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04D842231FEB2000A8F34E /* MentoringViewController.swift */; };
+		FF04D8472320920700A8F34E /* SSSCSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04D8462320920700A8F34E /* SSSCSafariViewController.swift */; };
 		FF13F7D421646AC1005733B0 /* CreateCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */; };
 		FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */; };
 		FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1D7D24215D6DDD00A88467 /* Database.swift */; };
@@ -85,6 +87,8 @@
 		A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesViewController.swift; sourceTree = "<group>"; };
 		A519D0B6B2D10C171824AAD9 /* Pods_ScienceStudentSuccessCentre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ScienceStudentSuccessCentre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADD592BB8738FD87DADE38D5 /* Pods-ScienceStudentSuccessCentre.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScienceStudentSuccessCentre.release.xcconfig"; path = "Pods/Target Support Files/Pods-ScienceStudentSuccessCentre/Pods-ScienceStudentSuccessCentre.release.xcconfig"; sourceTree = "<group>"; };
+		FF04D842231FEB2000A8F34E /* MentoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentoringViewController.swift; sourceTree = "<group>"; };
+		FF04D8462320920700A8F34E /* SSSCSafariViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSSCSafariViewController.swift; sourceTree = "<group>"; };
 		FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCourseViewController.swift; sourceTree = "<group>"; };
 		FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurekaFormProtocol.swift; sourceTree = "<group>"; };
 		FF1D7D24215D6DDD00A88467 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
@@ -175,6 +179,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		FF04D841231FEAF700A8F34E /* Mentoring */ = {
+			isa = PBXGroup;
+			children = (
+				FF04D842231FEB2000A8F34E /* MentoringViewController.swift */,
+			);
+			path = Mentoring;
+			sourceTree = "<group>";
+		};
 		FF300D1B21B241820048749A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +234,7 @@
 				FF327FCE20128C3E00B06E19 /* Main.storyboard */,
 				FF300D1B21B241820048749A /* Model */,
 				A17011C921AC8ECD00A385FB /* Resources */,
+				FF04D841231FEAF700A8F34E /* Mentoring */,
 				FFD0205621B1E1CB008D960B /* Settings */,
 				FFE84073215F192E00A5E33B /* Utilities and Extensions */,
 			);
@@ -314,6 +327,7 @@
 				FF7A0904215967F600A98504 /* Formatter.swift */,
 				FFD2DF522193860200C97FDF /* Grading.swift */,
 				FF7FD88F21485E8100DAC88C /* HtmlString.swift */,
+				FF04D8462320920700A8F34E /* SSSCSafariViewController.swift */,
 				FF57A96421658509004AA50B /* UIColor.swift */,
 				FF58D17C229AD77C00B78D3C /* UISplitViewController.swift */,
 				FFAE67912188ED2D0079CE16 /* UIView.swift */,
@@ -577,6 +591,7 @@
 				FFD2DF532193860200C97FDF /* Grading.swift in Sources */,
 				FF4BCBCF21AB47790050A876 /* Weight.swift in Sources */,
 				FF58D17D229AD77C00B78D3C /* UISplitViewController.swift in Sources */,
+				FF04D843231FEB2000A8F34E /* MentoringViewController.swift in Sources */,
 				FF5FDB3321ABB19700899963 /* SplitRowValue.swift in Sources */,
 				FF3D05DC215AC9AC0073D0E7 /* TabBarViewController.swift in Sources */,
 				FFA7CBAF215DD54C00A050B1 /* PlannerViewController.swift in Sources */,
@@ -588,6 +603,7 @@
 				FFC6CF1821657CAE00657C34 /* Assignment.swift in Sources */,
 				FFFC6BC92162D70D001585CE /* CourseTableViewCell.swift in Sources */,
 				FFE585F22315BDAE007E7B2F /* SearchableList.swift in Sources */,
+				FF04D8472320920700A8F34E /* SSSCSafariViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,7 +766,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DKPYUUQV7N;
 				INFOPLIST_FILE = "$(SRCROOT)/ScienceStudentSuccessCentre/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carleton.sciencestudentsuccesscentre;
@@ -770,7 +786,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DKPYUUQV7N;
 				INFOPLIST_FILE = "$(SRCROOT)/ScienceStudentSuccessCentre/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carleton.sciencestudentsuccesscentre;
