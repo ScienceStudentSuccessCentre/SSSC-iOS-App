@@ -72,6 +72,14 @@
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeContact</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Mentoring</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.carleton.sciencestudentsuccesscentre.mentoring</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
 			<string>UIApplicationShortcutIconTypeBookmark</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>Resources</string>

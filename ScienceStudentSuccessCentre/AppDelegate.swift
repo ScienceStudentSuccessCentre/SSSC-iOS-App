@@ -64,8 +64,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             tabBarController.selectedIndex = 0
         case "com.carleton.sciencestudentsuccesscentre.grades":
             tabBarController.selectedIndex = 1
-        case "com.carleton.sciencestudentsuccesscentre.resources":
+        case "com.carleton.sciencestudentsuccesscentre.mentoring":
             tabBarController.selectedIndex = 2
+        case "com.carleton.sciencestudentsuccesscentre.resources":
+            tabBarController.selectedIndex = 3
         default: break
         }
     }
