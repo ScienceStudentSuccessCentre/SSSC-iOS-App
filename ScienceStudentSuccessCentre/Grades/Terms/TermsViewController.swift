@@ -8,9 +8,7 @@
 
 import UIKit
 
-class TermsViewController: UITableViewController, GradesSegment, SearchableList {
-    let segmentTitle = "Terms"
-    
+class TermsViewController: UITableViewController, SearchableList {
     private var terms = [Term]()
     
     private var addTermButton: UIBarButtonItem!

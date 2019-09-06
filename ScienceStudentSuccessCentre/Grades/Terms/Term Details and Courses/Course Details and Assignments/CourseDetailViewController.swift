@@ -29,10 +29,8 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.largeTitleDisplayMode = .never
         
-        if #available(iOS 11.0, *) {
-            navigationItem.largeTitleDisplayMode = .never
-        }
         courseTitleView.addBorders(edges: [.bottom], color: UIColor(.bluegrey), width: 1)
         courseGradeView.addBorders(edges: [.top], color: UIColor(.bluegrey), width: 0.4)
         

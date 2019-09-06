@@ -17,7 +17,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
         
         if #available(iOS 13.0, *) {
-            let config = UIImage.SymbolConfiguration(scale: .large)
+            let config = UIImage.SymbolConfiguration(pointSize: 20)
             for item in tabBar.items! {
                 let image: UIImage?
                 switch item.title {

@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol GradesSegment: UIViewController {
-    var segmentTitle: String { get }
-}
-
 protocol GradesViewControllerDelegate: AnyObject {
     func toggleOffTableViewEditMode()
     func showTableViewButtons()
@@ -29,8 +25,10 @@ class GradesViewController: UIViewController {
         searchController.searchBar.delegate = resultsViewController
         searchController.searchBar.tintColor = .white
         searchController.searchBar.placeholder = "Course Search"
-        if #available(iOS 11.0, *) {
-            searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false
+        if #available(iOS 13.0, *) {
+            searchController.searchBar.translatesAutoresizingMaskIntoConstraints = true
+            searchController.searchBar.overrideUserInterfaceStyle = .dark
         }
         return searchController
     }()
@@ -49,7 +47,8 @@ class GradesViewController: UIViewController {
         guard let viewController = storyboard?.instantiateViewController(withIdentifier: "\(TermsViewController.self)") as? TermsViewController else {
             fatalError()
         }
-        viewController.tableView.tableHeaderView = searchController.searchBar
+        viewController.navigationItem.title = "Terms"
+        viewController.navigationItem.searchController = searchController
         return viewController
     }()
     
@@ -58,6 +57,8 @@ class GradesViewController: UIViewController {
             withIdentifier: "\(CalculatorViewController.self)") as? CalculatorViewController else {
             fatalError()
         }
+        viewController.navigationItem.title = "CGPA Calculator"
+        viewController.navigationItem.searchController = searchController
         return viewController
     }()
     
@@ -66,6 +67,7 @@ class GradesViewController: UIViewController {
             withIdentifier: "\(PlannerViewController.self)") as? PlannerViewController else {
             fatalError()
         }
+        viewController.navigationItem.title = "CGPA Planner"
         return viewController
     }()
 
@@ -75,10 +77,7 @@ class GradesViewController: UIViewController {
         definesPresentationContext = true
         navigationController?.view.backgroundColor = UIColor(.lightgrey)
         navigationItem.titleView = segmentControl
-        
-        if #available(iOS 11.0, *) {
-            extendedLayoutIncludesOpaqueBars = true
-        }
+        extendedLayoutIncludesOpaqueBars = true
         
         if #available(iOS 13.0, *) {
             prepareLargeTitleNavigationBarAppearance()
@@ -99,32 +98,16 @@ class GradesViewController: UIViewController {
     /// This function switches to the new tab by removing any other tabs attached to the view, then adding the correct tab.
     /// - Parameter segmentIndex: The index of the `SegmentControl` tab to switch to.
     private func switchToView(segmentIndex: Int) {
-        let allViews: [GradesSegment] = [termsViewController, calculatorViewController, plannerViewController]
+        let allViews: [UIViewController] = [termsViewController, calculatorViewController, plannerViewController]
         let view = allViews[segmentIndex]
-        let title = view.segmentTitle
         
         guard !self.children.contains(view) else { return }
         
         delegate?.toggleOffTableViewEditMode()
         allViews.forEach { remove(asChildViewController: $0) }
         add(asChildViewController: view)
-        navigationItem.title = title
-        
-        if let view = view as? SearchableList {
-            if #available(iOS 11.0, *) {
-                navigationItem.searchController = searchController
-                view.tableView.tableHeaderView = nil
-            } else if view is TermsViewController {
-                termsViewController.tableView.tableHeaderView = searchController.searchBar
-                termsViewController.tableView.contentOffset = CGPoint(x: 0, y: searchController.searchBar.frame.size.height)
-            }
-            // There is a weird bug with the search bar disappearing if enabled on < iOS 11 for both the TermsViewController and the CalculatorViewController
-            // For this reason it is only enabled for the TermsViewController on < iOS 11
-        } else {
-            if #available(iOS 11.0, *) {
-                navigationItem.searchController = nil
-            }
-        }
+        navigationItem.title = view.navigationItem.title
+        navigationItem.searchController = view.navigationItem.searchController
     }
     
     /// Adds a given view to the overarching view.
