@@ -55,7 +55,7 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
         form
         +++ Section(header: "Assignment Info",
                     footer: weights.count == 0
-                        ? "In order to add assignments, please create assignment weights for this course. This can be done from the previous screen."
+                        ? "NOTE: In order to add assignments, please create assignment weights for this course. This can be done using the (i) button on the previous screen!"
                         : "")
         <<< TextRow { row in
             row.tag = "name"
@@ -108,6 +108,16 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
             if #available(iOS 13.0, *) {
                 cell.backgroundColor = UIColor(named: "formAccent")
                 cell.textLabel?.textColor = UIColor.label
+            }
+        }.onPresent { _, detailView in
+            if #available(iOS 13.0, *) {
+                detailView.view.layoutSubviews()
+                detailView.tableView.backgroundColor = UIColor(named: "formBackground")
+                detailView.selectableRowCellUpdate = { cell, _ in
+                    cell.tintColor = UIColor(named: "tint")
+                    cell.backgroundColor = UIColor(named: "formAccent")
+                    cell.textLabel?.textColor = UIColor.label
+                }
             }
         }.onChange {_ in
             self.validateForm()
@@ -162,5 +172,11 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
     
     @objc private func cancelButtonPressed() {
         navigationController?.dismiss(animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        if let view = view as? UITableViewHeaderFooterView {
+            view.textLabel?.textColor = UIColor(named: "tint")
+        }
     }
 }

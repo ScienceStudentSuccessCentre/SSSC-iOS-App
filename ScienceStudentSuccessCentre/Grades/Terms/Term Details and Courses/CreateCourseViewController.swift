@@ -191,7 +191,18 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                 cell.backgroundColor = UIColor(named: "formAccent")
                 cell.textLabel?.textColor = UIColor.label
             }
-        }.onChange { _ in
+        }.onPresent { _, detailView in
+            if #available(iOS 13.0, *) {
+                detailView.view.layoutSubviews()
+                detailView.tableView.backgroundColor = UIColor(named: "formBackground")
+                detailView.selectableRowCellUpdate = { cell, _ in
+                    cell.tintColor = UIColor(named: "tint")
+                    cell.backgroundColor = UIColor(named: "formAccent")
+                    cell.textLabel?.textColor = UIColor.label
+                }
+            }
+        }
+        .onChange { _ in
             self.validateForm()
         }
     }
@@ -272,20 +283,24 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         var weightNames = [String]()
         var validWeights = true
         var weightTotal = 0
-        for weightValue in weightValues {
-            let weightName = weightValue.left ?? ""
-            let weightPercentage = weightValue.right ?? -1
-            if (weightName.isEmpty && 0 ... 100 ~= weightPercentage) || !(0 ... 100 ~= weightPercentage) || weightNames.contains(weightName) {
+        if weightValues.count > 0 {
+            for weightValue in weightValues {
+                let weightName = weightValue.left ?? ""
+                let weightPercentage = weightValue.right ?? -1
+                if (weightName.isEmpty && 0 ... 100 ~= weightPercentage) || !(0 ... 100 ~= weightPercentage) || weightNames.contains(weightName) {
+                    validWeights = false
+                    break
+                }
+                if 0 ... 100 ~= weightPercentage {
+                    weightTotal += weightPercentage
+                }
+                weightNames.append(weightName)
+            }
+            if (weightTotal != 100 && weightTotal != 0) || (weightValues.count == 0 && finalGrade == "None") {
                 validWeights = false
-                break
             }
-            if 0 ... 100 ~= weightPercentage {
-                weightTotal += weightPercentage
-            }
-            weightNames.append(weightName)
-        }
-        if (weightTotal != 100 && weightTotal != 0) || (weightValues.count == 0 && finalGrade == "None") {
-            validWeights = false
+        } else {
+            validWeights = true
         }
         
         if !name.isEmpty && !code.isEmpty && credits > 0 && validWeights {
