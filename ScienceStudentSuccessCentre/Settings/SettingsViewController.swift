@@ -28,16 +28,20 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
         
         let defaults = UserDefaults.standard
         let includeInProgressCourses = defaults.bool(forKey: "includeInProgressCourses")
+        let respectSystemDarkMode = defaults.bool(forKey: "respectSystemDarkMode")
+        let permanentDarkMode = defaults.bool(forKey: "permanentDarkMode")
         form.rowBy(tag: "includeInProgressCourses")?.baseValue = includeInProgressCourses
+        form.rowBy(tag: "respectSystemDarkMode")?.baseValue = respectSystemDarkMode
+        form.rowBy(tag: "permanentDarkMode")?.baseValue = permanentDarkMode
     }
     
     func createForm() {
         form
-            +++ Section(header: "Settings - CGPA Calculator",
+            +++ Section(header: "CGPA Calculator",
                         footer: "If toggled on, courses without a Final Grade specified will be included in CGPA calculations on the CGPA Calculator page.")
             <<< SwitchRow { row in
                 row.tag = "includeInProgressCourses"
-                row.title = "Include Courses in Progress"
+                row.title = "Include In-Progress Courses"
             }.cellUpdate { cell, _ in
                 if #available(iOS 13.0, *) {
                     cell.backgroundColor = UIColor(named: "formAccent")
@@ -46,6 +50,33 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
             }.onChange { _ in
                 self.validateForm()
             }
+            
+            +++ Section(header: "Dark Mode",
+                        footer: "If Respect Dark Mode toggled on, the app will automatically switch into dark mode when your device is put into dark mode.")
+            <<< SwitchRow { row in
+                row.tag = "respectSystemDarkMode"
+                row.title = "Respect System Dark Mode"
+            }.cellUpdate { cell, _ in
+                if #available(iOS 13.0, *) {
+                    cell.backgroundColor = UIColor(named: "formAccent")
+                    cell.textLabel?.textColor = UIColor.label
+                }
+            }.onChange { _ in
+                self.validateForm()
+            }
+            <<< SwitchRow { row in
+                row.tag = "permanentDarkMode"
+                row.title = "Permanent Dark Mode"
+                row.hidden = Condition.function(["respectSystemDarkMode"], { form in
+                    return (form.rowBy(tag: "respectSystemDarkMode") as? SwitchRow)?.value ?? false
+                })
+            }.cellUpdate { cell, _ in
+                if #available(iOS 13.0, *) {
+                    cell.backgroundColor = UIColor(named: "formAccent")
+                    cell.textLabel?.textColor = UIColor.label
+                }
+            }
+            
             +++ Section(header: "\nBack Up Grades Data",
                         footer: "Open the exported attachement on your device to launch the Science Student Success Centre app and restore your data.")
             <<< ButtonRow { row in
@@ -57,15 +88,24 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
                     cell.backgroundColor = UIColor(named: "formAccent")
                 }
             }
+            
             +++ Section(header: "\nAcknowledgments",
                         // swiftlint:disable:next line_length
                         footer: "This app was developed for the Carleton University Science Student Success Centre by Avery Vine. Special thanks to Kshamina Ghelani, Selasi Kudolo, Gina Bak, Anisha Ghelani, Lily Visanuvimol, Divin Kang, and everyone else at the SSSC who helped out along the way.\n\nReleased under GNU General Public License v3.0 | Copyright @ 2018")
     }
     
     func validateForm() {
+        let defaults = UserDefaults.standard
         if let includeInProgressCourses = form.rowBy(tag: "includeInProgressCourses")?.baseValue as? Bool {
-            let defaults = UserDefaults.standard
             defaults.set(includeInProgressCourses, forKey: "includeInProgressCourses")
+        }
+        
+        if let respectSystemDarkMode = form.rowBy(tag: "respectSystemDarkMode")?.baseValue as? Bool {
+            defaults.set(respectSystemDarkMode, forKey: "respectSystemDarkMode")
+            
+            if let permanentDarkMode = form.rowBy(tag: "permanentDarkMode")?.baseValue as? Bool {
+                defaults.set(permanentDarkMode, forKey: "permanentDarkMode")
+            }
         }
     }
     

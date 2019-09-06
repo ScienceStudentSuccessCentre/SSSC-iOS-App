@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if UserDefaults.standard.value(forKey: "includeInProgressCourses") == nil {
             UserDefaults.standard.set(true, forKey: "includeInProgressCourses")
         }
+        if UserDefaults.standard.value(forKey: "respectSystemDarkMode") == nil {
+            UserDefaults.standard.set(true, forKey: "respectSystemDarkMode")
+        }
         
         processLaunchArguments()
         
