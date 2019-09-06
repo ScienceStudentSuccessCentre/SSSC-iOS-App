@@ -24,10 +24,7 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-        }
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         let defaults = UserDefaults.standard
         let includeInProgressCourses = defaults.bool(forKey: "includeInProgressCourses")

@@ -57,14 +57,7 @@ class SSSCSafariViewController: SFSafariViewController {
         
         // On iPhone 5 screens and smaller, even in landscape Safari View Controller keeps controls on bottom, but on 6 and higher everything moves to the top if in landscape
         if view.bounds.width <= 568.0 {
-            let toolbarHeight: CGFloat = {
-                if #available(iOS 11.0, *) {
-                    return 46.0 + view.safeAreaInsets.bottom
-                } else {
-                    return 46.0
-                }
-            }()
-            
+            let toolbarHeight: CGFloat = 46.0 + view.safeAreaInsets.bottom
             backgroundView.frame = CGRect(x: view.bounds.width - inset - backgroundViewSize,
                                             y: view.bounds.height - toolbarHeight - inset - backgroundViewSize,
                                             width: backgroundViewSize,
