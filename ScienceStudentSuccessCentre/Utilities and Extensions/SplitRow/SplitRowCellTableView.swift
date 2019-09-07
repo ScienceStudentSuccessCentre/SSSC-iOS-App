@@ -83,11 +83,17 @@ class SplitRowCellTableView<T: TypedRowType>: UITableView, UITableViewDelegate, 
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let row = self.row else { fatalError() }
         
+        let separatorColor: UIColor?
+        if #available(iOS 13.0, *) {
+            separatorColor = UIColor(named: "separator")
+        } else {
+            separatorColor = .groupTableViewBackground
+        }
         if let cell = row.baseCell,
             leftSeparatorStyle == .singleLine,
-            false == cell.subviews.contains(where: { $0.backgroundColor == .groupTableViewBackground }) {
+            false == cell.subviews.contains(where: { $0.backgroundColor == separatorColor }) {
             let separatorView = UIView()
-            separatorView.backgroundColor = .groupTableViewBackground
+            separatorView.backgroundColor = separatorColor
             separatorView.translatesAutoresizingMaskIntoConstraints = false
             
             cell.addSubview(separatorView)

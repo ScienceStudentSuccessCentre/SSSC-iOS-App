@@ -57,6 +57,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         
         if #available(iOS 13.0, *) {
             tableView.backgroundColor = UIColor(named: "formBackground")
+            tableView.separatorColor = UIColor(named: "separator")
         }
     }
     
@@ -195,6 +196,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             if #available(iOS 13.0, *) {
                 detailView.view.layoutSubviews()
                 detailView.tableView.backgroundColor = UIColor(named: "formBackground")
+                detailView.tableView.separatorColor = UIColor(named: "separator")
                 detailView.selectableRowCellUpdate = { cell, _ in
                     cell.tintColor = UIColor(named: "tint")
                     cell.backgroundColor = UIColor(named: "formAccent")

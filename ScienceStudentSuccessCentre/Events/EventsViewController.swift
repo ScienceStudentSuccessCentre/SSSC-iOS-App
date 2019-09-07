@@ -34,6 +34,7 @@ class EventsViewController: UITableViewController {
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshEventData), for: .valueChanged)
+        refreshControl.tintColor = .white
         tableView.refreshControl = refreshControl
         
         noEventsLabel = {
@@ -57,6 +58,11 @@ class EventsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
     }
     
     /// Retrieves the list of events from the SSSC website, and selects the first one on the list when viewing on iPads.

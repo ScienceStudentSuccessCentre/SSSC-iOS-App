@@ -56,6 +56,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="571"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="primaryBackground"/>
+                        <color key="separatorColor" name="separator"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventTableViewCell" rowHeight="90" id="Ryj-pH-6Hj" customClass="EventTableViewCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
@@ -140,7 +141,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dwG-b7-Njp" userLabel="Event Title View">
-                                <rect key="frame" x="0.0" y="44" width="375" height="52"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No events 😕" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JOQ-gI-Rbo">
                                         <rect key="frame" x="8" y="8" width="359" height="36"/>
@@ -158,7 +159,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dFM-bk-TKl">
-                                <rect key="frame" x="8" y="96" width="359" height="410"/>
+                                <rect key="frame" x="8" y="52" width="359" height="454"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="yIA-Vy-Ot7">
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="158"/>
@@ -229,7 +230,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" name="tertiaryBackground"/>
+                                        <color key="backgroundColor" name="secondaryBackground"/>
                                         <constraints>
                                             <constraint firstItem="UZI-oG-Ba3" firstAttribute="top" secondItem="39y-qr-enf" secondAttribute="top" constant="8" id="8Wp-cS-034"/>
                                             <constraint firstItem="UZI-oG-Ba3" firstAttribute="leading" secondItem="39y-qr-enf" secondAttribute="leading" constant="8" id="LmN-zm-mLM"/>
@@ -483,6 +484,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="primaryBackground"/>
+                        <color key="separatorColor" name="separator"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TermTableViewCell" rowHeight="90" id="Mfd-OC-8aU" customClass="TermTableViewCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
@@ -562,6 +564,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mSR-yn-Ced">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
                                 <color key="backgroundColor" name="primaryBackground"/>
+                                <color key="separatorColor" name="separator"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CourseSummaryCell" rowHeight="65" id="dcx-5P-fPE" customClass="CourseSummaryCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="65"/>
@@ -610,7 +613,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" name="tertiaryBackground"/>
+                                        <color key="backgroundColor" name="secondaryBackground"/>
                                         <constraints>
                                             <constraint firstItem="DW5-bL-1s5" firstAttribute="leading" secondItem="ibv-jc-rks" secondAttribute="leading" constant="8" id="dCJ-zC-40H"/>
                                             <constraint firstItem="DW5-bL-1s5" firstAttribute="centerY" secondItem="ibv-jc-rks" secondAttribute="centerY" id="gIF-Vu-anG"/>
@@ -686,6 +689,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jI6-WQ-7Cg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="579"/>
                                 <color key="backgroundColor" name="primaryBackground"/>
+                                <color key="separatorColor" name="separator"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CourseTableViewCell" rowHeight="90" id="r9o-1c-cGt" customClass="CourseTableViewCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
@@ -787,7 +791,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" name="tertiaryBackground"/>
+                                        <color key="backgroundColor" name="secondaryBackground"/>
                                         <constraints>
                                             <constraint firstItem="gNO-ze-1Zh" firstAttribute="leading" secondItem="RlG-AZ-1Tq" secondAttribute="leading" constant="8" id="8fj-On-A9J"/>
                                             <constraint firstItem="gNO-ze-1Zh" firstAttribute="centerY" secondItem="RlG-AZ-1Tq" secondAttribute="centerY" id="LaX-fQ-Iv3"/>
@@ -872,6 +876,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bd5-Q8-7PF">
                                 <rect key="frame" x="0.0" y="75.5" width="375" height="503.5"/>
                                 <color key="backgroundColor" name="primaryBackground"/>
+                                <color key="separatorColor" name="separator"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AssignmentTableViewCell" rowHeight="90" id="3C6-M3-wiS" userLabel="AssignmentTableViewCell" customClass="AssignmentTableViewCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
@@ -955,7 +960,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" name="tertiaryBackground"/>
+                                <color key="backgroundColor" name="secondaryBackground"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="aQp-gQ-O29" secondAttribute="bottom" constant="8" id="1O6-NG-HTX"/>
                                     <constraint firstItem="aQp-gQ-O29" firstAttribute="leading" secondItem="whK-Ic-VN8" secondAttribute="leading" constant="8" id="E0j-oi-bn8"/>
@@ -1186,20 +1191,20 @@
         <image name="peopleIcon" width="25" height="25"/>
         <image name="settingsIcon" width="25" height="25"/>
         <namedColor name="primaryBackground">
-            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="secondaryBackground">
-            <color red="0.26100000739097595" green="0.26100000739097595" blue="0.26100000739097595" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="tertiaryBackground">
-            <color red="0.31999999284744263" green="0.31999999284744263" blue="0.31999999284744263" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="separator">
+            <color red="0.23499999940395355" green="0.23499999940395355" blue="0.2630000114440918" alpha="0.28999999165534973" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="tint">
-            <color red="0.3919999897480011" green="0.82400000095367432" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hN5-d3-g4O"/>
+        <segue reference="oWK-2l-eoL"/>
         <segue reference="kLN-0H-OdZ"/>
         <segue reference="8vw-Sl-0KH"/>
         <segue reference="II0-2O-iZm"/>

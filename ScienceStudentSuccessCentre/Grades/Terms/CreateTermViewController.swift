@@ -30,6 +30,7 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
         
         if #available(iOS 13.0, *) {
             tableView.backgroundColor = UIColor(named: "formBackground")
+            tableView.separatorColor = UIColor(named: "separator")
         }
     }
     

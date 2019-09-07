@@ -15,7 +15,7 @@ extension UISplitViewController: UISplitViewControllerDelegate {
     }
     
     open override var preferredStatusBarStyle: UIStatusBarStyle {
-        return splitViewController?.viewControllers.first?.preferredStatusBarStyle ?? .lightContent
+        return .lightContent
     }
     
     /// This is to ensure that smaller devices (like iPhones) will show the master view (this view controller) first, before any detail views.

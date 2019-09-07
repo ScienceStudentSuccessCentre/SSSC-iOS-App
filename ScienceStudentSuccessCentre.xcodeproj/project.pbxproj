@@ -27,6 +27,7 @@
 		FF327FD520128C3E00B06E19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF327FD320128C3E00B06E19 /* LaunchScreen.storyboard */; };
 		FF3C2288202427660098B868 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3C2287202427660098B868 /* EventDetailViewController.swift */; };
 		FF3D05DC215AC9AC0073D0E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */; };
+		FF3D184A232422EB008FB490 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D1849232422EB008FB490 /* UINavigationController.swift */; };
 		FF4A9D12229A19DA00DE8EED /* TestGradeData.sssc in Resources */ = {isa = PBXBuildFile; fileRef = FFF093C22291BC6C00217DE3 /* TestGradeData.sssc */; };
 		FF4BCBCF21AB47790050A876 /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BCBCE21AB47790050A876 /* Weight.swift */; };
 		FF4C4A9C215D7C550091BF2A /* GradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */; };
@@ -102,6 +103,7 @@
 		FF3C2287202427660098B868 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		FF3C228A2024317A0098B868 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		FF3D05DB215AC9AC0073D0E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		FF3D1849232422EB008FB490 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		FF4BCBCE21AB47790050A876 /* Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weight.swift; sourceTree = "<group>"; };
 		FF4C4A9B215D7C550091BF2A /* GradesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesViewController.swift; sourceTree = "<group>"; };
 		FF57A96421658509004AA50B /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				FF7FD88F21485E8100DAC88C /* HtmlString.swift */,
 				FF04D8462320920700A8F34E /* SSSCSafariViewController.swift */,
 				FF57A96421658509004AA50B /* UIColor.swift */,
+				FF3D1849232422EB008FB490 /* UINavigationController.swift */,
 				FF58D17C229AD77C00B78D3C /* UISplitViewController.swift */,
 				FFAE67912188ED2D0079CE16 /* UIView.swift */,
 				FFF72DA722B0889300A24DB9 /* UIViewController.swift */,
@@ -562,6 +565,7 @@
 				FF80666E2193A31D00B202A6 /* Double.swift in Sources */,
 				FF2CC47F21ACF5F3002EE205 /* CalculateRequiredFinalViewController.swift in Sources */,
 				FF651CEA2190F27100C37022 /* CreateAssignmentViewController.swift in Sources */,
+				FF3D184A232422EB008FB490 /* UINavigationController.swift in Sources */,
 				FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */,
 				44B2CAEE22777E0E007E53AB /* ColourRestorableCell.swift in Sources */,
 				FFC6CF1621657C6D00657C34 /* CourseDetailViewController.swift in Sources */,

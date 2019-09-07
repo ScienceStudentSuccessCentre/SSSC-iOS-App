@@ -29,13 +29,10 @@ class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         view.addSubview(activityIndicator)
         
         let frame = UIApplication.shared.statusBarFrame
-        statusBarBackground = UIView(frame: frame)
-        if #available(iOS 13.0, *) {
-            statusBarBackground?.backgroundColor = UIColor(named: "primaryBackground")
-        } else {
-            statusBarBackground?.backgroundColor = .white
-        }
-        view.addSubview(statusBarBackground!)
+        let statusBarBackground = UIView(frame: frame)
+        statusBarBackground.backgroundColor = UIColor(.steelblue)
+        view.addSubview(statusBarBackground)
+        self.statusBarBackground = statusBarBackground
 
         if let url = URL(string: urlString) {
             webView?.load(URLRequest(url: url))
@@ -55,5 +52,9 @@ class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         webView?.frame = CGRect(origin: .zero, size: size)
         guard let oldFrame = statusBarBackground?.frame else { return }
         statusBarBackground?.frame = CGRect(x: oldFrame.minX, y: oldFrame.minY, width: size.width, height: oldFrame.height)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }
