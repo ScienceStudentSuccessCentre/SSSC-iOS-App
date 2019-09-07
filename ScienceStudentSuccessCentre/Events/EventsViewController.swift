@@ -25,6 +25,9 @@ class EventsViewController: UITableViewController {
         
         activityIndicatorView = UIActivityIndicatorView(style: .gray)
         activityIndicatorView.center = view.center
+        if #available(iOS 13.0, *) {
+            activityIndicatorView.color = .label
+        }
         activityIndicatorView.startAnimating()
         
         tableView.delegate = self

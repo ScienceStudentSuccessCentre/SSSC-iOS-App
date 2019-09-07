@@ -10,6 +10,8 @@ import UIKit
 import Eureka
 
 class PlannerViewController: FormViewController, EurekaFormProtocol {
+    weak var underlyingController: UIViewController?
+    
     private var currentGpa: Double!
     private let formatter = NumberFormatter()
     

@@ -6,9 +6,11 @@
 //  Copyright © 2018 Avery Vine. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol EurekaFormProtocol {
     func createForm()
     func validateForm()
+    
+    var underlyingController: UIViewController? { get set }
 }

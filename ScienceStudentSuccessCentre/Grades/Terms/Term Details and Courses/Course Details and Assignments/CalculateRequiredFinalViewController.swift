@@ -10,6 +10,8 @@ import UIKit
 import Eureka
 
 class CalculateRequiredFinalViewController: FormViewController, EurekaFormProtocol {
+    weak var underlyingController: UIViewController?
+    
     var course: Course!
     private var weights = [Weight]()
     private var weightNames = [String]()

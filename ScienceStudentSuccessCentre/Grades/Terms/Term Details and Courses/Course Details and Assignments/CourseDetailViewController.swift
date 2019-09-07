@@ -190,15 +190,18 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
             guard let controller = segue.destination.children.first as? CreateCourseViewController
                 else { return }
             controller.course = course
+            controller.underlyingController = self
         case "createAssignment":
             guard let controller = segue.destination.children.first as? CreateAssignmentViewController
                 else { return }
             controller.course = course
+            controller.underlyingController = self
         case "editAssignment":
             guard let controller = segue.destination.children.first as? CreateAssignmentViewController
                 else { return }
             controller.assignment = assignments[accessoryButtonIndexPath.row]
             controller.course = course
+            controller.underlyingController = self
         case "calcReqFinalGrade":
             guard let controller = segue.destination.children.first as? CalculateRequiredFinalViewController
                 else { return }

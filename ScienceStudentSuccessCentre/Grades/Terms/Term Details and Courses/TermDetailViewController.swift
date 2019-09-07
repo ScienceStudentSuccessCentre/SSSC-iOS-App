@@ -153,6 +153,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         if segue.identifier == "editCourse",
             let controller = segue.destination.children.first as? CreateCourseViewController {
             controller.term = term
+            controller.underlyingController = self
         }
     }
 }

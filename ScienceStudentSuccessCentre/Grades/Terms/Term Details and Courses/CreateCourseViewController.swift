@@ -12,6 +12,8 @@ import ColorPickerRow
 
 /// This one's a doozy, I'm sorry to whoever has to work on this.
 class CreateCourseViewController: FormViewController, EurekaFormProtocol {
+    weak var underlyingController: UIViewController?
+    
     var term: Term!
     var course: Course!
     private var weights = [Weight]()
@@ -328,6 +330,10 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         if !Database.instance.insertOrUpdate(course: course) {
             print("Failed to create course")
             presentGenericError()
+        }
+        
+        if #available(iOS 13.0, *) {
+            underlyingController?.viewWillAppear(true)
         }
     }
     

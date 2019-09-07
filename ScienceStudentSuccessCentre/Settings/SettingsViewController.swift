@@ -10,6 +10,8 @@ import Eureka
 import UIKit
 
 class SettingsViewController: FormViewController, EurekaFormProtocol {
+    weak var underlyingController: UIViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

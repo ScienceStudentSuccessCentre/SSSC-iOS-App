@@ -14,6 +14,7 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
     private var years: [String]!
     private var term: String?
     private var year: String?
+    weak var underlyingController: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,6 +102,10 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
             presentGenericError()
         }
         navigationController?.dismiss(animated: true)
+        
+        if #available(iOS 13.0, *) {
+            underlyingController?.viewWillAppear(true)
+        }
     }
     
     @objc private func cancelButtonPressed() {

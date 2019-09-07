@@ -78,6 +78,10 @@ class TermsViewController: UITableViewController, SearchableList {
             let controller = segue.destination as? TermDetailViewController {
             controller.term = terms[indexPath.row]
         }
+        if segue.identifier == "createTerm",
+            let controller = segue.destination.children.first as? CreateTermViewController {
+            controller.underlyingController = self
+        }
     }
     
     private func prepareNavigationBarButtons() {

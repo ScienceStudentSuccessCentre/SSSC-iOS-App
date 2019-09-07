@@ -10,6 +10,8 @@ import UIKit
 import Eureka
 
 class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
+    weak var underlyingController: UIViewController?
+    
     var course: Course!
     var assignment: Assignment!
     private var weights: [Weight]!
@@ -171,6 +173,10 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
             presentGenericError()
         }
         navigationController?.dismiss(animated: true)
+        
+        if #available(iOS 13.0, *) {
+            underlyingController?.viewWillAppear(true)
+        }
     }
     
     @objc private func cancelButtonPressed() {
