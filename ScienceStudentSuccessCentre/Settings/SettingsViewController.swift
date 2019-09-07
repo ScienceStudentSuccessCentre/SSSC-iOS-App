@@ -14,8 +14,8 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
         super.viewDidLoad()
         
         self.extendedLayoutIncludesOpaqueBars = true
+        prepareNavigationBarAppearance()
         if #available(iOS 13.0, *) {
-            prepareLargeTitleNavigationBarAppearance()
             tableView.backgroundColor = UIColor(named: "formBackground")
         }
         

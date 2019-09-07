@@ -45,15 +45,9 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
         if dbCourse != nil {
             course = dbCourse
         }
+        prepareNavigationBarAppearance(barTintColour: UIColor(course.colour))
         courseCode.text = course.code
         courseTitle.text = course.name
-        
-        if #available(iOS 13.0, *) {
-            prepareStandardTitleNavigationBarAppearance(barTintColour: UIColor(course.colour))
-        } else {
-            navigationController?.navigationBar.barTintColor = UIColor(course.colour)
-        }
-        
         loadAssignments()
         updateCourseDetails()
         
@@ -71,12 +65,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     override func willMove(toParent parent: UIViewController?) {
         super.willMove(toParent: parent)
-        
-        if #available(iOS 13.0, *) {
-            prepareStandardTitleNavigationBarAppearance(barTintColour: UIColor(.steelblue))
-        } else {
-            navigationController?.navigationBar.barTintColor = UIColor(.steelblue)
-        }
+        prepareNavigationBarAppearance()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

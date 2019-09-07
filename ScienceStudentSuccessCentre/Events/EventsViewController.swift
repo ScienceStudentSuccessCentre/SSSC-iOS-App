@@ -21,10 +21,7 @@ class EventsViewController: UITableViewController {
         
         self.extendedLayoutIncludesOpaqueBars = true
         self.navigationController?.view.backgroundColor = .white
-        if #available(iOS 13.0, *) {
-            prepareLargeTitleNavigationBarAppearance()
-            prepareStandardTitleNavigationBarAppearance(barTintColour: UIColor(.steelblue))
-        }
+        prepareNavigationBarAppearance()
         
         activityIndicatorView = UIActivityIndicatorView(style: .gray)
         activityIndicatorView.center = view.center

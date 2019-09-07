@@ -83,10 +83,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
-        if #available(iOS 13.0, *) {
-            // iPad-specific
-            prepareLargeTitleNavigationBarAppearance()
-        }
+        prepareNavigationBarAppearance()
         
         eventDetailsView.isHidden = true
         eventImageView.isHidden = true
