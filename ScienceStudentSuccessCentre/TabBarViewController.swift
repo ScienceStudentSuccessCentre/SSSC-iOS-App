@@ -12,6 +12,19 @@ import UIKit
 class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     var previousController: UIViewController?
     
+    @available(iOS 13.0, *)
+    override var overrideUserInterfaceStyle: UIUserInterfaceStyle {
+        get {
+            if UserDefaults.standard.bool(forKey: "respectSystemDarkMode") {
+                return .unspecified
+            }
+            return UserDefaults.standard.bool(forKey: "permanentDarkMode") ? .dark : .light
+        }
+        set {
+            super.overrideUserInterfaceStyle = newValue
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self

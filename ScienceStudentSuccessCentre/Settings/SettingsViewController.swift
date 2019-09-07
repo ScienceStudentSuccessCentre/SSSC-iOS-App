@@ -6,8 +6,8 @@
 //  Copyright © 2018 Avery Vine. All rights reserved.
 //
 
-import UIKit
 import Eureka
+import UIKit
 
 class SettingsViewController: FormViewController, EurekaFormProtocol {
     override func viewDidLoad() {
@@ -36,6 +36,13 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
     }
     
     func createForm() {
+        let darkModeSupported: Bool
+        if #available(iOS 13.0, *) {
+            darkModeSupported = true
+        } else {
+            darkModeSupported = false
+        }
+        
         form
             +++ Section(header: "CGPA Calculator",
                         footer: "If toggled on, courses without a Final Grade specified will be included in CGPA calculations on the CGPA Calculator page.")
@@ -52,7 +59,9 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
             }
             
             +++ Section(header: "Dark Mode",
-                        footer: "If Respect Dark Mode toggled on, the app will automatically switch into dark mode when your device is put into dark mode.")
+                        footer: "If Respect Dark Mode is toggled on, the app will automatically switch into dark mode when your device does.") { section in
+                section.hidden = Condition(booleanLiteral: !darkModeSupported)
+            }
             <<< SwitchRow { row in
                 row.tag = "respectSystemDarkMode"
                 row.title = "Respect System Dark Mode"
@@ -75,6 +84,8 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
                     cell.backgroundColor = UIColor(named: "formAccent")
                     cell.textLabel?.textColor = UIColor.label
                 }
+            }.onChange { _ in
+                self.validateForm()
             }
             
             +++ Section(header: "\nBack Up Grades Data",
@@ -96,15 +107,29 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
     
     func validateForm() {
         let defaults = UserDefaults.standard
-        if let includeInProgressCourses = form.rowBy(tag: "includeInProgressCourses")?.baseValue as? Bool {
-            defaults.set(includeInProgressCourses, forKey: "includeInProgressCourses")
+        guard let includeInProgressCourses = form.rowBy(tag: "includeInProgressCourses")?.baseValue as? Bool,
+            let respectSystemDarkMode = form.rowBy(tag: "respectSystemDarkMode")?.baseValue as? Bool,
+            let permanentDarkMode = form.rowBy(tag: "permanentDarkMode")?.baseValue as? Bool else {
+            return
         }
+        defaults.set(includeInProgressCourses, forKey: "includeInProgressCourses")
+        defaults.set(respectSystemDarkMode, forKey: "respectSystemDarkMode")
+        defaults.set(permanentDarkMode, forKey: "permanentDarkMode")
         
-        if let respectSystemDarkMode = form.rowBy(tag: "respectSystemDarkMode")?.baseValue as? Bool {
-            defaults.set(respectSystemDarkMode, forKey: "respectSystemDarkMode")
-            
-            if let permanentDarkMode = form.rowBy(tag: "permanentDarkMode")?.baseValue as? Bool {
-                defaults.set(permanentDarkMode, forKey: "permanentDarkMode")
+        if #available(iOS 13.0, *) {
+            let darkMode: UIUserInterfaceStyle
+            if respectSystemDarkMode {
+                darkMode = traitCollection.userInterfaceStyle
+            } else {
+                darkMode = permanentDarkMode ? .dark : .light
+            }
+            let newTraitCollection = UITraitCollection(userInterfaceStyle: darkMode)
+            if newTraitCollection.hasDifferentColorAppearance(comparedTo: traitCollection) {
+                for window in UIApplication.shared.windows {
+                    if let root = window.rootViewController {
+                        self.setOverrideTraitCollection(newTraitCollection, forChild: root)
+                    }
+                }
             }
         }
     }
