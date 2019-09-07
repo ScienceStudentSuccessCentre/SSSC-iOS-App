@@ -17,6 +17,6 @@ class CourseTableViewCell: ColourRestorableCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         colouredView = gradeView
-        gradeView.layer.cornerRadius = 3
+        gradeView.layer.cornerRadius = 5
     }
 }

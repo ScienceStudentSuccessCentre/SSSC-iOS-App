@@ -17,6 +17,6 @@ class EventTableViewCell: ColourRestorableCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         colouredView = dateView
-        dateView.layer.cornerRadius = 3
+        dateView.layer.cornerRadius = 5
     }
 }

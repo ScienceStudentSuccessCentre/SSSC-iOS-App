@@ -16,6 +16,6 @@ class TermTableViewCell: ColourRestorableCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         colouredView = termView
-        termView.layer.cornerRadius = 3
+        termView.layer.cornerRadius = 5
     }
 }
