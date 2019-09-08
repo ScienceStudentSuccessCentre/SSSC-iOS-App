@@ -21,7 +21,6 @@ class EventsViewController: UITableViewController {
         
         self.extendedLayoutIncludesOpaqueBars = true
         self.navigationController?.view.backgroundColor = .white
-        prepareNavigationBarAppearance()
         
         activityIndicatorView = UIActivityIndicatorView(style: .gray)
         activityIndicatorView.center = view.center
@@ -60,6 +59,8 @@ class EventsViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        prepareNavigationBarAppearance()
+        
         tableView.reloadData()
     }
     

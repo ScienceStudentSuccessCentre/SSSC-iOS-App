@@ -768,10 +768,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2Z33772VE8;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = DKPYUUQV7N;
 				INFOPLIST_FILE = "$(SRCROOT)/ScienceStudentSuccessCentre/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.4;
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carleton.sciencestudentsuccesscentre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -788,10 +790,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2Z33772VE8;
+				CURRENT_PROJECT_VERSION = 15;
+				DEVELOPMENT_TEAM = DKPYUUQV7N;
 				INFOPLIST_FILE = "$(SRCROOT)/ScienceStudentSuccessCentre/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.4;
 				OTHER_SWIFT_FLAGS = "-D RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carleton.sciencestudentsuccesscentre;
 				PRODUCT_NAME = "$(TARGET_NAME)";

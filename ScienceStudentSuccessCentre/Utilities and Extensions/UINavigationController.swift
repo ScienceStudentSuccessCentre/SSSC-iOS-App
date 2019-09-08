@@ -12,4 +12,8 @@ extension UINavigationController {
     open override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        prepareNavigationBarAppearance(barTintColour: navigationBar.backgroundColor ?? UIColor(.steelblue))
+    }
 }

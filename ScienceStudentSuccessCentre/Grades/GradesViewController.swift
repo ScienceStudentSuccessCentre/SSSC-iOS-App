@@ -29,7 +29,7 @@ class GradesViewController: UIViewController {
         if #available(iOS 13.0, *) {
             searchController.searchBar.translatesAutoresizingMaskIntoConstraints = true
             searchController.searchBar.searchTextField.backgroundColor = UIColor(named: "searchBarBackground")
-            searchController.searchBar.searchTextField.tintColor = .darkGray
+            searchController.searchBar.searchTextField.tintColor = UIColor.label
         }
         return searchController
     }()
@@ -78,11 +78,12 @@ class GradesViewController: UIViewController {
         extendedLayoutIncludesOpaqueBars = true
         
         navigationItem.titleView = segmentControl
-        prepareNavigationBarAppearance()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        prepareNavigationBarAppearance()
+        
         switchToView(segmentIndex: segmentControl.selectedSegmentIndex)
     }
     

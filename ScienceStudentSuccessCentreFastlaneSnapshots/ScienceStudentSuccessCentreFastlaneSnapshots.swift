@@ -63,6 +63,7 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         app.tap() // Dismiss notification permissions dialog / notification enabled dialog
         usleep(processWait)
         app.tap() // Dismiss notification enabled dialog (if not already dismissed)
+        usleep(processWait)
         app.buttons["ToggleNotification"].tap()
         // The snapshot itself is taken in eventDetailsWithNotificationAlertSnapshot
     }

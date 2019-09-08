@@ -59,7 +59,7 @@ extension UIColor {
         case .tangerine:
             self.init(hex: "#ff7043")
         case .steelblue:
-            self.init(hex: "#789aa8")
+            self.init(hex: "#71909e") //old colour: #789aa8
         case .brown:
             self.init(hex: "#79695C")
         case .grey:

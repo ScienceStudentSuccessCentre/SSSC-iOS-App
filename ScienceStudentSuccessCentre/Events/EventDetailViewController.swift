@@ -83,7 +83,6 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
-        prepareNavigationBarAppearance()
         
         eventDetailsView.isHidden = true
         eventImageView.isHidden = true
@@ -95,6 +94,8 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        prepareNavigationBarAppearance()
+        
         if let event = event {
             notificationCenter.checkPendingNotifications(for: event).done { notificationPending in
                 self.prepareNavigationBarButtons(notificationPending: notificationPending)

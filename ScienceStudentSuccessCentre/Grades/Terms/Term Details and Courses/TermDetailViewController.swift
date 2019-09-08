@@ -26,7 +26,6 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
-        prepareNavigationBarAppearance()
         
         termDetailsView.addBorders(edges: [.top], color: UIColor(.bluegrey), width: 0.4)
         
@@ -44,6 +43,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        prepareNavigationBarAppearance()
         
         loadCourses()
         updateTermDetails()

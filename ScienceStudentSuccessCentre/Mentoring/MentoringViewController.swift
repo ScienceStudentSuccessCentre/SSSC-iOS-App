@@ -14,10 +14,14 @@ class MentoringViewController: UIViewController {
     private let generator = UIImpactFeedbackGenerator()
     
     override func viewDidLoad() {
-        prepareNavigationBarAppearance()
         bookingButton.backgroundColor = UIColor(.red)
         bookingButton.layer.cornerRadius = 10
         generator.prepare()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        prepareNavigationBarAppearance()
     }
     
     @IBAction func bookingButtonPressed() {

@@ -14,9 +14,8 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        extendedLayoutIncludesOpaqueBars = true
         
-        self.extendedLayoutIncludesOpaqueBars = true
-        prepareNavigationBarAppearance()
         if #available(iOS 13.0, *) {
             tableView.backgroundColor = UIColor(named: "formBackground")
         }
@@ -26,7 +25,7 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = true
+        prepareNavigationBarAppearance()
         
         let defaults = UserDefaults.standard
         let includeInProgressCourses = defaults.bool(forKey: "includeInProgressCourses")
