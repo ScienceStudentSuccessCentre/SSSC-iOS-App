@@ -25,19 +25,19 @@
         {
             "filter": "CoursesList",
             "title": {
-                "text": "Track Courses..."
+                "text": "Track Your Courses..."
             }
         },
         {
             "filter": "AssignmentsList",
             "title": {
-                "text": "... And Grades"
+                "text": "... And Your Grades"
             }
         },
         {
-            "filter": "EditCourse",
+            "filter": "MentoringTab",
             "title": {
-                "text": "Customizable Experience"
+                "text": "Book With A Mentor!"
             }
         },
         {

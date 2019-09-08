@@ -8,6 +8,8 @@ devices([
   "iPad Pro (12.9-inch) (2nd generation)",
 ])
 
+ios_version
+
 # languages([
 #   "en-US",
 #   "de-DE",

@@ -28,8 +28,22 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         
     }
     
+    @available(iOS 13.0, *)
+    func toggleDarkMode(enabled: Bool) {
+        app.tabBars.buttons["Settings"].tap()
+        if app.switches["RespectSystemDarkMode"].value as? String ?? "0" == "1" {
+            app.switches["RespectSystemDarkMode"].tap()
+        }
+        if app.switches["PermanentDarkMode"].value as? String ?? "0" != (enabled ? "1" : "0") {
+            app.switches["PermanentDarkMode"].tap()
+        }
+    }
+    
     // Screenshot 0 - EventsList
     func testEventsTab() {
+        if #available(iOS 13.0, *) {
+            toggleDarkMode(enabled: false)
+        }
         app.tabBars.buttons["Events"].tap()
         usleep(networkWait)
         snapshot("0EventsList")
@@ -37,6 +51,9 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
 
     // Screenshot 1 - EventsListWithNotification
     func testEventDetailsWithNotificationAlert() {
+        if #available(iOS 13.0, *) {
+            toggleDarkMode(enabled: false)
+        }
         app.tabBars.buttons["Events"].tap()
         usleep(networkWait)
         app.cells.element(boundBy: 3).tap()
@@ -47,7 +64,7 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         usleep(processWait)
         app.tap() // Dismiss notification enabled dialog (if not already dismissed)
         app.buttons["ToggleNotification"].tap()
-        // The snapshot itself is taken in eventDetailsWithNitificationAlertSnapshot
+        // The snapshot itself is taken in eventDetailsWithNotificationAlertSnapshot
     }
     
     func eventDetailsWithNotificationAlertSnapshot(alert: XCUIElement) -> Bool {
@@ -62,6 +79,9 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
 
     // Screenshot 2 - CoursesList
     func testCoursesList() {
+        if #available(iOS 13.0, *) {
+            toggleDarkMode(enabled: true)
+        }
         app.tabBars.buttons["Grades"].tap()
         app.cells.firstMatch.tap()
         snapshot("2CoursesList")
@@ -69,23 +89,29 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
 
     // Screenshot 3 - AssignmentsList
     func testAssignmentsList() {
+        if #available(iOS 13.0, *) {
+            toggleDarkMode(enabled: true)
+        }
         app.tabBars.buttons["Grades"].tap()
         app.cells.firstMatch.tap()
         app.cells.element(boundBy: 1).tap()
         snapshot("3AssignmentsList")
     }
-
-    // Screenshot 4 - EditCourse
-    func testEditCourse() {
-        app.tabBars.buttons["Grades"].tap()
-        app.cells.firstMatch.tap()
-        app.cells.firstMatch.tap()
-        app.buttons["EditCourse"].tap()
-        snapshot("4EditCourse")
+    
+    // Screenshot 4 - MentoringTab
+    func testMentoringTab() {
+        if #available(iOS 13.0, *) {
+            toggleDarkMode(enabled: false)
+        }
+        app.tabBars.buttons["Mentoring"].tap()
+        snapshot("4MentoringTab")
     }
     
     // Screenshot 5 - Resources
     func testResources() {
+        if #available(iOS 13.0, *) {
+            toggleDarkMode(enabled: false)
+        }
         app.tabBars.buttons["Resources"].tap()
         usleep(networkWait)
         usleep(networkWait)
@@ -94,6 +120,9 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
     
     // Screenshot 6 - CGPAPlanner
     func testCGPAPlanner() {
+        if #available(iOS 13.0, *) {
+            toggleDarkMode(enabled: true)
+        }
         app.tabBars.buttons["Grades"].tap()
         app.buttons["Planner"].tap()
         snapshot("6CGPAPlanner")
@@ -101,6 +130,9 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
 
     // Screenshot 7 - CGPACalculator
     func testCalculatorList() {
+        if #available(iOS 13.0, *) {
+            toggleDarkMode(enabled: true)
+        }
         app.tabBars.buttons["Grades"].tap()
         app.buttons["Calculator"].tap()
         snapshot("7CGPACalculator")

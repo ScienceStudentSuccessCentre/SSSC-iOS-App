@@ -61,13 +61,15 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
             }
             
             +++ Section(header: "Dark Mode",
-                        footer: "If Respect Dark Mode is toggled on, the app will automatically switch into dark mode when your device does.") { section in
-                section.hidden = Condition(booleanLiteral: !darkModeSupported)
-            }
+                        footer: darkModeSupported
+                            ? "If Respect Dark Mode is toggled on, the app will automatically switch into dark mode when your device does."
+                            : "Want Dark Mode? Update your device to iOS 13 / iPadOS 13 or higher!")
             <<< SwitchRow { row in
                 row.tag = "respectSystemDarkMode"
                 row.title = "Respect System Dark Mode"
+                row.disabled = Condition(booleanLiteral: !darkModeSupported)
             }.cellUpdate { cell, _ in
+                cell.switchControl.accessibilityIdentifier = "RespectSystemDarkMode"
                 if #available(iOS 13.0, *) {
                     cell.backgroundColor = UIColor(named: "formAccent")
                     cell.textLabel?.textColor = UIColor.label
@@ -81,7 +83,9 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
                 row.hidden = Condition.function(["respectSystemDarkMode"], { form in
                     return (form.rowBy(tag: "respectSystemDarkMode") as? SwitchRow)?.value ?? false
                 })
+                row.disabled = Condition(booleanLiteral: !darkModeSupported)
             }.cellUpdate { cell, _ in
+                cell.switchControl.accessibilityIdentifier = "PermanentDarkMode"
                 if #available(iOS 13.0, *) {
                     cell.backgroundColor = UIColor(named: "formAccent")
                     cell.textLabel?.textColor = UIColor.label
@@ -90,7 +94,7 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
                 self.validateForm()
             }
             
-            +++ Section(header: "\nBack Up Grades Data",
+            +++ Section(header: "\nBack Up Grades",
                         footer: "Open the exported attachement on your device to launch the Science Student Success Centre app and restore your data.")
             <<< ButtonRow { row in
                 row.tag = "exportData"

@@ -37,7 +37,11 @@
         <scene sceneID="Ksh-MH-rqi">
             <objects>
                 <splitViewController id="X8w-Lv-fB9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" image="calendarIcon" largeContentSizeImage="calendarIcon" id="JzJ-12-NEn"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="calendarIcon" largeContentSizeImage="calendarIcon" id="JzJ-12-NEn">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="Events"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="rfO-2P-4gI"/>
                     <connections>
                         <segue destination="a5k-l6-r4q" kind="relationship" relationship="masterViewController" id="mWJ-oJ-Alk"/>
@@ -141,7 +145,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dwG-b7-Njp" userLabel="Event Title View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="52"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No events 😕" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JOQ-gI-Rbo">
                                         <rect key="frame" x="8" y="8" width="359" height="36"/>
@@ -159,7 +163,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dFM-bk-TKl">
-                                <rect key="frame" x="8" y="52" width="359" height="454"/>
+                                <rect key="frame" x="8" y="96" width="359" height="410"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="yIA-Vy-Ot7">
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="158"/>
@@ -341,7 +345,11 @@
         <scene sceneID="De2-Iq-mMs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qnv-2C-gp0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Grades" image="checkboxIcon" id="ou4-oL-mGO"/>
+                    <tabBarItem key="tabBarItem" title="Grades" image="checkboxIcon" id="ou4-oL-mGO">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="Grades"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="vHn-4H-SSd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
@@ -385,7 +393,11 @@
         <scene sceneID="UvI-xU-gmM">
             <objects>
                 <navigationController id="Up2-BA-9yi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settingsIcon" largeContentSizeImage="settingsIcon" id="tgc-n1-YZC"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settingsIcon" largeContentSizeImage="settingsIcon" id="tgc-n1-YZC">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="Settings"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="TXr-5B-mKI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -417,7 +429,11 @@
                         <viewLayoutGuide key="safeArea" id="nTN-XE-pVN"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <tabBarItem key="tabBarItem" title="Resources" image="paperIcon" largeContentSizeImage="paperIcon" id="wv3-r1-Olv"/>
+                    <tabBarItem key="tabBarItem" title="Resources" image="paperIcon" largeContentSizeImage="paperIcon" id="wv3-r1-Olv">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="Resources"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m7O-8G-G8n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1166,7 +1182,11 @@
         <scene sceneID="GJC-pt-fGo">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YIE-gG-F4r" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Mentoring" image="peopleIcon" id="NJK-4s-vk8"/>
+                    <tabBarItem key="tabBarItem" title="Mentoring" image="peopleIcon" id="NJK-4s-vk8">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="Mentoring"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="Njf-VK-cPL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
@@ -1204,7 +1224,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oWK-2l-eoL"/>
+        <segue reference="hN5-d3-g4O"/>
         <segue reference="kLN-0H-OdZ"/>
         <segue reference="8vw-Sl-0KH"/>
         <segue reference="II0-2O-iZm"/>
