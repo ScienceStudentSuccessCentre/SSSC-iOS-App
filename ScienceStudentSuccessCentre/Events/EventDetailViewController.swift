@@ -36,43 +36,76 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     private var actionUrlButton: UIBarButtonItem {
         let customView = UIButton()
-        let dimension: CGFloat
+        let width: CGFloat
+        let height: CGFloat
+        let image: UIImage?
+        
         if #available(iOS 13.0, *) {
             let config = UIImage.SymbolConfiguration(scale: .large)
-            customView.setImage(UIImage(systemName: "link", withConfiguration: config), for: .normal)
-            dimension = 45
+            image = UIImage(systemName: "link", withConfiguration: config)
+            width = (image?.size.width ?? 0) + 3
+            height = image?.size.height ?? 0
         } else {
-            customView.setImage(UIImage(named: "linkIcon"), for: .normal)
-            dimension = 30
+            image = UIImage(named: "linkIcon")
+            width = 30
+            height = 30
+            
+            customView.widthAnchor.constraint(equalToConstant: width).isActive = true
+            customView.heightAnchor.constraint(equalToConstant: height).isActive = true
+            customView.translatesAutoresizingMaskIntoConstraints = false
         }
+        
+        customView.setImage(image, for: .normal)
+        customView.frame = CGRect(x: 0, y: 0, width: width, height: height)
         customView.addTarget(self, action: #selector(actionUrlTapped), for: .touchUpInside)
-        customView.frame = CGRect(x: 0, y: 0, width: dimension, height: dimension)
-        customView.widthAnchor.constraint(equalToConstant: dimension).isActive = true
-        customView.heightAnchor.constraint(equalToConstant: dimension).isActive = true
-        customView.translatesAutoresizingMaskIntoConstraints = false
         customView.accessibilityLabel = "External Website: " + (event?.getActionUrl() ?? "")
         customView.accessibilityTraits = .link
-        let button = UIBarButtonItem(customView: customView)
-        return button
+        return UIBarButtonItem(customView: customView)
+    }
+    
+    private var shareButton: UIBarButtonItem {
+        if #available(iOS 13.0, *) {
+            let customView = UIButton()
+            let config = UIImage.SymbolConfiguration(scale: .large)
+            let image = UIImage(systemName: "square.and.arrow.up", withConfiguration: config)
+            customView.setImage(image, for: .normal)
+            customView.addTarget(self, action: #selector(shareButtonTapped), for: .touchUpInside)
+            customView.frame = CGRect(x: 0, y: 0, width: (image?.size.width ?? 0) + 8, height: image?.size.height ?? 0)
+            customView.accessibilityLabel = "Share"
+            customView.accessibilityTraits = .button
+            return UIBarButtonItem(customView: customView)
+        } else {
+            return UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped))
+        }
     }
     
     private func notificationButton(notificationPending: Bool) -> UIBarButtonItem {
         let customView = UIButton()
-        let dimension = CGFloat(integerLiteral: 29)
+        let width: CGFloat
+        let height: CGFloat
+        let image: UIImage?
+        
         if #available(iOS 13.0, *) {
             let config = UIImage.SymbolConfiguration(scale: .large)
-            customView.setImage(UIImage(systemName: notificationPending ? "bell.fill" : "bell", withConfiguration: config), for: .normal)
+            image = UIImage(systemName: notificationPending ? "bell.fill" : "bell", withConfiguration: config)
+            width = (image?.size.width ?? 0) + 8
+            height = image?.size.height ?? 0
             if notificationPending {
                 customView.tintColor = UIColor(.amber)
             }
         } else {
-            customView.setImage(UIImage(named: notificationPending ? "notifyOn" : "notifyOff"), for: .normal)
+            image = UIImage(named: notificationPending ? "notifyOn" : "notifyOff")
+            width = 29
+            height = 29
+            
+            customView.widthAnchor.constraint(equalToConstant: width).isActive = true
+            customView.heightAnchor.constraint(equalToConstant: height).isActive = true
+            customView.translatesAutoresizingMaskIntoConstraints = false
         }
+        
+        customView.setImage(image, for: .normal)
+        customView.frame = CGRect(x: 0, y: 0, width: width, height: height)
         customView.addTarget(self, action: #selector(notifyMeTapped), for: .touchUpInside)
-        customView.frame = CGRect(x: 0, y: 0, width: dimension, height: dimension)
-        customView.widthAnchor.constraint(equalToConstant: dimension).isActive = true
-        customView.heightAnchor.constraint(equalToConstant: dimension).isActive = true
-        customView.translatesAutoresizingMaskIntoConstraints = false
         customView.accessibilityLabel = "Notify Me"
         customView.accessibilityTraits = .button
         let button = UIBarButtonItem(customView: customView)
@@ -115,9 +148,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     /// - If the notification date/time for this event has not passed, the notification button is displayed.
     /// - If arriving from peek and pop (i.e. `isPreview == true`), no buttons are shown
     private func prepareNavigationBarButtons(notificationPending: Bool = false) {
-        let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped))
         var barButtonItems: [UIBarButtonItem] = []
-        
         if let event = event, !isPreview {
             if event.getUrl() != nil {
                 barButtonItems.append(shareButton)
