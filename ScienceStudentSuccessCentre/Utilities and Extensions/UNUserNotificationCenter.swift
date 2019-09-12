@@ -110,11 +110,11 @@ extension UNUserNotificationCenter {
     /// Provides the date and time the user should receive a notification for this event.
     ///
     /// - Remark: For the actual date and time of this event, use `getDateTime()`.
-    /// - Attention: If the build is running in DEBUG mode (i.e. anything except what's being pushed to the App Store in an archive), a notification will be sent to the user 15 seconds after toggling on the notification for this event.
+    /// - Attention: If the build is running in DEBUG mode (i.e. anything except what's being pushed to the App Store in an archive), a notification will be sent to the user 20 seconds after toggling on the notification for this event.
     /// - Returns: The notification date and time, or `nil` if one could not be calculated.
     private func determineNotificationDateTime(for event: Event) -> Date? {
         #if DEBUG
-        return Calendar.current.date(byAdding: .second, value: 15, to: Date())!
+        return Calendar.current.date(byAdding: .second, value: 20, to: Date())!
         #else
         return event.getNotificationDateTime()
         #endif

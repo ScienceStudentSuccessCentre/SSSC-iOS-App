@@ -4,6 +4,26 @@
       "id" : "9B3BAD62-49AD-4C57-B26E-9B7E73320739",
       "year" : "2018",
       "term" : "Fall"
+    },
+    {
+      "id" : "55B819AF-305C-4558-90AD-F7BD0416F543",
+      "year" : "2018",
+      "term" : "Winter"
+    },
+    {
+      "id" : "64ED5C85-000E-4AA7-AFDE-3F489151242C",
+      "year" : "2017",
+      "term" : "Fall"
+    },
+    {
+      "id" : "96DDBBD3-1F60-4E60-9377-F6D4DF208F08",
+      "year" : "2017",
+      "term" : "Winter"
+    },
+    {
+      "id" : "2C51285A-0893-4774-8C6A-C13DD8E82C6F",
+      "year" : "2016",
+      "term" : "Fall"
     }
   ],
   "assignments" : [
@@ -45,6 +65,32 @@
         "name" : "Assignment"
       },
       "gradeTotal" : 50
+    },
+    {
+      "courseId" : "9EC645F6-24B0-4D3A-A828-0ECC3A07BFE6",
+      "id" : "20ECFA42-C61D-48ED-AFB6-DF3A184878B8",
+      "gradeEarned" : 43,
+      "name" : "Midterm",
+      "weight" : {
+        "id" : "18B132B3-777A-42CA-B544-8D577B6A5077",
+        "value" : 30,
+        "courseId" : "9EC645F6-24B0-4D3A-A828-0ECC3A07BFE6",
+        "name" : "Midterm"
+      },
+      "gradeTotal" : 50
+    },
+    {
+      "courseId" : "9EC645F6-24B0-4D3A-A828-0ECC3A07BFE6",
+      "id" : "D576180F-696F-47B9-B01B-CCCF36FE4E6C",
+      "gradeEarned" : 7.5,
+      "name" : "Quiz 3",
+      "weight" : {
+        "id" : "169CEFF6-45F3-4511-B233-59FF3642E86A",
+        "value" : 15,
+        "courseId" : "9EC645F6-24B0-4D3A-A828-0ECC3A07BFE6",
+        "name" : "Quizzes"
+      },
+      "gradeTotal" : 10
     }
   ],
   "courses" : [
@@ -77,6 +123,26 @@
       "finalGrade" : "B",
       "credits" : 0.5,
       "name" : "Cellular Biochemistry"
+    },
+    {
+      "termId" : "9B3BAD62-49AD-4C57-B26E-9B7E73320739",
+      "isMajorCourse" : true,
+      "colour" : "purple",
+      "id" : "BA52F041-BF48-4696-8A95-2400C70FA8D7",
+      "code" : "CHEM 2207",
+      "finalGrade" : "B+",
+      "credits" : 0.5,
+      "name" : "Introduction to Organic Chemistry I"
+    },
+    {
+      "termId" : "9B3BAD62-49AD-4C57-B26E-9B7E73320739",
+      "isMajorCourse" : true,
+      "colour" : "indigo",
+      "id" : "0EDEFC53-AF13-407C-8A5D-636064902203",
+      "code" : "SOCI 3056",
+      "finalGrade" : "A",
+      "credits" : 0.5,
+      "name" : "Women and Health"
     }
   ],
   "weights" : [

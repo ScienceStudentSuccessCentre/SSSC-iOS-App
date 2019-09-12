@@ -13,6 +13,21 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
     let networkWait: useconds_t = 1000000 // 1 second - purpose is to allow for slow networks
     let processWait: useconds_t = 500000 // 0.5 seconds - purpose is to allow UI elements to (dis)appear
     
+    var deviceIsPad: Bool {
+//        return UIDevice.current.userInterfaceIdiom == .pad
+        return false
+    }
+    
+    var deviceOrientationIsPortrait: Bool {
+        get {
+//            return XCUIDevice.shared.orientation == .portrait
+            return true
+        }
+        set {
+            XCUIDevice.shared.orientation = newValue ? .landscapeLeft : .portrait
+        }
+    }
+    
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
@@ -22,10 +37,7 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
                                  handler: eventDetailsWithNotificationAlertSnapshot(alert:))
         setupSnapshot(app)
         app.launch()
-    }
-    
-    override func tearDown() {
-        
+        deviceOrientationIsPortrait = deviceIsPad
     }
     
     @available(iOS 13.0, *)
@@ -39,6 +51,13 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         }
     }
     
+    func screenshotTitle(forName title: String) -> String {
+        if deviceOrientationIsPortrait {
+            return title
+        }
+        return title + "_force_landscapeleft"
+    }
+    
     // Screenshot 0 - EventsList
     func testEventsTab() {
         if #available(iOS 13.0, *) {
@@ -46,7 +65,7 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         }
         app.tabBars.buttons["Events"].tap()
         usleep(networkWait)
-        snapshot("0EventsList")
+        snapshot(screenshotTitle(forName: "0EventsList"))
     }
 
     // Screenshot 1 - EventsListWithNotification
@@ -72,7 +91,7 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         if alert.buttons["Allow"].exists {
             alert.buttons["Allow"].tap()
         } else if alert.buttons["Close"].exists {
-            snapshot("1EventDetailsWithNotification")
+            snapshot(screenshotTitle(forName: "1EventDetailsWithNotification"))
             alert.buttons["Close"].tap()
         }
         return true
@@ -85,7 +104,7 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         }
         app.tabBars.buttons["Grades"].tap()
         app.cells.firstMatch.tap()
-        snapshot("2CoursesList")
+        snapshot(screenshotTitle(forName: "2CoursesList"))
     }
 
     // Screenshot 3 - AssignmentsList
@@ -96,7 +115,7 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         app.tabBars.buttons["Grades"].tap()
         app.cells.firstMatch.tap()
         app.cells.element(boundBy: 1).tap()
-        snapshot("3AssignmentsList")
+        snapshot(screenshotTitle(forName: "3AssignmentsList"))
     }
     
     // Screenshot 4 - MentoringTab
@@ -105,7 +124,7 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
             toggleDarkMode(enabled: false)
         }
         app.tabBars.buttons["Mentoring"].tap()
-        snapshot("4MentoringTab")
+        snapshot(screenshotTitle(forName: "4MentoringTab"))
     }
     
     // Screenshot 5 - Resources
@@ -116,7 +135,7 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         app.tabBars.buttons["Resources"].tap()
         usleep(networkWait)
         usleep(networkWait)
-        snapshot("5Resources")
+        snapshot(screenshotTitle(forName: "5Resources"))
     }
     
     // Screenshot 6 - CGPAPlanner
@@ -126,7 +145,7 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         }
         app.tabBars.buttons["Grades"].tap()
         app.buttons["Planner"].tap()
-        snapshot("6CGPAPlanner")
+        snapshot(screenshotTitle(forName: "6CGPAPlanner"))
     }
 
     // Screenshot 7 - CGPACalculator
@@ -136,7 +155,7 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         }
         app.tabBars.buttons["Grades"].tap()
         app.buttons["Calculator"].tap()
-        snapshot("7CGPACalculator")
+        snapshot(screenshotTitle(forName: "7CGPACalculator"))
     }
     
 }
