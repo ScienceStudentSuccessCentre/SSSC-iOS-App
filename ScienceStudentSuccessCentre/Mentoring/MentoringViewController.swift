@@ -26,11 +26,9 @@ class MentoringViewController: UIViewController {
     
     @IBAction func bookingButtonPressed() {
         generator.impactOccurred()
-        guard let url = URL(string: "https://central.carleton.ca") else { return }
+        guard let url = URL(string: "https://central.carleton.ca/") else { return }
         let webpage = SSSCSafariViewController(url: url)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.present(webpage, animated: true)
-        }
+        present(webpage, animated: true)
     }
 }
 

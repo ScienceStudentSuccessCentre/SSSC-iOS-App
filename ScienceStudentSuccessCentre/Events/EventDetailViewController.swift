@@ -280,10 +280,9 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     }
     
     private func openUrlInAppBrowser(url: URL?) {
-        if url != nil {
-            let safariVC = SSSCSafariViewController(url: url!)
-            present(safariVC, animated: true)
-        }
+        guard let url = url else { return }
+        let safariVC = SSSCSafariViewController(url: url)
+        present(safariVC, animated: true)
     }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
