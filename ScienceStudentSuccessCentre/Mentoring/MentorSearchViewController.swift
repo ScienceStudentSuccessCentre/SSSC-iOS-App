@@ -21,8 +21,8 @@ class MentorSearchViewController: UITableViewController {
     private weak var delegate: MentorSearchActionDelegate?
     
     init(actionDelegate delegate: MentorSearchActionDelegate) {
-        self.delegate = delegate
         super.init(style: .plain)
+        self.delegate = delegate
         tableView.register(UINib(nibName: "\(MentorSearchCell.self)", bundle: nil), forCellReuseIdentifier: "\(MentorSearchCell.self)")
     }
     
@@ -54,6 +54,7 @@ class MentorSearchViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.didTapMentor(results[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

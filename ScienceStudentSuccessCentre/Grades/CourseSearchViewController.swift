@@ -21,8 +21,8 @@ class CourseSearchViewController: UITableViewController {
     private weak var delegate: CourseSearchActionDelegate?
     
     init(actionDelegate delegate: CourseSearchActionDelegate) {
-        self.delegate = delegate
         super.init(style: .plain)
+        self.delegate = delegate
         tableView.register(UINib(nibName: "\(CourseSummaryCell.self)", bundle: nil), forCellReuseIdentifier: "\(CourseSummaryCell.self)")
     }
     
