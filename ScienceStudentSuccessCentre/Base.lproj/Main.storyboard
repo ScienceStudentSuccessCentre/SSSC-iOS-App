@@ -473,8 +473,8 @@
                                                         <constraint firstAttribute="width" secondItem="UuA-YI-4vA" secondAttribute="height" multiplier="1:1" id="fZ0-wj-c3g"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mentor Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4E-xA-4wK">
-                                                    <rect key="frame" x="8" y="198" width="166" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mentor Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4E-xA-4wK">
+                                                    <rect key="frame" x="0.0" y="198" width="182" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -491,12 +491,12 @@
                                                 <constraint firstAttribute="trailing" secondItem="UuA-YI-4vA" secondAttribute="trailing" id="EKH-FT-PFl"/>
                                                 <constraint firstItem="UuA-YI-4vA" firstAttribute="top" secondItem="FOj-Kd-m4h" secondAttribute="top" id="GWR-5Q-b9v"/>
                                                 <constraint firstAttribute="bottom" secondItem="xSk-dg-UGU" secondAttribute="bottom" constant="8" id="LKz-Qx-Mfg"/>
-                                                <constraint firstAttribute="trailing" secondItem="C4E-xA-4wK" secondAttribute="trailing" constant="8" id="Mcl-I9-1Ux"/>
+                                                <constraint firstAttribute="trailing" secondItem="C4E-xA-4wK" secondAttribute="trailing" id="Mcl-I9-1Ux"/>
                                                 <constraint firstItem="UuA-YI-4vA" firstAttribute="leading" secondItem="FOj-Kd-m4h" secondAttribute="leading" id="Mfd-Uu-GQS"/>
                                                 <constraint firstItem="C4E-xA-4wK" firstAttribute="top" secondItem="UuA-YI-4vA" secondAttribute="bottom" constant="16" id="Pnf-cG-whZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="xSk-dg-UGU" secondAttribute="trailing" constant="8" id="aoz-ok-dg1"/>
                                                 <constraint firstItem="xSk-dg-UGU" firstAttribute="leading" secondItem="FOj-Kd-m4h" secondAttribute="leading" constant="8" id="hrv-fg-6CR"/>
-                                                <constraint firstItem="C4E-xA-4wK" firstAttribute="leading" secondItem="FOj-Kd-m4h" secondAttribute="leading" constant="8" id="tUM-bm-Ur5"/>
+                                                <constraint firstItem="C4E-xA-4wK" firstAttribute="leading" secondItem="FOj-Kd-m4h" secondAttribute="leading" id="tUM-bm-Ur5"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="182" height="248"/>
