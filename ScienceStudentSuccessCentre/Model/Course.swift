@@ -50,9 +50,11 @@ class Course: Codable {
         var totalEarned: Double = 0
         var totalWeight: Double = 0
         let assignments = Database.instance.getAssignmentsByCourseId(id: id)
-        for assignment in assignments {
-            let numAssignmentsWithWeight = assignments.filter({ $0.weight.id == assignment.weight.id }).count
-            let calculatedWeight = assignment.weight.value / Double(numAssignmentsWithWeight)
+        for assignment in assignments where assignment.gradeTotal > 0 {
+            let numGradedAssignmentsWithWeight = assignments.filter({
+                $0.weight.id == assignment.weight.id && $0.gradeTotal != 0
+            }).count
+            let calculatedWeight = assignment.weight.value / Double(numGradedAssignmentsWithWeight)
             totalEarned += Grading.calculatePercentage(earned: assignment.gradeEarned, total: assignment.gradeTotal) * calculatedWeight / 100
             totalWeight += calculatedWeight
         }
