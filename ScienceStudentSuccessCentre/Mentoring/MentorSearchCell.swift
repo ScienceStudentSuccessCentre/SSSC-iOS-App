@@ -13,6 +13,7 @@ class MentorSearchCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var degree: UILabel!
     @IBOutlet weak var team: UILabel!
+    @IBOutlet weak var separatorWidthConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,6 +48,7 @@ class MentorSearchCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         mentorImageView.layer.cornerRadius = mentorImageView.frame.width / 2
+        separatorWidthConstraint.constant = max(degree.intrinsicContentSize.width, team.intrinsicContentSize.width)
     }
     
     private func changeImage(to image: UIImage?, animated: Bool = true) {
