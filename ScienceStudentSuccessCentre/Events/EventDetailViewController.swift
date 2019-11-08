@@ -58,7 +58,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         customView.setImage(image, for: .normal)
         customView.frame = CGRect(x: 0, y: 0, width: width, height: height)
         customView.addTarget(self, action: #selector(actionUrlTapped), for: .touchUpInside)
-        customView.accessibilityLabel = "External Website: " + (event?.getActionUrl() ?? "")
+        customView.accessibilityLabel = "External Website: " + (event?.actionUrl ?? "")
         customView.accessibilityTraits = .link
         return UIBarButtonItem(customView: customView)
     }
@@ -150,13 +150,13 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     private func prepareNavigationBarButtons(notificationPending: Bool = false) {
         var barButtonItems: [UIBarButtonItem] = []
         if let event = event, !isPreview {
-            if event.getUrl() != nil {
+            if event.eventUrl != nil {
                 barButtonItems.append(shareButton)
             }
-            if event.getNotificationDateTime()!.compare(Date()) != ComparisonResult.orderedAscending {
+            if event.notificationDateTime!.compare(Date()) != ComparisonResult.orderedAscending {
                 barButtonItems.append(notificationButton(notificationPending: notificationPending))
             }
-            if !(event.getActionUrl() ?? "").isEmpty {
+            if !(event.actionUrl ?? "").isEmpty {
                 barButtonItems.append(actionUrlButton)
             }
             navigationItem.setRightBarButtonItems(barButtonItems, animated: false)
@@ -171,14 +171,14 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
             eventDetailsView.isHidden = false
             eventDescriptionTextView.delegate = self
             
-            eventTitleLabel.text = event.getName()
-            eventDateTimeLabel.text = event.getFormattedDateAndTime()
-            eventLocationLabel.text = event.getLocation()
+            eventTitleLabel.text = event.name
+            eventDateTimeLabel.text = event.formattedDateAndTime
+            eventLocationLabel.text = event.location
             
-            eventDescriptionTextView.attributedText = event.getDescription().htmlToAttributedString
+            eventDescriptionTextView.attributedText = event.description.htmlToAttributedString
             eventDescriptionTextView.font = .preferredFont(forTextStyle: .body)
             
-            if event.getImageUrl() != nil {
+            if event.imageUrl != nil {
                 loadImage()
             } else {
                 self.eventImageView.isHidden = true
@@ -228,12 +228,12 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     
     /// Delegates opening the actionUrl to the in-app browser when the action button is tapped.
     @objc private func actionUrlTapped() {
-        openUrlInAppBrowser(url: URL(string: event?.getActionUrl() ?? ""))
+        openUrlInAppBrowser(url: URL(string: event?.actionUrl ?? ""))
     }
     
     /// Opens a share sheet that allows the user to share the link to this event.
     @objc private func shareButtonTapped() {
-        if let url = event?.getUrl()?.absoluteString {
+        if let url = event?.eventUrl?.absoluteString {
             let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
             if let popOver = activityVC.popoverPresentationController {
                 popOver.barButtonItem = navigationItem.rightBarButtonItems?.first
@@ -262,7 +262,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     }
     
     private func loadImage() {
-        if let url = event?.getImageUrl() {
+        if let url = event?.imageUrl {
             DispatchQueue.global().async {
                 if let data = try? Data(contentsOf: url) {
                     if let image = UIImage(data: data) {
