@@ -16,6 +16,7 @@ class MentorDetailViewController: UIViewController {
     @IBOutlet weak var bio: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var bookingButton: UIButton!
     @IBOutlet weak var separatorWidthConstraint: NSLayoutConstraint!
     
     var mentor: Mentor?
@@ -26,6 +27,10 @@ class MentorDetailViewController: UIViewController {
         imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = 3
         imageView.layer.borderColor = UIColor.black.cgColor
+        bookingButton.backgroundColor = UIColor(.red)
+        bookingButton.setTitleColor(.white, for: .normal)
+        bookingButton.layer.cornerRadius = 10
+        bookingButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
         guard let mentor = mentor else { return }
         configure(mentor, loadedImage: loadedImage)
     }
@@ -74,6 +79,12 @@ class MentorDetailViewController: UIViewController {
                 imageView.image = image
             }
         }
+    }
+    
+    @IBAction private func bookingButtonTapped() {
+        guard let url = URL(string: "https://central.carleton.ca/") else { return }
+        let webpage = SSSCSafariViewController(url: url)
+        present(webpage, animated: true)
     }
     
     @IBAction private func closeButtonTapped() {
