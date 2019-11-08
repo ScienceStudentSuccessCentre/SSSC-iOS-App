@@ -28,7 +28,7 @@ class MentorHeader: UICollectionReusableView {
     }
     
     var height: CGFloat {
-        return bookingButton.intrinsicContentSize.height + 40
+        return bookingButton.intrinsicContentSize.height + 56
     }
     
     @IBAction private func bookingButtonPressed() {
@@ -58,4 +58,3 @@ class AnimatedButton: UIButton {
         )
     }
 }
-

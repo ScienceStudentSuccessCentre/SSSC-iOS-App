@@ -17,6 +17,8 @@ class MentorCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         imageView.layer.masksToBounds = true
+        imageView.layer.borderWidth = 3
+        imageView.layer.borderColor = UIColor.black.cgColor
     }
     
     override func prepareForReuse() {
@@ -24,6 +26,12 @@ class MentorCell: UICollectionViewCell {
         name.text = nil
         degree.text = nil
         changeImage(to: nil, animated: false)
+        imageView.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imageView.layer.cornerRadius = frame.width / 2
     }
     
     func configure(_ mentor: Mentor) {

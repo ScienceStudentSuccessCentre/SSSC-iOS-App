@@ -25,6 +25,7 @@
 		FF30320F2374B33200159555 /* MentorLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30320E2374B33200159555 /* MentorLoader.swift */; };
 		FF3032112374B67200159555 /* MentorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3032102374B67100159555 /* MentorCell.swift */; };
 		FF3032152374C1E400159555 /* MentorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3032142374C1E400159555 /* MentorHeader.swift */; };
+		FF3032172374F13C00159555 /* MentorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3032162374F13C00159555 /* MentorDetailViewController.swift */; };
 		FF30AFB82162A6E200C1F22C /* CreateTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30AFB72162A6E200C1F22C /* CreateTermViewController.swift */; };
 		FF327FC920128C3E00B06E19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FC820128C3E00B06E19 /* AppDelegate.swift */; };
 		FF327FD020128C3E00B06E19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF327FCE20128C3E00B06E19 /* Main.storyboard */; };
@@ -102,6 +103,7 @@
 		FF30320E2374B33200159555 /* MentorLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorLoader.swift; sourceTree = "<group>"; };
 		FF3032102374B67100159555 /* MentorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorCell.swift; sourceTree = "<group>"; };
 		FF3032142374C1E400159555 /* MentorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorHeader.swift; sourceTree = "<group>"; };
+		FF3032162374F13C00159555 /* MentorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorDetailViewController.swift; sourceTree = "<group>"; };
 		FF30AFB72162A6E200C1F22C /* CreateTermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTermViewController.swift; sourceTree = "<group>"; };
 		FF327FC520128C3E00B06E19 /* ScienceStudentSuccessCentre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScienceStudentSuccessCentre.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF327FC820128C3E00B06E19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -193,9 +195,10 @@
 			isa = PBXGroup;
 			children = (
 				FF3032102374B67100159555 /* MentorCell.swift */,
+				FF3032162374F13C00159555 /* MentorDetailViewController.swift */,
+				FF3032142374C1E400159555 /* MentorHeader.swift */,
 				FF04D842231FEB2000A8F34E /* MentoringViewController.swift */,
 				FF30320E2374B33200159555 /* MentorLoader.swift */,
-				FF3032142374C1E400159555 /* MentorHeader.swift */,
 			);
 			path = Mentoring;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF3032172374F13C00159555 /* MentorDetailViewController.swift in Sources */,
 				A17011CB21AC8F4000A385FB /* ResourcesViewController.swift in Sources */,
 				FFC18A2C202502A8001AB5BA /* EventLoader.swift in Sources */,
 				FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */,

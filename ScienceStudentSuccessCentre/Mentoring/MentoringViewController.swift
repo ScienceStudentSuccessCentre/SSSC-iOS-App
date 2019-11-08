@@ -9,7 +9,7 @@
 import UIKit
 
 class MentoringViewController: UIViewController {
-    @IBOutlet weak var mentorCollection: UICollectionView!
+    @IBOutlet weak var mentorCollection: UICollectionView?
     private var mentors = [Mentor]()
     private let inset: CGFloat = 16
     private let minimumLineSpacing: CGFloat = 16
@@ -18,10 +18,10 @@ class MentoringViewController: UIViewController {
     
     override func viewDidLoad() {
         extendedLayoutIncludesOpaqueBars = true
-        mentorCollection.delegate = self
-        mentorCollection.dataSource = self
-        mentorCollection.collectionViewLayout = UICollectionViewFlowLayout()
-        mentorCollection.contentInsetAdjustmentBehavior = .always
+        mentorCollection?.delegate = self
+        mentorCollection?.dataSource = self
+        mentorCollection?.collectionViewLayout = UICollectionViewFlowLayout()
+        mentorCollection?.contentInsetAdjustmentBehavior = .always
         loadMentors()
     }
     
@@ -50,18 +50,30 @@ class MentoringViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
             self.present(alert, animated: true)
         }.finally {
-            self.mentorCollection.reloadData()
+            self.mentorCollection?.reloadData()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "mentorDetail" {
+            guard let destination = segue.destination as? MentorDetailViewController,
+                let mentorIndex = mentorCollection?.indexPathsForSelectedItems?.first,
+                let cell = mentorCollection?.cellForItem(at: mentorIndex) as? MentorCell else { return }
+            destination.mentor = mentors[mentorIndex.row]
+            if cell.loadedImage {
+                destination.loadedImage = cell.imageView.image
+            }
         }
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        mentorCollection.collectionViewLayout.invalidateLayout()
+        mentorCollection?.collectionViewLayout.invalidateLayout()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        mentorCollection.collectionViewLayout.invalidateLayout()
         super.viewWillTransition(to: size, with: coordinator)
+        mentorCollection?.collectionViewLayout.invalidateLayout()
     }
 }
 
@@ -70,6 +82,12 @@ extension MentoringViewController: BookingDelegate {
         guard let url = URL(string: "https://central.carleton.ca/") else { return }
         let webpage = SSSCSafariViewController(url: url)
         present(webpage, animated: true)
+    }
+}
+
+extension MentoringViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "mentorDetail", sender: nil)
     }
 }
 
@@ -102,11 +120,6 @@ extension MentoringViewController: UICollectionViewDataSource {
 }
 
 extension MentoringViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let cell = cell as? MentorCell else { return }
-        cell.imageView.layer.cornerRadius = cell.frame.width / 2
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }
