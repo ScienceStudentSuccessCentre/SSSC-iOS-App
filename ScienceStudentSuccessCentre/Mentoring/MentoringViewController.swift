@@ -30,9 +30,10 @@ class MentoringViewController: UIViewController {
         prepareNavigationBarAppearance()
     }
     
-    private func loadMentors() {
+    @objc private func loadMentors() {
         MentorLoader.loadMentors().done { mentors in
             self.mentors = mentors
+            self.navigationItem.setRightBarButton(nil, animated: true)
         }.catch { error in
             self.mentors = [Mentor]()
             print("Failed to load mentors:\n\(error)")
@@ -49,6 +50,10 @@ class MentoringViewController: UIViewController {
             }
             alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
             self.present(alert, animated: true)
+            self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .refresh,
+                                                                  target: self,
+                                                                  action: #selector(self.loadMentors)),
+                                                  animated: true)
         }.finally {
             self.mentorCollection?.reloadData()
         }
