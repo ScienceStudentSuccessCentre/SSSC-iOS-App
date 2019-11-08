@@ -14,10 +14,31 @@ class MentoringViewController: UIViewController {
     private let inset: CGFloat = 16
     private let minimumLineSpacing: CGFloat = 16
     private let minimumInteritemSpacing: CGFloat = 24
+    private var selectedMentor: Mentor?
     private weak var header: MentorHeader?
+    
+    private lazy var searchController: UISearchController = {
+        let resultsViewController = MentorSearchViewController(actionDelegate: self)
+        let searchController = UISearchController(searchResultsController: resultsViewController)
+        searchController.searchResultsUpdater = resultsViewController
+        searchController.searchBar.delegate = resultsViewController
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.placeholder = "Mentor Search"
+        searchController.dimsBackgroundDuringPresentation = true
+        
+        searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false
+        if #available(iOS 13.0, *) {
+            searchController.searchBar.translatesAutoresizingMaskIntoConstraints = true
+            searchController.searchBar.searchTextField.backgroundColor = UIColor(named: "searchBarBackground")
+            searchController.searchBar.searchTextField.tintColor = .label
+        }
+        return searchController
+    }()
     
     override func viewDidLoad() {
         extendedLayoutIncludesOpaqueBars = true
+        definesPresentationContext = true
+        navigationItem.searchController = searchController
         mentorCollection?.delegate = self
         mentorCollection?.dataSource = self
         mentorCollection?.collectionViewLayout = UICollectionViewFlowLayout()
@@ -61,12 +82,12 @@ class MentoringViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "mentorDetail" {
-            guard let destination = segue.destination as? MentorDetailViewController,
-                let mentorIndex = mentorCollection?.indexPathsForSelectedItems?.first,
-                let cell = mentorCollection?.cellForItem(at: mentorIndex) as? MentorCell else { return }
-            destination.mentor = mentors[mentorIndex.row]
-            if cell.loadedImage {
-                destination.loadedImage = cell.imageView.image
+            guard let destination = segue.destination as? MentorDetailViewController else { return }
+            if let mentorIndex = mentorCollection?.indexPathsForSelectedItems?.first {
+                destination.mentor = mentors[mentorIndex.row]
+                mentorCollection?.deselectItem(at: mentorIndex, animated: true)
+            } else {
+                destination.mentor = selectedMentor
             }
         }
     }
@@ -90,9 +111,20 @@ extension MentoringViewController: BookingDelegate {
     }
 }
 
+extension MentoringViewController: MentorSearchActionDelegate {
+    func getMentors() -> [Mentor] {
+        return mentors
+    }
+    func didTapMentor(_ mentor: Mentor) {
+        selectedMentor = mentor
+        performSegue(withIdentifier: "mentorDetail", sender: nil)
+    }
+}
+
 extension MentoringViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "mentorDetail", sender: nil)
+        guard let mentorIndex = collectionView.indexPathsForSelectedItems?.first else { return }
+        selectedMentor = mentors[mentorIndex.row]
     }
 }
 
@@ -106,6 +138,7 @@ extension MentoringViewController: UICollectionViewDataSource {
                                                             for: indexPath) as? MentorCell
             else { fatalError("Failed to dequeue MentorCell") }
         let mentor = mentors[indexPath.row]
+        cell.tag = indexPath.row
         cell.configure(mentor)
         return cell
     }

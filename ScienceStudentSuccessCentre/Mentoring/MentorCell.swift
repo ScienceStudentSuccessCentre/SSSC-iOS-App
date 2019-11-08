@@ -12,7 +12,6 @@ class MentorCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var degree: UILabel!
-    var loadedImage = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,7 +21,6 @@ class MentorCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-        super.prepareForReuse()
         name.text = nil
         degree.text = nil
         changeImage(to: nil, animated: false)
@@ -35,17 +33,14 @@ class MentorCell: UICollectionViewCell {
     }
     
     func configure(_ mentor: Mentor) {
-        name.text = mentor.getName()
-        degree.text = mentor.getDegree()
-        loadImage(url: mentor.getImageUrl())
-    }
-    
-    private func loadImage(url: URL?) {
-        if let url = url {
-            DispatchQueue.global().async {
-                if let data = try? Data(contentsOf: url) {
-                    DispatchQueue.main.async {
-                        self.changeImage(to: UIImage(data: data))
+        name.text = mentor.name
+        degree.text = mentor.degree
+        let initialTag = tag
+        DispatchQueue.global().async {
+            mentor.getImage().done { image in
+                DispatchQueue.main.async {
+                    if self.tag == initialTag {
+                        self.changeImage(to: image)
                     }
                 }
             }
@@ -63,7 +58,6 @@ class MentorCell: UICollectionViewCell {
                                 } else {
                                     self.imageView.image = image
                                 }
-                                self.loadedImage = image != nil
             })
         } else {
             if #available(iOS 13.0, *) {
@@ -71,7 +65,6 @@ class MentorCell: UICollectionViewCell {
             } else {
                 imageView.image = image
             }
-            loadedImage = image != nil
         }
     }
 }

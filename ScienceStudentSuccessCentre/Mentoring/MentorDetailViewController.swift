@@ -20,7 +20,6 @@ class MentorDetailViewController: UIViewController {
     @IBOutlet weak var separatorWidthConstraint: NSLayoutConstraint!
     
     var mentor: Mentor?
-    var loadedImage: UIImage?
     
     override func viewDidLoad() {
         scrollView.delegate = self
@@ -31,33 +30,27 @@ class MentorDetailViewController: UIViewController {
         bookingButton.setTitleColor(.white, for: .normal)
         bookingButton.layer.cornerRadius = 10
         bookingButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         guard let mentor = mentor else { return }
-        configure(mentor, loadedImage: loadedImage)
+        configure(mentor)
     }
     
-    private func configure(_ mentor: Mentor, loadedImage: UIImage? = nil) {
-        if let loadedImage = loadedImage {
-            changeImage(to: loadedImage, animated: false)
-        } else {
-            loadImage(url: mentor.getImageUrl())
-        }
-        name.text = mentor.getName()
-        degree.text = mentor.getDegree()
-        team.text = mentor.getTeam()
-        bio.attributedText = mentor.getBio().htmlToAttributedString
-        bio.font = .preferredFont(forTextStyle: .body)
-    }
-    
-    private func loadImage(url: URL?) {
-        if let url = url {
-            DispatchQueue.global().async {
-                if let data = try? Data(contentsOf: url) {
-                    DispatchQueue.main.async {
-                        self.changeImage(to: UIImage(data: data))
-                    }
+    private func configure(_ mentor: Mentor) {
+        DispatchQueue.global().async {
+            mentor.getImage().done { image in
+                DispatchQueue.main.async {
+                    self.changeImage(to: image)
                 }
             }
         }
+        name.text = mentor.name
+        degree.text = mentor.degree
+        team.text = mentor.team
+        bio.attributedText = mentor.bio.htmlToAttributedString
+        bio.font = .preferredFont(forTextStyle: .body)
     }
     
     private func changeImage(to image: UIImage?, animated: Bool = true) {
@@ -98,7 +91,7 @@ class MentorDetailViewController: UIViewController {
         degree.textAlignment = alignment
         team.textAlignment = alignment
         imageView.layer.cornerRadius = imageView.frame.height / 2
-        separatorWidthConstraint.constant = team.intrinsicContentSize.width
+        separatorWidthConstraint.constant = max(degree.intrinsicContentSize.width, team.intrinsicContentSize.width)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

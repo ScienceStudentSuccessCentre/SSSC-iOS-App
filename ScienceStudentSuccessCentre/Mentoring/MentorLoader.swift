@@ -67,7 +67,7 @@ class MentorLoader {
     /// - Returns: The list of mentors in alphabetical order.
     private static func sortMentors(_ mentors: [Mentor]) -> [Mentor] {
         return mentors.sorted {
-            $0.getName() < $1.getName()
+            $0.name < $1.name
         }
     }
 }

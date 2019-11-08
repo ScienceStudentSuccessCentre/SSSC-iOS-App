@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MentorSearchCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="123"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Jdw-Oo-7yA">
+                    <rect key="frame" x="8" y="16" width="92" height="91"/>
+                    <color key="backgroundColor" name="secondaryBackground"/>
+                    <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Jdw-Oo-7yA" secondAttribute="height" multiplier="1:1" id="5pt-Ue-8Hj"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Mentor Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NgO-8P-uSL">
+                    <rect key="frame" x="108" y="16" width="274" height="26.5"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Mentor Degree" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pO-oY-hdi">
+                    <rect key="frame" x="108" y="50.5" width="274" height="21"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mentor Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzS-A5-d3T">
+                    <rect key="frame" x="108" y="88.5" width="274" height="18.5"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="noP-m3-Th4">
+                    <rect key="frame" x="108" y="79.5" width="274" height="1"/>
+                    <color key="backgroundColor" name="separator"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="sTP-5U-juN"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" name="primaryBackground"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="NgO-8P-uSL" secondAttribute="trailing" constant="32" id="0yO-LV-o7d"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vzS-A5-d3T" secondAttribute="trailing" constant="32" id="3Qk-ME-cdX"/>
+                <constraint firstItem="Jdw-Oo-7yA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="4MA-Ts-ZxX"/>
+                <constraint firstItem="vzS-A5-d3T" firstAttribute="leading" secondItem="Jdw-Oo-7yA" secondAttribute="trailing" constant="8" id="EAO-vt-X6d"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7pO-oY-hdi" secondAttribute="trailing" constant="32" id="EJJ-AY-X5H"/>
+                <constraint firstItem="Jdw-Oo-7yA" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="JmN-M9-ouL"/>
+                <constraint firstItem="noP-m3-Th4" firstAttribute="top" secondItem="7pO-oY-hdi" secondAttribute="bottom" constant="8" id="OFg-wg-i4Z"/>
+                <constraint firstItem="NgO-8P-uSL" firstAttribute="leading" secondItem="Jdw-Oo-7yA" secondAttribute="trailing" constant="8" id="UtW-lI-huQ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="vzS-A5-d3T" secondAttribute="bottom" constant="16" id="VPn-yM-ecJ"/>
+                <constraint firstItem="Jdw-Oo-7yA" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="2:9" id="Va0-os-Xfn"/>
+                <constraint firstItem="7pO-oY-hdi" firstAttribute="top" secondItem="NgO-8P-uSL" secondAttribute="bottom" constant="8" id="eQQ-SE-l9o"/>
+                <constraint firstItem="7pO-oY-hdi" firstAttribute="leading" secondItem="Jdw-Oo-7yA" secondAttribute="trailing" constant="8" id="ecn-JN-cOv"/>
+                <constraint firstAttribute="trailing" secondItem="noP-m3-Th4" secondAttribute="trailing" constant="32" id="s80-CE-A3P"/>
+                <constraint firstItem="vzS-A5-d3T" firstAttribute="top" secondItem="noP-m3-Th4" secondAttribute="bottom" constant="8" id="sWS-As-bNf"/>
+                <constraint firstItem="NgO-8P-uSL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="ttL-OW-623"/>
+                <constraint firstItem="noP-m3-Th4" firstAttribute="leading" secondItem="Jdw-Oo-7yA" secondAttribute="trailing" constant="8" id="yit-8N-nR1"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="degree" destination="7pO-oY-hdi" id="F61-FH-bZw"/>
+                <outlet property="mentorImageView" destination="Jdw-Oo-7yA" id="DlD-hK-mqf"/>
+                <outlet property="name" destination="NgO-8P-uSL" id="w0i-wT-N1d"/>
+                <outlet property="team" destination="vzS-A5-d3T" id="sdS-Fb-SGR"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="80.022321428571431"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="person.crop.circle" catalog="system" width="64" height="60"/>
+        <namedColor name="primaryBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondaryBackground">
+            <color red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="separator">
+            <color red="0.23499999940395355" green="0.23499999940395355" blue="0.2630000114440918" alpha="0.28999999165534973" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

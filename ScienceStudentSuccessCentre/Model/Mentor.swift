@@ -6,19 +6,34 @@
 //  Copyright © 2019 Avery Vine. All rights reserved.
 //
 
-import Foundation
+import PromiseKit
+import UIKit
 
 /// Encompass all of the details for an SSSC mentor.
 ///
 /// - Attention: You should never have to generate these yourself, as mentor generation is handled by the server.
 class Mentor {
-    private var id: String
-    private var name: String
-    private var url: URL?
-    private var degree: String
-    private var bio: String
+    var id: String
+    var name: String
+    var url: URL?
+    var degree: String
+    var bio: String
+    var team: String
+    
+    func getImage() -> Guarantee<UIImage?> {
+        return Guarantee { seal in
+            if cachedImage == nil {
+                if let url = imageUrl {
+                    if let data = try? Data(contentsOf: url) {
+                        cachedImage = UIImage(data: data)
+                    }
+                }
+            }
+            seal(cachedImage)
+        }
+    }
     private var imageUrl: URL?
-    private var team: String
+    private var cachedImage: UIImage?
     
     /// Initializes a mentor based off a dictionary of data provided by the server.
     ///
@@ -46,7 +61,6 @@ class Mentor {
             imageUrl = nil
         }
         
-        
         self.init(id: id, name: name, url: url, degree: degree, bio: bio, imageUrl: imageUrl, team: team)
     }
     
@@ -59,56 +73,5 @@ class Mentor {
         self.bio = bio
         self.imageUrl = imageUrl
         self.team = team
-    }
-
-    /// Gets the id of the mentor.
-    ///
-    /// - Remark: Note that this id can technically not be unique (as it is just whatever is sent by the server), but should be treated as such.
-    /// - Returns: The id of the mentor.
-    public func getId() -> String {
-        return id
-    }
-    
-    /// Gets the name of the mentor.
-    ///
-    /// - Returns: The name of the mentor.
-    public func getName() -> String {
-        return name
-    }
-    
-    /// Gets the complete URL of the mentor, including the domain name portion.
-    ///
-    /// - Returns: The complete mentor URL, or `nil` if there one could not be found.
-    public func getUrl() -> URL? {
-        return url
-    }
-    
-    /// Gets the degree of the mentor.
-    ///
-    /// - Returns: The degree/program of the mentor.
-    public func getDegree() -> String {
-        return degree
-    }
-    
-    
-    /// Gets the bio of the mentor.
-    ///
-    /// - Returns: The bio of the mentor.
-    public func getBio() -> String {
-        return bio
-    }
-    
-    /// Gets the URL of the image associated with this mentor.
-    ///
-    /// - Returns: The image URL, or `nil` if there isn't one associated with this mentor.
-    public func getImageUrl() -> URL? {
-        return imageUrl
-    }
-    
-    /// Gets the team of the mentor.
-    ///
-    /// - Returns: The team of the mentor.
-    public func getTeam() -> String {
-        return team
     }
 }

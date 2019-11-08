@@ -26,6 +26,9 @@
 		FF3032112374B67200159555 /* MentorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3032102374B67100159555 /* MentorCell.swift */; };
 		FF3032152374C1E400159555 /* MentorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3032142374C1E400159555 /* MentorHeader.swift */; };
 		FF3032172374F13C00159555 /* MentorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3032162374F13C00159555 /* MentorDetailViewController.swift */; };
+		FF30321923750D7400159555 /* MentorSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30321823750D7400159555 /* MentorSearchViewController.swift */; };
+		FF30321B23750DC800159555 /* MentorSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30321A23750DC800159555 /* MentorSearchCell.swift */; };
+		FF30321D23750DD200159555 /* MentorSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF30321C23750DD200159555 /* MentorSearchCell.xib */; };
 		FF30AFB82162A6E200C1F22C /* CreateTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30AFB72162A6E200C1F22C /* CreateTermViewController.swift */; };
 		FF327FC920128C3E00B06E19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FC820128C3E00B06E19 /* AppDelegate.swift */; };
 		FF327FD020128C3E00B06E19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF327FCE20128C3E00B06E19 /* Main.storyboard */; };
@@ -104,6 +107,9 @@
 		FF3032102374B67100159555 /* MentorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorCell.swift; sourceTree = "<group>"; };
 		FF3032142374C1E400159555 /* MentorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorHeader.swift; sourceTree = "<group>"; };
 		FF3032162374F13C00159555 /* MentorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorDetailViewController.swift; sourceTree = "<group>"; };
+		FF30321823750D7400159555 /* MentorSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorSearchViewController.swift; sourceTree = "<group>"; };
+		FF30321A23750DC800159555 /* MentorSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorSearchCell.swift; sourceTree = "<group>"; };
+		FF30321C23750DD200159555 /* MentorSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MentorSearchCell.xib; sourceTree = "<group>"; };
 		FF30AFB72162A6E200C1F22C /* CreateTermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTermViewController.swift; sourceTree = "<group>"; };
 		FF327FC520128C3E00B06E19 /* ScienceStudentSuccessCentre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScienceStudentSuccessCentre.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF327FC820128C3E00B06E19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +205,9 @@
 				FF3032142374C1E400159555 /* MentorHeader.swift */,
 				FF04D842231FEB2000A8F34E /* MentoringViewController.swift */,
 				FF30320E2374B33200159555 /* MentorLoader.swift */,
+				FF30321823750D7400159555 /* MentorSearchViewController.swift */,
+				FF30321A23750DC800159555 /* MentorSearchCell.swift */,
+				FF30321C23750DD200159555 /* MentorSearchCell.xib */,
 			);
 			path = Mentoring;
 			sourceTree = "<group>";
@@ -483,6 +492,7 @@
 			files = (
 				FF592B3921C76C71002319C0 /* AppIcon.png in Resources */,
 				FFB76C962030B5A200EC3F97 /* Assets.xcassets in Resources */,
+				FF30321D23750DD200159555 /* MentorSearchCell.xib in Resources */,
 				FF327FD520128C3E00B06E19 /* LaunchScreen.storyboard in Resources */,
 				FF4A9D12229A19DA00DE8EED /* TestGradeData.sssc in Resources */,
 				FF327FD020128C3E00B06E19 /* Main.storyboard in Resources */,
@@ -618,6 +628,7 @@
 				FFA7CBAF215DD54C00A050B1 /* PlannerViewController.swift in Sources */,
 				FFA7CBB1215DD59B00A050B1 /* TermTableViewCell.swift in Sources */,
 				FF57A96521658509004AA50B /* UIColor.swift in Sources */,
+				FF30321B23750DC800159555 /* MentorSearchCell.swift in Sources */,
 				FF30320F2374B33200159555 /* MentorLoader.swift in Sources */,
 				FFA7CBAD215DD53300A050B1 /* CalculatorViewController.swift in Sources */,
 				FFAE67922188ED2D0079CE16 /* UIView.swift in Sources */,
@@ -627,6 +638,7 @@
 				FF3032112374B67200159555 /* MentorCell.swift in Sources */,
 				FFFC6BC92162D70D001585CE /* CourseTableViewCell.swift in Sources */,
 				FFE585F22315BDAE007E7B2F /* SearchableList.swift in Sources */,
+				FF30321923750D7400159555 /* MentorSearchViewController.swift in Sources */,
 				FF04D8472320920700A8F34E /* SSSCSafariViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
