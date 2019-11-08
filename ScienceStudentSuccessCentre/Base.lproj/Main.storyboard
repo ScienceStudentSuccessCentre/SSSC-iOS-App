@@ -444,7 +444,7 @@
         <scene sceneID="ybj-Ec-SEE">
             <objects>
                 <collectionViewController id="O5y-FZ-dqo" customClass="MentoringViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="K4J-mc-SJc">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="K4J-mc-SJc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="primaryBackground"/>
@@ -513,15 +513,18 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zol-RY-bnj" customClass="AnimatedButton" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
-                                    <rect key="frame" x="126" y="40" width="162" height="9"/>
+                                    <rect key="frame" x="126" y="32" width="162" height="17"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                     <state key="normal" title="Book Appointment"/>
+                                    <connections>
+                                        <action selector="bookingButtonPressed" destination="vV4-A0-6lm" eventType="touchUpInside" id="Gbx-WW-7Gq"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="Zol-RY-bnj" firstAttribute="centerX" secondItem="vV4-A0-6lm" secondAttribute="centerX" id="8Ap-8b-coe"/>
                                 <constraint firstAttribute="bottomMargin" secondItem="Zol-RY-bnj" secondAttribute="bottom" constant="16" id="qcw-s4-oUS"/>
-                                <constraint firstItem="Zol-RY-bnj" firstAttribute="top" secondItem="vV4-A0-6lm" secondAttribute="topMargin" constant="32" id="weE-Jn-HVT"/>
+                                <constraint firstItem="Zol-RY-bnj" firstAttribute="top" secondItem="vV4-A0-6lm" secondAttribute="topMargin" constant="24" id="weE-Jn-HVT"/>
                             </constraints>
                             <connections>
                                 <outlet property="bookingButton" destination="Zol-RY-bnj" id="pxx-km-DY1"/>
