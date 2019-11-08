@@ -441,114 +441,102 @@
             <point key="canvasLocation" x="641" y="841"/>
         </scene>
         <!--Mentoring-->
-        <scene sceneID="R17-Kq-zGz">
+        <scene sceneID="ybj-Ec-SEE">
             <objects>
-                <viewController id="K3j-pU-hPm" customClass="MentoringViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Q9w-Ux-SP5">
+                <collectionViewController id="O5y-FZ-dqo" customClass="MentoringViewController" customModule="ScienceStudentSuccessCentre" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="K4J-mc-SJc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xgH-0T-xwC">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
-                                <color key="backgroundColor" name="primaryBackground"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vY9-sN-3Zj">
-                                    <size key="itemSize" width="182" height="248"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MentorCell" id="f9w-CG-rli" customClass="MentorCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="182" height="248"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="FOj-Kd-m4h">
-                                            <rect key="frame" x="0.0" y="0.0" width="182" height="248"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UuA-YI-4vA">
-                                                    <rect key="frame" x="0.0" y="0.5" width="182" height="181"/>
-                                                    <color key="backgroundColor" name="secondaryBackground"/>
-                                                    <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="UuA-YI-4vA" secondAttribute="height" multiplier="1:1" id="fZ0-wj-c3g"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mentor Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4E-xA-4wK">
-                                                    <rect key="frame" x="0.0" y="198" width="182" height="20.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Degree Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSk-dg-UGU">
-                                                    <rect key="frame" x="8" y="218.5" width="166" height="21.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="xSk-dg-UGU" firstAttribute="top" secondItem="C4E-xA-4wK" secondAttribute="bottom" id="AGH-y6-DKf"/>
-                                                <constraint firstAttribute="trailing" secondItem="UuA-YI-4vA" secondAttribute="trailing" id="EKH-FT-PFl"/>
-                                                <constraint firstItem="UuA-YI-4vA" firstAttribute="top" secondItem="FOj-Kd-m4h" secondAttribute="top" id="GWR-5Q-b9v"/>
-                                                <constraint firstAttribute="bottom" secondItem="xSk-dg-UGU" secondAttribute="bottom" constant="8" id="LKz-Qx-Mfg"/>
-                                                <constraint firstAttribute="trailing" secondItem="C4E-xA-4wK" secondAttribute="trailing" id="Mcl-I9-1Ux"/>
-                                                <constraint firstItem="UuA-YI-4vA" firstAttribute="leading" secondItem="FOj-Kd-m4h" secondAttribute="leading" id="Mfd-Uu-GQS"/>
-                                                <constraint firstItem="C4E-xA-4wK" firstAttribute="top" secondItem="UuA-YI-4vA" secondAttribute="bottom" constant="16" id="Pnf-cG-whZ"/>
-                                                <constraint firstAttribute="trailing" secondItem="xSk-dg-UGU" secondAttribute="trailing" constant="8" id="aoz-ok-dg1"/>
-                                                <constraint firstItem="xSk-dg-UGU" firstAttribute="leading" secondItem="FOj-Kd-m4h" secondAttribute="leading" constant="8" id="hrv-fg-6CR"/>
-                                                <constraint firstItem="C4E-xA-4wK" firstAttribute="leading" secondItem="FOj-Kd-m4h" secondAttribute="leading" id="tUM-bm-Ur5"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="182" height="248"/>
-                                        <connections>
-                                            <outlet property="degree" destination="xSk-dg-UGU" id="8f3-lw-vN6"/>
-                                            <outlet property="imageView" destination="UuA-YI-4vA" id="Yjd-mn-Rpo"/>
-                                            <outlet property="name" destination="C4E-xA-4wK" id="28k-Tq-NnV"/>
-                                            <segue destination="IaI-2e-6tA" kind="showDetail" identifier="mentorDetail" id="sHV-m8-S18"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="MentorHeader" id="v2M-jx-3fu" customClass="MentorHeader" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                        <color key="backgroundColor" name="primaryBackground"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="q8D-dq-Wen">
+                            <size key="itemSize" width="213" height="285"/>
+                            <size key="headerReferenceSize" width="50" height="73"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MentorCell" id="f6k-jb-1F7" customClass="MentorCell" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
+                                <rect key="frame" x="100.5" y="73" width="213" height="285"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7I8-BF-xSV">
+                                    <rect key="frame" x="0.0" y="0.0" width="213" height="285"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHQ-Le-aHE" customClass="AnimatedButton" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
-                                            <rect key="frame" x="126" y="32" width="162" height="2"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                            <state key="normal" title="Book Appointment"/>
-                                            <connections>
-                                                <action selector="bookingButtonPressed" destination="v2M-jx-3fu" eventType="touchUpInside" id="mVq-rk-AdA"/>
-                                            </connections>
-                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Degree Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Htj-b3-ARW">
+                                            <rect key="frame" x="0.0" y="249.5" width="213" height="27.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WqF-Uz-jil">
+                                            <rect key="frame" x="0.0" y="0.5" width="213" height="212"/>
+                                            <color key="backgroundColor" name="secondaryBackground"/>
+                                            <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="WqF-Uz-jil" secondAttribute="height" multiplier="1:1" id="YZb-z3-5HO"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mentor Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Oz-QX-3h0">
+                                            <rect key="frame" x="0.0" y="229" width="213" height="20.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="dHQ-Le-aHE" firstAttribute="top" secondItem="v2M-jx-3fu" secondAttribute="top" constant="32" id="12d-ca-6vf"/>
-                                        <constraint firstItem="dHQ-Le-aHE" firstAttribute="centerX" secondItem="v2M-jx-3fu" secondAttribute="centerX" id="rU4-LB-UBx"/>
-                                        <constraint firstAttribute="bottom" secondItem="dHQ-Le-aHE" secondAttribute="bottom" constant="16" id="ugy-ul-6RK"/>
+                                        <constraint firstItem="0Oz-QX-3h0" firstAttribute="leading" secondItem="7I8-BF-xSV" secondAttribute="leading" id="2Tn-NX-Sso"/>
+                                        <constraint firstItem="WqF-Uz-jil" firstAttribute="width" secondItem="WqF-Uz-jil" secondAttribute="height" multiplier="1:1" id="31n-ed-y9o"/>
+                                        <constraint firstAttribute="trailing" secondItem="0Oz-QX-3h0" secondAttribute="trailing" id="3VN-Rh-s6S"/>
+                                        <constraint firstItem="Htj-b3-ARW" firstAttribute="leading" secondItem="7I8-BF-xSV" secondAttribute="leading" id="Now-Uy-mjf"/>
+                                        <constraint firstAttribute="trailing" secondItem="WqF-Uz-jil" secondAttribute="trailing" id="X9s-Nx-ftK"/>
+                                        <constraint firstItem="WqF-Uz-jil" firstAttribute="leading" secondItem="7I8-BF-xSV" secondAttribute="leading" id="YKO-nO-rdl"/>
+                                        <constraint firstItem="0Oz-QX-3h0" firstAttribute="top" secondItem="WqF-Uz-jil" secondAttribute="bottom" constant="16" id="etm-C1-wot"/>
+                                        <constraint firstItem="Htj-b3-ARW" firstAttribute="top" secondItem="0Oz-QX-3h0" secondAttribute="bottom" id="hS8-6y-1xt"/>
+                                        <constraint firstAttribute="bottom" secondItem="Htj-b3-ARW" secondAttribute="bottom" constant="8" id="obY-c6-GDy"/>
+                                        <constraint firstAttribute="trailing" secondItem="Htj-b3-ARW" secondAttribute="trailing" id="ote-Lo-EQF"/>
+                                        <constraint firstItem="WqF-Uz-jil" firstAttribute="top" secondItem="7I8-BF-xSV" secondAttribute="top" id="sHc-5Y-Vle"/>
+                                        <constraint firstItem="0Oz-QX-3h0" firstAttribute="top" secondItem="WqF-Uz-jil" secondAttribute="bottom" constant="16" id="waZ-LB-x3q"/>
+                                        <constraint firstItem="Htj-b3-ARW" firstAttribute="top" secondItem="0Oz-QX-3h0" secondAttribute="bottom" id="xyl-Fi-ygI"/>
                                     </constraints>
-                                    <connections>
-                                        <outlet property="bookingButton" destination="dHQ-Le-aHE" id="OWQ-53-r1V"/>
-                                    </connections>
-                                </collectionReusableView>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" name="primaryBackground"/>
-                        <constraints>
-                            <constraint firstItem="xgH-0T-xwC" firstAttribute="top" secondItem="Q9w-Ux-SP5" secondAttribute="top" id="GfZ-os-tZ2"/>
-                            <constraint firstItem="xgH-0T-xwC" firstAttribute="bottom" secondItem="fNV-0q-8Fk" secondAttribute="bottom" id="dew-mE-p8l"/>
-                            <constraint firstItem="xgH-0T-xwC" firstAttribute="leading" secondItem="fNV-0q-8Fk" secondAttribute="leading" id="pQP-Xy-wPr"/>
-                            <constraint firstItem="xgH-0T-xwC" firstAttribute="trailing" secondItem="fNV-0q-8Fk" secondAttribute="trailing" id="yyS-RN-HAT"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="fNV-0q-8Fk"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Mentoring" id="N4h-CV-lpg"/>
-                    <connections>
-                        <outlet property="mentorCollection" destination="xgH-0T-xwC" id="v8U-eB-i9V"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UkY-bl-5Ap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="213" height="285"/>
+                                <connections>
+                                    <outlet property="degree" destination="Htj-b3-ARW" id="oKK-39-pEG"/>
+                                    <outlet property="imageView" destination="WqF-Uz-jil" id="ido-PH-AI2"/>
+                                    <outlet property="name" destination="0Oz-QX-3h0" id="IQ8-kn-AMW"/>
+                                    <segue destination="IaI-2e-6tA" kind="showDetail" identifier="mentorDetail" id="BVb-tQ-igC"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="MentorHeader" id="vV4-A0-6lm" customClass="MentorHeader" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="73"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zol-RY-bnj" customClass="AnimatedButton" customModule="ScienceStudentSuccessCentre" customModuleProvider="target">
+                                    <rect key="frame" x="126" y="40" width="162" height="9"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                    <state key="normal" title="Book Appointment"/>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="Zol-RY-bnj" firstAttribute="centerX" secondItem="vV4-A0-6lm" secondAttribute="centerX" id="8Ap-8b-coe"/>
+                                <constraint firstAttribute="bottomMargin" secondItem="Zol-RY-bnj" secondAttribute="bottom" constant="16" id="qcw-s4-oUS"/>
+                                <constraint firstItem="Zol-RY-bnj" firstAttribute="top" secondItem="vV4-A0-6lm" secondAttribute="topMargin" constant="32" id="weE-Jn-HVT"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="bookingButton" destination="Zol-RY-bnj" id="pxx-km-DY1"/>
+                            </connections>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="O5y-FZ-dqo" id="fuF-gv-pzv"/>
+                            <outlet property="delegate" destination="O5y-FZ-dqo" id="EuJ-KO-7mj"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Mentoring" id="lEj-2I-gez"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MuY-Zx-KAe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1108" y="841"/>
+            <point key="canvasLocation" x="-1109" y="840"/>
         </scene>
         <!--Mentor Detail View Controller-->
         <scene sceneID="56W-Uy-Pc3">
@@ -694,7 +682,6 @@
                                             <mask key="constraints">
                                                 <exclude reference="5cq-Kk-QMd"/>
                                                 <exclude reference="Zws-xK-Gd2"/>
-                                                <exclude reference="ZxS-L8-feA"/>
                                                 <exclude reference="Ifi-RR-fcM"/>
                                                 <exclude reference="OBo-rK-QHn"/>
                                                 <exclude reference="Qco-Sa-CuA"/>
@@ -709,6 +696,7 @@
                                                 <exclude reference="5Eq-qf-JrC"/>
                                                 <exclude reference="Yq5-MS-YW2"/>
                                                 <exclude reference="dgn-Mt-e7v"/>
+                                                <exclude reference="ZxS-L8-feA"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
@@ -716,8 +704,6 @@
                                                 <include reference="5cq-Kk-QMd"/>
                                                 <include reference="Zws-xK-Gd2"/>
                                                 <exclude reference="iGl-VD-v6F"/>
-                                                <include reference="ZxS-L8-feA"/>
-                                                <exclude reference="wEL-jg-t0Z"/>
                                                 <include reference="Ifi-RR-fcM"/>
                                                 <include reference="OBo-rK-QHn"/>
                                                 <include reference="Qco-Sa-CuA"/>
@@ -739,6 +725,8 @@
                                                 <include reference="5Eq-qf-JrC"/>
                                                 <exclude reference="SZz-kz-I8A"/>
                                                 <include reference="Yq5-MS-YW2"/>
+                                                <include reference="ZxS-L8-feA"/>
+                                                <exclude reference="wEL-jg-t0Z"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=regular">
@@ -1512,7 +1500,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="K3j-pU-hPm" kind="relationship" relationship="rootViewController" id="0So-YI-HBa"/>
+                        <segue destination="O5y-FZ-dqo" kind="relationship" relationship="rootViewController" id="jJY-N1-WzX"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WK7-hp-OYs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

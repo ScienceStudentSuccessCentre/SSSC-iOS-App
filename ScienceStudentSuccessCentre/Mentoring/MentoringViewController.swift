@@ -8,8 +8,7 @@
 
 import UIKit
 
-class MentoringViewController: UIViewController {
-    @IBOutlet weak var mentorCollection: UICollectionView?
+class MentoringViewController: UICollectionViewController {
     private var mentors = [Mentor]()
     private let inset: CGFloat = 16
     private let minimumLineSpacing: CGFloat = 16
@@ -39,10 +38,10 @@ class MentoringViewController: UIViewController {
         extendedLayoutIncludesOpaqueBars = true
         definesPresentationContext = true
         navigationItem.searchController = searchController
-        mentorCollection?.delegate = self
-        mentorCollection?.dataSource = self
-        mentorCollection?.collectionViewLayout = UICollectionViewFlowLayout()
-        mentorCollection?.contentInsetAdjustmentBehavior = .always
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        collectionView.contentInsetAdjustmentBehavior = .always
         loadMentors()
     }
     
@@ -76,30 +75,57 @@ class MentoringViewController: UIViewController {
                                                                   action: #selector(self.loadMentors)),
                                                   animated: true)
         }.finally {
-            self.mentorCollection?.reloadData()
+            self.collectionView.reloadData()
         }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let mentorIndex = collectionView.indexPathsForSelectedItems?.first else { return }
+        selectedMentor = mentors[mentorIndex.row]
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return mentors.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MentorCell",
+                                                            for: indexPath) as? MentorCell
+            else { fatalError("Failed to dequeue MentorCell") }
+        let mentor = mentors[indexPath.row]
+        cell.tag = indexPath.row
+        cell.configure(mentor)
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView,
+                                 viewForSupplementaryElementOfKind kind: String,
+                                 at indexPath: IndexPath) -> UICollectionReusableView {
+        let kind = UICollectionView.elementKindSectionHeader
+        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                           withReuseIdentifier: "MentorHeader",
+                                                                           for: indexPath) as? MentorHeader
+            else { fatalError(" Failed to dequeue MentorHeader") }
+        header.bookingDelegate = self
+        self.header = header
+        return header
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "mentorDetail" {
             guard let destination = segue.destination as? MentorDetailViewController else { return }
-            if let mentorIndex = mentorCollection?.indexPathsForSelectedItems?.first {
+            if let mentorIndex = collectionView.indexPathsForSelectedItems?.first {
                 destination.mentor = mentors[mentorIndex.row]
-                mentorCollection?.deselectItem(at: mentorIndex, animated: true)
+                collectionView.deselectItem(at: mentorIndex, animated: true)
             } else {
                 destination.mentor = selectedMentor
             }
         }
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        mentorCollection?.collectionViewLayout.invalidateLayout()
-    }
-    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        mentorCollection?.collectionViewLayout.invalidateLayout()
+        collectionView.collectionViewLayout.invalidateLayout()
     }
 }
 
@@ -118,42 +144,6 @@ extension MentoringViewController: MentorSearchActionDelegate {
     func didTapMentor(_ mentor: Mentor) {
         selectedMentor = mentor
         performSegue(withIdentifier: "mentorDetail", sender: nil)
-    }
-}
-
-extension MentoringViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let mentorIndex = collectionView.indexPathsForSelectedItems?.first else { return }
-        selectedMentor = mentors[mentorIndex.row]
-    }
-}
-
-extension MentoringViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return mentors.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MentorCell",
-                                                            for: indexPath) as? MentorCell
-            else { fatalError("Failed to dequeue MentorCell") }
-        let mentor = mentors[indexPath.row]
-        cell.tag = indexPath.row
-        cell.configure(mentor)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-        let kind = UICollectionView.elementKindSectionHeader
-        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                           withReuseIdentifier: "MentorHeader",
-                                                                           for: indexPath) as? MentorHeader
-            else { fatalError(" Failed to dequeue MentorHeader") }
-        header.bookingDelegate = self
-        self.header = header
-        return header
     }
 }
 
