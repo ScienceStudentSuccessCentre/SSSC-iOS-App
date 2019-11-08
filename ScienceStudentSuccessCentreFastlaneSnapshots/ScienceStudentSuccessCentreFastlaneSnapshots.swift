@@ -124,6 +124,8 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
             toggleDarkMode(enabled: false)
         }
         app.tabBars.buttons["Mentoring"].tap()
+        usleep(networkWait)
+        app.cells.firstMatch.tap()
         snapshot(screenshotTitle(forName: "4MentoringTab"))
     }
     
