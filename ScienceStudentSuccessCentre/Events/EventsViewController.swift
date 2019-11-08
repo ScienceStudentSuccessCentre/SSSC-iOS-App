@@ -125,7 +125,7 @@ class EventsViewController: UITableViewController {
     }
     
     func navigateToDeepLinkId(_ id: String) {
-        if let eventIndex = events.firstIndex(where: { $0.getId() == id }) {
+        if let eventIndex = events.firstIndex(where: { $0.id == id }) {
             let indexPath = IndexPath(row: eventIndex, section: 0)
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
             performSegue(withIdentifier: "eventDetail", sender: tableView.cellForRow(at: indexPath))
@@ -165,9 +165,9 @@ extension EventsViewController {
             fatalError("The dequeued cell is not an instance of \(EventTableViewCell.self).")
         }
         let event = events[indexPath.row]
-        cell.monthLabel.text = event.getMonthName()
-        cell.dateLabel.text = event.getDayLeadingZero()
-        cell.eventLabel.text = event.getName()
+        cell.monthLabel.text = event.monthName
+        cell.dateLabel.text = event.dayLeadingZero
+        cell.eventLabel.text = event.name
         return cell
     }
     

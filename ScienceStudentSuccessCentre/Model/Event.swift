@@ -14,17 +14,92 @@ import Foundation
 class Event {
     private let urlPrefix = "https://sssc.carleton.ca"
     
-    private var id: String
-    private var name: String
-    private var description: String
+    var id: String
+    var name: String
+    var description: String
     private var dateTime: Date?
     private var rawTime: String
-    private var location: String
+    var location: String
     private var url: URL?
-    private var imageUrl: URL?
-    private var actionUrl: String?
+    var imageUrl: URL?
+    var actionUrl: String?
     
     private let calendar = Calendar.current
+    
+    var formattedDateAndTime: String {
+        var formattedDateAndTime = monthName + " " + dayLeadingZero
+        if rawTime != "" {
+            formattedDateAndTime += "\n" + rawTime
+        }
+        return formattedDateAndTime
+    }
+    
+    /// Provides the date and time the user should receive a notification for this event, or `nil` if one could not be calculated..
+    ///
+    /// - Remark: For the actual date and time of this event, use `getDateTime()`.
+    var notificationDateTime: Date? {
+        if let dateTime = dateTime {
+            return calendar.date(byAdding: .hour, value: -1, to: dateTime)
+        }
+        return nil
+    }
+    
+    /// Gets the year of the event.
+    var year: Int {
+        return calendar.component(.year, from: dateTime!)
+    }
+    
+    /// Gets the month of the event, as a 3-letter string.
+    ///
+    /// - Remark: To get the month as a number, use the corresponding function `getMonth()`.
+    var monthName: String {
+        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        return months[month - 1]
+    }
+    
+    /// Gets the month of the event, as an integer.
+    ///
+    /// - Remark: To get the month as a 3-letter string, use the corresponding function `getMonthName()`.
+    var month: Int {
+        return calendar.component(.month, from: dateTime!)
+    }
+    
+    /// Gets the day of the event, as an integer.
+    ///
+    /// - Remark: For a formatted day (with leading zero), use the corresponding function `getDayLeadingZero()`.
+    var day: Int {
+        return calendar.component(.day, from: dateTime!)
+    }
+    
+    /// Gets the day of this event, formatted with a leading zero.
+    ///
+    /// - Remark: For an unformatted day (as an integer), use the corresponding function `getDay()`.
+    var dayLeadingZero: String {
+        if day < 10 {
+            return "0" + String(day)
+        }
+        return String(day)
+    }
+    
+    /// Formats the event time for quick summarization, based off the parsed Date object.
+    var formattedTime: String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .medium
+        formatter.amSymbol = "am"
+        formatter.pmSymbol = "pm"
+        formatter.dateFormat = "HH:mm"
+        let formattedTime = formatter.date(from: formatter.string(from: dateTime!))
+        formatter.dateFormat = "h:mma"
+        return formatter.string(from: formattedTime!)
+    }
+    
+    /// Gets the complete URL of the event, including the domain name portion, or `nil` if one could not be found..
+    var eventUrl: URL? {
+        if let url = url {
+            return URL(string: urlPrefix + url.absoluteString)
+        }
+        return nil
+    }
     
     /// Initializes an event based off a dictionary of data provided by the server.
     ///
@@ -74,149 +149,6 @@ class Event {
         self.url = url
         self.imageUrl = imageUrl
         self.actionUrl = actionUrl
-    }
-
-    /// Gets the id of the event.
-    ///
-    /// - Remark: Note that this id can technically not be unique (as it is just whatever is sent by the server), but should be treated as such.
-    /// - Returns: The id of the event.
-    public func getId() -> String {
-        return id
-    }
-    
-    /// Gets the name of the event.
-    ///
-    /// - Returns: The name of the event.
-    public func getName() -> String {
-        return name
-    }
-    
-    public func getDescription() -> String {
-        return description
-    }
-    
-    /// Provides the start date and time of this event.
-    ///
-    /// - Remark: For the date and time that users should receive a notification for this event, use `getNotificationDateTime()`.
-    /// - Returns: The event start date and time, or `nil` if the server could not provide one.
-    public func getDateTime() -> Date? {
-        return dateTime
-    }
-    
-    public func getFormattedDateAndTime() -> String {
-        var formattedDateAndTime = getMonthName() + " " + getDayLeadingZero()
-        if getRawTime() != "" {
-            formattedDateAndTime += "\n" + getRawTime()
-        }
-        return formattedDateAndTime
-    }
-    
-    /// Provides the date and time the user should receive a notification for this event.
-    ///
-    /// - Remark: For the actual date and time of this event, use `getDateTime()`.
-    /// - Returns: The notification date and time, or `nil` if one could not be calculated.
-    public func getNotificationDateTime() -> Date? {
-        if let dateTime = dateTime {
-            return calendar.date(byAdding: .hour, value: -1, to: dateTime)
-        }
-        return nil
-    }
-    
-    /// Gets the year of the event.
-    ///
-    /// - Returns: The year of the event.
-    public func getYear() -> Int {
-        return calendar.component(.year, from: dateTime!)
-    }
-    
-    /// Gets the month of the event, as a 3-letter string.
-    ///
-    /// - Remark: To get the month as a number, use the corresponding function `getMonth()`.
-    /// - Returns: The month of the event.
-    public func getMonthName() -> String {
-        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        return months[getMonth() - 1]
-    }
-    
-    /// Gets the month of the event, as an integer.
-    ///
-    /// - Remark: To get the month as a 3-letter string, use the corresponding function `getMonthName()`.
-    /// - Returns: The month of the event.
-    public func getMonth() -> Int {
-        return calendar.component(.month, from: dateTime!)
-    }
-    
-    /// Gets the day of the event, as an integer.
-    ///
-    /// - Remark: For a formatted day (with leading zero), use the corresponding function `getDayLeadingZero()`.
-    /// - Returns: The day of the event.
-    public func getDay() -> Int {
-        return calendar.component(.day, from: dateTime!)
-    }
-    
-    /// Gets the day of this event, formatted with a leading zero.
-    ///
-    /// - Remark: For an unformatted day (as an integer), use the corresponding function `getDay()`.
-    /// - Returns: The day of the event.
-    public func getDayLeadingZero() -> String {
-        let day: Int = getDay()
-        if day < 10 {
-            return "0" + String(day)
-        }
-        return String(day)
-    }
-    
-    /// Gets the unparsed event time as provided by the server.
-    ///
-    /// - Remark: There are alternative ways to get the time that should probably be preferred (`getFormattedTime()`, `getDateTime()`).
-    /// - Returns: Unparsed time, as provided by the server (which in turn, is unparsed directly from the website).
-    public func getRawTime() -> String {
-        return rawTime
-    }
-    
-    /// Formats the event time for quick summarization, based off the parsed Date object.
-    ///
-    /// - Returns: The formatted event time.
-    public func getFormattedTime() -> String {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .medium
-        formatter.amSymbol = "am"
-        formatter.pmSymbol = "pm"
-        formatter.dateFormat = "HH:mm"
-        let formattedTime = formatter.date(from: formatter.string(from: dateTime!))
-        formatter.dateFormat = "h:mma"
-        return formatter.string(from: formattedTime!)
-    }
-    
-    /// Gets the location of the event (most likely just the building and room number).
-    ///
-    /// - Returns: The location of the event.
-    public func getLocation() -> String {
-        return location
-    }
-    
-    /// Gets the complete URL of the event, including the domain name portion.
-    ///
-    /// - Returns: The complete event URL, or `nil` if there one could not be found.
-    public func getUrl() -> URL? {
-        if let url = url {
-            return URL(string: urlPrefix + url.absoluteString)
-        }
-        return nil
-    }
-    
-    /// Gets the URL of the first image associated with this event.
-    ///
-    /// - Returns: The image URL, or `nil` if there isn't one associated with this event.
-    public func getImageUrl() -> URL? {
-        return imageUrl
-    }
-    
-    /// Gets the URL that users can "act on" (click to RSVP, sign up on Carleton Central, etc).
-    ///
-    /// - Returns: The action URL, or `nil` if there isn't one associated with this event.
-    public func getActionUrl() -> String? {
-        return actionUrl
     }
     
     public static func generateTestEvent() -> Event {

@@ -21,6 +21,14 @@
 		FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */; };
 		FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1D7D24215D6DDD00A88467 /* Database.swift */; };
 		FF2CC47F21ACF5F3002EE205 /* CalculateRequiredFinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2CC47E21ACF5F3002EE205 /* CalculateRequiredFinalViewController.swift */; };
+		FF30320D2374B08200159555 /* Mentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30320C2374B08200159555 /* Mentor.swift */; };
+		FF30320F2374B33200159555 /* MentorLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30320E2374B33200159555 /* MentorLoader.swift */; };
+		FF3032112374B67200159555 /* MentorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3032102374B67100159555 /* MentorCell.swift */; };
+		FF3032152374C1E400159555 /* MentorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3032142374C1E400159555 /* MentorHeader.swift */; };
+		FF3032172374F13C00159555 /* MentorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3032162374F13C00159555 /* MentorDetailViewController.swift */; };
+		FF30321923750D7400159555 /* MentorSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30321823750D7400159555 /* MentorSearchViewController.swift */; };
+		FF30321B23750DC800159555 /* MentorSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30321A23750DC800159555 /* MentorSearchCell.swift */; };
+		FF30321D23750DD200159555 /* MentorSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF30321C23750DD200159555 /* MentorSearchCell.xib */; };
 		FF30AFB82162A6E200C1F22C /* CreateTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF30AFB72162A6E200C1F22C /* CreateTermViewController.swift */; };
 		FF327FC920128C3E00B06E19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF327FC820128C3E00B06E19 /* AppDelegate.swift */; };
 		FF327FD020128C3E00B06E19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF327FCE20128C3E00B06E19 /* Main.storyboard */; };
@@ -94,6 +102,14 @@
 		FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurekaFormProtocol.swift; sourceTree = "<group>"; };
 		FF1D7D24215D6DDD00A88467 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		FF2CC47E21ACF5F3002EE205 /* CalculateRequiredFinalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateRequiredFinalViewController.swift; sourceTree = "<group>"; };
+		FF30320C2374B08200159555 /* Mentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mentor.swift; sourceTree = "<group>"; };
+		FF30320E2374B33200159555 /* MentorLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorLoader.swift; sourceTree = "<group>"; };
+		FF3032102374B67100159555 /* MentorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorCell.swift; sourceTree = "<group>"; };
+		FF3032142374C1E400159555 /* MentorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorHeader.swift; sourceTree = "<group>"; };
+		FF3032162374F13C00159555 /* MentorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorDetailViewController.swift; sourceTree = "<group>"; };
+		FF30321823750D7400159555 /* MentorSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorSearchViewController.swift; sourceTree = "<group>"; };
+		FF30321A23750DC800159555 /* MentorSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorSearchCell.swift; sourceTree = "<group>"; };
+		FF30321C23750DD200159555 /* MentorSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MentorSearchCell.xib; sourceTree = "<group>"; };
 		FF30AFB72162A6E200C1F22C /* CreateTermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTermViewController.swift; sourceTree = "<group>"; };
 		FF327FC520128C3E00B06E19 /* ScienceStudentSuccessCentre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScienceStudentSuccessCentre.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF327FC820128C3E00B06E19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -184,7 +200,14 @@
 		FF04D841231FEAF700A8F34E /* Mentoring */ = {
 			isa = PBXGroup;
 			children = (
+				FF3032102374B67100159555 /* MentorCell.swift */,
+				FF3032162374F13C00159555 /* MentorDetailViewController.swift */,
+				FF3032142374C1E400159555 /* MentorHeader.swift */,
 				FF04D842231FEB2000A8F34E /* MentoringViewController.swift */,
+				FF30320E2374B33200159555 /* MentorLoader.swift */,
+				FF30321823750D7400159555 /* MentorSearchViewController.swift */,
+				FF30321A23750DC800159555 /* MentorSearchCell.swift */,
+				FF30321C23750DD200159555 /* MentorSearchCell.xib */,
 			);
 			path = Mentoring;
 			sourceTree = "<group>";
@@ -195,6 +218,7 @@
 				FFC6CF1721657CAE00657C34 /* Assignment.swift */,
 				FFFC6BC62162D6D6001585CE /* Course.swift */,
 				FFA4B1D220229C8400BAC08F /* Event.swift */,
+				FF30320C2374B08200159555 /* Mentor.swift */,
 				FFE84077215F1CAC00A5E33B /* Term.swift */,
 				FF4BCBCE21AB47790050A876 /* Weight.swift */,
 			);
@@ -468,6 +492,7 @@
 			files = (
 				FF592B3921C76C71002319C0 /* AppIcon.png in Resources */,
 				FFB76C962030B5A200EC3F97 /* Assets.xcassets in Resources */,
+				FF30321D23750DD200159555 /* MentorSearchCell.xib in Resources */,
 				FF327FD520128C3E00B06E19 /* LaunchScreen.storyboard in Resources */,
 				FF4A9D12229A19DA00DE8EED /* TestGradeData.sssc in Resources */,
 				FF327FD020128C3E00B06E19 /* Main.storyboard in Resources */,
@@ -559,6 +584,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF3032172374F13C00159555 /* MentorDetailViewController.swift in Sources */,
 				A17011CB21AC8F4000A385FB /* ResourcesViewController.swift in Sources */,
 				FFC18A2C202502A8001AB5BA /* EventLoader.swift in Sources */,
 				FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */,
@@ -566,6 +592,7 @@
 				FF2CC47F21ACF5F3002EE205 /* CalculateRequiredFinalViewController.swift in Sources */,
 				FF651CEA2190F27100C37022 /* CreateAssignmentViewController.swift in Sources */,
 				FF3D184A232422EB008FB490 /* UINavigationController.swift in Sources */,
+				FF3032152374C1E400159555 /* MentorHeader.swift in Sources */,
 				FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */,
 				44B2CAEE22777E0E007E53AB /* ColourRestorableCell.swift in Sources */,
 				FFC6CF1621657C6D00657C34 /* CourseDetailViewController.swift in Sources */,
@@ -601,12 +628,17 @@
 				FFA7CBAF215DD54C00A050B1 /* PlannerViewController.swift in Sources */,
 				FFA7CBB1215DD59B00A050B1 /* TermTableViewCell.swift in Sources */,
 				FF57A96521658509004AA50B /* UIColor.swift in Sources */,
+				FF30321B23750DC800159555 /* MentorSearchCell.swift in Sources */,
+				FF30320F2374B33200159555 /* MentorLoader.swift in Sources */,
 				FFA7CBAD215DD53300A050B1 /* CalculatorViewController.swift in Sources */,
 				FFAE67922188ED2D0079CE16 /* UIView.swift in Sources */,
+				FF30320D2374B08200159555 /* Mentor.swift in Sources */,
 				FFA4B1D320229C8400BAC08F /* Event.swift in Sources */,
 				FFC6CF1821657CAE00657C34 /* Assignment.swift in Sources */,
+				FF3032112374B67200159555 /* MentorCell.swift in Sources */,
 				FFFC6BC92162D70D001585CE /* CourseTableViewCell.swift in Sources */,
 				FFE585F22315BDAE007E7B2F /* SearchableList.swift in Sources */,
+				FF30321923750D7400159555 /* MentorSearchViewController.swift in Sources */,
 				FF04D8472320920700A8F34E /* SSSCSafariViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -768,12 +800,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = DKPYUUQV7N;
 				INFOPLIST_FILE = "$(SRCROOT)/ScienceStudentSuccessCentre/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carleton.sciencestudentsuccesscentre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -790,12 +822,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = DKPYUUQV7N;
 				INFOPLIST_FILE = "$(SRCROOT)/ScienceStudentSuccessCentre/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.5;
 				OTHER_SWIFT_FLAGS = "-D RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.carleton.sciencestudentsuccesscentre;
 				PRODUCT_NAME = "$(TARGET_NAME)";

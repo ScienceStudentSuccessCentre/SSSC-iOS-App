@@ -75,13 +75,13 @@ class EventLoader {
     /// - Returns: The list of events in chronological order.
     private static func sortEvents(_ events: [Event]) -> [Event] {
         return events.sorted {
-            if $0.getYear() < $1.getYear() {
+            if $0.year < $1.year {
                 return true
-            } else if $0.getYear() == $1.getYear() {
-                if $0.getMonth() < $1.getMonth() {
+            } else if $0.year == $1.year {
+                if $0.month < $1.month {
                     return true
-                } else if $0.getMonth() == $1.getMonth() {
-                    if $0.getDay() < $1.getDay() {
+                } else if $0.month == $1.month {
+                    if $0.day < $1.day {
                         return true
                     }
                 }

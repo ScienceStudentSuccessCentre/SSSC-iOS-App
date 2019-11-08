@@ -20,7 +20,7 @@ extension UNUserNotificationCenter {
     internal func checkPendingNotifications(for event: Event) -> Promise<Bool> {
         return Promise { seal in
             UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
-                let exists = requests.contains(where: { $0.identifier == event.getId() })
+                let exists = requests.contains(where: { $0.identifier == event.id })
                 seal.fulfill(exists)
             })
         }
@@ -64,12 +64,12 @@ extension UNUserNotificationCenter {
     /// - Returns: Whether the notification was successfully created, in the form of a promise.
     internal func createNotification(for event: Event) -> Promise<Bool> {
         let content = UNMutableNotificationContent()
-        content.title = event.getName()
-        content.subtitle = "Today at " + event.getFormattedTime()
-        content.body = event.getLocation()
+        content.title = event.name
+        content.subtitle = "Today at " + event.formattedTime
+        content.body = event.location
         content.sound = UNNotificationSound.default
         
-        if let url = event.getImageUrl(),
+        if let url = event.imageUrl,
             let data = try? Data(contentsOf: url) {
             let imageName = url.absoluteString.components(separatedBy: "/").last ?? "image.jpg"
             if let attachment = UNNotificationAttachment.create(identifier: imageName, data: data, options: nil) {
@@ -82,7 +82,7 @@ extension UNUserNotificationCenter {
                 if notificationDateTime.compare(Date()) != ComparisonResult.orderedAscending {
                     let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: notificationDateTime)
                     let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-                    let request = UNNotificationRequest(identifier: event.getId(), content: content, trigger: trigger)
+                    let request = UNNotificationRequest(identifier: event.id, content: content, trigger: trigger)
                     
                     UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
                         if let error = error {
@@ -104,7 +104,7 @@ extension UNUserNotificationCenter {
     ///
     /// - Parameter event: The event about which the user is being notified.
     internal func removeNotifications(for event: Event) {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.getId()])
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.id])
     }
     
     /// Provides the date and time the user should receive a notification for this event.
@@ -116,7 +116,7 @@ extension UNUserNotificationCenter {
         #if DEBUG
         return Calendar.current.date(byAdding: .second, value: 20, to: Date())!
         #else
-        return event.getNotificationDateTime()
+        return event.notificationDateTime
         #endif
     }
     

@@ -29,7 +29,7 @@ class GradesViewController: UIViewController {
         if #available(iOS 13.0, *) {
             searchController.searchBar.translatesAutoresizingMaskIntoConstraints = true
             searchController.searchBar.searchTextField.backgroundColor = UIColor(named: "searchBarBackground")
-            searchController.searchBar.searchTextField.tintColor = UIColor.label
+            searchController.searchBar.searchTextField.tintColor = .label
         }
         return searchController
     }()

@@ -85,6 +85,8 @@ class SSSCSafariViewController: SFSafariViewController {
 3. Find and tap on \"Science Student Success Centre\".
 
 4. Choose an option, and follow on-screen instructions from there!
+
+If you want to book with a specific mentor, make sure to choose "Book by Appointment Provider" when given the option.
 """
         
         let helpDialog = UIAlertController(title: title, message: message, preferredStyle: .alert)
