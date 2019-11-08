@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 import UserNotifications
 
-class EventDetailViewController: UIViewController, UITextViewDelegate {
+class EventDetailViewController: UIViewController {
     @IBOutlet var eventTitleLabel: UILabel!
     @IBOutlet var eventTitleView: UIView!
     @IBOutlet var eventDescriptionTextView: UITextView!
@@ -278,15 +278,17 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
             }
         }
     }
+}
+
+extension EventDetailViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        openUrlInAppBrowser(url: URL)
+        return false
+    }
     
     private func openUrlInAppBrowser(url: URL?) {
         guard let url = url else { return }
         let safariVC = SSSCSafariViewController(url: url)
         present(safariVC, animated: true)
-    }
-    
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-        openUrlInAppBrowser(url: URL)
-        return false
     }
 }

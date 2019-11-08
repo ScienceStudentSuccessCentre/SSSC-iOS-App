@@ -22,6 +22,7 @@ class MentorDetailViewController: UIViewController {
     var mentor: Mentor?
     
     override func viewDidLoad() {
+        bio.delegate = self
         scrollView.delegate = self
         imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = 3
@@ -100,9 +101,22 @@ class MentorDetailViewController: UIViewController {
     }
 }
 
+extension MentorDetailViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        openUrlInAppBrowser(url: URL)
+        return false
+    }
+    
+    private func openUrlInAppBrowser(url: URL?) {
+        guard let url = url else { return }
+        let safariVC = SSSCSafariViewController(url: url)
+        present(safariVC, animated: true)
+    }
+}
+
 extension MentorDetailViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y > (traitCollection.horizontalSizeClass == .compact ? 200 : 20) {
+        if scrollView.contentOffset.y > 20 {
             UIView.animate(withDuration: 0.25) {
                 self.closeButton.alpha = 0
             }
