@@ -14,6 +14,18 @@ class MentoringViewController: UICollectionViewController {
     private let minimumLineSpacing: CGFloat = 16
     private let minimumInteritemSpacing: CGFloat = 24
     private var selectedMentor: Mentor?
+    private var activityIndicatorView: UIActivityIndicatorView!
+    private lazy var noMentorsLabel: UILabel = {
+        let frame = CGRect(x: 0, y: 0, width: collectionView.frame.width, height: collectionView.frame.height)
+        let label = UILabel(frame: frame)
+        label.text = "Couldn't load mentors, try again!"
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.isHidden = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     private weak var header: MentorHeader?
     
     private lazy var searchController: UISearchController = {
@@ -42,6 +54,18 @@ class MentoringViewController: UICollectionViewController {
         collectionView.dataSource = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         collectionView.contentInsetAdjustmentBehavior = .always
+        
+        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        activityIndicatorView.center = view.center
+        if #available(iOS 13.0, *) {
+            activityIndicatorView.color = .label
+        }
+        activityIndicatorView.startAnimating()
+        collectionView.backgroundView = activityIndicatorView
+        collectionView.addSubview(noMentorsLabel)
+        noMentorsLabel.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true
+        noMentorsLabel.centerYAnchor.constraint(equalTo: collectionView.topAnchor, constant: collectionView.frame.height / 5).isActive = true
+        
         loadMentors()
     }
     
@@ -51,11 +75,14 @@ class MentoringViewController: UICollectionViewController {
     }
     
     @objc private func loadMentors() {
+        noMentorsLabel.isHidden = true
+        activityIndicatorView.isHidden = false
         MentorLoader.loadMentors().done { mentors in
             self.mentors = mentors
             self.navigationItem.setRightBarButton(nil, animated: true)
         }.catch { error in
             self.mentors = [Mentor]()
+            self.noMentorsLabel.isHidden = false
             print("Failed to load mentors:\n\(error)")
             let alert: UIAlertController
             if error.localizedDescription.lowercased().contains("offline") {
@@ -76,6 +103,8 @@ class MentoringViewController: UICollectionViewController {
                                                   animated: true)
         }.finally {
             self.collectionView.reloadData()
+            self.activityIndicatorView.isHidden = true
+            self.header?.bookingButton.isHidden = self.mentors.count == 0
         }
     }
     
