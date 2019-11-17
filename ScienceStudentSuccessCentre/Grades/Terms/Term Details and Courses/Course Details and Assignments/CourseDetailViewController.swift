@@ -73,10 +73,7 @@ class CourseDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "\(AssignmentTableViewCell.self)", for: indexPath) as? AssignmentTableViewCell else {
-            fatalError("The dequeued cell is not an instance of \(AssignmentTableViewCell.self).")
-        }
+        let cell = tableView.dequeueReusableCell(for: indexPath) as AssignmentTableViewCell
         let assignment = assignments[indexPath.row]
         cell.assignmentName.text = assignment.name
         cell.letterGrade.text = assignment.letterGrade()

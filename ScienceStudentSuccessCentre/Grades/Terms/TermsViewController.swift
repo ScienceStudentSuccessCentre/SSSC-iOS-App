@@ -97,9 +97,7 @@ extension TermsViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(TermTableViewCell.self)", for: indexPath) as? TermTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of \(TermTableViewCell.self).")
-        }
+        let cell = tableView.dequeueReusableCell(for: indexPath) as TermTableViewCell
         let term = terms[indexPath.row]
         cell.termName.text = term.name
         cell.termAbbr.text = term.shortForm

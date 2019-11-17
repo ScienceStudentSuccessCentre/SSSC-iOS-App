@@ -8,9 +8,6 @@
 
 import UIKit
 import UserNotifications
-#if DEBUG
-import SimulatorStatusMagic
-#endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -50,14 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         UserDefaults.standard.set(!arguments.contains("HideTestEvents"), forKey: "showTestEvents")
-        
-        #if DEBUG
-        if arguments.contains("CleanStatusBar") {
-            SDStatusBarManager.sharedInstance()?.enableOverrides()
-        } else {
-            SDStatusBarManager.sharedInstance()?.disableOverrides()
-        }
-        #endif
     }
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
@@ -85,27 +74,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 return true
         }
         
-        let title: String
-        let message: String
-        
         if Database.instance.importData(from: url) {
             if let ctrl = viewController.children.first(where: { $0 is GradesViewControllerDelegate }),
                 let delegate = ctrl as? GradesViewControllerDelegate {
                 delegate.refreshTableViewData()
             }
-            title = "Successfully imported data!"
-            message = "Your grades data was successfully imported."
+            viewController.presentAlert(kind: .importSuccess)
         } else {
-            title = "Failed to import data!"
-            //swiftlint:disable:next line_length
-            message = "Your grades data was not imported. Please make sure the file you are trying to import is not modified in any way from what was originally exported from the app!"
+            viewController.presentAlert(kind: .importError)
         }
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { _ in
-            navigationController.dismiss(animated: true)
-        }))
-        viewController.present(alert, animated: true)
         
         return true
     }

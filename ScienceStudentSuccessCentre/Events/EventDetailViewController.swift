@@ -194,22 +194,16 @@ class EventDetailViewController: UIViewController {
                 self.toggleNotificationEnabled()
             } else {
                 // Prompt the user to allow notifications in settings
-                let alert = UIAlertController(title: "Notification permissions required",
-                                              message: "In order to be notified of events, we need you to grant notification permissions to this app in Settings.",
-                                              preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
-                alert.addAction(UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
-                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                        return
-                    }
-                    
+                let closeAction = UIAlertAction(title: "Close", style: .cancel)
+                let openSettingsAction = UIAlertAction(title: "Settings", style: .default) { _ in
+                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
                     if UIApplication.shared.canOpenURL(settingsUrl) {
-                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        UIApplication.shared.open(settingsUrl, completionHandler: { success in
                             print("Settings opened: \(success)")
                         })
                     }
-                })
-                self.present(alert, animated: true)
+                }
+                self.presentAlert(kind: .notificationPermissionsRequired, actions: closeAction, openSettingsAction)
             }
         }.cauterize()
     }
@@ -245,15 +239,7 @@ class EventDetailViewController: UIViewController {
     private func createEventNotification() {
         notificationCenter.createNotification(for: event!).done { success in
             DispatchQueue.main.async {
-                if success {
-                    let alert = UIAlertController(title: "Notification enabled!",
-                                                  message: "You'll be sent a notification an hour before this event starts.",
-                                                  preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-                    self.present(alert, animated: true)
-                } else {
-                    self.presentGenericError()
-                }
+                self.presentAlert(kind: success ? .notificationEnabled : .genericError)
             }
             if !success {
                 self.prepareNavigationBarButtons(notificationPending: false)

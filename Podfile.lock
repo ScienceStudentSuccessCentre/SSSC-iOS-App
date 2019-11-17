@@ -12,7 +12,6 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.8.5):
     - PromiseKit/CorePromise
-  - SimulatorStatusMagic (2.4.1)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
@@ -23,15 +22,13 @@ DEPENDENCIES:
   - ColorPickerRow (from `https://github.com/EurekaCommunity/ColorPickerRow`)
   - Eureka (~> 5.0.0)
   - PromiseKit (~> 6.8.4)
-  - SimulatorStatusMagic (~> 2.4.1)
   - SQLite.swift (~> 0.12.0)
   - SwiftLint
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Eureka
     - PromiseKit
-    - SimulatorStatusMagic
     - SQLite.swift
     - SwiftLint
     - UIColor_Hex_Swift
@@ -49,11 +46,10 @@ SPEC CHECKSUMS:
   ColorPickerRow: 7cb51378b7e850dd7144a98ceba7741cb6745f53
   Eureka: 0f64f477ec8ef6201c6fec143d60ff5c201cf654
   PromiseKit: 9616b0afef31eae56ab9ce044c8ec2b8612a15cd
-  SimulatorStatusMagic: 28d4a9d1a500ac7cea0b2b5a43c1c6ddb40ba56c
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
   UIColor_Hex_Swift: 8be7432edacb7fa91c78aa05ef3c30b66e4f9415
 
-PODFILE CHECKSUM: f798bb509398dccfba7be8faa375360a162133b9
+PODFILE CHECKSUM: 003885a1279edf78e0c41db5630704ae0a051307
 
-COCOAPODS: 1.7.1
+COCOAPODS: 1.8.4

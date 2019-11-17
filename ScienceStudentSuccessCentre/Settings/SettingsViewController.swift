@@ -159,13 +159,7 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
                     self.present(activityVC, animated: true)
                 } catch {
                     print("Failed to export grade data")
-                    let alert = UIAlertController(title: "Failed to export!",
-                                                  message: "We were unable to export your grade data. Please try again!",
-                                                  preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { _ in
-                        self.navigationController?.dismiss(animated: true)
-                    }))
-                    self.present(alert, animated: true)
+                    presentAlert(kind: .exportError)
                 }
             }
         }

@@ -30,7 +30,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
         gpaFormatter.minimumFractionDigits = 1
         
         extendedLayoutIncludesOpaqueBars = true
-        tableView.register(UINib(nibName: "\(CourseSummaryCell.self)", bundle: nil), forCellReuseIdentifier: "\(CourseSummaryCell.self)")
+        tableView.register(CourseSummaryCell.self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,9 +45,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CourseSummaryCell.self)", for: indexPath) as? CourseSummaryCell  else {
-            fatalError("The dequeued cell is not an instance of \(CourseSummaryCell.self).")
-        }
+        let cell = tableView.dequeueReusableCell(for: indexPath) as CourseSummaryCell
         let course = courses[indexPath.row]
         let term = terms[course]
         cell.configure(with: course, term: term)

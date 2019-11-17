@@ -42,10 +42,7 @@ class MentorSearchViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MentorSearchCell.self)",
-            for: indexPath) as? MentorSearchCell else {
-                fatalError("Failed to dequeue \(MentorSearchCell.self)")
-        }
+        let cell = tableView.dequeueReusableCell(for: indexPath) as MentorSearchCell
         let mentor = results[indexPath.row]
         cell.configure(with: mentor)
         cell.accessoryType = .disclosureIndicator

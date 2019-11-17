@@ -170,7 +170,7 @@ class CreateAssignmentViewController: FormViewController, EurekaFormProtocol {
                                     weight: weight!, courseId: course.id)
         if !Database.instance.insertOrUpdate(assignment: assignment) {
             print("Failed to create assignment")
-            presentGenericError()
+            presentAlert(kind: .genericError)
         }
         navigationController?.dismiss(animated: true)
         

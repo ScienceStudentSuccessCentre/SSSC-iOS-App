@@ -32,7 +32,7 @@ class ScienceStudentSuccessCentreFastlaneSnapshots: XCTestCase {
         super.setUp()
         continueAfterFailure = false
         app = XCUIApplication()
-        app.launchArguments = ["UseTestGradeData", "HideTestEvents", "CleanStatusBar"]
+        app.launchArguments = ["UseTestGradeData", "HideTestEvents"]
         addUIInterruptionMonitor(withDescription: "Allow Notifications",
                                  handler: eventDetailsWithNotificationAlertSnapshot(alert:))
         setupSnapshot(app)

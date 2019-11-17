@@ -1,5 +1,5 @@
 //
-//  MentoringViewController.swift
+//  MentorsViewController.swift
 //  ScienceStudentSuccessCentre
 //
 //  Created by Avery Vine on 2019-09-04.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MentoringViewController: UICollectionViewController {
+class MentorsViewController: UICollectionViewController {
     private var mentors = [Mentor]()
     private let inset: CGFloat = 16
     private let minimumLineSpacing: CGFloat = 16
@@ -18,7 +18,7 @@ class MentoringViewController: UICollectionViewController {
     private lazy var noMentorsLabel: UILabel = {
         let frame = CGRect(x: 0, y: 0, width: collectionView.frame.width, height: collectionView.frame.height)
         let label = UILabel(frame: frame)
-        label.text = "Couldn't load mentors, try again!"
+        label.text = "No mentors, please try again!"
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18)
@@ -79,32 +79,29 @@ class MentoringViewController: UICollectionViewController {
         activityIndicatorView.isHidden = false
         MentorLoader.loadMentors().done { mentors in
             self.mentors = mentors
-            self.navigationItem.setRightBarButton(nil, animated: true)
         }.catch { error in
             self.mentors = [Mentor]()
-            self.noMentorsLabel.isHidden = false
             print("Failed to load mentors:\n\(error)")
-            let alert: UIAlertController
             if error.localizedDescription.lowercased().contains("offline") {
-                alert = UIAlertController(title: "No Connection",
-                                          message: "It looks like you might be offline! Please try again once you have an internet connection.",
-                                          preferredStyle: .alert)
+                self.presentAlert(kind: .offlineError)
             } else {
-                alert = UIAlertController(title: "Something went wrong!",
-                                          // swiftlint:disable:next line_length
-                                          message: "Something went wrong when loading the SSSC's mentors! Please try again later. If the issue persists, contact the SSSC so we can fix the problem as soon as possible.",
-                                          preferredStyle: .alert)
+                self.presentAlert(kind: .mentorsError)
             }
-            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-            self.present(alert, animated: true)
-            self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .refresh,
-                                                                  target: self,
-                                                                  action: #selector(self.loadMentors)),
-                                                  animated: true)
         }.finally {
             self.collectionView.reloadData()
+            if self.mentors.count > 0 {
+                self.navigationItem.setRightBarButton(nil, animated: true)
+                self.noMentorsLabel.isHidden = true
+                self.header?.isHidden = false
+            } else {
+                self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .refresh,
+                                                                      target: self,
+                                                                      action: #selector(self.loadMentors)),
+                                                      animated: true)
+                self.noMentorsLabel.isHidden = false
+                self.header?.isHidden = true
+            }
             self.activityIndicatorView.isHidden = true
-            self.header?.bookingButton.isHidden = self.mentors.count == 0
         }
     }
     
@@ -118,9 +115,7 @@ class MentoringViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MentorCell",
-                                                            for: indexPath) as? MentorCell
-            else { fatalError("Failed to dequeue MentorCell") }
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as MentorCell
         let mentor = mentors[indexPath.row]
         cell.tag = indexPath.row
         cell.configure(mentor)
@@ -130,11 +125,7 @@ class MentoringViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  viewForSupplementaryElementOfKind kind: String,
                                  at indexPath: IndexPath) -> UICollectionReusableView {
-        let kind = UICollectionView.elementKindSectionHeader
-        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                           withReuseIdentifier: "MentorHeader",
-                                                                           for: indexPath) as? MentorHeader
-            else { fatalError(" Failed to dequeue MentorHeader") }
+        let header = collectionView.dequeueReusableSupplementaryView(for: indexPath, kind: kind) as MentorHeader
         header.bookingDelegate = self
         self.header = header
         return header
@@ -158,7 +149,7 @@ class MentoringViewController: UICollectionViewController {
     }
 }
 
-extension MentoringViewController: BookingDelegate {
+extension MentorsViewController: BookingDelegate {
     func bookingButtonTapped() {
         guard let url = URL(string: "https://central.carleton.ca/") else { return }
         let webpage = SSSCSafariViewController(url: url)
@@ -166,7 +157,7 @@ extension MentoringViewController: BookingDelegate {
     }
 }
 
-extension MentoringViewController: MentorSearchActionDelegate {
+extension MentorsViewController: MentorSearchActionDelegate {
     func getMentors() -> [Mentor] {
         return mentors
     }
@@ -176,7 +167,7 @@ extension MentoringViewController: MentorSearchActionDelegate {
     }
 }
 
-extension MentoringViewController: UICollectionViewDelegateFlowLayout {
+extension MentorsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }

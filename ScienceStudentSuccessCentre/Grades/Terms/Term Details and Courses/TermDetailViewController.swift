@@ -60,9 +60,7 @@ class TermDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CourseTableViewCell.self)", for: indexPath) as? CourseTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of \(CourseTableViewCell.self).")
-        }
+        let cell = tableView.dequeueReusableCell(for: indexPath) as CourseTableViewCell
         let course = courses[indexPath.row]
         cell.courseCode.text = course.code
         cell.courseName.text = course.name

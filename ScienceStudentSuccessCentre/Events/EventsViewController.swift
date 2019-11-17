@@ -80,19 +80,11 @@ class EventsViewController: UITableViewController {
         }.catch { error in
             self.events = [Event]()
             print("Failed to load events:\n\(error)")
-            let alert: UIAlertController
             if error.localizedDescription.lowercased().contains("offline") {
-                alert = UIAlertController(title: "No Connection",
-                                          message: "It looks like you might be offline! Please try again once you have an internet connection.",
-                                          preferredStyle: .alert)
+                self.presentAlert(kind: .offlineError)
             } else {
-                alert = UIAlertController(title: "Something went wrong!",
-                                          // swiftlint:disable:next line_length
-                                          message: "Something went wrong when loading the SSSC's upcoming events! Please try again later. If the issue persists, contact the SSSC so we can fix the problem as soon as possible.",
-                                          preferredStyle: .alert)
+                self.presentAlert(kind: .eventsError)
             }
-            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-            self.present(alert, animated: true)
         }.finally {
             self.tableView.reloadData()
             self.activityIndicatorView.stopAnimating()
@@ -161,9 +153,7 @@ extension EventsViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(EventTableViewCell.self)", for: indexPath) as? EventTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of \(EventTableViewCell.self).")
-        }
+        let cell = tableView.dequeueReusableCell(for: indexPath) as EventTableViewCell
         let event = events[indexPath.row]
         cell.monthLabel.text = event.monthName
         cell.dateLabel.text = event.dayLeadingZero

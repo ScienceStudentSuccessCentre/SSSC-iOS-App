@@ -99,7 +99,7 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
         let newTerm = Term(id: nil, term: term!, year: year!)
         if !Database.instance.insert(term: newTerm) {
             print("Failed to create term")
-            presentGenericError()
+            presentAlert(kind: .genericError)
         }
         navigationController?.dismiss(animated: true)
         

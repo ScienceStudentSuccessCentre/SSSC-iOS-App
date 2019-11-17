@@ -329,7 +329,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         self.course = course
         if !Database.instance.insertOrUpdate(course: course) {
             print("Failed to create course")
-            presentGenericError()
+            presentAlert(kind: .genericError)
         }
         
         if #available(iOS 13.0, *) {
@@ -365,7 +365,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                 if weights.filter({ $0.id == weight.id }).count == 0 {
                     if !Database.instance.delete(weightId: weight.id) {
                         print("Failed to delete weight")
-                        presentGenericError()
+                        presentAlert(kind: .genericError)
                     }
                 }
             }
@@ -373,7 +373,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
             for weight in weights {
                 if !Database.instance.insertOrUpdate(weight: weight) {
                     print("Failed to create weight")
-                    presentGenericError()
+                    presentAlert(kind: .genericError)
                 }
             }
             navigationController?.dismiss(animated: true)
@@ -381,15 +381,10 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     }
     
     private func invalidWeightDeletion() {
-        let alert = UIAlertController(title: "Can't modify weights!",
-                                      //swiftlint:disable:next line_length
-                                      message: "Please modify or delete all assignments that are marked with the weights you are trying to delete. All other course modifications were saved.",
-                                      preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { _ in
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .default) { _ in
             self.navigationController?.dismiss(animated: true)
-        }))
-        self.present(alert, animated: true)
+        }
+        presentAlert(kind: .couldNotModifyWeights, actions: dismissAction)
     }
     
     @objc private func createButtonPressed() {

@@ -75,22 +75,7 @@ class SSSCSafariViewController: SFSafariViewController {
     }
 
     @objc private func helpButtonTapped() {
-        let title = "Booking Appointments, Workshops, and Events"
-        let message = """
-
-1. Log onto Carleton Central using your myCarleton One credentials.
-
-2. Scroll down to the mySuccess header and tap the last link, "Science Student Success Centre SSSC\", then tap \"Continue\".
-
-3. Find and tap on \"Science Student Success Centre\".
-
-4. Choose an option, and follow on-screen instructions from there!
-
-If you want to book with a specific mentor, make sure to choose "Book by Appointment Provider" when given the option.
-"""
-        
-        let helpDialog = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        helpDialog.addAction(UIAlertAction(title: "Got it!", style: .default))
-        present(helpDialog, animated: true)
+        let dismissAction = UIAlertAction(title: "Got it!", style: .default)
+        presentAlert(kind: .ssscSafariHelp, actions: dismissAction)
     }
 }
