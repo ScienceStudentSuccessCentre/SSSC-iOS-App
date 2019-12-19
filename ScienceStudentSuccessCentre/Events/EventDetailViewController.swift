@@ -6,8 +6,10 @@
 //  Copyright © 2018 Avery Vine. All rights reserved.
 //
 
-import UIKit
+import EventKit
+import EventKitUI
 import SafariServices
+import UIKit
 import UserNotifications
 
 class EventDetailViewController: UIViewController {
@@ -113,6 +115,22 @@ class EventDetailViewController: UIViewController {
         return button
     }
     
+    private var addToCalendarButton: UIBarButtonItem {
+        if #available(iOS 13.0, *) {
+            let customView = UIButton()
+            let config = UIImage.SymbolConfiguration(scale: .large)
+            let image = UIImage(systemName: "calendar.badge.plus", withConfiguration: config)
+            customView.setImage(image, for: .normal)
+            customView.addTarget(self, action: #selector(addToCalendarButtonTapped), for: .touchUpInside)
+            customView.frame = CGRect(x: 0, y: 0, width: (image?.size.width ?? 0) + 8, height: image?.size.height ?? 0)
+            customView.accessibilityLabel = "Add to Calendar"
+            customView.accessibilityTraits = .button
+            return UIBarButtonItem(customView: customView)
+        } else {
+            return UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addToCalendarButtonTapped))
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
@@ -159,6 +177,7 @@ class EventDetailViewController: UIViewController {
             if !(event.actionUrl ?? "").isEmpty {
                 barButtonItems.append(actionUrlButton)
             }
+            barButtonItems.append(addToCalendarButton)
             navigationItem.setRightBarButtonItems(barButtonItems, animated: false)
         } else {
             navigationItem.setRightBarButtonItems([], animated: false)
@@ -196,11 +215,9 @@ class EventDetailViewController: UIViewController {
                 // Prompt the user to allow notifications in settings
                 let closeAction = UIAlertAction(title: "Close", style: .cancel)
                 let openSettingsAction = UIAlertAction(title: "Settings", style: .default) { _ in
-                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
-                    if UIApplication.shared.canOpenURL(settingsUrl) {
-                        UIApplication.shared.open(settingsUrl, completionHandler: { success in
-                            print("Settings opened: \(success)")
-                        })
+                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsUrl) else { return }
+                    UIApplication.shared.open(settingsUrl) { success in
+                        print("Settings opened: \(success)")
                     }
                 }
                 self.presentAlert(kind: .notificationPermissionsRequired, actions: closeAction, openSettingsAction)
@@ -233,6 +250,48 @@ class EventDetailViewController: UIViewController {
                 popOver.barButtonItem = navigationItem.rightBarButtonItems?.first
             }
             self.present(activityVC, animated: true)
+        }
+    }
+    
+    /// Creates a new calendar event for this event.
+    @objc private func addToCalendarButtonTapped() {
+        guard let event = event else { return }
+        
+        let eventStore = EKEventStore()
+        eventStore.requestAccess(to: .event) { (granted, error) in
+            DispatchQueue.main.async {
+                guard error == nil else {
+                    print("Failed to save event: \(error!)")
+                    self.presentAlert(kind: .genericError)
+                    return
+                }
+                guard granted else {
+                    // Prompt the user to allow calendar access in settings
+                    let closeAction = UIAlertAction(title: "Close", style: .cancel)
+                    let openSettingsAction = UIAlertAction(title: "Settings", style: .default) { _ in
+                        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsUrl) else { return }
+                        UIApplication.shared.open(settingsUrl) { success in
+                            print("Settings opened: \(success)")
+                        }
+                    }
+                    self.presentAlert(kind: .calendarPermissionsRequired, actions: closeAction, openSettingsAction)
+                    return
+                }
+                
+                let calendarEvent = EKEvent(eventStore: eventStore)
+                calendarEvent.title = event.name
+                calendarEvent.startDate = event.dateTime
+                calendarEvent.endDate = event.endDateTime
+                calendarEvent.location = event.location
+                calendarEvent.url = event.eventUrl
+                calendarEvent.notes = event.description
+                
+                let controller = EKEventEditViewController()
+                controller.event = calendarEvent
+                controller.eventStore = eventStore
+                controller.editViewDelegate = self
+                self.present(controller, animated: true)
+            }
         }
     }
     
@@ -276,5 +335,11 @@ extension EventDetailViewController: UITextViewDelegate {
         guard let url = url else { return }
         let safariVC = SSSCSafariViewController(url: url)
         present(safariVC, animated: true)
+    }
+}
+
+extension EventDetailViewController: EKEventEditViewDelegate {
+    func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
+        controller.dismiss(animated: true)
     }
 }

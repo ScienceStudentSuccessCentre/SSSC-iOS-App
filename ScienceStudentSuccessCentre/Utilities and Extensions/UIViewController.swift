@@ -17,6 +17,7 @@ extension UIViewController {
         case exportError
         case importError
         case importSuccess
+        case calendarPermissionsRequired
         case notificationPermissionsRequired
         case notificationEnabled
         case couldNotModifyWeights
@@ -51,6 +52,9 @@ extension UIViewController {
         case .importSuccess:
             title = "Successfully imported data!"
             message = "Your grades data was successfully imported."
+        case .calendarPermissionsRequired:
+            title = "Calendar permissions required"
+            message = "In order to add events to your calendar, we need you to grant calendar permissions to this app in Settings."
         case .notificationPermissionsRequired:
             title = "Notification permissions required"
             message = "In order to be notified of events, we need you to grant notification permissions to this app in Settings."

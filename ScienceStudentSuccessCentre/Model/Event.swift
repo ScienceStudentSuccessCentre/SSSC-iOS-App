@@ -17,7 +17,7 @@ class Event {
     var id: String
     var name: String
     var description: String
-    private var dateTime: Date?
+    var dateTime: Date?
     private var rawTime: String
     var location: String
     private var url: URL?
@@ -38,10 +38,13 @@ class Event {
     ///
     /// - Remark: For the actual date and time of this event, use `getDateTime()`.
     var notificationDateTime: Date? {
-        if let dateTime = dateTime {
-            return calendar.date(byAdding: .hour, value: -1, to: dateTime)
-        }
-        return nil
+        guard let dateTime = dateTime else { return nil }
+        return calendar.date(byAdding: .hour, value: -1, to: dateTime)
+    }
+    
+    var endDateTime: Date? {
+        guard let dateTime = dateTime else { return nil }
+        return calendar.date(byAdding: .minute, value: 30, to: dateTime)
     }
     
     /// Gets the year of the event.
@@ -95,10 +98,8 @@ class Event {
     
     /// Gets the complete URL of the event, including the domain name portion, or `nil` if one could not be found..
     var eventUrl: URL? {
-        if let url = url {
-            return URL(string: urlPrefix + url.absoluteString)
-        }
-        return nil
+        guard let url = url else { return nil }
+        return URL(string: urlPrefix + url.absoluteString)
     }
     
     /// Initializes an event based off a dictionary of data provided by the server.
