@@ -16,6 +16,8 @@
 		44B2CAEE22777E0E007E53AB /* ColourRestorableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B2CAED22777E0E007E53AB /* ColourRestorableCell.swift */; };
 		A17011CB21AC8F4000A385FB /* ResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17011CA21AC8F4000A385FB /* ResourcesViewController.swift */; };
 		FF04D8472320920700A8F34E /* SSSCSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF04D8462320920700A8F34E /* SSSCSafariViewController.swift */; };
+		FF13108823AD281600A59387 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB76C952030B5A200EC3F97 /* Assets.xcassets */; };
+		FF13108923AD2B3E00A59387 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF592B3821C76C71002319C0 /* AppIcon.png */; };
 		FF13F7D421646AC1005733B0 /* CreateCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D321646AC1005733B0 /* CreateCourseViewController.swift */; };
 		FF13F7D621646D56005733B0 /* EurekaFormProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF13F7D521646D56005733B0 /* EurekaFormProtocol.swift */; };
 		FF1D7D25215D6DDD00A88467 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1D7D24215D6DDD00A88467 /* Database.swift */; };
@@ -64,6 +66,10 @@
 		FFC18A2C202502A8001AB5BA /* EventLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC18A2B202502A8001AB5BA /* EventLoader.swift */; };
 		FFC6CF1621657C6D00657C34 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */; };
 		FFC6CF1821657CAE00657C34 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6CF1721657CAE00657C34 /* Assignment.swift */; };
+		FFCF3E6723AD23AC00D47335 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFCF3E6623AD23AC00D47335 /* QuickLook.framework */; };
+		FFCF3E6A23AD23AC00D47335 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCF3E6923AD23AC00D47335 /* PreviewViewController.swift */; };
+		FFCF3E6D23AD23AC00D47335 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFCF3E6B23AD23AC00D47335 /* MainInterface.storyboard */; };
+		FFCF3E7123AD23AC00D47335 /* ScienceStudentSuccessCentreGradesFile.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FFCF3E6523AD23AC00D47335 /* ScienceStudentSuccessCentreGradesFile.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FFD0205821B1E1E6008D960B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD0205721B1E1E6008D960B /* SettingsViewController.swift */; };
 		FFD2DF532193860200C97FDF /* Grading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD2DF522193860200C97FDF /* Grading.swift */; };
 		FFE585F22315BDAE007E7B2F /* SearchableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE585F12315BDAE007E7B2F /* SearchableList.swift */; };
@@ -77,6 +83,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		FFCF3E6F23AD23AC00D47335 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF327FBD20128C3E00B06E19 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FFCF3E6423AD23AC00D47335;
+			remoteInfo = ScienceStudentSuccessCentreGradesFile;
+		};
 		FFF093BB2291BA1200217DE3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FF327FBD20128C3E00B06E19 /* Project object */;
@@ -85,6 +98,20 @@
 			remoteInfo = ScienceStudentSuccessCentre;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FFCF3E7223AD23AC00D47335 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FFCF3E7123AD23AC00D47335 /* ScienceStudentSuccessCentreGradesFile.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		442EC65B21EE8C36002B961E /* UNUserNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenter.swift; sourceTree = "<group>"; };
@@ -148,6 +175,11 @@
 		FFC18A2B202502A8001AB5BA /* EventLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLoader.swift; sourceTree = "<group>"; };
 		FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
 		FFC6CF1721657CAE00657C34 /* Assignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
+		FFCF3E6523AD23AC00D47335 /* ScienceStudentSuccessCentreGradesFile.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScienceStudentSuccessCentreGradesFile.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFCF3E6623AD23AC00D47335 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		FFCF3E6923AD23AC00D47335 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		FFCF3E6C23AD23AC00D47335 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		FFCF3E6E23AD23AC00D47335 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFD0205721B1E1E6008D960B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FFD2DF522193860200C97FDF /* Grading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grading.swift; sourceTree = "<group>"; };
 		FFE585F12315BDAE007E7B2F /* SearchableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableList.swift; sourceTree = "<group>"; };
@@ -169,6 +201,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				042678B87BEA9695228061A8 /* Pods_ScienceStudentSuccessCentre.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFCF3E6223AD23AC00D47335 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFCF3E6723AD23AC00D47335 /* QuickLook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +274,7 @@
 				FFF093C22291BC6C00217DE3 /* TestGradeData.sssc */,
 				FF327FC720128C3E00B06E19 /* ScienceStudentSuccessCentre */,
 				FFF093B72291BA1200217DE3 /* ScienceStudentSuccessCentreFastlaneSnapshots */,
+				FFCF3E6823AD23AC00D47335 /* ScienceStudentSuccessCentreGradesFile */,
 				FF327FC620128C3E00B06E19 /* Products */,
 				FF3C22892024317A0098B868 /* Frameworks */,
 				6144CFBF33894172D37CDFAA /* Pods */,
@@ -245,6 +286,7 @@
 			children = (
 				FF327FC520128C3E00B06E19 /* ScienceStudentSuccessCentre.app */,
 				FFF093B62291BA1200217DE3 /* ScienceStudentSuccessCentreFastlaneSnapshots.xctest */,
+				FFCF3E6523AD23AC00D47335 /* ScienceStudentSuccessCentreGradesFile.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -274,6 +316,7 @@
 			children = (
 				FF3C228A2024317A0098B868 /* EventKit.framework */,
 				A519D0B6B2D10C171824AAD9 /* Pods_ScienceStudentSuccessCentre.framework */,
+				FFCF3E6623AD23AC00D47335 /* QuickLook.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -298,6 +341,16 @@
 				FF651CE92190F27100C37022 /* CreateAssignmentViewController.swift */,
 			);
 			path = "Course Details and Assignments";
+			sourceTree = "<group>";
+		};
+		FFCF3E6823AD23AC00D47335 /* ScienceStudentSuccessCentreGradesFile */ = {
+			isa = PBXGroup;
+			children = (
+				FFCF3E6923AD23AC00D47335 /* PreviewViewController.swift */,
+				FFCF3E6B23AD23AC00D47335 /* MainInterface.storyboard */,
+				FFCF3E6E23AD23AC00D47335 /* Info.plist */,
+			);
+			path = ScienceStudentSuccessCentreGradesFile;
 			sourceTree = "<group>";
 		};
 		FFD0205621B1E1CB008D960B /* Settings */ = {
@@ -419,15 +472,34 @@
 				FF327FC320128C3E00B06E19 /* Resources */,
 				FE070426935AA6B39FCF6068 /* [CP] Embed Pods Frameworks */,
 				FFF72DA622B0756200A24DB9 /* ShellScript */,
+				FFCF3E7223AD23AC00D47335 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FFCF3E7023AD23AC00D47335 /* PBXTargetDependency */,
 			);
 			name = ScienceStudentSuccessCentre;
 			productName = SSSCTemp;
 			productReference = FF327FC520128C3E00B06E19 /* ScienceStudentSuccessCentre.app */;
 			productType = "com.apple.product-type.application";
+		};
+		FFCF3E6423AD23AC00D47335 /* ScienceStudentSuccessCentreGradesFile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFCF3E7523AD23AC00D47335 /* Build configuration list for PBXNativeTarget "ScienceStudentSuccessCentreGradesFile" */;
+			buildPhases = (
+				FFCF3E6123AD23AC00D47335 /* Sources */,
+				FFCF3E6223AD23AC00D47335 /* Frameworks */,
+				FFCF3E6323AD23AC00D47335 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScienceStudentSuccessCentreGradesFile;
+			productName = ScienceStudentSuccessCentreGradesFile;
+			productReference = FFCF3E6523AD23AC00D47335 /* ScienceStudentSuccessCentreGradesFile.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		FFF093B52291BA1200217DE3 /* ScienceStudentSuccessCentreFastlaneSnapshots */ = {
 			isa = PBXNativeTarget;
@@ -453,13 +525,17 @@
 		FF327FBD20128C3E00B06E19 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1020;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Avery Vine";
 				TargetAttributes = {
 					FF327FC420128C3E00B06E19 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 1020;
+						ProvisioningStyle = Automatic;
+					};
+					FFCF3E6423AD23AC00D47335 = {
+						CreatedOnToolsVersion = 11.3;
 						ProvisioningStyle = Automatic;
 					};
 					FFF093B52291BA1200217DE3 = {
@@ -484,6 +560,7 @@
 			targets = (
 				FF327FC420128C3E00B06E19 /* ScienceStudentSuccessCentre */,
 				FFF093B52291BA1200217DE3 /* ScienceStudentSuccessCentreFastlaneSnapshots */,
+				FFCF3E6423AD23AC00D47335 /* ScienceStudentSuccessCentreGradesFile */,
 			);
 		};
 /* End PBXProject section */
@@ -500,6 +577,16 @@
 				FF4A9D12229A19DA00DE8EED /* TestGradeData.sssc in Resources */,
 				FF327FD020128C3E00B06E19 /* Main.storyboard in Resources */,
 				44B2CAEA2276A2BD007E53AB /* CourseSummaryCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFCF3E6323AD23AC00D47335 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF13108923AD2B3E00A59387 /* AppIcon.png in Resources */,
+				FF13108823AD281600A59387 /* Assets.xcassets in Resources */,
+				FFCF3E6D23AD23AC00D47335 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +732,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FFCF3E6123AD23AC00D47335 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFCF3E6A23AD23AC00D47335 /* PreviewViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FFF093B22291BA1200217DE3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -657,6 +752,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		FFCF3E7023AD23AC00D47335 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FFCF3E6423AD23AC00D47335 /* ScienceStudentSuccessCentreGradesFile */;
+			targetProxy = FFCF3E6F23AD23AC00D47335 /* PBXContainerItemProxy */;
+		};
 		FFF093BC2291BA1200217DE3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FF327FC420128C3E00B06E19 /* ScienceStudentSuccessCentre */;
@@ -679,6 +779,14 @@
 				FF327FD420128C3E00B06E19 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FFCF3E6B23AD23AC00D47335 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFCF3E6C23AD23AC00D47335 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -799,6 +907,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7B021D16CACA69B8319CC12F /* Pods-ScienceStudentSuccessCentre.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -821,6 +930,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ADD592BB8738FD87DADE38D5 /* Pods-ScienceStudentSuccessCentre.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -834,6 +944,45 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.carleton.sciencestudentsuccesscentre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FFCF3E7323AD23AC00D47335 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DKPYUUQV7N;
+				INFOPLIST_FILE = ScienceStudentSuccessCentreGradesFile/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carleton.sciencestudentsuccesscentre.ScienceStudentSuccessCentreGradesFile;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FFCF3E7423AD23AC00D47335 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DKPYUUQV7N;
+				INFOPLIST_FILE = ScienceStudentSuccessCentreGradesFile/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carleton.sciencestudentsuccesscentre.ScienceStudentSuccessCentreGradesFile;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -893,6 +1042,15 @@
 			buildConfigurations = (
 				FF327FF020128C3E00B06E19 /* Debug */,
 				FF327FF120128C3E00B06E19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFCF3E7523AD23AC00D47335 /* Build configuration list for PBXNativeTarget "ScienceStudentSuccessCentreGradesFile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFCF3E7323AD23AC00D47335 /* Debug */,
+				FFCF3E7423AD23AC00D47335 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
