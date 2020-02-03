@@ -50,4 +50,4 @@ It can be a tedious task to take all of the necessary screenshots across various
 - [Eureka](https://github.com/xmartlabs/Eureka) (version 5.0.0)
 - [PromiseKit](https://github.com/mxcl/PromiseKit) (version 6.8.4)
 - [ColorPickerRow](https://github.com/EurekaCommunity/ColorPickerRow)
-- [SimulatorStatusMagic](https://github.com/shinydevelopment/SimulatorStatusMagic) (version 2.4.1)
+- [SwiftLint](https://github.com/realm/SwiftLint)
