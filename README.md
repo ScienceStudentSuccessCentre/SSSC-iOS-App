@@ -21,7 +21,7 @@ Event data is retrieved using a GET request to the SSSC Server (linked above) us
 2. Navigate into the directory
 3. Run `pod install` (if you don't have CocoaPods installed, you will need to run `sudo gem install cocoapods` first)
 4. Open the project using the `ScienceStudentSuccessCentre.xcworkspace` file. **BE AWARE:** if you try to make changes to the project using `ScienceStudentSuccessCentre.xcodeproj`, none of the external cocoapod dependencies will work.
-5. Navigate to the `ScienceStudentSucessCentre` project file in the left sidebar, and select `General`.
+5. Navigate to the `ScienceStudentSucessCentre` project file in the left sidebar, and select `Signing & Capabilities`.
 6. Make sure the selected team is `Lily Visanuvimol` (the SSSC's account). This will require you to sign in. See any of the SSSC staff for account details.
 7. Get the necessary certificates and provisioning profiles from the SSSC staff, and install by double-clicking them.
 
