@@ -244,13 +244,12 @@ class EventDetailViewController: UIViewController {
     
     /// Opens a share sheet that allows the user to share the link to this event.
     @objc private func shareButtonTapped() {
-        if let url = event?.eventUrl?.absoluteString {
-            let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-            if let popOver = activityVC.popoverPresentationController {
-                popOver.barButtonItem = navigationItem.rightBarButtonItems?.first
-            }
-            self.present(activityVC, animated: true)
+        guard let url = event?.eventUrl?.absoluteString else { return }
+        let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        if let popOver = activityVC.popoverPresentationController {
+            popOver.barButtonItem = navigationItem.rightBarButtonItems?.first
         }
+        self.present(activityVC, animated: true)
     }
     
     /// Creates a new calendar event for this event.
@@ -307,19 +306,15 @@ class EventDetailViewController: UIViewController {
     }
     
     private func loadImage() {
-        if let url = event?.imageUrl {
-            DispatchQueue.global().async {
-                if let data = try? Data(contentsOf: url) {
-                    if let image = UIImage(data: data) {
-                        DispatchQueue.main.async {
-                            self.eventImageView.image = image
-                            let ratio = image.size.height / image.size.width
-                            let newHeight = self.eventImageView.frame.size.width * ratio
-                            self.eventImageView.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
-                            self.eventImageView.isHidden = false
-                        }
-                    }
-                }
+        guard let url = event?.imageUrl else { return }
+        DispatchQueue.global().async {
+            guard let data = try? Data(contentsOf: url), let image = UIImage(data: data) else { return }
+            DispatchQueue.main.async {
+                self.eventImageView.image = image
+                let ratio = image.size.height / image.size.width
+                let newHeight = self.eventImageView.frame.size.width * ratio
+                self.eventImageView.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
+                self.eventImageView.isHidden = false
             }
         }
     }
