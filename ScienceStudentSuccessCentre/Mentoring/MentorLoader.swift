@@ -21,7 +21,7 @@ class MentorLoader {
             if let url = serverUrl {
                 URLSession.shared.dataTask(with: url) { result in
                     switch result {
-                    case .success(_, let data):
+                    case .success((_, let data)):
                         guard let json = try? JSONSerialization.jsonObject(with: data, options: []) else {
                             seal.reject(URLError(.badServerResponse))
                             return

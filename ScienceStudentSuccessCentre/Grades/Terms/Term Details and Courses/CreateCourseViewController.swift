@@ -21,7 +21,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
     private let creditFormatter = NumberFormatter()
     private let weightFormatter = NumberFormatter()
     
-    private let letterGrades = ["None", "A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"]
+    private let letterGrades = ["None", "A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F", "SAT", "UNS"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,7 +135,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         }
         +++ MultivaluedSection(multivaluedOptions: [.Insert, .Delete],
                                header: "Assignment Weights",
-                               footer: "Assignment weights should total 100%.") { section in
+                               footer: "Assignment weights must total 100%. Example:\nQuizzes (40%), Midterm (25%), Final Exam (35%)") { section in
             section.addButtonProvider = { section in
                 return ButtonRow {
                     $0.title = "Add New Weight"
@@ -150,8 +150,8 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                     splitRow.tag = nil
                     splitRow.rowLeft = TextRow { textRow in
                         textRow.placeholder = "Final Exam"
-                        textRow.cell.textField.autocapitalizationType = .words //TODO: this doesn't appear to be working
                         textRow.cellUpdate { cell, _ in
+                            cell.textField?.autocapitalizationType = .words
                             if #available(iOS 13.0, *) {
                                 cell.backgroundColor = UIColor(named: "formAccent")
                                 cell.textField?.textColor = UIColor.label
@@ -225,8 +225,8 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                 splitRow.tag = weight.id
                 splitRow.rowLeft = TextRow { textRow in
                     textRow.value = weight.name
-                    textRow.cell.textField.autocapitalizationType = .words //TODO: This (.words) doesn't appear to be working
                     textRow.cellUpdate { cell, _ in
+                        cell.textField?.autocapitalizationType = .words
                         if #available(iOS 13.0, *) {
                             cell.backgroundColor = UIColor(named: "formAccent")
                             cell.textField?.textColor = UIColor.label
