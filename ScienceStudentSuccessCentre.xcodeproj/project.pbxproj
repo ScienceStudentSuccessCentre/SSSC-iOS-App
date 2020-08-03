@@ -51,6 +51,7 @@
 		FF651CEA2190F27100C37022 /* CreateAssignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF651CE92190F27100C37022 /* CreateAssignmentViewController.swift */; };
 		FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6835B52023C540001A35B2 /* EventTableViewCell.swift */; };
 		FF74BE81218CBE6100A8954B /* AssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF74BE80218CBE6100A8954B /* AssignmentTableViewCell.swift */; };
+		FF75EFED24D87A52007B8D86 /* Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF75EFEC24D87A52007B8D86 /* Features.swift */; };
 		FF7A0905215967F600A98504 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7A0904215967F600A98504 /* Formatter.swift */; };
 		FF7FD89021485E8100DAC88C /* HtmlString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7FD88F21485E8100DAC88C /* HtmlString.swift */; };
 		FF80666E2193A31D00B202A6 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80666D2193A31D00B202A6 /* Double.swift */; };
@@ -160,6 +161,7 @@
 		FF651CE92190F27100C37022 /* CreateAssignmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAssignmentViewController.swift; sourceTree = "<group>"; };
 		FF6835B52023C540001A35B2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		FF74BE80218CBE6100A8954B /* AssignmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentTableViewCell.swift; sourceTree = "<group>"; };
+		FF75EFEC24D87A52007B8D86 /* Features.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features.swift; sourceTree = "<group>"; };
 		FF7A0904215967F600A98504 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		FF7FD88F21485E8100DAC88C /* HtmlString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlString.swift; sourceTree = "<group>"; };
 		FF80666D2193A31D00B202A6 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				FFC6CF1721657CAE00657C34 /* Assignment.swift */,
 				FFFC6BC62162D6D6001585CE /* Course.swift */,
 				FFA4B1D220229C8400BAC08F /* Event.swift */,
+				FF75EFEC24D87A52007B8D86 /* Features.swift */,
 				FF30320C2374B08200159555 /* Mentor.swift */,
 				FFE84077215F1CAC00A5E33B /* Term.swift */,
 				FF4BCBCE21AB47790050A876 /* Weight.swift */,
@@ -698,6 +701,7 @@
 				FF30AFB82162A6E200C1F22C /* CreateTermViewController.swift in Sources */,
 				FF327FC920128C3E00B06E19 /* AppDelegate.swift in Sources */,
 				FF13F7D421646AC1005733B0 /* CreateCourseViewController.swift in Sources */,
+				FF75EFED24D87A52007B8D86 /* Features.swift in Sources */,
 				FFFC6BC72162D6D6001585CE /* Course.swift in Sources */,
 				FFD0205821B1E1E6008D960B /* SettingsViewController.swift in Sources */,
 				FFE84078215F1CAC00A5E33B /* Term.swift in Sources */,
