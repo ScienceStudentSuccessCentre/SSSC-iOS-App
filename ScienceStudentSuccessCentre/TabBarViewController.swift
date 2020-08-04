@@ -15,10 +15,10 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     @available(iOS 13.0, *)
     override var overrideUserInterfaceStyle: UIUserInterfaceStyle {
         get {
-            if UserDefaults.standard.bool(forKey: "respectSystemDarkMode") {
+            if LocalSavedData.respectSystemDarkMode {
                 return .unspecified
             }
-            return UserDefaults.standard.bool(forKey: "permanentDarkMode") ? .dark : .light
+            return LocalSavedData.permanentDarkMode ? .dark : .light
         }
         set {
             super.overrideUserInterfaceStyle = newValue

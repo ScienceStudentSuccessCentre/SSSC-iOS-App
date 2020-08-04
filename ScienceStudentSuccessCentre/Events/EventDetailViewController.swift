@@ -8,6 +8,7 @@
 
 import EventKit
 import EventKitUI
+import MessageUI
 import SafariServices
 import UIKit
 import UserNotifications
@@ -37,95 +38,90 @@ class EventDetailViewController: UIViewController {
     private let notificationCenter = UNUserNotificationCenter.current()
     
     private var actionUrlButton: UIBarButtonItem {
-        let customView = UIButton()
-        let width: CGFloat
-        let height: CGFloat
-        let image: UIImage?
-        
+        let button: UIBarButtonItem
         if #available(iOS 13.0, *) {
             let config = UIImage.SymbolConfiguration(scale: .large)
-            image = UIImage(systemName: "link", withConfiguration: config)
-            width = (image?.size.width ?? 0) + 3
-            height = image?.size.height ?? 0
+            let image = UIImage(systemName: "link", withConfiguration: config)
+            button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(actionUrlTapped))
         } else {
-            image = UIImage(named: "linkIcon")
-            width = 30
-            height = 30
-            
-            customView.widthAnchor.constraint(equalToConstant: width).isActive = true
-            customView.heightAnchor.constraint(equalToConstant: height).isActive = true
+            let image = UIImage(named: "linkIcon")
+            let customView = UIButton()
+            let dimensions = CGSize(width: 30, height: 30)
+            customView.widthAnchor.constraint(equalToConstant: dimensions.width).isActive = true
+            customView.heightAnchor.constraint(equalToConstant: dimensions.height).isActive = true
             customView.translatesAutoresizingMaskIntoConstraints = false
+            customView.setImage(image, for: .normal)
+            customView.frame = CGRect(x: 0, y: 0, width: dimensions.width, height: dimensions.height)
+            customView.addTarget(self, action: #selector(actionUrlTapped), for: .touchUpInside)
+            button = UIBarButtonItem(customView: customView)
         }
-        
-        customView.setImage(image, for: .normal)
-        customView.frame = CGRect(x: 0, y: 0, width: width, height: height)
-        customView.addTarget(self, action: #selector(actionUrlTapped), for: .touchUpInside)
-        customView.accessibilityLabel = "External Website: " + (event?.actionUrl ?? "")
-        customView.accessibilityTraits = .link
-        return UIBarButtonItem(customView: customView)
+        button.accessibilityLabel = "External Website: " + (event?.actionUrl ?? "")
+        button.accessibilityTraits = .link
+        return button
+    }
+    
+    private var emailRegistrationButton: UIBarButtonItem {
+        let button: UIBarButtonItem
+        if #available(iOS 13.0, *) {
+            let config = UIImage.SymbolConfiguration(scale: .large)
+            let image = UIImage(systemName: "square.and.pencil", withConfiguration: config)
+            button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(emailRegistrationTapped))
+        } else {
+            let image = UIImage(named: "registerIcon")
+            let customView = UIButton()
+            let dimensions = CGSize(width: 31, height: 31)
+            customView.widthAnchor.constraint(equalToConstant: dimensions.width).isActive = true
+            customView.heightAnchor.constraint(equalToConstant: dimensions.height).isActive = true
+            customView.translatesAutoresizingMaskIntoConstraints = false
+            customView.setImage(image, for: .normal)
+            customView.frame = CGRect(x: 0, y: 0, width: dimensions.width, height: dimensions.height)
+            customView.addTarget(self, action: #selector(emailRegistrationTapped), for: .touchUpInside)
+            button = UIBarButtonItem(customView: customView)
+        }
+        button.accessibilityLabel = "Register"
+        return button
     }
     
     private var shareButton: UIBarButtonItem {
         if #available(iOS 13.0, *) {
-            let customView = UIButton()
             let config = UIImage.SymbolConfiguration(scale: .large)
             let image = UIImage(systemName: "square.and.arrow.up", withConfiguration: config)
-            customView.setImage(image, for: .normal)
-            customView.addTarget(self, action: #selector(shareButtonTapped), for: .touchUpInside)
-            customView.frame = CGRect(x: 0, y: 0, width: (image?.size.width ?? 0) + 8, height: image?.size.height ?? 0)
-            customView.accessibilityLabel = "Share"
-            customView.accessibilityTraits = .button
-            return UIBarButtonItem(customView: customView)
+            return UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(shareButtonTapped))
         } else {
             return UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped))
         }
     }
     
     private func notificationButton(notificationPending: Bool) -> UIBarButtonItem {
-        let customView = UIButton()
-        let width: CGFloat
-        let height: CGFloat
-        let image: UIImage?
-        
+        let button: UIBarButtonItem
         if #available(iOS 13.0, *) {
             let config = UIImage.SymbolConfiguration(scale: .large)
-            image = UIImage(systemName: notificationPending ? "bell.fill" : "bell", withConfiguration: config)
-            width = (image?.size.width ?? 0) + 8
-            height = image?.size.height ?? 0
-            if notificationPending {
-                customView.tintColor = UIColor(.amber)
-            }
+            let image = UIImage(systemName: notificationPending ? "bell.fill" : "bell", withConfiguration: config)
+            button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(notifyMeTapped))
+            button.tintColor = notificationPending ? UIColor(.amber) : button.tintColor
         } else {
-            image = UIImage(named: notificationPending ? "notifyOn" : "notifyOff")
-            width = 29
-            height = 29
-            
-            customView.widthAnchor.constraint(equalToConstant: width).isActive = true
-            customView.heightAnchor.constraint(equalToConstant: height).isActive = true
+            let image = UIImage(named: notificationPending ? "notifyOn" : "notifyOff")
+            let customView = UIButton()
+            let dimensions = CGSize(width: 29, height: 29)
+            customView.widthAnchor.constraint(equalToConstant: dimensions.width).isActive = true
+            customView.heightAnchor.constraint(equalToConstant: dimensions.height).isActive = true
             customView.translatesAutoresizingMaskIntoConstraints = false
+            customView.setImage(image, for: .normal)
+            customView.frame = CGRect(x: 0, y: 0, width: dimensions.width, height: dimensions.height)
+            customView.addTarget(self, action: #selector(notifyMeTapped), for: .touchUpInside)
+            customView.accessibilityLabel = "Notify Me"
+            customView.accessibilityTraits = .button
+            button = UIBarButtonItem(customView: customView)
         }
-        
-        customView.setImage(image, for: .normal)
-        customView.frame = CGRect(x: 0, y: 0, width: width, height: height)
-        customView.addTarget(self, action: #selector(notifyMeTapped), for: .touchUpInside)
-        customView.accessibilityLabel = "Notify Me"
-        customView.accessibilityTraits = .button
-        let button = UIBarButtonItem(customView: customView)
         button.accessibilityIdentifier = "ToggleNotification"
         return button
     }
     
     private var addToCalendarButton: UIBarButtonItem {
         if #available(iOS 13.0, *) {
-            let customView = UIButton()
             let config = UIImage.SymbolConfiguration(scale: .large)
             let image = UIImage(systemName: "calendar.badge.plus", withConfiguration: config)
-            customView.setImage(image, for: .normal)
-            customView.addTarget(self, action: #selector(addToCalendarButtonTapped), for: .touchUpInside)
-            customView.frame = CGRect(x: 0, y: 0, width: (image?.size.width ?? 0) + 8, height: image?.size.height ?? 0)
-            customView.accessibilityLabel = "Add to Calendar"
-            customView.accessibilityTraits = .button
-            return UIBarButtonItem(customView: customView)
+            return UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(addToCalendarButtonTapped))
         } else {
             return UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addToCalendarButtonTapped))
         }
@@ -162,7 +158,7 @@ class EventDetailViewController: UIViewController {
     
     /// Determines which buttons (action, notification, share) should be added to the navigation bar, if any.
     ///
-    /// - If there is an action associated to the event being displayed, the action button is displayed.
+    /// - If there is an action associated to the event being displayed, the action button is displayed. If that action involves Carleton Central, the email registration button is displayed instead.
     /// - If the notification date/time for this event has not passed, the notification button is displayed.
     /// - If arriving from peek and pop (i.e. `isPreview == true`), no buttons are shown
     private func prepareNavigationBarButtons(notificationPending: Bool = false) {
@@ -174,7 +170,16 @@ class EventDetailViewController: UIViewController {
             if event.notificationDateTime!.compare(Date()) != ComparisonResult.orderedAscending {
                 barButtonItems.append(notificationButton(notificationPending: notificationPending))
             }
-            if !(event.actionUrl ?? "").isEmpty {
+            switch event.actionUrl {
+            case nil, "":
+                break
+            case let url where url!.contains("central.carleton.ca"):
+                if Features.shared.enableEmailEventRegistration && MFMailComposeViewController.canSendMail() {
+                    barButtonItems.append(emailRegistrationButton)
+                } else {
+                    fallthrough
+                }
+            default:
                 barButtonItems.append(actionUrlButton)
             }
             barButtonItems.append(addToCalendarButton)
@@ -237,9 +242,88 @@ class EventDetailViewController: UIViewController {
         }.cauterize()
     }
     
+    /// Promps the user for their name and student number, before opening a new email for them.
+    private func promptForPersonalInfo() {
+        let getNameAlert = UIAlertController(title: "What is your full name?", message: nil, preferredStyle: .alert)
+        getNameAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { _ in
+            guard let studentName = getNameAlert.textFields?.first?.text else { return }
+            LocalSavedData.studentName = studentName
+            
+            let getNumberAlert = UIAlertController(title: "What is your student number?", message: nil, preferredStyle: .alert)
+            getNumberAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { _ in
+                guard let studentNumberString = getNumberAlert.textFields?.first?.text, let studentNumber = Int(studentNumberString) else { return }
+                LocalSavedData.studentNumber = studentNumber
+                
+                self.openEmailRegistration()
+            }))
+            getNumberAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            getNumberAlert.addTextField(configurationHandler: { textField in
+                textField.keyboardType = .numberPad
+            })
+            self.present(getNumberAlert, animated: true)
+        }))
+        getNameAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        getNameAlert.addTextField(configurationHandler: { textField in
+            textField.autocapitalizationType = .words
+        })
+        present(getNameAlert, animated: true)
+    }
+    
+    /// Opens a new email for the user with their information filled in, ready to be sent to the SSSC.
+    private func openEmailRegistration() {
+        guard let event = event,
+            let studentName = LocalSavedData.studentName,
+            let studentNumber = LocalSavedData.studentNumber,
+            MFMailComposeViewController.canSendMail() else {
+            // Fallback to action URL
+            actionUrlTapped()
+            return
+        }
+        let mail = MFMailComposeViewController()
+        mail.mailComposeDelegate = self
+        mail.setToRecipients(["sssc@carleton.ca"])
+        mail.setSubject("Registration for \(event.name)")
+        mail.setMessageBody("""
+            <p>Hello,</p>
+            <p>I would like to register for <i>\(event.name)</i> on \(event.monthName) \(event.dayLeadingZero).</p>
+            <ul>
+            <li>Name: \(studentName)</li>
+            <li>Student Number: \(studentNumber)</li>
+            </ul>
+            <p>Thank you!</p>
+            """, isHTML: true)
+        present(mail, animated: true)
+    }
+    
     /// Delegates opening the actionUrl to the in-app browser when the action button is tapped.
     @objc private func actionUrlTapped() {
         openUrlInAppBrowser(url: URL(string: event?.actionUrl ?? ""))
+    }
+    
+    /// Prompts the user for their name and student number, before opening a new email for them. If the device is unable to send emails, the fallback behaviour of opening the action URL is used.
+    @objc private func emailRegistrationTapped() {
+        guard MFMailComposeViewController.canSendMail() else {
+            actionUrlTapped()
+            return
+        }
+        
+        if let studentName = LocalSavedData.studentName, let studentNumber = LocalSavedData.studentNumber {
+            let confirmPersonalInfoAlert = UIAlertController(
+                title: "Is this information correct?",
+                message: "\nStudent Name: \(studentName)\nStudent Number: \(studentNumber)",
+                preferredStyle: .alert
+            )
+            confirmPersonalInfoAlert.addAction(UIAlertAction(title: "Yes, Register!", style: .default, handler: { _ in
+                self.openEmailRegistration()
+            }))
+            confirmPersonalInfoAlert.addAction(UIAlertAction(title: "No, Change It", style: .default, handler: { _ in
+                self.promptForPersonalInfo()
+            }))
+            confirmPersonalInfoAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            present(confirmPersonalInfoAlert, animated: true)
+        } else {
+            promptForPersonalInfo()
+        }
     }
     
     /// Opens a share sheet that allows the user to share the link to this event.
@@ -336,5 +420,32 @@ extension EventDetailViewController: UITextViewDelegate {
 extension EventDetailViewController: EKEventEditViewDelegate {
     func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
         controller.dismiss(animated: true)
+    }
+}
+
+extension EventDetailViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true) {
+            let title: String?
+            let message: String?
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .default)
+            
+            switch result {
+            case .sent:
+                title = "Thanks for registering!"
+                message = "Check out the other buttons along the top to add this event to your calendar or request a notification an hour before the event."
+            case .saved:
+                title = "Almost Done!"
+                message = "To finish registering, check your Drafts folder and send the email addressed to sssc@carleton.ca."
+            case .failed:
+                self.presentAlert(kind: .genericError, actions: dismissAction)
+                return
+            default:
+                return
+            }
+            let dismissedMailAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            dismissedMailAlert.addAction(dismissAction)
+            self.present(dismissedMailAlert, animated: true)
+        }
     }
 }

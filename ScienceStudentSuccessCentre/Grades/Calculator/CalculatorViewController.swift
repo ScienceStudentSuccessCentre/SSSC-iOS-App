@@ -60,12 +60,9 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     ///
     /// This function will get all of the user's courses. If the users wants to only display completed courses, all courses without final grades will be filtered out. Finally, courses are sorted by term and displayed to the user.
     private func loadCourses() {
-        let defaults = UserDefaults.standard
-        let includeInProgressCourses = defaults.bool(forKey: "includeInProgressCourses")
-        
         courses.removeAll()
         courses = Database.instance.getCourses()
-        if !includeInProgressCourses {
+        if !LocalSavedData.includeInProgressCourses {
             courses = courses.filter({ $0.finalGrade != "None" })
         }
         sortCoursesByTerm()
