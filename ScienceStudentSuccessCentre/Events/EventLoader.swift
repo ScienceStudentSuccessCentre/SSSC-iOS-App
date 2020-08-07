@@ -60,7 +60,7 @@ class EventLoader {
         }
 
         #if DEBUG
-        if UserDefaults.standard.bool(forKey: "showTestEvents") {
+        if LocalSavedData.showTestEvents {
             events.append(Event.generateTestEvent())
             events.append(Event.generateTestEvent2())
         }

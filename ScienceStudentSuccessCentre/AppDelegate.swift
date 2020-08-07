@@ -14,15 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        if UserDefaults.standard.value(forKey: "includeInProgressCourses") == nil {
-            UserDefaults.standard.set(true, forKey: "includeInProgressCourses")
-        }
-        if UserDefaults.standard.value(forKey: "respectSystemDarkMode") == nil {
-            UserDefaults.standard.set(true, forKey: "respectSystemDarkMode")
-        }
-        
+        Features.fetch()
         processLaunchArguments()
-        
         UNUserNotificationCenter.current().delegate = self
         
         guard let tabBarController = window?.rootViewController as? UITabBarController,
@@ -46,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             _ = Database.instance.importData(from: url)
         }
         
-        UserDefaults.standard.set(!arguments.contains("HideTestEvents"), forKey: "showTestEvents")
+        LocalSavedData.showTestEvents = !arguments.contains("HideTestEvents")
     }
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {

@@ -27,13 +27,9 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
         super.viewWillAppear(animated)
         prepareNavigationBarAppearance()
         
-        let defaults = UserDefaults.standard
-        let includeInProgressCourses = defaults.bool(forKey: "includeInProgressCourses")
-        let respectSystemDarkMode = defaults.bool(forKey: "respectSystemDarkMode")
-        let permanentDarkMode = defaults.bool(forKey: "permanentDarkMode")
-        form.rowBy(tag: "includeInProgressCourses")?.baseValue = includeInProgressCourses
-        form.rowBy(tag: "respectSystemDarkMode")?.baseValue = respectSystemDarkMode
-        form.rowBy(tag: "permanentDarkMode")?.baseValue = permanentDarkMode
+        form.rowBy(tag: "includeInProgressCourses")?.baseValue = LocalSavedData.includeInProgressCourses
+        form.rowBy(tag: "respectSystemDarkMode")?.baseValue = LocalSavedData.respectSystemDarkMode
+        form.rowBy(tag: "permanentDarkMode")?.baseValue = LocalSavedData.permanentDarkMode
     }
     
     func createForm() {
@@ -111,15 +107,14 @@ class SettingsViewController: FormViewController, EurekaFormProtocol {
     }
     
     func validateForm() {
-        let defaults = UserDefaults.standard
         guard let includeInProgressCourses = form.rowBy(tag: "includeInProgressCourses")?.baseValue as? Bool,
             let respectSystemDarkMode = form.rowBy(tag: "respectSystemDarkMode")?.baseValue as? Bool,
             let permanentDarkMode = form.rowBy(tag: "permanentDarkMode")?.baseValue as? Bool else {
             return
         }
-        defaults.set(includeInProgressCourses, forKey: "includeInProgressCourses")
-        defaults.set(respectSystemDarkMode, forKey: "respectSystemDarkMode")
-        defaults.set(permanentDarkMode, forKey: "permanentDarkMode")
+        LocalSavedData.includeInProgressCourses = includeInProgressCourses
+        LocalSavedData.respectSystemDarkMode = respectSystemDarkMode
+        LocalSavedData.permanentDarkMode = permanentDarkMode
         
         if #available(iOS 13.0, *) {
             let darkMode: UIUserInterfaceStyle

@@ -9,7 +9,6 @@
 import UIKit
 
 class EventsViewController: UITableViewController {
-    
     private(set) var events = [Event]()
     private var collapseDetailViewController = true
     private var activityIndicatorView: UIActivityIndicatorView!
