@@ -6,6 +6,7 @@
 //  Copyright © 2019 Avery Vine. All rights reserved.
 //
 
+import MessageUI
 import UIKit
 
 class MentorDetailViewController: UIViewController {
@@ -20,6 +21,10 @@ class MentorDetailViewController: UIViewController {
     @IBOutlet weak var separatorWidthConstraint: NSLayoutConstraint!
     
     var mentor: Mentor?
+    
+    var registrationType: EmailRegistrationType {
+        return .mentoring(mentor: mentor)
+    }
     
     override func viewDidLoad() {
         bio.delegate = self
@@ -76,6 +81,16 @@ class MentorDetailViewController: UIViewController {
     }
     
     @IBAction private func bookingButtonTapped() {
+        if Features.shared.enableEmailMentorRegistration {
+            register(fallback: {
+                self.openCarletonCentral()
+            })
+        } else {
+            openCarletonCentral()
+        }
+    }
+    
+    func openCarletonCentral() {
         guard let url = URL(string: "https://central.carleton.ca/") else { return }
         let webpage = SSSCSafariViewController(url: url)
         present(webpage, animated: true)
@@ -98,6 +113,33 @@ class MentorDetailViewController: UIViewController {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         view.setNeedsLayout()
+    }
+}
+
+extension MentorDetailViewController: EmailRegistrationController, MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true) {
+            let title: String?
+            let message: String?
+            let dismissAction = UIAlertAction(title: "Dismiss", style: .default)
+            
+            switch result {
+            case .sent:
+                title = "Thanks for contacting us!"
+                message = "The SSSC staff should get back to you shortly about your mentoring session."
+            case .saved:
+                title = "Almost Done!"
+                message = "To finish registering, check your Drafts folder and send the email addressed to sssc@carleton.ca."
+            case .failed:
+                self.presentAlert(kind: .genericError, actions: dismissAction)
+                return
+            default:
+                return
+            }
+            let dismissedMailAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            dismissedMailAlert.addAction(dismissAction)
+            self.present(dismissedMailAlert, animated: true)
+        }
     }
 }
 

@@ -35,6 +35,11 @@ class EventDetailViewController: UIViewController {
         }
     }
     
+    var registrationType: EmailRegistrationType {
+        guard let event = event else { fatalError("Tried to retrieve registrationType without event") }
+        return .event(event: event)
+    }
+    
     private let notificationCenter = UNUserNotificationCenter.current()
     
     private var actionUrlButton: UIBarButtonItem {
@@ -242,88 +247,15 @@ class EventDetailViewController: UIViewController {
         }.cauterize()
     }
     
-    /// Promps the user for their name and student number, before opening a new email for them.
-    private func promptForPersonalInfo() {
-        let getNameAlert = UIAlertController(title: "What is your full name?", message: nil, preferredStyle: .alert)
-        getNameAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { _ in
-            guard let studentName = getNameAlert.textFields?.first?.text else { return }
-            LocalSavedData.studentName = studentName
-            
-            let getNumberAlert = UIAlertController(title: "What is your student number?", message: nil, preferredStyle: .alert)
-            getNumberAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { _ in
-                guard let studentNumberString = getNumberAlert.textFields?.first?.text, let studentNumber = Int(studentNumberString) else { return }
-                LocalSavedData.studentNumber = studentNumber
-                
-                self.openEmailRegistration()
-            }))
-            getNumberAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-            getNumberAlert.addTextField(configurationHandler: { textField in
-                textField.keyboardType = .numberPad
-            })
-            self.present(getNumberAlert, animated: true)
-        }))
-        getNameAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        getNameAlert.addTextField(configurationHandler: { textField in
-            textField.autocapitalizationType = .words
-        })
-        present(getNameAlert, animated: true)
-    }
-    
-    /// Opens a new email for the user with their information filled in, ready to be sent to the SSSC.
-    private func openEmailRegistration() {
-        guard let event = event,
-            let studentName = LocalSavedData.studentName,
-            let studentNumber = LocalSavedData.studentNumber,
-            MFMailComposeViewController.canSendMail() else {
-            // Fallback to action URL
-            actionUrlTapped()
-            return
-        }
-        let mail = MFMailComposeViewController()
-        mail.mailComposeDelegate = self
-        mail.setToRecipients(["sssc@carleton.ca"])
-        mail.setSubject("Registration for \(event.name)")
-        mail.setMessageBody("""
-            <p>Hello,</p>
-            <p>I would like to register for <i>\(event.name)</i> on \(event.monthName) \(event.dayLeadingZero).</p>
-            <ul>
-            <li>Name: \(studentName)</li>
-            <li>Student Number: \(studentNumber)</li>
-            </ul>
-            <p>Thank you!</p>
-            """, isHTML: true)
-        present(mail, animated: true)
-    }
-    
     /// Delegates opening the actionUrl to the in-app browser when the action button is tapped.
     @objc private func actionUrlTapped() {
         openUrlInAppBrowser(url: URL(string: event?.actionUrl ?? ""))
     }
     
-    /// Prompts the user for their name and student number, before opening a new email for them. If the device is unable to send emails, the fallback behaviour of opening the action URL is used.
+    /// Begins the email registration flow for this event.
     @objc private func emailRegistrationTapped() {
-        guard MFMailComposeViewController.canSendMail() else {
-            actionUrlTapped()
-            return
-        }
-        
-        if let studentName = LocalSavedData.studentName, let studentNumber = LocalSavedData.studentNumber {
-            let confirmPersonalInfoAlert = UIAlertController(
-                title: "Is this information correct?",
-                message: "\nStudent Name: \(studentName)\nStudent Number: \(studentNumber)",
-                preferredStyle: .alert
-            )
-            confirmPersonalInfoAlert.addAction(UIAlertAction(title: "Yes, Register!", style: .default, handler: { _ in
-                self.openEmailRegistration()
-            }))
-            confirmPersonalInfoAlert.addAction(UIAlertAction(title: "No, Change It", style: .default, handler: { _ in
-                self.promptForPersonalInfo()
-            }))
-            confirmPersonalInfoAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-            present(confirmPersonalInfoAlert, animated: true)
-        } else {
-            promptForPersonalInfo()
-        }
+        guard event != nil else { return }
+        register(fallback: actionUrlTapped)
     }
     
     /// Opens a share sheet that allows the user to share the link to this event.
@@ -404,26 +336,7 @@ class EventDetailViewController: UIViewController {
     }
 }
 
-extension EventDetailViewController: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-        openUrlInAppBrowser(url: URL)
-        return false
-    }
-    
-    private func openUrlInAppBrowser(url: URL?) {
-        guard let url = url else { return }
-        let safariVC = SSSCSafariViewController(url: url)
-        present(safariVC, animated: true)
-    }
-}
-
-extension EventDetailViewController: EKEventEditViewDelegate {
-    func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
-        controller.dismiss(animated: true)
-    }
-}
-
-extension EventDetailViewController: MFMailComposeViewControllerDelegate {
+extension EventDetailViewController: EmailRegistrationController, MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true) {
             let title: String?
@@ -447,5 +360,24 @@ extension EventDetailViewController: MFMailComposeViewControllerDelegate {
             dismissedMailAlert.addAction(dismissAction)
             self.present(dismissedMailAlert, animated: true)
         }
+    }
+}
+
+extension EventDetailViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        openUrlInAppBrowser(url: URL)
+        return false
+    }
+    
+    private func openUrlInAppBrowser(url: URL?) {
+        guard let url = url else { return }
+        let safariVC = SSSCSafariViewController(url: url)
+        present(safariVC, animated: true)
+    }
+}
+
+extension EventDetailViewController: EKEventEditViewDelegate {
+    func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
+        controller.dismiss(animated: true)
     }
 }

@@ -64,6 +64,8 @@
 		FFA7CBB1215DD59B00A050B1 /* TermTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA7CBB0215DD59B00A050B1 /* TermTableViewCell.swift */; };
 		FFAC093C215EBBD5007C4264 /* TermDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC093B215EBBD5007C4264 /* TermDetailViewController.swift */; };
 		FFAE67922188ED2D0079CE16 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAE67912188ED2D0079CE16 /* UIView.swift */; };
+		FFB0CDB024E4D10700C0215F /* EmailRegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0CDAF24E4D10700C0215F /* EmailRegistrationController.swift */; };
+		FFB0CDB224E4D97F00C0215F /* StudentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB0CDB124E4D97F00C0215F /* StudentInfo.swift */; };
 		FFB76C962030B5A200EC3F97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB76C952030B5A200EC3F97 /* Assets.xcassets */; };
 		FFC18A2C202502A8001AB5BA /* EventLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC18A2B202502A8001AB5BA /* EventLoader.swift */; };
 		FFC6CF1621657C6D00657C34 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */; };
@@ -175,6 +177,8 @@
 		FFA7CBB0215DD59B00A050B1 /* TermTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermTableViewCell.swift; sourceTree = "<group>"; };
 		FFAC093B215EBBD5007C4264 /* TermDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermDetailViewController.swift; sourceTree = "<group>"; };
 		FFAE67912188ED2D0079CE16 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		FFB0CDAF24E4D10700C0215F /* EmailRegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRegistrationController.swift; sourceTree = "<group>"; };
+		FFB0CDB124E4D97F00C0215F /* StudentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfo.swift; sourceTree = "<group>"; };
 		FFB76C952030B5A200EC3F97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFC18A2B202502A8001AB5BA /* EventLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLoader.swift; sourceTree = "<group>"; };
 		FFC6CF1521657C6D00657C34 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
@@ -268,6 +272,7 @@
 				FF30320C2374B08200159555 /* Mentor.swift */,
 				FFE84077215F1CAC00A5E33B /* Term.swift */,
 				FF4BCBCE21AB47790050A876 /* Weight.swift */,
+				FFB0CDB124E4D97F00C0215F /* StudentInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -424,6 +429,7 @@
 				442EC65B21EE8C36002B961E /* UNUserNotificationCenter.swift */,
 				FFF093AE2291B1E300217DE3 /* URLSession.swift */,
 				FF5FDB2B21ABB12200899963 /* SplitRow */,
+				FFB0CDAF24E4D10700C0215F /* EmailRegistrationController.swift */,
 			);
 			path = "Utilities and Extensions";
 			sourceTree = "<group>";
@@ -699,10 +705,12 @@
 				FF7A0905215967F600A98504 /* Formatter.swift in Sources */,
 				44B2CAE6227675FF007E53AB /* CourseSearchViewController.swift in Sources */,
 				FF5FDB2D21ABB13200899963 /* SplitRow.swift in Sources */,
+				FFB0CDB024E4D10700C0215F /* EmailRegistrationController.swift in Sources */,
 				FF6835B62023C540001A35B2 /* EventTableViewCell.swift in Sources */,
 				FF4C4A9C215D7C550091BF2A /* GradesViewController.swift in Sources */,
 				FF7FD89021485E8100DAC88C /* HtmlString.swift in Sources */,
 				FF30AFB82162A6E200C1F22C /* CreateTermViewController.swift in Sources */,
+				FFB0CDB224E4D97F00C0215F /* StudentInfo.swift in Sources */,
 				FF327FC920128C3E00B06E19 /* AppDelegate.swift in Sources */,
 				FF13F7D421646AC1005733B0 /* CreateCourseViewController.swift in Sources */,
 				FF75EFED24D87A52007B8D86 /* Features.swift in Sources */,

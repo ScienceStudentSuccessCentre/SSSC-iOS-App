@@ -15,10 +15,12 @@ struct Features: Codable {
     private init() {
         // Provide acceptable defaults for each feature toggle, should the feature list fail to load
         enableEmailEventRegistration = false
+        enableEmailMentorRegistration = false
     }
     
     // Name all features *exactly* as they appear at the /features endpoint
     let enableEmailEventRegistration: Bool
+    let enableEmailMentorRegistration: Bool
     
     static func fetch() {
         guard let featuresUrl = featuresUrl else { return }
