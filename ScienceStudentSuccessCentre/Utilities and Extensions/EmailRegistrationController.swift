@@ -41,7 +41,7 @@ extension EmailRegistrationController {
     private func verifyPersonalInfo(_ studentInfo: StudentInfo) {
         let confirmPersonalInfoAlert = UIAlertController(
             title: "Is this information correct?",
-            message: "\nStudent Name: \(studentInfo.name)\nStudent Number: \(studentInfo.number)\nDegree: \(studentInfo.degree)",
+            message: "\nFull Name: \(studentInfo.name)\nStudent Number: \(studentInfo.number)\nCarleton Email: \(studentInfo.email)",
             preferredStyle: .alert
         )
         confirmPersonalInfoAlert.addAction(UIAlertAction(title: "Yes, Register!", style: .default, handler: { _ in
@@ -55,21 +55,27 @@ extension EmailRegistrationController {
     }
     
     private func promptForPersonalInfo() {
-        let namePrompt = UIAlertController(title: "What is your full name?", message: nil, preferredStyle: .alert)
-        let numberPrompt = UIAlertController(title: "What is your student number?", message: nil, preferredStyle: .alert)
-        let degreePrompt = UIAlertController(title: "What is your degree?", message: nil, preferredStyle: .alert)
-        
-        presentPrompt(namePrompt, capitalization: .words) { _ in
-            guard let studentName = namePrompt.textFields?.first?.text else { return }
-            self.presentPrompt(numberPrompt, keyboardType: .numberPad) { _ in
-                guard let studentNumberString = numberPrompt.textFields?.first?.text, let studentNumber = Int(studentNumberString) else { return }
-                self.presentPrompt(degreePrompt, capitalization: .words) { _ in
-                    guard let degree = degreePrompt.textFields?.first?.text else { return }
-                    let studentInfo = StudentInfo(name: studentName, number: studentNumber, degree: degree)
-                    self.openEmailRegistration(studentInfo: studentInfo)
-                }
+        let prompt = UIAlertController(title: "Before Registering...", message: "Tell us a bit about yourself.", preferredStyle: .alert)
+        prompt.addAction(UIAlertAction(title: "Continue", style: .default, handler: { _ in
+            guard prompt.textFields?.count == 3,
+                let studentName = prompt.textFields?[0].text,
+                let studentNumberString = prompt.textFields?[1].text,
+                let studentNumber = Int(studentNumberString),
+                let studentEmail = prompt.textFields?[2].text else {
+                    return
             }
-        }
+            let studentInfo = StudentInfo(name: studentName, number: studentNumber, email: studentEmail)
+            self.openEmailRegistration(studentInfo: studentInfo)
+        }))
+        prompt.addAction(UIAlertAction(title: "Cancel", style: .default))
+        prompt.addTextField(placeholder: "Full Name", capitalization: .words)
+        prompt.addTextField(placeholder: "Student Number", keyboardType: .numberPad)
+        prompt.addTextField(placeholder: "Carleton Email", keyboardType: .emailAddress)
+        
+        // This applies a styling fix to the text fields. Without this, the middle text field is missing left and right borders (???)
+        prompt.textFields?.forEach { $0.superview?.superview?.subviews[0].removeFromSuperview() }
+        
+        present(prompt, animated: true)
     }
     
     /// A "prompt" in this case is a `UIAlertController` with two actions of type `UIAlertAction`; one for continuing, and one for cancelling.
@@ -111,9 +117,9 @@ extension EmailRegistrationController {
         <p>Hello,</p>
         \(message)
         <ul>
-        <li>Name: \(studentInfo.name)</li>
+        <li>Full Name: \(studentInfo.name)</li>
         <li>Student Number: \(studentInfo.number)</li>
-        <li>Degree: \(studentInfo.degree)</li>
+        <li>Carleton Email: \(studentInfo.email)</li>
         </ul>
         <p>Thank you!</p>
         """
@@ -124,5 +130,17 @@ extension EmailRegistrationController {
             mail.isModalInPresentation = true
         }
         present(mail, animated: true)
+    }
+}
+
+fileprivate extension UIAlertController {
+    func addTextField(placeholder: String? = nil,
+                      keyboardType: UIKeyboardType = .default,
+                      capitalization: UITextAutocapitalizationType = .sentences) {
+        addTextField(configurationHandler: { textField in
+            textField.placeholder = placeholder
+            textField.keyboardType = keyboardType
+            textField.autocapitalizationType = capitalization
+        })
     }
 }

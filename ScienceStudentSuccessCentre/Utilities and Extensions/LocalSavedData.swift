@@ -37,7 +37,7 @@ struct LocalSavedData {
     // Hidden data
     @Storage(key: "studentName") static var studentName: String?
     @Storage(key: "studentNumber") static var studentNumber: Int?
-    @Storage(key: "degree") static var degree: String?
+    @Storage(key: "email") static var studentEmail: String?
     @Storage(key: "showTestEvents", defaultValue: false) static var showTestEvents: Bool
 }
 

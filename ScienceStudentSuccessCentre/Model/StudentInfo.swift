@@ -11,23 +11,23 @@ import Foundation
 struct StudentInfo {
     let name: String
     let number: Int
-    let degree: String
+    let email: String
     
     init?() {
-        guard let name = LocalSavedData.studentName, let number = LocalSavedData.studentNumber, let degree = LocalSavedData.degree else {
+        guard let name = LocalSavedData.studentName, let number = LocalSavedData.studentNumber, let email = LocalSavedData.studentEmail else {
             return nil
         }
         self.name = name
         self.number = number
-        self.degree = degree
+        self.email = email
     }
     
-    init(name: String, number: Int, degree: String) {
+    init(name: String, number: Int, email: String) {
         LocalSavedData.studentName = name
         LocalSavedData.studentNumber = number
-        LocalSavedData.degree = degree
+        LocalSavedData.studentEmail = email
         self.name = name
         self.number = number
-        self.degree = degree
+        self.email = email
     }
 }
