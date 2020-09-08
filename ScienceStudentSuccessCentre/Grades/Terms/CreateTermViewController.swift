@@ -10,9 +10,9 @@ import UIKit
 import Eureka
 
 class CreateTermViewController: FormViewController, EurekaFormProtocol {
-    private let terms = ["Fall", "Winter", "Summer"]
+    private let seasons = ["Fall", "Winter", "Summer"]
     private var years: [String]!
-    private var term: String?
+    private var season: String?
     private var year: String?
     weak var underlyingController: UIViewController?
 
@@ -37,8 +37,8 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
     
     func createForm() {
         form
-        +++ SelectableSection<ListCheckRow<String>>("Select a Term", selectionType: SelectionType.singleSelection(enableDeselection: false)) { row in
-            for option in self.terms {
+        +++ SelectableSection<ListCheckRow<String>>("Select a Season", selectionType: SelectionType.singleSelection(enableDeselection: false)) { row in
+            for option in self.seasons {
                 row <<< ListCheckRow<String>(option) { listRow in
                     listRow.title = option
                     listRow.selectableValue = option
@@ -51,7 +51,7 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
                 }
             }
             row.onSelectSelectableRow = { cell, _ in
-                self.term = cell.textLabel?.text
+                self.season = cell.textLabel?.text
                 self.validateForm()
             }
         }
@@ -79,7 +79,7 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
     ///
     /// Once all values are valid, the term creation button will be switched from disabled to enabled.
     func validateForm() {
-        if term != nil && year != nil {
+        if season != nil && year != nil {
             navigationItem.rightBarButtonItem?.isEnabled = true
         }
     }
@@ -96,7 +96,7 @@ class CreateTermViewController: FormViewController, EurekaFormProtocol {
     }
     
     @objc private func createButtonPressed() {
-        let newTerm = Term(id: nil, term: term!, year: year!)
+        let newTerm = Term(id: nil, term: season!, year: year!)
         if !Database.instance.insert(term: newTerm) {
             print("Failed to create term")
             presentAlert(kind: .genericError)

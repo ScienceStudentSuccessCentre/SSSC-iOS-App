@@ -93,9 +93,9 @@ extension EmailRegistrationController {
     }
     
     private func openEmailRegistration(studentInfo: StudentInfo) {
-        let mail = MFMailComposeViewController()
-        mail.mailComposeDelegate = self
-        mail.setToRecipients(["sssc@carleton.ca"])
+        let mailComposer = MFMailComposeViewController()
+        mailComposer.mailComposeDelegate = self
+        mailComposer.setToRecipients(["sssc@carleton.ca"])
         
         let subject: String
         let message: String
@@ -124,12 +124,12 @@ extension EmailRegistrationController {
         <p>Thank you!</p>
         """
         
-        mail.setSubject(subject)
-        mail.setMessageBody(combinedBody, isHTML: true)
+        mailComposer.setSubject(subject)
+        mailComposer.setMessageBody(combinedBody, isHTML: true)
         if #available(iOS 13.0, *) {
-            mail.isModalInPresentation = true
+            mailComposer.isModalInPresentation = true
         }
-        present(mail, animated: true)
+        present(mailComposer, animated: true)
     }
 }
 
