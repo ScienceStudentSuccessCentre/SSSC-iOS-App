@@ -14,6 +14,10 @@ class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     private var webView: WKWebView?
     private var activityIndicator: UIActivityIndicatorView!
     private let urlString = "http://sssc.carleton.ca/resources"
+
+    @IBOutlet private weak var backButton: UIBarButtonItem!
+    @IBOutlet private weak var forwardButton: UIBarButtonItem!
+    @IBOutlet private weak var refreshButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,13 +43,40 @@ class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
             webView?.allowsBackForwardNavigationGestures = true
         }
     }
+
+    private func validateToolbarItems() {
+        backButton.isEnabled = webView?.canGoBack ?? false
+        forwardButton.isEnabled = webView?.canGoForward ?? false
+    }
+
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        validateToolbarItems()
+    }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         activityIndicator.stopAnimating()
+        validateToolbarItems()
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         activityIndicator.stopAnimating()
+        validateToolbarItems()
+    }
+
+    @IBAction private func backButtonPressed(_ sender: UIBarButtonItem) {
+        if webView?.canGoBack == true {
+            webView?.goBack()
+        }
+    }
+
+    @IBAction private func forwardButtonPressed(_ sender: UIBarButtonItem) {
+        if webView?.canGoForward == true {
+            webView?.goForward()
+        }
+    }
+
+    @IBAction private func refreshButtonPressed(_ sender: UIBarButtonItem) {
+        webView?.reload()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
