@@ -136,7 +136,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
         +++ MultivaluedSection(multivaluedOptions: [.Insert, .Delete],
                                header: "Assignment Weights",
                                footer: "Assignment weights must total 100%. Example:\nQuizzes (40%), Midterm (25%), Final Exam (35%)") { section in
-            section.addButtonProvider = { section in
+            section.addButtonProvider = { _ in
                 return ButtonRow {
                     $0.title = "Add New Weight"
                 }.cellUpdate { cell, _ in
@@ -145,7 +145,7 @@ class CreateCourseViewController: FormViewController, EurekaFormProtocol {
                     }
                 }
             }
-            section.multivaluedRowToInsertAt = { index in
+            section.multivaluedRowToInsertAt = { _ in
                 return SplitRow<TextRow, IntRow> { splitRow in
                     splitRow.tag = nil
                     splitRow.rowLeft = TextRow { textRow in

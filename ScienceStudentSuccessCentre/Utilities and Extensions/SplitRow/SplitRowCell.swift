@@ -51,7 +51,7 @@ open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value
     open override func setup() {
         selectionStyle = .none
         
-        //ignore Xcode Cast warning here, it works!
+        // ignore Xcode Cast warning here, it works!
         guard let row = self.row as? SplitRow<L, R> else { return }
         
         let maxRowHeight = max(row.rowLeft?.cell?.height?() ?? 44.0, row.rowRight?.cell?.height?() ?? 44.0)

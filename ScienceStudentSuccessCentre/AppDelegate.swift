@@ -107,7 +107,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         if eventsViewController.events.count == 0 {
-            eventsViewController.loadEvents(deepLinkId: deepLinkId)
+            // We wait for the events to load before re-enabling interactions, so the user doesn't navigate away before we finish the deeplink.
+            tabBarController.view.isUserInteractionEnabled = false
+            eventsViewController.loadEvents(deepLinkId: deepLinkId) {
+                // Re-enable user interaction and navigate to the deeplink.
+                tabBarController.view.isUserInteractionEnabled = true
+            }
         } else {
             eventsViewController.navigateToDeepLinkId(deepLinkId)
         }

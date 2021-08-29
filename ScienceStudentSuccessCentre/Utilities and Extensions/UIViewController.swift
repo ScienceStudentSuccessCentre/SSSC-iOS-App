@@ -36,18 +36,18 @@ extension UIViewController {
             message = "It looks like you might be offline! Please try again once you have an internet connection."
         case .eventsError:
             title = "Couldn't load events!"
-            //swiftlint:disable:next line_length
+            // swiftlint:disable:next line_length
             message = "Something went wrong when trying to load the SSSC's events. If the issue persists, contact the SSSC so we can fix the problem as soon as possible."
         case .mentorsError:
             title = "Couldn't load mentors!"
-            //swiftlint:disable:next line_length
+            // swiftlint:disable:next line_length
             message = "Something went wrong when trying to load the SSSC's mentors. If the issue persists, contact the SSSC so we can fix the problem as soon as possible."
         case .exportError:
             title = "Failed to export!"
             message = "Your grade data was unable to be exported. Please try again!"
         case .importError:
             title = "Failed to import data!"
-            //swiftlint:disable:next line_length
+            // swiftlint:disable:next line_length
             message = "Your grades data was not imported. Please make sure the file you are trying to import is not modified in any way from what was originally exported from the app!"
         case .importSuccess:
             title = "Successfully imported data!"

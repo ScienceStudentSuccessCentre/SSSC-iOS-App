@@ -28,15 +28,9 @@ class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         
         activityIndicator = UIActivityIndicatorView()
         activityIndicator.center = view.center
-        activityIndicator.style = .gray
+        activityIndicator.style = .medium
         activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
-        
-        let frame = UIApplication.shared.statusBarFrame
-        let statusBarBackground = UIView(frame: frame)
-        statusBarBackground.backgroundColor = UIColor(.steelblue)
-        view.addSubview(statusBarBackground)
-        self.statusBarBackground = statusBarBackground
 
         if let url = URL(string: urlString) {
             webView?.load(URLRequest(url: url))
@@ -49,29 +43,55 @@ class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
         forwardButton.isEnabled = webView?.canGoForward ?? false
     }
 
+    private func evaluatePageTitle() {
+        webView?.evaluateJavaScript("document.title") { [weak self] (result, error) -> Void in
+            if let error = error {
+                print("Failed to evalue page title with error: \(error)")
+            } else {
+                let suffix = " | Science Student Success Centre"
+                var title = result as? String ?? self?.navigationItem.title ?? "Resources"
+                if title.hasSuffix(suffix) {
+                    title.removeLast(suffix.count)
+                }
+                self?.navigationItem.title = title
+            }
+        }
+    }
+
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         validateToolbarItems()
+        evaluatePageTitle()
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         activityIndicator.stopAnimating()
         validateToolbarItems()
+        evaluatePageTitle()
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         activityIndicator.stopAnimating()
         validateToolbarItems()
+        evaluatePageTitle()
     }
 
     @IBAction private func backButtonPressed(_ sender: UIBarButtonItem) {
         if webView?.canGoBack == true {
             webView?.goBack()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+                self?.validateToolbarItems()
+                self?.evaluatePageTitle()
+            }
         }
     }
 
     @IBAction private func forwardButtonPressed(_ sender: UIBarButtonItem) {
         if webView?.canGoForward == true {
             webView?.goForward()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+                self?.validateToolbarItems()
+                self?.evaluatePageTitle()
+            }
         }
     }
 
@@ -81,8 +101,6 @@ class ResourcesViewController: UIViewController, WKNavigationDelegate, WKUIDeleg
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         webView?.frame = CGRect(origin: .zero, size: size)
-        guard let oldFrame = statusBarBackground?.frame else { return }
-        statusBarBackground?.frame = CGRect(x: oldFrame.minX, y: oldFrame.minY, width: size.width, height: oldFrame.height)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

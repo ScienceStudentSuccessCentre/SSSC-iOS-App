@@ -21,7 +21,7 @@ class EventsViewController: UITableViewController {
         self.extendedLayoutIncludesOpaqueBars = true
         self.navigationController?.view.backgroundColor = .white
         
-        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        activityIndicatorView = UIActivityIndicatorView(style: .medium)
         activityIndicatorView.center = view.center
         if #available(iOS 13.0, *) {
             activityIndicatorView.color = .label
@@ -69,11 +69,7 @@ class EventsViewController: UITableViewController {
     }
     
     /// Retrieves the list of events from the SSSC website, and selects the first one on the list when viewing on iPads.
-    func loadEvents(deepLinkId: String? = nil) {
-        if deepLinkId != nil {
-            // We wait for the events to load before re-enabling interactions, so the user doesn't navigate away before we finish the deeplink.
-            UIApplication.shared.beginIgnoringInteractionEvents()
-        }
+    func loadEvents(deepLinkId: String? = nil, completionHandler: (() -> Void)? = nil) {
         EventLoader.loadEvents().done { events in
             self.events = events
         }.catch { error in
@@ -104,14 +100,14 @@ class EventsViewController: UITableViewController {
                 }
                 
                 if let deepLinkId = deepLinkId {
-                    // Re-enable user interaction and navigate to the deeplink.
-                    UIApplication.shared.endIgnoringInteractionEvents()
+                    self.view.isUserInteractionEnabled = true
                     self.navigateToDeepLinkId(deepLinkId)
                 }
             } else {
                 self.tableView.separatorStyle = .none
                 self.noEventsLabel.isHidden = false
             }
+            completionHandler?()
         }
     }
     

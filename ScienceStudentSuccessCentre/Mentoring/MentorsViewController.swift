@@ -40,7 +40,6 @@ class MentorsViewController: UICollectionViewController {
         searchController.searchBar.delegate = resultsViewController
         searchController.searchBar.tintColor = .white
         searchController.searchBar.placeholder = "Mentor Search"
-        searchController.dimsBackgroundDuringPresentation = true
         
         searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false
         if #available(iOS 13.0, *) {
@@ -60,7 +59,7 @@ class MentorsViewController: UICollectionViewController {
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         collectionView.contentInsetAdjustmentBehavior = .always
         
-        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        activityIndicatorView = UIActivityIndicatorView(style: .medium)
         activityIndicatorView.center = view.center
         if #available(iOS 13.0, *) {
             activityIndicatorView.color = .label
