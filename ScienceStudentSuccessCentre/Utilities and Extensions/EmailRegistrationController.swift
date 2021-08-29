@@ -55,7 +55,8 @@ extension EmailRegistrationController {
     }
     
     private func promptForPersonalInfo() {
-        let prompt = UIAlertController(title: "Before Registering...", message: "Tell us a bit about yourself.", preferredStyle: .alert)
+        let prompt = UIAlertController(title: "Before Registering…", message: "Tell us a bit about yourself.", preferredStyle: .alert)
+        prompt.addAction(UIAlertAction(title: "Cancel", style: .default))
         prompt.addAction(UIAlertAction(title: "Continue", style: .default, handler: { _ in
             guard prompt.textFields?.count == 3,
                 let studentName = prompt.textFields?[0].text,
@@ -67,7 +68,6 @@ extension EmailRegistrationController {
             let studentInfo = StudentInfo(name: studentName, number: studentNumber, email: studentEmail)
             self.openEmailRegistration(studentInfo: studentInfo)
         }))
-        prompt.addAction(UIAlertAction(title: "Cancel", style: .default))
         prompt.addTextField(placeholder: "Full Name", capitalization: .words)
         prompt.addTextField(placeholder: "Student Number", keyboardType: .numberPad)
         prompt.addTextField(placeholder: "Carleton Email", keyboardType: .emailAddress)
@@ -75,20 +75,6 @@ extension EmailRegistrationController {
         // This applies a styling fix to the text fields. Without this, the middle text field is missing left and right borders (???)
         prompt.textFields?.forEach { $0.superview?.superview?.subviews[0].removeFromSuperview() }
         
-        present(prompt, animated: true)
-    }
-    
-    /// A "prompt" in this case is a `UIAlertController` with two actions of type `UIAlertAction`; one for continuing, and one for cancelling.
-    private func presentPrompt(_ prompt: UIAlertController,
-                               keyboardType: UIKeyboardType = .default,
-                               capitalization: UITextAutocapitalizationType = .sentences,
-                               continueAction: ((UIAlertAction) -> Void)?) {
-        prompt.addAction(UIAlertAction(title: "Continue", style: .default, handler: continueAction))
-        prompt.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        prompt.addTextField(configurationHandler: { textField in
-            textField.keyboardType = keyboardType
-            textField.autocapitalizationType = capitalization
-        })
         present(prompt, animated: true)
     }
     
